@@ -1,0 +1,27 @@
+{
+  "name": "com.paia.marenv",
+  "version": "0.0.0",
+  "displayName": "Markov Environment",
+  "description": "Reinforcement and Imitation Learning API with Gymnasium and PettingZoo",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "marenv",
+    "Markov Environment",
+    "MDP",
+    "Markov Decision Process",
+    "RL",
+    "Reinforcement Learning",
+    "IL",
+    "Imitation Learning",
+    "Gym",
+    "Gymnasium",
+    "PettingZoo"
+  ],
+  "author": {
+    "name": "timcsy",
+    "email": "timocsy@yahoo.com.tw",
+    "url": "https://github.com/timcsy"
+  },
+  "type": "library"
+}
