@@ -75,6 +75,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :SPACE_TYPE_TUPLE, 7
       value :SPACE_TYPE_SEQUENCE, 8
       value :SPACE_TYPE_GRAPH, 9
+      value :SPACE_TYPE_IMAGE, 10
     end
     add_enum "DataType" do
       value :DATA_TYPE_UNSPECIFIED, 0

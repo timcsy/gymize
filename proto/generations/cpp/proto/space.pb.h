@@ -146,12 +146,13 @@ enum SpaceType : int {
   SPACE_TYPE_TUPLE = 7,
   SPACE_TYPE_SEQUENCE = 8,
   SPACE_TYPE_GRAPH = 9,
+  SPACE_TYPE_IMAGE = 10,
   SpaceType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   SpaceType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool SpaceType_IsValid(int value);
 constexpr SpaceType SpaceType_MIN = SPACE_TYPE_UNSPECIFIED;
-constexpr SpaceType SpaceType_MAX = SPACE_TYPE_GRAPH;
+constexpr SpaceType SpaceType_MAX = SPACE_TYPE_IMAGE;
 constexpr int SpaceType_ARRAYSIZE = SpaceType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SpaceType_descriptor();

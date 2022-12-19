@@ -80,6 +80,7 @@ typedef GPB_ENUM(SpaceType) {
   SpaceType_SpaceTypeTuple = 7,
   SpaceType_SpaceTypeSequence = 8,
   SpaceType_SpaceTypeGraph = 9,
+  SpaceType_SpaceTypeImage = 10,
 };
 
 GPBEnumDescriptor *SpaceType_EnumDescriptor(void);

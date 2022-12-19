@@ -57,6 +57,7 @@ enum SpaceType {
 	SPACE_TYPE_TUPLE = 7;
 	SPACE_TYPE_SEQUENCE = 8;
 	SPACE_TYPE_GRAPH = 9;
+	SPACE_TYPE_IMAGE = 10;
 }
 
 enum DataType {

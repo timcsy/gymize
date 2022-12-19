@@ -13,9 +13,6 @@ public class TestSpace : MonoBehaviour
     string serverAddress = "ws://localhost:8080";
 
     [Box("@[0]")]
-    [Box("@{num}")]
-    [Box("@[1,3,5]")]
-    [Box("@[:6]")]
     float num;
 
     // Start is called before the first frame update
@@ -54,11 +51,20 @@ public class TestSpace : MonoBehaviour
             Debug.Log("The websocket is closing...");
         };
         ws.Connect();
+
+        TestObs();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void TestObs()
+    {
+        Debug.Log("TestObs");
+        Agent agent = new Agent();
+        Observer.CollectObservations(agent);
     }
 }

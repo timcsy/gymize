@@ -109,7 +109,7 @@ GPBEnumDescriptor *SpaceType_EnumDescriptor(void) {
         "ypeDiscrete\000SpaceTypeMultiBinary\000SpaceTy"
         "peMultiDiscrete\000SpaceTypeText\000SpaceTypeD"
         "ict\000SpaceTypeTuple\000SpaceTypeSequence\000Spa"
-        "ceTypeGraph\000";
+        "ceTypeGraph\000SpaceTypeImage\000";
     static const int32_t values[] = {
         SpaceType_SpaceTypeUnspecified,
         SpaceType_SpaceTypeBox,
@@ -121,6 +121,7 @@ GPBEnumDescriptor *SpaceType_EnumDescriptor(void) {
         SpaceType_SpaceTypeTuple,
         SpaceType_SpaceTypeSequence,
         SpaceType_SpaceTypeGraph,
+        SpaceType_SpaceTypeImage,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SpaceType)
@@ -148,6 +149,7 @@ BOOL SpaceType_IsValidValue(int32_t value__) {
     case SpaceType_SpaceTypeTuple:
     case SpaceType_SpaceTypeSequence:
     case SpaceType_SpaceTypeGraph:
+    case SpaceType_SpaceTypeImage:
       return YES;
     default:
       return NO;

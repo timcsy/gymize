@@ -183,6 +183,10 @@ public final class SpaceOuterClass {
      * <code>SPACE_TYPE_GRAPH = 9;</code>
      */
     SPACE_TYPE_GRAPH(9),
+    /**
+     * <code>SPACE_TYPE_IMAGE = 10;</code>
+     */
+    SPACE_TYPE_IMAGE(10),
     UNRECOGNIZED(-1),
     ;
 
@@ -226,6 +230,10 @@ public final class SpaceOuterClass {
      * <code>SPACE_TYPE_GRAPH = 9;</code>
      */
     public static final int SPACE_TYPE_GRAPH_VALUE = 9;
+    /**
+     * <code>SPACE_TYPE_IMAGE = 10;</code>
+     */
+    public static final int SPACE_TYPE_IMAGE_VALUE = 10;
 
 
     public final int getNumber() {
@@ -262,6 +270,7 @@ public final class SpaceOuterClass {
         case 7: return SPACE_TYPE_TUPLE;
         case 8: return SPACE_TYPE_SEQUENCE;
         case 9: return SPACE_TYPE_GRAPH;
+        case 10: return SPACE_TYPE_IMAGE;
         default: return null;
       }
     }
@@ -11145,17 +11154,18 @@ public final class SpaceOuterClass {
       "(\0132\005.Data:\0028\001*\202\001\n\017CompressionType\022 \n\034COM" +
       "PRESSION_TYPE_UNSPECIFIED\020\000\022\031\n\025COMPRESSI" +
       "ON_TYPE_NONE\020\001\022\030\n\024COMPRESSION_TYPE_PNG\020\002" +
-      "\022\030\n\024COMPRESSION_TYPE_JPG\020\003*\377\001\n\tSpaceType" +
+      "\022\030\n\024COMPRESSION_TYPE_JPG\020\003*\225\002\n\tSpaceType" +
       "\022\032\n\026SPACE_TYPE_UNSPECIFIED\020\000\022\022\n\016SPACE_TY" +
       "PE_BOX\020\001\022\027\n\023SPACE_TYPE_DISCRETE\020\002\022\033\n\027SPA" +
       "CE_TYPE_MULTI_BINARY\020\003\022\035\n\031SPACE_TYPE_MUL" +
       "TI_DISCRETE\020\004\022\023\n\017SPACE_TYPE_TEXT\020\005\022\023\n\017SP" +
       "ACE_TYPE_DICT\020\006\022\024\n\020SPACE_TYPE_TUPLE\020\007\022\027\n" +
       "\023SPACE_TYPE_SEQUENCE\020\010\022\024\n\020SPACE_TYPE_GRA" +
-      "PH\020\t*d\n\010DataType\022\031\n\025DATA_TYPE_UNSPECIFIE" +
-      "D\020\000\022\023\n\017DATA_TYPE_FLOAT\020\001\022\021\n\rDATA_TYPE_IN" +
-      "T\020\002\022\025\n\021DATA_TYPE_BOOLEAN\020\003B\027\252\002\024PAIA.Mare" +
-      "nv.Protobufb\006proto3"
+      "PH\020\t\022\024\n\020SPACE_TYPE_IMAGE\020\n*d\n\010DataType\022\031" +
+      "\n\025DATA_TYPE_UNSPECIFIED\020\000\022\023\n\017DATA_TYPE_F" +
+      "LOAT\020\001\022\021\n\rDATA_TYPE_INT\020\002\022\025\n\021DATA_TYPE_B" +
+      "OOLEAN\020\003B\027\252\002\024PAIA.Marenv.Protobufb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

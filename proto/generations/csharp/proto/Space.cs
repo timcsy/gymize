@@ -53,16 +53,17 @@ namespace PAIA.Marenv.Protobuf {
             "bnRyeRILCgNrZXkYASABKAUSFAoFdmFsdWUYAiABKAsyBS5EYXRhOgI4ASqC",
             "AQoPQ29tcHJlc3Npb25UeXBlEiAKHENPTVBSRVNTSU9OX1RZUEVfVU5TUEVD",
             "SUZJRUQQABIZChVDT01QUkVTU0lPTl9UWVBFX05PTkUQARIYChRDT01QUkVT",
-            "U0lPTl9UWVBFX1BORxACEhgKFENPTVBSRVNTSU9OX1RZUEVfSlBHEAMq/wEK",
+            "U0lPTl9UWVBFX1BORxACEhgKFENPTVBSRVNTSU9OX1RZUEVfSlBHEAMqlQIK",
             "CVNwYWNlVHlwZRIaChZTUEFDRV9UWVBFX1VOU1BFQ0lGSUVEEAASEgoOU1BB",
             "Q0VfVFlQRV9CT1gQARIXChNTUEFDRV9UWVBFX0RJU0NSRVRFEAISGwoXU1BB",
             "Q0VfVFlQRV9NVUxUSV9CSU5BUlkQAxIdChlTUEFDRV9UWVBFX01VTFRJX0RJ",
             "U0NSRVRFEAQSEwoPU1BBQ0VfVFlQRV9URVhUEAUSEwoPU1BBQ0VfVFlQRV9E",
             "SUNUEAYSFAoQU1BBQ0VfVFlQRV9UVVBMRRAHEhcKE1NQQUNFX1RZUEVfU0VR",
-            "VUVOQ0UQCBIUChBTUEFDRV9UWVBFX0dSQVBIEAkqZAoIRGF0YVR5cGUSGQoV",
-            "REFUQV9UWVBFX1VOU1BFQ0lGSUVEEAASEwoPREFUQV9UWVBFX0ZMT0FUEAES",
-            "EQoNREFUQV9UWVBFX0lOVBACEhUKEURBVEFfVFlQRV9CT09MRUFOEANCF6oC",
-            "FFBBSUEuTWFyZW52LlByb3RvYnVmYgZwcm90bzM="));
+            "VUVOQ0UQCBIUChBTUEFDRV9UWVBFX0dSQVBIEAkSFAoQU1BBQ0VfVFlQRV9J",
+            "TUFHRRAKKmQKCERhdGFUeXBlEhkKFURBVEFfVFlQRV9VTlNQRUNJRklFRBAA",
+            "EhMKD0RBVEFfVFlQRV9GTE9BVBABEhEKDURBVEFfVFlQRV9JTlQQAhIVChFE",
+            "QVRBX1RZUEVfQk9PTEVBThADQheqAhRQQUlBLk1hcmVudi5Qcm90b2J1ZmIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Marenv.Protobuf.CompressionType), typeof(global::PAIA.Marenv.Protobuf.SpaceType), typeof(global::PAIA.Marenv.Protobuf.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,6 +99,7 @@ namespace PAIA.Marenv.Protobuf {
     [pbr::OriginalName("SPACE_TYPE_TUPLE")] Tuple = 7,
     [pbr::OriginalName("SPACE_TYPE_SEQUENCE")] Sequence = 8,
     [pbr::OriginalName("SPACE_TYPE_GRAPH")] Graph = 9,
+    [pbr::OriginalName("SPACE_TYPE_IMAGE")] Image = 10,
   }
 
   public enum DataType {
