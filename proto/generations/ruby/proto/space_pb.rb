@@ -5,26 +5,25 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("space.proto", :syntax => :proto3) do
-    add_message "FloatTensor" do
+    add_message "Tensor" do
       repeated :shape, :int32, 1
-      repeated :array, :float, 2
-    end
-    add_message "IntTensor" do
-      repeated :shape, :int32, 1
-      repeated :array, :int32, 2
-    end
-    add_message "BoolTensor" do
-      repeated :shape, :int32, 1
-      repeated :array, :bool, 2
+      optional :data_type, :enum, 2, "DataType"
+      repeated :float_array, :float, 3
+      repeated :double_array, :double, 4
+      repeated :int_array, :sint32, 5
+      repeated :long_array, :sint64, 6
+      repeated :unsigned_int_array, :uint32, 7
+      repeated :unsigned_long_array, :uint64, 8
+      repeated :bool_array, :bool, 9
     end
     add_message "GraphSpace" do
       optional :node_space, :message, 1, "Space"
       optional :edge_space, :message, 2, "Space"
     end
     add_message "Graph" do
-      optional :nodes, :message, 1, "FloatTensor"
-      optional :edges, :message, 2, "FloatTensor"
-      optional :edge_links, :message, 3, "IntTensor"
+      optional :nodes, :message, 1, "Tensor"
+      optional :edges, :message, 2, "Tensor"
+      optional :edge_links, :message, 3, "Tensor"
     end
     add_message "Image" do
       optional :compression_type, :enum, 1, "CompressionType"
@@ -34,29 +33,42 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "Space" do
       optional :space_type, :enum, 1, "SpaceType"
-      repeated :shape, :int32, 2
-      optional :data_type, :enum, 3, "DataType"
-      repeated :low, :float, 4
-      repeated :high, :float, 5
-      optional :min, :int32, 6
-      optional :max, :int32, 7
-      repeated :nvec, :int32, 8
-      repeated :charset, :string, 9
-      map :dict_space, :string, :message, 10, "Space"
-      map :list_space, :int32, :message, 11, "Space"
-      optional :graph_space, :message, 12, "GraphSpace"
+      optional :description, :string, 2
+      repeated :shape, :int32, 3
+      optional :data_type, :string, 4
+      repeated :low, :float, 5
+      repeated :high, :float, 6
+      optional :min, :int32, 7
+      optional :max, :int32, 8
+      repeated :nvec, :int32, 9
+      repeated :charset, :string, 10
+      map :dict_space, :string, :message, 11, "Space"
+      map :list_space, :int32, :message, 12, "Space"
+      optional :graph_space, :message, 13, "GraphSpace"
     end
     add_message "Data" do
       optional :space_type, :enum, 1, "SpaceType"
-      optional :box, :message, 2, "FloatTensor"
-      optional :discrete, :int32, 3
-      optional :multi_binary, :message, 4, "BoolTensor"
-      optional :multi_discrete, :message, 5, "IntTensor"
-      optional :text, :string, 6
-      map :dict, :string, :message, 7, "Data"
-      map :list, :int32, :message, 8, "Data"
-      optional :graph, :message, 9, "Graph"
-      optional :image, :message, 10, "Image"
+      optional :data_type, :string, 2
+      optional :raw_data, :bytes, 3
+      optional :box, :message, 4, "Tensor"
+      optional :discrete, :int32, 5
+      optional :multi_binary, :message, 6, "Tensor"
+      optional :multi_discrete, :message, 7, "Tensor"
+      optional :text, :string, 8
+      map :dict, :string, :message, 9, "Data"
+      map :list, :int32, :message, 10, "Data"
+      optional :graph, :message, 11, "Graph"
+      optional :image, :message, 12, "Image"
+    end
+    add_enum "DataType" do
+      value :DATA_TYPE_UNSPECIFIED, 0
+      value :DATA_TYPE_FLOAT, 1
+      value :DATA_TYPE_DOUBLE, 2
+      value :DATA_TYPE_INT, 3
+      value :DATA_TYPE_LONG, 4
+      value :DATA_TYPE_UINT, 5
+      value :DATA_TYPE_ULONG, 6
+      value :DATA_TYPE_BOOL, 7
     end
     add_enum "CompressionType" do
       value :COMPRESSION_TYPE_UNSPECIFIED, 0
@@ -66,34 +78,27 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_enum "SpaceType" do
       value :SPACE_TYPE_UNSPECIFIED, 0
-      value :SPACE_TYPE_BOX, 1
-      value :SPACE_TYPE_DISCRETE, 2
-      value :SPACE_TYPE_MULTI_BINARY, 3
-      value :SPACE_TYPE_MULTI_DISCRETE, 4
-      value :SPACE_TYPE_TEXT, 5
-      value :SPACE_TYPE_DICT, 6
-      value :SPACE_TYPE_TUPLE, 7
-      value :SPACE_TYPE_SEQUENCE, 8
-      value :SPACE_TYPE_GRAPH, 9
-      value :SPACE_TYPE_IMAGE, 10
-    end
-    add_enum "DataType" do
-      value :DATA_TYPE_UNSPECIFIED, 0
-      value :DATA_TYPE_FLOAT, 1
-      value :DATA_TYPE_INT, 2
-      value :DATA_TYPE_BOOLEAN, 3
+      value :SPACE_TYPE_RAW, 1
+      value :SPACE_TYPE_BOX, 2
+      value :SPACE_TYPE_DISCRETE, 3
+      value :SPACE_TYPE_MULTI_BINARY, 4
+      value :SPACE_TYPE_MULTI_DISCRETE, 5
+      value :SPACE_TYPE_TEXT, 6
+      value :SPACE_TYPE_DICT, 7
+      value :SPACE_TYPE_TUPLE, 8
+      value :SPACE_TYPE_SEQUENCE, 9
+      value :SPACE_TYPE_GRAPH, 10
+      value :SPACE_TYPE_IMAGE, 11
     end
   end
 end
 
-FloatTensor = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FloatTensor").msgclass
-IntTensor = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IntTensor").msgclass
-BoolTensor = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("BoolTensor").msgclass
+Tensor = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Tensor").msgclass
 GraphSpace = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GraphSpace").msgclass
 Graph = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Graph").msgclass
 Image = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Image").msgclass
 Space = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Space").msgclass
 Data = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Data").msgclass
+DataType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DataType").enummodule
 CompressionType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CompressionType").enummodule
 SpaceType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("SpaceType").enummodule
-DataType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DataType").enummodule

@@ -24,63 +24,76 @@ namespace PAIA.Marenv.Protobuf {
     static SpaceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtzcGFjZS5wcm90byIrCgtGbG9hdFRlbnNvchINCgVzaGFwZRgBIAMoBRIN",
-            "CgVhcnJheRgCIAMoAiIpCglJbnRUZW5zb3ISDQoFc2hhcGUYASADKAUSDQoF",
-            "YXJyYXkYAiADKAUiKgoKQm9vbFRlbnNvchINCgVzaGFwZRgBIAMoBRINCgVh",
-            "cnJheRgCIAMoCCJECgpHcmFwaFNwYWNlEhoKCm5vZGVfc3BhY2UYASABKAsy",
-            "Bi5TcGFjZRIaCgplZGdlX3NwYWNlGAIgASgLMgYuU3BhY2UiYQoFR3JhcGgS",
-            "GwoFbm9kZXMYASABKAsyDC5GbG9hdFRlbnNvchIbCgVlZGdlcxgCIAEoCzIM",
-            "LkZsb2F0VGVuc29yEh4KCmVkZ2VfbGlua3MYAyABKAsyCi5JbnRUZW5zb3Ii",
-            "awoFSW1hZ2USKgoQY29tcHJlc3Npb25fdHlwZRgBIAEoDjIQLkNvbXByZXNz",
-            "aW9uVHlwZRIMCgRkYXRhGAIgASgMEg0KBXNoYXBlGAMgAygFEhkKEWRpbWVu",
-            "c2lvbl9tYXBwaW5nGAQgAygFIpQDCgVTcGFjZRIeCgpzcGFjZV90eXBlGAEg",
-            "ASgOMgouU3BhY2VUeXBlEg0KBXNoYXBlGAIgAygFEhwKCWRhdGFfdHlwZRgD",
-            "IAEoDjIJLkRhdGFUeXBlEgsKA2xvdxgEIAMoAhIMCgRoaWdoGAUgAygCEgsK",
-            "A21pbhgGIAEoBRILCgNtYXgYByABKAUSDAoEbnZlYxgIIAMoBRIPCgdjaGFy",
-            "c2V0GAkgAygJEikKCmRpY3Rfc3BhY2UYCiADKAsyFS5TcGFjZS5EaWN0U3Bh",
-            "Y2VFbnRyeRIpCgpsaXN0X3NwYWNlGAsgAygLMhUuU3BhY2UuTGlzdFNwYWNl",
-            "RW50cnkSIAoLZ3JhcGhfc3BhY2UYDCABKAsyCy5HcmFwaFNwYWNlGjgKDkRp",
-            "Y3RTcGFjZUVudHJ5EgsKA2tleRgBIAEoCRIVCgV2YWx1ZRgCIAEoCzIGLlNw",
-            "YWNlOgI4ARo4Cg5MaXN0U3BhY2VFbnRyeRILCgNrZXkYASABKAUSFQoFdmFs",
-            "dWUYAiABKAsyBi5TcGFjZToCOAEi/AIKBERhdGESHgoKc3BhY2VfdHlwZRgB",
-            "IAEoDjIKLlNwYWNlVHlwZRIZCgNib3gYAiABKAsyDC5GbG9hdFRlbnNvchIQ",
-            "CghkaXNjcmV0ZRgDIAEoBRIhCgxtdWx0aV9iaW5hcnkYBCABKAsyCy5Cb29s",
-            "VGVuc29yEiIKDm11bHRpX2Rpc2NyZXRlGAUgASgLMgouSW50VGVuc29yEgwK",
-            "BHRleHQYBiABKAkSHQoEZGljdBgHIAMoCzIPLkRhdGEuRGljdEVudHJ5Eh0K",
-            "BGxpc3QYCCADKAsyDy5EYXRhLkxpc3RFbnRyeRIVCgVncmFwaBgJIAEoCzIG",
-            "LkdyYXBoEhUKBWltYWdlGAogASgLMgYuSW1hZ2UaMgoJRGljdEVudHJ5EgsK",
-            "A2tleRgBIAEoCRIUCgV2YWx1ZRgCIAEoCzIFLkRhdGE6AjgBGjIKCUxpc3RF",
-            "bnRyeRILCgNrZXkYASABKAUSFAoFdmFsdWUYAiABKAsyBS5EYXRhOgI4ASqC",
-            "AQoPQ29tcHJlc3Npb25UeXBlEiAKHENPTVBSRVNTSU9OX1RZUEVfVU5TUEVD",
-            "SUZJRUQQABIZChVDT01QUkVTU0lPTl9UWVBFX05PTkUQARIYChRDT01QUkVT",
-            "U0lPTl9UWVBFX1BORxACEhgKFENPTVBSRVNTSU9OX1RZUEVfSlBHEAMqlQIK",
-            "CVNwYWNlVHlwZRIaChZTUEFDRV9UWVBFX1VOU1BFQ0lGSUVEEAASEgoOU1BB",
-            "Q0VfVFlQRV9CT1gQARIXChNTUEFDRV9UWVBFX0RJU0NSRVRFEAISGwoXU1BB",
-            "Q0VfVFlQRV9NVUxUSV9CSU5BUlkQAxIdChlTUEFDRV9UWVBFX01VTFRJX0RJ",
-            "U0NSRVRFEAQSEwoPU1BBQ0VfVFlQRV9URVhUEAUSEwoPU1BBQ0VfVFlQRV9E",
-            "SUNUEAYSFAoQU1BBQ0VfVFlQRV9UVVBMRRAHEhcKE1NQQUNFX1RZUEVfU0VR",
-            "VUVOQ0UQCBIUChBTUEFDRV9UWVBFX0dSQVBIEAkSFAoQU1BBQ0VfVFlQRV9J",
-            "TUFHRRAKKmQKCERhdGFUeXBlEhkKFURBVEFfVFlQRV9VTlNQRUNJRklFRBAA",
-            "EhMKD0RBVEFfVFlQRV9GTE9BVBABEhEKDURBVEFfVFlQRV9JTlQQAhIVChFE",
-            "QVRBX1RZUEVfQk9PTEVBThADQheqAhRQQUlBLk1hcmVudi5Qcm90b2J1ZmIG",
-            "cHJvdG8z"));
+            "CgtzcGFjZS5wcm90byLUAQoGVGVuc29yEg0KBXNoYXBlGAEgAygFEhwKCWRh",
+            "dGFfdHlwZRgCIAEoDjIJLkRhdGFUeXBlEhMKC2Zsb2F0X2FycmF5GAMgAygC",
+            "EhQKDGRvdWJsZV9hcnJheRgEIAMoARIRCglpbnRfYXJyYXkYBSADKBESEgoK",
+            "bG9uZ19hcnJheRgGIAMoEhIaChJ1bnNpZ25lZF9pbnRfYXJyYXkYByADKA0S",
+            "GwoTdW5zaWduZWRfbG9uZ19hcnJheRgIIAMoBBISCgpib29sX2FycmF5GAkg",
+            "AygIIkQKCkdyYXBoU3BhY2USGgoKbm9kZV9zcGFjZRgBIAEoCzIGLlNwYWNl",
+            "EhoKCmVkZ2Vfc3BhY2UYAiABKAsyBi5TcGFjZSJUCgVHcmFwaBIWCgVub2Rl",
+            "cxgBIAEoCzIHLlRlbnNvchIWCgVlZGdlcxgCIAEoCzIHLlRlbnNvchIbCgpl",
+            "ZGdlX2xpbmtzGAMgASgLMgcuVGVuc29yImsKBUltYWdlEioKEGNvbXByZXNz",
+            "aW9uX3R5cGUYASABKA4yEC5Db21wcmVzc2lvblR5cGUSDAoEZGF0YRgCIAEo",
+            "DBINCgVzaGFwZRgDIAMoBRIZChFkaW1lbnNpb25fbWFwcGluZxgEIAMoBSKe",
+            "AwoFU3BhY2USHgoKc3BhY2VfdHlwZRgBIAEoDjIKLlNwYWNlVHlwZRITCgtk",
+            "ZXNjcmlwdGlvbhgCIAEoCRINCgVzaGFwZRgDIAMoBRIRCglkYXRhX3R5cGUY",
+            "BCABKAkSCwoDbG93GAUgAygCEgwKBGhpZ2gYBiADKAISCwoDbWluGAcgASgF",
+            "EgsKA21heBgIIAEoBRIMCgRudmVjGAkgAygFEg8KB2NoYXJzZXQYCiADKAkS",
+            "KQoKZGljdF9zcGFjZRgLIAMoCzIVLlNwYWNlLkRpY3RTcGFjZUVudHJ5EikK",
+            "Cmxpc3Rfc3BhY2UYDCADKAsyFS5TcGFjZS5MaXN0U3BhY2VFbnRyeRIgCgtn",
+            "cmFwaF9zcGFjZRgNIAEoCzILLkdyYXBoU3BhY2UaOAoORGljdFNwYWNlRW50",
+            "cnkSCwoDa2V5GAEgASgJEhUKBXZhbHVlGAIgASgLMgYuU3BhY2U6AjgBGjgK",
+            "Dkxpc3RTcGFjZUVudHJ5EgsKA2tleRgBIAEoBRIVCgV2YWx1ZRgCIAEoCzIG",
+            "LlNwYWNlOgI4ASKVAwoERGF0YRIeCgpzcGFjZV90eXBlGAEgASgOMgouU3Bh",
+            "Y2VUeXBlEhEKCWRhdGFfdHlwZRgCIAEoCRIQCghyYXdfZGF0YRgDIAEoDBIU",
+            "CgNib3gYBCABKAsyBy5UZW5zb3ISEAoIZGlzY3JldGUYBSABKAUSHQoMbXVs",
+            "dGlfYmluYXJ5GAYgASgLMgcuVGVuc29yEh8KDm11bHRpX2Rpc2NyZXRlGAcg",
+            "ASgLMgcuVGVuc29yEgwKBHRleHQYCCABKAkSHQoEZGljdBgJIAMoCzIPLkRh",
+            "dGEuRGljdEVudHJ5Eh0KBGxpc3QYCiADKAsyDy5EYXRhLkxpc3RFbnRyeRIV",
+            "CgVncmFwaBgLIAEoCzIGLkdyYXBoEhUKBWltYWdlGAwgASgLMgYuSW1hZ2Ua",
+            "MgoJRGljdEVudHJ5EgsKA2tleRgBIAEoCRIUCgV2YWx1ZRgCIAEoCzIFLkRh",
+            "dGE6AjgBGjIKCUxpc3RFbnRyeRILCgNrZXkYASABKAUSFAoFdmFsdWUYAiAB",
+            "KAsyBS5EYXRhOgI4ASq0AQoIRGF0YVR5cGUSGQoVREFUQV9UWVBFX1VOU1BF",
+            "Q0lGSUVEEAASEwoPREFUQV9UWVBFX0ZMT0FUEAESFAoQREFUQV9UWVBFX0RP",
+            "VUJMRRACEhEKDURBVEFfVFlQRV9JTlQQAxISCg5EQVRBX1RZUEVfTE9ORxAE",
+            "EhIKDkRBVEFfVFlQRV9VSU5UEAUSEwoPREFUQV9UWVBFX1VMT05HEAYSEgoO",
+            "REFUQV9UWVBFX0JPT0wQByqCAQoPQ29tcHJlc3Npb25UeXBlEiAKHENPTVBS",
+            "RVNTSU9OX1RZUEVfVU5TUEVDSUZJRUQQABIZChVDT01QUkVTU0lPTl9UWVBF",
+            "X05PTkUQARIYChRDT01QUkVTU0lPTl9UWVBFX1BORxACEhgKFENPTVBSRVNT",
+            "SU9OX1RZUEVfSlBHEAMqqQIKCVNwYWNlVHlwZRIaChZTUEFDRV9UWVBFX1VO",
+            "U1BFQ0lGSUVEEAASEgoOU1BBQ0VfVFlQRV9SQVcQARISCg5TUEFDRV9UWVBF",
+            "X0JPWBACEhcKE1NQQUNFX1RZUEVfRElTQ1JFVEUQAxIbChdTUEFDRV9UWVBF",
+            "X01VTFRJX0JJTkFSWRAEEh0KGVNQQUNFX1RZUEVfTVVMVElfRElTQ1JFVEUQ",
+            "BRITCg9TUEFDRV9UWVBFX1RFWFQQBhITCg9TUEFDRV9UWVBFX0RJQ1QQBxIU",
+            "ChBTUEFDRV9UWVBFX1RVUExFEAgSFwoTU1BBQ0VfVFlQRV9TRVFVRU5DRRAJ",
+            "EhQKEFNQQUNFX1RZUEVfR1JBUEgQChIUChBTUEFDRV9UWVBFX0lNQUdFEAtC",
+            "F6oCFFBBSUEuTWFyZW52LlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Marenv.Protobuf.CompressionType), typeof(global::PAIA.Marenv.Protobuf.SpaceType), typeof(global::PAIA.Marenv.Protobuf.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.FloatTensor), global::PAIA.Marenv.Protobuf.FloatTensor.Parser, new[]{ "Shape", "Array" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.IntTensor), global::PAIA.Marenv.Protobuf.IntTensor.Parser, new[]{ "Shape", "Array" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.BoolTensor), global::PAIA.Marenv.Protobuf.BoolTensor.Parser, new[]{ "Shape", "Array" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Marenv.Protobuf.DataType), typeof(global::PAIA.Marenv.Protobuf.CompressionType), typeof(global::PAIA.Marenv.Protobuf.SpaceType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Tensor), global::PAIA.Marenv.Protobuf.Tensor.Parser, new[]{ "Shape", "DataType", "FloatArray", "DoubleArray", "IntArray", "LongArray", "UnsignedIntArray", "UnsignedLongArray", "BoolArray" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.GraphSpace), global::PAIA.Marenv.Protobuf.GraphSpace.Parser, new[]{ "NodeSpace", "EdgeSpace" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Graph), global::PAIA.Marenv.Protobuf.Graph.Parser, new[]{ "Nodes", "Edges", "EdgeLinks" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Image), global::PAIA.Marenv.Protobuf.Image.Parser, new[]{ "CompressionType", "Data", "Shape", "DimensionMapping" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Space), global::PAIA.Marenv.Protobuf.Space.Parser, new[]{ "SpaceType", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Data), global::PAIA.Marenv.Protobuf.Data.Parser, new[]{ "SpaceType", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Space), global::PAIA.Marenv.Protobuf.Space.Parser, new[]{ "SpaceType", "Description", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Data), global::PAIA.Marenv.Protobuf.Data.Parser, new[]{ "SpaceType", "DataType", "RawData", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
 
   }
   #region Enums
+  public enum DataType {
+    [pbr::OriginalName("DATA_TYPE_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("DATA_TYPE_FLOAT")] Float = 1,
+    [pbr::OriginalName("DATA_TYPE_DOUBLE")] Double = 2,
+    [pbr::OriginalName("DATA_TYPE_INT")] Int = 3,
+    [pbr::OriginalName("DATA_TYPE_LONG")] Long = 4,
+    [pbr::OriginalName("DATA_TYPE_UINT")] Uint = 5,
+    [pbr::OriginalName("DATA_TYPE_ULONG")] Ulong = 6,
+    [pbr::OriginalName("DATA_TYPE_BOOL")] Bool = 7,
+  }
+
   public enum CompressionType {
     [pbr::OriginalName("COMPRESSION_TYPE_UNSPECIFIED")] Unspecified = 0,
     [pbr::OriginalName("COMPRESSION_TYPE_NONE")] None = 1,
@@ -90,38 +103,32 @@ namespace PAIA.Marenv.Protobuf {
 
   public enum SpaceType {
     [pbr::OriginalName("SPACE_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("SPACE_TYPE_BOX")] Box = 1,
-    [pbr::OriginalName("SPACE_TYPE_DISCRETE")] Discrete = 2,
-    [pbr::OriginalName("SPACE_TYPE_MULTI_BINARY")] MultiBinary = 3,
-    [pbr::OriginalName("SPACE_TYPE_MULTI_DISCRETE")] MultiDiscrete = 4,
-    [pbr::OriginalName("SPACE_TYPE_TEXT")] Text = 5,
-    [pbr::OriginalName("SPACE_TYPE_DICT")] Dict = 6,
-    [pbr::OriginalName("SPACE_TYPE_TUPLE")] Tuple = 7,
-    [pbr::OriginalName("SPACE_TYPE_SEQUENCE")] Sequence = 8,
-    [pbr::OriginalName("SPACE_TYPE_GRAPH")] Graph = 9,
-    [pbr::OriginalName("SPACE_TYPE_IMAGE")] Image = 10,
-  }
-
-  public enum DataType {
-    [pbr::OriginalName("DATA_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("DATA_TYPE_FLOAT")] Float = 1,
-    [pbr::OriginalName("DATA_TYPE_INT")] Int = 2,
-    [pbr::OriginalName("DATA_TYPE_BOOLEAN")] Boolean = 3,
+    [pbr::OriginalName("SPACE_TYPE_RAW")] Raw = 1,
+    [pbr::OriginalName("SPACE_TYPE_BOX")] Box = 2,
+    [pbr::OriginalName("SPACE_TYPE_DISCRETE")] Discrete = 3,
+    [pbr::OriginalName("SPACE_TYPE_MULTI_BINARY")] MultiBinary = 4,
+    [pbr::OriginalName("SPACE_TYPE_MULTI_DISCRETE")] MultiDiscrete = 5,
+    [pbr::OriginalName("SPACE_TYPE_TEXT")] Text = 6,
+    [pbr::OriginalName("SPACE_TYPE_DICT")] Dict = 7,
+    [pbr::OriginalName("SPACE_TYPE_TUPLE")] Tuple = 8,
+    [pbr::OriginalName("SPACE_TYPE_SEQUENCE")] Sequence = 9,
+    [pbr::OriginalName("SPACE_TYPE_GRAPH")] Graph = 10,
+    [pbr::OriginalName("SPACE_TYPE_IMAGE")] Image = 11,
   }
 
   #endregion
 
   #region Messages
-  public sealed partial class FloatTensor : pb::IMessage<FloatTensor>
+  public sealed partial class Tensor : pb::IMessage<Tensor>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<FloatTensor> _parser = new pb::MessageParser<FloatTensor>(() => new FloatTensor());
+    private static readonly pb::MessageParser<Tensor> _parser = new pb::MessageParser<Tensor>(() => new Tensor());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<FloatTensor> Parser { get { return _parser; } }
+    public static pb::MessageParser<Tensor> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +144,7 @@ namespace PAIA.Marenv.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FloatTensor() {
+    public Tensor() {
       OnConstruction();
     }
 
@@ -145,16 +152,23 @@ namespace PAIA.Marenv.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FloatTensor(FloatTensor other) : this() {
+    public Tensor(Tensor other) : this() {
       shape_ = other.shape_.Clone();
-      array_ = other.array_.Clone();
+      dataType_ = other.dataType_;
+      floatArray_ = other.floatArray_.Clone();
+      doubleArray_ = other.doubleArray_.Clone();
+      intArray_ = other.intArray_.Clone();
+      longArray_ = other.longArray_.Clone();
+      unsignedIntArray_ = other.unsignedIntArray_.Clone();
+      unsignedLongArray_ = other.unsignedLongArray_.Clone();
+      boolArray_ = other.boolArray_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FloatTensor Clone() {
-      return new FloatTensor(this);
+    public Tensor Clone() {
+      return new Tensor(this);
     }
 
     /// <summary>Field number for the "shape" field.</summary>
@@ -168,26 +182,104 @@ namespace PAIA.Marenv.Protobuf {
       get { return shape_; }
     }
 
-    /// <summary>Field number for the "array" field.</summary>
-    public const int ArrayFieldNumber = 2;
-    private static readonly pb::FieldCodec<float> _repeated_array_codec
-        = pb::FieldCodec.ForFloat(18);
-    private readonly pbc::RepeatedField<float> array_ = new pbc::RepeatedField<float>();
+    /// <summary>Field number for the "data_type" field.</summary>
+    public const int DataTypeFieldNumber = 2;
+    private global::PAIA.Marenv.Protobuf.DataType dataType_ = global::PAIA.Marenv.Protobuf.DataType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<float> Array {
-      get { return array_; }
+    public global::PAIA.Marenv.Protobuf.DataType DataType {
+      get { return dataType_; }
+      set {
+        dataType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "float_array" field.</summary>
+    public const int FloatArrayFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_floatArray_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> floatArray_ = new pbc::RepeatedField<float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<float> FloatArray {
+      get { return floatArray_; }
+    }
+
+    /// <summary>Field number for the "double_array" field.</summary>
+    public const int DoubleArrayFieldNumber = 4;
+    private static readonly pb::FieldCodec<double> _repeated_doubleArray_codec
+        = pb::FieldCodec.ForDouble(34);
+    private readonly pbc::RepeatedField<double> doubleArray_ = new pbc::RepeatedField<double>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<double> DoubleArray {
+      get { return doubleArray_; }
+    }
+
+    /// <summary>Field number for the "int_array" field.</summary>
+    public const int IntArrayFieldNumber = 5;
+    private static readonly pb::FieldCodec<int> _repeated_intArray_codec
+        = pb::FieldCodec.ForSInt32(42);
+    private readonly pbc::RepeatedField<int> intArray_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> IntArray {
+      get { return intArray_; }
+    }
+
+    /// <summary>Field number for the "long_array" field.</summary>
+    public const int LongArrayFieldNumber = 6;
+    private static readonly pb::FieldCodec<long> _repeated_longArray_codec
+        = pb::FieldCodec.ForSInt64(50);
+    private readonly pbc::RepeatedField<long> longArray_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> LongArray {
+      get { return longArray_; }
+    }
+
+    /// <summary>Field number for the "unsigned_int_array" field.</summary>
+    public const int UnsignedIntArrayFieldNumber = 7;
+    private static readonly pb::FieldCodec<uint> _repeated_unsignedIntArray_codec
+        = pb::FieldCodec.ForUInt32(58);
+    private readonly pbc::RepeatedField<uint> unsignedIntArray_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnsignedIntArray {
+      get { return unsignedIntArray_; }
+    }
+
+    /// <summary>Field number for the "unsigned_long_array" field.</summary>
+    public const int UnsignedLongArrayFieldNumber = 8;
+    private static readonly pb::FieldCodec<ulong> _repeated_unsignedLongArray_codec
+        = pb::FieldCodec.ForUInt64(66);
+    private readonly pbc::RepeatedField<ulong> unsignedLongArray_ = new pbc::RepeatedField<ulong>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<ulong> UnsignedLongArray {
+      get { return unsignedLongArray_; }
+    }
+
+    /// <summary>Field number for the "bool_array" field.</summary>
+    public const int BoolArrayFieldNumber = 9;
+    private static readonly pb::FieldCodec<bool> _repeated_boolArray_codec
+        = pb::FieldCodec.ForBool(74);
+    private readonly pbc::RepeatedField<bool> boolArray_ = new pbc::RepeatedField<bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<bool> BoolArray {
+      get { return boolArray_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as FloatTensor);
+      return Equals(other as Tensor);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(FloatTensor other) {
+    public bool Equals(Tensor other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -195,7 +287,14 @@ namespace PAIA.Marenv.Protobuf {
         return true;
       }
       if(!shape_.Equals(other.shape_)) return false;
-      if(!array_.Equals(other.array_)) return false;
+      if (DataType != other.DataType) return false;
+      if(!floatArray_.Equals(other.floatArray_)) return false;
+      if(!doubleArray_.Equals(other.doubleArray_)) return false;
+      if(!intArray_.Equals(other.intArray_)) return false;
+      if(!longArray_.Equals(other.longArray_)) return false;
+      if(!unsignedIntArray_.Equals(other.unsignedIntArray_)) return false;
+      if(!unsignedLongArray_.Equals(other.unsignedLongArray_)) return false;
+      if(!boolArray_.Equals(other.boolArray_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -204,7 +303,14 @@ namespace PAIA.Marenv.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= shape_.GetHashCode();
-      hash ^= array_.GetHashCode();
+      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) hash ^= DataType.GetHashCode();
+      hash ^= floatArray_.GetHashCode();
+      hash ^= doubleArray_.GetHashCode();
+      hash ^= intArray_.GetHashCode();
+      hash ^= longArray_.GetHashCode();
+      hash ^= unsignedIntArray_.GetHashCode();
+      hash ^= unsignedLongArray_.GetHashCode();
+      hash ^= boolArray_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -224,7 +330,17 @@ namespace PAIA.Marenv.Protobuf {
       output.WriteRawMessage(this);
     #else
       shape_.WriteTo(output, _repeated_shape_codec);
-      array_.WriteTo(output, _repeated_array_codec);
+      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) DataType);
+      }
+      floatArray_.WriteTo(output, _repeated_floatArray_codec);
+      doubleArray_.WriteTo(output, _repeated_doubleArray_codec);
+      intArray_.WriteTo(output, _repeated_intArray_codec);
+      longArray_.WriteTo(output, _repeated_longArray_codec);
+      unsignedIntArray_.WriteTo(output, _repeated_unsignedIntArray_codec);
+      unsignedLongArray_.WriteTo(output, _repeated_unsignedLongArray_codec);
+      boolArray_.WriteTo(output, _repeated_boolArray_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -236,7 +352,17 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       shape_.WriteTo(ref output, _repeated_shape_codec);
-      array_.WriteTo(ref output, _repeated_array_codec);
+      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) DataType);
+      }
+      floatArray_.WriteTo(ref output, _repeated_floatArray_codec);
+      doubleArray_.WriteTo(ref output, _repeated_doubleArray_codec);
+      intArray_.WriteTo(ref output, _repeated_intArray_codec);
+      longArray_.WriteTo(ref output, _repeated_longArray_codec);
+      unsignedIntArray_.WriteTo(ref output, _repeated_unsignedIntArray_codec);
+      unsignedLongArray_.WriteTo(ref output, _repeated_unsignedLongArray_codec);
+      boolArray_.WriteTo(ref output, _repeated_boolArray_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -248,7 +374,16 @@ namespace PAIA.Marenv.Protobuf {
     public int CalculateSize() {
       int size = 0;
       size += shape_.CalculateSize(_repeated_shape_codec);
-      size += array_.CalculateSize(_repeated_array_codec);
+      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DataType);
+      }
+      size += floatArray_.CalculateSize(_repeated_floatArray_codec);
+      size += doubleArray_.CalculateSize(_repeated_doubleArray_codec);
+      size += intArray_.CalculateSize(_repeated_intArray_codec);
+      size += longArray_.CalculateSize(_repeated_longArray_codec);
+      size += unsignedIntArray_.CalculateSize(_repeated_unsignedIntArray_codec);
+      size += unsignedLongArray_.CalculateSize(_repeated_unsignedLongArray_codec);
+      size += boolArray_.CalculateSize(_repeated_boolArray_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -257,12 +392,21 @@ namespace PAIA.Marenv.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(FloatTensor other) {
+    public void MergeFrom(Tensor other) {
       if (other == null) {
         return;
       }
       shape_.Add(other.shape_);
-      array_.Add(other.array_);
+      if (other.DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+        DataType = other.DataType;
+      }
+      floatArray_.Add(other.floatArray_);
+      doubleArray_.Add(other.doubleArray_);
+      intArray_.Add(other.intArray_);
+      longArray_.Add(other.longArray_);
+      unsignedIntArray_.Add(other.unsignedIntArray_);
+      unsignedLongArray_.Add(other.unsignedLongArray_);
+      boolArray_.Add(other.boolArray_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -283,9 +427,43 @@ namespace PAIA.Marenv.Protobuf {
             shape_.AddEntriesFrom(input, _repeated_shape_codec);
             break;
           }
-          case 18:
-          case 21: {
-            array_.AddEntriesFrom(input, _repeated_array_codec);
+          case 16: {
+            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
+            break;
+          }
+          case 26:
+          case 29: {
+            floatArray_.AddEntriesFrom(input, _repeated_floatArray_codec);
+            break;
+          }
+          case 34:
+          case 33: {
+            doubleArray_.AddEntriesFrom(input, _repeated_doubleArray_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            intArray_.AddEntriesFrom(input, _repeated_intArray_codec);
+            break;
+          }
+          case 50:
+          case 48: {
+            longArray_.AddEntriesFrom(input, _repeated_longArray_codec);
+            break;
+          }
+          case 58:
+          case 56: {
+            unsignedIntArray_.AddEntriesFrom(input, _repeated_unsignedIntArray_codec);
+            break;
+          }
+          case 66:
+          case 64: {
+            unsignedLongArray_.AddEntriesFrom(input, _repeated_unsignedLongArray_codec);
+            break;
+          }
+          case 74:
+          case 72: {
+            boolArray_.AddEntriesFrom(input, _repeated_boolArray_codec);
             break;
           }
         }
@@ -308,425 +486,43 @@ namespace PAIA.Marenv.Protobuf {
             shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
             break;
           }
-          case 18:
-          case 21: {
-            array_.AddEntriesFrom(ref input, _repeated_array_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class IntTensor : pb::IMessage<IntTensor>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<IntTensor> _parser = new pb::MessageParser<IntTensor>(() => new IntTensor());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<IntTensor> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public IntTensor() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public IntTensor(IntTensor other) : this() {
-      shape_ = other.shape_.Clone();
-      array_ = other.array_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public IntTensor Clone() {
-      return new IntTensor(this);
-    }
-
-    /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 1;
-    private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(10);
-    private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Shape {
-      get { return shape_; }
-    }
-
-    /// <summary>Field number for the "array" field.</summary>
-    public const int ArrayFieldNumber = 2;
-    private static readonly pb::FieldCodec<int> _repeated_array_codec
-        = pb::FieldCodec.ForInt32(18);
-    private readonly pbc::RepeatedField<int> array_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Array {
-      get { return array_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as IntTensor);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(IntTensor other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!shape_.Equals(other.shape_)) return false;
-      if(!array_.Equals(other.array_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= shape_.GetHashCode();
-      hash ^= array_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      shape_.WriteTo(output, _repeated_shape_codec);
-      array_.WriteTo(output, _repeated_array_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      shape_.WriteTo(ref output, _repeated_shape_codec);
-      array_.WriteTo(ref output, _repeated_array_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      size += shape_.CalculateSize(_repeated_shape_codec);
-      size += array_.CalculateSize(_repeated_array_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(IntTensor other) {
-      if (other == null) {
-        return;
-      }
-      shape_.Add(other.shape_);
-      array_.Add(other.array_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 8: {
-            shape_.AddEntriesFrom(input, _repeated_shape_codec);
-            break;
-          }
-          case 18:
           case 16: {
-            array_.AddEntriesFrom(input, _repeated_array_codec);
+            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
             break;
           }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10:
-          case 8: {
-            shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
+          case 26:
+          case 29: {
+            floatArray_.AddEntriesFrom(ref input, _repeated_floatArray_codec);
             break;
           }
-          case 18:
-          case 16: {
-            array_.AddEntriesFrom(ref input, _repeated_array_codec);
+          case 34:
+          case 33: {
+            doubleArray_.AddEntriesFrom(ref input, _repeated_doubleArray_codec);
             break;
           }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class BoolTensor : pb::IMessage<BoolTensor>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<BoolTensor> _parser = new pb::MessageParser<BoolTensor>(() => new BoolTensor());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<BoolTensor> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BoolTensor() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BoolTensor(BoolTensor other) : this() {
-      shape_ = other.shape_.Clone();
-      array_ = other.array_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public BoolTensor Clone() {
-      return new BoolTensor(this);
-    }
-
-    /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 1;
-    private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(10);
-    private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Shape {
-      get { return shape_; }
-    }
-
-    /// <summary>Field number for the "array" field.</summary>
-    public const int ArrayFieldNumber = 2;
-    private static readonly pb::FieldCodec<bool> _repeated_array_codec
-        = pb::FieldCodec.ForBool(18);
-    private readonly pbc::RepeatedField<bool> array_ = new pbc::RepeatedField<bool>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<bool> Array {
-      get { return array_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as BoolTensor);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(BoolTensor other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!shape_.Equals(other.shape_)) return false;
-      if(!array_.Equals(other.array_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= shape_.GetHashCode();
-      hash ^= array_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      shape_.WriteTo(output, _repeated_shape_codec);
-      array_.WriteTo(output, _repeated_array_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      shape_.WriteTo(ref output, _repeated_shape_codec);
-      array_.WriteTo(ref output, _repeated_array_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      size += shape_.CalculateSize(_repeated_shape_codec);
-      size += array_.CalculateSize(_repeated_array_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(BoolTensor other) {
-      if (other == null) {
-        return;
-      }
-      shape_.Add(other.shape_);
-      array_.Add(other.array_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 8: {
-            shape_.AddEntriesFrom(input, _repeated_shape_codec);
+          case 42:
+          case 40: {
+            intArray_.AddEntriesFrom(ref input, _repeated_intArray_codec);
             break;
           }
-          case 18:
-          case 16: {
-            array_.AddEntriesFrom(input, _repeated_array_codec);
+          case 50:
+          case 48: {
+            longArray_.AddEntriesFrom(ref input, _repeated_longArray_codec);
             break;
           }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10:
-          case 8: {
-            shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
+          case 58:
+          case 56: {
+            unsignedIntArray_.AddEntriesFrom(ref input, _repeated_unsignedIntArray_codec);
             break;
           }
-          case 18:
-          case 16: {
-            array_.AddEntriesFrom(ref input, _repeated_array_codec);
+          case 66:
+          case 64: {
+            unsignedLongArray_.AddEntriesFrom(ref input, _repeated_unsignedLongArray_codec);
+            break;
+          }
+          case 74:
+          case 72: {
+            boolArray_.AddEntriesFrom(ref input, _repeated_boolArray_codec);
             break;
           }
         }
@@ -750,7 +546,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -994,7 +790,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[4]; }
+      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1028,10 +824,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "nodes" field.</summary>
     public const int NodesFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.FloatTensor nodes_;
+    private global::PAIA.Marenv.Protobuf.Tensor nodes_;
+    /// <summary>
+    /// floating type
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.FloatTensor Nodes {
+    public global::PAIA.Marenv.Protobuf.Tensor Nodes {
       get { return nodes_; }
       set {
         nodes_ = value;
@@ -1040,10 +839,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "edges" field.</summary>
     public const int EdgesFieldNumber = 2;
-    private global::PAIA.Marenv.Protobuf.FloatTensor edges_;
+    private global::PAIA.Marenv.Protobuf.Tensor edges_;
+    /// <summary>
+    /// floating type
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.FloatTensor Edges {
+    public global::PAIA.Marenv.Protobuf.Tensor Edges {
       get { return edges_; }
       set {
         edges_ = value;
@@ -1052,10 +854,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "edge_links" field.</summary>
     public const int EdgeLinksFieldNumber = 3;
-    private global::PAIA.Marenv.Protobuf.IntTensor edgeLinks_;
+    private global::PAIA.Marenv.Protobuf.Tensor edgeLinks_;
+    /// <summary>
+    /// integer type
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.IntTensor EdgeLinks {
+    public global::PAIA.Marenv.Protobuf.Tensor EdgeLinks {
       get { return edgeLinks_; }
       set {
         edgeLinks_ = value;
@@ -1175,19 +980,19 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.nodes_ != null) {
         if (nodes_ == null) {
-          Nodes = new global::PAIA.Marenv.Protobuf.FloatTensor();
+          Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         Nodes.MergeFrom(other.Nodes);
       }
       if (other.edges_ != null) {
         if (edges_ == null) {
-          Edges = new global::PAIA.Marenv.Protobuf.FloatTensor();
+          Edges = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         Edges.MergeFrom(other.Edges);
       }
       if (other.edgeLinks_ != null) {
         if (edgeLinks_ == null) {
-          EdgeLinks = new global::PAIA.Marenv.Protobuf.IntTensor();
+          EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         EdgeLinks.MergeFrom(other.EdgeLinks);
       }
@@ -1208,21 +1013,21 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Edges = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Marenv.Protobuf.IntTensor();
+              EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1244,21 +1049,21 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Edges = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Marenv.Protobuf.IntTensor();
+              EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1284,7 +1089,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[5]; }
+      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1572,7 +1377,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[6]; }
+      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1593,6 +1398,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Space(Space other) : this() {
       spaceType_ = other.spaceType_;
+      description_ = other.description_;
       shape_ = other.shape_.Clone();
       dataType_ = other.dataType_;
       low_ = other.low_.Clone();
@@ -1625,10 +1431,25 @@ namespace PAIA.Marenv.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 2;
+    private string description_ = "";
+    /// <summary>
+    /// For raw data
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 2;
+    public const int ShapeFieldNumber = 3;
     private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(18);
+        = pb::FieldCodec.ForInt32(26);
     private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
     /// <summary>
     /// also the n of the MultiBinary
@@ -1640,21 +1461,21 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "data_type" field.</summary>
-    public const int DataTypeFieldNumber = 3;
-    private global::PAIA.Marenv.Protobuf.DataType dataType_ = global::PAIA.Marenv.Protobuf.DataType.Unspecified;
+    public const int DataTypeFieldNumber = 4;
+    private string dataType_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.DataType DataType {
+    public string DataType {
       get { return dataType_; }
       set {
-        dataType_ = value;
+        dataType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "low" field.</summary>
-    public const int LowFieldNumber = 4;
+    public const int LowFieldNumber = 5;
     private static readonly pb::FieldCodec<float> _repeated_low_codec
-        = pb::FieldCodec.ForFloat(34);
+        = pb::FieldCodec.ForFloat(42);
     private readonly pbc::RepeatedField<float> low_ = new pbc::RepeatedField<float>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1663,9 +1484,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "high" field.</summary>
-    public const int HighFieldNumber = 5;
+    public const int HighFieldNumber = 6;
     private static readonly pb::FieldCodec<float> _repeated_high_codec
-        = pb::FieldCodec.ForFloat(42);
+        = pb::FieldCodec.ForFloat(50);
     private readonly pbc::RepeatedField<float> high_ = new pbc::RepeatedField<float>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1674,7 +1495,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "min" field.</summary>
-    public const int MinFieldNumber = 6;
+    public const int MinFieldNumber = 7;
     private int min_;
     /// <summary>
     /// start of the Discrete, min_length of the Text
@@ -1689,7 +1510,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "max" field.</summary>
-    public const int MaxFieldNumber = 7;
+    public const int MaxFieldNumber = 8;
     private int max_;
     /// <summary>
     /// n of the Discrete, max_length of the Text
@@ -1704,9 +1525,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "nvec" field.</summary>
-    public const int NvecFieldNumber = 8;
+    public const int NvecFieldNumber = 9;
     private static readonly pb::FieldCodec<int> _repeated_nvec_codec
-        = pb::FieldCodec.ForInt32(66);
+        = pb::FieldCodec.ForInt32(74);
     private readonly pbc::RepeatedField<int> nvec_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1715,9 +1536,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "charset" field.</summary>
-    public const int CharsetFieldNumber = 9;
+    public const int CharsetFieldNumber = 10;
     private static readonly pb::FieldCodec<string> _repeated_charset_codec
-        = pb::FieldCodec.ForString(74);
+        = pb::FieldCodec.ForString(82);
     private readonly pbc::RepeatedField<string> charset_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1726,9 +1547,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "dict_space" field.</summary>
-    public const int DictSpaceFieldNumber = 10;
+    public const int DictSpaceFieldNumber = 11;
     private static readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>.Codec _map_dictSpace_codec
-        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 82);
+        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 90);
     private readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space> dictSpace_ = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1737,9 +1558,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "list_space" field.</summary>
-    public const int ListSpaceFieldNumber = 11;
+    public const int ListSpaceFieldNumber = 12;
     private static readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>.Codec _map_listSpace_codec
-        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 90);
+        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 98);
     private readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space> listSpace_ = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>();
     /// <summary>
     /// Tuple and Sequence
@@ -1751,7 +1572,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "graph_space" field.</summary>
-    public const int GraphSpaceFieldNumber = 12;
+    public const int GraphSpaceFieldNumber = 13;
     private global::PAIA.Marenv.Protobuf.GraphSpace graphSpace_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1778,6 +1599,7 @@ namespace PAIA.Marenv.Protobuf {
         return true;
       }
       if (SpaceType != other.SpaceType) return false;
+      if (Description != other.Description) return false;
       if(!shape_.Equals(other.shape_)) return false;
       if (DataType != other.DataType) return false;
       if(!low_.Equals(other.low_)) return false;
@@ -1797,8 +1619,9 @@ namespace PAIA.Marenv.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
       hash ^= shape_.GetHashCode();
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) hash ^= DataType.GetHashCode();
+      if (DataType.Length != 0) hash ^= DataType.GetHashCode();
       hash ^= low_.GetHashCode();
       hash ^= high_.GetHashCode();
       if (Min != 0) hash ^= Min.GetHashCode();
@@ -1830,19 +1653,23 @@ namespace PAIA.Marenv.Protobuf {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
+      if (Description.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Description);
+      }
       shape_.WriteTo(output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) DataType);
+      if (DataType.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(DataType);
       }
       low_.WriteTo(output, _repeated_low_codec);
       high_.WriteTo(output, _repeated_high_codec);
       if (Min != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteInt32(Min);
       }
       if (Max != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteInt32(Max);
       }
       nvec_.WriteTo(output, _repeated_nvec_codec);
@@ -1850,7 +1677,7 @@ namespace PAIA.Marenv.Protobuf {
       dictSpace_.WriteTo(output, _map_dictSpace_codec);
       listSpace_.WriteTo(output, _map_listSpace_codec);
       if (graphSpace_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(GraphSpace);
       }
       if (_unknownFields != null) {
@@ -1867,19 +1694,23 @@ namespace PAIA.Marenv.Protobuf {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
+      if (Description.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Description);
+      }
       shape_.WriteTo(ref output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) DataType);
+      if (DataType.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(DataType);
       }
       low_.WriteTo(ref output, _repeated_low_codec);
       high_.WriteTo(ref output, _repeated_high_codec);
       if (Min != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteInt32(Min);
       }
       if (Max != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteInt32(Max);
       }
       nvec_.WriteTo(ref output, _repeated_nvec_codec);
@@ -1887,7 +1718,7 @@ namespace PAIA.Marenv.Protobuf {
       dictSpace_.WriteTo(ref output, _map_dictSpace_codec);
       listSpace_.WriteTo(ref output, _map_listSpace_codec);
       if (graphSpace_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(GraphSpace);
       }
       if (_unknownFields != null) {
@@ -1903,9 +1734,12 @@ namespace PAIA.Marenv.Protobuf {
       if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
       }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
       size += shape_.CalculateSize(_repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DataType);
+      if (DataType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DataType);
       }
       size += low_.CalculateSize(_repeated_low_codec);
       size += high_.CalculateSize(_repeated_high_codec);
@@ -1937,8 +1771,11 @@ namespace PAIA.Marenv.Protobuf {
       if (other.SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
         SpaceType = other.SpaceType;
       }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
       shape_.Add(other.shape_);
-      if (other.DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+      if (other.DataType.Length != 0) {
         DataType = other.DataType;
       }
       low_.Add(other.low_);
@@ -1978,51 +1815,55 @@ namespace PAIA.Marenv.Protobuf {
             SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
-          case 18:
-          case 16: {
+          case 18: {
+            Description = input.ReadString();
+            break;
+          }
+          case 26:
+          case 24: {
             shape_.AddEntriesFrom(input, _repeated_shape_codec);
             break;
           }
-          case 24: {
-            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
-            break;
-          }
-          case 34:
-          case 37: {
-            low_.AddEntriesFrom(input, _repeated_low_codec);
+          case 34: {
+            DataType = input.ReadString();
             break;
           }
           case 42:
           case 45: {
+            low_.AddEntriesFrom(input, _repeated_low_codec);
+            break;
+          }
+          case 50:
+          case 53: {
             high_.AddEntriesFrom(input, _repeated_high_codec);
             break;
           }
-          case 48: {
+          case 56: {
             Min = input.ReadInt32();
             break;
           }
-          case 56: {
+          case 64: {
             Max = input.ReadInt32();
             break;
           }
-          case 66:
-          case 64: {
+          case 74:
+          case 72: {
             nvec_.AddEntriesFrom(input, _repeated_nvec_codec);
             break;
           }
-          case 74: {
+          case 82: {
             charset_.AddEntriesFrom(input, _repeated_charset_codec);
             break;
           }
-          case 82: {
+          case 90: {
             dictSpace_.AddEntriesFrom(input, _map_dictSpace_codec);
             break;
           }
-          case 90: {
+          case 98: {
             listSpace_.AddEntriesFrom(input, _map_listSpace_codec);
             break;
           }
-          case 98: {
+          case 106: {
             if (graphSpace_ == null) {
               GraphSpace = new global::PAIA.Marenv.Protobuf.GraphSpace();
             }
@@ -2048,51 +1889,55 @@ namespace PAIA.Marenv.Protobuf {
             SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
-          case 18:
-          case 16: {
+          case 18: {
+            Description = input.ReadString();
+            break;
+          }
+          case 26:
+          case 24: {
             shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
             break;
           }
-          case 24: {
-            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
-            break;
-          }
-          case 34:
-          case 37: {
-            low_.AddEntriesFrom(ref input, _repeated_low_codec);
+          case 34: {
+            DataType = input.ReadString();
             break;
           }
           case 42:
           case 45: {
+            low_.AddEntriesFrom(ref input, _repeated_low_codec);
+            break;
+          }
+          case 50:
+          case 53: {
             high_.AddEntriesFrom(ref input, _repeated_high_codec);
             break;
           }
-          case 48: {
+          case 56: {
             Min = input.ReadInt32();
             break;
           }
-          case 56: {
+          case 64: {
             Max = input.ReadInt32();
             break;
           }
-          case 66:
-          case 64: {
+          case 74:
+          case 72: {
             nvec_.AddEntriesFrom(ref input, _repeated_nvec_codec);
             break;
           }
-          case 74: {
+          case 82: {
             charset_.AddEntriesFrom(ref input, _repeated_charset_codec);
             break;
           }
-          case 82: {
+          case 90: {
             dictSpace_.AddEntriesFrom(ref input, _map_dictSpace_codec);
             break;
           }
-          case 90: {
+          case 98: {
             listSpace_.AddEntriesFrom(ref input, _map_listSpace_codec);
             break;
           }
-          case 98: {
+          case 106: {
             if (graphSpace_ == null) {
               GraphSpace = new global::PAIA.Marenv.Protobuf.GraphSpace();
             }
@@ -2123,7 +1968,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[7]; }
+      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2144,6 +1989,8 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Data(Data other) : this() {
       spaceType_ = other.spaceType_;
+      dataType_ = other.dataType_;
+      rawData_ = other.rawData_;
       box_ = other.box_ != null ? other.box_.Clone() : null;
       discrete_ = other.discrete_;
       multiBinary_ = other.multiBinary_ != null ? other.multiBinary_.Clone() : null;
@@ -2174,12 +2021,36 @@ namespace PAIA.Marenv.Protobuf {
       }
     }
 
-    /// <summary>Field number for the "box" field.</summary>
-    public const int BoxFieldNumber = 2;
-    private global::PAIA.Marenv.Protobuf.FloatTensor box_;
+    /// <summary>Field number for the "data_type" field.</summary>
+    public const int DataTypeFieldNumber = 2;
+    private string dataType_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.FloatTensor Box {
+    public string DataType {
+      get { return dataType_; }
+      set {
+        dataType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "raw_data" field.</summary>
+    public const int RawDataFieldNumber = 3;
+    private pb::ByteString rawData_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString RawData {
+      get { return rawData_; }
+      set {
+        rawData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "box" field.</summary>
+    public const int BoxFieldNumber = 4;
+    private global::PAIA.Marenv.Protobuf.Tensor box_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::PAIA.Marenv.Protobuf.Tensor Box {
       get { return box_; }
       set {
         box_ = value;
@@ -2187,7 +2058,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "discrete" field.</summary>
-    public const int DiscreteFieldNumber = 3;
+    public const int DiscreteFieldNumber = 5;
     private int discrete_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2199,11 +2070,14 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "multi_binary" field.</summary>
-    public const int MultiBinaryFieldNumber = 4;
-    private global::PAIA.Marenv.Protobuf.BoolTensor multiBinary_;
+    public const int MultiBinaryFieldNumber = 6;
+    private global::PAIA.Marenv.Protobuf.Tensor multiBinary_;
+    /// <summary>
+    /// boolean type
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.BoolTensor MultiBinary {
+    public global::PAIA.Marenv.Protobuf.Tensor MultiBinary {
       get { return multiBinary_; }
       set {
         multiBinary_ = value;
@@ -2211,11 +2085,14 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "multi_discrete" field.</summary>
-    public const int MultiDiscreteFieldNumber = 5;
-    private global::PAIA.Marenv.Protobuf.IntTensor multiDiscrete_;
+    public const int MultiDiscreteFieldNumber = 7;
+    private global::PAIA.Marenv.Protobuf.Tensor multiDiscrete_;
+    /// <summary>
+    /// integer type
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.IntTensor MultiDiscrete {
+    public global::PAIA.Marenv.Protobuf.Tensor MultiDiscrete {
       get { return multiDiscrete_; }
       set {
         multiDiscrete_ = value;
@@ -2223,7 +2100,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "text" field.</summary>
-    public const int TextFieldNumber = 6;
+    public const int TextFieldNumber = 8;
     private string text_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2235,9 +2112,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "dict" field.</summary>
-    public const int DictFieldNumber = 7;
+    public const int DictFieldNumber = 9;
     private static readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>.Codec _map_dict_codec
-        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 58);
+        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 74);
     private readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data> dict_ = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2246,9 +2123,9 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "list" field.</summary>
-    public const int ListFieldNumber = 8;
+    public const int ListFieldNumber = 10;
     private static readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>.Codec _map_list_codec
-        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 66);
+        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 82);
     private readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data> list_ = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>();
     /// <summary>
     /// Tuple and Sequence
@@ -2260,7 +2137,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "graph" field.</summary>
-    public const int GraphFieldNumber = 9;
+    public const int GraphFieldNumber = 11;
     private global::PAIA.Marenv.Protobuf.Graph graph_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2272,7 +2149,7 @@ namespace PAIA.Marenv.Protobuf {
     }
 
     /// <summary>Field number for the "image" field.</summary>
-    public const int ImageFieldNumber = 10;
+    public const int ImageFieldNumber = 12;
     private global::PAIA.Marenv.Protobuf.Image image_;
     /// <summary>
     /// Box space instance which is a compressed image (H, W, C)
@@ -2302,6 +2179,8 @@ namespace PAIA.Marenv.Protobuf {
         return true;
       }
       if (SpaceType != other.SpaceType) return false;
+      if (DataType != other.DataType) return false;
+      if (RawData != other.RawData) return false;
       if (!object.Equals(Box, other.Box)) return false;
       if (Discrete != other.Discrete) return false;
       if (!object.Equals(MultiBinary, other.MultiBinary)) return false;
@@ -2319,6 +2198,8 @@ namespace PAIA.Marenv.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
+      if (DataType.Length != 0) hash ^= DataType.GetHashCode();
+      if (RawData.Length != 0) hash ^= RawData.GetHashCode();
       if (box_ != null) hash ^= Box.GetHashCode();
       if (Discrete != 0) hash ^= Discrete.GetHashCode();
       if (multiBinary_ != null) hash ^= MultiBinary.GetHashCode();
@@ -2350,34 +2231,42 @@ namespace PAIA.Marenv.Protobuf {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
-      if (box_ != null) {
+      if (DataType.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(DataType);
+      }
+      if (RawData.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(RawData);
+      }
+      if (box_ != null) {
+        output.WriteRawTag(34);
         output.WriteMessage(Box);
       }
       if (Discrete != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteInt32(Discrete);
       }
       if (multiBinary_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(MultiBinary);
       }
       if (multiDiscrete_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(MultiDiscrete);
       }
       if (Text.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(66);
         output.WriteString(Text);
       }
       dict_.WriteTo(output, _map_dict_codec);
       list_.WriteTo(output, _map_list_codec);
       if (graph_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(90);
         output.WriteMessage(Graph);
       }
       if (image_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteMessage(Image);
       }
       if (_unknownFields != null) {
@@ -2394,34 +2283,42 @@ namespace PAIA.Marenv.Protobuf {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
-      if (box_ != null) {
+      if (DataType.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(DataType);
+      }
+      if (RawData.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(RawData);
+      }
+      if (box_ != null) {
+        output.WriteRawTag(34);
         output.WriteMessage(Box);
       }
       if (Discrete != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteInt32(Discrete);
       }
       if (multiBinary_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(MultiBinary);
       }
       if (multiDiscrete_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(MultiDiscrete);
       }
       if (Text.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(66);
         output.WriteString(Text);
       }
       dict_.WriteTo(ref output, _map_dict_codec);
       list_.WriteTo(ref output, _map_list_codec);
       if (graph_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(90);
         output.WriteMessage(Graph);
       }
       if (image_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteMessage(Image);
       }
       if (_unknownFields != null) {
@@ -2436,6 +2333,12 @@ namespace PAIA.Marenv.Protobuf {
       int size = 0;
       if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
+      }
+      if (DataType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DataType);
+      }
+      if (RawData.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(RawData);
       }
       if (box_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Box);
@@ -2475,9 +2378,15 @@ namespace PAIA.Marenv.Protobuf {
       if (other.SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
         SpaceType = other.SpaceType;
       }
+      if (other.DataType.Length != 0) {
+        DataType = other.DataType;
+      }
+      if (other.RawData.Length != 0) {
+        RawData = other.RawData;
+      }
       if (other.box_ != null) {
         if (box_ == null) {
-          Box = new global::PAIA.Marenv.Protobuf.FloatTensor();
+          Box = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         Box.MergeFrom(other.Box);
       }
@@ -2486,13 +2395,13 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.multiBinary_ != null) {
         if (multiBinary_ == null) {
-          MultiBinary = new global::PAIA.Marenv.Protobuf.BoolTensor();
+          MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         MultiBinary.MergeFrom(other.MultiBinary);
       }
       if (other.multiDiscrete_ != null) {
         if (multiDiscrete_ == null) {
-          MultiDiscrete = new global::PAIA.Marenv.Protobuf.IntTensor();
+          MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
         }
         MultiDiscrete.MergeFrom(other.MultiDiscrete);
       }
@@ -2533,50 +2442,58 @@ namespace PAIA.Marenv.Protobuf {
             break;
           }
           case 18: {
+            DataType = input.ReadString();
+            break;
+          }
+          case 26: {
+            RawData = input.ReadBytes();
+            break;
+          }
+          case 34: {
             if (box_ == null) {
-              Box = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Box = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Box);
             break;
           }
-          case 24: {
+          case 40: {
             Discrete = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 50: {
             if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Marenv.Protobuf.BoolTensor();
+              MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(MultiBinary);
             break;
           }
-          case 42: {
+          case 58: {
             if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Marenv.Protobuf.IntTensor();
+              MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(MultiDiscrete);
             break;
           }
-          case 50: {
+          case 66: {
             Text = input.ReadString();
             break;
           }
-          case 58: {
+          case 74: {
             dict_.AddEntriesFrom(input, _map_dict_codec);
             break;
           }
-          case 66: {
+          case 82: {
             list_.AddEntriesFrom(input, _map_list_codec);
             break;
           }
-          case 74: {
+          case 90: {
             if (graph_ == null) {
               Graph = new global::PAIA.Marenv.Protobuf.Graph();
             }
             input.ReadMessage(Graph);
             break;
           }
-          case 82: {
+          case 98: {
             if (image_ == null) {
               Image = new global::PAIA.Marenv.Protobuf.Image();
             }
@@ -2603,50 +2520,58 @@ namespace PAIA.Marenv.Protobuf {
             break;
           }
           case 18: {
+            DataType = input.ReadString();
+            break;
+          }
+          case 26: {
+            RawData = input.ReadBytes();
+            break;
+          }
+          case 34: {
             if (box_ == null) {
-              Box = new global::PAIA.Marenv.Protobuf.FloatTensor();
+              Box = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(Box);
             break;
           }
-          case 24: {
+          case 40: {
             Discrete = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 50: {
             if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Marenv.Protobuf.BoolTensor();
+              MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(MultiBinary);
             break;
           }
-          case 42: {
+          case 58: {
             if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Marenv.Protobuf.IntTensor();
+              MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
             }
             input.ReadMessage(MultiDiscrete);
             break;
           }
-          case 50: {
+          case 66: {
             Text = input.ReadString();
             break;
           }
-          case 58: {
+          case 74: {
             dict_.AddEntriesFrom(ref input, _map_dict_codec);
             break;
           }
-          case 66: {
+          case 82: {
             list_.AddEntriesFrom(ref input, _map_list_codec);
             break;
           }
-          case 74: {
+          case 90: {
             if (graph_ == null) {
               Graph = new global::PAIA.Marenv.Protobuf.Graph();
             }
             input.ReadMessage(Graph);
             break;
           }
-          case 82: {
+          case 98: {
             if (image_ == null) {
               Image = new global::PAIA.Marenv.Protobuf.Image();
             }

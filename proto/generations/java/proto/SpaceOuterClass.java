@@ -13,6 +13,168 @@ public final class SpaceOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * Protobuf enum {@code DataType}
+   */
+  public enum DataType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>DATA_TYPE_UNSPECIFIED = 0;</code>
+     */
+    DATA_TYPE_UNSPECIFIED(0),
+    /**
+     * <code>DATA_TYPE_FLOAT = 1;</code>
+     */
+    DATA_TYPE_FLOAT(1),
+    /**
+     * <code>DATA_TYPE_DOUBLE = 2;</code>
+     */
+    DATA_TYPE_DOUBLE(2),
+    /**
+     * <code>DATA_TYPE_INT = 3;</code>
+     */
+    DATA_TYPE_INT(3),
+    /**
+     * <code>DATA_TYPE_LONG = 4;</code>
+     */
+    DATA_TYPE_LONG(4),
+    /**
+     * <code>DATA_TYPE_UINT = 5;</code>
+     */
+    DATA_TYPE_UINT(5),
+    /**
+     * <code>DATA_TYPE_ULONG = 6;</code>
+     */
+    DATA_TYPE_ULONG(6),
+    /**
+     * <code>DATA_TYPE_BOOL = 7;</code>
+     */
+    DATA_TYPE_BOOL(7),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>DATA_TYPE_UNSPECIFIED = 0;</code>
+     */
+    public static final int DATA_TYPE_UNSPECIFIED_VALUE = 0;
+    /**
+     * <code>DATA_TYPE_FLOAT = 1;</code>
+     */
+    public static final int DATA_TYPE_FLOAT_VALUE = 1;
+    /**
+     * <code>DATA_TYPE_DOUBLE = 2;</code>
+     */
+    public static final int DATA_TYPE_DOUBLE_VALUE = 2;
+    /**
+     * <code>DATA_TYPE_INT = 3;</code>
+     */
+    public static final int DATA_TYPE_INT_VALUE = 3;
+    /**
+     * <code>DATA_TYPE_LONG = 4;</code>
+     */
+    public static final int DATA_TYPE_LONG_VALUE = 4;
+    /**
+     * <code>DATA_TYPE_UINT = 5;</code>
+     */
+    public static final int DATA_TYPE_UINT_VALUE = 5;
+    /**
+     * <code>DATA_TYPE_ULONG = 6;</code>
+     */
+    public static final int DATA_TYPE_ULONG_VALUE = 6;
+    /**
+     * <code>DATA_TYPE_BOOL = 7;</code>
+     */
+    public static final int DATA_TYPE_BOOL_VALUE = 7;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DataType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static DataType forNumber(int value) {
+      switch (value) {
+        case 0: return DATA_TYPE_UNSPECIFIED;
+        case 1: return DATA_TYPE_FLOAT;
+        case 2: return DATA_TYPE_DOUBLE;
+        case 3: return DATA_TYPE_INT;
+        case 4: return DATA_TYPE_LONG;
+        case 5: return DATA_TYPE_UINT;
+        case 6: return DATA_TYPE_ULONG;
+        case 7: return DATA_TYPE_BOOL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DataType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DataType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DataType>() {
+            public DataType findValueByNumber(int number) {
+              return DataType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return SpaceOuterClass.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final DataType[] VALUES = values();
+
+    public static DataType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DataType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:DataType)
+  }
+
+  /**
    * Protobuf enum {@code CompressionType}
    */
   public enum CompressionType
@@ -112,7 +274,7 @@ public final class SpaceOuterClass {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return SpaceOuterClass.getDescriptor().getEnumTypes().get(0);
+      return SpaceOuterClass.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final CompressionType[] VALUES = values();
@@ -148,45 +310,49 @@ public final class SpaceOuterClass {
      */
     SPACE_TYPE_UNSPECIFIED(0),
     /**
-     * <code>SPACE_TYPE_BOX = 1;</code>
+     * <code>SPACE_TYPE_RAW = 1;</code>
      */
-    SPACE_TYPE_BOX(1),
+    SPACE_TYPE_RAW(1),
     /**
-     * <code>SPACE_TYPE_DISCRETE = 2;</code>
+     * <code>SPACE_TYPE_BOX = 2;</code>
      */
-    SPACE_TYPE_DISCRETE(2),
+    SPACE_TYPE_BOX(2),
     /**
-     * <code>SPACE_TYPE_MULTI_BINARY = 3;</code>
+     * <code>SPACE_TYPE_DISCRETE = 3;</code>
      */
-    SPACE_TYPE_MULTI_BINARY(3),
+    SPACE_TYPE_DISCRETE(3),
     /**
-     * <code>SPACE_TYPE_MULTI_DISCRETE = 4;</code>
+     * <code>SPACE_TYPE_MULTI_BINARY = 4;</code>
      */
-    SPACE_TYPE_MULTI_DISCRETE(4),
+    SPACE_TYPE_MULTI_BINARY(4),
     /**
-     * <code>SPACE_TYPE_TEXT = 5;</code>
+     * <code>SPACE_TYPE_MULTI_DISCRETE = 5;</code>
      */
-    SPACE_TYPE_TEXT(5),
+    SPACE_TYPE_MULTI_DISCRETE(5),
     /**
-     * <code>SPACE_TYPE_DICT = 6;</code>
+     * <code>SPACE_TYPE_TEXT = 6;</code>
      */
-    SPACE_TYPE_DICT(6),
+    SPACE_TYPE_TEXT(6),
     /**
-     * <code>SPACE_TYPE_TUPLE = 7;</code>
+     * <code>SPACE_TYPE_DICT = 7;</code>
      */
-    SPACE_TYPE_TUPLE(7),
+    SPACE_TYPE_DICT(7),
     /**
-     * <code>SPACE_TYPE_SEQUENCE = 8;</code>
+     * <code>SPACE_TYPE_TUPLE = 8;</code>
      */
-    SPACE_TYPE_SEQUENCE(8),
+    SPACE_TYPE_TUPLE(8),
     /**
-     * <code>SPACE_TYPE_GRAPH = 9;</code>
+     * <code>SPACE_TYPE_SEQUENCE = 9;</code>
      */
-    SPACE_TYPE_GRAPH(9),
+    SPACE_TYPE_SEQUENCE(9),
     /**
-     * <code>SPACE_TYPE_IMAGE = 10;</code>
+     * <code>SPACE_TYPE_GRAPH = 10;</code>
      */
-    SPACE_TYPE_IMAGE(10),
+    SPACE_TYPE_GRAPH(10),
+    /**
+     * <code>SPACE_TYPE_IMAGE = 11;</code>
+     */
+    SPACE_TYPE_IMAGE(11),
     UNRECOGNIZED(-1),
     ;
 
@@ -195,45 +361,49 @@ public final class SpaceOuterClass {
      */
     public static final int SPACE_TYPE_UNSPECIFIED_VALUE = 0;
     /**
-     * <code>SPACE_TYPE_BOX = 1;</code>
+     * <code>SPACE_TYPE_RAW = 1;</code>
      */
-    public static final int SPACE_TYPE_BOX_VALUE = 1;
+    public static final int SPACE_TYPE_RAW_VALUE = 1;
     /**
-     * <code>SPACE_TYPE_DISCRETE = 2;</code>
+     * <code>SPACE_TYPE_BOX = 2;</code>
      */
-    public static final int SPACE_TYPE_DISCRETE_VALUE = 2;
+    public static final int SPACE_TYPE_BOX_VALUE = 2;
     /**
-     * <code>SPACE_TYPE_MULTI_BINARY = 3;</code>
+     * <code>SPACE_TYPE_DISCRETE = 3;</code>
      */
-    public static final int SPACE_TYPE_MULTI_BINARY_VALUE = 3;
+    public static final int SPACE_TYPE_DISCRETE_VALUE = 3;
     /**
-     * <code>SPACE_TYPE_MULTI_DISCRETE = 4;</code>
+     * <code>SPACE_TYPE_MULTI_BINARY = 4;</code>
      */
-    public static final int SPACE_TYPE_MULTI_DISCRETE_VALUE = 4;
+    public static final int SPACE_TYPE_MULTI_BINARY_VALUE = 4;
     /**
-     * <code>SPACE_TYPE_TEXT = 5;</code>
+     * <code>SPACE_TYPE_MULTI_DISCRETE = 5;</code>
      */
-    public static final int SPACE_TYPE_TEXT_VALUE = 5;
+    public static final int SPACE_TYPE_MULTI_DISCRETE_VALUE = 5;
     /**
-     * <code>SPACE_TYPE_DICT = 6;</code>
+     * <code>SPACE_TYPE_TEXT = 6;</code>
      */
-    public static final int SPACE_TYPE_DICT_VALUE = 6;
+    public static final int SPACE_TYPE_TEXT_VALUE = 6;
     /**
-     * <code>SPACE_TYPE_TUPLE = 7;</code>
+     * <code>SPACE_TYPE_DICT = 7;</code>
      */
-    public static final int SPACE_TYPE_TUPLE_VALUE = 7;
+    public static final int SPACE_TYPE_DICT_VALUE = 7;
     /**
-     * <code>SPACE_TYPE_SEQUENCE = 8;</code>
+     * <code>SPACE_TYPE_TUPLE = 8;</code>
      */
-    public static final int SPACE_TYPE_SEQUENCE_VALUE = 8;
+    public static final int SPACE_TYPE_TUPLE_VALUE = 8;
     /**
-     * <code>SPACE_TYPE_GRAPH = 9;</code>
+     * <code>SPACE_TYPE_SEQUENCE = 9;</code>
      */
-    public static final int SPACE_TYPE_GRAPH_VALUE = 9;
+    public static final int SPACE_TYPE_SEQUENCE_VALUE = 9;
     /**
-     * <code>SPACE_TYPE_IMAGE = 10;</code>
+     * <code>SPACE_TYPE_GRAPH = 10;</code>
      */
-    public static final int SPACE_TYPE_IMAGE_VALUE = 10;
+    public static final int SPACE_TYPE_GRAPH_VALUE = 10;
+    /**
+     * <code>SPACE_TYPE_IMAGE = 11;</code>
+     */
+    public static final int SPACE_TYPE_IMAGE_VALUE = 11;
 
 
     public final int getNumber() {
@@ -261,16 +431,17 @@ public final class SpaceOuterClass {
     public static SpaceType forNumber(int value) {
       switch (value) {
         case 0: return SPACE_TYPE_UNSPECIFIED;
-        case 1: return SPACE_TYPE_BOX;
-        case 2: return SPACE_TYPE_DISCRETE;
-        case 3: return SPACE_TYPE_MULTI_BINARY;
-        case 4: return SPACE_TYPE_MULTI_DISCRETE;
-        case 5: return SPACE_TYPE_TEXT;
-        case 6: return SPACE_TYPE_DICT;
-        case 7: return SPACE_TYPE_TUPLE;
-        case 8: return SPACE_TYPE_SEQUENCE;
-        case 9: return SPACE_TYPE_GRAPH;
-        case 10: return SPACE_TYPE_IMAGE;
+        case 1: return SPACE_TYPE_RAW;
+        case 2: return SPACE_TYPE_BOX;
+        case 3: return SPACE_TYPE_DISCRETE;
+        case 4: return SPACE_TYPE_MULTI_BINARY;
+        case 5: return SPACE_TYPE_MULTI_DISCRETE;
+        case 6: return SPACE_TYPE_TEXT;
+        case 7: return SPACE_TYPE_DICT;
+        case 8: return SPACE_TYPE_TUPLE;
+        case 9: return SPACE_TYPE_SEQUENCE;
+        case 10: return SPACE_TYPE_GRAPH;
+        case 11: return SPACE_TYPE_IMAGE;
         default: return null;
       }
     }
@@ -301,7 +472,7 @@ public final class SpaceOuterClass {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return SpaceOuterClass.getDescriptor().getEnumTypes().get(1);
+      return SpaceOuterClass.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final SpaceType[] VALUES = values();
@@ -327,134 +498,8 @@ public final class SpaceOuterClass {
     // @@protoc_insertion_point(enum_scope:SpaceType)
   }
 
-  /**
-   * Protobuf enum {@code DataType}
-   */
-  public enum DataType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>DATA_TYPE_UNSPECIFIED = 0;</code>
-     */
-    DATA_TYPE_UNSPECIFIED(0),
-    /**
-     * <code>DATA_TYPE_FLOAT = 1;</code>
-     */
-    DATA_TYPE_FLOAT(1),
-    /**
-     * <code>DATA_TYPE_INT = 2;</code>
-     */
-    DATA_TYPE_INT(2),
-    /**
-     * <code>DATA_TYPE_BOOLEAN = 3;</code>
-     */
-    DATA_TYPE_BOOLEAN(3),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>DATA_TYPE_UNSPECIFIED = 0;</code>
-     */
-    public static final int DATA_TYPE_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>DATA_TYPE_FLOAT = 1;</code>
-     */
-    public static final int DATA_TYPE_FLOAT_VALUE = 1;
-    /**
-     * <code>DATA_TYPE_INT = 2;</code>
-     */
-    public static final int DATA_TYPE_INT_VALUE = 2;
-    /**
-     * <code>DATA_TYPE_BOOLEAN = 3;</code>
-     */
-    public static final int DATA_TYPE_BOOLEAN_VALUE = 3;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static DataType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static DataType forNumber(int value) {
-      switch (value) {
-        case 0: return DATA_TYPE_UNSPECIFIED;
-        case 1: return DATA_TYPE_FLOAT;
-        case 2: return DATA_TYPE_INT;
-        case 3: return DATA_TYPE_BOOLEAN;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<DataType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        DataType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<DataType>() {
-            public DataType findValueByNumber(int number) {
-              return DataType.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return SpaceOuterClass.getDescriptor().getEnumTypes().get(2);
-    }
-
-    private static final DataType[] VALUES = values();
-
-    public static DataType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private DataType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:DataType)
-  }
-
-  public interface FloatTensorOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FloatTensor)
+  public interface TensorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Tensor)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -475,44 +520,164 @@ public final class SpaceOuterClass {
     int getShape(int index);
 
     /**
-     * <code>repeated float array = 2;</code>
-     * @return A list containing the array.
+     * <code>.DataType data_type = 2;</code>
+     * @return The enum numeric value on the wire for dataType.
      */
-    java.util.List<java.lang.Float> getArrayList();
+    int getDataTypeValue();
     /**
-     * <code>repeated float array = 2;</code>
-     * @return The count of array.
+     * <code>.DataType data_type = 2;</code>
+     * @return The dataType.
      */
-    int getArrayCount();
+    SpaceOuterClass.DataType getDataType();
+
     /**
-     * <code>repeated float array = 2;</code>
+     * <code>repeated float float_array = 3;</code>
+     * @return A list containing the floatArray.
+     */
+    java.util.List<java.lang.Float> getFloatArrayList();
+    /**
+     * <code>repeated float float_array = 3;</code>
+     * @return The count of floatArray.
+     */
+    int getFloatArrayCount();
+    /**
+     * <code>repeated float float_array = 3;</code>
      * @param index The index of the element to return.
-     * @return The array at the given index.
+     * @return The floatArray at the given index.
      */
-    float getArray(int index);
+    float getFloatArray(int index);
+
+    /**
+     * <code>repeated double double_array = 4;</code>
+     * @return A list containing the doubleArray.
+     */
+    java.util.List<java.lang.Double> getDoubleArrayList();
+    /**
+     * <code>repeated double double_array = 4;</code>
+     * @return The count of doubleArray.
+     */
+    int getDoubleArrayCount();
+    /**
+     * <code>repeated double double_array = 4;</code>
+     * @param index The index of the element to return.
+     * @return The doubleArray at the given index.
+     */
+    double getDoubleArray(int index);
+
+    /**
+     * <code>repeated sint32 int_array = 5;</code>
+     * @return A list containing the intArray.
+     */
+    java.util.List<java.lang.Integer> getIntArrayList();
+    /**
+     * <code>repeated sint32 int_array = 5;</code>
+     * @return The count of intArray.
+     */
+    int getIntArrayCount();
+    /**
+     * <code>repeated sint32 int_array = 5;</code>
+     * @param index The index of the element to return.
+     * @return The intArray at the given index.
+     */
+    int getIntArray(int index);
+
+    /**
+     * <code>repeated sint64 long_array = 6;</code>
+     * @return A list containing the longArray.
+     */
+    java.util.List<java.lang.Long> getLongArrayList();
+    /**
+     * <code>repeated sint64 long_array = 6;</code>
+     * @return The count of longArray.
+     */
+    int getLongArrayCount();
+    /**
+     * <code>repeated sint64 long_array = 6;</code>
+     * @param index The index of the element to return.
+     * @return The longArray at the given index.
+     */
+    long getLongArray(int index);
+
+    /**
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
+     * @return A list containing the unsignedIntArray.
+     */
+    java.util.List<java.lang.Integer> getUnsignedIntArrayList();
+    /**
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
+     * @return The count of unsignedIntArray.
+     */
+    int getUnsignedIntArrayCount();
+    /**
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
+     * @param index The index of the element to return.
+     * @return The unsignedIntArray at the given index.
+     */
+    int getUnsignedIntArray(int index);
+
+    /**
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
+     * @return A list containing the unsignedLongArray.
+     */
+    java.util.List<java.lang.Long> getUnsignedLongArrayList();
+    /**
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
+     * @return The count of unsignedLongArray.
+     */
+    int getUnsignedLongArrayCount();
+    /**
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
+     * @param index The index of the element to return.
+     * @return The unsignedLongArray at the given index.
+     */
+    long getUnsignedLongArray(int index);
+
+    /**
+     * <code>repeated bool bool_array = 9;</code>
+     * @return A list containing the boolArray.
+     */
+    java.util.List<java.lang.Boolean> getBoolArrayList();
+    /**
+     * <code>repeated bool bool_array = 9;</code>
+     * @return The count of boolArray.
+     */
+    int getBoolArrayCount();
+    /**
+     * <code>repeated bool bool_array = 9;</code>
+     * @param index The index of the element to return.
+     * @return The boolArray at the given index.
+     */
+    boolean getBoolArray(int index);
   }
   /**
-   * Protobuf type {@code FloatTensor}
+   * Protobuf type {@code Tensor}
    */
-  public static final class FloatTensor extends
+  public static final class Tensor extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FloatTensor)
-      FloatTensorOrBuilder {
+      // @@protoc_insertion_point(message_implements:Tensor)
+      TensorOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FloatTensor.newBuilder() to construct.
-    private FloatTensor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Tensor.newBuilder() to construct.
+    private Tensor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FloatTensor() {
+    private Tensor() {
       shape_ = emptyIntList();
-      array_ = emptyFloatList();
+      dataType_ = 0;
+      floatArray_ = emptyFloatList();
+      doubleArray_ = emptyDoubleList();
+      intArray_ = emptyIntList();
+      longArray_ = emptyLongList();
+      unsignedIntArray_ = emptyIntList();
+      unsignedLongArray_ = emptyLongList();
+      boolArray_ = emptyBooleanList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new FloatTensor();
+      return new Tensor();
     }
 
     @java.lang.Override
@@ -520,7 +685,7 @@ public final class SpaceOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FloatTensor(
+    private Tensor(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -560,23 +725,155 @@ public final class SpaceOuterClass {
               input.popLimit(limit);
               break;
             }
-            case 21: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                array_ = newFloatList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              array_.addFloat(input.readFloat());
+            case 16: {
+              int rawValue = input.readEnum();
+
+              dataType_ = rawValue;
               break;
             }
-            case 18: {
+            case 29: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                floatArray_ = newFloatList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              floatArray_.addFloat(input.readFloat());
+              break;
+            }
+            case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                array_ = newFloatList();
+                floatArray_ = newFloatList();
                 mutable_bitField0_ |= 0x00000002;
               }
               while (input.getBytesUntilLimit() > 0) {
-                array_.addFloat(input.readFloat());
+                floatArray_.addFloat(input.readFloat());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 33: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                doubleArray_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              doubleArray_.addDouble(input.readDouble());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
+                doubleArray_ = newDoubleList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                doubleArray_.addDouble(input.readDouble());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 40: {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+                intArray_ = newIntList();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              intArray_.addInt(input.readSInt32());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
+                intArray_ = newIntList();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                intArray_.addInt(input.readSInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 48: {
+              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+                longArray_ = newLongList();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              longArray_.addLong(input.readSInt64());
+              break;
+            }
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) != 0) && input.getBytesUntilLimit() > 0) {
+                longArray_ = newLongList();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                longArray_.addLong(input.readSInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 56: {
+              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+                unsignedIntArray_ = newIntList();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              unsignedIntArray_.addInt(input.readUInt32());
+              break;
+            }
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000020) != 0) && input.getBytesUntilLimit() > 0) {
+                unsignedIntArray_ = newIntList();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                unsignedIntArray_.addInt(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 64: {
+              if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+                unsignedLongArray_ = newLongList();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              unsignedLongArray_.addLong(input.readUInt64());
+              break;
+            }
+            case 66: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000040) != 0) && input.getBytesUntilLimit() > 0) {
+                unsignedLongArray_ = newLongList();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                unsignedLongArray_.addLong(input.readUInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 72: {
+              if (!((mutable_bitField0_ & 0x00000080) != 0)) {
+                boolArray_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              boolArray_.addBoolean(input.readBool());
+              break;
+            }
+            case 74: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000080) != 0) && input.getBytesUntilLimit() > 0) {
+                boolArray_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                boolArray_.addBoolean(input.readBool());
               }
               input.popLimit(limit);
               break;
@@ -600,7 +897,25 @@ public final class SpaceOuterClass {
           shape_.makeImmutable(); // C
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable(); // C
+          floatArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          doubleArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+          intArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000010) != 0)) {
+          longArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000020) != 0)) {
+          unsignedIntArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000040) != 0)) {
+          unsignedLongArray_.makeImmutable(); // C
+        }
+        if (((mutable_bitField0_ & 0x00000080) != 0)) {
+          boolArray_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -608,15 +923,15 @@ public final class SpaceOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return SpaceOuterClass.internal_static_FloatTensor_descriptor;
+      return SpaceOuterClass.internal_static_Tensor_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return SpaceOuterClass.internal_static_FloatTensor_fieldAccessorTable
+      return SpaceOuterClass.internal_static_Tensor_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              SpaceOuterClass.FloatTensor.class, SpaceOuterClass.FloatTensor.Builder.class);
+              SpaceOuterClass.Tensor.class, SpaceOuterClass.Tensor.Builder.class);
     }
 
     public static final int SHAPE_FIELD_NUMBER = 1;
@@ -647,1646 +962,220 @@ public final class SpaceOuterClass {
     }
     private int shapeMemoizedSerializedSize = -1;
 
-    public static final int ARRAY_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.FloatList array_;
+    public static final int DATA_TYPE_FIELD_NUMBER = 2;
+    private int dataType_;
     /**
-     * <code>repeated float array = 2;</code>
-     * @return A list containing the array.
+     * <code>.DataType data_type = 2;</code>
+     * @return The enum numeric value on the wire for dataType.
+     */
+    @java.lang.Override public int getDataTypeValue() {
+      return dataType_;
+    }
+    /**
+     * <code>.DataType data_type = 2;</code>
+     * @return The dataType.
+     */
+    @java.lang.Override public SpaceOuterClass.DataType getDataType() {
+      @SuppressWarnings("deprecation")
+      SpaceOuterClass.DataType result = SpaceOuterClass.DataType.valueOf(dataType_);
+      return result == null ? SpaceOuterClass.DataType.UNRECOGNIZED : result;
+    }
+
+    public static final int FLOAT_ARRAY_FIELD_NUMBER = 3;
+    private com.google.protobuf.Internal.FloatList floatArray_;
+    /**
+     * <code>repeated float float_array = 3;</code>
+     * @return A list containing the floatArray.
      */
     @java.lang.Override
     public java.util.List<java.lang.Float>
-        getArrayList() {
-      return array_;
+        getFloatArrayList() {
+      return floatArray_;
     }
     /**
-     * <code>repeated float array = 2;</code>
-     * @return The count of array.
+     * <code>repeated float float_array = 3;</code>
+     * @return The count of floatArray.
      */
-    public int getArrayCount() {
-      return array_.size();
+    public int getFloatArrayCount() {
+      return floatArray_.size();
     }
     /**
-     * <code>repeated float array = 2;</code>
+     * <code>repeated float float_array = 3;</code>
      * @param index The index of the element to return.
-     * @return The array at the given index.
+     * @return The floatArray at the given index.
      */
-    public float getArray(int index) {
-      return array_.getFloat(index);
+    public float getFloatArray(int index) {
+      return floatArray_.getFloat(index);
     }
-    private int arrayMemoizedSerializedSize = -1;
+    private int floatArrayMemoizedSerializedSize = -1;
 
-    private byte memoizedIsInitialized = -1;
+    public static final int DOUBLE_ARRAY_FIELD_NUMBER = 4;
+    private com.google.protobuf.Internal.DoubleList doubleArray_;
+    /**
+     * <code>repeated double double_array = 4;</code>
+     * @return A list containing the doubleArray.
+     */
     @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (getShapeList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(shapeMemoizedSerializedSize);
-      }
-      for (int i = 0; i < shape_.size(); i++) {
-        output.writeInt32NoTag(shape_.getInt(i));
-      }
-      if (getArrayList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(arrayMemoizedSerializedSize);
-      }
-      for (int i = 0; i < array_.size(); i++) {
-        output.writeFloatNoTag(array_.getFloat(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < shape_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(shape_.getInt(i));
-        }
-        size += dataSize;
-        if (!getShapeList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        shapeMemoizedSerializedSize = dataSize;
-      }
-      {
-        int dataSize = 0;
-        dataSize = 4 * getArrayList().size();
-        size += dataSize;
-        if (!getArrayList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        arrayMemoizedSerializedSize = dataSize;
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof SpaceOuterClass.FloatTensor)) {
-        return super.equals(obj);
-      }
-      SpaceOuterClass.FloatTensor other = (SpaceOuterClass.FloatTensor) obj;
-
-      if (!getShapeList()
-          .equals(other.getShapeList())) return false;
-      if (!getArrayList()
-          .equals(other.getArrayList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getShapeCount() > 0) {
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + getShapeList().hashCode();
-      }
-      if (getArrayCount() > 0) {
-        hash = (37 * hash) + ARRAY_FIELD_NUMBER;
-        hash = (53 * hash) + getArrayList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static SpaceOuterClass.FloatTensor parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.FloatTensor parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.FloatTensor parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(SpaceOuterClass.FloatTensor prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
+    public java.util.List<java.lang.Double>
+        getDoubleArrayList() {
+      return doubleArray_;
     }
     /**
-     * Protobuf type {@code FloatTensor}
+     * <code>repeated double double_array = 4;</code>
+     * @return The count of doubleArray.
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FloatTensor)
-        SpaceOuterClass.FloatTensorOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return SpaceOuterClass.internal_static_FloatTensor_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return SpaceOuterClass.internal_static_FloatTensor_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                SpaceOuterClass.FloatTensor.class, SpaceOuterClass.FloatTensor.Builder.class);
-      }
-
-      // Construct using SpaceOuterClass.FloatTensor.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        shape_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        array_ = emptyFloatList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return SpaceOuterClass.internal_static_FloatTensor_descriptor;
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.FloatTensor getDefaultInstanceForType() {
-        return SpaceOuterClass.FloatTensor.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.FloatTensor build() {
-        SpaceOuterClass.FloatTensor result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.FloatTensor buildPartial() {
-        SpaceOuterClass.FloatTensor result = new SpaceOuterClass.FloatTensor(this);
-        int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          shape_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.shape_ = shape_;
-        if (((bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.array_ = array_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof SpaceOuterClass.FloatTensor) {
-          return mergeFrom((SpaceOuterClass.FloatTensor)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(SpaceOuterClass.FloatTensor other) {
-        if (other == SpaceOuterClass.FloatTensor.getDefaultInstance()) return this;
-        if (!other.shape_.isEmpty()) {
-          if (shape_.isEmpty()) {
-            shape_ = other.shape_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureShapeIsMutable();
-            shape_.addAll(other.shape_);
-          }
-          onChanged();
-        }
-        if (!other.array_.isEmpty()) {
-          if (array_.isEmpty()) {
-            array_ = other.array_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureArrayIsMutable();
-            array_.addAll(other.array_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        SpaceOuterClass.FloatTensor parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (SpaceOuterClass.FloatTensor) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private com.google.protobuf.Internal.IntList shape_ = emptyIntList();
-      private void ensureShapeIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          shape_ = mutableCopy(shape_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return A list containing the shape.
-       */
-      public java.util.List<java.lang.Integer>
-          getShapeList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(shape_) : shape_;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return The count of shape.
-       */
-      public int getShapeCount() {
-        return shape_.size();
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param index The index of the element to return.
-       * @return The shape at the given index.
-       */
-      public int getShape(int index) {
-        return shape_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The shape to set.
-       * @return This builder for chaining.
-       */
-      public Builder setShape(
-          int index, int value) {
-        ensureShapeIsMutable();
-        shape_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param value The shape to add.
-       * @return This builder for chaining.
-       */
-      public Builder addShape(int value) {
-        ensureShapeIsMutable();
-        shape_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param values The shape to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllShape(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureShapeIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, shape_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearShape() {
-        shape_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.Internal.FloatList array_ = emptyFloatList();
-      private void ensureArrayIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          array_ = mutableCopy(array_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @return A list containing the array.
-       */
-      public java.util.List<java.lang.Float>
-          getArrayList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(array_) : array_;
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @return The count of array.
-       */
-      public int getArrayCount() {
-        return array_.size();
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @param index The index of the element to return.
-       * @return The array at the given index.
-       */
-      public float getArray(int index) {
-        return array_.getFloat(index);
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The array to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArray(
-          int index, float value) {
-        ensureArrayIsMutable();
-        array_.setFloat(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @param value The array to add.
-       * @return This builder for chaining.
-       */
-      public Builder addArray(float value) {
-        ensureArrayIsMutable();
-        array_.addFloat(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @param values The array to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllArray(
-          java.lang.Iterable<? extends java.lang.Float> values) {
-        ensureArrayIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, array_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated float array = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearArray() {
-        array_ = emptyFloatList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:FloatTensor)
+    public int getDoubleArrayCount() {
+      return doubleArray_.size();
     }
-
-    // @@protoc_insertion_point(class_scope:FloatTensor)
-    private static final SpaceOuterClass.FloatTensor DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new SpaceOuterClass.FloatTensor();
-    }
-
-    public static SpaceOuterClass.FloatTensor getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<FloatTensor>
-        PARSER = new com.google.protobuf.AbstractParser<FloatTensor>() {
-      @java.lang.Override
-      public FloatTensor parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FloatTensor(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<FloatTensor> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<FloatTensor> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public SpaceOuterClass.FloatTensor getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface IntTensorOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:IntTensor)
-      com.google.protobuf.MessageOrBuilder {
-
     /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return A list containing the shape.
-     */
-    java.util.List<java.lang.Integer> getShapeList();
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return The count of shape.
-     */
-    int getShapeCount();
-    /**
-     * <code>repeated int32 shape = 1;</code>
+     * <code>repeated double double_array = 4;</code>
      * @param index The index of the element to return.
-     * @return The shape at the given index.
+     * @return The doubleArray at the given index.
      */
-    int getShape(int index);
+    public double getDoubleArray(int index) {
+      return doubleArray_.getDouble(index);
+    }
+    private int doubleArrayMemoizedSerializedSize = -1;
 
+    public static final int INT_ARRAY_FIELD_NUMBER = 5;
+    private com.google.protobuf.Internal.IntList intArray_;
     /**
-     * <code>repeated int32 array = 2;</code>
-     * @return A list containing the array.
-     */
-    java.util.List<java.lang.Integer> getArrayList();
-    /**
-     * <code>repeated int32 array = 2;</code>
-     * @return The count of array.
-     */
-    int getArrayCount();
-    /**
-     * <code>repeated int32 array = 2;</code>
-     * @param index The index of the element to return.
-     * @return The array at the given index.
-     */
-    int getArray(int index);
-  }
-  /**
-   * Protobuf type {@code IntTensor}
-   */
-  public static final class IntTensor extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:IntTensor)
-      IntTensorOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use IntTensor.newBuilder() to construct.
-    private IntTensor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private IntTensor() {
-      shape_ = emptyIntList();
-      array_ = emptyIntList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new IntTensor();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IntTensor(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                shape_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              shape_.addInt(input.readInt32());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                shape_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                shape_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                array_ = newIntList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              array_.addInt(input.readInt32());
-              break;
-            }
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                array_ = newIntList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                array_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          shape_.makeImmutable(); // C
-        }
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable(); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return SpaceOuterClass.internal_static_IntTensor_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return SpaceOuterClass.internal_static_IntTensor_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              SpaceOuterClass.IntTensor.class, SpaceOuterClass.IntTensor.Builder.class);
-    }
-
-    public static final int SHAPE_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.IntList shape_;
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return A list containing the shape.
+     * <code>repeated sint32 int_array = 5;</code>
+     * @return A list containing the intArray.
      */
     @java.lang.Override
     public java.util.List<java.lang.Integer>
-        getShapeList() {
-      return shape_;
+        getIntArrayList() {
+      return intArray_;
     }
     /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return The count of shape.
+     * <code>repeated sint32 int_array = 5;</code>
+     * @return The count of intArray.
      */
-    public int getShapeCount() {
-      return shape_.size();
+    public int getIntArrayCount() {
+      return intArray_.size();
     }
     /**
-     * <code>repeated int32 shape = 1;</code>
+     * <code>repeated sint32 int_array = 5;</code>
      * @param index The index of the element to return.
-     * @return The shape at the given index.
+     * @return The intArray at the given index.
      */
-    public int getShape(int index) {
-      return shape_.getInt(index);
+    public int getIntArray(int index) {
+      return intArray_.getInt(index);
     }
-    private int shapeMemoizedSerializedSize = -1;
+    private int intArrayMemoizedSerializedSize = -1;
 
-    public static final int ARRAY_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.IntList array_;
+    public static final int LONG_ARRAY_FIELD_NUMBER = 6;
+    private com.google.protobuf.Internal.LongList longArray_;
     /**
-     * <code>repeated int32 array = 2;</code>
-     * @return A list containing the array.
+     * <code>repeated sint64 long_array = 6;</code>
+     * @return A list containing the longArray.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Long>
+        getLongArrayList() {
+      return longArray_;
+    }
+    /**
+     * <code>repeated sint64 long_array = 6;</code>
+     * @return The count of longArray.
+     */
+    public int getLongArrayCount() {
+      return longArray_.size();
+    }
+    /**
+     * <code>repeated sint64 long_array = 6;</code>
+     * @param index The index of the element to return.
+     * @return The longArray at the given index.
+     */
+    public long getLongArray(int index) {
+      return longArray_.getLong(index);
+    }
+    private int longArrayMemoizedSerializedSize = -1;
+
+    public static final int UNSIGNED_INT_ARRAY_FIELD_NUMBER = 7;
+    private com.google.protobuf.Internal.IntList unsignedIntArray_;
+    /**
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
+     * @return A list containing the unsignedIntArray.
      */
     @java.lang.Override
     public java.util.List<java.lang.Integer>
-        getArrayList() {
-      return array_;
+        getUnsignedIntArrayList() {
+      return unsignedIntArray_;
     }
     /**
-     * <code>repeated int32 array = 2;</code>
-     * @return The count of array.
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
+     * @return The count of unsignedIntArray.
      */
-    public int getArrayCount() {
-      return array_.size();
+    public int getUnsignedIntArrayCount() {
+      return unsignedIntArray_.size();
     }
     /**
-     * <code>repeated int32 array = 2;</code>
+     * <code>repeated uint32 unsigned_int_array = 7;</code>
      * @param index The index of the element to return.
-     * @return The array at the given index.
+     * @return The unsignedIntArray at the given index.
      */
-    public int getArray(int index) {
-      return array_.getInt(index);
+    public int getUnsignedIntArray(int index) {
+      return unsignedIntArray_.getInt(index);
     }
-    private int arrayMemoizedSerializedSize = -1;
+    private int unsignedIntArrayMemoizedSerializedSize = -1;
 
-    private byte memoizedIsInitialized = -1;
+    public static final int UNSIGNED_LONG_ARRAY_FIELD_NUMBER = 8;
+    private com.google.protobuf.Internal.LongList unsignedLongArray_;
+    /**
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
+     * @return A list containing the unsignedLongArray.
+     */
     @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (getShapeList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(shapeMemoizedSerializedSize);
-      }
-      for (int i = 0; i < shape_.size(); i++) {
-        output.writeInt32NoTag(shape_.getInt(i));
-      }
-      if (getArrayList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(arrayMemoizedSerializedSize);
-      }
-      for (int i = 0; i < array_.size(); i++) {
-        output.writeInt32NoTag(array_.getInt(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < shape_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(shape_.getInt(i));
-        }
-        size += dataSize;
-        if (!getShapeList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        shapeMemoizedSerializedSize = dataSize;
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < array_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(array_.getInt(i));
-        }
-        size += dataSize;
-        if (!getArrayList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        arrayMemoizedSerializedSize = dataSize;
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof SpaceOuterClass.IntTensor)) {
-        return super.equals(obj);
-      }
-      SpaceOuterClass.IntTensor other = (SpaceOuterClass.IntTensor) obj;
-
-      if (!getShapeList()
-          .equals(other.getShapeList())) return false;
-      if (!getArrayList()
-          .equals(other.getArrayList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getShapeCount() > 0) {
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + getShapeList().hashCode();
-      }
-      if (getArrayCount() > 0) {
-        hash = (37 * hash) + ARRAY_FIELD_NUMBER;
-        hash = (53 * hash) + getArrayList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static SpaceOuterClass.IntTensor parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static SpaceOuterClass.IntTensor parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.IntTensor parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static SpaceOuterClass.IntTensor parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(SpaceOuterClass.IntTensor prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
+    public java.util.List<java.lang.Long>
+        getUnsignedLongArrayList() {
+      return unsignedLongArray_;
     }
     /**
-     * Protobuf type {@code IntTensor}
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
+     * @return The count of unsignedLongArray.
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:IntTensor)
-        SpaceOuterClass.IntTensorOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return SpaceOuterClass.internal_static_IntTensor_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return SpaceOuterClass.internal_static_IntTensor_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                SpaceOuterClass.IntTensor.class, SpaceOuterClass.IntTensor.Builder.class);
-      }
-
-      // Construct using SpaceOuterClass.IntTensor.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        shape_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        array_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return SpaceOuterClass.internal_static_IntTensor_descriptor;
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.IntTensor getDefaultInstanceForType() {
-        return SpaceOuterClass.IntTensor.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.IntTensor build() {
-        SpaceOuterClass.IntTensor result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public SpaceOuterClass.IntTensor buildPartial() {
-        SpaceOuterClass.IntTensor result = new SpaceOuterClass.IntTensor(this);
-        int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          shape_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.shape_ = shape_;
-        if (((bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.array_ = array_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof SpaceOuterClass.IntTensor) {
-          return mergeFrom((SpaceOuterClass.IntTensor)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(SpaceOuterClass.IntTensor other) {
-        if (other == SpaceOuterClass.IntTensor.getDefaultInstance()) return this;
-        if (!other.shape_.isEmpty()) {
-          if (shape_.isEmpty()) {
-            shape_ = other.shape_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureShapeIsMutable();
-            shape_.addAll(other.shape_);
-          }
-          onChanged();
-        }
-        if (!other.array_.isEmpty()) {
-          if (array_.isEmpty()) {
-            array_ = other.array_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureArrayIsMutable();
-            array_.addAll(other.array_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        SpaceOuterClass.IntTensor parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (SpaceOuterClass.IntTensor) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private com.google.protobuf.Internal.IntList shape_ = emptyIntList();
-      private void ensureShapeIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          shape_ = mutableCopy(shape_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return A list containing the shape.
-       */
-      public java.util.List<java.lang.Integer>
-          getShapeList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(shape_) : shape_;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return The count of shape.
-       */
-      public int getShapeCount() {
-        return shape_.size();
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param index The index of the element to return.
-       * @return The shape at the given index.
-       */
-      public int getShape(int index) {
-        return shape_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The shape to set.
-       * @return This builder for chaining.
-       */
-      public Builder setShape(
-          int index, int value) {
-        ensureShapeIsMutable();
-        shape_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param value The shape to add.
-       * @return This builder for chaining.
-       */
-      public Builder addShape(int value) {
-        ensureShapeIsMutable();
-        shape_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @param values The shape to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllShape(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureShapeIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, shape_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 shape = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearShape() {
-        shape_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.Internal.IntList array_ = emptyIntList();
-      private void ensureArrayIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          array_ = mutableCopy(array_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @return A list containing the array.
-       */
-      public java.util.List<java.lang.Integer>
-          getArrayList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(array_) : array_;
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @return The count of array.
-       */
-      public int getArrayCount() {
-        return array_.size();
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @param index The index of the element to return.
-       * @return The array at the given index.
-       */
-      public int getArray(int index) {
-        return array_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The array to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArray(
-          int index, int value) {
-        ensureArrayIsMutable();
-        array_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @param value The array to add.
-       * @return This builder for chaining.
-       */
-      public Builder addArray(int value) {
-        ensureArrayIsMutable();
-        array_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @param values The array to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllArray(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureArrayIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, array_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 array = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearArray() {
-        array_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:IntTensor)
+    public int getUnsignedLongArrayCount() {
+      return unsignedLongArray_.size();
     }
-
-    // @@protoc_insertion_point(class_scope:IntTensor)
-    private static final SpaceOuterClass.IntTensor DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new SpaceOuterClass.IntTensor();
-    }
-
-    public static SpaceOuterClass.IntTensor getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<IntTensor>
-        PARSER = new com.google.protobuf.AbstractParser<IntTensor>() {
-      @java.lang.Override
-      public IntTensor parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new IntTensor(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<IntTensor> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<IntTensor> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public SpaceOuterClass.IntTensor getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface BoolTensorOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:BoolTensor)
-      com.google.protobuf.MessageOrBuilder {
-
     /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return A list containing the shape.
-     */
-    java.util.List<java.lang.Integer> getShapeList();
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return The count of shape.
-     */
-    int getShapeCount();
-    /**
-     * <code>repeated int32 shape = 1;</code>
+     * <code>repeated uint64 unsigned_long_array = 8;</code>
      * @param index The index of the element to return.
-     * @return The shape at the given index.
+     * @return The unsignedLongArray at the given index.
      */
-    int getShape(int index);
+    public long getUnsignedLongArray(int index) {
+      return unsignedLongArray_.getLong(index);
+    }
+    private int unsignedLongArrayMemoizedSerializedSize = -1;
 
+    public static final int BOOL_ARRAY_FIELD_NUMBER = 9;
+    private com.google.protobuf.Internal.BooleanList boolArray_;
     /**
-     * <code>repeated bool array = 2;</code>
-     * @return A list containing the array.
-     */
-    java.util.List<java.lang.Boolean> getArrayList();
-    /**
-     * <code>repeated bool array = 2;</code>
-     * @return The count of array.
-     */
-    int getArrayCount();
-    /**
-     * <code>repeated bool array = 2;</code>
-     * @param index The index of the element to return.
-     * @return The array at the given index.
-     */
-    boolean getArray(int index);
-  }
-  /**
-   * Protobuf type {@code BoolTensor}
-   */
-  public static final class BoolTensor extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:BoolTensor)
-      BoolTensorOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use BoolTensor.newBuilder() to construct.
-    private BoolTensor(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private BoolTensor() {
-      shape_ = emptyIntList();
-      array_ = emptyBooleanList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new BoolTensor();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private BoolTensor(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                shape_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              shape_.addInt(input.readInt32());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                shape_ = newIntList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                shape_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                array_ = newBooleanList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              array_.addBoolean(input.readBool());
-              break;
-            }
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                array_ = newBooleanList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                array_.addBoolean(input.readBool());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          shape_.makeImmutable(); // C
-        }
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable(); // C
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return SpaceOuterClass.internal_static_BoolTensor_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return SpaceOuterClass.internal_static_BoolTensor_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              SpaceOuterClass.BoolTensor.class, SpaceOuterClass.BoolTensor.Builder.class);
-    }
-
-    public static final int SHAPE_FIELD_NUMBER = 1;
-    private com.google.protobuf.Internal.IntList shape_;
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return A list containing the shape.
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getShapeList() {
-      return shape_;
-    }
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @return The count of shape.
-     */
-    public int getShapeCount() {
-      return shape_.size();
-    }
-    /**
-     * <code>repeated int32 shape = 1;</code>
-     * @param index The index of the element to return.
-     * @return The shape at the given index.
-     */
-    public int getShape(int index) {
-      return shape_.getInt(index);
-    }
-    private int shapeMemoizedSerializedSize = -1;
-
-    public static final int ARRAY_FIELD_NUMBER = 2;
-    private com.google.protobuf.Internal.BooleanList array_;
-    /**
-     * <code>repeated bool array = 2;</code>
-     * @return A list containing the array.
+     * <code>repeated bool bool_array = 9;</code>
+     * @return A list containing the boolArray.
      */
     @java.lang.Override
     public java.util.List<java.lang.Boolean>
-        getArrayList() {
-      return array_;
+        getBoolArrayList() {
+      return boolArray_;
     }
     /**
-     * <code>repeated bool array = 2;</code>
-     * @return The count of array.
+     * <code>repeated bool bool_array = 9;</code>
+     * @return The count of boolArray.
      */
-    public int getArrayCount() {
-      return array_.size();
+    public int getBoolArrayCount() {
+      return boolArray_.size();
     }
     /**
-     * <code>repeated bool array = 2;</code>
+     * <code>repeated bool bool_array = 9;</code>
      * @param index The index of the element to return.
-     * @return The array at the given index.
+     * @return The boolArray at the given index.
      */
-    public boolean getArray(int index) {
-      return array_.getBoolean(index);
+    public boolean getBoolArray(int index) {
+      return boolArray_.getBoolean(index);
     }
-    private int arrayMemoizedSerializedSize = -1;
+    private int boolArrayMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -2310,12 +1199,57 @@ public final class SpaceOuterClass {
       for (int i = 0; i < shape_.size(); i++) {
         output.writeInt32NoTag(shape_.getInt(i));
       }
-      if (getArrayList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(arrayMemoizedSerializedSize);
+      if (dataType_ != SpaceOuterClass.DataType.DATA_TYPE_UNSPECIFIED.getNumber()) {
+        output.writeEnum(2, dataType_);
       }
-      for (int i = 0; i < array_.size(); i++) {
-        output.writeBoolNoTag(array_.getBoolean(i));
+      if (getFloatArrayList().size() > 0) {
+        output.writeUInt32NoTag(26);
+        output.writeUInt32NoTag(floatArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < floatArray_.size(); i++) {
+        output.writeFloatNoTag(floatArray_.getFloat(i));
+      }
+      if (getDoubleArrayList().size() > 0) {
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(doubleArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < doubleArray_.size(); i++) {
+        output.writeDoubleNoTag(doubleArray_.getDouble(i));
+      }
+      if (getIntArrayList().size() > 0) {
+        output.writeUInt32NoTag(42);
+        output.writeUInt32NoTag(intArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < intArray_.size(); i++) {
+        output.writeSInt32NoTag(intArray_.getInt(i));
+      }
+      if (getLongArrayList().size() > 0) {
+        output.writeUInt32NoTag(50);
+        output.writeUInt32NoTag(longArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < longArray_.size(); i++) {
+        output.writeSInt64NoTag(longArray_.getLong(i));
+      }
+      if (getUnsignedIntArrayList().size() > 0) {
+        output.writeUInt32NoTag(58);
+        output.writeUInt32NoTag(unsignedIntArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < unsignedIntArray_.size(); i++) {
+        output.writeUInt32NoTag(unsignedIntArray_.getInt(i));
+      }
+      if (getUnsignedLongArrayList().size() > 0) {
+        output.writeUInt32NoTag(66);
+        output.writeUInt32NoTag(unsignedLongArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < unsignedLongArray_.size(); i++) {
+        output.writeUInt64NoTag(unsignedLongArray_.getLong(i));
+      }
+      if (getBoolArrayList().size() > 0) {
+        output.writeUInt32NoTag(74);
+        output.writeUInt32NoTag(boolArrayMemoizedSerializedSize);
+      }
+      for (int i = 0; i < boolArray_.size(); i++) {
+        output.writeBoolNoTag(boolArray_.getBoolean(i));
       }
       unknownFields.writeTo(output);
     }
@@ -2340,16 +1274,98 @@ public final class SpaceOuterClass {
         }
         shapeMemoizedSerializedSize = dataSize;
       }
+      if (dataType_ != SpaceOuterClass.DataType.DATA_TYPE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, dataType_);
+      }
       {
         int dataSize = 0;
-        dataSize = 1 * getArrayList().size();
+        dataSize = 4 * getFloatArrayList().size();
         size += dataSize;
-        if (!getArrayList().isEmpty()) {
+        if (!getFloatArrayList().isEmpty()) {
           size += 1;
           size += com.google.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
-        arrayMemoizedSerializedSize = dataSize;
+        floatArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        dataSize = 8 * getDoubleArrayList().size();
+        size += dataSize;
+        if (!getDoubleArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        doubleArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < intArray_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeSInt32SizeNoTag(intArray_.getInt(i));
+        }
+        size += dataSize;
+        if (!getIntArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        intArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < longArray_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeSInt64SizeNoTag(longArray_.getLong(i));
+        }
+        size += dataSize;
+        if (!getLongArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        longArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < unsignedIntArray_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(unsignedIntArray_.getInt(i));
+        }
+        size += dataSize;
+        if (!getUnsignedIntArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        unsignedIntArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < unsignedLongArray_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt64SizeNoTag(unsignedLongArray_.getLong(i));
+        }
+        size += dataSize;
+        if (!getUnsignedLongArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        unsignedLongArrayMemoizedSerializedSize = dataSize;
+      }
+      {
+        int dataSize = 0;
+        dataSize = 1 * getBoolArrayList().size();
+        size += dataSize;
+        if (!getBoolArrayList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        boolArrayMemoizedSerializedSize = dataSize;
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2361,15 +1377,28 @@ public final class SpaceOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof SpaceOuterClass.BoolTensor)) {
+      if (!(obj instanceof SpaceOuterClass.Tensor)) {
         return super.equals(obj);
       }
-      SpaceOuterClass.BoolTensor other = (SpaceOuterClass.BoolTensor) obj;
+      SpaceOuterClass.Tensor other = (SpaceOuterClass.Tensor) obj;
 
       if (!getShapeList()
           .equals(other.getShapeList())) return false;
-      if (!getArrayList()
-          .equals(other.getArrayList())) return false;
+      if (dataType_ != other.dataType_) return false;
+      if (!getFloatArrayList()
+          .equals(other.getFloatArrayList())) return false;
+      if (!getDoubleArrayList()
+          .equals(other.getDoubleArrayList())) return false;
+      if (!getIntArrayList()
+          .equals(other.getIntArrayList())) return false;
+      if (!getLongArrayList()
+          .equals(other.getLongArrayList())) return false;
+      if (!getUnsignedIntArrayList()
+          .equals(other.getUnsignedIntArrayList())) return false;
+      if (!getUnsignedLongArrayList()
+          .equals(other.getUnsignedLongArrayList())) return false;
+      if (!getBoolArrayList()
+          .equals(other.getBoolArrayList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2385,78 +1414,104 @@ public final class SpaceOuterClass {
         hash = (37 * hash) + SHAPE_FIELD_NUMBER;
         hash = (53 * hash) + getShapeList().hashCode();
       }
-      if (getArrayCount() > 0) {
-        hash = (37 * hash) + ARRAY_FIELD_NUMBER;
-        hash = (53 * hash) + getArrayList().hashCode();
+      hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + dataType_;
+      if (getFloatArrayCount() > 0) {
+        hash = (37 * hash) + FLOAT_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getFloatArrayList().hashCode();
+      }
+      if (getDoubleArrayCount() > 0) {
+        hash = (37 * hash) + DOUBLE_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getDoubleArrayList().hashCode();
+      }
+      if (getIntArrayCount() > 0) {
+        hash = (37 * hash) + INT_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getIntArrayList().hashCode();
+      }
+      if (getLongArrayCount() > 0) {
+        hash = (37 * hash) + LONG_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getLongArrayList().hashCode();
+      }
+      if (getUnsignedIntArrayCount() > 0) {
+        hash = (37 * hash) + UNSIGNED_INT_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getUnsignedIntArrayList().hashCode();
+      }
+      if (getUnsignedLongArrayCount() > 0) {
+        hash = (37 * hash) + UNSIGNED_LONG_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getUnsignedLongArrayList().hashCode();
+      }
+      if (getBoolArrayCount() > 0) {
+        hash = (37 * hash) + BOOL_ARRAY_FIELD_NUMBER;
+        hash = (53 * hash) + getBoolArrayList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(byte[] data)
+    public static SpaceOuterClass.Tensor parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(java.io.InputStream input)
+    public static SpaceOuterClass.Tensor parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static SpaceOuterClass.BoolTensor parseDelimitedFrom(java.io.InputStream input)
+    public static SpaceOuterClass.Tensor parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static SpaceOuterClass.BoolTensor parseDelimitedFrom(
+    public static SpaceOuterClass.Tensor parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static SpaceOuterClass.BoolTensor parseFrom(
+    public static SpaceOuterClass.Tensor parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2469,7 +1524,7 @@ public final class SpaceOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(SpaceOuterClass.BoolTensor prototype) {
+    public static Builder newBuilder(SpaceOuterClass.Tensor prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2485,26 +1540,26 @@ public final class SpaceOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code BoolTensor}
+     * Protobuf type {@code Tensor}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:BoolTensor)
-        SpaceOuterClass.BoolTensorOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Tensor)
+        SpaceOuterClass.TensorOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return SpaceOuterClass.internal_static_BoolTensor_descriptor;
+        return SpaceOuterClass.internal_static_Tensor_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return SpaceOuterClass.internal_static_BoolTensor_fieldAccessorTable
+        return SpaceOuterClass.internal_static_Tensor_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                SpaceOuterClass.BoolTensor.class, SpaceOuterClass.BoolTensor.Builder.class);
+                SpaceOuterClass.Tensor.class, SpaceOuterClass.Tensor.Builder.class);
       }
 
-      // Construct using SpaceOuterClass.BoolTensor.newBuilder()
+      // Construct using SpaceOuterClass.Tensor.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2524,25 +1579,39 @@ public final class SpaceOuterClass {
         super.clear();
         shape_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        array_ = emptyBooleanList();
+        dataType_ = 0;
+
+        floatArray_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000002);
+        doubleArray_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        intArray_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        longArray_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        unsignedIntArray_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        unsignedLongArray_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        boolArray_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return SpaceOuterClass.internal_static_BoolTensor_descriptor;
+        return SpaceOuterClass.internal_static_Tensor_descriptor;
       }
 
       @java.lang.Override
-      public SpaceOuterClass.BoolTensor getDefaultInstanceForType() {
-        return SpaceOuterClass.BoolTensor.getDefaultInstance();
+      public SpaceOuterClass.Tensor getDefaultInstanceForType() {
+        return SpaceOuterClass.Tensor.getDefaultInstance();
       }
 
       @java.lang.Override
-      public SpaceOuterClass.BoolTensor build() {
-        SpaceOuterClass.BoolTensor result = buildPartial();
+      public SpaceOuterClass.Tensor build() {
+        SpaceOuterClass.Tensor result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2550,19 +1619,50 @@ public final class SpaceOuterClass {
       }
 
       @java.lang.Override
-      public SpaceOuterClass.BoolTensor buildPartial() {
-        SpaceOuterClass.BoolTensor result = new SpaceOuterClass.BoolTensor(this);
+      public SpaceOuterClass.Tensor buildPartial() {
+        SpaceOuterClass.Tensor result = new SpaceOuterClass.Tensor(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           shape_.makeImmutable();
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.shape_ = shape_;
+        result.dataType_ = dataType_;
         if (((bitField0_ & 0x00000002) != 0)) {
-          array_.makeImmutable();
+          floatArray_.makeImmutable();
           bitField0_ = (bitField0_ & ~0x00000002);
         }
-        result.array_ = array_;
+        result.floatArray_ = floatArray_;
+        if (((bitField0_ & 0x00000004) != 0)) {
+          doubleArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.doubleArray_ = doubleArray_;
+        if (((bitField0_ & 0x00000008) != 0)) {
+          intArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.intArray_ = intArray_;
+        if (((bitField0_ & 0x00000010) != 0)) {
+          longArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.longArray_ = longArray_;
+        if (((bitField0_ & 0x00000020) != 0)) {
+          unsignedIntArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.unsignedIntArray_ = unsignedIntArray_;
+        if (((bitField0_ & 0x00000040) != 0)) {
+          unsignedLongArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        }
+        result.unsignedLongArray_ = unsignedLongArray_;
+        if (((bitField0_ & 0x00000080) != 0)) {
+          boolArray_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        }
+        result.boolArray_ = boolArray_;
         onBuilt();
         return result;
       }
@@ -2601,16 +1701,16 @@ public final class SpaceOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof SpaceOuterClass.BoolTensor) {
-          return mergeFrom((SpaceOuterClass.BoolTensor)other);
+        if (other instanceof SpaceOuterClass.Tensor) {
+          return mergeFrom((SpaceOuterClass.Tensor)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(SpaceOuterClass.BoolTensor other) {
-        if (other == SpaceOuterClass.BoolTensor.getDefaultInstance()) return this;
+      public Builder mergeFrom(SpaceOuterClass.Tensor other) {
+        if (other == SpaceOuterClass.Tensor.getDefaultInstance()) return this;
         if (!other.shape_.isEmpty()) {
           if (shape_.isEmpty()) {
             shape_ = other.shape_;
@@ -2621,13 +1721,76 @@ public final class SpaceOuterClass {
           }
           onChanged();
         }
-        if (!other.array_.isEmpty()) {
-          if (array_.isEmpty()) {
-            array_ = other.array_;
+        if (other.dataType_ != 0) {
+          setDataTypeValue(other.getDataTypeValue());
+        }
+        if (!other.floatArray_.isEmpty()) {
+          if (floatArray_.isEmpty()) {
+            floatArray_ = other.floatArray_;
             bitField0_ = (bitField0_ & ~0x00000002);
           } else {
-            ensureArrayIsMutable();
-            array_.addAll(other.array_);
+            ensureFloatArrayIsMutable();
+            floatArray_.addAll(other.floatArray_);
+          }
+          onChanged();
+        }
+        if (!other.doubleArray_.isEmpty()) {
+          if (doubleArray_.isEmpty()) {
+            doubleArray_ = other.doubleArray_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureDoubleArrayIsMutable();
+            doubleArray_.addAll(other.doubleArray_);
+          }
+          onChanged();
+        }
+        if (!other.intArray_.isEmpty()) {
+          if (intArray_.isEmpty()) {
+            intArray_ = other.intArray_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureIntArrayIsMutable();
+            intArray_.addAll(other.intArray_);
+          }
+          onChanged();
+        }
+        if (!other.longArray_.isEmpty()) {
+          if (longArray_.isEmpty()) {
+            longArray_ = other.longArray_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureLongArrayIsMutable();
+            longArray_.addAll(other.longArray_);
+          }
+          onChanged();
+        }
+        if (!other.unsignedIntArray_.isEmpty()) {
+          if (unsignedIntArray_.isEmpty()) {
+            unsignedIntArray_ = other.unsignedIntArray_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureUnsignedIntArrayIsMutable();
+            unsignedIntArray_.addAll(other.unsignedIntArray_);
+          }
+          onChanged();
+        }
+        if (!other.unsignedLongArray_.isEmpty()) {
+          if (unsignedLongArray_.isEmpty()) {
+            unsignedLongArray_ = other.unsignedLongArray_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureUnsignedLongArrayIsMutable();
+            unsignedLongArray_.addAll(other.unsignedLongArray_);
+          }
+          onChanged();
+        }
+        if (!other.boolArray_.isEmpty()) {
+          if (boolArray_.isEmpty()) {
+            boolArray_ = other.boolArray_;
+            bitField0_ = (bitField0_ & ~0x00000080);
+          } else {
+            ensureBoolArrayIsMutable();
+            boolArray_.addAll(other.boolArray_);
           }
           onChanged();
         }
@@ -2646,11 +1809,11 @@ public final class SpaceOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        SpaceOuterClass.BoolTensor parsedMessage = null;
+        SpaceOuterClass.Tensor parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (SpaceOuterClass.BoolTensor) e.getUnfinishedMessage();
+          parsedMessage = (SpaceOuterClass.Tensor) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2740,81 +1903,609 @@ public final class SpaceOuterClass {
         return this;
       }
 
-      private com.google.protobuf.Internal.BooleanList array_ = emptyBooleanList();
-      private void ensureArrayIsMutable() {
+      private int dataType_ = 0;
+      /**
+       * <code>.DataType data_type = 2;</code>
+       * @return The enum numeric value on the wire for dataType.
+       */
+      @java.lang.Override public int getDataTypeValue() {
+        return dataType_;
+      }
+      /**
+       * <code>.DataType data_type = 2;</code>
+       * @param value The enum numeric value on the wire for dataType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataTypeValue(int value) {
+        
+        dataType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.DataType data_type = 2;</code>
+       * @return The dataType.
+       */
+      @java.lang.Override
+      public SpaceOuterClass.DataType getDataType() {
+        @SuppressWarnings("deprecation")
+        SpaceOuterClass.DataType result = SpaceOuterClass.DataType.valueOf(dataType_);
+        return result == null ? SpaceOuterClass.DataType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.DataType data_type = 2;</code>
+       * @param value The dataType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataType(SpaceOuterClass.DataType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        dataType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.DataType data_type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDataType() {
+        
+        dataType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.FloatList floatArray_ = emptyFloatList();
+      private void ensureFloatArrayIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          array_ = mutableCopy(array_);
+          floatArray_ = mutableCopy(floatArray_);
           bitField0_ |= 0x00000002;
          }
       }
       /**
-       * <code>repeated bool array = 2;</code>
-       * @return A list containing the array.
+       * <code>repeated float float_array = 3;</code>
+       * @return A list containing the floatArray.
+       */
+      public java.util.List<java.lang.Float>
+          getFloatArrayList() {
+        return ((bitField0_ & 0x00000002) != 0) ?
+                 java.util.Collections.unmodifiableList(floatArray_) : floatArray_;
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @return The count of floatArray.
+       */
+      public int getFloatArrayCount() {
+        return floatArray_.size();
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @param index The index of the element to return.
+       * @return The floatArray at the given index.
+       */
+      public float getFloatArray(int index) {
+        return floatArray_.getFloat(index);
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The floatArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFloatArray(
+          int index, float value) {
+        ensureFloatArrayIsMutable();
+        floatArray_.setFloat(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @param value The floatArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addFloatArray(float value) {
+        ensureFloatArrayIsMutable();
+        floatArray_.addFloat(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @param values The floatArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllFloatArray(
+          java.lang.Iterable<? extends java.lang.Float> values) {
+        ensureFloatArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, floatArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float float_array = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFloatArray() {
+        floatArray_ = emptyFloatList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.DoubleList doubleArray_ = emptyDoubleList();
+      private void ensureDoubleArrayIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          doubleArray_ = mutableCopy(doubleArray_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @return A list containing the doubleArray.
+       */
+      public java.util.List<java.lang.Double>
+          getDoubleArrayList() {
+        return ((bitField0_ & 0x00000004) != 0) ?
+                 java.util.Collections.unmodifiableList(doubleArray_) : doubleArray_;
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @return The count of doubleArray.
+       */
+      public int getDoubleArrayCount() {
+        return doubleArray_.size();
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @param index The index of the element to return.
+       * @return The doubleArray at the given index.
+       */
+      public double getDoubleArray(int index) {
+        return doubleArray_.getDouble(index);
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The doubleArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDoubleArray(
+          int index, double value) {
+        ensureDoubleArrayIsMutable();
+        doubleArray_.setDouble(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @param value The doubleArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDoubleArray(double value) {
+        ensureDoubleArrayIsMutable();
+        doubleArray_.addDouble(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @param values The doubleArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDoubleArray(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureDoubleArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, doubleArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double double_array = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDoubleArray() {
+        doubleArray_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList intArray_ = emptyIntList();
+      private void ensureIntArrayIsMutable() {
+        if (!((bitField0_ & 0x00000008) != 0)) {
+          intArray_ = mutableCopy(intArray_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @return A list containing the intArray.
+       */
+      public java.util.List<java.lang.Integer>
+          getIntArrayList() {
+        return ((bitField0_ & 0x00000008) != 0) ?
+                 java.util.Collections.unmodifiableList(intArray_) : intArray_;
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @return The count of intArray.
+       */
+      public int getIntArrayCount() {
+        return intArray_.size();
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @param index The index of the element to return.
+       * @return The intArray at the given index.
+       */
+      public int getIntArray(int index) {
+        return intArray_.getInt(index);
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The intArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIntArray(
+          int index, int value) {
+        ensureIntArrayIsMutable();
+        intArray_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @param value The intArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addIntArray(int value) {
+        ensureIntArrayIsMutable();
+        intArray_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @param values The intArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllIntArray(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureIntArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, intArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint32 int_array = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIntArray() {
+        intArray_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.LongList longArray_ = emptyLongList();
+      private void ensureLongArrayIsMutable() {
+        if (!((bitField0_ & 0x00000010) != 0)) {
+          longArray_ = mutableCopy(longArray_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @return A list containing the longArray.
+       */
+      public java.util.List<java.lang.Long>
+          getLongArrayList() {
+        return ((bitField0_ & 0x00000010) != 0) ?
+                 java.util.Collections.unmodifiableList(longArray_) : longArray_;
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @return The count of longArray.
+       */
+      public int getLongArrayCount() {
+        return longArray_.size();
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @param index The index of the element to return.
+       * @return The longArray at the given index.
+       */
+      public long getLongArray(int index) {
+        return longArray_.getLong(index);
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @param index The index to set the value at.
+       * @param value The longArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongArray(
+          int index, long value) {
+        ensureLongArrayIsMutable();
+        longArray_.setLong(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @param value The longArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addLongArray(long value) {
+        ensureLongArrayIsMutable();
+        longArray_.addLong(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @param values The longArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllLongArray(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureLongArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, longArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated sint64 long_array = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongArray() {
+        longArray_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList unsignedIntArray_ = emptyIntList();
+      private void ensureUnsignedIntArrayIsMutable() {
+        if (!((bitField0_ & 0x00000020) != 0)) {
+          unsignedIntArray_ = mutableCopy(unsignedIntArray_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @return A list containing the unsignedIntArray.
+       */
+      public java.util.List<java.lang.Integer>
+          getUnsignedIntArrayList() {
+        return ((bitField0_ & 0x00000020) != 0) ?
+                 java.util.Collections.unmodifiableList(unsignedIntArray_) : unsignedIntArray_;
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @return The count of unsignedIntArray.
+       */
+      public int getUnsignedIntArrayCount() {
+        return unsignedIntArray_.size();
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @param index The index of the element to return.
+       * @return The unsignedIntArray at the given index.
+       */
+      public int getUnsignedIntArray(int index) {
+        return unsignedIntArray_.getInt(index);
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @param index The index to set the value at.
+       * @param value The unsignedIntArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnsignedIntArray(
+          int index, int value) {
+        ensureUnsignedIntArrayIsMutable();
+        unsignedIntArray_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @param value The unsignedIntArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addUnsignedIntArray(int value) {
+        ensureUnsignedIntArrayIsMutable();
+        unsignedIntArray_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @param values The unsignedIntArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllUnsignedIntArray(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureUnsignedIntArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, unsignedIntArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 unsigned_int_array = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUnsignedIntArray() {
+        unsignedIntArray_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.LongList unsignedLongArray_ = emptyLongList();
+      private void ensureUnsignedLongArrayIsMutable() {
+        if (!((bitField0_ & 0x00000040) != 0)) {
+          unsignedLongArray_ = mutableCopy(unsignedLongArray_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @return A list containing the unsignedLongArray.
+       */
+      public java.util.List<java.lang.Long>
+          getUnsignedLongArrayList() {
+        return ((bitField0_ & 0x00000040) != 0) ?
+                 java.util.Collections.unmodifiableList(unsignedLongArray_) : unsignedLongArray_;
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @return The count of unsignedLongArray.
+       */
+      public int getUnsignedLongArrayCount() {
+        return unsignedLongArray_.size();
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @param index The index of the element to return.
+       * @return The unsignedLongArray at the given index.
+       */
+      public long getUnsignedLongArray(int index) {
+        return unsignedLongArray_.getLong(index);
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @param index The index to set the value at.
+       * @param value The unsignedLongArray to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnsignedLongArray(
+          int index, long value) {
+        ensureUnsignedLongArrayIsMutable();
+        unsignedLongArray_.setLong(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @param value The unsignedLongArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addUnsignedLongArray(long value) {
+        ensureUnsignedLongArrayIsMutable();
+        unsignedLongArray_.addLong(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @param values The unsignedLongArray to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllUnsignedLongArray(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureUnsignedLongArrayIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, unsignedLongArray_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 unsigned_long_array = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUnsignedLongArray() {
+        unsignedLongArray_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList boolArray_ = emptyBooleanList();
+      private void ensureBoolArrayIsMutable() {
+        if (!((bitField0_ & 0x00000080) != 0)) {
+          boolArray_ = mutableCopy(boolArray_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      /**
+       * <code>repeated bool bool_array = 9;</code>
+       * @return A list containing the boolArray.
        */
       public java.util.List<java.lang.Boolean>
-          getArrayList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(array_) : array_;
+          getBoolArrayList() {
+        return ((bitField0_ & 0x00000080) != 0) ?
+                 java.util.Collections.unmodifiableList(boolArray_) : boolArray_;
       }
       /**
-       * <code>repeated bool array = 2;</code>
-       * @return The count of array.
+       * <code>repeated bool bool_array = 9;</code>
+       * @return The count of boolArray.
        */
-      public int getArrayCount() {
-        return array_.size();
+      public int getBoolArrayCount() {
+        return boolArray_.size();
       }
       /**
-       * <code>repeated bool array = 2;</code>
+       * <code>repeated bool bool_array = 9;</code>
        * @param index The index of the element to return.
-       * @return The array at the given index.
+       * @return The boolArray at the given index.
        */
-      public boolean getArray(int index) {
-        return array_.getBoolean(index);
+      public boolean getBoolArray(int index) {
+        return boolArray_.getBoolean(index);
       }
       /**
-       * <code>repeated bool array = 2;</code>
+       * <code>repeated bool bool_array = 9;</code>
        * @param index The index to set the value at.
-       * @param value The array to set.
+       * @param value The boolArray to set.
        * @return This builder for chaining.
        */
-      public Builder setArray(
+      public Builder setBoolArray(
           int index, boolean value) {
-        ensureArrayIsMutable();
-        array_.setBoolean(index, value);
+        ensureBoolArrayIsMutable();
+        boolArray_.setBoolean(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated bool array = 2;</code>
-       * @param value The array to add.
+       * <code>repeated bool bool_array = 9;</code>
+       * @param value The boolArray to add.
        * @return This builder for chaining.
        */
-      public Builder addArray(boolean value) {
-        ensureArrayIsMutable();
-        array_.addBoolean(value);
+      public Builder addBoolArray(boolean value) {
+        ensureBoolArrayIsMutable();
+        boolArray_.addBoolean(value);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated bool array = 2;</code>
-       * @param values The array to add.
+       * <code>repeated bool bool_array = 9;</code>
+       * @param values The boolArray to add.
        * @return This builder for chaining.
        */
-      public Builder addAllArray(
+      public Builder addAllBoolArray(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
-        ensureArrayIsMutable();
+        ensureBoolArrayIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, array_);
+            values, boolArray_);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated bool array = 2;</code>
+       * <code>repeated bool bool_array = 9;</code>
        * @return This builder for chaining.
        */
-      public Builder clearArray() {
-        array_ = emptyBooleanList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+      public Builder clearBoolArray() {
+        boolArray_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -2831,41 +2522,41 @@ public final class SpaceOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:BoolTensor)
+      // @@protoc_insertion_point(builder_scope:Tensor)
     }
 
-    // @@protoc_insertion_point(class_scope:BoolTensor)
-    private static final SpaceOuterClass.BoolTensor DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:Tensor)
+    private static final SpaceOuterClass.Tensor DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new SpaceOuterClass.BoolTensor();
+      DEFAULT_INSTANCE = new SpaceOuterClass.Tensor();
     }
 
-    public static SpaceOuterClass.BoolTensor getDefaultInstance() {
+    public static SpaceOuterClass.Tensor getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<BoolTensor>
-        PARSER = new com.google.protobuf.AbstractParser<BoolTensor>() {
+    private static final com.google.protobuf.Parser<Tensor>
+        PARSER = new com.google.protobuf.AbstractParser<Tensor>() {
       @java.lang.Override
-      public BoolTensor parsePartialFrom(
+      public Tensor parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BoolTensor(input, extensionRegistry);
+        return new Tensor(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<BoolTensor> parser() {
+    public static com.google.protobuf.Parser<Tensor> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BoolTensor> getParserForType() {
+    public com.google.protobuf.Parser<Tensor> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public SpaceOuterClass.BoolTensor getDefaultInstanceForType() {
+    public SpaceOuterClass.Tensor getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3700,49 +3391,85 @@ public final class SpaceOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      * @return Whether the nodes field is set.
      */
     boolean hasNodes();
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      * @return The nodes.
      */
-    SpaceOuterClass.FloatTensor getNodes();
+    SpaceOuterClass.Tensor getNodes();
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      */
-    SpaceOuterClass.FloatTensorOrBuilder getNodesOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getNodesOrBuilder();
 
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      * @return Whether the edges field is set.
      */
     boolean hasEdges();
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      * @return The edges.
      */
-    SpaceOuterClass.FloatTensor getEdges();
+    SpaceOuterClass.Tensor getEdges();
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      */
-    SpaceOuterClass.FloatTensorOrBuilder getEdgesOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getEdgesOrBuilder();
 
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      * @return Whether the edgeLinks field is set.
      */
     boolean hasEdgeLinks();
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      * @return The edgeLinks.
      */
-    SpaceOuterClass.IntTensor getEdgeLinks();
+    SpaceOuterClass.Tensor getEdgeLinks();
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      */
-    SpaceOuterClass.IntTensorOrBuilder getEdgeLinksOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getEdgeLinksOrBuilder();
   }
   /**
    * Protobuf type {@code Graph}
@@ -3790,11 +3517,11 @@ public final class SpaceOuterClass {
               done = true;
               break;
             case 10: {
-              SpaceOuterClass.FloatTensor.Builder subBuilder = null;
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (nodes_ != null) {
                 subBuilder = nodes_.toBuilder();
               }
-              nodes_ = input.readMessage(SpaceOuterClass.FloatTensor.parser(), extensionRegistry);
+              nodes_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(nodes_);
                 nodes_ = subBuilder.buildPartial();
@@ -3803,11 +3530,11 @@ public final class SpaceOuterClass {
               break;
             }
             case 18: {
-              SpaceOuterClass.FloatTensor.Builder subBuilder = null;
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (edges_ != null) {
                 subBuilder = edges_.toBuilder();
               }
-              edges_ = input.readMessage(SpaceOuterClass.FloatTensor.parser(), extensionRegistry);
+              edges_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(edges_);
                 edges_ = subBuilder.buildPartial();
@@ -3816,11 +3543,11 @@ public final class SpaceOuterClass {
               break;
             }
             case 26: {
-              SpaceOuterClass.IntTensor.Builder subBuilder = null;
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (edgeLinks_ != null) {
                 subBuilder = edgeLinks_.toBuilder();
               }
-              edgeLinks_ = input.readMessage(SpaceOuterClass.IntTensor.parser(), extensionRegistry);
+              edgeLinks_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(edgeLinks_);
                 edgeLinks_ = subBuilder.buildPartial();
@@ -3861,9 +3588,13 @@ public final class SpaceOuterClass {
     }
 
     public static final int NODES_FIELD_NUMBER = 1;
-    private SpaceOuterClass.FloatTensor nodes_;
+    private SpaceOuterClass.Tensor nodes_;
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      * @return Whether the nodes field is set.
      */
     @java.lang.Override
@@ -3871,25 +3602,37 @@ public final class SpaceOuterClass {
       return nodes_ != null;
     }
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      * @return The nodes.
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensor getNodes() {
-      return nodes_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : nodes_;
+    public SpaceOuterClass.Tensor getNodes() {
+      return nodes_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : nodes_;
     }
     /**
-     * <code>.FloatTensor nodes = 1;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor nodes = 1;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensorOrBuilder getNodesOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getNodesOrBuilder() {
       return getNodes();
     }
 
     public static final int EDGES_FIELD_NUMBER = 2;
-    private SpaceOuterClass.FloatTensor edges_;
+    private SpaceOuterClass.Tensor edges_;
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      * @return Whether the edges field is set.
      */
     @java.lang.Override
@@ -3897,25 +3640,37 @@ public final class SpaceOuterClass {
       return edges_ != null;
     }
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      * @return The edges.
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensor getEdges() {
-      return edges_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : edges_;
+    public SpaceOuterClass.Tensor getEdges() {
+      return edges_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : edges_;
     }
     /**
-     * <code>.FloatTensor edges = 2;</code>
+     * <pre>
+     * floating type
+     * </pre>
+     *
+     * <code>.Tensor edges = 2;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensorOrBuilder getEdgesOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getEdgesOrBuilder() {
       return getEdges();
     }
 
     public static final int EDGE_LINKS_FIELD_NUMBER = 3;
-    private SpaceOuterClass.IntTensor edgeLinks_;
+    private SpaceOuterClass.Tensor edgeLinks_;
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      * @return Whether the edgeLinks field is set.
      */
     @java.lang.Override
@@ -3923,18 +3678,26 @@ public final class SpaceOuterClass {
       return edgeLinks_ != null;
     }
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      * @return The edgeLinks.
      */
     @java.lang.Override
-    public SpaceOuterClass.IntTensor getEdgeLinks() {
-      return edgeLinks_ == null ? SpaceOuterClass.IntTensor.getDefaultInstance() : edgeLinks_;
+    public SpaceOuterClass.Tensor getEdgeLinks() {
+      return edgeLinks_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : edgeLinks_;
     }
     /**
-     * <code>.IntTensor edge_links = 3;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor edge_links = 3;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.IntTensorOrBuilder getEdgeLinksOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getEdgeLinksOrBuilder() {
       return getEdgeLinks();
     }
 
@@ -4313,31 +4076,43 @@ public final class SpaceOuterClass {
         return this;
       }
 
-      private SpaceOuterClass.FloatTensor nodes_;
+      private SpaceOuterClass.Tensor nodes_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> nodesBuilder_;
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> nodesBuilder_;
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        * @return Whether the nodes field is set.
        */
       public boolean hasNodes() {
         return nodesBuilder_ != null || nodes_ != null;
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        * @return The nodes.
        */
-      public SpaceOuterClass.FloatTensor getNodes() {
+      public SpaceOuterClass.Tensor getNodes() {
         if (nodesBuilder_ == null) {
-          return nodes_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : nodes_;
+          return nodes_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : nodes_;
         } else {
           return nodesBuilder_.getMessage();
         }
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
-      public Builder setNodes(SpaceOuterClass.FloatTensor value) {
+      public Builder setNodes(SpaceOuterClass.Tensor value) {
         if (nodesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4351,10 +4126,14 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
       public Builder setNodes(
-          SpaceOuterClass.FloatTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (nodesBuilder_ == null) {
           nodes_ = builderForValue.build();
           onChanged();
@@ -4365,13 +4144,17 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
-      public Builder mergeNodes(SpaceOuterClass.FloatTensor value) {
+      public Builder mergeNodes(SpaceOuterClass.Tensor value) {
         if (nodesBuilder_ == null) {
           if (nodes_ != null) {
             nodes_ =
-              SpaceOuterClass.FloatTensor.newBuilder(nodes_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(nodes_).mergeFrom(value).buildPartial();
           } else {
             nodes_ = value;
           }
@@ -4383,7 +4166,11 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
       public Builder clearNodes() {
         if (nodesBuilder_ == null) {
@@ -4397,33 +4184,45 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
-      public SpaceOuterClass.FloatTensor.Builder getNodesBuilder() {
+      public SpaceOuterClass.Tensor.Builder getNodesBuilder() {
         
         onChanged();
         return getNodesFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
-      public SpaceOuterClass.FloatTensorOrBuilder getNodesOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getNodesOrBuilder() {
         if (nodesBuilder_ != null) {
           return nodesBuilder_.getMessageOrBuilder();
         } else {
           return nodes_ == null ?
-              SpaceOuterClass.FloatTensor.getDefaultInstance() : nodes_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : nodes_;
         }
       }
       /**
-       * <code>.FloatTensor nodes = 1;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor nodes = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getNodesFieldBuilder() {
         if (nodesBuilder_ == null) {
           nodesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getNodes(),
                   getParentForChildren(),
                   isClean());
@@ -4432,31 +4231,43 @@ public final class SpaceOuterClass {
         return nodesBuilder_;
       }
 
-      private SpaceOuterClass.FloatTensor edges_;
+      private SpaceOuterClass.Tensor edges_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> edgesBuilder_;
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> edgesBuilder_;
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        * @return Whether the edges field is set.
        */
       public boolean hasEdges() {
         return edgesBuilder_ != null || edges_ != null;
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        * @return The edges.
        */
-      public SpaceOuterClass.FloatTensor getEdges() {
+      public SpaceOuterClass.Tensor getEdges() {
         if (edgesBuilder_ == null) {
-          return edges_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : edges_;
+          return edges_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : edges_;
         } else {
           return edgesBuilder_.getMessage();
         }
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
-      public Builder setEdges(SpaceOuterClass.FloatTensor value) {
+      public Builder setEdges(SpaceOuterClass.Tensor value) {
         if (edgesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4470,10 +4281,14 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
       public Builder setEdges(
-          SpaceOuterClass.FloatTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (edgesBuilder_ == null) {
           edges_ = builderForValue.build();
           onChanged();
@@ -4484,13 +4299,17 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
-      public Builder mergeEdges(SpaceOuterClass.FloatTensor value) {
+      public Builder mergeEdges(SpaceOuterClass.Tensor value) {
         if (edgesBuilder_ == null) {
           if (edges_ != null) {
             edges_ =
-              SpaceOuterClass.FloatTensor.newBuilder(edges_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(edges_).mergeFrom(value).buildPartial();
           } else {
             edges_ = value;
           }
@@ -4502,7 +4321,11 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
       public Builder clearEdges() {
         if (edgesBuilder_ == null) {
@@ -4516,33 +4339,45 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
-      public SpaceOuterClass.FloatTensor.Builder getEdgesBuilder() {
+      public SpaceOuterClass.Tensor.Builder getEdgesBuilder() {
         
         onChanged();
         return getEdgesFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
-      public SpaceOuterClass.FloatTensorOrBuilder getEdgesOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getEdgesOrBuilder() {
         if (edgesBuilder_ != null) {
           return edgesBuilder_.getMessageOrBuilder();
         } else {
           return edges_ == null ?
-              SpaceOuterClass.FloatTensor.getDefaultInstance() : edges_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : edges_;
         }
       }
       /**
-       * <code>.FloatTensor edges = 2;</code>
+       * <pre>
+       * floating type
+       * </pre>
+       *
+       * <code>.Tensor edges = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getEdgesFieldBuilder() {
         if (edgesBuilder_ == null) {
           edgesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getEdges(),
                   getParentForChildren(),
                   isClean());
@@ -4551,31 +4386,43 @@ public final class SpaceOuterClass {
         return edgesBuilder_;
       }
 
-      private SpaceOuterClass.IntTensor edgeLinks_;
+      private SpaceOuterClass.Tensor edgeLinks_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder> edgeLinksBuilder_;
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> edgeLinksBuilder_;
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        * @return Whether the edgeLinks field is set.
        */
       public boolean hasEdgeLinks() {
         return edgeLinksBuilder_ != null || edgeLinks_ != null;
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        * @return The edgeLinks.
        */
-      public SpaceOuterClass.IntTensor getEdgeLinks() {
+      public SpaceOuterClass.Tensor getEdgeLinks() {
         if (edgeLinksBuilder_ == null) {
-          return edgeLinks_ == null ? SpaceOuterClass.IntTensor.getDefaultInstance() : edgeLinks_;
+          return edgeLinks_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : edgeLinks_;
         } else {
           return edgeLinksBuilder_.getMessage();
         }
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
-      public Builder setEdgeLinks(SpaceOuterClass.IntTensor value) {
+      public Builder setEdgeLinks(SpaceOuterClass.Tensor value) {
         if (edgeLinksBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4589,10 +4436,14 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
       public Builder setEdgeLinks(
-          SpaceOuterClass.IntTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (edgeLinksBuilder_ == null) {
           edgeLinks_ = builderForValue.build();
           onChanged();
@@ -4603,13 +4454,17 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
-      public Builder mergeEdgeLinks(SpaceOuterClass.IntTensor value) {
+      public Builder mergeEdgeLinks(SpaceOuterClass.Tensor value) {
         if (edgeLinksBuilder_ == null) {
           if (edgeLinks_ != null) {
             edgeLinks_ =
-              SpaceOuterClass.IntTensor.newBuilder(edgeLinks_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(edgeLinks_).mergeFrom(value).buildPartial();
           } else {
             edgeLinks_ = value;
           }
@@ -4621,7 +4476,11 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
       public Builder clearEdgeLinks() {
         if (edgeLinksBuilder_ == null) {
@@ -4635,33 +4494,45 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
-      public SpaceOuterClass.IntTensor.Builder getEdgeLinksBuilder() {
+      public SpaceOuterClass.Tensor.Builder getEdgeLinksBuilder() {
         
         onChanged();
         return getEdgeLinksFieldBuilder().getBuilder();
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
-      public SpaceOuterClass.IntTensorOrBuilder getEdgeLinksOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getEdgeLinksOrBuilder() {
         if (edgeLinksBuilder_ != null) {
           return edgeLinksBuilder_.getMessageOrBuilder();
         } else {
           return edgeLinks_ == null ?
-              SpaceOuterClass.IntTensor.getDefaultInstance() : edgeLinks_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : edgeLinks_;
         }
       }
       /**
-       * <code>.IntTensor edge_links = 3;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor edge_links = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getEdgeLinksFieldBuilder() {
         if (edgeLinksBuilder_ == null) {
           edgeLinksBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getEdgeLinks(),
                   getParentForChildren(),
                   isClean());
@@ -5832,10 +5703,30 @@ public final class SpaceOuterClass {
 
     /**
      * <pre>
+     * For raw data
+     * </pre>
+     *
+     * <code>string description = 2;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <pre>
+     * For raw data
+     * </pre>
+     *
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <pre>
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @return A list containing the shape.
      */
     java.util.List<java.lang.Integer> getShapeList();
@@ -5844,7 +5735,7 @@ public final class SpaceOuterClass {
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @return The count of shape.
      */
     int getShapeCount();
@@ -5853,52 +5744,53 @@ public final class SpaceOuterClass {
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @param index The index of the element to return.
      * @return The shape at the given index.
      */
     int getShape(int index);
 
     /**
-     * <code>.DataType data_type = 3;</code>
-     * @return The enum numeric value on the wire for dataType.
-     */
-    int getDataTypeValue();
-    /**
-     * <code>.DataType data_type = 3;</code>
+     * <code>string data_type = 4;</code>
      * @return The dataType.
      */
-    SpaceOuterClass.DataType getDataType();
+    java.lang.String getDataType();
+    /**
+     * <code>string data_type = 4;</code>
+     * @return The bytes for dataType.
+     */
+    com.google.protobuf.ByteString
+        getDataTypeBytes();
 
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @return A list containing the low.
      */
     java.util.List<java.lang.Float> getLowList();
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @return The count of low.
      */
     int getLowCount();
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @param index The index of the element to return.
      * @return The low at the given index.
      */
     float getLow(int index);
 
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @return A list containing the high.
      */
     java.util.List<java.lang.Float> getHighList();
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @return The count of high.
      */
     int getHighCount();
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @param index The index of the element to return.
      * @return The high at the given index.
      */
@@ -5909,7 +5801,7 @@ public final class SpaceOuterClass {
      * start of the Discrete, min_length of the Text
      * </pre>
      *
-     * <code>int32 min = 6;</code>
+     * <code>int32 min = 7;</code>
      * @return The min.
      */
     int getMin();
@@ -5919,47 +5811,47 @@ public final class SpaceOuterClass {
      * n of the Discrete, max_length of the Text
      * </pre>
      *
-     * <code>int32 max = 7;</code>
+     * <code>int32 max = 8;</code>
      * @return The max.
      */
     int getMax();
 
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @return A list containing the nvec.
      */
     java.util.List<java.lang.Integer> getNvecList();
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @return The count of nvec.
      */
     int getNvecCount();
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @param index The index of the element to return.
      * @return The nvec at the given index.
      */
     int getNvec(int index);
 
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @return A list containing the charset.
      */
     java.util.List<java.lang.String>
         getCharsetList();
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @return The count of charset.
      */
     int getCharsetCount();
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @param index The index of the element to return.
      * @return The charset at the given index.
      */
     java.lang.String getCharset(int index);
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @param index The index of the value to return.
      * @return The bytes of the charset at the given index.
      */
@@ -5967,11 +5859,11 @@ public final class SpaceOuterClass {
         getCharsetBytes(int index);
 
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     int getDictSpaceCount();
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     boolean containsDictSpace(
         java.lang.String key);
@@ -5982,19 +5874,19 @@ public final class SpaceOuterClass {
     java.util.Map<java.lang.String, SpaceOuterClass.Space>
     getDictSpace();
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     java.util.Map<java.lang.String, SpaceOuterClass.Space>
     getDictSpaceMap();
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
 
     SpaceOuterClass.Space getDictSpaceOrDefault(
         java.lang.String key,
         SpaceOuterClass.Space defaultValue);
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
 
     SpaceOuterClass.Space getDictSpaceOrThrow(
@@ -6005,7 +5897,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     int getListSpaceCount();
     /**
@@ -6013,7 +5905,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     boolean containsListSpace(
         int key);
@@ -6028,7 +5920,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     java.util.Map<java.lang.Integer, SpaceOuterClass.Space>
     getListSpaceMap();
@@ -6037,7 +5929,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
 
     SpaceOuterClass.Space getListSpaceOrDefault(
@@ -6048,24 +5940,24 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
 
     SpaceOuterClass.Space getListSpaceOrThrow(
         int key);
 
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      * @return Whether the graphSpace field is set.
      */
     boolean hasGraphSpace();
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      * @return The graphSpace.
      */
     SpaceOuterClass.GraphSpace getGraphSpace();
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      */
     SpaceOuterClass.GraphSpaceOrBuilder getGraphSpaceOrBuilder();
   }
@@ -6083,8 +5975,9 @@ public final class SpaceOuterClass {
     }
     private Space() {
       spaceType_ = 0;
+      description_ = "";
       shape_ = emptyIntList();
-      dataType_ = 0;
+      dataType_ = "";
       low_ = emptyFloatList();
       high_ = emptyFloatList();
       nvec_ = emptyIntList();
@@ -6128,7 +6021,13 @@ public final class SpaceOuterClass {
               spaceType_ = rawValue;
               break;
             }
-            case 16: {
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 24: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 shape_ = newIntList();
                 mutable_bitField0_ |= 0x00000001;
@@ -6136,7 +6035,7 @@ public final class SpaceOuterClass {
               shape_.addInt(input.readInt32());
               break;
             }
-            case 18: {
+            case 26: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
@@ -6149,13 +6048,13 @@ public final class SpaceOuterClass {
               input.popLimit(limit);
               break;
             }
-            case 24: {
-              int rawValue = input.readEnum();
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              dataType_ = rawValue;
+              dataType_ = s;
               break;
             }
-            case 37: {
+            case 45: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 low_ = newFloatList();
                 mutable_bitField0_ |= 0x00000002;
@@ -6163,7 +6062,7 @@ public final class SpaceOuterClass {
               low_.addFloat(input.readFloat());
               break;
             }
-            case 34: {
+            case 42: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
@@ -6176,7 +6075,7 @@ public final class SpaceOuterClass {
               input.popLimit(limit);
               break;
             }
-            case 45: {
+            case 53: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 high_ = newFloatList();
                 mutable_bitField0_ |= 0x00000004;
@@ -6184,7 +6083,7 @@ public final class SpaceOuterClass {
               high_.addFloat(input.readFloat());
               break;
             }
-            case 42: {
+            case 50: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
@@ -6197,17 +6096,17 @@ public final class SpaceOuterClass {
               input.popLimit(limit);
               break;
             }
-            case 48: {
+            case 56: {
 
               min_ = input.readInt32();
               break;
             }
-            case 56: {
+            case 64: {
 
               max_ = input.readInt32();
               break;
             }
-            case 64: {
+            case 72: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 nvec_ = newIntList();
                 mutable_bitField0_ |= 0x00000008;
@@ -6215,7 +6114,7 @@ public final class SpaceOuterClass {
               nvec_.addInt(input.readInt32());
               break;
             }
-            case 66: {
+            case 74: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
               if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
@@ -6228,7 +6127,7 @@ public final class SpaceOuterClass {
               input.popLimit(limit);
               break;
             }
-            case 74: {
+            case 82: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000010) != 0)) {
                 charset_ = new com.google.protobuf.LazyStringArrayList();
@@ -6237,7 +6136,7 @@ public final class SpaceOuterClass {
               charset_.add(s);
               break;
             }
-            case 82: {
+            case 90: {
               if (!((mutable_bitField0_ & 0x00000020) != 0)) {
                 dictSpace_ = com.google.protobuf.MapField.newMapField(
                     DictSpaceDefaultEntryHolder.defaultEntry);
@@ -6250,7 +6149,7 @@ public final class SpaceOuterClass {
                   dictSpace__.getKey(), dictSpace__.getValue());
               break;
             }
-            case 90: {
+            case 98: {
               if (!((mutable_bitField0_ & 0x00000040) != 0)) {
                 listSpace_ = com.google.protobuf.MapField.newMapField(
                     ListSpaceDefaultEntryHolder.defaultEntry);
@@ -6263,7 +6162,7 @@ public final class SpaceOuterClass {
                   listSpace__.getKey(), listSpace__.getValue());
               break;
             }
-            case 98: {
+            case 106: {
               SpaceOuterClass.GraphSpace.Builder subBuilder = null;
               if (graphSpace_ != null) {
                 subBuilder = graphSpace_.toBuilder();
@@ -6320,9 +6219,9 @@ public final class SpaceOuterClass {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 10:
-          return internalGetDictSpace();
         case 11:
+          return internalGetDictSpace();
+        case 12:
           return internalGetListSpace();
         default:
           throw new RuntimeException(
@@ -6356,14 +6255,60 @@ public final class SpaceOuterClass {
       return result == null ? SpaceOuterClass.SpaceType.UNRECOGNIZED : result;
     }
 
-    public static final int SHAPE_FIELD_NUMBER = 2;
+    public static final int DESCRIPTION_FIELD_NUMBER = 2;
+    private volatile java.lang.Object description_;
+    /**
+     * <pre>
+     * For raw data
+     * </pre>
+     *
+     * <code>string description = 2;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * For raw data
+     * </pre>
+     *
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SHAPE_FIELD_NUMBER = 3;
     private com.google.protobuf.Internal.IntList shape_;
     /**
      * <pre>
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @return A list containing the shape.
      */
     @java.lang.Override
@@ -6376,7 +6321,7 @@ public final class SpaceOuterClass {
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @return The count of shape.
      */
     public int getShapeCount() {
@@ -6387,7 +6332,7 @@ public final class SpaceOuterClass {
      * also the n of the MultiBinary
      * </pre>
      *
-     * <code>repeated int32 shape = 2;</code>
+     * <code>repeated int32 shape = 3;</code>
      * @param index The index of the element to return.
      * @return The shape at the given index.
      */
@@ -6396,29 +6341,48 @@ public final class SpaceOuterClass {
     }
     private int shapeMemoizedSerializedSize = -1;
 
-    public static final int DATA_TYPE_FIELD_NUMBER = 3;
-    private int dataType_;
+    public static final int DATA_TYPE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object dataType_;
     /**
-     * <code>.DataType data_type = 3;</code>
-     * @return The enum numeric value on the wire for dataType.
-     */
-    @java.lang.Override public int getDataTypeValue() {
-      return dataType_;
-    }
-    /**
-     * <code>.DataType data_type = 3;</code>
+     * <code>string data_type = 4;</code>
      * @return The dataType.
      */
-    @java.lang.Override public SpaceOuterClass.DataType getDataType() {
-      @SuppressWarnings("deprecation")
-      SpaceOuterClass.DataType result = SpaceOuterClass.DataType.valueOf(dataType_);
-      return result == null ? SpaceOuterClass.DataType.UNRECOGNIZED : result;
+    @java.lang.Override
+    public java.lang.String getDataType() {
+      java.lang.Object ref = dataType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dataType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string data_type = 4;</code>
+     * @return The bytes for dataType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDataTypeBytes() {
+      java.lang.Object ref = dataType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dataType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int LOW_FIELD_NUMBER = 4;
+    public static final int LOW_FIELD_NUMBER = 5;
     private com.google.protobuf.Internal.FloatList low_;
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @return A list containing the low.
      */
     @java.lang.Override
@@ -6427,14 +6391,14 @@ public final class SpaceOuterClass {
       return low_;
     }
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @return The count of low.
      */
     public int getLowCount() {
       return low_.size();
     }
     /**
-     * <code>repeated float low = 4;</code>
+     * <code>repeated float low = 5;</code>
      * @param index The index of the element to return.
      * @return The low at the given index.
      */
@@ -6443,10 +6407,10 @@ public final class SpaceOuterClass {
     }
     private int lowMemoizedSerializedSize = -1;
 
-    public static final int HIGH_FIELD_NUMBER = 5;
+    public static final int HIGH_FIELD_NUMBER = 6;
     private com.google.protobuf.Internal.FloatList high_;
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @return A list containing the high.
      */
     @java.lang.Override
@@ -6455,14 +6419,14 @@ public final class SpaceOuterClass {
       return high_;
     }
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @return The count of high.
      */
     public int getHighCount() {
       return high_.size();
     }
     /**
-     * <code>repeated float high = 5;</code>
+     * <code>repeated float high = 6;</code>
      * @param index The index of the element to return.
      * @return The high at the given index.
      */
@@ -6471,14 +6435,14 @@ public final class SpaceOuterClass {
     }
     private int highMemoizedSerializedSize = -1;
 
-    public static final int MIN_FIELD_NUMBER = 6;
+    public static final int MIN_FIELD_NUMBER = 7;
     private int min_;
     /**
      * <pre>
      * start of the Discrete, min_length of the Text
      * </pre>
      *
-     * <code>int32 min = 6;</code>
+     * <code>int32 min = 7;</code>
      * @return The min.
      */
     @java.lang.Override
@@ -6486,14 +6450,14 @@ public final class SpaceOuterClass {
       return min_;
     }
 
-    public static final int MAX_FIELD_NUMBER = 7;
+    public static final int MAX_FIELD_NUMBER = 8;
     private int max_;
     /**
      * <pre>
      * n of the Discrete, max_length of the Text
      * </pre>
      *
-     * <code>int32 max = 7;</code>
+     * <code>int32 max = 8;</code>
      * @return The max.
      */
     @java.lang.Override
@@ -6501,10 +6465,10 @@ public final class SpaceOuterClass {
       return max_;
     }
 
-    public static final int NVEC_FIELD_NUMBER = 8;
+    public static final int NVEC_FIELD_NUMBER = 9;
     private com.google.protobuf.Internal.IntList nvec_;
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @return A list containing the nvec.
      */
     @java.lang.Override
@@ -6513,14 +6477,14 @@ public final class SpaceOuterClass {
       return nvec_;
     }
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @return The count of nvec.
      */
     public int getNvecCount() {
       return nvec_.size();
     }
     /**
-     * <code>repeated int32 nvec = 8;</code>
+     * <code>repeated int32 nvec = 9;</code>
      * @param index The index of the element to return.
      * @return The nvec at the given index.
      */
@@ -6529,10 +6493,10 @@ public final class SpaceOuterClass {
     }
     private int nvecMemoizedSerializedSize = -1;
 
-    public static final int CHARSET_FIELD_NUMBER = 9;
+    public static final int CHARSET_FIELD_NUMBER = 10;
     private com.google.protobuf.LazyStringList charset_;
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @return A list containing the charset.
      */
     public com.google.protobuf.ProtocolStringList
@@ -6540,14 +6504,14 @@ public final class SpaceOuterClass {
       return charset_;
     }
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @return The count of charset.
      */
     public int getCharsetCount() {
       return charset_.size();
     }
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @param index The index of the element to return.
      * @return The charset at the given index.
      */
@@ -6555,7 +6519,7 @@ public final class SpaceOuterClass {
       return charset_.get(index);
     }
     /**
-     * <code>repeated string charset = 9;</code>
+     * <code>repeated string charset = 10;</code>
      * @param index The index of the value to return.
      * @return The bytes of the charset at the given index.
      */
@@ -6564,7 +6528,7 @@ public final class SpaceOuterClass {
       return charset_.getByteString(index);
     }
 
-    public static final int DICT_SPACE_FIELD_NUMBER = 10;
+    public static final int DICT_SPACE_FIELD_NUMBER = 11;
     private static final class DictSpaceDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, SpaceOuterClass.Space> defaultEntry =
@@ -6591,7 +6555,7 @@ public final class SpaceOuterClass {
       return internalGetDictSpace().getMap().size();
     }
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
 
     @java.lang.Override
@@ -6609,7 +6573,7 @@ public final class SpaceOuterClass {
       return getDictSpaceMap();
     }
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     @java.lang.Override
 
@@ -6617,7 +6581,7 @@ public final class SpaceOuterClass {
       return internalGetDictSpace().getMap();
     }
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     @java.lang.Override
 
@@ -6630,7 +6594,7 @@ public final class SpaceOuterClass {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+     * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
      */
     @java.lang.Override
 
@@ -6645,7 +6609,7 @@ public final class SpaceOuterClass {
       return map.get(key);
     }
 
-    public static final int LIST_SPACE_FIELD_NUMBER = 11;
+    public static final int LIST_SPACE_FIELD_NUMBER = 12;
     private static final class ListSpaceDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.Integer, SpaceOuterClass.Space> defaultEntry =
@@ -6676,7 +6640,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
 
     @java.lang.Override
@@ -6698,7 +6662,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     @java.lang.Override
 
@@ -6710,7 +6674,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     @java.lang.Override
 
@@ -6727,7 +6691,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+     * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
      */
     @java.lang.Override
 
@@ -6742,10 +6706,10 @@ public final class SpaceOuterClass {
       return map.get(key);
     }
 
-    public static final int GRAPH_SPACE_FIELD_NUMBER = 12;
+    public static final int GRAPH_SPACE_FIELD_NUMBER = 13;
     private SpaceOuterClass.GraphSpace graphSpace_;
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      * @return Whether the graphSpace field is set.
      */
     @java.lang.Override
@@ -6753,7 +6717,7 @@ public final class SpaceOuterClass {
       return graphSpace_ != null;
     }
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      * @return The graphSpace.
      */
     @java.lang.Override
@@ -6761,7 +6725,7 @@ public final class SpaceOuterClass {
       return graphSpace_ == null ? SpaceOuterClass.GraphSpace.getDefaultInstance() : graphSpace_;
     }
     /**
-     * <code>.GraphSpace graph_space = 12;</code>
+     * <code>.GraphSpace graph_space = 13;</code>
      */
     @java.lang.Override
     public SpaceOuterClass.GraphSpaceOrBuilder getGraphSpaceOrBuilder() {
@@ -6786,60 +6750,63 @@ public final class SpaceOuterClass {
       if (spaceType_ != SpaceOuterClass.SpaceType.SPACE_TYPE_UNSPECIFIED.getNumber()) {
         output.writeEnum(1, spaceType_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
+      }
       if (getShapeList().size() > 0) {
-        output.writeUInt32NoTag(18);
+        output.writeUInt32NoTag(26);
         output.writeUInt32NoTag(shapeMemoizedSerializedSize);
       }
       for (int i = 0; i < shape_.size(); i++) {
         output.writeInt32NoTag(shape_.getInt(i));
       }
-      if (dataType_ != SpaceOuterClass.DataType.DATA_TYPE_UNSPECIFIED.getNumber()) {
-        output.writeEnum(3, dataType_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dataType_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dataType_);
       }
       if (getLowList().size() > 0) {
-        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(42);
         output.writeUInt32NoTag(lowMemoizedSerializedSize);
       }
       for (int i = 0; i < low_.size(); i++) {
         output.writeFloatNoTag(low_.getFloat(i));
       }
       if (getHighList().size() > 0) {
-        output.writeUInt32NoTag(42);
+        output.writeUInt32NoTag(50);
         output.writeUInt32NoTag(highMemoizedSerializedSize);
       }
       for (int i = 0; i < high_.size(); i++) {
         output.writeFloatNoTag(high_.getFloat(i));
       }
       if (min_ != 0) {
-        output.writeInt32(6, min_);
+        output.writeInt32(7, min_);
       }
       if (max_ != 0) {
-        output.writeInt32(7, max_);
+        output.writeInt32(8, max_);
       }
       if (getNvecList().size() > 0) {
-        output.writeUInt32NoTag(66);
+        output.writeUInt32NoTag(74);
         output.writeUInt32NoTag(nvecMemoizedSerializedSize);
       }
       for (int i = 0; i < nvec_.size(); i++) {
         output.writeInt32NoTag(nvec_.getInt(i));
       }
       for (int i = 0; i < charset_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, charset_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, charset_.getRaw(i));
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetDictSpace(),
           DictSpaceDefaultEntryHolder.defaultEntry,
-          10);
+          11);
       com.google.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetListSpace(),
           ListSpaceDefaultEntryHolder.defaultEntry,
-          11);
+          12);
       if (graphSpace_ != null) {
-        output.writeMessage(12, getGraphSpace());
+        output.writeMessage(13, getGraphSpace());
       }
       unknownFields.writeTo(output);
     }
@@ -6853,6 +6820,9 @@ public final class SpaceOuterClass {
       if (spaceType_ != SpaceOuterClass.SpaceType.SPACE_TYPE_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, spaceType_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
       {
         int dataSize = 0;
@@ -6868,9 +6838,8 @@ public final class SpaceOuterClass {
         }
         shapeMemoizedSerializedSize = dataSize;
       }
-      if (dataType_ != SpaceOuterClass.DataType.DATA_TYPE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, dataType_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dataType_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dataType_);
       }
       {
         int dataSize = 0;
@@ -6896,11 +6865,11 @@ public final class SpaceOuterClass {
       }
       if (min_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, min_);
+          .computeInt32Size(7, min_);
       }
       if (max_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, max_);
+          .computeInt32Size(8, max_);
       }
       {
         int dataSize = 0;
@@ -6932,7 +6901,7 @@ public final class SpaceOuterClass {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(10, dictSpace__);
+            .computeMessageSize(11, dictSpace__);
       }
       for (java.util.Map.Entry<java.lang.Integer, SpaceOuterClass.Space> entry
            : internalGetListSpace().getMap().entrySet()) {
@@ -6942,11 +6911,11 @@ public final class SpaceOuterClass {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(11, listSpace__);
+            .computeMessageSize(12, listSpace__);
       }
       if (graphSpace_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getGraphSpace());
+          .computeMessageSize(13, getGraphSpace());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6964,9 +6933,12 @@ public final class SpaceOuterClass {
       SpaceOuterClass.Space other = (SpaceOuterClass.Space) obj;
 
       if (spaceType_ != other.spaceType_) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!getShapeList()
           .equals(other.getShapeList())) return false;
-      if (dataType_ != other.dataType_) return false;
+      if (!getDataType()
+          .equals(other.getDataType())) return false;
       if (!getLowList()
           .equals(other.getLowList())) return false;
       if (!getHighList()
@@ -7001,12 +6973,14 @@ public final class SpaceOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SPACE_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + spaceType_;
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       if (getShapeCount() > 0) {
         hash = (37 * hash) + SHAPE_FIELD_NUMBER;
         hash = (53 * hash) + getShapeList().hashCode();
       }
       hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + dataType_;
+      hash = (53 * hash) + getDataType().hashCode();
       if (getLowCount() > 0) {
         hash = (37 * hash) + LOW_FIELD_NUMBER;
         hash = (53 * hash) + getLowList().hashCode();
@@ -7150,9 +7124,9 @@ public final class SpaceOuterClass {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 10:
-            return internalGetDictSpace();
           case 11:
+            return internalGetDictSpace();
+          case 12:
             return internalGetListSpace();
           default:
             throw new RuntimeException(
@@ -7163,9 +7137,9 @@ public final class SpaceOuterClass {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 10:
-            return internalGetMutableDictSpace();
           case 11:
+            return internalGetMutableDictSpace();
+          case 12:
             return internalGetMutableListSpace();
           default:
             throw new RuntimeException(
@@ -7200,9 +7174,11 @@ public final class SpaceOuterClass {
         super.clear();
         spaceType_ = 0;
 
+        description_ = "";
+
         shape_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
-        dataType_ = 0;
+        dataType_ = "";
 
         low_ = emptyFloatList();
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -7252,6 +7228,7 @@ public final class SpaceOuterClass {
         SpaceOuterClass.Space result = new SpaceOuterClass.Space(this);
         int from_bitField0_ = bitField0_;
         result.spaceType_ = spaceType_;
+        result.description_ = description_;
         if (((bitField0_ & 0x00000001) != 0)) {
           shape_.makeImmutable();
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -7340,6 +7317,10 @@ public final class SpaceOuterClass {
         if (other.spaceType_ != 0) {
           setSpaceTypeValue(other.getSpaceTypeValue());
         }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
         if (!other.shape_.isEmpty()) {
           if (shape_.isEmpty()) {
             shape_ = other.shape_;
@@ -7350,8 +7331,9 @@ public final class SpaceOuterClass {
           }
           onChanged();
         }
-        if (other.dataType_ != 0) {
-          setDataTypeValue(other.getDataTypeValue());
+        if (!other.getDataType().isEmpty()) {
+          dataType_ = other.dataType_;
+          onChanged();
         }
         if (!other.low_.isEmpty()) {
           if (low_.isEmpty()) {
@@ -7490,6 +7472,102 @@ public final class SpaceOuterClass {
         return this;
       }
 
+      private java.lang.Object description_ = "";
+      /**
+       * <pre>
+       * For raw data
+       * </pre>
+       *
+       * <code>string description = 2;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * For raw data
+       * </pre>
+       *
+       * <code>string description = 2;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * For raw data
+       * </pre>
+       *
+       * <code>string description = 2;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For raw data
+       * </pre>
+       *
+       * <code>string description = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For raw data
+       * </pre>
+       *
+       * <code>string description = 2;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.Internal.IntList shape_ = emptyIntList();
       private void ensureShapeIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
@@ -7502,7 +7580,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @return A list containing the shape.
        */
       public java.util.List<java.lang.Integer>
@@ -7515,7 +7593,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @return The count of shape.
        */
       public int getShapeCount() {
@@ -7526,7 +7604,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @param index The index of the element to return.
        * @return The shape at the given index.
        */
@@ -7538,7 +7616,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @param index The index to set the value at.
        * @param value The shape to set.
        * @return This builder for chaining.
@@ -7555,7 +7633,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @param value The shape to add.
        * @return This builder for chaining.
        */
@@ -7570,7 +7648,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @param values The shape to add.
        * @return This builder for chaining.
        */
@@ -7587,7 +7665,7 @@ public final class SpaceOuterClass {
        * also the n of the MultiBinary
        * </pre>
        *
-       * <code>repeated int32 shape = 2;</code>
+       * <code>repeated int32 shape = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearShape() {
@@ -7597,56 +7675,78 @@ public final class SpaceOuterClass {
         return this;
       }
 
-      private int dataType_ = 0;
+      private java.lang.Object dataType_ = "";
       /**
-       * <code>.DataType data_type = 3;</code>
-       * @return The enum numeric value on the wire for dataType.
+       * <code>string data_type = 4;</code>
+       * @return The dataType.
        */
-      @java.lang.Override public int getDataTypeValue() {
-        return dataType_;
+      public java.lang.String getDataType() {
+        java.lang.Object ref = dataType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dataType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>.DataType data_type = 3;</code>
-       * @param value The enum numeric value on the wire for dataType to set.
+       * <code>string data_type = 4;</code>
+       * @return The bytes for dataType.
+       */
+      public com.google.protobuf.ByteString
+          getDataTypeBytes() {
+        java.lang.Object ref = dataType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dataType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string data_type = 4;</code>
+       * @param value The dataType to set.
        * @return This builder for chaining.
        */
-      public Builder setDataTypeValue(int value) {
-        
+      public Builder setDataType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         dataType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.DataType data_type = 3;</code>
-       * @return The dataType.
-       */
-      @java.lang.Override
-      public SpaceOuterClass.DataType getDataType() {
-        @SuppressWarnings("deprecation")
-        SpaceOuterClass.DataType result = SpaceOuterClass.DataType.valueOf(dataType_);
-        return result == null ? SpaceOuterClass.DataType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.DataType data_type = 3;</code>
-       * @param value The dataType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDataType(SpaceOuterClass.DataType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        dataType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.DataType data_type = 3;</code>
+       * <code>string data_type = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearDataType() {
         
-        dataType_ = 0;
+        dataType_ = getDefaultInstance().getDataType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data_type = 4;</code>
+       * @param value The bytes for dataType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dataType_ = value;
         onChanged();
         return this;
       }
@@ -7659,7 +7759,7 @@ public final class SpaceOuterClass {
          }
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @return A list containing the low.
        */
       public java.util.List<java.lang.Float>
@@ -7668,14 +7768,14 @@ public final class SpaceOuterClass {
                  java.util.Collections.unmodifiableList(low_) : low_;
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @return The count of low.
        */
       public int getLowCount() {
         return low_.size();
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @param index The index of the element to return.
        * @return The low at the given index.
        */
@@ -7683,7 +7783,7 @@ public final class SpaceOuterClass {
         return low_.getFloat(index);
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @param index The index to set the value at.
        * @param value The low to set.
        * @return This builder for chaining.
@@ -7696,7 +7796,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @param value The low to add.
        * @return This builder for chaining.
        */
@@ -7707,7 +7807,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @param values The low to add.
        * @return This builder for chaining.
        */
@@ -7720,7 +7820,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float low = 4;</code>
+       * <code>repeated float low = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearLow() {
@@ -7738,7 +7838,7 @@ public final class SpaceOuterClass {
          }
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @return A list containing the high.
        */
       public java.util.List<java.lang.Float>
@@ -7747,14 +7847,14 @@ public final class SpaceOuterClass {
                  java.util.Collections.unmodifiableList(high_) : high_;
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @return The count of high.
        */
       public int getHighCount() {
         return high_.size();
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @param index The index of the element to return.
        * @return The high at the given index.
        */
@@ -7762,7 +7862,7 @@ public final class SpaceOuterClass {
         return high_.getFloat(index);
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @param index The index to set the value at.
        * @param value The high to set.
        * @return This builder for chaining.
@@ -7775,7 +7875,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @param value The high to add.
        * @return This builder for chaining.
        */
@@ -7786,7 +7886,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @param values The high to add.
        * @return This builder for chaining.
        */
@@ -7799,7 +7899,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated float high = 5;</code>
+       * <code>repeated float high = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearHigh() {
@@ -7815,7 +7915,7 @@ public final class SpaceOuterClass {
        * start of the Discrete, min_length of the Text
        * </pre>
        *
-       * <code>int32 min = 6;</code>
+       * <code>int32 min = 7;</code>
        * @return The min.
        */
       @java.lang.Override
@@ -7827,7 +7927,7 @@ public final class SpaceOuterClass {
        * start of the Discrete, min_length of the Text
        * </pre>
        *
-       * <code>int32 min = 6;</code>
+       * <code>int32 min = 7;</code>
        * @param value The min to set.
        * @return This builder for chaining.
        */
@@ -7842,7 +7942,7 @@ public final class SpaceOuterClass {
        * start of the Discrete, min_length of the Text
        * </pre>
        *
-       * <code>int32 min = 6;</code>
+       * <code>int32 min = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearMin() {
@@ -7858,7 +7958,7 @@ public final class SpaceOuterClass {
        * n of the Discrete, max_length of the Text
        * </pre>
        *
-       * <code>int32 max = 7;</code>
+       * <code>int32 max = 8;</code>
        * @return The max.
        */
       @java.lang.Override
@@ -7870,7 +7970,7 @@ public final class SpaceOuterClass {
        * n of the Discrete, max_length of the Text
        * </pre>
        *
-       * <code>int32 max = 7;</code>
+       * <code>int32 max = 8;</code>
        * @param value The max to set.
        * @return This builder for chaining.
        */
@@ -7885,7 +7985,7 @@ public final class SpaceOuterClass {
        * n of the Discrete, max_length of the Text
        * </pre>
        *
-       * <code>int32 max = 7;</code>
+       * <code>int32 max = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearMax() {
@@ -7903,7 +8003,7 @@ public final class SpaceOuterClass {
          }
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @return A list containing the nvec.
        */
       public java.util.List<java.lang.Integer>
@@ -7912,14 +8012,14 @@ public final class SpaceOuterClass {
                  java.util.Collections.unmodifiableList(nvec_) : nvec_;
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @return The count of nvec.
        */
       public int getNvecCount() {
         return nvec_.size();
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @param index The index of the element to return.
        * @return The nvec at the given index.
        */
@@ -7927,7 +8027,7 @@ public final class SpaceOuterClass {
         return nvec_.getInt(index);
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @param index The index to set the value at.
        * @param value The nvec to set.
        * @return This builder for chaining.
@@ -7940,7 +8040,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @param value The nvec to add.
        * @return This builder for chaining.
        */
@@ -7951,7 +8051,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @param values The nvec to add.
        * @return This builder for chaining.
        */
@@ -7964,7 +8064,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated int32 nvec = 8;</code>
+       * <code>repeated int32 nvec = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearNvec() {
@@ -7982,7 +8082,7 @@ public final class SpaceOuterClass {
          }
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @return A list containing the charset.
        */
       public com.google.protobuf.ProtocolStringList
@@ -7990,14 +8090,14 @@ public final class SpaceOuterClass {
         return charset_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @return The count of charset.
        */
       public int getCharsetCount() {
         return charset_.size();
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param index The index of the element to return.
        * @return The charset at the given index.
        */
@@ -8005,7 +8105,7 @@ public final class SpaceOuterClass {
         return charset_.get(index);
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param index The index of the value to return.
        * @return The bytes of the charset at the given index.
        */
@@ -8014,7 +8114,7 @@ public final class SpaceOuterClass {
         return charset_.getByteString(index);
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param index The index to set the value at.
        * @param value The charset to set.
        * @return This builder for chaining.
@@ -8030,7 +8130,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param value The charset to add.
        * @return This builder for chaining.
        */
@@ -8045,7 +8145,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param values The charset to add.
        * @return This builder for chaining.
        */
@@ -8058,7 +8158,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearCharset() {
@@ -8068,7 +8168,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>repeated string charset = 9;</code>
+       * <code>repeated string charset = 10;</code>
        * @param value The bytes of the charset to add.
        * @return This builder for chaining.
        */
@@ -8111,7 +8211,7 @@ public final class SpaceOuterClass {
         return internalGetDictSpace().getMap().size();
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
 
       @java.lang.Override
@@ -8129,7 +8229,7 @@ public final class SpaceOuterClass {
         return getDictSpaceMap();
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
       @java.lang.Override
 
@@ -8137,7 +8237,7 @@ public final class SpaceOuterClass {
         return internalGetDictSpace().getMap();
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
       @java.lang.Override
 
@@ -8150,7 +8250,7 @@ public final class SpaceOuterClass {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
       @java.lang.Override
 
@@ -8171,7 +8271,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
 
       public Builder removeDictSpace(
@@ -8190,7 +8290,7 @@ public final class SpaceOuterClass {
         return internalGetMutableDictSpace().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
       public Builder putDictSpace(
           java.lang.String key,
@@ -8205,7 +8305,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>map&lt;string, .Space&gt; dict_space = 10;</code>
+       * <code>map&lt;string, .Space&gt; dict_space = 11;</code>
        */
 
       public Builder putAllDictSpace(
@@ -8246,7 +8346,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
 
       @java.lang.Override
@@ -8268,7 +8368,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
       @java.lang.Override
 
@@ -8280,7 +8380,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
       @java.lang.Override
 
@@ -8297,7 +8397,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
       @java.lang.Override
 
@@ -8322,7 +8422,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
 
       public Builder removeListSpace(
@@ -8345,7 +8445,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
       public Builder putListSpace(
           int key,
@@ -8364,7 +8464,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Space&gt; list_space = 11;</code>
+       * <code>map&lt;int32, .Space&gt; list_space = 12;</code>
        */
 
       public Builder putAllListSpace(
@@ -8378,14 +8478,14 @@ public final class SpaceOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           SpaceOuterClass.GraphSpace, SpaceOuterClass.GraphSpace.Builder, SpaceOuterClass.GraphSpaceOrBuilder> graphSpaceBuilder_;
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        * @return Whether the graphSpace field is set.
        */
       public boolean hasGraphSpace() {
         return graphSpaceBuilder_ != null || graphSpace_ != null;
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        * @return The graphSpace.
        */
       public SpaceOuterClass.GraphSpace getGraphSpace() {
@@ -8396,7 +8496,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public Builder setGraphSpace(SpaceOuterClass.GraphSpace value) {
         if (graphSpaceBuilder_ == null) {
@@ -8412,7 +8512,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public Builder setGraphSpace(
           SpaceOuterClass.GraphSpace.Builder builderForValue) {
@@ -8426,7 +8526,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public Builder mergeGraphSpace(SpaceOuterClass.GraphSpace value) {
         if (graphSpaceBuilder_ == null) {
@@ -8444,7 +8544,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public Builder clearGraphSpace() {
         if (graphSpaceBuilder_ == null) {
@@ -8458,7 +8558,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public SpaceOuterClass.GraphSpace.Builder getGraphSpaceBuilder() {
         
@@ -8466,7 +8566,7 @@ public final class SpaceOuterClass {
         return getGraphSpaceFieldBuilder().getBuilder();
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       public SpaceOuterClass.GraphSpaceOrBuilder getGraphSpaceOrBuilder() {
         if (graphSpaceBuilder_ != null) {
@@ -8477,7 +8577,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>.GraphSpace graph_space = 12;</code>
+       * <code>.GraphSpace graph_space = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           SpaceOuterClass.GraphSpace, SpaceOuterClass.GraphSpace.Builder, SpaceOuterClass.GraphSpaceOrBuilder> 
@@ -8561,74 +8661,116 @@ public final class SpaceOuterClass {
     SpaceOuterClass.SpaceType getSpaceType();
 
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>string data_type = 2;</code>
+     * @return The dataType.
+     */
+    java.lang.String getDataType();
+    /**
+     * <code>string data_type = 2;</code>
+     * @return The bytes for dataType.
+     */
+    com.google.protobuf.ByteString
+        getDataTypeBytes();
+
+    /**
+     * <code>bytes raw_data = 3;</code>
+     * @return The rawData.
+     */
+    com.google.protobuf.ByteString getRawData();
+
+    /**
+     * <code>.Tensor box = 4;</code>
      * @return Whether the box field is set.
      */
     boolean hasBox();
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>.Tensor box = 4;</code>
      * @return The box.
      */
-    SpaceOuterClass.FloatTensor getBox();
+    SpaceOuterClass.Tensor getBox();
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>.Tensor box = 4;</code>
      */
-    SpaceOuterClass.FloatTensorOrBuilder getBoxOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getBoxOrBuilder();
 
     /**
-     * <code>int32 discrete = 3;</code>
+     * <code>int32 discrete = 5;</code>
      * @return The discrete.
      */
     int getDiscrete();
 
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      * @return Whether the multiBinary field is set.
      */
     boolean hasMultiBinary();
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      * @return The multiBinary.
      */
-    SpaceOuterClass.BoolTensor getMultiBinary();
+    SpaceOuterClass.Tensor getMultiBinary();
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      */
-    SpaceOuterClass.BoolTensorOrBuilder getMultiBinaryOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getMultiBinaryOrBuilder();
 
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      * @return Whether the multiDiscrete field is set.
      */
     boolean hasMultiDiscrete();
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      * @return The multiDiscrete.
      */
-    SpaceOuterClass.IntTensor getMultiDiscrete();
+    SpaceOuterClass.Tensor getMultiDiscrete();
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      */
-    SpaceOuterClass.IntTensorOrBuilder getMultiDiscreteOrBuilder();
+    SpaceOuterClass.TensorOrBuilder getMultiDiscreteOrBuilder();
 
     /**
-     * <code>string text = 6;</code>
+     * <code>string text = 8;</code>
      * @return The text.
      */
     java.lang.String getText();
     /**
-     * <code>string text = 6;</code>
+     * <code>string text = 8;</code>
      * @return The bytes for text.
      */
     com.google.protobuf.ByteString
         getTextBytes();
 
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     int getDictCount();
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     boolean containsDict(
         java.lang.String key);
@@ -8639,19 +8781,19 @@ public final class SpaceOuterClass {
     java.util.Map<java.lang.String, SpaceOuterClass.Data>
     getDict();
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     java.util.Map<java.lang.String, SpaceOuterClass.Data>
     getDictMap();
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
 
     SpaceOuterClass.Data getDictOrDefault(
         java.lang.String key,
         SpaceOuterClass.Data defaultValue);
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
 
     SpaceOuterClass.Data getDictOrThrow(
@@ -8662,7 +8804,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     int getListCount();
     /**
@@ -8670,7 +8812,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     boolean containsList(
         int key);
@@ -8685,7 +8827,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     java.util.Map<java.lang.Integer, SpaceOuterClass.Data>
     getListMap();
@@ -8694,7 +8836,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
 
     SpaceOuterClass.Data getListOrDefault(
@@ -8705,24 +8847,24 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
 
     SpaceOuterClass.Data getListOrThrow(
         int key);
 
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      * @return Whether the graph field is set.
      */
     boolean hasGraph();
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      * @return The graph.
      */
     SpaceOuterClass.Graph getGraph();
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      */
     SpaceOuterClass.GraphOrBuilder getGraphOrBuilder();
 
@@ -8731,7 +8873,7 @@ public final class SpaceOuterClass {
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      * @return Whether the image field is set.
      */
     boolean hasImage();
@@ -8740,7 +8882,7 @@ public final class SpaceOuterClass {
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      * @return The image.
      */
     SpaceOuterClass.Image getImage();
@@ -8749,7 +8891,7 @@ public final class SpaceOuterClass {
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      */
     SpaceOuterClass.ImageOrBuilder getImageOrBuilder();
   }
@@ -8771,6 +8913,8 @@ public final class SpaceOuterClass {
     }
     private Data() {
       spaceType_ = 0;
+      dataType_ = "";
+      rawData_ = com.google.protobuf.ByteString.EMPTY;
       text_ = "";
     }
 
@@ -8812,11 +8956,22 @@ public final class SpaceOuterClass {
               break;
             }
             case 18: {
-              SpaceOuterClass.FloatTensor.Builder subBuilder = null;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dataType_ = s;
+              break;
+            }
+            case 26: {
+
+              rawData_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (box_ != null) {
                 subBuilder = box_.toBuilder();
               }
-              box_ = input.readMessage(SpaceOuterClass.FloatTensor.parser(), extensionRegistry);
+              box_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(box_);
                 box_ = subBuilder.buildPartial();
@@ -8824,17 +8979,17 @@ public final class SpaceOuterClass {
 
               break;
             }
-            case 24: {
+            case 40: {
 
               discrete_ = input.readInt32();
               break;
             }
-            case 34: {
-              SpaceOuterClass.BoolTensor.Builder subBuilder = null;
+            case 50: {
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (multiBinary_ != null) {
                 subBuilder = multiBinary_.toBuilder();
               }
-              multiBinary_ = input.readMessage(SpaceOuterClass.BoolTensor.parser(), extensionRegistry);
+              multiBinary_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(multiBinary_);
                 multiBinary_ = subBuilder.buildPartial();
@@ -8842,12 +8997,12 @@ public final class SpaceOuterClass {
 
               break;
             }
-            case 42: {
-              SpaceOuterClass.IntTensor.Builder subBuilder = null;
+            case 58: {
+              SpaceOuterClass.Tensor.Builder subBuilder = null;
               if (multiDiscrete_ != null) {
                 subBuilder = multiDiscrete_.toBuilder();
               }
-              multiDiscrete_ = input.readMessage(SpaceOuterClass.IntTensor.parser(), extensionRegistry);
+              multiDiscrete_ = input.readMessage(SpaceOuterClass.Tensor.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(multiDiscrete_);
                 multiDiscrete_ = subBuilder.buildPartial();
@@ -8855,13 +9010,13 @@ public final class SpaceOuterClass {
 
               break;
             }
-            case 50: {
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
 
               text_ = s;
               break;
             }
-            case 58: {
+            case 74: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 dict_ = com.google.protobuf.MapField.newMapField(
                     DictDefaultEntryHolder.defaultEntry);
@@ -8874,7 +9029,7 @@ public final class SpaceOuterClass {
                   dict__.getKey(), dict__.getValue());
               break;
             }
-            case 66: {
+            case 82: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 list_ = com.google.protobuf.MapField.newMapField(
                     ListDefaultEntryHolder.defaultEntry);
@@ -8887,7 +9042,7 @@ public final class SpaceOuterClass {
                   list__.getKey(), list__.getValue());
               break;
             }
-            case 74: {
+            case 90: {
               SpaceOuterClass.Graph.Builder subBuilder = null;
               if (graph_ != null) {
                 subBuilder = graph_.toBuilder();
@@ -8900,7 +9055,7 @@ public final class SpaceOuterClass {
 
               break;
             }
-            case 82: {
+            case 98: {
               SpaceOuterClass.Image.Builder subBuilder = null;
               if (image_ != null) {
                 subBuilder = image_.toBuilder();
@@ -8942,9 +9097,9 @@ public final class SpaceOuterClass {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 7:
+        case 9:
           return internalGetDict();
-        case 8:
+        case 10:
           return internalGetList();
         default:
           throw new RuntimeException(
@@ -8978,10 +9133,59 @@ public final class SpaceOuterClass {
       return result == null ? SpaceOuterClass.SpaceType.UNRECOGNIZED : result;
     }
 
-    public static final int BOX_FIELD_NUMBER = 2;
-    private SpaceOuterClass.FloatTensor box_;
+    public static final int DATA_TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object dataType_;
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>string data_type = 2;</code>
+     * @return The dataType.
+     */
+    @java.lang.Override
+    public java.lang.String getDataType() {
+      java.lang.Object ref = dataType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dataType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string data_type = 2;</code>
+     * @return The bytes for dataType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDataTypeBytes() {
+      java.lang.Object ref = dataType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dataType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RAW_DATA_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString rawData_;
+    /**
+     * <code>bytes raw_data = 3;</code>
+     * @return The rawData.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getRawData() {
+      return rawData_;
+    }
+
+    public static final int BOX_FIELD_NUMBER = 4;
+    private SpaceOuterClass.Tensor box_;
+    /**
+     * <code>.Tensor box = 4;</code>
      * @return Whether the box field is set.
      */
     @java.lang.Override
@@ -8989,25 +9193,25 @@ public final class SpaceOuterClass {
       return box_ != null;
     }
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>.Tensor box = 4;</code>
      * @return The box.
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensor getBox() {
-      return box_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : box_;
+    public SpaceOuterClass.Tensor getBox() {
+      return box_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : box_;
     }
     /**
-     * <code>.FloatTensor box = 2;</code>
+     * <code>.Tensor box = 4;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.FloatTensorOrBuilder getBoxOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getBoxOrBuilder() {
       return getBox();
     }
 
-    public static final int DISCRETE_FIELD_NUMBER = 3;
+    public static final int DISCRETE_FIELD_NUMBER = 5;
     private int discrete_;
     /**
-     * <code>int32 discrete = 3;</code>
+     * <code>int32 discrete = 5;</code>
      * @return The discrete.
      */
     @java.lang.Override
@@ -9015,10 +9219,14 @@ public final class SpaceOuterClass {
       return discrete_;
     }
 
-    public static final int MULTI_BINARY_FIELD_NUMBER = 4;
-    private SpaceOuterClass.BoolTensor multiBinary_;
+    public static final int MULTI_BINARY_FIELD_NUMBER = 6;
+    private SpaceOuterClass.Tensor multiBinary_;
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      * @return Whether the multiBinary field is set.
      */
     @java.lang.Override
@@ -9026,25 +9234,37 @@ public final class SpaceOuterClass {
       return multiBinary_ != null;
     }
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      * @return The multiBinary.
      */
     @java.lang.Override
-    public SpaceOuterClass.BoolTensor getMultiBinary() {
-      return multiBinary_ == null ? SpaceOuterClass.BoolTensor.getDefaultInstance() : multiBinary_;
+    public SpaceOuterClass.Tensor getMultiBinary() {
+      return multiBinary_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : multiBinary_;
     }
     /**
-     * <code>.BoolTensor multi_binary = 4;</code>
+     * <pre>
+     * boolean type
+     * </pre>
+     *
+     * <code>.Tensor multi_binary = 6;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.BoolTensorOrBuilder getMultiBinaryOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getMultiBinaryOrBuilder() {
       return getMultiBinary();
     }
 
-    public static final int MULTI_DISCRETE_FIELD_NUMBER = 5;
-    private SpaceOuterClass.IntTensor multiDiscrete_;
+    public static final int MULTI_DISCRETE_FIELD_NUMBER = 7;
+    private SpaceOuterClass.Tensor multiDiscrete_;
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      * @return Whether the multiDiscrete field is set.
      */
     @java.lang.Override
@@ -9052,25 +9272,33 @@ public final class SpaceOuterClass {
       return multiDiscrete_ != null;
     }
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      * @return The multiDiscrete.
      */
     @java.lang.Override
-    public SpaceOuterClass.IntTensor getMultiDiscrete() {
-      return multiDiscrete_ == null ? SpaceOuterClass.IntTensor.getDefaultInstance() : multiDiscrete_;
+    public SpaceOuterClass.Tensor getMultiDiscrete() {
+      return multiDiscrete_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : multiDiscrete_;
     }
     /**
-     * <code>.IntTensor multi_discrete = 5;</code>
+     * <pre>
+     * integer type
+     * </pre>
+     *
+     * <code>.Tensor multi_discrete = 7;</code>
      */
     @java.lang.Override
-    public SpaceOuterClass.IntTensorOrBuilder getMultiDiscreteOrBuilder() {
+    public SpaceOuterClass.TensorOrBuilder getMultiDiscreteOrBuilder() {
       return getMultiDiscrete();
     }
 
-    public static final int TEXT_FIELD_NUMBER = 6;
+    public static final int TEXT_FIELD_NUMBER = 8;
     private volatile java.lang.Object text_;
     /**
-     * <code>string text = 6;</code>
+     * <code>string text = 8;</code>
      * @return The text.
      */
     @java.lang.Override
@@ -9087,7 +9315,7 @@ public final class SpaceOuterClass {
       }
     }
     /**
-     * <code>string text = 6;</code>
+     * <code>string text = 8;</code>
      * @return The bytes for text.
      */
     @java.lang.Override
@@ -9105,7 +9333,7 @@ public final class SpaceOuterClass {
       }
     }
 
-    public static final int DICT_FIELD_NUMBER = 7;
+    public static final int DICT_FIELD_NUMBER = 9;
     private static final class DictDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, SpaceOuterClass.Data> defaultEntry =
@@ -9132,7 +9360,7 @@ public final class SpaceOuterClass {
       return internalGetDict().getMap().size();
     }
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
 
     @java.lang.Override
@@ -9150,7 +9378,7 @@ public final class SpaceOuterClass {
       return getDictMap();
     }
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     @java.lang.Override
 
@@ -9158,7 +9386,7 @@ public final class SpaceOuterClass {
       return internalGetDict().getMap();
     }
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     @java.lang.Override
 
@@ -9171,7 +9399,7 @@ public final class SpaceOuterClass {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .Data&gt; dict = 7;</code>
+     * <code>map&lt;string, .Data&gt; dict = 9;</code>
      */
     @java.lang.Override
 
@@ -9186,7 +9414,7 @@ public final class SpaceOuterClass {
       return map.get(key);
     }
 
-    public static final int LIST_FIELD_NUMBER = 8;
+    public static final int LIST_FIELD_NUMBER = 10;
     private static final class ListDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.Integer, SpaceOuterClass.Data> defaultEntry =
@@ -9217,7 +9445,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
 
     @java.lang.Override
@@ -9239,7 +9467,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     @java.lang.Override
 
@@ -9251,7 +9479,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     @java.lang.Override
 
@@ -9268,7 +9496,7 @@ public final class SpaceOuterClass {
      * Tuple and Sequence
      * </pre>
      *
-     * <code>map&lt;int32, .Data&gt; list = 8;</code>
+     * <code>map&lt;int32, .Data&gt; list = 10;</code>
      */
     @java.lang.Override
 
@@ -9283,10 +9511,10 @@ public final class SpaceOuterClass {
       return map.get(key);
     }
 
-    public static final int GRAPH_FIELD_NUMBER = 9;
+    public static final int GRAPH_FIELD_NUMBER = 11;
     private SpaceOuterClass.Graph graph_;
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      * @return Whether the graph field is set.
      */
     @java.lang.Override
@@ -9294,7 +9522,7 @@ public final class SpaceOuterClass {
       return graph_ != null;
     }
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      * @return The graph.
      */
     @java.lang.Override
@@ -9302,21 +9530,21 @@ public final class SpaceOuterClass {
       return graph_ == null ? SpaceOuterClass.Graph.getDefaultInstance() : graph_;
     }
     /**
-     * <code>.Graph graph = 9;</code>
+     * <code>.Graph graph = 11;</code>
      */
     @java.lang.Override
     public SpaceOuterClass.GraphOrBuilder getGraphOrBuilder() {
       return getGraph();
     }
 
-    public static final int IMAGE_FIELD_NUMBER = 10;
+    public static final int IMAGE_FIELD_NUMBER = 12;
     private SpaceOuterClass.Image image_;
     /**
      * <pre>
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      * @return Whether the image field is set.
      */
     @java.lang.Override
@@ -9328,7 +9556,7 @@ public final class SpaceOuterClass {
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      * @return The image.
      */
     @java.lang.Override
@@ -9340,7 +9568,7 @@ public final class SpaceOuterClass {
      * Box space instance which is a compressed image (H, W, C)
      * </pre>
      *
-     * <code>.Image image = 10;</code>
+     * <code>.Image image = 12;</code>
      */
     @java.lang.Override
     public SpaceOuterClass.ImageOrBuilder getImageOrBuilder() {
@@ -9364,38 +9592,44 @@ public final class SpaceOuterClass {
       if (spaceType_ != SpaceOuterClass.SpaceType.SPACE_TYPE_UNSPECIFIED.getNumber()) {
         output.writeEnum(1, spaceType_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dataType_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, dataType_);
+      }
+      if (!rawData_.isEmpty()) {
+        output.writeBytes(3, rawData_);
+      }
       if (box_ != null) {
-        output.writeMessage(2, getBox());
+        output.writeMessage(4, getBox());
       }
       if (discrete_ != 0) {
-        output.writeInt32(3, discrete_);
+        output.writeInt32(5, discrete_);
       }
       if (multiBinary_ != null) {
-        output.writeMessage(4, getMultiBinary());
+        output.writeMessage(6, getMultiBinary());
       }
       if (multiDiscrete_ != null) {
-        output.writeMessage(5, getMultiDiscrete());
+        output.writeMessage(7, getMultiDiscrete());
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(text_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, text_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, text_);
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetDict(),
           DictDefaultEntryHolder.defaultEntry,
-          7);
+          9);
       com.google.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetList(),
           ListDefaultEntryHolder.defaultEntry,
-          8);
+          10);
       if (graph_ != null) {
-        output.writeMessage(9, getGraph());
+        output.writeMessage(11, getGraph());
       }
       if (image_ != null) {
-        output.writeMessage(10, getImage());
+        output.writeMessage(12, getImage());
       }
       unknownFields.writeTo(output);
     }
@@ -9410,24 +9644,31 @@ public final class SpaceOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, spaceType_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dataType_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, dataType_);
+      }
+      if (!rawData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, rawData_);
+      }
       if (box_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getBox());
+          .computeMessageSize(4, getBox());
       }
       if (discrete_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, discrete_);
+          .computeInt32Size(5, discrete_);
       }
       if (multiBinary_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getMultiBinary());
+          .computeMessageSize(6, getMultiBinary());
       }
       if (multiDiscrete_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getMultiDiscrete());
+          .computeMessageSize(7, getMultiDiscrete());
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(text_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, text_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, text_);
       }
       for (java.util.Map.Entry<java.lang.String, SpaceOuterClass.Data> entry
            : internalGetDict().getMap().entrySet()) {
@@ -9437,7 +9678,7 @@ public final class SpaceOuterClass {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(7, dict__);
+            .computeMessageSize(9, dict__);
       }
       for (java.util.Map.Entry<java.lang.Integer, SpaceOuterClass.Data> entry
            : internalGetList().getMap().entrySet()) {
@@ -9447,15 +9688,15 @@ public final class SpaceOuterClass {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(8, list__);
+            .computeMessageSize(10, list__);
       }
       if (graph_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getGraph());
+          .computeMessageSize(11, getGraph());
       }
       if (image_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, getImage());
+          .computeMessageSize(12, getImage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9473,6 +9714,10 @@ public final class SpaceOuterClass {
       SpaceOuterClass.Data other = (SpaceOuterClass.Data) obj;
 
       if (spaceType_ != other.spaceType_) return false;
+      if (!getDataType()
+          .equals(other.getDataType())) return false;
+      if (!getRawData()
+          .equals(other.getRawData())) return false;
       if (hasBox() != other.hasBox()) return false;
       if (hasBox()) {
         if (!getBox()
@@ -9519,6 +9764,10 @@ public final class SpaceOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SPACE_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + spaceType_;
+      hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getDataType().hashCode();
+      hash = (37 * hash) + RAW_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getRawData().hashCode();
       if (hasBox()) {
         hash = (37 * hash) + BOX_FIELD_NUMBER;
         hash = (53 * hash) + getBox().hashCode();
@@ -9666,9 +9915,9 @@ public final class SpaceOuterClass {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 7:
+          case 9:
             return internalGetDict();
-          case 8:
+          case 10:
             return internalGetList();
           default:
             throw new RuntimeException(
@@ -9679,9 +9928,9 @@ public final class SpaceOuterClass {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 7:
+          case 9:
             return internalGetMutableDict();
-          case 8:
+          case 10:
             return internalGetMutableList();
           default:
             throw new RuntimeException(
@@ -9715,6 +9964,10 @@ public final class SpaceOuterClass {
       public Builder clear() {
         super.clear();
         spaceType_ = 0;
+
+        dataType_ = "";
+
+        rawData_ = com.google.protobuf.ByteString.EMPTY;
 
         if (boxBuilder_ == null) {
           box_ = null;
@@ -9780,6 +10033,8 @@ public final class SpaceOuterClass {
         SpaceOuterClass.Data result = new SpaceOuterClass.Data(this);
         int from_bitField0_ = bitField0_;
         result.spaceType_ = spaceType_;
+        result.dataType_ = dataType_;
+        result.rawData_ = rawData_;
         if (boxBuilder_ == null) {
           result.box_ = box_;
         } else {
@@ -9861,6 +10116,13 @@ public final class SpaceOuterClass {
         if (other == SpaceOuterClass.Data.getDefaultInstance()) return this;
         if (other.spaceType_ != 0) {
           setSpaceTypeValue(other.getSpaceTypeValue());
+        }
+        if (!other.getDataType().isEmpty()) {
+          dataType_ = other.dataType_;
+          onChanged();
+        }
+        if (other.getRawData() != com.google.protobuf.ByteString.EMPTY) {
+          setRawData(other.getRawData());
         }
         if (other.hasBox()) {
           mergeBox(other.getBox());
@@ -9972,31 +10234,141 @@ public final class SpaceOuterClass {
         return this;
       }
 
-      private SpaceOuterClass.FloatTensor box_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> boxBuilder_;
+      private java.lang.Object dataType_ = "";
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>string data_type = 2;</code>
+       * @return The dataType.
+       */
+      public java.lang.String getDataType() {
+        java.lang.Object ref = dataType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dataType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string data_type = 2;</code>
+       * @return The bytes for dataType.
+       */
+      public com.google.protobuf.ByteString
+          getDataTypeBytes() {
+        java.lang.Object ref = dataType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dataType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string data_type = 2;</code>
+       * @param value The dataType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dataType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data_type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDataType() {
+        
+        dataType_ = getDefaultInstance().getDataType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string data_type = 2;</code>
+       * @param value The bytes for dataType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDataTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dataType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString rawData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes raw_data = 3;</code>
+       * @return The rawData.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getRawData() {
+        return rawData_;
+      }
+      /**
+       * <code>bytes raw_data = 3;</code>
+       * @param value The rawData to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRawData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        rawData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes raw_data = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRawData() {
+        
+        rawData_ = getDefaultInstance().getRawData();
+        onChanged();
+        return this;
+      }
+
+      private SpaceOuterClass.Tensor box_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> boxBuilder_;
+      /**
+       * <code>.Tensor box = 4;</code>
        * @return Whether the box field is set.
        */
       public boolean hasBox() {
         return boxBuilder_ != null || box_ != null;
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        * @return The box.
        */
-      public SpaceOuterClass.FloatTensor getBox() {
+      public SpaceOuterClass.Tensor getBox() {
         if (boxBuilder_ == null) {
-          return box_ == null ? SpaceOuterClass.FloatTensor.getDefaultInstance() : box_;
+          return box_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : box_;
         } else {
           return boxBuilder_.getMessage();
         }
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
-      public Builder setBox(SpaceOuterClass.FloatTensor value) {
+      public Builder setBox(SpaceOuterClass.Tensor value) {
         if (boxBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10010,10 +10382,10 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
       public Builder setBox(
-          SpaceOuterClass.FloatTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (boxBuilder_ == null) {
           box_ = builderForValue.build();
           onChanged();
@@ -10024,13 +10396,13 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
-      public Builder mergeBox(SpaceOuterClass.FloatTensor value) {
+      public Builder mergeBox(SpaceOuterClass.Tensor value) {
         if (boxBuilder_ == null) {
           if (box_ != null) {
             box_ =
-              SpaceOuterClass.FloatTensor.newBuilder(box_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(box_).mergeFrom(value).buildPartial();
           } else {
             box_ = value;
           }
@@ -10042,7 +10414,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
       public Builder clearBox() {
         if (boxBuilder_ == null) {
@@ -10056,33 +10428,33 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
-      public SpaceOuterClass.FloatTensor.Builder getBoxBuilder() {
+      public SpaceOuterClass.Tensor.Builder getBoxBuilder() {
         
         onChanged();
         return getBoxFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
-      public SpaceOuterClass.FloatTensorOrBuilder getBoxOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getBoxOrBuilder() {
         if (boxBuilder_ != null) {
           return boxBuilder_.getMessageOrBuilder();
         } else {
           return box_ == null ?
-              SpaceOuterClass.FloatTensor.getDefaultInstance() : box_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : box_;
         }
       }
       /**
-       * <code>.FloatTensor box = 2;</code>
+       * <code>.Tensor box = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getBoxFieldBuilder() {
         if (boxBuilder_ == null) {
           boxBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.FloatTensor, SpaceOuterClass.FloatTensor.Builder, SpaceOuterClass.FloatTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getBox(),
                   getParentForChildren(),
                   isClean());
@@ -10093,7 +10465,7 @@ public final class SpaceOuterClass {
 
       private int discrete_ ;
       /**
-       * <code>int32 discrete = 3;</code>
+       * <code>int32 discrete = 5;</code>
        * @return The discrete.
        */
       @java.lang.Override
@@ -10101,7 +10473,7 @@ public final class SpaceOuterClass {
         return discrete_;
       }
       /**
-       * <code>int32 discrete = 3;</code>
+       * <code>int32 discrete = 5;</code>
        * @param value The discrete to set.
        * @return This builder for chaining.
        */
@@ -10112,7 +10484,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>int32 discrete = 3;</code>
+       * <code>int32 discrete = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearDiscrete() {
@@ -10122,31 +10494,43 @@ public final class SpaceOuterClass {
         return this;
       }
 
-      private SpaceOuterClass.BoolTensor multiBinary_;
+      private SpaceOuterClass.Tensor multiBinary_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.BoolTensor, SpaceOuterClass.BoolTensor.Builder, SpaceOuterClass.BoolTensorOrBuilder> multiBinaryBuilder_;
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> multiBinaryBuilder_;
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        * @return Whether the multiBinary field is set.
        */
       public boolean hasMultiBinary() {
         return multiBinaryBuilder_ != null || multiBinary_ != null;
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        * @return The multiBinary.
        */
-      public SpaceOuterClass.BoolTensor getMultiBinary() {
+      public SpaceOuterClass.Tensor getMultiBinary() {
         if (multiBinaryBuilder_ == null) {
-          return multiBinary_ == null ? SpaceOuterClass.BoolTensor.getDefaultInstance() : multiBinary_;
+          return multiBinary_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : multiBinary_;
         } else {
           return multiBinaryBuilder_.getMessage();
         }
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
-      public Builder setMultiBinary(SpaceOuterClass.BoolTensor value) {
+      public Builder setMultiBinary(SpaceOuterClass.Tensor value) {
         if (multiBinaryBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10160,10 +10544,14 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
       public Builder setMultiBinary(
-          SpaceOuterClass.BoolTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (multiBinaryBuilder_ == null) {
           multiBinary_ = builderForValue.build();
           onChanged();
@@ -10174,13 +10562,17 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
-      public Builder mergeMultiBinary(SpaceOuterClass.BoolTensor value) {
+      public Builder mergeMultiBinary(SpaceOuterClass.Tensor value) {
         if (multiBinaryBuilder_ == null) {
           if (multiBinary_ != null) {
             multiBinary_ =
-              SpaceOuterClass.BoolTensor.newBuilder(multiBinary_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(multiBinary_).mergeFrom(value).buildPartial();
           } else {
             multiBinary_ = value;
           }
@@ -10192,7 +10584,11 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
       public Builder clearMultiBinary() {
         if (multiBinaryBuilder_ == null) {
@@ -10206,33 +10602,45 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
-      public SpaceOuterClass.BoolTensor.Builder getMultiBinaryBuilder() {
+      public SpaceOuterClass.Tensor.Builder getMultiBinaryBuilder() {
         
         onChanged();
         return getMultiBinaryFieldBuilder().getBuilder();
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
-      public SpaceOuterClass.BoolTensorOrBuilder getMultiBinaryOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getMultiBinaryOrBuilder() {
         if (multiBinaryBuilder_ != null) {
           return multiBinaryBuilder_.getMessageOrBuilder();
         } else {
           return multiBinary_ == null ?
-              SpaceOuterClass.BoolTensor.getDefaultInstance() : multiBinary_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : multiBinary_;
         }
       }
       /**
-       * <code>.BoolTensor multi_binary = 4;</code>
+       * <pre>
+       * boolean type
+       * </pre>
+       *
+       * <code>.Tensor multi_binary = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.BoolTensor, SpaceOuterClass.BoolTensor.Builder, SpaceOuterClass.BoolTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getMultiBinaryFieldBuilder() {
         if (multiBinaryBuilder_ == null) {
           multiBinaryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.BoolTensor, SpaceOuterClass.BoolTensor.Builder, SpaceOuterClass.BoolTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getMultiBinary(),
                   getParentForChildren(),
                   isClean());
@@ -10241,31 +10649,43 @@ public final class SpaceOuterClass {
         return multiBinaryBuilder_;
       }
 
-      private SpaceOuterClass.IntTensor multiDiscrete_;
+      private SpaceOuterClass.Tensor multiDiscrete_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder> multiDiscreteBuilder_;
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> multiDiscreteBuilder_;
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        * @return Whether the multiDiscrete field is set.
        */
       public boolean hasMultiDiscrete() {
         return multiDiscreteBuilder_ != null || multiDiscrete_ != null;
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        * @return The multiDiscrete.
        */
-      public SpaceOuterClass.IntTensor getMultiDiscrete() {
+      public SpaceOuterClass.Tensor getMultiDiscrete() {
         if (multiDiscreteBuilder_ == null) {
-          return multiDiscrete_ == null ? SpaceOuterClass.IntTensor.getDefaultInstance() : multiDiscrete_;
+          return multiDiscrete_ == null ? SpaceOuterClass.Tensor.getDefaultInstance() : multiDiscrete_;
         } else {
           return multiDiscreteBuilder_.getMessage();
         }
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
-      public Builder setMultiDiscrete(SpaceOuterClass.IntTensor value) {
+      public Builder setMultiDiscrete(SpaceOuterClass.Tensor value) {
         if (multiDiscreteBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10279,10 +10699,14 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
       public Builder setMultiDiscrete(
-          SpaceOuterClass.IntTensor.Builder builderForValue) {
+          SpaceOuterClass.Tensor.Builder builderForValue) {
         if (multiDiscreteBuilder_ == null) {
           multiDiscrete_ = builderForValue.build();
           onChanged();
@@ -10293,13 +10717,17 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
-      public Builder mergeMultiDiscrete(SpaceOuterClass.IntTensor value) {
+      public Builder mergeMultiDiscrete(SpaceOuterClass.Tensor value) {
         if (multiDiscreteBuilder_ == null) {
           if (multiDiscrete_ != null) {
             multiDiscrete_ =
-              SpaceOuterClass.IntTensor.newBuilder(multiDiscrete_).mergeFrom(value).buildPartial();
+              SpaceOuterClass.Tensor.newBuilder(multiDiscrete_).mergeFrom(value).buildPartial();
           } else {
             multiDiscrete_ = value;
           }
@@ -10311,7 +10739,11 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
       public Builder clearMultiDiscrete() {
         if (multiDiscreteBuilder_ == null) {
@@ -10325,33 +10757,45 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
-      public SpaceOuterClass.IntTensor.Builder getMultiDiscreteBuilder() {
+      public SpaceOuterClass.Tensor.Builder getMultiDiscreteBuilder() {
         
         onChanged();
         return getMultiDiscreteFieldBuilder().getBuilder();
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
-      public SpaceOuterClass.IntTensorOrBuilder getMultiDiscreteOrBuilder() {
+      public SpaceOuterClass.TensorOrBuilder getMultiDiscreteOrBuilder() {
         if (multiDiscreteBuilder_ != null) {
           return multiDiscreteBuilder_.getMessageOrBuilder();
         } else {
           return multiDiscrete_ == null ?
-              SpaceOuterClass.IntTensor.getDefaultInstance() : multiDiscrete_;
+              SpaceOuterClass.Tensor.getDefaultInstance() : multiDiscrete_;
         }
       }
       /**
-       * <code>.IntTensor multi_discrete = 5;</code>
+       * <pre>
+       * integer type
+       * </pre>
+       *
+       * <code>.Tensor multi_discrete = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder> 
+          SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder> 
           getMultiDiscreteFieldBuilder() {
         if (multiDiscreteBuilder_ == null) {
           multiDiscreteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              SpaceOuterClass.IntTensor, SpaceOuterClass.IntTensor.Builder, SpaceOuterClass.IntTensorOrBuilder>(
+              SpaceOuterClass.Tensor, SpaceOuterClass.Tensor.Builder, SpaceOuterClass.TensorOrBuilder>(
                   getMultiDiscrete(),
                   getParentForChildren(),
                   isClean());
@@ -10362,7 +10806,7 @@ public final class SpaceOuterClass {
 
       private java.lang.Object text_ = "";
       /**
-       * <code>string text = 6;</code>
+       * <code>string text = 8;</code>
        * @return The text.
        */
       public java.lang.String getText() {
@@ -10378,7 +10822,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>string text = 6;</code>
+       * <code>string text = 8;</code>
        * @return The bytes for text.
        */
       public com.google.protobuf.ByteString
@@ -10395,7 +10839,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>string text = 6;</code>
+       * <code>string text = 8;</code>
        * @param value The text to set.
        * @return This builder for chaining.
        */
@@ -10410,7 +10854,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>string text = 6;</code>
+       * <code>string text = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearText() {
@@ -10420,7 +10864,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>string text = 6;</code>
+       * <code>string text = 8;</code>
        * @param value The bytes for text to set.
        * @return This builder for chaining.
        */
@@ -10463,7 +10907,7 @@ public final class SpaceOuterClass {
         return internalGetDict().getMap().size();
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
 
       @java.lang.Override
@@ -10481,7 +10925,7 @@ public final class SpaceOuterClass {
         return getDictMap();
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
       @java.lang.Override
 
@@ -10489,7 +10933,7 @@ public final class SpaceOuterClass {
         return internalGetDict().getMap();
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
       @java.lang.Override
 
@@ -10502,7 +10946,7 @@ public final class SpaceOuterClass {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
       @java.lang.Override
 
@@ -10523,7 +10967,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
 
       public Builder removeDict(
@@ -10542,7 +10986,7 @@ public final class SpaceOuterClass {
         return internalGetMutableDict().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
       public Builder putDict(
           java.lang.String key,
@@ -10557,7 +11001,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>map&lt;string, .Data&gt; dict = 7;</code>
+       * <code>map&lt;string, .Data&gt; dict = 9;</code>
        */
 
       public Builder putAllDict(
@@ -10598,7 +11042,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
 
       @java.lang.Override
@@ -10620,7 +11064,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
       @java.lang.Override
 
@@ -10632,7 +11076,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
       @java.lang.Override
 
@@ -10649,7 +11093,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
       @java.lang.Override
 
@@ -10674,7 +11118,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
 
       public Builder removeList(
@@ -10697,7 +11141,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
       public Builder putList(
           int key,
@@ -10716,7 +11160,7 @@ public final class SpaceOuterClass {
        * Tuple and Sequence
        * </pre>
        *
-       * <code>map&lt;int32, .Data&gt; list = 8;</code>
+       * <code>map&lt;int32, .Data&gt; list = 10;</code>
        */
 
       public Builder putAllList(
@@ -10730,14 +11174,14 @@ public final class SpaceOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           SpaceOuterClass.Graph, SpaceOuterClass.Graph.Builder, SpaceOuterClass.GraphOrBuilder> graphBuilder_;
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        * @return Whether the graph field is set.
        */
       public boolean hasGraph() {
         return graphBuilder_ != null || graph_ != null;
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        * @return The graph.
        */
       public SpaceOuterClass.Graph getGraph() {
@@ -10748,7 +11192,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public Builder setGraph(SpaceOuterClass.Graph value) {
         if (graphBuilder_ == null) {
@@ -10764,7 +11208,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public Builder setGraph(
           SpaceOuterClass.Graph.Builder builderForValue) {
@@ -10778,7 +11222,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public Builder mergeGraph(SpaceOuterClass.Graph value) {
         if (graphBuilder_ == null) {
@@ -10796,7 +11240,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public Builder clearGraph() {
         if (graphBuilder_ == null) {
@@ -10810,7 +11254,7 @@ public final class SpaceOuterClass {
         return this;
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public SpaceOuterClass.Graph.Builder getGraphBuilder() {
         
@@ -10818,7 +11262,7 @@ public final class SpaceOuterClass {
         return getGraphFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       public SpaceOuterClass.GraphOrBuilder getGraphOrBuilder() {
         if (graphBuilder_ != null) {
@@ -10829,7 +11273,7 @@ public final class SpaceOuterClass {
         }
       }
       /**
-       * <code>.Graph graph = 9;</code>
+       * <code>.Graph graph = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           SpaceOuterClass.Graph, SpaceOuterClass.Graph.Builder, SpaceOuterClass.GraphOrBuilder> 
@@ -10853,7 +11297,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        * @return Whether the image field is set.
        */
       public boolean hasImage() {
@@ -10864,7 +11308,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        * @return The image.
        */
       public SpaceOuterClass.Image getImage() {
@@ -10879,7 +11323,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public Builder setImage(SpaceOuterClass.Image value) {
         if (imageBuilder_ == null) {
@@ -10899,7 +11343,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public Builder setImage(
           SpaceOuterClass.Image.Builder builderForValue) {
@@ -10917,7 +11361,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public Builder mergeImage(SpaceOuterClass.Image value) {
         if (imageBuilder_ == null) {
@@ -10939,7 +11383,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -10957,7 +11401,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public SpaceOuterClass.Image.Builder getImageBuilder() {
         
@@ -10969,7 +11413,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       public SpaceOuterClass.ImageOrBuilder getImageOrBuilder() {
         if (imageBuilder_ != null) {
@@ -10984,7 +11428,7 @@ public final class SpaceOuterClass {
        * Box space instance which is a compressed image (H, W, C)
        * </pre>
        *
-       * <code>.Image image = 10;</code>
+       * <code>.Image image = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           SpaceOuterClass.Image, SpaceOuterClass.Image.Builder, SpaceOuterClass.ImageOrBuilder> 
@@ -11053,20 +11497,10 @@ public final class SpaceOuterClass {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FloatTensor_descriptor;
+    internal_static_Tensor_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FloatTensor_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_IntTensor_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_IntTensor_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BoolTensor_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_BoolTensor_fieldAccessorTable;
+      internal_static_Tensor_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GraphSpace_descriptor;
   private static final 
@@ -11121,98 +11555,91 @@ public final class SpaceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013space.proto\"+\n\013FloatTensor\022\r\n\005shape\030\001 " +
-      "\003(\005\022\r\n\005array\030\002 \003(\002\")\n\tIntTensor\022\r\n\005shape" +
-      "\030\001 \003(\005\022\r\n\005array\030\002 \003(\005\"*\n\nBoolTensor\022\r\n\005s" +
-      "hape\030\001 \003(\005\022\r\n\005array\030\002 \003(\010\"D\n\nGraphSpace\022" +
-      "\032\n\nnode_space\030\001 \001(\0132\006.Space\022\032\n\nedge_spac" +
-      "e\030\002 \001(\0132\006.Space\"a\n\005Graph\022\033\n\005nodes\030\001 \001(\0132" +
-      "\014.FloatTensor\022\033\n\005edges\030\002 \001(\0132\014.FloatTens" +
-      "or\022\036\n\nedge_links\030\003 \001(\0132\n.IntTensor\"k\n\005Im" +
-      "age\022*\n\020compression_type\030\001 \001(\0162\020.Compress" +
-      "ionType\022\014\n\004data\030\002 \001(\014\022\r\n\005shape\030\003 \003(\005\022\031\n\021" +
-      "dimension_mapping\030\004 \003(\005\"\224\003\n\005Space\022\036\n\nspa" +
-      "ce_type\030\001 \001(\0162\n.SpaceType\022\r\n\005shape\030\002 \003(\005" +
-      "\022\034\n\tdata_type\030\003 \001(\0162\t.DataType\022\013\n\003low\030\004 " +
-      "\003(\002\022\014\n\004high\030\005 \003(\002\022\013\n\003min\030\006 \001(\005\022\013\n\003max\030\007 " +
-      "\001(\005\022\014\n\004nvec\030\010 \003(\005\022\017\n\007charset\030\t \003(\t\022)\n\ndi" +
-      "ct_space\030\n \003(\0132\025.Space.DictSpaceEntry\022)\n" +
-      "\nlist_space\030\013 \003(\0132\025.Space.ListSpaceEntry" +
-      "\022 \n\013graph_space\030\014 \001(\0132\013.GraphSpace\0328\n\016Di" +
+      "\n\013space.proto\"\324\001\n\006Tensor\022\r\n\005shape\030\001 \003(\005\022" +
+      "\034\n\tdata_type\030\002 \001(\0162\t.DataType\022\023\n\013float_a" +
+      "rray\030\003 \003(\002\022\024\n\014double_array\030\004 \003(\001\022\021\n\tint_" +
+      "array\030\005 \003(\021\022\022\n\nlong_array\030\006 \003(\022\022\032\n\022unsig" +
+      "ned_int_array\030\007 \003(\r\022\033\n\023unsigned_long_arr" +
+      "ay\030\010 \003(\004\022\022\n\nbool_array\030\t \003(\010\"D\n\nGraphSpa" +
+      "ce\022\032\n\nnode_space\030\001 \001(\0132\006.Space\022\032\n\nedge_s" +
+      "pace\030\002 \001(\0132\006.Space\"T\n\005Graph\022\026\n\005nodes\030\001 \001" +
+      "(\0132\007.Tensor\022\026\n\005edges\030\002 \001(\0132\007.Tensor\022\033\n\ne" +
+      "dge_links\030\003 \001(\0132\007.Tensor\"k\n\005Image\022*\n\020com" +
+      "pression_type\030\001 \001(\0162\020.CompressionType\022\014\n" +
+      "\004data\030\002 \001(\014\022\r\n\005shape\030\003 \003(\005\022\031\n\021dimension_" +
+      "mapping\030\004 \003(\005\"\236\003\n\005Space\022\036\n\nspace_type\030\001 " +
+      "\001(\0162\n.SpaceType\022\023\n\013description\030\002 \001(\t\022\r\n\005" +
+      "shape\030\003 \003(\005\022\021\n\tdata_type\030\004 \001(\t\022\013\n\003low\030\005 " +
+      "\003(\002\022\014\n\004high\030\006 \003(\002\022\013\n\003min\030\007 \001(\005\022\013\n\003max\030\010 " +
+      "\001(\005\022\014\n\004nvec\030\t \003(\005\022\017\n\007charset\030\n \003(\t\022)\n\ndi" +
+      "ct_space\030\013 \003(\0132\025.Space.DictSpaceEntry\022)\n" +
+      "\nlist_space\030\014 \003(\0132\025.Space.ListSpaceEntry" +
+      "\022 \n\013graph_space\030\r \001(\0132\013.GraphSpace\0328\n\016Di" +
       "ctSpaceEntry\022\013\n\003key\030\001 \001(\t\022\025\n\005value\030\002 \001(\013" +
       "2\006.Space:\0028\001\0328\n\016ListSpaceEntry\022\013\n\003key\030\001 " +
-      "\001(\005\022\025\n\005value\030\002 \001(\0132\006.Space:\0028\001\"\374\002\n\004Data\022" +
-      "\036\n\nspace_type\030\001 \001(\0162\n.SpaceType\022\031\n\003box\030\002" +
-      " \001(\0132\014.FloatTensor\022\020\n\010discrete\030\003 \001(\005\022!\n\014" +
-      "multi_binary\030\004 \001(\0132\013.BoolTensor\022\"\n\016multi" +
-      "_discrete\030\005 \001(\0132\n.IntTensor\022\014\n\004text\030\006 \001(" +
-      "\t\022\035\n\004dict\030\007 \003(\0132\017.Data.DictEntry\022\035\n\004list" +
-      "\030\010 \003(\0132\017.Data.ListEntry\022\025\n\005graph\030\t \001(\0132\006" +
-      ".Graph\022\025\n\005image\030\n \001(\0132\006.Image\0322\n\tDictEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\024\n\005value\030\002 \001(\0132\005.Data:\0028" +
-      "\001\0322\n\tListEntry\022\013\n\003key\030\001 \001(\005\022\024\n\005value\030\002 \001" +
-      "(\0132\005.Data:\0028\001*\202\001\n\017CompressionType\022 \n\034COM" +
-      "PRESSION_TYPE_UNSPECIFIED\020\000\022\031\n\025COMPRESSI" +
-      "ON_TYPE_NONE\020\001\022\030\n\024COMPRESSION_TYPE_PNG\020\002" +
-      "\022\030\n\024COMPRESSION_TYPE_JPG\020\003*\225\002\n\tSpaceType" +
-      "\022\032\n\026SPACE_TYPE_UNSPECIFIED\020\000\022\022\n\016SPACE_TY" +
-      "PE_BOX\020\001\022\027\n\023SPACE_TYPE_DISCRETE\020\002\022\033\n\027SPA" +
-      "CE_TYPE_MULTI_BINARY\020\003\022\035\n\031SPACE_TYPE_MUL" +
-      "TI_DISCRETE\020\004\022\023\n\017SPACE_TYPE_TEXT\020\005\022\023\n\017SP" +
-      "ACE_TYPE_DICT\020\006\022\024\n\020SPACE_TYPE_TUPLE\020\007\022\027\n" +
-      "\023SPACE_TYPE_SEQUENCE\020\010\022\024\n\020SPACE_TYPE_GRA" +
-      "PH\020\t\022\024\n\020SPACE_TYPE_IMAGE\020\n*d\n\010DataType\022\031" +
-      "\n\025DATA_TYPE_UNSPECIFIED\020\000\022\023\n\017DATA_TYPE_F" +
-      "LOAT\020\001\022\021\n\rDATA_TYPE_INT\020\002\022\025\n\021DATA_TYPE_B" +
-      "OOLEAN\020\003B\027\252\002\024PAIA.Marenv.Protobufb\006proto" +
-      "3"
+      "\001(\005\022\025\n\005value\030\002 \001(\0132\006.Space:\0028\001\"\225\003\n\004Data\022" +
+      "\036\n\nspace_type\030\001 \001(\0162\n.SpaceType\022\021\n\tdata_" +
+      "type\030\002 \001(\t\022\020\n\010raw_data\030\003 \001(\014\022\024\n\003box\030\004 \001(" +
+      "\0132\007.Tensor\022\020\n\010discrete\030\005 \001(\005\022\035\n\014multi_bi" +
+      "nary\030\006 \001(\0132\007.Tensor\022\037\n\016multi_discrete\030\007 " +
+      "\001(\0132\007.Tensor\022\014\n\004text\030\010 \001(\t\022\035\n\004dict\030\t \003(\013" +
+      "2\017.Data.DictEntry\022\035\n\004list\030\n \003(\0132\017.Data.L" +
+      "istEntry\022\025\n\005graph\030\013 \001(\0132\006.Graph\022\025\n\005image" +
+      "\030\014 \001(\0132\006.Image\0322\n\tDictEntry\022\013\n\003key\030\001 \001(\t" +
+      "\022\024\n\005value\030\002 \001(\0132\005.Data:\0028\001\0322\n\tListEntry\022" +
+      "\013\n\003key\030\001 \001(\005\022\024\n\005value\030\002 \001(\0132\005.Data:\0028\001*\264" +
+      "\001\n\010DataType\022\031\n\025DATA_TYPE_UNSPECIFIED\020\000\022\023" +
+      "\n\017DATA_TYPE_FLOAT\020\001\022\024\n\020DATA_TYPE_DOUBLE\020" +
+      "\002\022\021\n\rDATA_TYPE_INT\020\003\022\022\n\016DATA_TYPE_LONG\020\004" +
+      "\022\022\n\016DATA_TYPE_UINT\020\005\022\023\n\017DATA_TYPE_ULONG\020" +
+      "\006\022\022\n\016DATA_TYPE_BOOL\020\007*\202\001\n\017CompressionTyp" +
+      "e\022 \n\034COMPRESSION_TYPE_UNSPECIFIED\020\000\022\031\n\025C" +
+      "OMPRESSION_TYPE_NONE\020\001\022\030\n\024COMPRESSION_TY" +
+      "PE_PNG\020\002\022\030\n\024COMPRESSION_TYPE_JPG\020\003*\251\002\n\tS" +
+      "paceType\022\032\n\026SPACE_TYPE_UNSPECIFIED\020\000\022\022\n\016" +
+      "SPACE_TYPE_RAW\020\001\022\022\n\016SPACE_TYPE_BOX\020\002\022\027\n\023" +
+      "SPACE_TYPE_DISCRETE\020\003\022\033\n\027SPACE_TYPE_MULT" +
+      "I_BINARY\020\004\022\035\n\031SPACE_TYPE_MULTI_DISCRETE\020" +
+      "\005\022\023\n\017SPACE_TYPE_TEXT\020\006\022\023\n\017SPACE_TYPE_DIC" +
+      "T\020\007\022\024\n\020SPACE_TYPE_TUPLE\020\010\022\027\n\023SPACE_TYPE_" +
+      "SEQUENCE\020\t\022\024\n\020SPACE_TYPE_GRAPH\020\n\022\024\n\020SPAC" +
+      "E_TYPE_IMAGE\020\013B\027\252\002\024PAIA.Marenv.Protobufb" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_FloatTensor_descriptor =
+    internal_static_Tensor_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_FloatTensor_fieldAccessorTable = new
+    internal_static_Tensor_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FloatTensor_descriptor,
-        new java.lang.String[] { "Shape", "Array", });
-    internal_static_IntTensor_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_IntTensor_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_IntTensor_descriptor,
-        new java.lang.String[] { "Shape", "Array", });
-    internal_static_BoolTensor_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_BoolTensor_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_BoolTensor_descriptor,
-        new java.lang.String[] { "Shape", "Array", });
+        internal_static_Tensor_descriptor,
+        new java.lang.String[] { "Shape", "DataType", "FloatArray", "DoubleArray", "IntArray", "LongArray", "UnsignedIntArray", "UnsignedLongArray", "BoolArray", });
     internal_static_GraphSpace_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_GraphSpace_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GraphSpace_descriptor,
         new java.lang.String[] { "NodeSpace", "EdgeSpace", });
     internal_static_Graph_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_Graph_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Graph_descriptor,
         new java.lang.String[] { "Nodes", "Edges", "EdgeLinks", });
     internal_static_Image_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_Image_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Image_descriptor,
         new java.lang.String[] { "CompressionType", "Data", "Shape", "DimensionMapping", });
     internal_static_Space_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Space_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Space_descriptor,
-        new java.lang.String[] { "SpaceType", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace", });
+        new java.lang.String[] { "SpaceType", "Description", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace", });
     internal_static_Space_DictSpaceEntry_descriptor =
       internal_static_Space_descriptor.getNestedTypes().get(0);
     internal_static_Space_DictSpaceEntry_fieldAccessorTable = new
@@ -11226,11 +11653,11 @@ public final class SpaceOuterClass {
         internal_static_Space_ListSpaceEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_Data_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Data_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Data_descriptor,
-        new java.lang.String[] { "SpaceType", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image", });
+        new java.lang.String[] { "SpaceType", "DataType", "RawData", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image", });
     internal_static_Data_DictEntry_descriptor =
       internal_static_Data_descriptor.getNestedTypes().get(0);
     internal_static_Data_DictEntry_fieldAccessorTable = new

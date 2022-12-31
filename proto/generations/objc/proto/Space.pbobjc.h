@@ -27,16 +27,41 @@
 
 CF_EXTERN_C_BEGIN
 
-@class BoolTensor;
 @class Data;
-@class FloatTensor;
 @class Graph;
 @class GraphSpace;
 @class Image;
-@class IntTensor;
 @class Space;
+@class Tensor;
 
 NS_ASSUME_NONNULL_BEGIN
+
+#pragma mark - Enum DataType
+
+typedef GPB_ENUM(DataType) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  DataType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  DataType_DataTypeUnspecified = 0,
+  DataType_DataTypeFloat = 1,
+  DataType_DataTypeDouble = 2,
+  DataType_DataTypeInt = 3,
+  DataType_DataTypeLong = 4,
+  DataType_DataTypeUint = 5,
+  DataType_DataTypeUlong = 6,
+  DataType_DataTypeBool = 7,
+};
+
+GPBEnumDescriptor *DataType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL DataType_IsValidValue(int32_t value);
 
 #pragma mark - Enum CompressionType
 
@@ -71,16 +96,17 @@ typedef GPB_ENUM(SpaceType) {
    **/
   SpaceType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
   SpaceType_SpaceTypeUnspecified = 0,
-  SpaceType_SpaceTypeBox = 1,
-  SpaceType_SpaceTypeDiscrete = 2,
-  SpaceType_SpaceTypeMultiBinary = 3,
-  SpaceType_SpaceTypeMultiDiscrete = 4,
-  SpaceType_SpaceTypeText = 5,
-  SpaceType_SpaceTypeDict = 6,
-  SpaceType_SpaceTypeTuple = 7,
-  SpaceType_SpaceTypeSequence = 8,
-  SpaceType_SpaceTypeGraph = 9,
-  SpaceType_SpaceTypeImage = 10,
+  SpaceType_SpaceTypeRaw = 1,
+  SpaceType_SpaceTypeBox = 2,
+  SpaceType_SpaceTypeDiscrete = 3,
+  SpaceType_SpaceTypeMultiBinary = 4,
+  SpaceType_SpaceTypeMultiDiscrete = 5,
+  SpaceType_SpaceTypeText = 6,
+  SpaceType_SpaceTypeDict = 7,
+  SpaceType_SpaceTypeTuple = 8,
+  SpaceType_SpaceTypeSequence = 9,
+  SpaceType_SpaceTypeGraph = 10,
+  SpaceType_SpaceTypeImage = 11,
 };
 
 GPBEnumDescriptor *SpaceType_EnumDescriptor(void);
@@ -90,29 +116,6 @@ GPBEnumDescriptor *SpaceType_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL SpaceType_IsValidValue(int32_t value);
-
-#pragma mark - Enum DataType
-
-typedef GPB_ENUM(DataType) {
-  /**
-   * Value used if any message's field encounters a value that is not defined
-   * by this enum. The message will also have C functions to get/set the rawValue
-   * of the field.
-   **/
-  DataType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  DataType_DataTypeUnspecified = 0,
-  DataType_DataTypeFloat = 1,
-  DataType_DataTypeInt = 2,
-  DataType_DataTypeBoolean = 3,
-};
-
-GPBEnumDescriptor *DataType_EnumDescriptor(void);
-
-/**
- * Checks to see if the given value is defined by the enum or was not known at
- * the time this source was generated.
- **/
-BOOL DataType_IsValidValue(int32_t value);
 
 #pragma mark - SpaceRoot
 
@@ -129,62 +132,69 @@ BOOL DataType_IsValidValue(int32_t value);
 GPB_FINAL @interface SpaceRoot : GPBRootObject
 @end
 
-#pragma mark - FloatTensor
+#pragma mark - Tensor
 
-typedef GPB_ENUM(FloatTensor_FieldNumber) {
-  FloatTensor_FieldNumber_ShapeArray = 1,
-  FloatTensor_FieldNumber_ArrayArray = 2,
+typedef GPB_ENUM(Tensor_FieldNumber) {
+  Tensor_FieldNumber_ShapeArray = 1,
+  Tensor_FieldNumber_DataType = 2,
+  Tensor_FieldNumber_FloatArrayArray = 3,
+  Tensor_FieldNumber_DoubleArrayArray = 4,
+  Tensor_FieldNumber_IntArrayArray = 5,
+  Tensor_FieldNumber_LongArrayArray = 6,
+  Tensor_FieldNumber_UnsignedIntArrayArray = 7,
+  Tensor_FieldNumber_UnsignedLongArrayArray = 8,
+  Tensor_FieldNumber_BoolArrayArray = 9,
 };
 
-GPB_FINAL @interface FloatTensor : GPBMessage
+GPB_FINAL @interface Tensor : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *shapeArray;
 /** The number of items in @c shapeArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger shapeArray_Count;
 
-@property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *arrayArray;
-/** The number of items in @c arrayArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger arrayArray_Count;
+@property(nonatomic, readwrite) DataType dataType;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *floatArrayArray;
+/** The number of items in @c floatArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger floatArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBDoubleArray *doubleArrayArray;
+/** The number of items in @c doubleArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger doubleArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *intArrayArray;
+/** The number of items in @c intArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger intArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt64Array *longArrayArray;
+/** The number of items in @c longArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger longArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBUInt32Array *unsignedIntArrayArray;
+/** The number of items in @c unsignedIntArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger unsignedIntArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBUInt64Array *unsignedLongArrayArray;
+/** The number of items in @c unsignedLongArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger unsignedLongArrayArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBBoolArray *boolArrayArray;
+/** The number of items in @c boolArrayArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger boolArrayArray_Count;
 
 @end
 
-#pragma mark - IntTensor
-
-typedef GPB_ENUM(IntTensor_FieldNumber) {
-  IntTensor_FieldNumber_ShapeArray = 1,
-  IntTensor_FieldNumber_ArrayArray = 2,
-};
-
-GPB_FINAL @interface IntTensor : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *shapeArray;
-/** The number of items in @c shapeArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger shapeArray_Count;
-
-@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *arrayArray;
-/** The number of items in @c arrayArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger arrayArray_Count;
-
-@end
-
-#pragma mark - BoolTensor
-
-typedef GPB_ENUM(BoolTensor_FieldNumber) {
-  BoolTensor_FieldNumber_ShapeArray = 1,
-  BoolTensor_FieldNumber_ArrayArray = 2,
-};
-
-GPB_FINAL @interface BoolTensor : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *shapeArray;
-/** The number of items in @c shapeArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger shapeArray_Count;
-
-@property(nonatomic, readwrite, strong, null_resettable) GPBBoolArray *arrayArray;
-/** The number of items in @c arrayArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger arrayArray_Count;
-
-@end
+/**
+ * Fetches the raw value of a @c Tensor's @c dataType property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t Tensor_DataType_RawValue(Tensor *message);
+/**
+ * Sets the raw value of an @c Tensor's @c dataType property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetTensor_DataType_RawValue(Tensor *message, int32_t value);
 
 #pragma mark - GraphSpace
 
@@ -215,15 +225,18 @@ typedef GPB_ENUM(Graph_FieldNumber) {
 
 GPB_FINAL @interface Graph : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) FloatTensor *nodes;
+/** floating type */
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *nodes;
 /** Test to see if @c nodes has been set. */
 @property(nonatomic, readwrite) BOOL hasNodes;
 
-@property(nonatomic, readwrite, strong, null_resettable) FloatTensor *edges;
+/** floating type */
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *edges;
 /** Test to see if @c edges has been set. */
 @property(nonatomic, readwrite) BOOL hasEdges;
 
-@property(nonatomic, readwrite, strong, null_resettable) IntTensor *edgeLinks;
+/** integer type */
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *edgeLinks;
 /** Test to see if @c edgeLinks has been set. */
 @property(nonatomic, readwrite) BOOL hasEdgeLinks;
 
@@ -272,29 +285,33 @@ void SetImage_CompressionType_RawValue(Image *message, int32_t value);
 
 typedef GPB_ENUM(Space_FieldNumber) {
   Space_FieldNumber_SpaceType = 1,
-  Space_FieldNumber_ShapeArray = 2,
-  Space_FieldNumber_DataType = 3,
-  Space_FieldNumber_LowArray = 4,
-  Space_FieldNumber_HighArray = 5,
-  Space_FieldNumber_Min = 6,
-  Space_FieldNumber_Max = 7,
-  Space_FieldNumber_NvecArray = 8,
-  Space_FieldNumber_CharsetArray = 9,
-  Space_FieldNumber_DictSpace = 10,
-  Space_FieldNumber_ListSpace = 11,
-  Space_FieldNumber_GraphSpace = 12,
+  Space_FieldNumber_Description_p = 2,
+  Space_FieldNumber_ShapeArray = 3,
+  Space_FieldNumber_DataType = 4,
+  Space_FieldNumber_LowArray = 5,
+  Space_FieldNumber_HighArray = 6,
+  Space_FieldNumber_Min = 7,
+  Space_FieldNumber_Max = 8,
+  Space_FieldNumber_NvecArray = 9,
+  Space_FieldNumber_CharsetArray = 10,
+  Space_FieldNumber_DictSpace = 11,
+  Space_FieldNumber_ListSpace = 12,
+  Space_FieldNumber_GraphSpace = 13,
 };
 
 GPB_FINAL @interface Space : GPBMessage
 
 @property(nonatomic, readwrite) SpaceType spaceType;
 
+/** For raw data */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *description_p;
+
 /** also the n of the MultiBinary */
 @property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *shapeArray;
 /** The number of items in @c shapeArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger shapeArray_Count;
 
-@property(nonatomic, readwrite) DataType dataType;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *dataType;
 
 @property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *lowArray;
 /** The number of items in @c lowArray without causing the array to be created. */
@@ -345,31 +362,21 @@ int32_t Space_SpaceType_RawValue(Space *message);
  **/
 void SetSpace_SpaceType_RawValue(Space *message, int32_t value);
 
-/**
- * Fetches the raw value of a @c Space's @c dataType property, even
- * if the value was not defined by the enum at the time the code was generated.
- **/
-int32_t Space_DataType_RawValue(Space *message);
-/**
- * Sets the raw value of an @c Space's @c dataType property, allowing
- * it to be set to a value that was not defined by the enum at the time the code
- * was generated.
- **/
-void SetSpace_DataType_RawValue(Space *message, int32_t value);
-
 #pragma mark - Data
 
 typedef GPB_ENUM(Data_FieldNumber) {
   Data_FieldNumber_SpaceType = 1,
-  Data_FieldNumber_Box = 2,
-  Data_FieldNumber_Discrete = 3,
-  Data_FieldNumber_MultiBinary = 4,
-  Data_FieldNumber_MultiDiscrete = 5,
-  Data_FieldNumber_Text = 6,
-  Data_FieldNumber_Dict = 7,
-  Data_FieldNumber_List = 8,
-  Data_FieldNumber_Graph = 9,
-  Data_FieldNumber_Image = 10,
+  Data_FieldNumber_DataType = 2,
+  Data_FieldNumber_RawData = 3,
+  Data_FieldNumber_Box = 4,
+  Data_FieldNumber_Discrete = 5,
+  Data_FieldNumber_MultiBinary = 6,
+  Data_FieldNumber_MultiDiscrete = 7,
+  Data_FieldNumber_Text = 8,
+  Data_FieldNumber_Dict = 9,
+  Data_FieldNumber_List = 10,
+  Data_FieldNumber_Graph = 11,
+  Data_FieldNumber_Image = 12,
 };
 
 /**
@@ -379,17 +386,23 @@ GPB_FINAL @interface Data : GPBMessage
 
 @property(nonatomic, readwrite) SpaceType spaceType;
 
-@property(nonatomic, readwrite, strong, null_resettable) FloatTensor *box;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *dataType;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *rawData;
+
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *box;
 /** Test to see if @c box has been set. */
 @property(nonatomic, readwrite) BOOL hasBox;
 
 @property(nonatomic, readwrite) int32_t discrete;
 
-@property(nonatomic, readwrite, strong, null_resettable) BoolTensor *multiBinary;
+/** boolean type */
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *multiBinary;
 /** Test to see if @c multiBinary has been set. */
 @property(nonatomic, readwrite) BOOL hasMultiBinary;
 
-@property(nonatomic, readwrite, strong, null_resettable) IntTensor *multiDiscrete;
+/** integer type */
+@property(nonatomic, readwrite, strong, null_resettable) Tensor *multiDiscrete;
 /** Test to see if @c multiDiscrete has been set. */
 @property(nonatomic, readwrite) BOOL hasMultiDiscrete;
 

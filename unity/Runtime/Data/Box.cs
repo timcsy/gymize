@@ -35,9 +35,9 @@ namespace PAIA.Marenv
 
         public Data ToProtobuf()
         {
-            FloatTensor tensor = new FloatTensor();
+            Tensor tensor = new Tensor();
             tensor.Shape.Add(m_Shape);
-            tensor.Array.Add(m_Array);
+            tensor.FloatArray.Add(m_Array);
             Data data = new Data
             {
                 SpaceType = SpaceType.Box,
@@ -50,7 +50,7 @@ namespace PAIA.Marenv
         {
             int[] shape = new int[data.Box.Shape.Count];
             m_Shape = new List<int>(shape);
-            float[] array = new float[data.Box.Array.Count];
+            float[] array = new float[data.Box.FloatArray.Count];
             m_Array = new List<float>(array);
         }
     }

@@ -26,14 +26,12 @@
 // Forward declarations of Objective C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
-GPBObjCClassDeclaration(BoolTensor);
 GPBObjCClassDeclaration(Data);
-GPBObjCClassDeclaration(FloatTensor);
 GPBObjCClassDeclaration(Graph);
 GPBObjCClassDeclaration(GraphSpace);
 GPBObjCClassDeclaration(Image);
-GPBObjCClassDeclaration(IntTensor);
 GPBObjCClassDeclaration(Space);
+GPBObjCClassDeclaration(Tensor);
 
 #pragma mark - SpaceRoot
 
@@ -56,6 +54,55 @@ static GPBFileDescriptor *SpaceRoot_FileDescriptor(void) {
                                                      syntax:GPBFileSyntaxProto3];
   }
   return descriptor;
+}
+
+#pragma mark - Enum DataType
+
+GPBEnumDescriptor *DataType_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "DataTypeUnspecified\000DataTypeFloat\000DataTy"
+        "peDouble\000DataTypeInt\000DataTypeLong\000DataTy"
+        "peUint\000DataTypeUlong\000DataTypeBool\000";
+    static const int32_t values[] = {
+        DataType_DataTypeUnspecified,
+        DataType_DataTypeFloat,
+        DataType_DataTypeDouble,
+        DataType_DataTypeInt,
+        DataType_DataTypeLong,
+        DataType_DataTypeUint,
+        DataType_DataTypeUlong,
+        DataType_DataTypeBool,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(DataType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:DataType_IsValidValue];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL DataType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case DataType_DataTypeUnspecified:
+    case DataType_DataTypeFloat:
+    case DataType_DataTypeDouble:
+    case DataType_DataTypeInt:
+    case DataType_DataTypeLong:
+    case DataType_DataTypeUint:
+    case DataType_DataTypeUlong:
+    case DataType_DataTypeBool:
+      return YES;
+    default:
+      return NO;
+  }
 }
 
 #pragma mark - Enum CompressionType
@@ -105,13 +152,14 @@ GPBEnumDescriptor *SpaceType_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "SpaceTypeUnspecified\000SpaceTypeBox\000SpaceT"
-        "ypeDiscrete\000SpaceTypeMultiBinary\000SpaceTy"
-        "peMultiDiscrete\000SpaceTypeText\000SpaceTypeD"
-        "ict\000SpaceTypeTuple\000SpaceTypeSequence\000Spa"
-        "ceTypeGraph\000SpaceTypeImage\000";
+        "SpaceTypeUnspecified\000SpaceTypeRaw\000SpaceT"
+        "ypeBox\000SpaceTypeDiscrete\000SpaceTypeMultiB"
+        "inary\000SpaceTypeMultiDiscrete\000SpaceTypeTe"
+        "xt\000SpaceTypeDict\000SpaceTypeTuple\000SpaceTyp"
+        "eSequence\000SpaceTypeGraph\000SpaceTypeImage\000";
     static const int32_t values[] = {
         SpaceType_SpaceTypeUnspecified,
+        SpaceType_SpaceTypeRaw,
         SpaceType_SpaceTypeBox,
         SpaceType_SpaceTypeDiscrete,
         SpaceType_SpaceTypeMultiBinary,
@@ -140,6 +188,7 @@ GPBEnumDescriptor *SpaceType_EnumDescriptor(void) {
 BOOL SpaceType_IsValidValue(int32_t value__) {
   switch (value__) {
     case SpaceType_SpaceTypeUnspecified:
+    case SpaceType_SpaceTypeRaw:
     case SpaceType_SpaceTypeBox:
     case SpaceType_SpaceTypeDiscrete:
     case SpaceType_SpaceTypeMultiBinary:
@@ -156,58 +205,32 @@ BOOL SpaceType_IsValidValue(int32_t value__) {
   }
 }
 
-#pragma mark - Enum DataType
+#pragma mark - Tensor
 
-GPBEnumDescriptor *DataType_EnumDescriptor(void) {
-  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
-  if (!descriptor) {
-    static const char *valueNames =
-        "DataTypeUnspecified\000DataTypeFloat\000DataTy"
-        "peInt\000DataTypeBoolean\000";
-    static const int32_t values[] = {
-        DataType_DataTypeUnspecified,
-        DataType_DataTypeFloat,
-        DataType_DataTypeInt,
-        DataType_DataTypeBoolean,
-    };
-    GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(DataType)
-                                       valueNames:valueNames
-                                           values:values
-                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:DataType_IsValidValue];
-    GPBEnumDescriptor *expected = nil;
-    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
-      [worker release];
-    }
-  }
-  return descriptor;
-}
-
-BOOL DataType_IsValidValue(int32_t value__) {
-  switch (value__) {
-    case DataType_DataTypeUnspecified:
-    case DataType_DataTypeFloat:
-    case DataType_DataTypeInt:
-    case DataType_DataTypeBoolean:
-      return YES;
-    default:
-      return NO;
-  }
-}
-
-#pragma mark - FloatTensor
-
-@implementation FloatTensor
+@implementation Tensor
 
 @dynamic shapeArray, shapeArray_Count;
-@dynamic arrayArray, arrayArray_Count;
+@dynamic dataType;
+@dynamic floatArrayArray, floatArrayArray_Count;
+@dynamic doubleArrayArray, doubleArrayArray_Count;
+@dynamic intArrayArray, intArrayArray_Count;
+@dynamic longArrayArray, longArrayArray_Count;
+@dynamic unsignedIntArrayArray, unsignedIntArrayArray_Count;
+@dynamic unsignedLongArrayArray, unsignedLongArrayArray_Count;
+@dynamic boolArrayArray, boolArrayArray_Count;
 
-typedef struct FloatTensor__storage_ {
+typedef struct Tensor__storage_ {
   uint32_t _has_storage_[1];
+  DataType dataType;
   GPBInt32Array *shapeArray;
-  GPBFloatArray *arrayArray;
-} FloatTensor__storage_;
+  GPBFloatArray *floatArrayArray;
+  GPBDoubleArray *doubleArrayArray;
+  GPBInt32Array *intArrayArray;
+  GPBInt64Array *longArrayArray;
+  GPBUInt32Array *unsignedIntArrayArray;
+  GPBUInt64Array *unsignedLongArrayArray;
+  GPBBoolArray *boolArrayArray;
+} Tensor__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -218,141 +241,92 @@ typedef struct FloatTensor__storage_ {
       {
         .name = "shapeArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = FloatTensor_FieldNumber_ShapeArray,
+        .number = Tensor_FieldNumber_ShapeArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(FloatTensor__storage_, shapeArray),
+        .offset = (uint32_t)offsetof(Tensor__storage_, shapeArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "arrayArray",
+        .name = "dataType",
+        .dataTypeSpecific.enumDescFunc = DataType_EnumDescriptor,
+        .number = Tensor_FieldNumber_DataType,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(Tensor__storage_, dataType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "floatArrayArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = FloatTensor_FieldNumber_ArrayArray,
+        .number = Tensor_FieldNumber_FloatArrayArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(FloatTensor__storage_, arrayArray),
+        .offset = (uint32_t)offsetof(Tensor__storage_, floatArrayArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeFloat,
       },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[FloatTensor class]
-                                     rootClass:[SpaceRoot class]
-                                          file:SpaceRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(FloatTensor__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - IntTensor
-
-@implementation IntTensor
-
-@dynamic shapeArray, shapeArray_Count;
-@dynamic arrayArray, arrayArray_Count;
-
-typedef struct IntTensor__storage_ {
-  uint32_t _has_storage_[1];
-  GPBInt32Array *shapeArray;
-  GPBInt32Array *arrayArray;
-} IntTensor__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
       {
-        .name = "shapeArray",
+        .name = "doubleArrayArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = IntTensor_FieldNumber_ShapeArray,
+        .number = Tensor_FieldNumber_DoubleArrayArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(IntTensor__storage_, shapeArray),
+        .offset = (uint32_t)offsetof(Tensor__storage_, doubleArrayArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeDouble,
       },
       {
-        .name = "arrayArray",
+        .name = "intArrayArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = IntTensor_FieldNumber_ArrayArray,
+        .number = Tensor_FieldNumber_IntArrayArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(IntTensor__storage_, arrayArray),
+        .offset = (uint32_t)offsetof(Tensor__storage_, intArrayArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[IntTensor class]
-                                     rootClass:[SpaceRoot class]
-                                          file:SpaceRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(IntTensor__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - BoolTensor
-
-@implementation BoolTensor
-
-@dynamic shapeArray, shapeArray_Count;
-@dynamic arrayArray, arrayArray_Count;
-
-typedef struct BoolTensor__storage_ {
-  uint32_t _has_storage_[1];
-  GPBInt32Array *shapeArray;
-  GPBBoolArray *arrayArray;
-} BoolTensor__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "shapeArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = BoolTensor_FieldNumber_ShapeArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(BoolTensor__storage_, shapeArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
+        .dataType = GPBDataTypeSInt32,
       },
       {
-        .name = "arrayArray",
+        .name = "longArrayArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = BoolTensor_FieldNumber_ArrayArray,
+        .number = Tensor_FieldNumber_LongArrayArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(BoolTensor__storage_, arrayArray),
+        .offset = (uint32_t)offsetof(Tensor__storage_, longArrayArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeSInt64,
+      },
+      {
+        .name = "unsignedIntArrayArray",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Tensor_FieldNumber_UnsignedIntArrayArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Tensor__storage_, unsignedIntArrayArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "unsignedLongArrayArray",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Tensor_FieldNumber_UnsignedLongArrayArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Tensor__storage_, unsignedLongArrayArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "boolArrayArray",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Tensor_FieldNumber_BoolArrayArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Tensor__storage_, boolArrayArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[BoolTensor class]
+        [GPBDescriptor allocDescriptorForClass:[Tensor class]
                                      rootClass:[SpaceRoot class]
                                           file:SpaceRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(BoolTensor__storage_)
+                                   storageSize:sizeof(Tensor__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -363,6 +337,18 @@ typedef struct BoolTensor__storage_ {
 }
 
 @end
+
+int32_t Tensor_DataType_RawValue(Tensor *message) {
+  GPBDescriptor *descriptor = [Tensor descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Tensor_FieldNumber_DataType];
+  return GPBGetMessageRawEnumField(message, field);
+}
+
+void SetTensor_DataType_RawValue(Tensor *message, int32_t value) {
+  GPBDescriptor *descriptor = [Tensor descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Tensor_FieldNumber_DataType];
+  GPBSetMessageRawEnumField(message, field, value);
+}
 
 #pragma mark - GraphSpace
 
@@ -430,9 +416,9 @@ typedef struct GraphSpace__storage_ {
 
 typedef struct Graph__storage_ {
   uint32_t _has_storage_[1];
-  FloatTensor *nodes;
-  FloatTensor *edges;
-  IntTensor *edgeLinks;
+  Tensor *nodes;
+  Tensor *edges;
+  Tensor *edgeLinks;
 } Graph__storage_;
 
 // This method is threadsafe because it is initially called
@@ -443,7 +429,7 @@ typedef struct Graph__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "nodes",
-        .dataTypeSpecific.clazz = GPBObjCClass(FloatTensor),
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
         .number = Graph_FieldNumber_Nodes,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(Graph__storage_, nodes),
@@ -452,7 +438,7 @@ typedef struct Graph__storage_ {
       },
       {
         .name = "edges",
-        .dataTypeSpecific.clazz = GPBObjCClass(FloatTensor),
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
         .number = Graph_FieldNumber_Edges,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(Graph__storage_, edges),
@@ -461,7 +447,7 @@ typedef struct Graph__storage_ {
       },
       {
         .name = "edgeLinks",
-        .dataTypeSpecific.clazz = GPBObjCClass(IntTensor),
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
         .number = Graph_FieldNumber_EdgeLinks,
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(Graph__storage_, edgeLinks),
@@ -582,6 +568,7 @@ void SetImage_CompressionType_RawValue(Image *message, int32_t value) {
 @implementation Space
 
 @dynamic spaceType;
+@dynamic description_p;
 @dynamic shapeArray, shapeArray_Count;
 @dynamic dataType;
 @dynamic lowArray, lowArray_Count;
@@ -597,10 +584,11 @@ void SetImage_CompressionType_RawValue(Image *message, int32_t value) {
 typedef struct Space__storage_ {
   uint32_t _has_storage_[1];
   SpaceType spaceType;
-  DataType dataType;
   int32_t min;
   int32_t max;
+  NSString *description_p;
   GPBInt32Array *shapeArray;
+  NSString *dataType;
   GPBFloatArray *lowArray;
   GPBFloatArray *highArray;
   GPBInt32Array *nvecArray;
@@ -626,6 +614,15 @@ typedef struct Space__storage_ {
         .dataType = GPBDataTypeEnum,
       },
       {
+        .name = "description_p",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Space_FieldNumber_Description_p,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(Space__storage_, description_p),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
         .name = "shapeArray",
         .dataTypeSpecific.clazz = Nil,
         .number = Space_FieldNumber_ShapeArray,
@@ -636,12 +633,12 @@ typedef struct Space__storage_ {
       },
       {
         .name = "dataType",
-        .dataTypeSpecific.enumDescFunc = DataType_EnumDescriptor,
+        .dataTypeSpecific.clazz = Nil,
         .number = Space_FieldNumber_DataType,
-        .hasIndex = 1,
+        .hasIndex = 2,
         .offset = (uint32_t)offsetof(Space__storage_, dataType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeEnum,
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
       },
       {
         .name = "lowArray",
@@ -665,7 +662,7 @@ typedef struct Space__storage_ {
         .name = "min",
         .dataTypeSpecific.clazz = Nil,
         .number = Space_FieldNumber_Min,
-        .hasIndex = 2,
+        .hasIndex = 3,
         .offset = (uint32_t)offsetof(Space__storage_, min),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeInt32,
@@ -674,7 +671,7 @@ typedef struct Space__storage_ {
         .name = "max",
         .dataTypeSpecific.clazz = Nil,
         .number = Space_FieldNumber_Max,
-        .hasIndex = 3,
+        .hasIndex = 4,
         .offset = (uint32_t)offsetof(Space__storage_, max),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeInt32,
@@ -719,7 +716,7 @@ typedef struct Space__storage_ {
         .name = "graphSpace",
         .dataTypeSpecific.clazz = GPBObjCClass(GraphSpace),
         .number = Space_FieldNumber_GraphSpace,
-        .hasIndex = 4,
+        .hasIndex = 5,
         .offset = (uint32_t)offsetof(Space__storage_, graphSpace),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
@@ -755,23 +752,13 @@ void SetSpace_SpaceType_RawValue(Space *message, int32_t value) {
   GPBSetMessageRawEnumField(message, field, value);
 }
 
-int32_t Space_DataType_RawValue(Space *message) {
-  GPBDescriptor *descriptor = [Space descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Space_FieldNumber_DataType];
-  return GPBGetMessageRawEnumField(message, field);
-}
-
-void SetSpace_DataType_RawValue(Space *message, int32_t value) {
-  GPBDescriptor *descriptor = [Space descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Space_FieldNumber_DataType];
-  GPBSetMessageRawEnumField(message, field, value);
-}
-
 #pragma mark - Data
 
 @implementation Data
 
 @dynamic spaceType;
+@dynamic dataType;
+@dynamic rawData;
 @dynamic hasBox, box;
 @dynamic discrete;
 @dynamic hasMultiBinary, multiBinary;
@@ -786,9 +773,11 @@ typedef struct Data__storage_ {
   uint32_t _has_storage_[1];
   SpaceType spaceType;
   int32_t discrete;
-  FloatTensor *box;
-  BoolTensor *multiBinary;
-  IntTensor *multiDiscrete;
+  NSString *dataType;
+  NSData *rawData;
+  Tensor *box;
+  Tensor *multiBinary;
+  Tensor *multiDiscrete;
   NSString *text;
   NSMutableDictionary *dict;
   GPBInt32ObjectDictionary *list;
@@ -812,10 +801,28 @@ typedef struct Data__storage_ {
         .dataType = GPBDataTypeEnum,
       },
       {
-        .name = "box",
-        .dataTypeSpecific.clazz = GPBObjCClass(FloatTensor),
-        .number = Data_FieldNumber_Box,
+        .name = "dataType",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Data_FieldNumber_DataType,
         .hasIndex = 1,
+        .offset = (uint32_t)offsetof(Data__storage_, dataType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "rawData",
+        .dataTypeSpecific.clazz = Nil,
+        .number = Data_FieldNumber_RawData,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(Data__storage_, rawData),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "box",
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
+        .number = Data_FieldNumber_Box,
+        .hasIndex = 3,
         .offset = (uint32_t)offsetof(Data__storage_, box),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
@@ -824,25 +831,25 @@ typedef struct Data__storage_ {
         .name = "discrete",
         .dataTypeSpecific.clazz = Nil,
         .number = Data_FieldNumber_Discrete,
-        .hasIndex = 2,
+        .hasIndex = 4,
         .offset = (uint32_t)offsetof(Data__storage_, discrete),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeInt32,
       },
       {
         .name = "multiBinary",
-        .dataTypeSpecific.clazz = GPBObjCClass(BoolTensor),
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
         .number = Data_FieldNumber_MultiBinary,
-        .hasIndex = 3,
+        .hasIndex = 5,
         .offset = (uint32_t)offsetof(Data__storage_, multiBinary),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "multiDiscrete",
-        .dataTypeSpecific.clazz = GPBObjCClass(IntTensor),
+        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
         .number = Data_FieldNumber_MultiDiscrete,
-        .hasIndex = 4,
+        .hasIndex = 6,
         .offset = (uint32_t)offsetof(Data__storage_, multiDiscrete),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
@@ -851,7 +858,7 @@ typedef struct Data__storage_ {
         .name = "text",
         .dataTypeSpecific.clazz = Nil,
         .number = Data_FieldNumber_Text,
-        .hasIndex = 5,
+        .hasIndex = 7,
         .offset = (uint32_t)offsetof(Data__storage_, text),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
@@ -878,7 +885,7 @@ typedef struct Data__storage_ {
         .name = "graph",
         .dataTypeSpecific.clazz = GPBObjCClass(Graph),
         .number = Data_FieldNumber_Graph,
-        .hasIndex = 6,
+        .hasIndex = 8,
         .offset = (uint32_t)offsetof(Data__storage_, graph),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
@@ -887,7 +894,7 @@ typedef struct Data__storage_ {
         .name = "image",
         .dataTypeSpecific.clazz = GPBObjCClass(Image),
         .number = Data_FieldNumber_Image,
-        .hasIndex = 7,
+        .hasIndex = 9,
         .offset = (uint32_t)offsetof(Data__storage_, image),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,

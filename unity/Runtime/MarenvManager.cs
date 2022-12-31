@@ -8,11 +8,13 @@ namespace PAIA.Marenv
     {
         public List<SensorComponent> Sensors;
         List<IObserver> Observers;
+        public string Field;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            MarenvField field = MarenvField.FromString(Field);
+            Debug.Log(field);
         }
 
         // Update is called once per frame
