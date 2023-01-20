@@ -16,6 +16,6 @@ namespace PAIA.Marenv
             return Fields;
         }
 
-        public abstract IData GetData();
+        public abstract IData GetObservation(int cacheId = -1);
     }
 }

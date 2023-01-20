@@ -279,36 +279,36 @@ namespace PAIA.Marenv
             return null;
         }
 
-        MarenvField VisitField(Node node)
+        FieldString VisitField(Node node)
         {
-            MarenvField field = new MarenvField();
-            if (node.Agents != null) field.IsAllAgents = node.Agents.IsAll;
-            else field.IsAllAgents = false;
-            if (node.Agents != null) field.Agents = node.Agents.Agents;
-            field.IsRoot = node.IsRoot;
+            FieldString fieldString = new FieldString();
+            if (node.Agents != null) fieldString.IsAllAgents = node.Agents.IsAll;
+            else fieldString.IsAllAgents = false;
+            if (node.Agents != null) fieldString.Agents = node.Agents.Agents;
+            fieldString.IsRoot = node.IsRoot;
             Queue<MappingNode> mappings = new Queue<MappingNode>();
             foreach (MappingNode mapping in node.Mappings)
             {
                 for (int i = 0; i < mapping.Upper; i++)
                 {
-                    if (mappings.Count == 0) field.Upper++;
+                    if (mappings.Count == 0) fieldString.Upper++;
                     else mappings.Dequeue();
                 }
                 mappings.Enqueue(mapping);
             }
             while (mappings.Count > 1)
             {
-                field.Paths.Add(VisitPath(mappings.Dequeue()));
+                fieldString.Paths.Add(VisitPath(mappings.Dequeue()));
             }
             if (mappings.Count == 1)
             {
-                field.Mapping = VisitMapping(mappings.Dequeue());
+                fieldString.Mapping = VisitMapping(mappings.Dequeue());
             }
-            if (field.IsRoot) field.Upper = 0;
-            return field;
+            if (fieldString.IsRoot) fieldString.Upper = 0;
+            return fieldString;
         }
 
-        public MarenvField Interpret()
+        public FieldString Interpret()
         {
             Node tree = m_Parser.Parse();
             return VisitField(tree);

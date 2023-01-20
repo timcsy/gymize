@@ -14,7 +14,7 @@ namespace PAIA.Marenv
         public float Scale = 1;
         public COMPRESSION_TYPE CompressionType = COMPRESSION_TYPE.PNG;
 
-        public override IData GetData()
+        public override IData GetObservation(int cacheId = -1)
         {
             RenderTexture rt = new RenderTexture(Width, Height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
             RenderTexture oldRT = Camera.targetTexture;
@@ -46,7 +46,7 @@ namespace PAIA.Marenv
 
         private Texture2D ToTexture2D(RenderTexture rt)
         {
-            // !!! Note: This function will delete the original RenderTexture rt !!!
+            // !!! Note: You have to delete the original RenderTexture rt !!!
 
             var oldRT = RenderTexture.active;
 
@@ -57,13 +57,11 @@ namespace PAIA.Marenv
 
             RenderTexture.active = oldRT;
 
-            DestroyImmediate(rt, true);
-
             return tex;
         }
         private Texture2D FlipTexture(Texture2D tex)
         {
-            // !!! Note: This function will delete the original Texture2D tex !!!
+            // !!! Note: You have to delete the original Texture2D tex !!!
 
             // upside-down
             Texture2D snap = new Texture2D(tex.width, tex.height, TextureFormat.RGB24, false);
@@ -78,7 +76,6 @@ namespace PAIA.Marenv
             snap.SetPixels(pixelsFlipped);
             snap.Apply();
 
-            DestroyImmediate(tex, true);
             int identificador = GC.GetGeneration(pixels);
             pixels = null;
             GC.Collect(identificador, GCCollectionMode.Forced);
@@ -90,7 +87,7 @@ namespace PAIA.Marenv
         }
         private byte[] ToImage(Texture2D texture, COMPRESSION_TYPE format = COMPRESSION_TYPE.PNG)
         {
-            // !!! Note: This function will delete the original Texture2D texture !!!
+            // !!! Note: You have to delete the original Texture2D texture !!!
 
             // Check if the environment need to flip upside-down
             var flipY = SystemInfo.graphicsDeviceType == GraphicsDeviceType.OpenGLCore ||
@@ -116,7 +113,6 @@ namespace PAIA.Marenv
                 buffer = tex.GetRawTextureData();
             }
             
-            DestroyImmediate(texture, true);
             DestroyImmediate(tex, true);
 
             return buffer;

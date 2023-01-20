@@ -6,6 +6,6 @@ namespace PAIA.Marenv
     public interface IObserver
     {
         List<string> GetFields();
-        IData GetData();
+        IData GetObservation(int cacheId);
     }
 }

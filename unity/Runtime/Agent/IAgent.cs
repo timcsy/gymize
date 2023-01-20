@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PAIA.Marenv
 {
-    public interface IAgent : IObserver
+    public interface IAgent
     {
         // TODO
     }

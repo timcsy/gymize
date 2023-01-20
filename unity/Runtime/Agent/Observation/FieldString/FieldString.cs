@@ -190,7 +190,7 @@ namespace PAIA.Marenv
         }
     }
 
-    public class MarenvField
+    public class FieldString
     {
         public bool IsAllAgents;
         public List<string> Agents; // If AllAgents == true, then this is the list of unavalible agents
@@ -199,7 +199,7 @@ namespace PAIA.Marenv
         public List<FieldPath> Paths;
         public FieldMapping Mapping; // If Mapping == null, means put all data in the last path
 
-        public MarenvField()
+        public FieldString()
         {
             IsAllAgents = false;
             Agents = new List<string>();
@@ -221,7 +221,7 @@ namespace PAIA.Marenv
             return output;
         }
 
-        public static MarenvField FromString(string text)
+        public static FieldString ParseFrom(string text)
         {
             Lexer lexer = new Lexer(text);
             Parser parser = new Parser(lexer);

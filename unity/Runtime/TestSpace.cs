@@ -9,15 +9,24 @@ using PAIA.Marenv.Protobuf;
 
 public class TestSpace : MonoBehaviour
 {
-    WebSocket ws;
-    string serverAddress = "ws://localhost:8080";
-
-    [Box("@[0]")]
-    float num;
-
     // Start is called before the first frame update
     void Start()
     {
+        // TestWebSocket();
+        TestObs();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void TestWebSocket()
+    {
+        Debug.Log("===============TestWebSocket===============");
+        WebSocket ws;
+        string serverAddress = "ws://localhost:8080";
         ws = new WebSocket(serverAddress);
         ws.Compression = CompressionMethod.Deflate;
         ws.OnOpen += (sender, e) =>
@@ -51,20 +60,12 @@ public class TestSpace : MonoBehaviour
             Debug.Log("The websocket is closing...");
         };
         ws.Connect();
-
-        TestObs();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void TestObs()
     {
-        Debug.Log("TestObs");
-        Agent agent = new Agent();
-        Observer.CollectObservations(agent);
+        Debug.Log("===============TestObs===============");
+        TestAgent agent = GetComponent<TestAgent>();
+        Marenv.TestCollectObservers(agent);
     }
 }
