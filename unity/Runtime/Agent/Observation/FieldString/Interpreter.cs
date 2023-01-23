@@ -286,23 +286,23 @@ namespace PAIA.Marenv
             else fieldString.IsAllAgents = false;
             if (node.Agents != null) fieldString.Agents = node.Agents.Agents;
             fieldString.IsRoot = node.IsRoot;
-            Queue<MappingNode> mappings = new Queue<MappingNode>();
+            List<MappingNode> mappings = new List<MappingNode>();
             foreach (MappingNode mapping in node.Mappings)
             {
                 for (int i = 0; i < mapping.Upper; i++)
                 {
                     if (mappings.Count == 0) fieldString.Upper++;
-                    else mappings.Dequeue();
+                    else mappings.RemoveAt(mappings.Count - 1);
                 }
-                mappings.Enqueue(mapping);
+                mappings.Add(mapping);
             }
-            while (mappings.Count > 1)
+            for (int i = 0; i < mappings.Count - 1; i++)
             {
-                fieldString.Paths.Add(VisitPath(mappings.Dequeue()));
+                fieldString.Paths.Add(VisitPath(mappings[i]));
             }
-            if (mappings.Count == 1)
+            if (mappings.Count > 0)
             {
-                fieldString.Mapping = VisitMapping(mappings.Dequeue());
+                fieldString.Mapping = VisitMapping(mappings[mappings.Count - 1]);
             }
             if (fieldString.IsRoot) fieldString.Upper = 0;
             return fieldString;

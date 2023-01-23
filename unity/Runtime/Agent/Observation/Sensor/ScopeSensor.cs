@@ -1,6 +1,6 @@
 namespace PAIA.Marenv
 {
-    public class NullSensor : SensorComponent
+    public class ScopeSensor : SensorComponent
     {
         public override IData GetObservation(int cacheId = -1)
         {

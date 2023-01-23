@@ -1,22 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace PAIA.Marenv
 {
-    public abstract class AttributeObserver : IObserver
+    public class AttributeObserver : IObserver
     {
         AttributeBase m_Attribute;
+        object m_Object;
+        MemberInfo m_MemberInfo;
 
-        public AttributeObserver(AttributeBase attr)
+        public AttributeObserver(AttributeBase attr, object o, MemberInfo memberInfo)
         {
             m_Attribute = attr;
+            m_Object = o;
+            m_MemberInfo = memberInfo;
         }
 
-        public List<string> GetFields()
+        public IData GetObservation(int cacheId = -1)
         {
-            return m_Attribute.Fields;
+            FieldInfo fieldInfo = m_MemberInfo as FieldInfo;
+            if (fieldInfo != null)
+            {
+                object o = fieldInfo.GetValue(m_Object);
+                return m_Attribute.GetData(o);
+            }
+            PropertyInfo propInfo = m_MemberInfo as PropertyInfo;
+            if (propInfo != null)
+            {
+                object o = propInfo.GetMethod.Invoke(m_Object, null);
+                return m_Attribute.GetData(o);
+            }
+            return null;
         }
-
-        public abstract IData GetObservation(int cacheId = -1);
     }
 }

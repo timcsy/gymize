@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace PAIA.Marenv
 {
-    public abstract class SensorComponent : MonoBehaviour, IObserver
+    public abstract class SensorComponent : MonoBehaviour, ISensor
     {
-        public List<string> Fields;
+        public List<string> Mappings;
 
         // Start is called before the first frame update
         void Start() {}
 
         public List<string> GetFields()
         {
-            return Fields;
+            return Mappings;
         }
 
         public abstract IData GetObservation(int cacheId = -1);

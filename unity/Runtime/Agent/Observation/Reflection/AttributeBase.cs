@@ -7,27 +7,32 @@ namespace PAIA.Marenv
     public abstract class AttributeBase : Attribute
     {
         List<string> m_Fields;
-
-        public AttributeBase()
-        {
-            m_Fields = new List<string>();
-            m_Fields.Add("");
-        }
-        public AttributeBase(string field)
-        {
-            m_Fields = new List<string>();
-            if (field != null) m_Fields.Add(field);
-        }
-        public AttributeBase(List<string> fields)
-        {
-            if (fields == null) m_Fields = new List<string>();
-            else m_Fields = fields;
-        }
-
         public List<string> Fields
         {
             get { return m_Fields; }
             set { m_Fields = value; }
         }
+
+        public AttributeBase()
+        {
+            m_Fields = new List<string>();
+        }
+        public AttributeBase(string field)
+        {
+            // field should not be null
+            m_Fields = new List<string>{ field };
+        }
+        public AttributeBase(List<string> fields)
+        {
+            // fields should not be null
+            m_Fields = fields;
+        }
+
+        public List<FieldString> GetFieldStrings()
+        {
+            return FieldString.ParseFrom(m_Fields);
+        }
+
+        public abstract IData GetData(object o);
     }
 }

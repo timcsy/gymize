@@ -25,7 +25,7 @@ namespace PAIA.Marenv
         
         void FixedUpdate()
         {
-            Marenv.Instance.Tick();
+            Marenv.Instance._Tick();
         }
     }
 }

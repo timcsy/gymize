@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using WebSocketSharp;
 using Google.Protobuf;
 using PAIA.Marenv;
 using PAIA.Marenv.Protobuf;
+using System.Reflection;
 
 public class TestSpace : MonoBehaviour
 {
@@ -13,7 +15,10 @@ public class TestSpace : MonoBehaviour
     void Start()
     {
         // TestWebSocket();
+        // TestJoin();
+        // TestEqual();
         TestObs();
+        // TestType();
     }
 
     // Update is called once per frame
@@ -62,10 +67,52 @@ public class TestSpace : MonoBehaviour
         ws.Connect();
     }
 
+    void TestJoin()
+    {
+        Debug.Log("===============TestJoin===============");
+        FieldString f1 = FieldString.ParseFrom("agent@.c.b");
+        FieldString f2 = FieldString.ParseFrom("..a");
+        var fs = FieldString.Join(f1, f2);
+        foreach (var f in fs) Debug.Log(f.ToString());
+    }
+
+    void TestEqual()
+    {
+        Debug.Log("===============TestEqual===============");
+        FieldString f1 = FieldString.ParseFrom(".a");
+        FieldString f2 = FieldString.ParseFrom(".a ");
+        Debug.Log(Equals(f1, f2));
+    }
+
     void TestObs()
     {
         Debug.Log("===============TestObs===============");
         TestAgent agent = GetComponent<TestAgent>();
         Marenv.TestCollectObservers(agent);
+    }
+
+    void TestType()
+    {
+        Debug.Log("===============TestType===============");
+        Debug.Log(typeof(int));
+        Debug.Log(typeof(int[]));
+        Debug.Log(typeof(int[,]));
+        Debug.Log(typeof(int[][]));
+        Debug.Log(typeof(int*));
+        Debug.Log(typeof(float));
+        Debug.Log(typeof(double));
+        Debug.Log(typeof(int));
+        Debug.Log(typeof(int?));
+        Debug.Log(typeof(uint));
+        int[,] ints = {{1, 2}, {2, 3}};
+        foreach (var n in ints)
+        {
+            Debug.Log(n.GetType());
+        }
+        int[][] ints2 = { new int[]{1, 2}, new int[]{3, 4} };
+        foreach (var n in ints2)
+        {
+            Debug.Log(n.GetType());
+        }
     }
 }

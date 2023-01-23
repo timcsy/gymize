@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace PAIA.Marenv
 {
-    public interface IObserver
+    public interface ISensor : IObserver
     {
-        IData GetObservation(int cacheId);
+        List<string> GetFields();
     }
 }

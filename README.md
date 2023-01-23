@@ -30,3 +30,8 @@ agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 10 & 11=0 &
   - Using `agent@` to assign the agent name in the beginning
   - Using `@@` in the beginning means for all agents
   - Using `@@agent1@agent2@` in the beginning means for all agents, except `agent1`, `agent2`
+
+### Attribute
+Define the Observer in the class or struct, using the attributes.
+
+### Sensor Component

@@ -95,7 +95,7 @@ namespace PAIA.Marenv
 
     public class FieldPath
     {
-        public FieldType Type; // SEQUENCE, TUPLE, DICT
+        public FieldType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
         public FieldPosition Position;
 
         public FieldPath()
@@ -163,6 +163,36 @@ namespace PAIA.Marenv
             Dimensions = new List<FieldCollection>();
         }
 
+        void Error(string reason)
+        {
+            throw new Exception("Path Error: " + reason + "\nIn field mapping: " + ToString());
+        }
+
+        public bool IsSingle()
+        {
+            if (Dimensions.Count == 1)
+            {
+                if (Dimensions[0].Assignments.Count == 1)
+                {
+                    if (Dimensions[0].Assignments[0].Source == null)
+                    {
+                        FieldSlice destination = Dimensions[0].Assignments[0].Destination;
+                        if (destination.Step == 0 && destination.HasStart)
+                        {
+                            FieldPath path = new FieldPath();
+                            path.Type = Type;
+                            path.Position = new FieldPosition();
+                            path.Position.Type = destination.Type;
+                            path.Position.Index = destination.StartIndex;
+                            path.Position.Key = destination.StartKey;
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             string output = "";
@@ -197,7 +227,7 @@ namespace PAIA.Marenv
         public bool IsRoot;
         public int Upper;
         public List<FieldPath> Paths;
-        public FieldMapping Mapping; // If Mapping == null, means put all data in the last path
+        public FieldMapping Mapping; // If Mapping == null, means there is no path and mapping
 
         public FieldString()
         {
@@ -207,6 +237,80 @@ namespace PAIA.Marenv
             Upper = 0;
             Paths = new List<FieldPath>();
             Mapping = null;
+        }
+
+        public static List<FieldString> Join(List<FieldString> scopes, List<FieldString> fields, string defaultName = null)
+        {
+            // Like a Cartesian Product: scopes x fields
+            if (scopes == null) scopes = new List<FieldString>();
+            if (fields == null) fields = new List<FieldString>();
+            if (fields.Count == 0 && defaultName != null)
+            {
+                // Using the variable name as default name
+                fields.Add(FieldString.ParseFrom("{\"" + defaultName + "\"}"));
+            }
+
+            List<FieldString> fullFields = new List<FieldString>();
+            foreach(FieldString field in fields)
+            {
+                if (field.IsRoot || scopes.Count == 0) fullFields.Add(field);
+                else
+                {
+                    foreach(FieldString scope in scopes)
+                    {
+                        if (scope.Mapping == null || (scope.Mapping != null && scope.Mapping.IsSingle()))
+                        {
+                            string merged = scope.ToString() + field.ToString();
+                            fullFields.Add(FieldString.ParseFrom(merged));
+                        }
+                    }
+                }
+            }
+            return fullFields;
+        }
+
+        public static List<FieldString> Join(FieldString scope, List<FieldString> fields, string defaultName = null)
+        {
+            List<FieldString> scopes = null;
+            if (scope != null) scopes = new List<FieldString>{ scope };
+            return Join(scopes, fields, defaultName);
+        }
+
+        public static List<FieldString> Join(List<FieldString> scopes, FieldString field, string defaultName = null)
+        {
+            List<FieldString> fields = null;
+            if (field != null) fields = new List<FieldString>{ field };
+            return Join(scopes, fields, defaultName);
+        }
+
+        public static List<FieldString> Join(FieldString scope, FieldString field, string defaultName = null)
+        {
+            List<FieldString> scopes = null;
+            if (scope != null) scopes = new List<FieldString>{ scope };
+            List<FieldString> fields = null;
+            if (field != null) fields = new List<FieldString>{ field };
+            return Join(scopes, fields, defaultName);
+        }
+
+        public static FieldString ParseFrom(string text)
+        {
+            Lexer lexer = new Lexer(text);
+            Parser parser = new Parser(lexer);
+            Interpreter interpreter = new Interpreter(parser);
+            return interpreter.Interpret();
+        }
+
+        public static List<FieldString> ParseFrom(List<string> fields)
+        {
+            List<FieldString> fieldStrings = new List<FieldString>();
+            if (fields != null)
+            {
+                foreach (string field in fields)
+                {
+                    fieldStrings.Add(FieldString.ParseFrom(field));
+                }
+            }
+            return fieldStrings;
         }
 
         public override string ToString()
@@ -221,12 +325,25 @@ namespace PAIA.Marenv
             return output;
         }
 
-        public static FieldString ParseFrom(string text)
+        public override int GetHashCode()
         {
-            Lexer lexer = new Lexer(text);
-            Parser parser = new Parser(lexer);
-            Interpreter interpreter = new Interpreter(parser);
-            return interpreter.Interpret();
+            return ToString().GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            // Check for null and compare run-time types.
+            if (this == obj) return true;
+            else return ToString() == obj.ToString();
+        }
+
+        public bool HasAgent(string agent)
+        {
+            foreach (string a in Agents)
+            {
+                if (a == agent) return !IsAllAgents;
+            }
+            return IsAllAgents;
         }
 	}
 }
