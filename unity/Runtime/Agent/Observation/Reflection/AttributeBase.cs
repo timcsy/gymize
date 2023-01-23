@@ -6,31 +6,31 @@ namespace PAIA.Marenv
 {
     public abstract class AttributeBase : Attribute
     {
-        List<string> m_Fields;
-        public List<string> Fields
+        List<string> m_Locations;
+        public List<string> Locations
         {
-            get { return m_Fields; }
-            set { m_Fields = value; }
+            get { return m_Locations; }
+            set { m_Locations = value; }
         }
 
         public AttributeBase()
         {
-            m_Fields = new List<string>();
+            m_Locations = new List<string>();
         }
-        public AttributeBase(string field)
+        public AttributeBase(string location)
         {
-            // field should not be null
-            m_Fields = new List<string>{ field };
+            // location should not be null
+            m_Locations = new List<string>{ location };
         }
-        public AttributeBase(List<string> fields)
+        public AttributeBase(List<string> locations)
         {
-            // fields should not be null
-            m_Fields = fields;
+            // locations should not be null
+            m_Locations = locations;
         }
 
-        public List<FieldString> GetFieldStrings()
+        public List<string> GetLocations()
         {
-            return FieldString.ParseFrom(m_Fields);
+            return m_Locations;
         }
 
         public abstract IData GetData(object o);

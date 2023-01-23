@@ -5,6 +5,6 @@ namespace PAIA.Marenv
 {
     public interface ISensor : IObserver
     {
-        List<string> GetFields();
+        List<string> GetLocations();
     }
 }

@@ -51,7 +51,7 @@ namespace PAIA.Marenv
 
         void Error()
         {
-            throw new Exception("Invalid character at position " + m_Position + " of the field string " + m_Text);
+            throw new Exception("Invalid character at position " + m_Position + " of the location string " + m_Text);
         }
 
         void Advance()

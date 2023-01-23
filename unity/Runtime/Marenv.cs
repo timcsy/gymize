@@ -18,52 +18,52 @@ namespace PAIA.Marenv
             get { return s_Lazy.IsValueCreated; }
         }
 
-        public static void AddObserver(string field, IObserver observer, string scope = "")
+        public static void AddObserver(string location, IObserver observer, string scope = "")
         {
-            if (field == null) field = "";
-            List<string> fields = new List<string>{ field };
-            AddObserver(fields, observer, scope);
+            if (location == null) location = "";
+            List<string> locations = new List<string>{ location };
+            AddObserver(locations, observer, scope);
         }
 
-        public static void AddObserver(List<string> fields, IObserver observer, string scope = "")
+        public static void AddObserver(List<string> locations, IObserver observer, string scope = "")
         {
-            FieldString scopeField = FieldString.ParseFrom(scope);
-            List<FieldString> fieldStrings = FieldString.ParseFrom(fields);
-            List<FieldString> fullFields = FieldString.Join(scopeField, fieldStrings);
-            Instance._AddObserver(fullFields, observer);
+            Location scopeLoc = Location.ParseFrom(scope);
+            List<Location> locs = Location.ParseFrom(locations);
+            List<Location> fullLocs = Location.Join(scopeLoc, locs);
+            Instance._AddObserver(fullLocs, observer);
         }
 
         public static void AddObserversFromObject(object o, string scope = "")
         {
-            List<FieldString> scopes = new List<FieldString>{ FieldString.ParseFrom(scope) };
+            List<Location> scopes = new List<Location>{ Location.ParseFrom(scope) };
             Instance._AddObserversFromObject(o, scopes);
         }
 
         public static void AddObserversFromGameObject(object gameObject, string scope = "")
         {
-            List<FieldString> scopes = new List<FieldString>{ FieldString.ParseFrom(scope) };
+            List<Location> scopes = new List<Location>{ Location.ParseFrom(scope) };
             Instance._AddObserversFromGameObject(gameObject, scopes);
         }
 
         public static void AddObserversFromComponent(object component, string scope = "")
         {
-            List<FieldString> scopes = new List<FieldString>{ FieldString.ParseFrom(scope) };
+            List<Location> scopes = new List<Location>{ Location.ParseFrom(scope) };
             Instance._AddObserversFromComponent(component, scopes);
         }
 
-        public static void SetObservation(string field, IData observation, string scope = "")
+        public static void SetObservation(string location, IData observation, string scope = "")
         {
-            if (field == null) field = "";
-            List<string> fields = new List<string>{ field };
-            SetObservation(fields, observation, scope);
+            if (location == null) location = "";
+            List<string> locations = new List<string>{ location };
+            SetObservation(locations, observation, scope);
         }
 
-        public static void SetObservation(List<string> fields, IData observation, string scope = "")
+        public static void SetObservation(List<string> locations, IData observation, string scope = "")
         {
-            FieldString scopeField = FieldString.ParseFrom(scope);
-            List<FieldString> fieldStrings = FieldString.ParseFrom(fields);
-            List<FieldString> fullFields = FieldString.Join(scopeField, fieldStrings);
-            Instance._SetObservation(fullFields, observation);
+            Location scopeLoc = Location.ParseFrom(scope);
+            List<Location> locs = Location.ParseFrom(locations);
+            List<Location> fullLocs = Location.Join(scopeLoc, locs);
+            Instance._SetObservation(fullLocs, observation);
         }
 
         public static IData GetObservation(string agent)
@@ -76,15 +76,15 @@ namespace PAIA.Marenv
             Instance._Step();
         }
 
-        Dictionary<FieldString, IObserver> m_Observers;
-        Dictionary<FieldString, IData> m_Observations;
+        Dictionary<Location, IObserver> m_Observers;
+        Dictionary<Location, IData> m_Observations;
         int m_TimeStamp;
         Dictionary<IObserver, bool> m_Cached;
 
         private Marenv()
         {
-            m_Observers = new Dictionary<FieldString, IObserver>();
-            m_Observations = new Dictionary<FieldString, IData>();
+            m_Observers = new Dictionary<Location, IObserver>();
+            m_Observations = new Dictionary<Location, IData>();
             m_TimeStamp = 0;
             m_Cached = new Dictionary<IObserver, bool>();
         }
@@ -104,33 +104,33 @@ namespace PAIA.Marenv
             
         }
 
-        void _AddObserver(List<FieldString> fieldStrings, IObserver observer)
+        void _AddObserver(List<Location> locations, IObserver observer)
         {
-            foreach (FieldString fieldString in fieldStrings)
+            foreach (Location location in locations)
             {
-                if (fieldString.IsRoot)
+                if (location.IsRoot)
                 {
-                    m_Observers[fieldString] = observer;
+                    m_Observers[location] = observer;
                     // TODO: cache
                 }
-                else _Error("Field string should be absolute: " + fieldString.ToString());
+                else _Error("Location string should be absolute: " + location.ToString());
             }
         }
 
-        void _SetObservation(FieldString fieldString, IData observation)
+        void _SetObservation(Location location, IData observation)
         {
-            if (fieldString.IsRoot)
+            if (location.IsRoot)
             {
-                m_Observations[fieldString] = observation;
+                m_Observations[location] = observation;
             }
-            else _Error("Field string should be absolute: " + fieldString.ToString());
+            else _Error("Location string should be absolute: " + location.ToString());
         }
 
-        void _SetObservation(List<FieldString> fieldStrings, IData observation)
+        void _SetObservation(List<Location> locations, IData observation)
         {
-            foreach(FieldString fieldString in fieldStrings)
+            foreach(Location location in locations)
             {
-                _SetObservation(fieldString, observation);
+                _SetObservation(location, observation);
             }
         }
 
@@ -138,13 +138,13 @@ namespace PAIA.Marenv
         {
             _CollectObserverObservations(agent);
             IData mergedObservation = null;
-            foreach (var fieldString_observation in m_Observations)
+            foreach (var location_observation in m_Observations)
             {
-                FieldString fieldString = fieldString_observation.Key;
-                IData observation = fieldString_observation.Value;
-                if (fieldString.HasAgent(agent))
+                Location location = location_observation.Key;
+                IData observation = location_observation.Value;
+                if (location.HasAgent(agent))
                 {
-                    mergedObservation = _MergeObservation(mergedObservation, fieldString, observation);
+                    mergedObservation = _MergeObservation(mergedObservation, location, observation);
                 }
             }
             return mergedObservation;
@@ -152,26 +152,26 @@ namespace PAIA.Marenv
 
         void _CollectObserverObservations(string agent)
         {
-            foreach (var fieldString_observer in m_Observers)
+            foreach (var location_observer in m_Observers)
             {
-                FieldString fieldString = fieldString_observer.Key;
-                IObserver observer = fieldString_observer.Value;
-                if (fieldString.HasAgent(agent))
+                Location location = location_observer.Key;
+                IObserver observer = location_observer.Value;
+                if (location.HasAgent(agent))
                 {
                     // TODO: cache
                     int cacheId = -1;
-                    _SetObservation(fieldString, observer.GetObservation(cacheId));
+                    _SetObservation(location, observer.GetObservation(cacheId));
                 }
             }
         }
 
-        IData _MergeObservation(IData original, FieldString fieldString, IData observation)
+        IData _MergeObservation(IData original, Location location, IData observation)
         {
             // TODO: 最難的整合
             return null;
         }
 
-        void _AddObserversFromObject(object o, List<FieldString> scopes = null)
+        void _AddObserversFromObject(object o, List<Location> scopes = null)
         {
             // Collect and add Observers from the "existed" object instance o
             BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
@@ -186,8 +186,9 @@ namespace PAIA.Marenv
                         AttributeBase attr = (AttributeBase)field.GetCustomAttribute(typeof(AttributeBase));
                         if (attr != null)
                         {
-                            List<FieldString> fullFields = FieldString.Join(scopes, attr.GetFieldStrings(), field.Name);
-                            _AddAttributeObserver(attr, fullFields, o, field);
+                            List<Location> locs = Location.ParseFrom(attr.GetLocations());
+                            List<Location> fullLocs = Location.Join(scopes, locs, field.Name);
+                            _AddAttributeObserver(attr, fullLocs, o, field);
                         }
                     }
                 }
@@ -201,36 +202,37 @@ namespace PAIA.Marenv
                         AttributeBase attr = (AttributeBase)prop.GetCustomAttribute(typeof(AttributeBase));
                         if (attr != null)
                         {
-                            List<FieldString> fullFields = FieldString.Join(scopes, attr.GetFieldStrings(), prop.Name);
-                            _AddAttributeObserver(attr, fullFields, o, prop);
+                            List<Location> locs = Location.ParseFrom(attr.GetLocations());
+                            List<Location> fullLocs = Location.Join(scopes, locs, prop.Name);
+                            _AddAttributeObserver(attr, fullLocs, o, prop);
                         }
                     }
                 }
             }
         }
 
-        void _AddObserversFromGameObject(object gameObject, List<FieldString> scopes = null)
+        void _AddObserversFromGameObject(object gameObject, List<Location> scopes = null)
         {
             GameObject o = gameObject as GameObject;
             if (o != null)
             {
-                HashSet<FieldString> allFields = new HashSet<FieldString>();
+                HashSet<Location> allLocs = new HashSet<Location>();
                 Component[] components = o.GetComponents(typeof(Component));
                 foreach (Component component in components)
                 {
                     ISensor sensor = component as ISensor;
                     if (sensor != null)
                     {
-                        List<FieldString> fieldStrings = FieldString.ParseFrom(sensor.GetFields());
-                        List<FieldString> fullFields = FieldString.Join(scopes, fieldStrings, o.name);
+                        List<Location> locations = Location.ParseFrom(sensor.GetLocations());
+                        List<Location> fullLocs = Location.Join(scopes, locations, o.name);
                         ScopeSensor scopeSensor = sensor as ScopeSensor;
-                        if (scopeSensor == null) _AddObserver(fullFields, sensor);
-                        // Collect fields in this level
-                        allFields.UnionWith(fullFields);
+                        if (scopeSensor == null) _AddObserver(fullLocs, sensor);
+                        // Collect locations in this level
+                        allLocs.UnionWith(fullLocs);
                     }
                     _AddObserversFromObject(component, scopes);
                 }
-                List<FieldString> nextScopes = new List<FieldString>(allFields);
+                List<Location> nextScopes = new List<Location>(allLocs);
                 for (int i = 0; i < o.transform.childCount; i++)
                 {
                     GameObject child = o.transform.GetChild(i).gameObject;
@@ -239,7 +241,7 @@ namespace PAIA.Marenv
             }
         }
 
-        void _AddObserversFromComponent(object component, List<FieldString> scopes = null)
+        void _AddObserversFromComponent(object component, List<Location> scopes = null)
         {
             Component o = component as Component;
             if (o != null)
@@ -248,10 +250,10 @@ namespace PAIA.Marenv
             }
         }
 
-        void _AddAttributeObserver(AttributeBase attr, List<FieldString> fields, object o, MemberInfo memberInfo)
+        void _AddAttributeObserver(AttributeBase attr, List<Location> locations, object o, MemberInfo memberInfo)
         {
             AttributeObserver observer = new AttributeObserver(attr, o, memberInfo);
-            _AddObserver(fields, observer);
+            _AddObserver(locations, observer);
         }
 
         public static void TestCollectObservers(object o)

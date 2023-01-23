@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PAIA.Marenv
 {
-    public enum FieldType
+    public enum LocationType
     {
         UNSPECIFIED,
         INDEX,
@@ -14,15 +14,15 @@ namespace PAIA.Marenv
         DICT
     }
 
-	public class FieldPosition
+	public class Selector
 	{
-        public FieldType Type; // UNSPECIFIED, INDEX, KEY
+        public LocationType Type; // UNSPECIFIED, INDEX, KEY
         public int Index;
         public string Key;
 
-        public FieldPosition()
+        public Selector()
         {
-            Type = FieldType.UNSPECIFIED;
+            Type = LocationType.UNSPECIFIED;
             Index = 0;
             Key = "";
         }
@@ -30,8 +30,8 @@ namespace PAIA.Marenv
         public override string ToString()
         {
             string output = "";
-            if (Type == FieldType.INDEX) output += Index.ToString();
-            else if (Type == FieldType.KEY)
+            if (Type == LocationType.INDEX) output += Index.ToString();
+            else if (Type == LocationType.KEY)
             {
                 output += "\"" + Key.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
             }
@@ -39,9 +39,9 @@ namespace PAIA.Marenv
         }
 	}
 
-    public class FieldSlice
+    public class Slice
 	{
-        public FieldType Type; // UNSPECIFIED, INDEX, KEY
+        public LocationType Type; // UNSPECIFIED, INDEX, KEY
         public bool HasStart;
         public int StartIndex;
         public string StartKey;
@@ -50,9 +50,9 @@ namespace PAIA.Marenv
         public string EndKey;
         public int Step; // If Step == 0, it means atom with start value
 
-        public FieldSlice()
+        public Slice()
         {
-            Type = FieldType.UNSPECIFIED;
+            Type = LocationType.UNSPECIFIED;
             HasStart = false;
             StartIndex = 0;
             StartKey = "";
@@ -67,21 +67,21 @@ namespace PAIA.Marenv
             string output = "";
             if (Step == 0 && HasStart)
             {
-                if (Type == FieldType.INDEX) output += StartIndex.ToString();
-                else if (Type == FieldType.KEY) output += "\"" + StartKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
+                if (Type == LocationType.INDEX) output += StartIndex.ToString();
+                else if (Type == LocationType.KEY) output += "\"" + StartKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
             }
             else
             {
                 if (HasStart)
                 {
-                    if (Type == FieldType.INDEX) output += StartIndex.ToString();
-                    else if (Type == FieldType.KEY) output += "\"" + StartKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
+                    if (Type == LocationType.INDEX) output += StartIndex.ToString();
+                    else if (Type == LocationType.KEY) output += "\"" + StartKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
                 }
                 output += ":";
                 if (HasEnd)
                 {
-                    if (Type == FieldType.INDEX) output += EndIndex.ToString();
-                    else if (Type == FieldType.KEY) output += "\"" + EndKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
+                    if (Type == LocationType.INDEX) output += EndIndex.ToString();
+                    else if (Type == LocationType.KEY) output += "\"" + EndKey.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\'", "\\\'") + "\"";
                 }
                 if (Step != 1)
                 {
@@ -93,33 +93,33 @@ namespace PAIA.Marenv
         }
 	}
 
-    public class FieldPath
+    public class Path
     {
-        public FieldType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
-        public FieldPosition Position;
+        public LocationType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
+        public Selector Selector;
 
-        public FieldPath()
+        public Path()
         {
-            Type = FieldType.UNSPECIFIED;
-            Position = null;
+            Type = LocationType.UNSPECIFIED;
+            Selector = null;
         }
 
         public override string ToString()
         {
             string output = "";
-            if (Type == FieldType.SEQUENCE) output += "[ " + Position.ToString() + " ]";
-            if (Type == FieldType.TUPLE) output += "( " + Position.ToString() + " )";
-            if (Type == FieldType.DICT) output += "{ " + Position.ToString() + " }";
+            if (Type == LocationType.SEQUENCE) output += "[ " + Selector.ToString() + " ]";
+            if (Type == LocationType.TUPLE) output += "( " + Selector.ToString() + " )";
+            if (Type == LocationType.DICT) output += "{ " + Selector.ToString() + " }";
             return output;
         }
     }
 
-    public class FieldAssignment
+    public class Assignment
     {
-        public FieldSlice Destination;
-        public FieldSlice Source; // If Source == null, it will use the default mapping
+        public Slice Destination;
+        public Slice Source; // If Source == null, it will use the default mapping
 
-        public FieldAssignment()
+        public Assignment()
         {
             Destination = null;
             Source = null;
@@ -134,13 +134,13 @@ namespace PAIA.Marenv
         }
     }
 
-    public class FieldCollection
+    public class Dimension
     {
-        public List<FieldAssignment> Assignments;
+        public List<Assignment> Assignments;
 
-        public FieldCollection()
+        public Dimension()
         {
-            Assignments = new List<FieldAssignment>();
+            Assignments = new List<Assignment>();
         }
 
         public override string ToString()
@@ -152,20 +152,20 @@ namespace PAIA.Marenv
         }
     }
 
-    public class FieldMapping
+    public class Mapping
     {
-        public FieldType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
-        public List<FieldCollection> Dimensions;
+        public LocationType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
+        public List<Dimension> Dimensions;
 
-        public FieldMapping()
+        public Mapping()
         {
-            Type = FieldType.UNSPECIFIED;
-            Dimensions = new List<FieldCollection>();
+            Type = LocationType.UNSPECIFIED;
+            Dimensions = new List<Dimension>();
         }
 
         void Error(string reason)
         {
-            throw new Exception("Path Error: " + reason + "\nIn field mapping: " + ToString());
+            throw new Exception("Error: " + reason + "\nIn mapping: " + ToString());
         }
 
         public bool IsSingle()
@@ -176,15 +176,15 @@ namespace PAIA.Marenv
                 {
                     if (Dimensions[0].Assignments[0].Source == null)
                     {
-                        FieldSlice destination = Dimensions[0].Assignments[0].Destination;
+                        Slice destination = Dimensions[0].Assignments[0].Destination;
                         if (destination.Step == 0 && destination.HasStart)
                         {
-                            FieldPath path = new FieldPath();
+                            Path path = new Path();
                             path.Type = Type;
-                            path.Position = new FieldPosition();
-                            path.Position.Type = destination.Type;
-                            path.Position.Index = destination.StartIndex;
-                            path.Position.Key = destination.StartKey;
+                            path.Selector = new Selector();
+                            path.Selector.Type = destination.Type;
+                            path.Selector.Index = destination.StartIndex;
+                            path.Selector.Key = destination.StartKey;
                             return true;
                         }
                     }
@@ -196,21 +196,21 @@ namespace PAIA.Marenv
         public override string ToString()
         {
             string output = "";
-            if (Type == FieldType.SEQUENCE)
+            if (Type == LocationType.SEQUENCE)
             {
                 output += "[ ";
                 for (int i = 0; i < Dimensions.Count - 1; i++) output += Dimensions[i].ToString() + ", ";
                 if (Dimensions.Count > 0) output += Dimensions[Dimensions.Count - 1].ToString();
                 output += " ]";
             }
-            if (Type == FieldType.TUPLE)
+            if (Type == LocationType.TUPLE)
             {
                 output += "( ";
                 for (int i = 0; i < Dimensions.Count - 1; i++) output += Dimensions[i].ToString() + ", ";
                 if (Dimensions.Count > 0) output += Dimensions[Dimensions.Count - 1].ToString();
                 output += " )";
             }
-            if (Type == FieldType.DICT)
+            if (Type == LocationType.DICT)
             {
                 output += "{ ";
                 if (Dimensions.Count == 1) output += Dimensions[0].ToString();
@@ -220,79 +220,79 @@ namespace PAIA.Marenv
         }
     }
 
-    public class FieldString
+    public class Location
     {
         public bool IsAllAgents;
         public List<string> Agents; // If AllAgents == true, then this is the list of unavalible agents
         public bool IsRoot;
         public int Upper;
-        public List<FieldPath> Paths;
-        public FieldMapping Mapping; // If Mapping == null, means there is no path and mapping
+        public List<Path> Paths;
+        public Mapping Mapping; // If Mapping == null, means there is no path and mapping
 
-        public FieldString()
+        public Location()
         {
             IsAllAgents = false;
             Agents = new List<string>();
             IsRoot = false;
             Upper = 0;
-            Paths = new List<FieldPath>();
+            Paths = new List<Path>();
             Mapping = null;
         }
 
-        public static List<FieldString> Join(List<FieldString> scopes, List<FieldString> fields, string defaultName = null)
+        public static List<Location> Join(List<Location> scopes, List<Location> locations, string defaultName = null)
         {
-            // Like a Cartesian Product: scopes x fields
-            if (scopes == null) scopes = new List<FieldString>();
-            if (fields == null) fields = new List<FieldString>();
-            if (fields.Count == 0 && defaultName != null)
+            // Like a Cartesian Product: scopes x locations
+            if (scopes == null) scopes = new List<Location>();
+            if (locations == null) locations = new List<Location>();
+            if (locations.Count == 0 && defaultName != null)
             {
                 // Using the variable name as default name
-                fields.Add(FieldString.ParseFrom("{\"" + defaultName + "\"}"));
+                locations.Add(Location.ParseFrom("{\"" + defaultName + "\"}"));
             }
 
-            List<FieldString> fullFields = new List<FieldString>();
-            foreach(FieldString field in fields)
+            List<Location> fullLocs = new List<Location>();
+            foreach(Location location in locations)
             {
-                if (field.IsRoot || scopes.Count == 0) fullFields.Add(field);
+                if (location.IsRoot || scopes.Count == 0) fullLocs.Add(location);
                 else
                 {
-                    foreach(FieldString scope in scopes)
+                    foreach(Location scope in scopes)
                     {
                         if (scope.Mapping == null || (scope.Mapping != null && scope.Mapping.IsSingle()))
                         {
-                            string merged = scope.ToString() + field.ToString();
-                            fullFields.Add(FieldString.ParseFrom(merged));
+                            string merged = scope.ToString() + location.ToString();
+                            fullLocs.Add(Location.ParseFrom(merged));
                         }
                     }
                 }
             }
-            return fullFields;
+            return fullLocs;
         }
 
-        public static List<FieldString> Join(FieldString scope, List<FieldString> fields, string defaultName = null)
+        public static List<Location> Join(Location scope, List<Location> locations, string defaultName = null)
         {
-            List<FieldString> scopes = null;
-            if (scope != null) scopes = new List<FieldString>{ scope };
-            return Join(scopes, fields, defaultName);
+            List<Location> scopes = null;
+            if (scope != null) scopes = new List<Location>{ scope };
+            return Join(scopes, locations, defaultName);
         }
 
-        public static List<FieldString> Join(List<FieldString> scopes, FieldString field, string defaultName = null)
+        public static List<Location> Join(List<Location> scopes, Location location, string defaultName = null)
         {
-            List<FieldString> fields = null;
-            if (field != null) fields = new List<FieldString>{ field };
-            return Join(scopes, fields, defaultName);
+            List<Location> locations = null;
+            if (location != null) locations = new List<Location>{ location };
+            return Join(scopes, locations, defaultName);
         }
 
-        public static List<FieldString> Join(FieldString scope, FieldString field, string defaultName = null)
+        public static List<Location> Join(Location scope, Location location, string defaultName = null)
         {
-            List<FieldString> scopes = null;
-            if (scope != null) scopes = new List<FieldString>{ scope };
-            List<FieldString> fields = null;
-            if (field != null) fields = new List<FieldString>{ field };
-            return Join(scopes, fields, defaultName);
+            List<Location> scopes = null;
+            if (scope != null) scopes = new List<Location>{ scope };
+            List<Location> locations = null;
+            if (location != null) locations = new List<Location>{ location };
+            return Join(scopes, locations, defaultName);
         }
 
-        public static FieldString ParseFrom(string text)
+        public static Location ParseFrom(string text)
         {
             Lexer lexer = new Lexer(text);
             Parser parser = new Parser(lexer);
@@ -300,17 +300,17 @@ namespace PAIA.Marenv
             return interpreter.Interpret();
         }
 
-        public static List<FieldString> ParseFrom(List<string> fields)
+        public static List<Location> ParseFrom(List<string> locations)
         {
-            List<FieldString> fieldStrings = new List<FieldString>();
-            if (fields != null)
+            List<Location> locs = new List<Location>();
+            if (locations != null)
             {
-                foreach (string field in fields)
+                foreach (string location in locations)
                 {
-                    fieldStrings.Add(FieldString.ParseFrom(field));
+                    locs.Add(Location.ParseFrom(location));
                 }
             }
-            return fieldStrings;
+            return locs;
         }
 
         public override string ToString()
@@ -320,7 +320,7 @@ namespace PAIA.Marenv
             foreach (string agent in Agents) output += agent + "@";
             if (!IsAllAgents && Agents.Count == 0 && IsRoot) output += "@";
             for (int i = 0; i < Upper; i++) output += ".";
-            foreach (FieldPath path in Paths) output += path.ToString();
+            foreach (Path path in Paths) output += path.ToString();
             if (Mapping != null) output += Mapping.ToString();
             return output;
         }

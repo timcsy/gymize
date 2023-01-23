@@ -104,7 +104,7 @@ namespace PAIA.Marenv
 
         void Error()
         {
-            throw new Exception("Invalid syntax at position " + m_Lexer.GetPosition() + " of the field string " + GetText());
+            throw new Exception("Invalid syntax at position " + m_Lexer.GetPosition() + " of the location string " + GetText());
         }
 
         void Eat(TokenType tokenType)

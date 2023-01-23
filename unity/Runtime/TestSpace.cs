@@ -29,7 +29,7 @@ public class TestSpace : MonoBehaviour
 
     void TestWebSocket()
     {
-        Debug.Log("===============TestWebSocket===============");
+        Debug.Log("===============Test WebSocket===============");
         WebSocket ws;
         string serverAddress = "ws://localhost:8080";
         ws = new WebSocket(serverAddress);
@@ -69,31 +69,31 @@ public class TestSpace : MonoBehaviour
 
     void TestJoin()
     {
-        Debug.Log("===============TestJoin===============");
-        FieldString f1 = FieldString.ParseFrom("agent@.c.b");
-        FieldString f2 = FieldString.ParseFrom("..a");
-        var fs = FieldString.Join(f1, f2);
-        foreach (var f in fs) Debug.Log(f.ToString());
+        Debug.Log("===============Test Join===============");
+        Location loc1 = Location.ParseFrom("agent@.c.b");
+        Location loc2 = Location.ParseFrom("..a");
+        var locs = Location.Join(loc1, loc2);
+        foreach (var loc in locs) Debug.Log(loc.ToString());
     }
 
     void TestEqual()
     {
-        Debug.Log("===============TestEqual===============");
-        FieldString f1 = FieldString.ParseFrom(".a");
-        FieldString f2 = FieldString.ParseFrom(".a ");
-        Debug.Log(Equals(f1, f2));
+        Debug.Log("===============Test Equal===============");
+        Location loc1 = Location.ParseFrom(".a");
+        Location loc2 = Location.ParseFrom(".a ");
+        Debug.Log(Equals(loc1, loc2));
     }
 
     void TestObs()
     {
-        Debug.Log("===============TestObs===============");
+        Debug.Log("===============Test Obs===============");
         TestAgent agent = GetComponent<TestAgent>();
         Marenv.TestCollectObservers(agent);
     }
 
     void TestType()
     {
-        Debug.Log("===============TestType===============");
+        Debug.Log("===============Test Type===============");
         Debug.Log(typeof(int));
         Debug.Log(typeof(int[]));
         Debug.Log(typeof(int[,]));

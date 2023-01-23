@@ -7,14 +7,14 @@ namespace PAIA.Marenv
     public class MarenvManager : MonoBehaviour
     {
         public List<SensorComponent> Sensors;
-        public string Field;
+        public string Location;
 
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("===============TestField===============");
-            FieldString field = FieldString.ParseFrom(Field);
-            Debug.Log(field);
+            Debug.Log("===============Test Location===============");
+            Location location = PAIA.Marenv.Location.ParseFrom(Location);
+            Debug.Log(location);
         }
 
         // Update is called once per frame
