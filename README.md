@@ -6,28 +6,33 @@ Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 
 The developer can use the "location string" to map the data to the gym-style space data.
 
-The following is an valid example:
+The followings are valid examples:
 
 ```
-agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 10 & 11=0 & 12=3]
+agent1@agent2@.key.0[12]["camera"]['front'][right](2)[87]
+agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 11=0 & 12=3]
 ```
 
 ### Location String Rules
 - Path Syntax
+  - In the following, `NAME` represents a string begin with letters or `_`, can follow letters or numbers or `_`
   - Using `[index]` to represent Sequence
-    - `index` is an integer
+    - If `index` is an integer, it represent Sequence
+    - If `index` is a `NAME`, it will convert to a Dict
   - Using `(index)` to represent Tuple
-    - `index` is an integer
+    - If `index` is an integer, it represent Tuple
+    - If `index` is a `NAME`, it will convert to a Dict
   - Using `{key}` or `["key"]` or `['key']` or `.key` to represent Dict
-    - `key` in `{key}` and `.key` should be a string begin with letters or `_`, can follow letters or number or `_`
+    - `key` in `{key}` should be a `NAME`
+    - `key` in `.key` should be composite with letters or numbers or `_`
   - Using `[slice1, slice2, ...]` or `(slice1, slice2, ...)` to represent Fundamental Spaces like Box, Discrete, MultiBinary, MultiDiscrete
     - `slice` can be an `index` or Python-like slice `start:end:step`
     - `slice` can only be at the end of the path
   - Using `.` to get upper level of the path (just like relative file path)
 - Mapping
-  - Using assignment `=` to map the key or index between the real data and the field structure
-  - One can omit assignment `=` to retrieve from the data beginning with index 0 or the first key if is iterable, otherwise from the data directly
+  - Using assignment `=` to map the key or index between the real data and the source data by the structure
   - `=` can only be at the end of the path
+  - If there is no mapping at the end of the location string, then the source data will be viewed as indivisible and stored in the given destination
 - Agent name
   - Using `@` in the beginning to represent the root (directly under the agent)
   - Using `agent@` to assign the agent name in the beginning

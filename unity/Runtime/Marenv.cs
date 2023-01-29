@@ -33,6 +33,11 @@ namespace PAIA.Marenv
             Instance._AddObserver(fullLocs, observer);
         }
 
+        public static void AddAgent(IAgent agent)
+        {
+            // TODO: deal with the agent name and scope, and AddObserversFromObject or AddObserversFromComponent
+        }
+
         public static void AddObserversFromObject(object o, string scope = "")
         {
             List<Location> scopes = new List<Location>{ Location.ParseFrom(scope) };

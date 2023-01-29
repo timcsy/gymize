@@ -47,7 +47,7 @@ namespace PAIA.Marenv
         {
             // You have to make sure this is atom first (slice.IsAtom = true)
             if (slice.IsAtom) return VisitAtom(slice.Start, type);
-            else Error("This is a slice");
+            else Error("This should be an index or key, but the given one is a slice");
             return null;
         }
 
@@ -105,7 +105,7 @@ namespace PAIA.Marenv
                 else if (step.Type == LocationType.INDEX) _slice.Step = step.Index;
                 else Error("The step " + slice.Step.Value + " of the slice is not integer");
             }
-            else Error("This is not a slice");
+            else Error("This should be a slice, but the given one is an index or key");
             return _slice;
         }
 
@@ -179,12 +179,12 @@ namespace PAIA.Marenv
                         destination.Type = LocationType.KEY;
                         destination.StartKey = selector.Key;
                     }
-                    else Error("Wrong selector type");
+                    else Error("Wrong index or key type");
                     _assignment.Destination = destination;
                 }
                 else _assignment.Destination = VisitSlice(assignment.Left, type);
             }
-            else Error("lvalue cannot be null");
+            else Error("Destination of the assignment cannot be null");
 
             if (assignment.Right != null)
             {
@@ -204,7 +204,7 @@ namespace PAIA.Marenv
                         source.Type = LocationType.KEY;
                         source.StartKey = selector.Key;
                     }
-                    else Error("Wrong selector type");
+                    else Error("Wrong index or key type");
                     _assignment.Source = source;
                 }
                 else _assignment.Source = VisitSlice(assignment.Right);
@@ -275,7 +275,7 @@ namespace PAIA.Marenv
 
                 return _mapping;
             }
-            else Error("Mapping dimension must > 1");
+            else Error("The dimension must > 0");
             return null;
         }
 
@@ -302,7 +302,26 @@ namespace PAIA.Marenv
             }
             if (mappings.Count > 0)
             {
-                location.Mapping = VisitMapping(mappings[mappings.Count - 1]);
+                Mapping mapping = VisitMapping(mappings[mappings.Count - 1]);
+                if (mapping.IsPath())
+                {
+                    Slice slice = mapping.Dimensions[0].Assignments[0].Destination;
+                    Path path = new Path();
+                    path.Type = mapping.Type;
+                    path.Selector = new Selector();
+                    path.Selector.Type = slice.Type;
+                    path.Selector.Index = slice.StartIndex;
+                    path.Selector.Key = slice.StartKey;
+                    location.Paths.Add(path);
+                }
+                else
+                {
+                    if (mapping.IsMapping())
+                    {
+                        location.Mapping = mapping;
+                    }
+                    else Error("Each mapping must contain both destination and source");
+                }
             }
             if (location.IsRoot) location.Upper = 0;
             return location;

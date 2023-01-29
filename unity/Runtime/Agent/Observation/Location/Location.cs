@@ -117,7 +117,7 @@ namespace PAIA.Marenv
     public class Assignment
     {
         public Slice Destination;
-        public Slice Source; // If Source == null, it will use the default mapping
+        public Slice Source; // If Source == null, it is just a selector (index or key)
 
         public Assignment()
         {
@@ -163,13 +163,9 @@ namespace PAIA.Marenv
             Dimensions = new List<Dimension>();
         }
 
-        void Error(string reason)
+        public bool IsPath()
         {
-            throw new Exception("Error: " + reason + "\nIn mapping: " + ToString());
-        }
-
-        public bool IsSingle()
-        {
+            // check if the mapping is just a path
             if (Dimensions.Count == 1)
             {
                 if (Dimensions[0].Assignments.Count == 1)
@@ -179,18 +175,27 @@ namespace PAIA.Marenv
                         Slice destination = Dimensions[0].Assignments[0].Destination;
                         if (destination.Step == 0 && destination.HasStart)
                         {
-                            Path path = new Path();
-                            path.Type = Type;
-                            path.Selector = new Selector();
-                            path.Selector.Type = destination.Type;
-                            path.Selector.Index = destination.StartIndex;
-                            path.Selector.Key = destination.StartKey;
                             return true;
                         }
                     }
                 }
             }
             return false;
+        }
+
+        public bool IsMapping()
+        {
+            foreach (Dimension dimension in Dimensions)
+            {
+                foreach (Assignment assignment in dimension.Assignments)
+                {
+                    if (assignment.Source == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public override string ToString()
@@ -226,8 +231,8 @@ namespace PAIA.Marenv
         public List<string> Agents; // If AllAgents == true, then this is the list of unavalible agents
         public bool IsRoot;
         public int Upper;
-        public List<Path> Paths;
-        public Mapping Mapping; // If Mapping == null, means there is no path and mapping
+        public List<Path> Paths; // If Paths has zero length, means there are no paths (exclude mapping)
+        public Mapping Mapping; // If Mapping == null, means there is no mapping
 
         public Location()
         {
@@ -258,7 +263,7 @@ namespace PAIA.Marenv
                 {
                     foreach(Location scope in scopes)
                     {
-                        if (scope.Mapping == null || (scope.Mapping != null && scope.Mapping.IsSingle()))
+                        if (scope.Mapping == null)
                         {
                             string merged = scope.ToString() + location.ToString();
                             fullLocs.Add(Location.ParseFrom(merged));
