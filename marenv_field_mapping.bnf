@@ -4,9 +4,9 @@
     | <atom> "@" { <atom> "@" }
 
 <mapping> ::= { "." } "." <assignment>
-    | { "." } "[" <assignments> { "," <assignments> } "]"
-    | { "." } "(" <assignments> { "," <assignments> } ")"
     | { "." } "{" <assignments> "}"
+    | { "." } "(" <assignments> { "," <assignments> } ")"
+    | { "." } "[" <assignments> { "," <assignments> } "]"
 
 <assignments> ::= <assignment> { "&" <assignment> }
 

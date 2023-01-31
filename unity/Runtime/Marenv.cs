@@ -81,6 +81,11 @@ namespace PAIA.Marenv
             Instance._Step();
         }
 
+        public static void Error(string reason)
+        {
+            throw new Exception("Marenv Error: " + reason);
+        }
+
         Dictionary<Location, IObserver> m_Observers;
         Dictionary<Location, IData> m_Observations;
         int m_TimeStamp;
@@ -92,11 +97,6 @@ namespace PAIA.Marenv
             m_Observations = new Dictionary<Location, IData>();
             m_TimeStamp = 0;
             m_Cached = new Dictionary<IObserver, bool>();
-        }
-
-        void _Error(string reason)
-        {
-            throw new Exception("Marenv Error: " + reason);
         }
 
         internal void _Tick()
@@ -118,7 +118,7 @@ namespace PAIA.Marenv
                     m_Observers[location] = observer;
                     // TODO: cache
                 }
-                else _Error("Location string should be absolute: " + location.ToString());
+                else Error("Location string should be absolute: " + location.ToString());
             }
         }
 
@@ -128,7 +128,7 @@ namespace PAIA.Marenv
             {
                 m_Observations[location] = observation;
             }
-            else _Error("Location string should be absolute: " + location.ToString());
+            else Error("Location string should be absolute: " + location.ToString());
         }
 
         void _SetObservation(List<Location> locations, IData observation)
@@ -173,6 +173,228 @@ namespace PAIA.Marenv
         IData _MergeObservation(IData original, Location location, IData observation)
         {
             // TODO: 最難的整合
+            // location is already absolute in this system
+            // TODO: 試試看用 Add
+            /*
+            original == null
+            original != null
+            配
+            paths = [] && mapping == null
+            paths != [] && mapping == null
+            paths = [] && mapping != null
+            paths != [] && mapping != null
+
+            return 要包含原本的
+            */
+
+            int i;
+            IComposite composite;
+            IData next;
+
+
+            if (original == null && location.Paths.Count == 0 && location.Mapping == null)
+            {
+                return observation;
+            }
+            else if (original == null && location.Paths.Count == 0 && location.Mapping != null)
+            {
+                if (observation == null) return original;
+                return observation.Merge(original, location.Mapping);
+            }
+            else if (original == null && location.Paths.Count > 0 && location.Mapping == null)
+            {
+                // original == null && location.Paths.Count > 0
+                switch (location.Paths[0].Type)
+                {
+                    case LocationType.DICT: original = new Dict(); break;
+                    case LocationType.TUPLE: original = new Tuple(); break;
+                    case LocationType.SEQUENCE: original = new Sequence(); break;
+                    default: Error("Wrong location path type"); break;
+                }
+
+                IData current = original;
+                for (i = 0; i < location.Paths.Count - 1; i++)
+                {
+                    composite = current as IComposite;
+                    if (composite == null)
+                    {
+                        Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                        return null;
+                    }
+                    current = composite.Select(location.Paths[i]);
+                    if (current == null)
+                    {
+                        next = null;
+                        switch (location.Paths[i+1].Type)
+                        {
+                            case LocationType.DICT: next = new Dict(); break;
+                            case LocationType.TUPLE: next = new Tuple(); break;
+                            case LocationType.SEQUENCE: next = new Sequence(); break;
+                            default: Error("Wrong location path type"); break;
+                        }
+                        composite.Set(location.Paths[i], next);
+                        current = composite.Select(location.Paths[i]);
+                    }
+                }
+                i = location.Paths.Count - 1;
+                // TODO: i must >= 0, because of the condition
+                composite = current as IComposite;
+                if (composite == null)
+                {
+                    Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                    return null;
+                }
+                current = composite.Select(location.Paths[i]);
+                next = current;
+                if (observation != null) next = observation.Merge(current, location.Mapping);  // location.Mapping = null
+                composite.Set(location.Paths[i], next);
+                return original;
+            }
+            else if (original == null && location.Paths.Count > 0 && location.Mapping != null)
+            {
+                // original == null && location.Paths.Count > 0
+                switch (location.Paths[0].Type)
+                {
+                    case LocationType.DICT: original = new Dict(); break;
+                    case LocationType.TUPLE: original = new Tuple(); break;
+                    case LocationType.SEQUENCE: original = new Sequence(); break;
+                    default: Error("Wrong location path type"); break;
+                }
+
+                IData current = original;
+                for (i = 0; i < location.Paths.Count - 1; i++)
+                {
+                    composite = current as IComposite;
+                    if (composite == null)
+                    {
+                        Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                        return null;
+                    }
+                    current = composite.Select(location.Paths[i]);
+                    if (current == null)
+                    {
+                        next = null;
+                        switch (location.Paths[i+1].Type)
+                        {
+                            case LocationType.DICT: next = new Dict(); break;
+                            case LocationType.TUPLE: next = new Tuple(); break;
+                            case LocationType.SEQUENCE: next = new Sequence(); break;
+                            default: Error("Wrong location path type"); break;
+                        }
+                        composite.Set(location.Paths[i], next);
+                        current = composite.Select(location.Paths[i]);
+                    }
+                }
+                i = location.Paths.Count - 1;
+                // TODO: i must >= 0, because of the condition
+                composite = current as IComposite;
+                if (composite == null)
+                {
+                    Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                    return null;
+                }
+                current = composite.Select(location.Paths[i]);
+                next = current;
+                if (observation != null) next = observation.Merge(current, location.Mapping);
+                composite.Set(location.Paths[i], next);
+                return original;
+            }
+            else if (original != null && location.Paths.Count == 0 && location.Mapping == null)
+            {
+                if (observation != null)
+                {
+                    Error("The location has already been occupied");
+                    return null;
+                }
+                return observation;
+            }
+            else if (original != null && location.Paths.Count == 0 && location.Mapping != null)
+            {
+                if (observation == null) return original;
+                return observation.Merge(original, location.Mapping);
+            }
+            else if (original != null && location.Paths.Count > 0 && location.Mapping == null)
+            {
+                IData current = original;
+                for (i = 0; i < location.Paths.Count - 1; i++)
+                {
+                    composite = current as IComposite;
+                    if (composite == null)
+                    {
+                        Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                        return null;
+                    }
+                    current = composite.Select(location.Paths[i]);
+                    if (current == null)
+                    {
+                        next = null;
+                        switch (location.Paths[i+1].Type)
+                        {
+                            case LocationType.DICT: next = new Dict(); break;
+                            case LocationType.TUPLE: next = new Tuple(); break;
+                            case LocationType.SEQUENCE: next = new Sequence(); break;
+                            default: Error("Wrong location path type"); break;
+                        }
+                        composite.Set(location.Paths[i], next);
+                        current = composite.Select(location.Paths[i]);
+                    }
+                }
+                i = location.Paths.Count - 1;
+                // TODO: i must >= 0, because of the condition
+                composite = current as IComposite;
+                if (composite == null)
+                {
+                    Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                    return null;
+                }
+                current = composite.Select(location.Paths[i]);
+                next = current;
+                if (observation != null) next = observation.Merge(current, location.Mapping); // location.Mapping = null
+                composite.Set(location.Paths[i], next);
+                return original;
+            }
+            else if (original != null && location.Paths.Count > 0 && location.Mapping != null)
+            {
+                IData current = original;
+                for (i = 0; i < location.Paths.Count - 1; i++)
+                {
+                    composite = current as IComposite;
+                    if (composite == null)
+                    {
+                        Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                        return null;
+                    }
+                    current = composite.Select(location.Paths[i]);
+                    if (current == null)
+                    {
+                        next = null;
+                        switch (location.Paths[i+1].Type)
+                        {
+                            case LocationType.DICT: next = new Dict(); break;
+                            case LocationType.TUPLE: next = new Tuple(); break;
+                            case LocationType.SEQUENCE: next = new Sequence(); break;
+                            default: Error("Wrong location path type"); break;
+                        }
+                        composite.Set(location.Paths[i], next);
+                        current = composite.Select(location.Paths[i]);
+                    }
+                }
+                i = location.Paths.Count - 1;
+                // TODO: i must >= 0, because of the condition
+                composite = current as IComposite;
+                if (composite == null)
+                {
+                    Error("Wrong data structure mapping when processing location string: " + location.ToString());
+                    return null;
+                }
+                current = composite.Select(location.Paths[i]);
+                next = current;
+                if (observation != null) next = observation.Merge(current, location.Mapping);
+                composite.Set(location.Paths[i], next);
+                return original;
+            }
+
+
             return null;
         }
 

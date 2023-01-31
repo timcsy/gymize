@@ -125,22 +125,22 @@ namespace PAIA.Marenv
                             {
                                 Path path = new Path();
                                 Selector selector = VisitSelector(slice);
-                                if (mapping.Type == NodeType.SEQUENCE)
+                                if (mapping.Type == NodeType.DICT)
                                 {
-                                    if (selector.Type == LocationType.KEY) path.Type = LocationType.DICT;
-                                    else path.Type = LocationType.SEQUENCE;
+                                    selector = VisitSelector(slice, LocationType.KEY);
+                                    path.Type = LocationType.DICT;
                                 }
                                 else if (mapping.Type == NodeType.TUPLE)
                                 {
                                     if (selector.Type == LocationType.KEY) path.Type = LocationType.DICT;
                                     else path.Type = LocationType.TUPLE;
                                 }
-                                else if (mapping.Type == NodeType.DICT)
+                                else if (mapping.Type == NodeType.SEQUENCE)
                                 {
-                                    selector = VisitSelector(slice, LocationType.KEY);
-                                    path.Type = LocationType.DICT;
+                                    if (selector.Type == LocationType.KEY) path.Type = LocationType.DICT;
+                                    else path.Type = LocationType.SEQUENCE;
                                 }
-                                else Error("It is not Sequence, Tuple or Dict");
+                                else Error("It is not Dict, Tuple or Sequence");
                                 path.Selector = selector;
                                 return path;
                             }
@@ -258,8 +258,8 @@ namespace PAIA.Marenv
                 Mapping _mapping = new Mapping();
 
                 if (finalType == LocationType.KEY) _mapping.Type = LocationType.DICT;
-                else if (mapping.Type == NodeType.SEQUENCE) _mapping.Type = LocationType.SEQUENCE;
                 else if (mapping.Type == NodeType.TUPLE) _mapping.Type = LocationType.TUPLE;
+                else if (mapping.Type == NodeType.SEQUENCE) _mapping.Type = LocationType.SEQUENCE;
                 else { Error("Wrong Mapping type"); return null; }
 
                 if (_mapping.Type == LocationType.DICT && mapping.Dimensions.Count > 1)

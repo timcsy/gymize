@@ -16,15 +16,15 @@ agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 11=0 & 12=3
 ### Location String Rules
 - Path Syntax
   - In the following, `NAME` represents a string begin with letters or `_`, can follow letters or numbers or `_`
-  - Using `[index]` to represent Sequence
-    - If `index` is an integer, it represent Sequence
-    - If `index` is a `NAME`, it will convert to a Dict
-  - Using `(index)` to represent Tuple
-    - If `index` is an integer, it represent Tuple
-    - If `index` is a `NAME`, it will convert to a Dict
   - Using `{key}` or `["key"]` or `['key']` or `.key` to represent Dict
     - `key` in `{key}` should be a `NAME`
     - `key` in `.key` should be composite with letters or numbers or `_`
+  - Using `(index)` to represent Tuple
+    - If `index` is an integer, it represent Tuple
+    - If `index` is a `NAME`, it will convert to a Dict
+  - Using `[index]` to represent Sequence
+    - If `index` is an integer, it represent Sequence
+    - If `index` is a `NAME`, it will convert to a Dict
   - Using `[slice1, slice2, ...]` or `(slice1, slice2, ...)` to represent Fundamental Spaces like Box, Discrete, MultiBinary, MultiDiscrete
     - `slice` can be an `index` or Python-like slice `start:end:step`
     - `slice` can only be at the end of the path

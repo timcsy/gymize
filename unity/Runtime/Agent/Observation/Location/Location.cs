@@ -9,9 +9,9 @@ namespace PAIA.Marenv
         UNSPECIFIED,
         INDEX,
         KEY,
-        SEQUENCE,
+        DICT,
         TUPLE,
-        DICT
+        SEQUENCE
     }
 
 	public class Selector
@@ -95,7 +95,7 @@ namespace PAIA.Marenv
 
     public class Path
     {
-        public LocationType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
+        public LocationType Type; // UNSPECIFIED, DICT, TUPLE, SEQUENCE
         public Selector Selector;
 
         public Path()
@@ -107,9 +107,9 @@ namespace PAIA.Marenv
         public override string ToString()
         {
             string output = "";
-            if (Type == LocationType.SEQUENCE) output += "[ " + Selector.ToString() + " ]";
-            if (Type == LocationType.TUPLE) output += "( " + Selector.ToString() + " )";
             if (Type == LocationType.DICT) output += "{ " + Selector.ToString() + " }";
+            if (Type == LocationType.TUPLE) output += "( " + Selector.ToString() + " )";
+            if (Type == LocationType.SEQUENCE) output += "[ " + Selector.ToString() + " ]";
             return output;
         }
     }
@@ -154,7 +154,7 @@ namespace PAIA.Marenv
 
     public class Mapping
     {
-        public LocationType Type; // UNSPECIFIED, SEQUENCE, TUPLE, DICT
+        public LocationType Type; // UNSPECIFIED, DICT, TUPLE, SEQUENCE
         public List<Dimension> Dimensions;
 
         public Mapping()
@@ -201,12 +201,11 @@ namespace PAIA.Marenv
         public override string ToString()
         {
             string output = "";
-            if (Type == LocationType.SEQUENCE)
+            if (Type == LocationType.DICT)
             {
-                output += "[ ";
-                for (int i = 0; i < Dimensions.Count - 1; i++) output += Dimensions[i].ToString() + ", ";
-                if (Dimensions.Count > 0) output += Dimensions[Dimensions.Count - 1].ToString();
-                output += " ]";
+                output += "{ ";
+                if (Dimensions.Count == 1) output += Dimensions[0].ToString();
+                output += " }";
             }
             if (Type == LocationType.TUPLE)
             {
@@ -215,11 +214,12 @@ namespace PAIA.Marenv
                 if (Dimensions.Count > 0) output += Dimensions[Dimensions.Count - 1].ToString();
                 output += " )";
             }
-            if (Type == LocationType.DICT)
+            if (Type == LocationType.SEQUENCE)
             {
-                output += "{ ";
-                if (Dimensions.Count == 1) output += Dimensions[0].ToString();
-                output += " }";
+                output += "[ ";
+                for (int i = 0; i < Dimensions.Count - 1; i++) output += Dimensions[i].ToString() + ", ";
+                if (Dimensions.Count > 0) output += Dimensions[Dimensions.Count - 1].ToString();
+                output += " ]";
             }
             return output;
         }

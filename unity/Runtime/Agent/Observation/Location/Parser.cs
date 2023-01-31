@@ -10,9 +10,9 @@ namespace PAIA.Marenv
         NAME,
         STRING,
         INTEGER,
-        SEQUENCE,
+        DICT,
         TUPLE,
-        DICT
+        SEQUENCE
     }
     public class AtomNode
     {
@@ -185,9 +185,9 @@ namespace PAIA.Marenv
         MappingNode Mapping()
         {
             // <mapping> ::= { "." } "." <assignment>
-            //             | { "." } "[" <assignments> { "," <assignments> } "]"
-            //             | { "." } "(" <assignments> { "," <assignments> } ")"
             //             | { "." } "{" <assignments> "}"
+            //             | { "." } "(" <assignments> { "," <assignments> } ")"
+            //             | { "." } "[" <assignments> { "," <assignments> } "]"
             NodeType type = NodeType.UNSPECIFIED;
             List<AssignmentsNode> dimensions = new List<AssignmentsNode>();
             int upper = 0;
@@ -198,16 +198,11 @@ namespace PAIA.Marenv
             }
             switch (m_CurrentToken.Type)
             {
-                case TokenType.LSQUARE:
-                    type = NodeType.SEQUENCE;
-                    Eat(TokenType.LSQUARE);
+                case TokenType.LCURLY:
+                    type = NodeType.DICT;
+                    Eat(TokenType.LCURLY);
                     dimensions.Add(Assignments());
-                    while (m_CurrentToken.Type == TokenType.COMMA)
-                    {
-                        Eat(TokenType.COMMA);
-                        dimensions.Add(Assignments());
-                    }
-                    Eat(TokenType.RSQUARE);
+                    Eat(TokenType.RCURLY);
                     break;
                 case TokenType.LPAREN:
                     type = NodeType.TUPLE;
@@ -220,11 +215,16 @@ namespace PAIA.Marenv
                     }
                     Eat(TokenType.RPAREN);
                     break;
-                case TokenType.LCURLY:
-                    type = NodeType.DICT;
-                    Eat(TokenType.LCURLY);
+                case TokenType.LSQUARE:
+                    type = NodeType.SEQUENCE;
+                    Eat(TokenType.LSQUARE);
                     dimensions.Add(Assignments());
-                    Eat(TokenType.RCURLY);
+                    while (m_CurrentToken.Type == TokenType.COMMA)
+                    {
+                        Eat(TokenType.COMMA);
+                        dimensions.Add(Assignments());
+                    }
+                    Eat(TokenType.RSQUARE);
                     break;
                 default:
                     if (upper > 0)

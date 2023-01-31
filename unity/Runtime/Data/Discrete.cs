@@ -11,6 +11,12 @@ namespace PAIA.Marenv
 
         }
 
+        public IData Merge(IData original, Mapping mapping)
+        {
+            // TODO
+            return null;
+        }
+
         public Data ToProtobuf()
         {
             return null;

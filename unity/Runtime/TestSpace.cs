@@ -15,10 +15,10 @@ public class TestSpace : MonoBehaviour
     void Start()
     {
         // TestWebSocket();
-        TestJoin();
-        TestEqual();
+        // TestJoin();
+        // TestEqual();
         TestObs();
-        TestType();
+        // TestType();
     }
 
     // Update is called once per frame

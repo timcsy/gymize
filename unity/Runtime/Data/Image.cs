@@ -56,6 +56,12 @@ namespace PAIA.Marenv
             m_CompressionType = compressionType;
         }
 
+        public IData Merge(IData original, Mapping mapping)
+        {
+            // TODO
+            return null;
+        }
+
         public Protobuf.Data ToProtobuf()
         {
             Protobuf.Image image = new Protobuf.Image();
