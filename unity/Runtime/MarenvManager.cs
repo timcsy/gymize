@@ -12,9 +12,11 @@ namespace PAIA.Marenv
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("===============Test Location===============");
-            Location location = PAIA.Marenv.Location.ParseFrom(Location);
-            Debug.Log(location);
+            foreach (SensorComponent sensor in Sensors)
+            {
+                Marenv.AddObserver(sensor.GetLocations(), sensor);
+            }
+            // TestLocation();
         }
 
         // Update is called once per frame
@@ -26,6 +28,13 @@ namespace PAIA.Marenv
         void FixedUpdate()
         {
             Marenv.Instance._Tick();
+        }
+
+        void TestLocation()
+        {
+            Debug.Log("===============Test Location===============");
+            Location location = PAIA.Marenv.Location.ParseFrom(Location);
+            Debug.Log(location);
         }
     }
 }

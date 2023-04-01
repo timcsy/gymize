@@ -1,52 +1,81 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PAIA.Marenv.Protobuf;
 
 namespace PAIA.Marenv
 {
+    // Reusing DataType same as in the PAIA.Marenv.Protobuf, so be careful
+    public enum DATA_TYPE
+    {
+        UNSPECIFIED,
+        FLOAT,
+        INT
+    }
+
     public class Box : IData
     {
+        DATA_TYPE m_Type;
         List<int> m_Shape;
-        List<float> m_Array;
+        List<double> m_DoubleArray;
+        List<long> m_LongArray;
 
-        public Box(List<int> shape, List<float> array)
+        public Box(DATA_TYPE type, List<int> shape = null)
         {
+            m_Type = type;
+            if (shape == null) shape = new List<int>();
             m_Shape = shape;
-            m_Array = array;
+            InitializeArray(m_Type);
         }
 
-        public float this[int i]
+        public Box(List<int> shape, List<double> array)
         {
-            // TODO
-            // 到底 scalar 要算幾維？
-            // get
-            // {
-            //     int Dim = 1;
-            //     if (m_Shape.Count == 0) Dim = 0;
-            //     else if (m_Shape.Count == 1) Dim = m_Shape[0];
-            //     for (int j = 1; j < m_Shape.Count; ++j) Dim *= m_Shape[j];
-            //     return new Box(m_Shape.GetRange(1, m_Shape.Count), m_Array.GetRange(Dim * i, Dim));
-            // }
-            set
+            m_Type = DATA_TYPE.FLOAT;
+            m_Shape = shape;
+            m_DoubleArray = array;
+            int dims = 1;
+            foreach (int dim in m_Shape) dims *= dim;
+            if (dims != m_DoubleArray.Count) throw new Exception("Wrong shape");
+        }
+
+        public Box(List<int> shape, List<long> array)
+        {
+            m_Type = DATA_TYPE.INT;
+            m_Shape = shape;
+            m_LongArray = array;
+            int dims = 1;
+            foreach (int dim in m_Shape) dims *= dim;
+            if (dims != m_LongArray.Count) throw new Exception("Wrong shape");
+        }
+
+        void InitializeArray(DATA_TYPE type)
+        {
+            switch (m_Type)
             {
-                m_Array[i] = value;
+                case DATA_TYPE.FLOAT: m_DoubleArray = new List<double>(); break;
+                case DATA_TYPE.INT: m_LongArray = new List<long>(); break;
+                default: break;
             }
         }
 
-        public IData Merge(IData original, Mapping mapping)
+        IEnumerable GetArray()
         {
-            // TODO
-            return null;
+            switch (m_Type)
+            {
+                case DATA_TYPE.FLOAT: return m_DoubleArray;
+                case DATA_TYPE.INT: return m_LongArray;
+                default: return null;
+            }
         }
 
         public Data ToProtobuf()
         {
             Tensor tensor = new Tensor();
             tensor.Shape.Add(m_Shape);
-            tensor.FloatArray.Add(m_Array);
+            // tensor.FloatArray.Add(m_Array);
             Data data = new Data
             {
-                SpaceType = SpaceType.Box,
+                SpaceType = Protobuf.SpaceType.Box,
                 Box = tensor
             };
             return data;
@@ -56,8 +85,21 @@ namespace PAIA.Marenv
         {
             int[] shape = new int[data.Box.Shape.Count];
             m_Shape = new List<int>(shape);
-            float[] array = new float[data.Box.FloatArray.Count];
-            m_Array = new List<float>(array);
+            // float[] array = new float[data.Box.FloatArray.Count];
+            // m_Array = new List<float>(array);
+        }
+
+        public IData Merge(IData original, Mapping mapping)
+        {
+            // TODO
+            if (original == null) original = new Box(m_Type);
+            Box origin = original as Box;
+            if (origin != null)
+            {
+
+            }
+            else Marenv.Error("Wrong data structure mapping with a Box");
+            return null;
         }
     }
 }

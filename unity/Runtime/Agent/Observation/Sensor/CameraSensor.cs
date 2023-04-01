@@ -59,6 +59,27 @@ namespace PAIA.Marenv
 
             return tex;
         }
+        private byte[] ToImage(Texture2D texture, COMPRESSION_TYPE format = COMPRESSION_TYPE.PNG)
+        {
+            // !!! Note: You have to delete the original Texture2D texture !!!
+
+            byte[] buffer;
+            if (format == COMPRESSION_TYPE.PNG)
+            {
+                buffer = texture.EncodeToPNG();
+            }
+            else if (format == COMPRESSION_TYPE.JPG)
+            {
+                buffer = texture.EncodeToJPG();
+            }
+            else
+            {
+                buffer = texture.GetRawTextureData();
+            }
+            
+            return buffer;
+        }
+        
         private Texture2D FlipTexture(Texture2D tex)
         {
             // !!! Note: You have to delete the original Texture2D tex !!!
@@ -85,7 +106,7 @@ namespace PAIA.Marenv
 
             return snap;
         }
-        private byte[] ToImage(Texture2D texture, COMPRESSION_TYPE format = COMPRESSION_TYPE.PNG)
+        private Texture2D AutoFlipTexture(Texture2D texture)
         {
             // !!! Note: You have to delete the original Texture2D texture !!!
 
@@ -99,23 +120,7 @@ namespace PAIA.Marenv
             if (flipY) tex = FlipTexture(texture);
             else tex = texture;
 
-            byte[] buffer;
-            if (format == COMPRESSION_TYPE.PNG)
-            {
-                buffer = tex.EncodeToPNG();
-            }
-            else if (format == COMPRESSION_TYPE.JPG)
-            {
-                buffer = tex.EncodeToJPG();
-            }
-            else
-            {
-                buffer = tex.GetRawTextureData();
-            }
-            
-            DestroyImmediate(tex, true);
-
-            return buffer;
+            return tex;
         }
     }
 }

@@ -1,19 +1,32 @@
 import asyncio
 import websockets
 from websockets.extensions import permessage_deflate
-from proto.space_pb2 import Data
+from gymize.proto.space_pb2 import Data, CompressionType
 import queue
+import io
+from PIL import Image
+import gymize.space as space
 
 msg_queue = queue.Queue()
 
 async def ws_recv(websocket):
     msg = await websocket.recv()
     if type(msg) == bytes:
-        p_msg = Data()
-        p_msg.ParseFromString(msg)
-        print(p_msg)
-        blob = p_msg.SerializeToString()
-        await websocket.send(blob)
+        data = Data()
+        data.ParseFromString(msg)
+        for key in data.dict:
+            print(key)
+            image = data.dict[key].image
+            img = space.image_to_box(image)
+            print(img.shape)
+            print(img)
+            if (image.compression_type == CompressionType.COMPRESSION_TYPE_PNG):
+                space.save_image(img, 'img.png')
+            elif (image.compression_type == CompressionType.COMPRESSION_TYPE_JPG):
+                space.save_image(img, 'img.jpg')
+        # print(data)
+        blob = data.SerializeToString()
+        await websocket.send('received image')
     elif type(msg) == str:
         print(msg)
         await websocket.send(f"From server: {msg}")

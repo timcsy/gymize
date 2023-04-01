@@ -13,15 +13,19 @@ namespace PAIA.Marenv
             m_Dict = new Dictionary<string, IData>();
         }
 
-        public IData Merge(IData original, Mapping mapping)
-        {
-            // TODO
-            return null;
-        }
-
         public Data ToProtobuf()
         {
-            return null;
+            Protobuf.Data data = new Protobuf.Data
+            {
+                SpaceType = Protobuf.SpaceType.Dict
+            };
+            
+            foreach (var kv in m_Dict)
+            {
+                data.Dict.Add(kv.Key, kv.Value.ToProtobuf());
+            }
+            
+            return data;
         }
         
         public void FromProtobuf(Data data)
@@ -29,9 +33,17 @@ namespace PAIA.Marenv
             
         }
 
-        public void Set(Path path, IData data)
+        public IData Merge(IData original, Mapping mapping)
         {
+            // TODO
+            if (original == null) original = new Dict();
+            Dict origin = original as Dict;
+            if (origin != null)
+            {
 
+            }
+            else Marenv.Error("Wrong data structure mapping with a Dict");
+            return null;
         }
 
         public IData Select(Path path)
@@ -44,31 +56,14 @@ namespace PAIA.Marenv
             return null;
         }
 
-        public IData MakePath(Path path, LocationType nextType)
+        public void Set(Path path, IData data)
         {
             if (path.Type == LocationType.DICT && path.Selector.Type == LocationType.KEY)
             {
-                IData newData = null;
-                switch (nextType)
-                {
-                    case LocationType.DICT:
-                        newData = new Dict();
-                        break;
-                    case LocationType.TUPLE:
-                        newData = new Tuple();
-                        break;
-                    case LocationType.SEQUENCE:
-                        newData = new Sequence();
-                        break;
-                    default:
-                        break;
-                }
-                if (!m_Dict.ContainsKey(path.Selector.Key)) m_Dict.Add(path.Selector.Key, newData);
-                else if (m_Dict[path.Selector.Key] == null) m_Dict[path.Selector.Key] = newData;
-                return m_Dict[path.Selector.Key];
+                if (!m_Dict.ContainsKey(path.Selector.Key)) m_Dict.Add(path.Selector.Key, data);
+                else m_Dict[path.Selector.Key] = data;
             }
             else Marenv.Error(path.ToString() + " should be a Dict");
-            return null;
         }
     }
 }

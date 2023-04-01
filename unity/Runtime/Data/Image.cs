@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PAIA.Marenv.Protobuf;
 using Google.Protobuf;
 
 namespace PAIA.Marenv
@@ -14,30 +15,30 @@ namespace PAIA.Marenv
 
     public static class CompressionTypeExtensions
     {
-        public static Protobuf.CompressionType ToProtobuf(this COMPRESSION_TYPE value)
+        public static CompressionType ToProtobuf(this COMPRESSION_TYPE value)
         {
             switch (value)
             {
                 case COMPRESSION_TYPE.NONE:
-                    return Protobuf.CompressionType.None;
+                    return CompressionType.None;
                 case COMPRESSION_TYPE.PNG:
-                    return Protobuf.CompressionType.Png;
+                    return CompressionType.Png;
                 case COMPRESSION_TYPE.JPG:
-                    return Protobuf.CompressionType.Jpg;
+                    return CompressionType.Jpg;
                 default:
-                    return Protobuf.CompressionType.Unspecified;
+                    return CompressionType.Unspecified;
             }
         }
 
-        public static COMPRESSION_TYPE FromProtobuf(this Protobuf.CompressionType value)
+        public static COMPRESSION_TYPE FromProtobuf(this CompressionType value)
         {
             switch (value)
             {
-                case Protobuf.CompressionType.None:
+                case CompressionType.None:
                     return COMPRESSION_TYPE.NONE;
-                case Protobuf.CompressionType.Png:
+                case CompressionType.Png:
                     return COMPRESSION_TYPE.PNG;
-                case Protobuf.CompressionType.Jpg:
+                case CompressionType.Jpg:
                     return COMPRESSION_TYPE.JPG;
                 default:
                     return COMPRESSION_TYPE.UNSPECIFIED;
@@ -56,13 +57,7 @@ namespace PAIA.Marenv
             m_CompressionType = compressionType;
         }
 
-        public IData Merge(IData original, Mapping mapping)
-        {
-            // TODO
-            return null;
-        }
-
-        public Protobuf.Data ToProtobuf()
+        public Data ToProtobuf()
         {
             Protobuf.Image image = new Protobuf.Image();
             image.CompressionType = m_CompressionType.ToProtobuf();
@@ -81,6 +76,12 @@ namespace PAIA.Marenv
             m_Image = data.Image.Data.ToByteArray();
             m_CompressionType = data.Image.CompressionType.FromProtobuf();
             // TODO: shape and dimension_mapping
+        }
+
+        public IData Merge(IData original, Mapping mapping)
+        {
+            // TODO
+            return this;
         }
 
         // TODO: sth about Box

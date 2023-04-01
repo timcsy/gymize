@@ -14,10 +14,11 @@ public class TestSpace : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TestWebSocket();
+        TestWebSocket();
         // TestJoin();
         // TestEqual();
-        TestObs();
+        // TestObs();
+        // TestGetObservations();
         // TestType();
     }
 
@@ -36,8 +37,9 @@ public class TestSpace : MonoBehaviour
         ws.Compression = CompressionMethod.Deflate;
         ws.OnOpen += (sender, e) =>
         {
-            Box box = new Box(new List<int>{2, 2}, new List<float>{1, 2, 3, 4});
-            Data data = box.ToProtobuf();
+            // Box box = new Box(new List<int>{2, 2}, new List<long>{1, 2, 3, 4});
+            // Data data = box.ToProtobuf();
+            Data data = Marenv.GetObservations("kart1").ToProtobuf();
             byte[] blob = data.ToByteArray();
             ws.Send(blob);
         };
@@ -89,6 +91,13 @@ public class TestSpace : MonoBehaviour
         Debug.Log("===============Test Obs===============");
         TestAgent agent = GetComponent<TestAgent>();
         Marenv.TestCollectObservers(agent);
+    }
+
+    void TestGetObservations()
+    {
+        Debug.Log("===============Test GetObservations===============");
+        IData data = Marenv.GetObservations("kart1");
+        Debug.Log(data.ToProtobuf());
     }
 
     void TestType()
