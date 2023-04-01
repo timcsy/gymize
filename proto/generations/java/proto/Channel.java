@@ -2536,7 +2536,7 @@ public final class Channel {
       "*z\n\013MessageType\022\034\n\030MESSAGE_TYPE_UNSPECIF" +
       "IED\020\000\022\030\n\024MESSAGE_TYPE_MESSAGE\020\001\022\030\n\024MESSA" +
       "GE_TYPE_REQUEST\020\002\022\031\n\025MESSAGE_TYPE_RESPON" +
-      "SE\020\003B\026\252\002\023PAIA.Marenv.Channelb\006proto3"
+      "SE\020\003B\026\252\002\023PAIA.Gymize.Channelb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

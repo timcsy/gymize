@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public class CameraSensor : SensorComponent
     {

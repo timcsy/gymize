@@ -11603,7 +11603,7 @@ public final class SpaceOuterClass {
       "\005\022\023\n\017SPACE_TYPE_TEXT\020\006\022\023\n\017SPACE_TYPE_DIC" +
       "T\020\007\022\024\n\020SPACE_TYPE_TUPLE\020\010\022\027\n\023SPACE_TYPE_" +
       "SEQUENCE\020\t\022\024\n\020SPACE_TYPE_GRAPH\020\n\022\024\n\020SPAC" +
-      "E_TYPE_IMAGE\020\013B\027\252\002\024PAIA.Marenv.Protobufb" +
+      "E_TYPE_IMAGE\020\013B\027\252\002\024PAIA.Gymize.Protobufb" +
       "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

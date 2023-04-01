@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 using Google.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public enum COMPRESSION_TYPE
     {

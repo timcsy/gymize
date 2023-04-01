@@ -1,22 +1,20 @@
 {
-  "name": "com.paia.marenv",
+  "name": "com.paia.gymize",
   "version": "0.0.0",
-  "displayName": "Markov Environment",
+  "displayName": "Gymize",
   "description": "Reinforcement and Imitation Learning API with Gymnasium and PettingZoo",
   "unity": "2019.1",
   "unityRelease": "0b5",
   "keywords": [
-    "marenv",
-    "Markov Environment",
-    "MDP",
-    "Markov Decision Process",
+    "gymize",
     "RL",
     "Reinforcement Learning",
     "IL",
     "Imitation Learning",
     "Gym",
     "Gymnasium",
-    "PettingZoo"
+    "PettingZoo",
+    "Unity"
   ],
   "author": {
     "name": "timcsy",

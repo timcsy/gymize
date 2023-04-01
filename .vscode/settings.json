@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"*.pl": "prolog",
-		"iosfwd": "cpp",
-		"ostream": "cpp"
-	}
-}

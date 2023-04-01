@@ -1,6 +1,6 @@
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public interface IComposite : IData
     {

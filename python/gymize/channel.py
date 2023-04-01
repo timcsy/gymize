@@ -51,6 +51,10 @@ class Channel:
         self._message_callbacks: Dict[str, List] = dict() # { id: List[function] }
         self._request_callbacks: Dict[str, List] = dict() # { id: List[function] }
     
+    ###########################################################################
+    #                              asyncio part                               #
+    ###########################################################################
+    
     def running_loop(self, loop: asyncio.AbstractEventLoop=None):
         if loop is None:
             # run event loop on new thread
@@ -87,6 +91,10 @@ class Channel:
         if self.event_loop is None:
             self.running_loop()
         return asyncio.run_coroutine_threadsafe(coro, self.event_loop)
+
+    ###########################################################################
+    #                          Channel function part                          #
+    ###########################################################################
     
     async def connect(self, using_thread: bool=False):
         if self.status is None:
@@ -628,7 +636,8 @@ class Channel:
                     self.trigger('peer_disconnected')
                     if self.retry:
                         await self.update()
-    
+
+
 class Request:
     def __init__(self, id: str, uuid: str, data, channel: Channel):
         self.id = id
@@ -650,8 +659,3 @@ class Request:
     
     def reply_sync(self, data):
         self.channel.add_task(self.reply(data=data))
-
-
-# TODO: 改名為 Gymize, 刪除 PActor
-# TODO: 在哪裡啟動 Unity, VirtualGL
-# TODO: 了解 gym 如何開啟多環境，可以參考 ML-Agents: https://github.com/Unity-Technologies/ml-agents/tree/main/ml-agents-envs/mlagents_envs/envs

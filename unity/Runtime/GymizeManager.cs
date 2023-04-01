@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
-    public class MarenvManager : MonoBehaviour
+    public class GymizeManager : MonoBehaviour
     {
         public List<SensorComponent> Sensors;
         public string Location;
@@ -14,7 +14,7 @@ namespace PAIA.Marenv
         {
             foreach (SensorComponent sensor in Sensors)
             {
-                Marenv.AddObserver(sensor.GetLocations(), sensor);
+                Gymize.AddObserver(sensor.GetLocations(), sensor);
             }
             // TestLocation();
         }
@@ -27,13 +27,13 @@ namespace PAIA.Marenv
         
         void FixedUpdate()
         {
-            Marenv.Instance._Tick();
+            Gymize.Instance._Tick();
         }
 
         void TestLocation()
         {
             Debug.Log("===============Test Location===============");
-            Location location = PAIA.Marenv.Location.ParseFrom(Location);
+            Location location = PAIA.Gymize.Location.ParseFrom(Location);
             Debug.Log(location);
         }
     }

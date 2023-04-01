@@ -1,4 +1,4 @@
-# marenv - Markov Environment
+# Gymize - Unity Environment with Gymnasium and PettingZoo
 
 Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 

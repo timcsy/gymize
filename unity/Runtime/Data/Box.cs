@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
-    // Reusing DataType same as in the PAIA.Marenv.Protobuf, so be careful
+    // Reusing DataType same as in the PAIA.Gymize.Protobuf, so be careful
     public enum DATA_TYPE
     {
         UNSPECIFIED,
@@ -98,7 +98,7 @@ namespace PAIA.Marenv
             {
 
             }
-            else Marenv.Error("Wrong data structure mapping with a Box");
+            else Gymize.Error("Wrong data structure mapping with a Box");
             return null;
         }
     }

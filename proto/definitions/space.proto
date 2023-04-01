@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Marenv.Protobuf";
+option csharp_namespace = "PAIA.Gymize.Protobuf";
 
 // Tensors use the C-like index order,
 // with the last axis index changing fastest,

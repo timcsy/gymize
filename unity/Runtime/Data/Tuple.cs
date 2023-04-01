@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public class Tuple : IData
     {

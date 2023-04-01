@@ -71,7 +71,7 @@ const char descriptor_table_protodef_signaling_2eproto[] PROTOBUF_SECTION_VARIAB
   "GNAL_TYPE_RESUME\020\003\022\025\n\021SIGNAL_TYPE_CLOSE\020"
   "\004*R\n\010PeerType\022\031\n\025PEER_TYPE_UNSPECIFIED\020\000"
   "\022\024\n\020PEER_TYPE_ACTIVE\020\001\022\025\n\021PEER_TYPE_PASS"
-  "IVE\020\002B\030\252\002\025PAIA.Marenv.Signalingb\006proto3"
+  "IVE\020\002B\030\252\002\025PAIA.Gymize.Signalingb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_signaling_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_signaling_2eproto = {

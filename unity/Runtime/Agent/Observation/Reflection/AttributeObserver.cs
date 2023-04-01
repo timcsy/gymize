@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public class AttributeObserver : IObserver
     {

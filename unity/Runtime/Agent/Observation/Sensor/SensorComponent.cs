@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public abstract class SensorComponent : MonoBehaviour, ISensor
     {

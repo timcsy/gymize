@@ -5,8 +5,8 @@ using UnityEngine;
 using System.Text; // For Encoding()
 using WebSocketSharp;
 using Google.Protobuf;
-using PAIA.Marenv;
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize;
+using PAIA.Gymize.Protobuf;
 using System.Reflection;
 
 public class TestSpace : MonoBehaviour
@@ -39,7 +39,7 @@ public class TestSpace : MonoBehaviour
         {
             // Box box = new Box(new List<int>{2, 2}, new List<long>{1, 2, 3, 4});
             // Data data = box.ToProtobuf();
-            Data data = Marenv.GetObservations("kart1").ToProtobuf();
+            Data data = Gymize.GetObservations("kart1").ToProtobuf();
             byte[] blob = data.ToByteArray();
             ws.Send(blob);
         };
@@ -90,13 +90,13 @@ public class TestSpace : MonoBehaviour
     {
         Debug.Log("===============Test Obs===============");
         TestAgent agent = GetComponent<TestAgent>();
-        Marenv.TestCollectObservers(agent);
+        Gymize.TestCollectObservers(agent);
     }
 
     void TestGetObservations()
     {
         Debug.Log("===============Test GetObservations===============");
-        IData data = Marenv.GetObservations("kart1");
+        IData data = Gymize.GetObservations("kart1");
         Debug.Log(data.ToProtobuf());
     }
 

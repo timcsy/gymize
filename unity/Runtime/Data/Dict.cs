@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public class Dict : IComposite
     {
@@ -42,7 +42,7 @@ namespace PAIA.Marenv
             {
 
             }
-            else Marenv.Error("Wrong data structure mapping with a Dict");
+            else Gymize.Error("Wrong data structure mapping with a Dict");
             return null;
         }
 
@@ -52,7 +52,7 @@ namespace PAIA.Marenv
             {
                 if (m_Dict.ContainsKey(path.Selector.Key)) return m_Dict[path.Selector.Key];
             }
-            else Marenv.Error(path.ToString() + " should be a Dict");
+            else Gymize.Error(path.ToString() + " should be a Dict");
             return null;
         }
 
@@ -63,7 +63,7 @@ namespace PAIA.Marenv
                 if (!m_Dict.ContainsKey(path.Selector.Key)) m_Dict.Add(path.Selector.Key, data);
                 else m_Dict[path.Selector.Key] = data;
             }
-            else Marenv.Error(path.ToString() + " should be a Dict");
+            else Gymize.Error(path.ToString() + " should be a Dict");
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public abstract class AttributeBase : Attribute
     {

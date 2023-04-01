@@ -1,4 +1,4 @@
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
     public class ScopeSensor : SensorComponent
     {

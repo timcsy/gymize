@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace PAIA.Marenv.Protobuf {
+namespace PAIA.Gymize.Protobuf {
 
   /// <summary>Holder for reflection information generated from space.proto</summary>
   public static partial class SpaceReflection {
@@ -67,16 +67,16 @@ namespace PAIA.Marenv.Protobuf {
             "BRITCg9TUEFDRV9UWVBFX1RFWFQQBhITCg9TUEFDRV9UWVBFX0RJQ1QQBxIU",
             "ChBTUEFDRV9UWVBFX1RVUExFEAgSFwoTU1BBQ0VfVFlQRV9TRVFVRU5DRRAJ",
             "EhQKEFNQQUNFX1RZUEVfR1JBUEgQChIUChBTUEFDRV9UWVBFX0lNQUdFEAtC",
-            "F6oCFFBBSUEuTWFyZW52LlByb3RvYnVmYgZwcm90bzM="));
+            "F6oCFFBBSUEuR3ltaXplLlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Marenv.Protobuf.DataType), typeof(global::PAIA.Marenv.Protobuf.CompressionType), typeof(global::PAIA.Marenv.Protobuf.SpaceType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Tensor), global::PAIA.Marenv.Protobuf.Tensor.Parser, new[]{ "Shape", "DataType", "FloatArray", "DoubleArray", "IntArray", "LongArray", "UnsignedIntArray", "UnsignedLongArray", "BoolArray" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.GraphSpace), global::PAIA.Marenv.Protobuf.GraphSpace.Parser, new[]{ "NodeSpace", "EdgeSpace" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Graph), global::PAIA.Marenv.Protobuf.Graph.Parser, new[]{ "Nodes", "Edges", "EdgeLinks" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Image), global::PAIA.Marenv.Protobuf.Image.Parser, new[]{ "CompressionType", "Data", "Shape", "DimensionMapping" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Space), global::PAIA.Marenv.Protobuf.Space.Parser, new[]{ "SpaceType", "Description", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Marenv.Protobuf.Data), global::PAIA.Marenv.Protobuf.Data.Parser, new[]{ "SpaceType", "DataType", "RawData", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Protobuf.DataType), typeof(global::PAIA.Gymize.Protobuf.CompressionType), typeof(global::PAIA.Gymize.Protobuf.SpaceType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Tensor), global::PAIA.Gymize.Protobuf.Tensor.Parser, new[]{ "Shape", "DataType", "FloatArray", "DoubleArray", "IntArray", "LongArray", "UnsignedIntArray", "UnsignedLongArray", "BoolArray" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.GraphSpace), global::PAIA.Gymize.Protobuf.GraphSpace.Parser, new[]{ "NodeSpace", "EdgeSpace" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Graph), global::PAIA.Gymize.Protobuf.Graph.Parser, new[]{ "Nodes", "Edges", "EdgeLinks" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Image), global::PAIA.Gymize.Protobuf.Image.Parser, new[]{ "CompressionType", "Data", "Shape", "DimensionMapping" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Space), global::PAIA.Gymize.Protobuf.Space.Parser, new[]{ "SpaceType", "Description", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Data), global::PAIA.Gymize.Protobuf.Data.Parser, new[]{ "SpaceType", "DataType", "RawData", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -133,7 +133,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[0]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -184,10 +184,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "data_type" field.</summary>
     public const int DataTypeFieldNumber = 2;
-    private global::PAIA.Marenv.Protobuf.DataType dataType_ = global::PAIA.Marenv.Protobuf.DataType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.DataType dataType_ = global::PAIA.Gymize.Protobuf.DataType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.DataType DataType {
+    public global::PAIA.Gymize.Protobuf.DataType DataType {
       get { return dataType_; }
       set {
         dataType_ = value;
@@ -303,7 +303,7 @@ namespace PAIA.Marenv.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= shape_.GetHashCode();
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) hash ^= DataType.GetHashCode();
+      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) hash ^= DataType.GetHashCode();
       hash ^= floatArray_.GetHashCode();
       hash ^= doubleArray_.GetHashCode();
       hash ^= intArray_.GetHashCode();
@@ -330,7 +330,7 @@ namespace PAIA.Marenv.Protobuf {
       output.WriteRawMessage(this);
     #else
       shape_.WriteTo(output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) DataType);
       }
@@ -352,7 +352,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       shape_.WriteTo(ref output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) DataType);
       }
@@ -374,7 +374,7 @@ namespace PAIA.Marenv.Protobuf {
     public int CalculateSize() {
       int size = 0;
       size += shape_.CalculateSize(_repeated_shape_codec);
-      if (DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DataType);
       }
       size += floatArray_.CalculateSize(_repeated_floatArray_codec);
@@ -397,7 +397,7 @@ namespace PAIA.Marenv.Protobuf {
         return;
       }
       shape_.Add(other.shape_);
-      if (other.DataType != global::PAIA.Marenv.Protobuf.DataType.Unspecified) {
+      if (other.DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
         DataType = other.DataType;
       }
       floatArray_.Add(other.floatArray_);
@@ -428,7 +428,7 @@ namespace PAIA.Marenv.Protobuf {
             break;
           }
           case 16: {
-            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
+            DataType = (global::PAIA.Gymize.Protobuf.DataType) input.ReadEnum();
             break;
           }
           case 26:
@@ -487,7 +487,7 @@ namespace PAIA.Marenv.Protobuf {
             break;
           }
           case 16: {
-            DataType = (global::PAIA.Marenv.Protobuf.DataType) input.ReadEnum();
+            DataType = (global::PAIA.Gymize.Protobuf.DataType) input.ReadEnum();
             break;
           }
           case 26:
@@ -546,7 +546,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -579,10 +579,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "node_space" field.</summary>
     public const int NodeSpaceFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.Space nodeSpace_;
+    private global::PAIA.Gymize.Protobuf.Space nodeSpace_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Space NodeSpace {
+    public global::PAIA.Gymize.Protobuf.Space NodeSpace {
       get { return nodeSpace_; }
       set {
         nodeSpace_ = value;
@@ -591,10 +591,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "edge_space" field.</summary>
     public const int EdgeSpaceFieldNumber = 2;
-    private global::PAIA.Marenv.Protobuf.Space edgeSpace_;
+    private global::PAIA.Gymize.Protobuf.Space edgeSpace_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Space EdgeSpace {
+    public global::PAIA.Gymize.Protobuf.Space EdgeSpace {
       get { return edgeSpace_; }
       set {
         edgeSpace_ = value;
@@ -701,13 +701,13 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.nodeSpace_ != null) {
         if (nodeSpace_ == null) {
-          NodeSpace = new global::PAIA.Marenv.Protobuf.Space();
+          NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
         }
         NodeSpace.MergeFrom(other.NodeSpace);
       }
       if (other.edgeSpace_ != null) {
         if (edgeSpace_ == null) {
-          EdgeSpace = new global::PAIA.Marenv.Protobuf.Space();
+          EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
         }
         EdgeSpace.MergeFrom(other.EdgeSpace);
       }
@@ -728,14 +728,14 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodeSpace_ == null) {
-              NodeSpace = new global::PAIA.Marenv.Protobuf.Space();
+              NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
             }
             input.ReadMessage(NodeSpace);
             break;
           }
           case 18: {
             if (edgeSpace_ == null) {
-              EdgeSpace = new global::PAIA.Marenv.Protobuf.Space();
+              EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
             }
             input.ReadMessage(EdgeSpace);
             break;
@@ -757,14 +757,14 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodeSpace_ == null) {
-              NodeSpace = new global::PAIA.Marenv.Protobuf.Space();
+              NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
             }
             input.ReadMessage(NodeSpace);
             break;
           }
           case 18: {
             if (edgeSpace_ == null) {
-              EdgeSpace = new global::PAIA.Marenv.Protobuf.Space();
+              EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
             }
             input.ReadMessage(EdgeSpace);
             break;
@@ -790,7 +790,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -824,13 +824,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "nodes" field.</summary>
     public const int NodesFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.Tensor nodes_;
+    private global::PAIA.Gymize.Protobuf.Tensor nodes_;
     /// <summary>
     /// floating type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor Nodes {
+    public global::PAIA.Gymize.Protobuf.Tensor Nodes {
       get { return nodes_; }
       set {
         nodes_ = value;
@@ -839,13 +839,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "edges" field.</summary>
     public const int EdgesFieldNumber = 2;
-    private global::PAIA.Marenv.Protobuf.Tensor edges_;
+    private global::PAIA.Gymize.Protobuf.Tensor edges_;
     /// <summary>
     /// floating type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor Edges {
+    public global::PAIA.Gymize.Protobuf.Tensor Edges {
       get { return edges_; }
       set {
         edges_ = value;
@@ -854,13 +854,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "edge_links" field.</summary>
     public const int EdgeLinksFieldNumber = 3;
-    private global::PAIA.Marenv.Protobuf.Tensor edgeLinks_;
+    private global::PAIA.Gymize.Protobuf.Tensor edgeLinks_;
     /// <summary>
     /// integer type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor EdgeLinks {
+    public global::PAIA.Gymize.Protobuf.Tensor EdgeLinks {
       get { return edgeLinks_; }
       set {
         edgeLinks_ = value;
@@ -980,19 +980,19 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.nodes_ != null) {
         if (nodes_ == null) {
-          Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
+          Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         Nodes.MergeFrom(other.Nodes);
       }
       if (other.edges_ != null) {
         if (edges_ == null) {
-          Edges = new global::PAIA.Marenv.Protobuf.Tensor();
+          Edges = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         Edges.MergeFrom(other.Edges);
       }
       if (other.edgeLinks_ != null) {
         if (edgeLinks_ == null) {
-          EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
+          EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         EdgeLinks.MergeFrom(other.EdgeLinks);
       }
@@ -1013,21 +1013,21 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
+              Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Marenv.Protobuf.Tensor();
+              Edges = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
+              EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1049,21 +1049,21 @@ namespace PAIA.Marenv.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Marenv.Protobuf.Tensor();
+              Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Marenv.Protobuf.Tensor();
+              Edges = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Marenv.Protobuf.Tensor();
+              EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1089,7 +1089,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1124,10 +1124,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "compression_type" field.</summary>
     public const int CompressionTypeFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.CompressionType compressionType_ = global::PAIA.Marenv.Protobuf.CompressionType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.CompressionType compressionType_ = global::PAIA.Gymize.Protobuf.CompressionType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.CompressionType CompressionType {
+    public global::PAIA.Gymize.Protobuf.CompressionType CompressionType {
       get { return compressionType_; }
       set {
         compressionType_ = value;
@@ -1200,7 +1200,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CompressionType != global::PAIA.Marenv.Protobuf.CompressionType.Unspecified) hash ^= CompressionType.GetHashCode();
+      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) hash ^= CompressionType.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       hash ^= shape_.GetHashCode();
       hash ^= dimensionMapping_.GetHashCode();
@@ -1222,7 +1222,7 @@ namespace PAIA.Marenv.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CompressionType != global::PAIA.Marenv.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) CompressionType);
       }
@@ -1242,7 +1242,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CompressionType != global::PAIA.Marenv.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) CompressionType);
       }
@@ -1262,7 +1262,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CompressionType != global::PAIA.Marenv.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CompressionType);
       }
       if (Data.Length != 0) {
@@ -1282,7 +1282,7 @@ namespace PAIA.Marenv.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.CompressionType != global::PAIA.Marenv.Protobuf.CompressionType.Unspecified) {
+      if (other.CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
         CompressionType = other.CompressionType;
       }
       if (other.Data.Length != 0) {
@@ -1306,7 +1306,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            CompressionType = (global::PAIA.Marenv.Protobuf.CompressionType) input.ReadEnum();
+            CompressionType = (global::PAIA.Gymize.Protobuf.CompressionType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -1339,7 +1339,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            CompressionType = (global::PAIA.Marenv.Protobuf.CompressionType) input.ReadEnum();
+            CompressionType = (global::PAIA.Gymize.Protobuf.CompressionType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -1377,7 +1377,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[4]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1421,10 +1421,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "space_type" field.</summary>
     public const int SpaceTypeFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.SpaceType spaceType_ = global::PAIA.Marenv.Protobuf.SpaceType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.SpaceType spaceType_ = global::PAIA.Gymize.Protobuf.SpaceType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.SpaceType SpaceType {
+    public global::PAIA.Gymize.Protobuf.SpaceType SpaceType {
       get { return spaceType_; }
       set {
         spaceType_ = value;
@@ -1548,35 +1548,35 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "dict_space" field.</summary>
     public const int DictSpaceFieldNumber = 11;
-    private static readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>.Codec _map_dictSpace_codec
-        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 90);
-    private readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space> dictSpace_ = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space>();
+    private static readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>.Codec _map_dictSpace_codec
+        = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Space.Parser), 90);
+    private readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space> dictSpace_ = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::PAIA.Marenv.Protobuf.Space> DictSpace {
+    public pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space> DictSpace {
       get { return dictSpace_; }
     }
 
     /// <summary>Field number for the "list_space" field.</summary>
     public const int ListSpaceFieldNumber = 12;
-    private static readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>.Codec _map_listSpace_codec
-        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Space.Parser), 98);
-    private readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space> listSpace_ = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space>();
+    private static readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>.Codec _map_listSpace_codec
+        = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Space.Parser), 98);
+    private readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space> listSpace_ = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>();
     /// <summary>
     /// Tuple and Sequence
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<int, global::PAIA.Marenv.Protobuf.Space> ListSpace {
+    public pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space> ListSpace {
       get { return listSpace_; }
     }
 
     /// <summary>Field number for the "graph_space" field.</summary>
     public const int GraphSpaceFieldNumber = 13;
-    private global::PAIA.Marenv.Protobuf.GraphSpace graphSpace_;
+    private global::PAIA.Gymize.Protobuf.GraphSpace graphSpace_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.GraphSpace GraphSpace {
+    public global::PAIA.Gymize.Protobuf.GraphSpace GraphSpace {
       get { return graphSpace_; }
       set {
         graphSpace_ = value;
@@ -1618,7 +1618,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       hash ^= shape_.GetHashCode();
       if (DataType.Length != 0) hash ^= DataType.GetHashCode();
@@ -1649,7 +1649,7 @@ namespace PAIA.Marenv.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
@@ -1690,7 +1690,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
@@ -1731,7 +1731,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
       }
       if (Description.Length != 0) {
@@ -1768,7 +1768,7 @@ namespace PAIA.Marenv.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (other.SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         SpaceType = other.SpaceType;
       }
       if (other.Description.Length != 0) {
@@ -1792,7 +1792,7 @@ namespace PAIA.Marenv.Protobuf {
       listSpace_.Add(other.listSpace_);
       if (other.graphSpace_ != null) {
         if (graphSpace_ == null) {
-          GraphSpace = new global::PAIA.Marenv.Protobuf.GraphSpace();
+          GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
         }
         GraphSpace.MergeFrom(other.GraphSpace);
       }
@@ -1812,7 +1812,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
+            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -1865,7 +1865,7 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 106: {
             if (graphSpace_ == null) {
-              GraphSpace = new global::PAIA.Marenv.Protobuf.GraphSpace();
+              GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
             }
             input.ReadMessage(GraphSpace);
             break;
@@ -1886,7 +1886,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
+            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -1939,7 +1939,7 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 106: {
             if (graphSpace_ == null) {
-              GraphSpace = new global::PAIA.Marenv.Protobuf.GraphSpace();
+              GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
             }
             input.ReadMessage(GraphSpace);
             break;
@@ -1968,7 +1968,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Marenv.Protobuf.SpaceReflection.Descriptor.MessageTypes[5]; }
+      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2011,10 +2011,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "space_type" field.</summary>
     public const int SpaceTypeFieldNumber = 1;
-    private global::PAIA.Marenv.Protobuf.SpaceType spaceType_ = global::PAIA.Marenv.Protobuf.SpaceType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.SpaceType spaceType_ = global::PAIA.Gymize.Protobuf.SpaceType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.SpaceType SpaceType {
+    public global::PAIA.Gymize.Protobuf.SpaceType SpaceType {
       get { return spaceType_; }
       set {
         spaceType_ = value;
@@ -2047,10 +2047,10 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "box" field.</summary>
     public const int BoxFieldNumber = 4;
-    private global::PAIA.Marenv.Protobuf.Tensor box_;
+    private global::PAIA.Gymize.Protobuf.Tensor box_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor Box {
+    public global::PAIA.Gymize.Protobuf.Tensor Box {
       get { return box_; }
       set {
         box_ = value;
@@ -2071,13 +2071,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "multi_binary" field.</summary>
     public const int MultiBinaryFieldNumber = 6;
-    private global::PAIA.Marenv.Protobuf.Tensor multiBinary_;
+    private global::PAIA.Gymize.Protobuf.Tensor multiBinary_;
     /// <summary>
     /// boolean type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor MultiBinary {
+    public global::PAIA.Gymize.Protobuf.Tensor MultiBinary {
       get { return multiBinary_; }
       set {
         multiBinary_ = value;
@@ -2086,13 +2086,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "multi_discrete" field.</summary>
     public const int MultiDiscreteFieldNumber = 7;
-    private global::PAIA.Marenv.Protobuf.Tensor multiDiscrete_;
+    private global::PAIA.Gymize.Protobuf.Tensor multiDiscrete_;
     /// <summary>
     /// integer type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Tensor MultiDiscrete {
+    public global::PAIA.Gymize.Protobuf.Tensor MultiDiscrete {
       get { return multiDiscrete_; }
       set {
         multiDiscrete_ = value;
@@ -2113,35 +2113,35 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "dict" field.</summary>
     public const int DictFieldNumber = 9;
-    private static readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>.Codec _map_dict_codec
-        = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 74);
-    private readonly pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data> dict_ = new pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data>();
+    private static readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>.Codec _map_dict_codec
+        = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Data.Parser), 74);
+    private readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data> dict_ = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::PAIA.Marenv.Protobuf.Data> Dict {
+    public pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data> Dict {
       get { return dict_; }
     }
 
     /// <summary>Field number for the "list" field.</summary>
     public const int ListFieldNumber = 10;
-    private static readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>.Codec _map_list_codec
-        = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Marenv.Protobuf.Data.Parser), 82);
-    private readonly pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data> list_ = new pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data>();
+    private static readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>.Codec _map_list_codec
+        = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Data.Parser), 82);
+    private readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data> list_ = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>();
     /// <summary>
     /// Tuple and Sequence
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<int, global::PAIA.Marenv.Protobuf.Data> List {
+    public pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data> List {
       get { return list_; }
     }
 
     /// <summary>Field number for the "graph" field.</summary>
     public const int GraphFieldNumber = 11;
-    private global::PAIA.Marenv.Protobuf.Graph graph_;
+    private global::PAIA.Gymize.Protobuf.Graph graph_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Graph Graph {
+    public global::PAIA.Gymize.Protobuf.Graph Graph {
       get { return graph_; }
       set {
         graph_ = value;
@@ -2150,13 +2150,13 @@ namespace PAIA.Marenv.Protobuf {
 
     /// <summary>Field number for the "image" field.</summary>
     public const int ImageFieldNumber = 12;
-    private global::PAIA.Marenv.Protobuf.Image image_;
+    private global::PAIA.Gymize.Protobuf.Image image_;
     /// <summary>
     /// Box space instance which is a compressed image (H, W, C)
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Marenv.Protobuf.Image Image {
+    public global::PAIA.Gymize.Protobuf.Image Image {
       get { return image_; }
       set {
         image_ = value;
@@ -2197,7 +2197,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
       if (DataType.Length != 0) hash ^= DataType.GetHashCode();
       if (RawData.Length != 0) hash ^= RawData.GetHashCode();
       if (box_ != null) hash ^= Box.GetHashCode();
@@ -2227,7 +2227,7 @@ namespace PAIA.Marenv.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
@@ -2279,7 +2279,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SpaceType);
       }
@@ -2331,7 +2331,7 @@ namespace PAIA.Marenv.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
       }
       if (DataType.Length != 0) {
@@ -2375,7 +2375,7 @@ namespace PAIA.Marenv.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.SpaceType != global::PAIA.Marenv.Protobuf.SpaceType.Unspecified) {
+      if (other.SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
         SpaceType = other.SpaceType;
       }
       if (other.DataType.Length != 0) {
@@ -2386,7 +2386,7 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.box_ != null) {
         if (box_ == null) {
-          Box = new global::PAIA.Marenv.Protobuf.Tensor();
+          Box = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         Box.MergeFrom(other.Box);
       }
@@ -2395,13 +2395,13 @@ namespace PAIA.Marenv.Protobuf {
       }
       if (other.multiBinary_ != null) {
         if (multiBinary_ == null) {
-          MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
+          MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         MultiBinary.MergeFrom(other.MultiBinary);
       }
       if (other.multiDiscrete_ != null) {
         if (multiDiscrete_ == null) {
-          MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
+          MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
         }
         MultiDiscrete.MergeFrom(other.MultiDiscrete);
       }
@@ -2412,13 +2412,13 @@ namespace PAIA.Marenv.Protobuf {
       list_.Add(other.list_);
       if (other.graph_ != null) {
         if (graph_ == null) {
-          Graph = new global::PAIA.Marenv.Protobuf.Graph();
+          Graph = new global::PAIA.Gymize.Protobuf.Graph();
         }
         Graph.MergeFrom(other.Graph);
       }
       if (other.image_ != null) {
         if (image_ == null) {
-          Image = new global::PAIA.Marenv.Protobuf.Image();
+          Image = new global::PAIA.Gymize.Protobuf.Image();
         }
         Image.MergeFrom(other.Image);
       }
@@ -2438,7 +2438,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
+            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -2451,7 +2451,7 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 34: {
             if (box_ == null) {
-              Box = new global::PAIA.Marenv.Protobuf.Tensor();
+              Box = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Box);
             break;
@@ -2462,14 +2462,14 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 50: {
             if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
+              MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(MultiBinary);
             break;
           }
           case 58: {
             if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
+              MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(MultiDiscrete);
             break;
@@ -2488,14 +2488,14 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 90: {
             if (graph_ == null) {
-              Graph = new global::PAIA.Marenv.Protobuf.Graph();
+              Graph = new global::PAIA.Gymize.Protobuf.Graph();
             }
             input.ReadMessage(Graph);
             break;
           }
           case 98: {
             if (image_ == null) {
-              Image = new global::PAIA.Marenv.Protobuf.Image();
+              Image = new global::PAIA.Gymize.Protobuf.Image();
             }
             input.ReadMessage(Image);
             break;
@@ -2516,7 +2516,7 @@ namespace PAIA.Marenv.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Marenv.Protobuf.SpaceType) input.ReadEnum();
+            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -2529,7 +2529,7 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 34: {
             if (box_ == null) {
-              Box = new global::PAIA.Marenv.Protobuf.Tensor();
+              Box = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(Box);
             break;
@@ -2540,14 +2540,14 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 50: {
             if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Marenv.Protobuf.Tensor();
+              MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(MultiBinary);
             break;
           }
           case 58: {
             if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Marenv.Protobuf.Tensor();
+              MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
             }
             input.ReadMessage(MultiDiscrete);
             break;
@@ -2566,14 +2566,14 @@ namespace PAIA.Marenv.Protobuf {
           }
           case 90: {
             if (graph_ == null) {
-              Graph = new global::PAIA.Marenv.Protobuf.Graph();
+              Graph = new global::PAIA.Gymize.Protobuf.Graph();
             }
             input.ReadMessage(Graph);
             break;
           }
           case 98: {
             if (image_ == null) {
-              Image = new global::PAIA.Marenv.Protobuf.Image();
+              Image = new global::PAIA.Gymize.Protobuf.Image();
             }
             input.ReadMessage(Image);
             break;

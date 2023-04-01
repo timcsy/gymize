@@ -1,8 +1,8 @@
-using PAIA.Marenv.Protobuf;
+using PAIA.Gymize.Protobuf;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
-    // Reusing SpaceType same as in the PAIA.Marenv.Protobuf, so be careful
+    // Reusing SpaceType same as in the PAIA.Gymize.Protobuf, so be careful
     public enum SPACE_TYPE
     {
         BOX,

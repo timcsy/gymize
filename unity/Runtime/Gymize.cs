@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace PAIA.Marenv
+namespace PAIA.Gymize
 {
-    public class Marenv
+    public class Gymize
     {
         // Lazy initializer pattern, see https://csharpindepth.com/articles/singleton#lazy
-        private static Lazy<Marenv> s_Lazy = new Lazy<Marenv>(() => new Marenv());
+        private static Lazy<Gymize> s_Lazy = new Lazy<Gymize>(() => new Gymize());
 
-        public static Marenv Instance { get { return s_Lazy.Value; } }
+        public static Gymize Instance { get { return s_Lazy.Value; } }
 
         public static bool IsInitialized
         {
@@ -83,7 +83,7 @@ namespace PAIA.Marenv
 
         public static void Error(string reason)
         {
-            throw new Exception("Marenv Error: " + reason);
+            throw new Exception("Gymize Error: " + reason);
         }
 
         Dictionary<Location, IObserver> m_Observers;
@@ -91,7 +91,7 @@ namespace PAIA.Marenv
         int m_TimeStamp;
         Dictionary<IObserver, bool> m_Cached;
 
-        private Marenv()
+        private Gymize()
         {
             m_Observers = new Dictionary<Location, IObserver>();
             m_Observations = new Dictionary<Location, IData>();
@@ -241,7 +241,7 @@ namespace PAIA.Marenv
             BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
             if (o != null)
             {
-                // Get fields with Marenv Attribute
+                // Get fields with Gymize Attribute
                 FieldInfo[] fields = o.GetType().GetFields(bindingFlags);
                 if (fields != null)
                 {
@@ -257,7 +257,7 @@ namespace PAIA.Marenv
                     }
                 }
 
-                // Get properties with Marenv Attribute
+                // Get properties with Gymize Attribute
                 PropertyInfo[] properties = o.GetType().GetProperties(bindingFlags);
                 if (properties!= null)
                 {

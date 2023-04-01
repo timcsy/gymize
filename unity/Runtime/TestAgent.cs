@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PAIA.Marenv;
+using PAIA.Gymize;
 
 public class TestAgent : MonoBehaviour, IAgent
 {
