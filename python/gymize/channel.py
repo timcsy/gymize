@@ -1,203 +1,269 @@
+import asyncio
 from queue import Queue
+import socket
 import threading
 import time
-import uuid
 from typing import Dict, List, Tuple, Union
-import asyncio
+import uuid
 import websockets
 from websockets.client import WebSocketClientProtocol
-from websockets.extensions import permessage_deflate
 from websockets.exceptions import ConnectionClosed
-import socket
-from gymize.signaling import SignalingServer
+from websockets.extensions import permessage_deflate
+
+from gymize.proto.channel_pb2 import MessageType, Message
 from gymize.proto.signaling_pb2 import Signal, SignalType, PeerType
-from gymize.proto.channel_pb2 import MessageType, Content, Message
+from gymize.signaling import SignalingServer
+
+class Content:
+    def __init__(self, content: Union[bytes, str]):
+        self.content = content
+        self.text = None
+        self.raw = None
+        if type(content) is str:
+            self.text = content
+        if type(content) is bytes:
+            self.raw = content
+        
+    def is_text(self) -> bool:
+        return self.text is not None
+
+    def is_binary(self) -> bool:
+        return self.raw is not None
+
+    def __str__(self) -> str:
+        if self.is_text():
+            return self.text
+        elif self.is_binary():
+            return str(self.raw)
+        else:
+            return str(self.content)
 
 class Channel:
-    def __init__(self, name: str, signaling_url='ws://localhost:50864/', mode: str='active', protocol='ws', host='localhost', port=None, peer_url=None, retry=True):
+    def __init__(self, name: str, mode: str='active', signaling_url='ws://localhost:50864/', protocol='ws', host='localhost', port=None, peer_url=None, retry=True):
         # For Signal Server
         self.name: str = name # game name (e.g. kart)
-        self.signaling_url: str = signaling_url
         self.mode: str = mode # 'active' or 'passive'
-        self.protocol: str = protocol
-        self.host: str = host
-        self.port: int = port
-        self.using_available_port = self.port is None
-        self.peer_url: str = peer_url
-        self.using_existing_url = self.peer_url is not None
-        self.signaling_id: str = None
-        self.ws_signaling: WebSocketClientProtocol = None
+        self._signaling_url: str = signaling_url
+        self._protocol: str = protocol
+        self._host: str = host
+        self._port: int = port
+        self._using_available_port = self._port is None
+        self._peer_url: str = peer_url
+        self._using_existing_url = self._peer_url is not None
+        self._signaling_id: str = None
+        self._ws_signaling: WebSocketClientProtocol = None
         # For channel
-        self.retry = retry # whether to retry connection when disconnected
         self.status = None # 'connecting' or 'connected' or 'disconnected' or 'closed'
-        self.ws = None # Peer websocket
-        self.event_loop: asyncio.AbstractEventLoop = None # the event loop for the channel
-        self.channel_stop: asyncio.Future = None # if the channel is stopped
-        self.peer_stop: asyncio.Future = None # if the peer server is stoped
-        self.updating = False # if the channel peer server is updating
-        self.sending = False # if the channel peer server is sending messages
+        self._retry = retry # whether to retry connection when disconnected
+        self._ws_peer = None # Peer websocket
+        self._event_loop: asyncio.AbstractEventLoop = None # the event loop for the channel
+        self._channel_stop: asyncio.Future = None # if the channel is stopped
+        self._peer_stop: asyncio.Future = None # if the peer server is stoped
+        self._updating = False # if the channel peer server is updating
+        self._sending = False # if the channel peer server is sending messages
         self._outbox: Queue = Queue() # Queue[Message]
-        self._inbox: Dict[str, Queue] = dict() # { id: Queue[bytes|str] }
+        self._inbox: Dict[str, Queue] = {
+            '': Queue()
+        } # { id: Queue[Content] }
         self._responses: Dict[bytes, asyncio.Future] = dict() # { uuid: Future[Content] }
         self._callbacks = {
             'open': list(),
-            'message': list(),
-            'request': list(),
             'error': list(),
             'signaling_disconnected': list(),
             'peer_disconnected': list(),
             'close': list()
         } # { event_name: List[function] }
-        self._message_callbacks: Dict[str, List] = dict() # { id: List[function] }
-        self._request_callbacks: Dict[str, List] = dict() # { id: List[function] }
+        self._message_callbacks: Dict[str, List] = {
+            '': list()
+        } # { id: List[function] }
+        self._request_callbacks: Dict[str, List] = {
+            '': list()
+        } # { id: List[function] }
     
     ###########################################################################
     #                              asyncio part                               #
     ###########################################################################
     
     def running_loop(self, loop: asyncio.AbstractEventLoop=None):
+        '''
+        set the event loop, or create a new one in a new thread
+        '''
         if loop is None:
             # run event loop on new thread
             loop = asyncio.new_event_loop()
-            self.event_loop = loop
-            self.channel_stop = self.event_loop.create_future()
+            self._event_loop = loop
+            self._channel_stop = self._event_loop.create_future()
             # daemon=True means the thread will be shutdown together with the main thread
-            thread = threading.Thread(target=self.start_background_loop, daemon=True)
+            thread = threading.Thread(target=self._start_background_loop, daemon=True)
             thread.start()
             return loop
         else:
             # use the given event loop
-            self.event_loop = loop
-            self.channel_stop = self.event_loop.create_future()
+            self._event_loop = loop
+            self._channel_stop = self._event_loop.create_future()
             return loop
     
-    def start_background_loop(self):
-        asyncio.set_event_loop(self.event_loop)
-        self.event_loop.run_until_complete(self.wait_finish())
+    def _start_background_loop(self):
+        '''
+        run until the channel is stopped
+        '''
+        asyncio.set_event_loop(self._event_loop)
+        self._event_loop.run_until_complete(self.wait_finish_async())
         time.sleep(10) # To ensure all the things are completed
     
-    async def wait_finish(self):
-        return await self.channel_stop
+    async def wait_finish_async(self):
+        return await self._channel_stop
 
     def is_running(self):
-        return not self.channel_stop.done()
+        return not self._channel_stop.done()
     
     def wait_finish_sync(self, polling_secs: float=0.001):
         while self.is_running():
             time.sleep(polling_secs)
-        return self.channel_stop.result()
+        return self._channel_stop.result()
     
     def add_task(self, coro) -> asyncio.Future:
-        if self.event_loop is None:
+        '''
+        add a task to the channel event loop, it become syncronized
+        '''
+        if self._event_loop is None:
             self.running_loop()
-        return asyncio.run_coroutine_threadsafe(coro, self.event_loop)
+        return asyncio.run_coroutine_threadsafe(coro, self._event_loop)
 
     ###########################################################################
     #                          Channel function part                          #
     ###########################################################################
     
-    async def connect(self, using_thread: bool=False):
+    async def connect_async(self, using_thread: bool=False):
         if self.status is None:
             if using_thread:
                 # run signal client in another task
-                self.add_task(self.signaling())
+                self.add_task(self._signaling())
             else:
-                self.event_loop = asyncio.get_running_loop()
-                self.channel_stop = self.event_loop.create_future()
-                self.add_task(self.signaling())
-                await self.wait_finish()
+                self._event_loop = asyncio.get_running_loop()
+                self._channel_stop = self._event_loop.create_future()
+                self.add_task(self._signaling())
+                await self.wait_finish_async()
         else:
             print('Channel can only connect once, use another channel instead')
         
     def connect_sync(self):
-        return self.add_task(self.connect(using_thread=True))
+        return self.add_task(self.connect_async(using_thread=True))
     
-    async def tell(self, id: str, data) -> None:
+    async def tell_async(self, id: str, content: Union[Content, str, bytes]) -> None:
         msg = Message()
         msg.header.message_type = MessageType.MESSAGE_TYPE_MESSAGE
         if id is not None:
             msg.header.id = id
-        if type(data) is str:
-            msg.content.text = data
+        
+        if type(content) is Content:
+            if content.is_text():
+                msg.content.text = content.text
+            elif content.is_binary():
+                msg.content.raw = bytes(content.raw)
+            else:
+                msg.content.raw = bytes(content.content)
+        if type(content) is str:
+            msg.content.text = content
         else:
-            msg.content.raw = bytes(data)
-        await self.send(msg=msg)
+            msg.content.raw = bytes(content)
+        
+        await self.send_async(msg=msg)
     
-    def tell_sync(self, id: str, data) -> None:
-        return self.add_task(self.tell(id=id, data=data))
+    def tell_sync(self, id: str, content: Union[Content, str, bytes]) -> None:
+        return self.add_task(self.tell_async(id=id, content=content))
     
-    async def broadcast(self, data) -> None:
-        await self.tell(id=None, data=data)
+    async def broadcast_async(self, content: Union[Content, str, bytes]) -> None:
+        await self.tell_async(id=None, content=content)
     
-    def broadcast_sync(self, data) -> None:
-        return self.add_task(self.broadcast(data=data))
+    def broadcast_sync(self, content: Union[Content, str, bytes]) -> None:
+        return self.add_task(self.broadcast_async(content=content))
 
-    async def ask(self, id: str, data):
-        if not id in self._responses:
-            self._responses[id] = Queue()
+    async def ask_async(self, id: str, content: Union[Content, str, bytes]) -> Content:
+        if not id in self._inbox:
+            self._inbox[id] = Queue()
         
         msg = Message()
         msg.header.message_type = MessageType.MESSAGE_TYPE_REQUEST
         if id is not None:
             msg.header.id = id
         msg.header.uuid = uuid.uuid4().bytes
-        if type(data) is str:
-            msg.content.text = data
+
+        if type(content) is Content:
+            if content.is_text():
+                msg.content.text = content.text
+            elif content.is_binary():
+                msg.content.raw = bytes(content.raw)
+            else:
+                msg.content.raw = bytes(content.content)
+        if type(content) is str:
+            msg.content.text = content
         else:
-            msg.content.raw = bytes(data)
+            msg.content.raw = bytes(content)
+        
         self._responses[msg.header.uuid] = asyncio.Future()
-        await self.send(msg=msg)
+        await self.send_async(msg=msg)
         content = await self._responses[msg.header.uuid]
         self._responses.pop(msg.header.uuid, None)
         return content
 
-    def ask_sync(self, id: str, data) -> asyncio.Future:
-        return self.add_task(self.ask(id=id, data=data))
+    def ask_sync(self, id: str, content: Union[Content, str, bytes]) -> asyncio.Future:
+        return self.add_task(self.ask_async(id=id, content=content))
     
-    async def send(self, msg: Message) -> None:
+    async def send_async(self, msg: Message) -> None:
         self._outbox.put(msg)
-        await self.send_flush() # flush the outbox because the outbox is not empty now
+        await self._send_flush() # flush the outbox because the outbox is not empty now
     
     def send_sync(self, msg: Message) -> None:
-        return self.add_task(self.send(msg=msg))
+        return self.add_task(self.send_async(msg=msg))
 
-    async def send_flush(self) -> None:
-        if self.sending:
+    async def _send_flush(self) -> None:
+        if self._sending:
             return
-        self.sending = True
+        self._sending = True
         while not self._outbox.empty():
-            if self.ws is not None and self.ws.open:
+            if self._ws_peer is not None and self._ws_peer.open:
                 msg = self._outbox.get()
-                await self.ws.send(msg.SerializeToString())
+                await self._ws_peer.send(msg.SerializeToString())
             else:
                 break
-        self.sending = False
+        self._sending = False
     
-    def recv(self, data) -> None:
+    def _recv(self, content: bytes) -> None:
         msg = Message()
-        msg.ParseFromString(data)
-        content = None
+        msg.ParseFromString(content)
+        content: Content = None
         if msg.content.HasField('raw'):
-            content = msg.content.raw
+            content = Content(msg.content.raw)
         elif msg.content.HasField('text'):
-            content = msg.content.text
+            content = Content(msg.content.text)
         
         if msg.header.message_type == MessageType.MESSAGE_TYPE_MESSAGE:
             if msg.header.id:
                 if not msg.header.id in self._inbox:
                     self._inbox[msg.header.id] = Queue()
-                self._inbox[msg.header.id].put(content)
-                self.trigger_message(msg.header.id, content)
+
+                # only put the message to the queue if there is no message listener
+                if len(self._message_callbacks[msg.header.id]) == 0:
+                    self._inbox[msg.header.id].put(content)
+                else:
+                    self.trigger_message(msg.header.id, content)
             else:
+                # id == '' means broadcast, and '' means root channel itself
                 for id in self._inbox:
-                    self._inbox[id].put(content)
-                self.trigger('message', content)
+                    # only put the message to the queue if there is no message listener
+                    if len(self._message_callbacks[id]) == 0:
+                        self._inbox[id].put(content)
+                    else:
+                        self.trigger_message(id, content)
+
         elif msg.header.message_type == MessageType.MESSAGE_TYPE_REQUEST:
-            request = Request(id=msg.header.id, uuid=msg.header.uuid, data=content, channel=self)
+            request = Request(id=msg.header.id, uuid=msg.header.uuid, content=content, channel=self)
             if msg.header.id:
                 self.trigger_request(msg.header.id, request)
             else:
-                self.trigger('request', request)
+                self.trigger_request('', request)
+
         elif msg.header.message_type == MessageType.MESSAGE_TYPE_RESPONSE:
             self._responses[msg.header.uuid].set_result(content)
     
@@ -214,7 +280,7 @@ class Channel:
                 return True
         return False
     
-    def wait(self, polling_secs: float=0.001):
+    def wait(self, polling_secs: float=0.001) -> bool:
         '''
         wait until receive message, response or channel closed
         :return: done
@@ -231,70 +297,90 @@ class Channel:
         if not id in self._inbox:
             self._inbox[id] = Queue()
         return not self._inbox[id].empty()
+
+    def take_message(self, id: str) -> Content:
+        '''
+        take message and pop from the queue
+        :return: content
+        '''
+        content = None
+        if self.has_message(id=id):
+            content = self._inbox[id].get()
+        return content
     
     def wait_message(self, id: str, polling_secs: float=0.001) -> Tuple[Union[bytes, str], bool]:
         '''
         after received a message, or the channel is closed
-        it will return data and whether the channel is running now
-        :return: data, done
+        it will return content and whether the channel is running now
+        :return: content, done
         '''
         while not self.has_message(id=id) and self.is_running():
             time.sleep(polling_secs)
-        data = None
-        if not self._inbox[id].empty():
-            data = self._inbox[id].get()
-        return data, not self.is_running()
+        content = self.take_message(id=id)
+        return content, not self.is_running()
+    
+    def take_response(self, response: asyncio.Future) -> Content:
+        '''
+        take response and remove
+        :return: content
+        '''
+        content = None
+        if response.done():
+            content = response.result()
+        return content
 
     def wait_response(self, response: asyncio.Future, polling_secs: float=0.001) -> Tuple[Union[bytes, str], bool]:
         '''
         after received a response, or the channel is closed
-        it will return data and whether the channel is running now
-        :return: data, done
+        it will return content and whether the channel is running now
+        :return: content, done
         '''
         while not response.done() and self.is_running():
             time.sleep(polling_secs)
-        data = None
-        if response.done():
-            data = response.result()
-        return data, not self.is_running()
+        content = self.take_response(response=response)
+        return content, not self.is_running()
     
-    async def pause(self):
-        if self.ws_signaling is not None and self.ws_signaling.open:
-            await self.ws_signaling.close()
+    async def pause_async(self):
+        if self._ws_signaling is not None and self._ws_signaling.open:
+            await self._ws_signaling.close()
 
     def pause_sync(self):
-        return self.add_task(self.pause())
+        return self.add_task(self.pause_async())
     
-    async def resume(self):
+    async def resume_async(self):
         '''
         resume the signal connection with current id
         '''
-        await self.signaling(is_resume=True)
+        await self._signaling(is_resume=True)
     
     def resume_sync(self):
-        return self.add_task(self.resume())
+        return self.add_task(self.resume_async())
     
-    async def close(self):
+    async def close_async(self):
         self.status = 'closed'
-        if self.ws_signaling is not None and self.ws_signaling.open:
+        if self._ws_signaling is not None and self._ws_signaling.open:
             signal = Signal()
             signal.signal_type = SignalType.SIGNAL_TYPE_CLOSE
-            signal.id = self.signaling_id
-            await self.ws_signaling.send(signal.SerializeToString())
-        if self.ws is not None and self.ws.open:
-            await self.ws.close()
-        self.ws = None
+            signal.id = self._signaling_id
+            await self._ws_signaling.send(signal.SerializeToString())
+        if self._ws_peer is not None and self._ws_peer.open:
+            await self._ws_peer.close()
+        self._ws_peer = None
     
     def close_sync(self):
-        return self.add_task(self.close())
+        return self.add_task(self.close_async())
     
     ###########################################################################
     #                        Event-driven style part                          #
     ###########################################################################
 
+    '''
+    id == '' means for the root channel
+    '''
+
     def on(self, event_name):
         '''
-        event_name: one of 'open', 'message', 'error', 'close'
+        event_name: one of 'open', 'error', 'signaling_disconnected', 'peer_disconnected', 'close'
         
         Example ussage:
 
@@ -315,13 +401,18 @@ class Channel:
         
         '''
         def decorate(callback):
-            if not event_name in self._callbacks:
-                self._callbacks[event_name] = list()
-            self._callbacks[event_name].append(callback)
+            if event_name == 'message':
+                self.on_message(id='')(callback)
+            elif event_name == 'request':
+                self.on_request(id='')(callback)
+            else:
+                if not event_name in self._callbacks:
+                    self._callbacks[event_name] = list()
+                self._callbacks[event_name].append(callback)
 
         return decorate
 
-    def on_message(self, id):
+    def on_message(self, id=''):
         '''
         Example ussage:
 
@@ -348,7 +439,7 @@ class Channel:
 
         return decorate
     
-    def on_request(self, id):
+    def on_request(self, id=''):
         '''
         Example ussage:
 
@@ -376,14 +467,19 @@ class Channel:
         return decorate
 
     def trigger(self, event_name, *args, **kwargs):
-        if event_name in self._callbacks:
-            for callback in self._callbacks[event_name]:
-                if asyncio.iscoroutinefunction(callback):
-                    self.add_task(callback(*args, **kwargs))
-                else:
-                    callback(*args, **kwargs)
+        if event_name == 'message':
+            self.trigger_message(id='',*args, **kwargs)
+        elif event_name == 'request':
+            self.trigger_request(id='', *args, **kwargs)
+        else:
+            if event_name in self._callbacks:
+                for callback in self._callbacks[event_name]:
+                    if asyncio.iscoroutinefunction(callback):
+                        self.add_task(callback(*args, **kwargs))
+                    else:
+                        callback(*args, **kwargs)
     
-    def trigger_message(self, id, *args, **kwargs):
+    def trigger_message(self, id='', *args, **kwargs):
         if id in self._message_callbacks:
             for callback in self._message_callbacks[id]:
                 if asyncio.iscoroutinefunction(callback):
@@ -391,7 +487,7 @@ class Channel:
                 else:
                     callback(*args, **kwargs)
     
-    def trigger_request(self, id, *args, **kwargs):
+    def trigger_request(self, id='', *args, **kwargs):
         if id in self._request_callbacks:
             for callback in self._request_callbacks[id]:
                 if asyncio.iscoroutinefunction(callback):
@@ -403,12 +499,17 @@ class Channel:
         '''
         remove all the callbacks associated to the event_name
         '''
-        if event_name in self._callbacks:
-            self._callbacks[event_name] = list()
-        if event_name in self._callbacks:
-            self._callbacks[event_name].clear()
+        if event_name == 'message':
+            self.off_message(id='')
+        elif event_name == 'request':
+            self.off_request(id='')
+        else:
+            if event_name in self._callbacks:
+                self._callbacks[event_name] = list()
+            if event_name in self._callbacks:
+                self._callbacks[event_name].clear()
 
-    def off_message(self, id=None):
+    def off_message(self, id=''):
         '''
         remove all the message callbacks associated to the id
         '''
@@ -417,7 +518,7 @@ class Channel:
         if id in self._message_callbacks:
             self._message_callbacks[id].clear()
     
-    def off_request(self, id=None):
+    def off_request(self, id=''):
         '''
         remove all the request callbacks associated to the id
         '''
@@ -430,31 +531,31 @@ class Channel:
     #                           Signal client  part                           #
     ###########################################################################
 
-    async def ensure_signaling_server_opened(self):
+    async def _ensure_signaling_server_opened(self):
         try:
-            async with websockets.connect(self.signaling_url):
+            async with websockets.connect(self._signaling_url):
                 pass
         except OSError:
             # The given signaling server is not available, create a new one
             server = SignalingServer()
-            self.add_task(server.ws_server(host='localhost', port=50864, stop=self.channel_stop)) # gymize_signaling = 50864
+            self.add_task(server.ws_server(host='localhost', port=50864, stop=self._channel_stop)) # gymize_signaling = 50864
             await asyncio.sleep(1)
-            self.signaling_url = 'ws://localhost:50864'
+            self._signaling_url = 'ws://localhost:50864'
 
-    async def signaling(self, is_resume=False):
+    async def _signaling(self, is_resume=False):
         self.status = 'connecting'
 
-        await self.ensure_signaling_server_opened()
+        await self._ensure_signaling_server_opened()
 
-        async with websockets.connect(self.signaling_url, ping_timeout=None) as websocket:
+        async with websockets.connect(self._signaling_url, ping_timeout=None) as websocket:
             closed = None
-            print(f'Connected to Signal Server: {self.signaling_url}')
-            self.ws_signaling = websocket
+            print(f'Connected to Signal Server: {self._signaling_url}')
+            self._ws_signaling = websocket
             try:
-                await self.signaling_start(is_resume=is_resume)
+                await self._signaling_start(is_resume=is_resume)
 
-                async for msg in self.ws_signaling: # onmessage
-                    await self.signaling_recv(msg)
+                async for msg in self._ws_signaling: # onmessage
+                    await self._signaling_recv(msg)
             
             except ConnectionClosed:
                 closed = True
@@ -464,21 +565,21 @@ class Channel:
             
             # websocket is closed
             if closed != False:
-                self.ws_signaling = None
-                print(f'The Signal Server connection: {self.signaling_url} is closed')
+                self._ws_signaling = None
+                print(f'The Signal Server connection: {self._signaling_url} is closed')
                 if self.status == 'closed':
                     # close the channel
                     self.trigger('close')
                     # stop the background event loop
-                    if self.channel_stop is not None:
-                        self.channel_stop.set_result(True)
+                    if self._channel_stop is not None:
+                        self._channel_stop.set_result(True)
                 else:
                     self.status = 'disconnected'
                     self.trigger('signaling_disconnected')
-                    if self.retry:
-                        await self.resume()
+                    if self._retry:
+                        await self.resume_async()
     
-    async def signaling_start(self, is_resume=False):
+    async def _signaling_start(self, is_resume=False):
         signal = Signal()
 
         if not is_resume:
@@ -488,111 +589,111 @@ class Channel:
         else:
             # resume
             signal.signal_type = SignalType.SIGNAL_TYPE_RESUME
-            signal.id = self.signaling_id
+            signal.id = self._signaling_id
         
         if self.mode == 'active':
             signal.peer_type = PeerType.PEER_TYPE_ACTIVE
         elif self.mode == 'passive':
             signal.peer_type = PeerType.PEER_TYPE_PASSIVE
-        if self.ws_signaling is not None and self.ws_signaling.open:
-            await self.ws_signaling.send(signal.SerializeToString())
+        if self._ws_signaling is not None and self._ws_signaling.open:
+            await self._ws_signaling.send(signal.SerializeToString())
     
-    async def signaling_recv(self, msg):
+    async def _signaling_recv(self, msg):
         signal = Signal()
         signal.ParseFromString(msg)
 
         # switch by signal type
         if signal.signal_type == SignalType.SIGNAL_TYPE_INIT:
             # set signaling id given by the signal server
-            self.signaling_id = signal.id
+            self._signaling_id = signal.id
             if self.mode == 'active':
-                await self.update() # get a Peer Server
+                await self.update_async() # get a Peer Server
 
         elif signal.signal_type == SignalType.SIGNAL_TYPE_UPDATE:
             if self.mode == 'active':
-                await self.update() # get a Peer Server
+                await self.update_async() # get a Peer Server
             if self.mode == 'passive':
                 # connect to Peer Server, in another task
-                self.add_task(self.ws_client(url=signal.url))
+                self.add_task(self._ws_client(url=signal.url))
         
         elif signal.signal_type == SignalType.SIGNAL_TYPE_CLOSE:
             self.status = 'closed'
-            if self.ws_signaling is not None and self.ws_signaling.open:
-                await self.ws_signaling.close()
-            self.ws_signaling = None
+            if self._ws_signaling is not None and self._ws_signaling.open:
+                await self._ws_signaling.close()
+            self._ws_signaling = None
     
     ###########################################################################
     #                            Peer channel part                            #
     ###########################################################################
 
-    async def update(self, waiting_secs: float=1):
+    async def update_async(self, waiting_secs: float=1):
         '''
         Establish a new peer connection and replace the old one
         '''
         # Lock when updating
-        if self.updating:
+        if self._updating:
             return
         else:
-            self.updating = True
-            if self.ws is not None and self.ws.open:
-                await self.ws.close()
+            self._updating = True
+            if self._ws_peer is not None and self._ws_peer.open:
+                await self._ws_peer.close()
         
         signal = Signal()
         signal.signal_type = SignalType.SIGNAL_TYPE_UPDATE
-        signal.id = self.signaling_id
+        signal.id = self._signaling_id
         
         if self.mode == 'active':
             # get Peer Server
-            if not self.using_existing_url:
-                self.peer_url = await self.create_peer_server(waiting_secs)
-            signal.url = self.peer_url # send url (protocol://host:port) to the other peer
+            if not self._using_existing_url:
+                self._peer_url = await self._create_peer_server(waiting_secs)
+            signal.url = self._peer_url # send url (protocol://host:port) to the other peer
         elif self.mode == 'passive':
             # Ask active peer to raise an update signal
             pass
         
         # send update information to the other peer
-        if self.ws_signaling is not None and self.ws_signaling.open:
-            await self.ws_signaling.send(signal.SerializeToString())
+        if self._ws_signaling is not None and self._ws_signaling.open:
+            await self._ws_signaling.send(signal.SerializeToString())
     
     def update_sync(self, waiting_secs: float=1):
-        return self.add_task(self.update(waiting_secs=waiting_secs))
+        return self.add_task(self.update_async(waiting_secs=waiting_secs))
     
-    async def create_peer_server(self, waiting_secs: float=1):
+    async def _create_peer_server(self, waiting_secs: float=1):
         # Choose an available port by the system
         sock = socket.socket()
         sock.bind(('', 0))
-        if self.using_available_port:
-            self.port = int(sock.getsockname()[1])
+        if self._using_available_port:
+            self._port = int(sock.getsockname()[1])
         # start a websocket server in another task
-        self.peer_url = f'{self.protocol}://{self.host}:{self.port}'
-        self.add_task(self.ws_server(host=self.host, port=self.port))
+        self._peer_url = f'{self._protocol}://{self._host}:{self._port}'
+        self.add_task(self._ws_server(host=self._host, port=self._port))
         await asyncio.sleep(waiting_secs)
-        return self.peer_url
+        return self._peer_url
     
-    async def ws_server(self, host, port):
-        self.peer_stop = asyncio.Future() # you can set a value to it
+    async def _ws_server(self, host, port):
+        self._peer_stop = asyncio.Future() # you can set a value to it
         extensions = [permessage_deflate.ServerPerMessageDeflateFactory()]
-        async with websockets.serve(self.ws_server_recv, host, port, extensions=extensions, ping_timeout=None):
-            print(f'Start Peer Server: {self.peer_url}')
+        async with websockets.serve(self._ws_server_recv, host, port, extensions=extensions, ping_timeout=None):
+            print(f'Start Peer Server: {self._peer_url}')
             
-            await self.peer_stop # run forever until stop is set
-            print(f'The Peer connection: {self.peer_url} is closed')
+            await self._peer_stop # run forever until stop is set
+            print(f'The Peer connection: {self._peer_url} is closed')
             if self.status != 'closed':
                 self.status = 'disconnected'
                 self.trigger('peer_disconnected')
-                if self.retry:
-                    await self.update()
+                if self._retry:
+                    await self.update_async()
 
-    async def ws_server_recv(self, websocket):
+    async def _ws_server_recv(self, websocket):
         closed = None
-        self.ws = websocket
-        self.updating = False
+        self._ws_peer = websocket
+        self._updating = False
         self.status = 'connected'
-        await self.send_flush() # flush the outbox after connection is connected
+        await self._send_flush() # flush the outbox after connection is connected
         self.trigger('open')
         try:
             async for msg in websocket: # onmessage
-                self.recv(msg)
+                self._recv(msg)
             
         except ConnectionClosed:
             closed = True
@@ -602,24 +703,24 @@ class Channel:
         
         # websocket is closed
         if closed != False:
-            self.ws = None
-            self.peer_stop.set_result(True)
+            self._ws_peer = None
+            self._peer_stop.set_result(True)
 
-    async def ws_client(self, url):
+    async def _ws_client(self, url):
         extensions = [permessage_deflate.ClientPerMessageDeflateFactory()]
         async with websockets.connect(url, extensions=extensions, ping_timeout=None) as websocket:
             closed = None
-            self.peer_url = url
-            print(f'Connected to Peer Server: {self.peer_url}')
-            self.ws = websocket
-            self.updating = False
+            self._peer_url = url
+            print(f'Connected to Peer Server: {self._peer_url}')
+            self._ws_peer = websocket
+            self._updating = False
             try:
                 self.status = 'connected'
-                await self.send_flush() # flush the outbox after connection is connected
+                await self._send_flush() # flush the outbox after connection is connected
                 self.trigger('open')
                 
                 async for msg in websocket: # onmessage
-                    self.recv(msg)
+                    self._recv(msg)
                 
             except ConnectionClosed:
                 closed = True
@@ -629,33 +730,46 @@ class Channel:
             
             # websocket is closed
             if closed != False:
-                self.ws = None
-                print(f'The Peer connection: {self.peer_url} is closed')
+                self._ws_peer = None
+                print(f'The Peer connection: {self._peer_url} is closed')
                 if self.status != 'closed':
                     self.status = 'disconnected'
                     self.trigger('peer_disconnected')
-                    if self.retry:
-                        await self.update()
-
+                    if self._retry:
+                        await self.update_async()
 
 class Request:
-    def __init__(self, id: str, uuid: str, data, channel: Channel):
+    def __init__(self, id: str, uuid: bytes, content: Union[Content, str, bytes], channel: Channel):
         self.id = id
         self.uuid = uuid
-        self.data = data
+
+        if type(content) is Content:
+            self.content = content
+        else:
+            self.content = Content(content)
+        
         self.channel = channel
     
-    async def reply(self, data):
+    async def reply_async(self, content: Union[Content, str, bytes]):
         msg = Message()
         msg.header.message_type = MessageType.MESSAGE_TYPE_RESPONSE
         if self.id is not None:
             msg.header.id = self.id
         msg.header.uuid = self.uuid
-        if type(data) is str:
-            msg.content.text = data
+
+        if type(content) is Content:
+            if content.is_text():
+                msg.content.text = content.text
+            elif content.is_binary():
+                msg.content.raw = bytes(content.raw)
+            else:
+                msg.content.raw = bytes(content.content)
+        if type(content) is str:
+            msg.content.text = content
         else:
-            msg.content.raw = bytes(data)
-        await self.channel.send(msg=msg)
+            msg.content.raw = bytes(content)
+        
+        await self.channel.send_async(msg=msg)
     
-    def reply_sync(self, data):
-        self.channel.add_task(self.reply(data=data))
+    def reply_sync(self, content: Union[Content, str, bytes]):
+        return self.channel.add_task(self.reply_async(content=content))

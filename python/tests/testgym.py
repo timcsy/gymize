@@ -1,4 +1,5 @@
 import gymnasium as gym
+
 import gymize
 
 env = gym.make('gymize/Unity-v0', name='kart')
@@ -15,7 +16,5 @@ for _ in range(2):
 env.close()
 
 
-
-# TODO: 改名為 Gymize, 刪除 PActor
 # TODO: 在哪裡啟動 Unity, VirtualGL
 # TODO: 了解 gym 如何開啟多環境，可以參考 ML-Agents: https://github.com/Unity-Technologies/ml-agents/tree/main/ml-agents-envs/mlagents_envs/envs

@@ -109,11 +109,11 @@ const char descriptor_table_protodef_channel_2eproto[] PROTOBUF_SECTION_VARIABLE
   "*z\n\013MessageType\022\034\n\030MESSAGE_TYPE_UNSPECIF"
   "IED\020\000\022\030\n\024MESSAGE_TYPE_MESSAGE\020\001\022\030\n\024MESSA"
   "GE_TYPE_REQUEST\020\002\022\031\n\025MESSAGE_TYPE_RESPON"
-  "SE\020\003B\026\252\002\023PAIA.Gymize.Channelb\006proto3"
+  "SE\020\003B\027\252\002\024PAIA.Gymize.Protobufb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_channel_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_channel_2eproto = {
-  false, false, 356, descriptor_table_protodef_channel_2eproto, "channel.proto", 
+  false, false, 357, descriptor_table_protodef_channel_2eproto, "channel.proto", 
   &descriptor_table_channel_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_channel_2eproto::offsets,
   file_level_metadata_channel_2eproto, file_level_enum_descriptors_channel_2eproto, file_level_service_descriptors_channel_2eproto,

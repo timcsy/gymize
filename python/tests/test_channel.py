@@ -34,11 +34,11 @@ channel = Channel('kart')
 channel.connect_sync()
 
 while True:
-    data, done = channel.wait_message('agent1')
+    content, done = channel.wait_message('agent1')
     if done:
         break
-    print(f'> {data}')
-    channel.tell_sync('agent1', data)
+    print(f'> {content}')
+    channel.tell_sync('agent1', content)
 
 # while channel.is_running():
 #     channel.wait()

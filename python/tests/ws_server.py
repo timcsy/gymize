@@ -1,10 +1,9 @@
 import asyncio
+import queue
 import websockets
 from websockets.extensions import permessage_deflate
+
 from gymize.proto.space_pb2 import Data, CompressionType
-import queue
-import io
-from PIL import Image
 import gymize.space as space
 
 msg_queue = queue.Queue()

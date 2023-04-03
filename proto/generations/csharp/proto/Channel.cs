@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace PAIA.Gymize.Channel {
+namespace PAIA.Gymize.Protobuf {
 
   /// <summary>Holder for reflection information generated from channel.proto</summary>
   public static partial class ChannelReflection {
@@ -31,13 +31,13 @@ namespace PAIA.Gymize.Channel {
             "dGVudBgCIAEoCzIILkNvbnRlbnQqegoLTWVzc2FnZVR5cGUSHAoYTUVTU0FH",
             "RV9UWVBFX1VOU1BFQ0lGSUVEEAASGAoUTUVTU0FHRV9UWVBFX01FU1NBR0UQ",
             "ARIYChRNRVNTQUdFX1RZUEVfUkVRVUVTVBACEhkKFU1FU1NBR0VfVFlQRV9S",
-            "RVNQT05TRRADQhaqAhNQQUlBLkd5bWl6ZS5DaGFubmVsYgZwcm90bzM="));
+            "RVNQT05TRRADQheqAhRQQUlBLkd5bWl6ZS5Qcm90b2J1ZmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Channel.MessageType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Channel.Header), global::PAIA.Gymize.Channel.Header.Parser, new[]{ "MessageType", "Id", "Uuid" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Channel.Content), global::PAIA.Gymize.Channel.Content.Parser, new[]{ "Raw", "Text" }, new[]{ "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Channel.Message), global::PAIA.Gymize.Channel.Message.Parser, new[]{ "Header", "Content" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Protobuf.MessageType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Header), global::PAIA.Gymize.Protobuf.Header.Parser, new[]{ "MessageType", "Id", "Uuid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Content), global::PAIA.Gymize.Protobuf.Content.Parser, new[]{ "Raw", "Text" }, new[]{ "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Message), global::PAIA.Gymize.Protobuf.Message.Parser, new[]{ "Header", "Content" }, null, null, null, null)
           }));
     }
     #endregion
@@ -68,7 +68,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Channel.ChannelReflection.Descriptor.MessageTypes[0]; }
+      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -102,10 +102,10 @@ namespace PAIA.Gymize.Channel {
 
     /// <summary>Field number for the "message_type" field.</summary>
     public const int MessageTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Channel.MessageType messageType_ = global::PAIA.Gymize.Channel.MessageType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.MessageType messageType_ = global::PAIA.Gymize.Protobuf.MessageType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Channel.MessageType MessageType {
+    public global::PAIA.Gymize.Protobuf.MessageType MessageType {
       get { return messageType_; }
       set {
         messageType_ = value;
@@ -161,7 +161,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MessageType != global::PAIA.Gymize.Channel.MessageType.Unspecified) hash ^= MessageType.GetHashCode();
+      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) hash ^= MessageType.GetHashCode();
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Uuid.Length != 0) hash ^= Uuid.GetHashCode();
       if (_unknownFields != null) {
@@ -182,7 +182,7 @@ namespace PAIA.Gymize.Channel {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MessageType != global::PAIA.Gymize.Channel.MessageType.Unspecified) {
+      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -204,7 +204,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MessageType != global::PAIA.Gymize.Channel.MessageType.Unspecified) {
+      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -226,7 +226,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MessageType != global::PAIA.Gymize.Channel.MessageType.Unspecified) {
+      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
       }
       if (Id.Length != 0) {
@@ -247,7 +247,7 @@ namespace PAIA.Gymize.Channel {
       if (other == null) {
         return;
       }
-      if (other.MessageType != global::PAIA.Gymize.Channel.MessageType.Unspecified) {
+      if (other.MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
         MessageType = other.MessageType;
       }
       if (other.Id.Length != 0) {
@@ -272,7 +272,7 @@ namespace PAIA.Gymize.Channel {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            MessageType = (global::PAIA.Gymize.Channel.MessageType) input.ReadEnum();
+            MessageType = (global::PAIA.Gymize.Protobuf.MessageType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -299,7 +299,7 @@ namespace PAIA.Gymize.Channel {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            MessageType = (global::PAIA.Gymize.Channel.MessageType) input.ReadEnum();
+            MessageType = (global::PAIA.Gymize.Protobuf.MessageType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -331,7 +331,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Channel.ChannelReflection.Descriptor.MessageTypes[1]; }
+      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -590,7 +590,7 @@ namespace PAIA.Gymize.Channel {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Channel.ChannelReflection.Descriptor.MessageTypes[2]; }
+      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -623,10 +623,10 @@ namespace PAIA.Gymize.Channel {
 
     /// <summary>Field number for the "header" field.</summary>
     public const int HeaderFieldNumber = 1;
-    private global::PAIA.Gymize.Channel.Header header_;
+    private global::PAIA.Gymize.Protobuf.Header header_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Channel.Header Header {
+    public global::PAIA.Gymize.Protobuf.Header Header {
       get { return header_; }
       set {
         header_ = value;
@@ -635,10 +635,10 @@ namespace PAIA.Gymize.Channel {
 
     /// <summary>Field number for the "content" field.</summary>
     public const int ContentFieldNumber = 2;
-    private global::PAIA.Gymize.Channel.Content content_;
+    private global::PAIA.Gymize.Protobuf.Content content_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Channel.Content Content {
+    public global::PAIA.Gymize.Protobuf.Content Content {
       get { return content_; }
       set {
         content_ = value;
@@ -745,13 +745,13 @@ namespace PAIA.Gymize.Channel {
       }
       if (other.header_ != null) {
         if (header_ == null) {
-          Header = new global::PAIA.Gymize.Channel.Header();
+          Header = new global::PAIA.Gymize.Protobuf.Header();
         }
         Header.MergeFrom(other.Header);
       }
       if (other.content_ != null) {
         if (content_ == null) {
-          Content = new global::PAIA.Gymize.Channel.Content();
+          Content = new global::PAIA.Gymize.Protobuf.Content();
         }
         Content.MergeFrom(other.Content);
       }
@@ -772,14 +772,14 @@ namespace PAIA.Gymize.Channel {
             break;
           case 10: {
             if (header_ == null) {
-              Header = new global::PAIA.Gymize.Channel.Header();
+              Header = new global::PAIA.Gymize.Protobuf.Header();
             }
             input.ReadMessage(Header);
             break;
           }
           case 18: {
             if (content_ == null) {
-              Content = new global::PAIA.Gymize.Channel.Content();
+              Content = new global::PAIA.Gymize.Protobuf.Content();
             }
             input.ReadMessage(Content);
             break;
@@ -801,14 +801,14 @@ namespace PAIA.Gymize.Channel {
             break;
           case 10: {
             if (header_ == null) {
-              Header = new global::PAIA.Gymize.Channel.Header();
+              Header = new global::PAIA.Gymize.Protobuf.Header();
             }
             input.ReadMessage(Header);
             break;
           }
           case 18: {
             if (content_ == null) {
-              Content = new global::PAIA.Gymize.Channel.Content();
+              Content = new global::PAIA.Gymize.Protobuf.Content();
             }
             input.ReadMessage(Content);
             break;

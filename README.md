@@ -43,3 +43,7 @@ agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 11=0 & 12=3
 Define the Observer in the class or struct, using the attributes.
 
 ### Sensor Component
+
+
+
+!!! Remember to close the channel in MonoBehaviour.OnApplicationQuit !!!

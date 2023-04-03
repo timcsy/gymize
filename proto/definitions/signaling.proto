@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Gymize.Signaling";
+option csharp_namespace = "PAIA.Gymize.Protobuf";
 
 enum SignalType {
 	SIGNAL_TYPE_UNSPECIFIED = 0;

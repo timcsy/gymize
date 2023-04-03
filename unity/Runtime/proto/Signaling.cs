@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace PAIA.Gymize.Signaling {
+namespace PAIA.Gymize.Protobuf {
 
   /// <summary>Holder for reflection information generated from signaling.proto</summary>
   public static partial class SignalingReflection {
@@ -32,11 +32,11 @@ namespace PAIA.Gymize.Signaling {
             "X1VQREFURRACEhYKElNJR05BTF9UWVBFX1JFU1VNRRADEhUKEVNJR05BTF9U",
             "WVBFX0NMT1NFEAQqUgoIUGVlclR5cGUSGQoVUEVFUl9UWVBFX1VOU1BFQ0lG",
             "SUVEEAASFAoQUEVFUl9UWVBFX0FDVElWRRABEhUKEVBFRVJfVFlQRV9QQVNT",
-            "SVZFEAJCGKoCFVBBSUEuR3ltaXplLlNpZ25hbGluZ2IGcHJvdG8z"));
+            "SVZFEAJCF6oCFFBBSUEuR3ltaXplLlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Signaling.SignalType), typeof(global::PAIA.Gymize.Signaling.PeerType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Signaling.Signal), global::PAIA.Gymize.Signaling.Signal.Parser, new[]{ "SignalType", "Id", "Data", "Name", "PeerType", "Url" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Protobuf.SignalType), typeof(global::PAIA.Gymize.Protobuf.PeerType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Signal), global::PAIA.Gymize.Protobuf.Signal.Parser, new[]{ "SignalType", "Id", "Data", "Name", "PeerType", "Url" }, null, null, null, null)
           }));
     }
     #endregion
@@ -83,7 +83,7 @@ namespace PAIA.Gymize.Signaling {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Signaling.SignalingReflection.Descriptor.MessageTypes[0]; }
+      get { return global::PAIA.Gymize.Protobuf.SignalingReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -120,10 +120,10 @@ namespace PAIA.Gymize.Signaling {
 
     /// <summary>Field number for the "signal_type" field.</summary>
     public const int SignalTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Signaling.SignalType signalType_ = global::PAIA.Gymize.Signaling.SignalType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.SignalType signalType_ = global::PAIA.Gymize.Protobuf.SignalType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Signaling.SignalType SignalType {
+    public global::PAIA.Gymize.Protobuf.SignalType SignalType {
       get { return signalType_; }
       set {
         signalType_ = value;
@@ -168,10 +168,10 @@ namespace PAIA.Gymize.Signaling {
 
     /// <summary>Field number for the "peer_type" field.</summary>
     public const int PeerTypeFieldNumber = 5;
-    private global::PAIA.Gymize.Signaling.PeerType peerType_ = global::PAIA.Gymize.Signaling.PeerType.Unspecified;
+    private global::PAIA.Gymize.Protobuf.PeerType peerType_ = global::PAIA.Gymize.Protobuf.PeerType.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Signaling.PeerType PeerType {
+    public global::PAIA.Gymize.Protobuf.PeerType PeerType {
       get { return peerType_; }
       set {
         peerType_ = value;
@@ -218,11 +218,11 @@ namespace PAIA.Gymize.Signaling {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SignalType != global::PAIA.Gymize.Signaling.SignalType.Unspecified) hash ^= SignalType.GetHashCode();
+      if (SignalType != global::PAIA.Gymize.Protobuf.SignalType.Unspecified) hash ^= SignalType.GetHashCode();
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (PeerType != global::PAIA.Gymize.Signaling.PeerType.Unspecified) hash ^= PeerType.GetHashCode();
+      if (PeerType != global::PAIA.Gymize.Protobuf.PeerType.Unspecified) hash ^= PeerType.GetHashCode();
       if (Url.Length != 0) hash ^= Url.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -242,7 +242,7 @@ namespace PAIA.Gymize.Signaling {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SignalType != global::PAIA.Gymize.Signaling.SignalType.Unspecified) {
+      if (SignalType != global::PAIA.Gymize.Protobuf.SignalType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SignalType);
       }
@@ -258,7 +258,7 @@ namespace PAIA.Gymize.Signaling {
         output.WriteRawTag(34);
         output.WriteString(Name);
       }
-      if (PeerType != global::PAIA.Gymize.Signaling.PeerType.Unspecified) {
+      if (PeerType != global::PAIA.Gymize.Protobuf.PeerType.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) PeerType);
       }
@@ -276,7 +276,7 @@ namespace PAIA.Gymize.Signaling {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SignalType != global::PAIA.Gymize.Signaling.SignalType.Unspecified) {
+      if (SignalType != global::PAIA.Gymize.Protobuf.SignalType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) SignalType);
       }
@@ -292,7 +292,7 @@ namespace PAIA.Gymize.Signaling {
         output.WriteRawTag(34);
         output.WriteString(Name);
       }
-      if (PeerType != global::PAIA.Gymize.Signaling.PeerType.Unspecified) {
+      if (PeerType != global::PAIA.Gymize.Protobuf.PeerType.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) PeerType);
       }
@@ -310,7 +310,7 @@ namespace PAIA.Gymize.Signaling {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SignalType != global::PAIA.Gymize.Signaling.SignalType.Unspecified) {
+      if (SignalType != global::PAIA.Gymize.Protobuf.SignalType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SignalType);
       }
       if (Id.Length != 0) {
@@ -322,7 +322,7 @@ namespace PAIA.Gymize.Signaling {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (PeerType != global::PAIA.Gymize.Signaling.PeerType.Unspecified) {
+      if (PeerType != global::PAIA.Gymize.Protobuf.PeerType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PeerType);
       }
       if (Url.Length != 0) {
@@ -340,7 +340,7 @@ namespace PAIA.Gymize.Signaling {
       if (other == null) {
         return;
       }
-      if (other.SignalType != global::PAIA.Gymize.Signaling.SignalType.Unspecified) {
+      if (other.SignalType != global::PAIA.Gymize.Protobuf.SignalType.Unspecified) {
         SignalType = other.SignalType;
       }
       if (other.Id.Length != 0) {
@@ -352,7 +352,7 @@ namespace PAIA.Gymize.Signaling {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.PeerType != global::PAIA.Gymize.Signaling.PeerType.Unspecified) {
+      if (other.PeerType != global::PAIA.Gymize.Protobuf.PeerType.Unspecified) {
         PeerType = other.PeerType;
       }
       if (other.Url.Length != 0) {
@@ -374,7 +374,7 @@ namespace PAIA.Gymize.Signaling {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SignalType = (global::PAIA.Gymize.Signaling.SignalType) input.ReadEnum();
+            SignalType = (global::PAIA.Gymize.Protobuf.SignalType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -390,7 +390,7 @@ namespace PAIA.Gymize.Signaling {
             break;
           }
           case 40: {
-            PeerType = (global::PAIA.Gymize.Signaling.PeerType) input.ReadEnum();
+            PeerType = (global::PAIA.Gymize.Protobuf.PeerType) input.ReadEnum();
             break;
           }
           case 50: {
@@ -413,7 +413,7 @@ namespace PAIA.Gymize.Signaling {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SignalType = (global::PAIA.Gymize.Signaling.SignalType) input.ReadEnum();
+            SignalType = (global::PAIA.Gymize.Protobuf.SignalType) input.ReadEnum();
             break;
           }
           case 18: {
@@ -429,7 +429,7 @@ namespace PAIA.Gymize.Signaling {
             break;
           }
           case 40: {
-            PeerType = (global::PAIA.Gymize.Signaling.PeerType) input.ReadEnum();
+            PeerType = (global::PAIA.Gymize.Protobuf.PeerType) input.ReadEnum();
             break;
           }
           case 50: {

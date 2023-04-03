@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Gymize.Channel";
+option csharp_namespace = "PAIA.Gymize.Protobuf";
 
 enum MessageType {
 	MESSAGE_TYPE_UNSPECIFIED = 0;

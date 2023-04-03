@@ -1,6 +1,6 @@
 import io
-from PIL import Image
 import numpy as np
+from PIL import Image
 
 import gymize.proto.space_pb2 as space
 

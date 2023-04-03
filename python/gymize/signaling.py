@@ -1,9 +1,10 @@
 import asyncio
+from queue import Queue
 from typing import Dict
+import uuid
 import websockets
 from websockets.server import WebSocketServerProtocol
-from queue import Queue
-import uuid
+
 from gymize.proto.signaling_pb2 import Signal, SignalType, PeerType
 
 class Connection:
@@ -138,6 +139,8 @@ class SignalingServer:
             await ws.send(signal.SerializeToString())
         if websocket.open:
             await websocket.send(signal.SerializeToString())
+        
+        print(f'Connection id: {signal.id}, is closed')
     
     def remove(self, websocket):
         '''

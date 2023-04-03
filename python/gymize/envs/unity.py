@@ -1,8 +1,7 @@
-import time
 import gymnasium as gym
 from gymnasium import spaces
-
 import numpy as np
+import time
 
 from gymize.channel import Channel
 from gymize.lanch import open_unity
@@ -45,7 +44,7 @@ class UnityEnv(gym.Env):
 
     def step(self, action):
         # send action
-        result = self.channel.tell(action)
+        result = self.channel.tell_async(action)
         terminated = False
         reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()

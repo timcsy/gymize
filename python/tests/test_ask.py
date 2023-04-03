@@ -34,7 +34,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         mode = sys.argv[1]
     
-    channel = Channel('kart', signaling_url='ws://localhost:50864/', mode=mode)
+    channel = Channel('kart', mode=mode, signaling_url='ws://localhost:50864/')
 
     @channel.on('open')
     async def on_open():
@@ -42,7 +42,7 @@ if __name__ == '__main__':
             text = 'This is an Echo Bot ~~~'
             response = None
             while response != 'exit':
-                response = await channel.ask('agent1', text)
+                response = await channel.ask_async('agent1', text)
                 print(f'> {response}')
                 await asyncio.sleep(1)
                 text = input('> ')
@@ -50,20 +50,20 @@ if __name__ == '__main__':
     @channel.on_request('agent1')
     async def on_request(req: Request):
         print(f'id: {req.id}, uuid: {req.uuid}')
-        print(f'> {req.data}')
+        print(f'> {req.content}')
 
         await asyncio.sleep(1)
         text = input('> ')
-        await req.reply(text)
+        await req.reply_async(text)
         if text == 'exit':
-            await channel.close()
+            await channel.close_async()
             channel.off('message')
         elif text == 'pause':
-            await channel.pause()
+            await channel.pause_async()
         elif text == 'disconnect':
-            await channel.ws.close()
+            await channel._ws_peer.close()
         elif text == 'update':
-            await channel.update()
+            await channel.update_async()
     
     # Using multi thread
 

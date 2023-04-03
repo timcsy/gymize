@@ -1467,7 +1467,7 @@ public final class Signaling {
       "GNAL_TYPE_RESUME\020\003\022\025\n\021SIGNAL_TYPE_CLOSE\020" +
       "\004*R\n\010PeerType\022\031\n\025PEER_TYPE_UNSPECIFIED\020\000" +
       "\022\024\n\020PEER_TYPE_ACTIVE\020\001\022\025\n\021PEER_TYPE_PASS" +
-      "IVE\020\002B\030\252\002\025PAIA.Gymize.Signalingb\006proto3"
+      "IVE\020\002B\027\252\002\024PAIA.Gymize.Protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
