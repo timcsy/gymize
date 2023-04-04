@@ -1,34 +1,41 @@
 import gymnasium as gym
-from gymnasium import spaces
 import numpy as np
 import time
 
-from gymize.channel import Channel
+from gymize import space
+from gymize.channel import Channel, Content
 from gymize.lanch import open_unity
+from gymize.proto.space_pb2 import Data
 
 class UnityEnv(gym.Env):
     metadata = { 'render_modes': [ 'rgb_array' ] }
 
     def __init__(self, name, file_name: str=None, observation_space=None, action_space=None, update_seconds=0.001, render_mode=None, render_fps=4):
+        self.observation_space = observation_space
+        self.action_space = action_space
+
+        self.update_seconds = update_seconds
+        
         self.channel = Channel(name=name)
         self.channel.connect_sync()
         time.sleep(0.5)
         open_unity(file_name)
-        self.observation_space = spaces.Dict(
-            {
-                "Camera": spaces.Box(0, 255, shape=(1,), dtype=int)
-            }
-        )
-        self.action_space = spaces.Discrete(4)
-
-        self.update_seconds = update_seconds
 
         assert render_mode is None or render_mode in self.metadata['render_modes']
         self.render_mode = render_mode
         self.render_fps = render_fps
 
-    def _get_obs(self):
-        return self.observation_space.sample()
+    def _get_obs(self, content: Content=None):
+        if content is None:
+            return self.observation_space.sample()
+        data = Data()
+        data.ParseFromString(content.raw)
+        observation = {}
+        for key in data.dict:
+            image = data.dict[key].image
+            img = space.image_to_box(image)
+            observation[key] = img
+        return observation
 
     def _get_info(self):
         return {}
@@ -44,13 +51,13 @@ class UnityEnv(gym.Env):
 
     def step(self, action):
         # send action
-        self.channel.tell_async(action)
-        
-        content, done = self.channel.wait_message()
-        observation = content.raw
-        terminated = False
+        self.channel.tell_sync(id="agent", content=str(action))
+
+        content, done = self.channel.wait_message(id="agent", polling_secs=self.update_seconds)
+
+        terminated = not done
         reward = 1 if terminated else 0  # Binary sparse rewards
-        observation = self._get_obs()
+        observation = self._get_obs(content)
         info = self._get_info()
 
         return observation, reward, terminated, False, info
@@ -64,4 +71,4 @@ class UnityEnv(gym.Env):
             return np.transpose()
 
     def close(self):
-        pass
+        self.channel.close_sync()

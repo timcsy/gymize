@@ -1,6 +1,8 @@
+from distutils.spawn import find_executable
 import glob
 import os
 import subprocess
+import sys
 from sys import platform
 from typing import Optional, List
 
@@ -23,7 +25,7 @@ def validate_environment_path(env_path: str) -> Optional[str]:
         .replace(".x86", "")
     )
     true_filename = os.path.basename(os.path.normpath(env_path))
-    print(f"The true file name is {true_filename}")
+    # print(f"The true file name is {true_filename}")
 
     if not (glob.glob(env_path) or glob.glob(env_path + ".*")):
         return None
@@ -104,6 +106,7 @@ def launch_executable(file_name: str, args: List[str]) -> subprocess.Popen:
                 # but may be undesirable in come cases; if so, we'll add a command-line toggle.
                 # Note that on Windows, the CTRL_C signal will still be sent.
                 start_new_session=True,
+                env=os.environ,
             )
         except PermissionError:
             # This is likely due to missing read or execute permissions on file.
@@ -115,6 +118,20 @@ def launch_executable(file_name: str, args: List[str]) -> subprocess.Popen:
 
 def open_unity(file_name: str=None, args: List[str]=list()):
     if file_name is not None:
-        return launch_executable(file_name, args)
+        vglrun: str = find_executable('vglrun') # Check whether vglrun is on PATH
+        if vglrun is None:
+            print('Run ' + ' '.join([file_name] + args))
+            return launch_executable(file_name, args)
+        else:
+            print('Run ' + ' '.join([vglrun, file_name] + args))
+            return launch_executable(vglrun, [file_name] + args)
     else:
         print('Please start the Unity game in the Unity Editor or open the game manually!')
+
+
+if __name__ == "__main__":
+    file_name = None
+    if len(sys.argv) > 1:
+        file_name = sys.argv[1]
+    
+    open_unity(file_name=file_name, args=sys.argv[2:])

@@ -47,3 +47,13 @@ Define the Observer in the class or struct, using the attributes.
 
 
 !!! Remember to close the channel in MonoBehaviour.OnApplicationQuit !!!
+
+To test gym:
+First build the Unity game, and then:
+```
+cd python
+pip install -e .
+cd ..
+cd python/tests
+python gym.py <unity_app_path>
+```

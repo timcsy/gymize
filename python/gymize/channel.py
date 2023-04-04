@@ -229,9 +229,9 @@ class Channel:
                 break
         self._sending = False
     
-    def _recv(self, content: bytes) -> None:
+    def _recv(self, data: bytes) -> None:
         msg = Message()
-        msg.ParseFromString(content)
+        msg.ParseFromString(data)
         content: Content = None
         if msg.content.HasField('raw'):
             content = Content(msg.content.raw)
@@ -244,7 +244,7 @@ class Channel:
                     self._inbox[msg.header.id] = Queue()
 
                 # only put the message to the queue if there is no message listener
-                if len(self._message_callbacks[msg.header.id]) == 0:
+                if not msg.header.id in self._message_callbacks or len(self._message_callbacks[msg.header.id]) == 0:
                     self._inbox[msg.header.id].put(content)
                 else:
                     self.trigger_message(msg.header.id, content)
@@ -252,7 +252,7 @@ class Channel:
                 # id == '' means broadcast, and '' means root channel itself
                 for id in self._inbox:
                     # only put the message to the queue if there is no message listener
-                    if len(self._message_callbacks[id]) == 0:
+                    if not id in self._message_callbacks or len(self._message_callbacks[id]) == 0:
                         self._inbox[id].put(content)
                     else:
                         self.trigger_message(id, content)

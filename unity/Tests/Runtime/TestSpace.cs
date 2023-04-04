@@ -25,12 +25,13 @@ public class TestSpace : MonoBehaviour
         // TestChannelSignalingActive();
         // TestChannelAskSync();
         // TestChannelMessageEventActive();
-        TestChannelAskPassiveEvent();
+        // TestChannelAskPassiveEvent();
         // TestJoin();
         // TestEqual();
         // TestObs();
         // TestGetObservations();
         // TestType();
+        TestGymStep();
     }
 
     // Update is called once per frame
@@ -41,10 +42,16 @@ public class TestSpace : MonoBehaviour
         // TestChannelAskSync_Update();
     }
 
+    void FixedUpdate()
+    {
+        TestGymStep_Update();
+    }
+
     void OnApplicationQuit()
     {
         // !!! Remember to close the channel when the Unity Application is quit !!!
         channel.CloseSync();
+        channel = null;
     }
 
     void TestWebSocket()
@@ -271,6 +278,35 @@ public class TestSpace : MonoBehaviour
         foreach (var n in ints2)
         {
             Debug.Log(n.GetType());
+        }
+    }
+
+    void TestGymStep()
+    {
+        Debug.Log("===============Test Gym Step===============");
+        channel = new Channel("kart");
+        channel.ConnectSync();
+    }
+    void TestGymStep_Update()
+    {
+        if (channel != null && channel.HasMessage("agent"))
+        {
+            PAIA.Gymize.Content content = channel.TakeMessage("agent");
+            Debug.Log("Received action: " + content.ToString());
+            Data data = Gymize.GetObservations("agent")?.ToProtobuf();
+            byte[] observation = data?.ToByteArray();
+            channel.TellSync("agent", observation);
+            // channel.TellSync(observation);
+        }
+        else if (channel != null && channel.Status == ChannelStatus.CLOSED)
+        {
+            #if UNITY_EDITOR
+            // Application.Quit() does not work in the editor so
+            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
         }
     }
 }
