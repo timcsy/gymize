@@ -303,12 +303,12 @@ class Channel:
         take message and pop from the queue
         :return: content
         '''
-        content = None
+        content: Content = None
         if self.has_message(id=id):
             content = self._inbox[id].get()
         return content
     
-    def wait_message(self, id: str, polling_secs: float=0.001) -> Tuple[Union[bytes, str], bool]:
+    def wait_message(self, id: str, polling_secs: float=0.001) -> Tuple[Content, bool]:
         '''
         after received a message, or the channel is closed
         it will return content and whether the channel is running now
@@ -324,12 +324,12 @@ class Channel:
         take response and remove
         :return: content
         '''
-        content = None
+        content: Content = None
         if response.done():
             content = response.result()
         return content
 
-    def wait_response(self, response: asyncio.Future, polling_secs: float=0.001) -> Tuple[Union[bytes, str], bool]:
+    def wait_response(self, response: asyncio.Future, polling_secs: float=0.001) -> Tuple[Content, bool]:
         '''
         after received a response, or the channel is closed
         it will return content and whether the channel is running now

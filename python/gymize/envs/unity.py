@@ -44,7 +44,10 @@ class UnityEnv(gym.Env):
 
     def step(self, action):
         # send action
-        result = self.channel.tell_async(action)
+        self.channel.tell_async(action)
+        
+        content, done = self.channel.wait_message()
+        observation = content.raw
         terminated = False
         reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()

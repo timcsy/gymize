@@ -625,24 +625,28 @@ namespace PAIA.Gymize
 
         public void CloseSync()
         {
-            m_Status = ChannelStatus.CLOSED;
-            if (m_WsSignaling!= null && m_WsSignaling.IsAlive)
+            try
             {
-                Protobuf.Signal signal = new Protobuf.Signal();
-                signal.SignalType = Protobuf.SignalType.Close;
-                signal.Id = m_SignalingId;
-                m_WsSignaling.Send(signal?.ToByteArray());
+                m_Status = ChannelStatus.CLOSED;
+                if (m_WsSignaling!= null && m_WsSignaling.IsAlive)
+                {
+                    Protobuf.Signal signal = new Protobuf.Signal();
+                    signal.SignalType = Protobuf.SignalType.Close;
+                    signal.Id = m_SignalingId;
+                    m_WsSignaling.Send(signal?.ToByteArray());
+                }
+                if (m_WsPeerClient!= null && m_WsPeerClient.IsAlive)
+                {
+                    m_WsPeerClient.Close(CloseStatusCode.Normal);
+                }
+                m_WsPeerClient = null;
+                if (m_WsPeerServer != null)
+                {
+                    m_WsPeerServer.Stop();
+                }
+                m_WsPeerBehavior = null;
             }
-            if (m_WsPeerClient!= null && m_WsPeerClient.IsAlive)
-            {
-                m_WsPeerClient.Close(CloseStatusCode.Normal);
-            }
-            m_WsPeerClient = null;
-            if (m_WsPeerServer != null)
-            {
-                m_WsPeerServer.Stop();
-            }
-            m_WsPeerBehavior = null;
+            catch {}
         }
 
         /////////////////////////////////////////////////////////////////////////////////////

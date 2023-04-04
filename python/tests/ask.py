@@ -1,5 +1,5 @@
 '''
-$ python test_ask.py active
+$ python ask.py active
 Connected to Signal Server: ws://localhost:50864/
 Start Peer Server: ws://localhost:57444
 > f
@@ -10,7 +10,7 @@ The Peer connection: ws://localhost:57444 is closed
 '''
 
 '''
-$ python test_ask.py passive
+$ python ask.py passive
 Connected to Signal Server: ws://localhost:50864/
 Connected to Peer Server: ws://localhost:57444
 id: agent1, uuid: b'~d5\xa0\nlA\xba\x8c\x980\x8a\xea\xc5\xbd0'

@@ -1,5 +1,5 @@
 '''
-$ python test_channel.py 
+$ python channel.py 
 Connected to Signal Server: ws://localhost:50864/
 Start Peer Server: ws://localhost:57976
 > This is an Echo Bot ~~~
@@ -10,7 +10,7 @@ The Signal Server connection: ws://localhost:50864/ is closed
 '''
 
 '''
-$ python test_signal.py passive
+$ python signal.py passive
 Connected to Signal Server: ws://localhost:50864/
 Connected to Peer Server: ws://localhost:57976
 > This is an Echo Bot ~~~

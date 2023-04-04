@@ -1,0 +1,16 @@
+{
+    "name": "PAIA.Gymize.Rumtime.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:986985cb803a249488c72b5e79151fd6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
