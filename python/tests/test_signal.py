@@ -1,5 +1,5 @@
 '''
-$ python signal.py active
+$ python test_signal.py active
 Connected to Signal Server: ws://localhost:50864/
 Start Peer Server: ws://localhost:58108
 > This is an Echo Bot ~~~
@@ -49,7 +49,7 @@ True
 '''
 
 '''
-$ python signal.py passive
+$ python test_signal.py passive
 Connected to Signal Server: ws://localhost:50864/
 Connected to Peer Server: ws://localhost:57753
 > This is an Echo Bot ~~~
