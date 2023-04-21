@@ -10,6 +10,36 @@ using PAIA.Gymize.Protobuf;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using NumSharp;
+
+public static class InstanceExtensions
+{
+    public static Data ToProtobuf(this NDArray arr)
+    {
+        Box box = new Box(new List<int>{2, 2}, new List<long>{1, 2, 3, 4});
+        Data data = box.ToProtobuf();
+        return data;
+    }
+
+    public static Data ToProtobuf(this object obj)
+    {
+        Type type = obj.GetType();
+        if (type.GetMethod("ToProtobuf") != null)
+        {
+            return (Data)type.GetMethod("ToProtobuf").Invoke(obj, null);
+        }
+        else if (type == typeof(NDArray))
+        {
+            NDArray arr = (NDArray)obj;
+            return arr.ToProtobuf();
+        }
+        else if (obj == null)
+        {
+            return null;
+        }
+        throw new Exception(type.ToString() + " should inherit IInstance class with ToProtobuf method!");
+    }
+}
 
 public class TestSpace : MonoBehaviour
 {
@@ -31,7 +61,9 @@ public class TestSpace : MonoBehaviour
         // TestObs();
         // TestGetObservations();
         // TestType();
-        TestGymStep();
+        TestNumpy();
+        TestExtension();
+        // TestGymStep();
     }
 
     // Update is called once per frame
@@ -44,14 +76,17 @@ public class TestSpace : MonoBehaviour
 
     void FixedUpdate()
     {
-        TestGymStep_Update();
+        // TestGymStep_Update();
     }
 
     void OnApplicationQuit()
     {
         // !!! Remember to close the channel when the Unity Application is quit !!!
-        channel.CloseSync();
-        channel = null;
+        if (channel != null)
+        {
+            channel.CloseSync();
+            channel = null;
+        }
     }
 
     void TestWebSocket()
@@ -279,6 +314,57 @@ public class TestSpace : MonoBehaviour
         {
             Debug.Log(n.GetType());
         }
+    }
+
+    void TestNumpy()
+    {
+        Debug.Log("===============Test Numpy===============");
+        var nd = np.full(5, 12);
+        var nd2 = np.full(3, 12).reshape(2, 3, 2);
+        nd = nd.reshape(2, 3, 2);
+        var data = nd[":, 0, :"];
+        nd[":, 0, :"] = nd2[":, 0, :"];
+        Debug.Log(nd);
+        Debug.Log(data);
+
+        var x1 = np.array(new float[] {10, 20, 30});
+        Debug.Log("shape of x1 is " + x1.shape);
+        Debug.Log(x1);
+
+        var x2 = x1[":, np.newaxis"];
+        Debug.Log("shape of x2 is " + x2.shape);
+        Debug.Log(x2);
+
+        var x3 = x1["np.newaxis, :"];
+        Debug.Log("shape of x3 is " + x3.shape);
+        Debug.Log(x3);
+
+        var nd3 = np.array(new float[] {1, 2, 3});
+        nd3["2"] = 4;
+        Debug.Log(nd3);
+
+        var nd4 = np.array<long>();
+        nd4 = 4;
+        Debug.Log(nd4.shape.Length); // 0, shape = []
+
+        // var nd5 = np.array("Hello".ToCharArray());
+        // Debug.Log(nd5["2:4"]);
+
+        var slice = new NumSharp.Slice("10:-1").ToSliceDef(50);
+        Debug.Log(slice);
+    }
+
+    void TestExtension()
+    {
+        Debug.Log("===============Test Extension===============");
+        object data = new Dict();
+        Debug.Log(data.ToProtobuf());
+
+        object nd3 = np.array(new float[] {1, 2, 3});
+        Debug.Log(nd3.GetType());
+        Debug.Log(nd3.ToProtobuf());
+
+        Debug.Log("str".ToProtobuf());
     }
 
     void TestGymStep()
