@@ -20,11 +20,11 @@ namespace Gymize
         }
         public virtual void Terminate()
         {
-            GymEnv.SetTermination(GetName());
+            GymEnv.Terminate(GetName());
         }
         public virtual void Truncate()
         {
-            GymEnv.SetTruncation(GetName());
+            GymEnv.Truncate(GetName());
         }
         public virtual void SendInfo(object info)
         {

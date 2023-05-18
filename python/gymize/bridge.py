@@ -161,6 +161,7 @@ class Bridge:
         for info_proto in info_protos:
             if info_proto.agent != '':
                 # TODO: when to renew list?
+                self.infos[info_proto.agent]['agent'] = []
                 for instance_proto in info_proto.infos:
                     self.infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))
             else:
@@ -170,7 +171,6 @@ class Bridge:
             for instance_proto in env_info_proto.infos:
                 env_infos.append(space.from_proto(instance_proto))
             for info in self.infos.values():
-                print(info)
                 info['env'] = env_infos
 
         return self.infos

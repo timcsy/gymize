@@ -57,6 +57,8 @@ public class TestAgent : Agent
         Debug.Log((long)action);
         GymEnv.SendInfo(action);
         // Terminate();
+        // GymEnv.Terminate();
+        // Truncate();
         // GymEnv.Truncate();
     }
 

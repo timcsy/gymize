@@ -43,14 +43,6 @@ namespace Gymize
         {
             get { return Instance.m_Rewards; }
         }
-        public static Dictionary<string, bool> Terminations
-        {
-            get { return Instance.m_Terminations; }
-        }
-        public static Dictionary<string, bool> Truncations
-        {
-            get { return Instance.m_Truncations; }
-        }
         public static DelegateDictionary<string, InfoCallBack> OnInfo
         {
             get { return Instance.m_OnInfo; }
@@ -153,26 +145,14 @@ namespace Gymize
             Instance._SetReward(agent, reward);
         }
 
-        public static void Terminate()
+        public static void Terminate(string agent = "")
         {
-            // For all agents
-            Instance._SetTermination("", true);
+            Instance._Terminate(agent);
         }
 
-        public static void SetTermination(string agent, bool termination = true)
+        public static void Truncate(string agent = "")
         {
-            Instance._SetTermination(agent, termination);
-        }
-
-        public static void Truncate()
-        {
-            // For all agents
-            Instance._SetTruncation("", true);
-        }
-
-        public static void SetTruncation(string agent, bool truncation = true)
-        {
-            Instance._SetTruncation(agent, truncation);
+            Instance._Truncate(agent);
         }
 
         public static void SendInfo(object info)
@@ -206,8 +186,8 @@ namespace Gymize
         Dictionary<Locator, List<IObserver>> m_Observers;
         Dictionary<Locator, List<IInstance>> m_Observations;
         Dictionary<string, double> m_Rewards;
-        Dictionary<string, bool> m_Terminations;
-        Dictionary<string, bool> m_Truncations;
+        List<string> m_TerminatedAgents;
+        List<string> m_TruncationAgents;
         DelegateDictionary<string, InfoCallBack> m_OnInfo;
         Dictionary<string, List<object>> m_Infos;
 
@@ -222,14 +202,8 @@ namespace Gymize
             m_Observers = new Dictionary<Locator, List<IObserver>>();
             m_Observations = new Dictionary<Locator, List<IInstance>>();
             m_Rewards = new Dictionary<string, double>();
-            m_Terminations = new Dictionary<string, bool>()
-            {
-                { "", false }
-            };
-            m_Truncations = new Dictionary<string, bool>()
-            {
-                { "", false }
-            };
+            m_TerminatedAgents = new List<string>();
+            m_TruncationAgents = new List<string>();
             m_OnInfo = new DelegateDictionary<string, InfoCallBack>()
             {
                 { "", null }
@@ -262,8 +236,14 @@ namespace Gymize
 
         void _Reset(GymizeProto gymizeProto)
         {
+            // TODO: Also reset actions, observations, rewards, termiantions, truncations, infos
             foreach (string agent in gymizeProto.ResetAgents)
             {
+                m_Actions[agent] = null;
+                m_Rewards[agent] = 0;
+                m_TerminatedAgents.Remove(agent);
+                m_TerminatedAgents.Remove(agent);
+                m_Infos[agent] = new List<object>();
                 m_OnReset[agent]?.Invoke();
             }
         }
@@ -505,50 +485,41 @@ namespace Gymize
         {
             // TODO: just send the requested agents
             List<RewardProto> rewardProtos = new List<RewardProto>();
-            foreach (KeyValuePair<string, double> kvp in m_Rewards)
+            foreach (string agent in m_Rewards.Keys.ToList<string>())
             {
                 RewardProto rewardProto = new RewardProto();
-                rewardProto.Agent = kvp.Key;
-                rewardProto.Reward = kvp.Value;
+                rewardProto.Agent = agent;
+                rewardProto.Reward = m_Rewards[agent];
                 rewardProtos.Add(rewardProto);
+                _ClearReward(agent);
             }
             return rewardProtos;
         }
 
-        void _SetTermination(string agent, bool termination = true)
+        void _Terminate(string agent)
         {
-            m_Terminations[agent] = termination;
+            m_TerminatedAgents.Add(agent);
         }
 
         List<string> _GetTerminations()
         {
             // TODO: when terminations should be included? or when should be reset? 已經停掉的也不會送東西過來了
-            List<string> terminated_agents = new List<string>();
-            foreach (KeyValuePair<string, bool> kvp in m_Terminations)
-            {
-                string agent = kvp.Key;
-                bool termination = kvp.Value;
-                if (termination) terminated_agents.Add(agent);
-            }
-            return terminated_agents;
+            List<string> terminatedAgents = m_TerminatedAgents;
+            m_TerminatedAgents = new List<string>();
+            return terminatedAgents;
         }
 
-        void _SetTruncation(string agent, bool truncation = true)
+        void _Truncate(string agent)
         {
-            m_Truncations[agent] = truncation;
+            m_TruncationAgents.Add(agent);
         }
 
         List<string> _GetTruncations()
         {
             // TODO: when truncations should be included? or when should be reset? 已經停掉的也不會送東西過來了
-            List<string> truncated_agents = new List<string>();
-            foreach (KeyValuePair<string, bool> kvp in m_Truncations)
-            {
-                string agent = kvp.Key;
-                bool truncation = kvp.Value;
-                if (truncation) truncated_agents.Add(agent);
-            }
-            return truncated_agents;
+            List<string> truncatedAgents = m_TruncationAgents;
+            m_TruncationAgents = new List<string>();
+            return truncatedAgents;
         }
 
         void _SendInfo(string agent, object info)
@@ -574,16 +545,17 @@ namespace Gymize
             // TODO: when info should be cleared? and when env "" info be cleared?
             // TODO: just send the requested agents
             List<InfoProto> infoProtos = new List<InfoProto>();
-            foreach (KeyValuePair<string, List<object>> kvp in m_Infos)
+            foreach (string agent in m_Infos.Keys.ToList<string>())
             {
                 InfoProto infoProto = new InfoProto();
-                infoProto.Agent = kvp.Key;
-                List<object> infos = kvp.Value;
+                infoProto.Agent = agent;
+                List<object> infos = m_Infos[agent];
                 foreach (object obj in infos)
                 {
                     infoProto.Infos.Add(GymInstance.ToGym(obj).ToProtobuf());
                 }
                 infoProtos.Add(infoProto);
+                m_Infos[agent] = new List<object>();
             }
             return infoProtos;
         }
