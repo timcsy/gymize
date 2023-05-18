@@ -50,169 +50,119 @@ struct TableStruct_space_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_space_2eproto;
-class Data;
-struct DataDefaultTypeInternal;
-extern DataDefaultTypeInternal _Data_default_instance_;
-class Data_DictEntry_DoNotUse;
-struct Data_DictEntry_DoNotUseDefaultTypeInternal;
-extern Data_DictEntry_DoNotUseDefaultTypeInternal _Data_DictEntry_DoNotUse_default_instance_;
-class Data_ListEntry_DoNotUse;
-struct Data_ListEntry_DoNotUseDefaultTypeInternal;
-extern Data_ListEntry_DoNotUseDefaultTypeInternal _Data_ListEntry_DoNotUse_default_instance_;
-class Graph;
-struct GraphDefaultTypeInternal;
-extern GraphDefaultTypeInternal _Graph_default_instance_;
-class GraphSpace;
-struct GraphSpaceDefaultTypeInternal;
-extern GraphSpaceDefaultTypeInternal _GraphSpace_default_instance_;
-class Image;
-struct ImageDefaultTypeInternal;
-extern ImageDefaultTypeInternal _Image_default_instance_;
-class Space;
-struct SpaceDefaultTypeInternal;
-extern SpaceDefaultTypeInternal _Space_default_instance_;
-class Space_DictSpaceEntry_DoNotUse;
-struct Space_DictSpaceEntry_DoNotUseDefaultTypeInternal;
-extern Space_DictSpaceEntry_DoNotUseDefaultTypeInternal _Space_DictSpaceEntry_DoNotUse_default_instance_;
-class Space_ListSpaceEntry_DoNotUse;
-struct Space_ListSpaceEntry_DoNotUseDefaultTypeInternal;
-extern Space_ListSpaceEntry_DoNotUseDefaultTypeInternal _Space_ListSpaceEntry_DoNotUse_default_instance_;
-class Tensor;
-struct TensorDefaultTypeInternal;
-extern TensorDefaultTypeInternal _Tensor_default_instance_;
+class GraphProto;
+struct GraphProtoDefaultTypeInternal;
+extern GraphProtoDefaultTypeInternal _GraphProto_default_instance_;
+class ImageProto;
+struct ImageProtoDefaultTypeInternal;
+extern ImageProtoDefaultTypeInternal _ImageProto_default_instance_;
+class InstanceProto;
+struct InstanceProtoDefaultTypeInternal;
+extern InstanceProtoDefaultTypeInternal _InstanceProto_default_instance_;
+class InstanceProto_DictEntry_DoNotUse;
+struct InstanceProto_DictEntry_DoNotUseDefaultTypeInternal;
+extern InstanceProto_DictEntry_DoNotUseDefaultTypeInternal _InstanceProto_DictEntry_DoNotUse_default_instance_;
+class TensorProto;
+struct TensorProtoDefaultTypeInternal;
+extern TensorProtoDefaultTypeInternal _TensorProto_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::Data* Arena::CreateMaybeMessage<::Data>(Arena*);
-template<> ::Data_DictEntry_DoNotUse* Arena::CreateMaybeMessage<::Data_DictEntry_DoNotUse>(Arena*);
-template<> ::Data_ListEntry_DoNotUse* Arena::CreateMaybeMessage<::Data_ListEntry_DoNotUse>(Arena*);
-template<> ::Graph* Arena::CreateMaybeMessage<::Graph>(Arena*);
-template<> ::GraphSpace* Arena::CreateMaybeMessage<::GraphSpace>(Arena*);
-template<> ::Image* Arena::CreateMaybeMessage<::Image>(Arena*);
-template<> ::Space* Arena::CreateMaybeMessage<::Space>(Arena*);
-template<> ::Space_DictSpaceEntry_DoNotUse* Arena::CreateMaybeMessage<::Space_DictSpaceEntry_DoNotUse>(Arena*);
-template<> ::Space_ListSpaceEntry_DoNotUse* Arena::CreateMaybeMessage<::Space_ListSpaceEntry_DoNotUse>(Arena*);
-template<> ::Tensor* Arena::CreateMaybeMessage<::Tensor>(Arena*);
+template<> ::GraphProto* Arena::CreateMaybeMessage<::GraphProto>(Arena*);
+template<> ::ImageProto* Arena::CreateMaybeMessage<::ImageProto>(Arena*);
+template<> ::InstanceProto* Arena::CreateMaybeMessage<::InstanceProto>(Arena*);
+template<> ::InstanceProto_DictEntry_DoNotUse* Arena::CreateMaybeMessage<::InstanceProto_DictEntry_DoNotUse>(Arena*);
+template<> ::TensorProto* Arena::CreateMaybeMessage<::TensorProto>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
-enum DataType : int {
-  DATA_TYPE_UNSPECIFIED = 0,
-  DATA_TYPE_FLOAT = 1,
-  DATA_TYPE_DOUBLE = 2,
-  DATA_TYPE_INT = 3,
-  DATA_TYPE_LONG = 4,
-  DATA_TYPE_UINT = 5,
-  DATA_TYPE_ULONG = 6,
-  DATA_TYPE_BOOL = 7,
-  DataType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  DataType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum CompressionTypeProto : int {
+  COMPRESSION_TYPE_PROTO_UNSPECIFIED = 0,
+  COMPRESSION_TYPE_PROTO_NONE = 1,
+  COMPRESSION_TYPE_PROTO_PNG = 2,
+  COMPRESSION_TYPE_PROTO_JPG = 3,
+  CompressionTypeProto_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  CompressionTypeProto_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool DataType_IsValid(int value);
-constexpr DataType DataType_MIN = DATA_TYPE_UNSPECIFIED;
-constexpr DataType DataType_MAX = DATA_TYPE_BOOL;
-constexpr int DataType_ARRAYSIZE = DataType_MAX + 1;
+bool CompressionTypeProto_IsValid(int value);
+constexpr CompressionTypeProto CompressionTypeProto_MIN = COMPRESSION_TYPE_PROTO_UNSPECIFIED;
+constexpr CompressionTypeProto CompressionTypeProto_MAX = COMPRESSION_TYPE_PROTO_JPG;
+constexpr int CompressionTypeProto_ARRAYSIZE = CompressionTypeProto_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* DataType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CompressionTypeProto_descriptor();
 template<typename T>
-inline const std::string& DataType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, DataType>::value ||
+inline const std::string& CompressionTypeProto_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, CompressionTypeProto>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function DataType_Name.");
+    "Incorrect type passed to function CompressionTypeProto_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    DataType_descriptor(), enum_t_value);
+    CompressionTypeProto_descriptor(), enum_t_value);
 }
-inline bool DataType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, DataType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<DataType>(
-    DataType_descriptor(), name, value);
+inline bool CompressionTypeProto_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, CompressionTypeProto* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<CompressionTypeProto>(
+    CompressionTypeProto_descriptor(), name, value);
 }
-enum CompressionType : int {
-  COMPRESSION_TYPE_UNSPECIFIED = 0,
-  COMPRESSION_TYPE_NONE = 1,
-  COMPRESSION_TYPE_PNG = 2,
-  COMPRESSION_TYPE_JPG = 3,
-  CompressionType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  CompressionType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum InstanceTypeProto : int {
+  INSTANCE_TYPE_PROTO_UNSPECIFIED = 0,
+  INSTANCE_TYPE_PROTO_RAW = 1,
+  INSTANCE_TYPE_PROTO_TENSOR = 2,
+  INSTANCE_TYPE_PROTO_DISCRETE = 3,
+  INSTANCE_TYPE_PROTO_TEXT = 4,
+  INSTANCE_TYPE_PROTO_DICT = 5,
+  INSTANCE_TYPE_PROTO_LIST = 6,
+  INSTANCE_TYPE_PROTO_GRAPH = 7,
+  INSTANCE_TYPE_PROTO_IMAGE = 8,
+  INSTANCE_TYPE_PROTO_FLOAT = 9,
+  INSTANCE_TYPE_PROTO_BOOL = 10,
+  INSTANCE_TYPE_PROTO_NULL = 11,
+  INSTANCE_TYPE_PROTO_JSON = 12,
+  InstanceTypeProto_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  InstanceTypeProto_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool CompressionType_IsValid(int value);
-constexpr CompressionType CompressionType_MIN = COMPRESSION_TYPE_UNSPECIFIED;
-constexpr CompressionType CompressionType_MAX = COMPRESSION_TYPE_JPG;
-constexpr int CompressionType_ARRAYSIZE = CompressionType_MAX + 1;
+bool InstanceTypeProto_IsValid(int value);
+constexpr InstanceTypeProto InstanceTypeProto_MIN = INSTANCE_TYPE_PROTO_UNSPECIFIED;
+constexpr InstanceTypeProto InstanceTypeProto_MAX = INSTANCE_TYPE_PROTO_JSON;
+constexpr int InstanceTypeProto_ARRAYSIZE = InstanceTypeProto_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CompressionType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* InstanceTypeProto_descriptor();
 template<typename T>
-inline const std::string& CompressionType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, CompressionType>::value ||
+inline const std::string& InstanceTypeProto_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, InstanceTypeProto>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function CompressionType_Name.");
+    "Incorrect type passed to function InstanceTypeProto_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    CompressionType_descriptor(), enum_t_value);
+    InstanceTypeProto_descriptor(), enum_t_value);
 }
-inline bool CompressionType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, CompressionType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<CompressionType>(
-    CompressionType_descriptor(), name, value);
-}
-enum SpaceType : int {
-  SPACE_TYPE_UNSPECIFIED = 0,
-  SPACE_TYPE_RAW = 1,
-  SPACE_TYPE_BOX = 2,
-  SPACE_TYPE_DISCRETE = 3,
-  SPACE_TYPE_MULTI_BINARY = 4,
-  SPACE_TYPE_MULTI_DISCRETE = 5,
-  SPACE_TYPE_TEXT = 6,
-  SPACE_TYPE_DICT = 7,
-  SPACE_TYPE_TUPLE = 8,
-  SPACE_TYPE_SEQUENCE = 9,
-  SPACE_TYPE_GRAPH = 10,
-  SPACE_TYPE_IMAGE = 11,
-  SpaceType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  SpaceType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
-};
-bool SpaceType_IsValid(int value);
-constexpr SpaceType SpaceType_MIN = SPACE_TYPE_UNSPECIFIED;
-constexpr SpaceType SpaceType_MAX = SPACE_TYPE_IMAGE;
-constexpr int SpaceType_ARRAYSIZE = SpaceType_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SpaceType_descriptor();
-template<typename T>
-inline const std::string& SpaceType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, SpaceType>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function SpaceType_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    SpaceType_descriptor(), enum_t_value);
-}
-inline bool SpaceType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SpaceType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SpaceType>(
-    SpaceType_descriptor(), name, value);
+inline bool InstanceTypeProto_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, InstanceTypeProto* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<InstanceTypeProto>(
+    InstanceTypeProto_descriptor(), name, value);
 }
 // ===================================================================
 
-class Tensor final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Tensor) */ {
+class TensorProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:TensorProto) */ {
  public:
-  inline Tensor() : Tensor(nullptr) {}
-  ~Tensor() override;
-  explicit constexpr Tensor(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline TensorProto() : TensorProto(nullptr) {}
+  ~TensorProto() override;
+  explicit constexpr TensorProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Tensor(const Tensor& from);
-  Tensor(Tensor&& from) noexcept
-    : Tensor() {
+  TensorProto(const TensorProto& from);
+  TensorProto(TensorProto&& from) noexcept
+    : TensorProto() {
     *this = ::std::move(from);
   }
 
-  inline Tensor& operator=(const Tensor& from) {
+  inline TensorProto& operator=(const TensorProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Tensor& operator=(Tensor&& from) noexcept {
+  inline TensorProto& operator=(TensorProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -235,20 +185,20 @@ class Tensor final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Tensor& default_instance() {
+  static const TensorProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Tensor* internal_default_instance() {
-    return reinterpret_cast<const Tensor*>(
-               &_Tensor_default_instance_);
+  static inline const TensorProto* internal_default_instance() {
+    return reinterpret_cast<const TensorProto*>(
+               &_TensorProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(Tensor& a, Tensor& b) {
+  friend void swap(TensorProto& a, TensorProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Tensor* other) {
+  inline void Swap(TensorProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -261,7 +211,7 @@ class Tensor final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Tensor* other) {
+  void UnsafeArenaSwap(TensorProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -269,13 +219,13 @@ class Tensor final :
 
   // implements Message ----------------------------------------------
 
-  Tensor* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Tensor>(arena);
+  TensorProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TensorProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Tensor& from);
+  void CopyFrom(const TensorProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Tensor& from);
+  void MergeFrom(const TensorProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -292,15 +242,15 @@ class Tensor final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Tensor* other);
+  void InternalSwap(TensorProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Tensor";
+    return "TensorProto";
   }
   protected:
-  explicit Tensor(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit TensorProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -317,17 +267,11 @@ class Tensor final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kShapeFieldNumber = 1,
-    kFloatArrayFieldNumber = 3,
-    kDoubleArrayFieldNumber = 4,
-    kIntArrayFieldNumber = 5,
-    kLongArrayFieldNumber = 6,
-    kUnsignedIntArrayFieldNumber = 7,
-    kUnsignedLongArrayFieldNumber = 8,
-    kBoolArrayFieldNumber = 9,
-    kDataTypeFieldNumber = 2,
+    kShapeFieldNumber = 3,
+    kDataFieldNumber = 1,
+    kDtypeFieldNumber = 2,
   };
-  // repeated int32 shape = 1;
+  // repeated int32 shape = 3;
   int shape_size() const;
   private:
   int _internal_shape_size() const;
@@ -349,170 +293,35 @@ class Tensor final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_shape();
 
-  // repeated float float_array = 3;
-  int float_array_size() const;
+  // bytes data = 1;
+  void clear_data();
+  const std::string& data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data();
+  PROTOBUF_NODISCARD std::string* release_data();
+  void set_allocated_data(std::string* data);
   private:
-  int _internal_float_array_size() const;
-  public:
-  void clear_float_array();
-  private:
-  float _internal_float_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      _internal_float_array() const;
-  void _internal_add_float_array(float value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      _internal_mutable_float_array();
-  public:
-  float float_array(int index) const;
-  void set_float_array(int index, float value);
-  void add_float_array(float value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      float_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      mutable_float_array();
-
-  // repeated double double_array = 4;
-  int double_array_size() const;
-  private:
-  int _internal_double_array_size() const;
-  public:
-  void clear_double_array();
-  private:
-  double _internal_double_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
-      _internal_double_array() const;
-  void _internal_add_double_array(double value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
-      _internal_mutable_double_array();
-  public:
-  double double_array(int index) const;
-  void set_double_array(int index, double value);
-  void add_double_array(double value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
-      double_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
-      mutable_double_array();
-
-  // repeated sint32 int_array = 5;
-  int int_array_size() const;
-  private:
-  int _internal_int_array_size() const;
-  public:
-  void clear_int_array();
-  private:
-  int32_t _internal_int_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      _internal_int_array() const;
-  void _internal_add_int_array(int32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      _internal_mutable_int_array();
-  public:
-  int32_t int_array(int index) const;
-  void set_int_array(int index, int32_t value);
-  void add_int_array(int32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      int_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      mutable_int_array();
-
-  // repeated sint64 long_array = 6;
-  int long_array_size() const;
-  private:
-  int _internal_long_array_size() const;
-  public:
-  void clear_long_array();
-  private:
-  int64_t _internal_long_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      _internal_long_array() const;
-  void _internal_add_long_array(int64_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      _internal_mutable_long_array();
-  public:
-  int64_t long_array(int index) const;
-  void set_long_array(int index, int64_t value);
-  void add_long_array(int64_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      long_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      mutable_long_array();
-
-  // repeated uint32 unsigned_int_array = 7;
-  int unsigned_int_array_size() const;
-  private:
-  int _internal_unsigned_int_array_size() const;
-  public:
-  void clear_unsigned_int_array();
-  private:
-  uint32_t _internal_unsigned_int_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-      _internal_unsigned_int_array() const;
-  void _internal_add_unsigned_int_array(uint32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-      _internal_mutable_unsigned_int_array();
-  public:
-  uint32_t unsigned_int_array(int index) const;
-  void set_unsigned_int_array(int index, uint32_t value);
-  void add_unsigned_int_array(uint32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-      unsigned_int_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-      mutable_unsigned_int_array();
-
-  // repeated uint64 unsigned_long_array = 8;
-  int unsigned_long_array_size() const;
-  private:
-  int _internal_unsigned_long_array_size() const;
-  public:
-  void clear_unsigned_long_array();
-  private:
-  uint64_t _internal_unsigned_long_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-      _internal_unsigned_long_array() const;
-  void _internal_add_unsigned_long_array(uint64_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-      _internal_mutable_unsigned_long_array();
-  public:
-  uint64_t unsigned_long_array(int index) const;
-  void set_unsigned_long_array(int index, uint64_t value);
-  void add_unsigned_long_array(uint64_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-      unsigned_long_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-      mutable_unsigned_long_array();
-
-  // repeated bool bool_array = 9;
-  int bool_array_size() const;
-  private:
-  int _internal_bool_array_size() const;
-  public:
-  void clear_bool_array();
-  private:
-  bool _internal_bool_array(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-      _internal_bool_array() const;
-  void _internal_add_bool_array(bool value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-      _internal_mutable_bool_array();
-  public:
-  bool bool_array(int index) const;
-  void set_bool_array(int index, bool value);
-  void add_bool_array(bool value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-      bool_array() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-      mutable_bool_array();
-
-  // .DataType data_type = 2;
-  void clear_data_type();
-  ::DataType data_type() const;
-  void set_data_type(::DataType value);
-  private:
-  ::DataType _internal_data_type() const;
-  void _internal_set_data_type(::DataType value);
+  const std::string& _internal_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
+  std::string* _internal_mutable_data();
   public:
 
-  // @@protoc_insertion_point(class_scope:Tensor)
+  // string dtype = 2;
+  void clear_dtype();
+  const std::string& dtype() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dtype(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dtype();
+  PROTOBUF_NODISCARD std::string* release_dtype();
+  void set_allocated_dtype(std::string* dtype);
+  private:
+  const std::string& _internal_dtype() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dtype(const std::string& value);
+  std::string* _internal_mutable_dtype();
+  public:
+
+  // @@protoc_insertion_point(class_scope:TensorProto)
  private:
   class _Internal;
 
@@ -521,41 +330,31 @@ class Tensor final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > shape_;
   mutable std::atomic<int> _shape_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > float_array_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > double_array_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > int_array_;
-  mutable std::atomic<int> _int_array_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > long_array_;
-  mutable std::atomic<int> _long_array_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t > unsigned_int_array_;
-  mutable std::atomic<int> _unsigned_int_array_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > unsigned_long_array_;
-  mutable std::atomic<int> _unsigned_long_array_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool > bool_array_;
-  int data_type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dtype_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_space_2eproto;
 };
 // -------------------------------------------------------------------
 
-class GraphSpace final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GraphSpace) */ {
+class GraphProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GraphProto) */ {
  public:
-  inline GraphSpace() : GraphSpace(nullptr) {}
-  ~GraphSpace() override;
-  explicit constexpr GraphSpace(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline GraphProto() : GraphProto(nullptr) {}
+  ~GraphProto() override;
+  explicit constexpr GraphProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GraphSpace(const GraphSpace& from);
-  GraphSpace(GraphSpace&& from) noexcept
-    : GraphSpace() {
+  GraphProto(const GraphProto& from);
+  GraphProto(GraphProto&& from) noexcept
+    : GraphProto() {
     *this = ::std::move(from);
   }
 
-  inline GraphSpace& operator=(const GraphSpace& from) {
+  inline GraphProto& operator=(const GraphProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GraphSpace& operator=(GraphSpace&& from) noexcept {
+  inline GraphProto& operator=(GraphProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -578,20 +377,20 @@ class GraphSpace final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GraphSpace& default_instance() {
+  static const GraphProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GraphSpace* internal_default_instance() {
-    return reinterpret_cast<const GraphSpace*>(
-               &_GraphSpace_default_instance_);
+  static inline const GraphProto* internal_default_instance() {
+    return reinterpret_cast<const GraphProto*>(
+               &_GraphProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(GraphSpace& a, GraphSpace& b) {
+  friend void swap(GraphProto& a, GraphProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(GraphSpace* other) {
+  inline void Swap(GraphProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -604,7 +403,7 @@ class GraphSpace final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GraphSpace* other) {
+  void UnsafeArenaSwap(GraphProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -612,13 +411,13 @@ class GraphSpace final :
 
   // implements Message ----------------------------------------------
 
-  GraphSpace* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GraphSpace>(arena);
+  GraphProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GraphProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GraphSpace& from);
+  void CopyFrom(const GraphProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const GraphSpace& from);
+  void MergeFrom(const GraphProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -635,190 +434,15 @@ class GraphSpace final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GraphSpace* other);
+  void InternalSwap(GraphProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "GraphSpace";
+    return "GraphProto";
   }
   protected:
-  explicit GraphSpace(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNodeSpaceFieldNumber = 1,
-    kEdgeSpaceFieldNumber = 2,
-  };
-  // .Space node_space = 1;
-  bool has_node_space() const;
-  private:
-  bool _internal_has_node_space() const;
-  public:
-  void clear_node_space();
-  const ::Space& node_space() const;
-  PROTOBUF_NODISCARD ::Space* release_node_space();
-  ::Space* mutable_node_space();
-  void set_allocated_node_space(::Space* node_space);
-  private:
-  const ::Space& _internal_node_space() const;
-  ::Space* _internal_mutable_node_space();
-  public:
-  void unsafe_arena_set_allocated_node_space(
-      ::Space* node_space);
-  ::Space* unsafe_arena_release_node_space();
-
-  // .Space edge_space = 2;
-  bool has_edge_space() const;
-  private:
-  bool _internal_has_edge_space() const;
-  public:
-  void clear_edge_space();
-  const ::Space& edge_space() const;
-  PROTOBUF_NODISCARD ::Space* release_edge_space();
-  ::Space* mutable_edge_space();
-  void set_allocated_edge_space(::Space* edge_space);
-  private:
-  const ::Space& _internal_edge_space() const;
-  ::Space* _internal_mutable_edge_space();
-  public:
-  void unsafe_arena_set_allocated_edge_space(
-      ::Space* edge_space);
-  ::Space* unsafe_arena_release_edge_space();
-
-  // @@protoc_insertion_point(class_scope:GraphSpace)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::Space* node_space_;
-  ::Space* edge_space_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_space_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Graph final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Graph) */ {
- public:
-  inline Graph() : Graph(nullptr) {}
-  ~Graph() override;
-  explicit constexpr Graph(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Graph(const Graph& from);
-  Graph(Graph&& from) noexcept
-    : Graph() {
-    *this = ::std::move(from);
-  }
-
-  inline Graph& operator=(const Graph& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Graph& operator=(Graph&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Graph& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Graph* internal_default_instance() {
-    return reinterpret_cast<const Graph*>(
-               &_Graph_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(Graph& a, Graph& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Graph* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Graph* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Graph* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Graph>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Graph& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Graph& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Graph* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Graph";
-  }
-  protected:
-  explicit Graph(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit GraphProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -839,93 +463,93 @@ class Graph final :
     kEdgesFieldNumber = 2,
     kEdgeLinksFieldNumber = 3,
   };
-  // .Tensor nodes = 1;
+  // .TensorProto nodes = 1;
   bool has_nodes() const;
   private:
   bool _internal_has_nodes() const;
   public:
   void clear_nodes();
-  const ::Tensor& nodes() const;
-  PROTOBUF_NODISCARD ::Tensor* release_nodes();
-  ::Tensor* mutable_nodes();
-  void set_allocated_nodes(::Tensor* nodes);
+  const ::TensorProto& nodes() const;
+  PROTOBUF_NODISCARD ::TensorProto* release_nodes();
+  ::TensorProto* mutable_nodes();
+  void set_allocated_nodes(::TensorProto* nodes);
   private:
-  const ::Tensor& _internal_nodes() const;
-  ::Tensor* _internal_mutable_nodes();
+  const ::TensorProto& _internal_nodes() const;
+  ::TensorProto* _internal_mutable_nodes();
   public:
   void unsafe_arena_set_allocated_nodes(
-      ::Tensor* nodes);
-  ::Tensor* unsafe_arena_release_nodes();
+      ::TensorProto* nodes);
+  ::TensorProto* unsafe_arena_release_nodes();
 
-  // .Tensor edges = 2;
+  // .TensorProto edges = 2;
   bool has_edges() const;
   private:
   bool _internal_has_edges() const;
   public:
   void clear_edges();
-  const ::Tensor& edges() const;
-  PROTOBUF_NODISCARD ::Tensor* release_edges();
-  ::Tensor* mutable_edges();
-  void set_allocated_edges(::Tensor* edges);
+  const ::TensorProto& edges() const;
+  PROTOBUF_NODISCARD ::TensorProto* release_edges();
+  ::TensorProto* mutable_edges();
+  void set_allocated_edges(::TensorProto* edges);
   private:
-  const ::Tensor& _internal_edges() const;
-  ::Tensor* _internal_mutable_edges();
+  const ::TensorProto& _internal_edges() const;
+  ::TensorProto* _internal_mutable_edges();
   public:
   void unsafe_arena_set_allocated_edges(
-      ::Tensor* edges);
-  ::Tensor* unsafe_arena_release_edges();
+      ::TensorProto* edges);
+  ::TensorProto* unsafe_arena_release_edges();
 
-  // .Tensor edge_links = 3;
+  // .TensorProto edge_links = 3;
   bool has_edge_links() const;
   private:
   bool _internal_has_edge_links() const;
   public:
   void clear_edge_links();
-  const ::Tensor& edge_links() const;
-  PROTOBUF_NODISCARD ::Tensor* release_edge_links();
-  ::Tensor* mutable_edge_links();
-  void set_allocated_edge_links(::Tensor* edge_links);
+  const ::TensorProto& edge_links() const;
+  PROTOBUF_NODISCARD ::TensorProto* release_edge_links();
+  ::TensorProto* mutable_edge_links();
+  void set_allocated_edge_links(::TensorProto* edge_links);
   private:
-  const ::Tensor& _internal_edge_links() const;
-  ::Tensor* _internal_mutable_edge_links();
+  const ::TensorProto& _internal_edge_links() const;
+  ::TensorProto* _internal_mutable_edge_links();
   public:
   void unsafe_arena_set_allocated_edge_links(
-      ::Tensor* edge_links);
-  ::Tensor* unsafe_arena_release_edge_links();
+      ::TensorProto* edge_links);
+  ::TensorProto* unsafe_arena_release_edge_links();
 
-  // @@protoc_insertion_point(class_scope:Graph)
+  // @@protoc_insertion_point(class_scope:GraphProto)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::Tensor* nodes_;
-  ::Tensor* edges_;
-  ::Tensor* edge_links_;
+  ::TensorProto* nodes_;
+  ::TensorProto* edges_;
+  ::TensorProto* edge_links_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_space_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Image final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Image) */ {
+class ImageProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ImageProto) */ {
  public:
-  inline Image() : Image(nullptr) {}
-  ~Image() override;
-  explicit constexpr Image(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ImageProto() : ImageProto(nullptr) {}
+  ~ImageProto() override;
+  explicit constexpr ImageProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Image(const Image& from);
-  Image(Image&& from) noexcept
-    : Image() {
+  ImageProto(const ImageProto& from);
+  ImageProto(ImageProto&& from) noexcept
+    : ImageProto() {
     *this = ::std::move(from);
   }
 
-  inline Image& operator=(const Image& from) {
+  inline ImageProto& operator=(const ImageProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Image& operator=(Image&& from) noexcept {
+  inline ImageProto& operator=(ImageProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -948,20 +572,20 @@ class Image final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Image& default_instance() {
+  static const ImageProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Image* internal_default_instance() {
-    return reinterpret_cast<const Image*>(
-               &_Image_default_instance_);
+  static inline const ImageProto* internal_default_instance() {
+    return reinterpret_cast<const ImageProto*>(
+               &_ImageProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
-  friend void swap(Image& a, Image& b) {
+  friend void swap(ImageProto& a, ImageProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Image* other) {
+  inline void Swap(ImageProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -974,7 +598,7 @@ class Image final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Image* other) {
+  void UnsafeArenaSwap(ImageProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -982,13 +606,13 @@ class Image final :
 
   // implements Message ----------------------------------------------
 
-  Image* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Image>(arena);
+  ImageProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ImageProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Image& from);
+  void CopyFrom(const ImageProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Image& from);
+  void MergeFrom(const ImageProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1005,15 +629,15 @@ class Image final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Image* other);
+  void InternalSwap(ImageProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Image";
+    return "ImageProto";
   }
   protected:
-  explicit Image(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ImageProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1030,12 +654,13 @@ class Image final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kShapeFieldNumber = 3,
-    kDimensionMappingFieldNumber = 4,
+    kShapeFieldNumber = 4,
+    kTransposeAxesFieldNumber = 5,
     kDataFieldNumber = 2,
+    kDtypeFieldNumber = 3,
     kCompressionTypeFieldNumber = 1,
   };
-  // repeated int32 shape = 3;
+  // repeated int32 shape = 4;
   int shape_size() const;
   private:
   int _internal_shape_size() const;
@@ -1057,27 +682,27 @@ class Image final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_shape();
 
-  // repeated int32 dimension_mapping = 4;
-  int dimension_mapping_size() const;
+  // repeated int32 transpose_axes = 5;
+  int transpose_axes_size() const;
   private:
-  int _internal_dimension_mapping_size() const;
+  int _internal_transpose_axes_size() const;
   public:
-  void clear_dimension_mapping();
+  void clear_transpose_axes();
   private:
-  int32_t _internal_dimension_mapping(int index) const;
+  int32_t _internal_transpose_axes(int index) const;
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      _internal_dimension_mapping() const;
-  void _internal_add_dimension_mapping(int32_t value);
+      _internal_transpose_axes() const;
+  void _internal_add_transpose_axes(int32_t value);
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      _internal_mutable_dimension_mapping();
+      _internal_mutable_transpose_axes();
   public:
-  int32_t dimension_mapping(int index) const;
-  void set_dimension_mapping(int index, int32_t value);
-  void add_dimension_mapping(int32_t value);
+  int32_t transpose_axes(int index) const;
+  void set_transpose_axes(int index, int32_t value);
+  void add_transpose_axes(int32_t value);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      dimension_mapping() const;
+      transpose_axes() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      mutable_dimension_mapping();
+      mutable_transpose_axes();
 
   // bytes data = 2;
   void clear_data();
@@ -1093,16 +718,30 @@ class Image final :
   std::string* _internal_mutable_data();
   public:
 
-  // .CompressionType compression_type = 1;
-  void clear_compression_type();
-  ::CompressionType compression_type() const;
-  void set_compression_type(::CompressionType value);
+  // string dtype = 3;
+  void clear_dtype();
+  const std::string& dtype() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dtype(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dtype();
+  PROTOBUF_NODISCARD std::string* release_dtype();
+  void set_allocated_dtype(std::string* dtype);
   private:
-  ::CompressionType _internal_compression_type() const;
-  void _internal_set_compression_type(::CompressionType value);
+  const std::string& _internal_dtype() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dtype(const std::string& value);
+  std::string* _internal_mutable_dtype();
   public:
 
-  // @@protoc_insertion_point(class_scope:Image)
+  // .CompressionTypeProto compression_type = 1;
+  void clear_compression_type();
+  ::CompressionTypeProto compression_type() const;
+  void set_compression_type(::CompressionTypeProto value);
+  private:
+  ::CompressionTypeProto _internal_compression_type() const;
+  void _internal_set_compression_type(::CompressionTypeProto value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:ImageProto)
  private:
   class _Internal;
 
@@ -1111,32 +750,33 @@ class Image final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > shape_;
   mutable std::atomic<int> _shape_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > dimension_mapping_;
-  mutable std::atomic<int> _dimension_mapping_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > transpose_axes_;
+  mutable std::atomic<int> _transpose_axes_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dtype_;
   int compression_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_space_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Space_DictSpaceEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Space_DictSpaceEntry_DoNotUse, 
-    std::string, ::Space,
+class InstanceProto_DictEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<InstanceProto_DictEntry_DoNotUse, 
+    std::string, ::InstanceProto,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
 public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Space_DictSpaceEntry_DoNotUse, 
-    std::string, ::Space,
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<InstanceProto_DictEntry_DoNotUse, 
+    std::string, ::InstanceProto,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
-  Space_DictSpaceEntry_DoNotUse();
-  explicit constexpr Space_DictSpaceEntry_DoNotUse(
+  InstanceProto_DictEntry_DoNotUse();
+  explicit constexpr InstanceProto_DictEntry_DoNotUse(
       ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit Space_DictSpaceEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const Space_DictSpaceEntry_DoNotUse& other);
-  static const Space_DictSpaceEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Space_DictSpaceEntry_DoNotUse*>(&_Space_DictSpaceEntry_DoNotUse_default_instance_); }
+  explicit InstanceProto_DictEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const InstanceProto_DictEntry_DoNotUse& other);
+  static const InstanceProto_DictEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const InstanceProto_DictEntry_DoNotUse*>(&_InstanceProto_DictEntry_DoNotUse_default_instance_); }
   static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "Space.DictSpaceEntry.key");
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "InstanceProto.DictEntry.key");
  }
   static bool ValidateValue(void*) { return true; }
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
@@ -1145,47 +785,24 @@ public:
 
 // -------------------------------------------------------------------
 
-class Space_ListSpaceEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Space_ListSpaceEntry_DoNotUse, 
-    int32_t, ::Space,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Space_ListSpaceEntry_DoNotUse, 
-    int32_t, ::Space,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
-  Space_ListSpaceEntry_DoNotUse();
-  explicit constexpr Space_ListSpaceEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit Space_ListSpaceEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const Space_ListSpaceEntry_DoNotUse& other);
-  static const Space_ListSpaceEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Space_ListSpaceEntry_DoNotUse*>(&_Space_ListSpaceEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(void*) { return true; }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class Space final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Space) */ {
+class InstanceProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InstanceProto) */ {
  public:
-  inline Space() : Space(nullptr) {}
-  ~Space() override;
-  explicit constexpr Space(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline InstanceProto() : InstanceProto(nullptr) {}
+  ~InstanceProto() override;
+  explicit constexpr InstanceProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Space(const Space& from);
-  Space(Space&& from) noexcept
-    : Space() {
+  InstanceProto(const InstanceProto& from);
+  InstanceProto(InstanceProto&& from) noexcept
+    : InstanceProto() {
     *this = ::std::move(from);
   }
 
-  inline Space& operator=(const Space& from) {
+  inline InstanceProto& operator=(const InstanceProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Space& operator=(Space&& from) noexcept {
+  inline InstanceProto& operator=(InstanceProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1208,20 +825,20 @@ class Space final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Space& default_instance() {
+  static const InstanceProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Space* internal_default_instance() {
-    return reinterpret_cast<const Space*>(
-               &_Space_default_instance_);
+  static inline const InstanceProto* internal_default_instance() {
+    return reinterpret_cast<const InstanceProto*>(
+               &_InstanceProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    4;
 
-  friend void swap(Space& a, Space& b) {
+  friend void swap(InstanceProto& a, InstanceProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Space* other) {
+  inline void Swap(InstanceProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1234,7 +851,7 @@ class Space final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Space* other) {
+  void UnsafeArenaSwap(InstanceProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1242,13 +859,13 @@ class Space final :
 
   // implements Message ----------------------------------------------
 
-  Space* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Space>(arena);
+  InstanceProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<InstanceProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Space& from);
+  void CopyFrom(const InstanceProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Space& from);
+  void MergeFrom(const InstanceProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1265,15 +882,15 @@ class Space final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Space* other);
+  void InternalSwap(InstanceProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Space";
+    return "InstanceProto";
   }
   protected:
-  explicit Space(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit InstanceProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1291,507 +908,55 @@ class Space final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kShapeFieldNumber = 3,
-    kLowFieldNumber = 5,
-    kHighFieldNumber = 6,
-    kNvecFieldNumber = 9,
-    kCharsetFieldNumber = 10,
-    kDictSpaceFieldNumber = 11,
-    kListSpaceFieldNumber = 12,
-    kDescriptionFieldNumber = 2,
-    kDataTypeFieldNumber = 4,
-    kGraphSpaceFieldNumber = 13,
-    kSpaceTypeFieldNumber = 1,
-    kMinFieldNumber = 7,
-    kMaxFieldNumber = 8,
+    kDictFieldNumber = 6,
+    kListFieldNumber = 7,
+    kRawDataFieldNumber = 2,
+    kTextFieldNumber = 5,
+    kJsonFieldNumber = 12,
+    kTensorFieldNumber = 3,
+    kGraphFieldNumber = 8,
+    kImageFieldNumber = 9,
+    kDiscreteFieldNumber = 4,
+    kTypeFieldNumber = 1,
+    kBooleanFieldNumber = 11,
+    kFloatFieldNumber = 10,
   };
-  // repeated int32 shape = 3;
-  int shape_size() const;
-  private:
-  int _internal_shape_size() const;
-  public:
-  void clear_shape();
-  private:
-  int32_t _internal_shape(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      _internal_shape() const;
-  void _internal_add_shape(int32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      _internal_mutable_shape();
-  public:
-  int32_t shape(int index) const;
-  void set_shape(int index, int32_t value);
-  void add_shape(int32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      shape() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      mutable_shape();
-
-  // repeated float low = 5;
-  int low_size() const;
-  private:
-  int _internal_low_size() const;
-  public:
-  void clear_low();
-  private:
-  float _internal_low(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      _internal_low() const;
-  void _internal_add_low(float value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      _internal_mutable_low();
-  public:
-  float low(int index) const;
-  void set_low(int index, float value);
-  void add_low(float value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      low() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      mutable_low();
-
-  // repeated float high = 6;
-  int high_size() const;
-  private:
-  int _internal_high_size() const;
-  public:
-  void clear_high();
-  private:
-  float _internal_high(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      _internal_high() const;
-  void _internal_add_high(float value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      _internal_mutable_high();
-  public:
-  float high(int index) const;
-  void set_high(int index, float value);
-  void add_high(float value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-      high() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-      mutable_high();
-
-  // repeated int32 nvec = 9;
-  int nvec_size() const;
-  private:
-  int _internal_nvec_size() const;
-  public:
-  void clear_nvec();
-  private:
-  int32_t _internal_nvec(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      _internal_nvec() const;
-  void _internal_add_nvec(int32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      _internal_mutable_nvec();
-  public:
-  int32_t nvec(int index) const;
-  void set_nvec(int index, int32_t value);
-  void add_nvec(int32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      nvec() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      mutable_nvec();
-
-  // repeated string charset = 10;
-  int charset_size() const;
-  private:
-  int _internal_charset_size() const;
-  public:
-  void clear_charset();
-  const std::string& charset(int index) const;
-  std::string* mutable_charset(int index);
-  void set_charset(int index, const std::string& value);
-  void set_charset(int index, std::string&& value);
-  void set_charset(int index, const char* value);
-  void set_charset(int index, const char* value, size_t size);
-  std::string* add_charset();
-  void add_charset(const std::string& value);
-  void add_charset(std::string&& value);
-  void add_charset(const char* value);
-  void add_charset(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& charset() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_charset();
-  private:
-  const std::string& _internal_charset(int index) const;
-  std::string* _internal_add_charset();
-  public:
-
-  // map<string, .Space> dict_space = 11;
-  int dict_space_size() const;
-  private:
-  int _internal_dict_space_size() const;
-  public:
-  void clear_dict_space();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >&
-      _internal_dict_space() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >*
-      _internal_mutable_dict_space();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >&
-      dict_space() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >*
-      mutable_dict_space();
-
-  // map<int32, .Space> list_space = 12;
-  int list_space_size() const;
-  private:
-  int _internal_list_space_size() const;
-  public:
-  void clear_list_space();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >&
-      _internal_list_space() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >*
-      _internal_mutable_list_space();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >&
-      list_space() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >*
-      mutable_list_space();
-
-  // string description = 2;
-  void clear_description();
-  const std::string& description() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_description(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_description();
-  PROTOBUF_NODISCARD std::string* release_description();
-  void set_allocated_description(std::string* description);
-  private:
-  const std::string& _internal_description() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(const std::string& value);
-  std::string* _internal_mutable_description();
-  public:
-
-  // string data_type = 4;
-  void clear_data_type();
-  const std::string& data_type() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_data_type(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_data_type();
-  PROTOBUF_NODISCARD std::string* release_data_type();
-  void set_allocated_data_type(std::string* data_type);
-  private:
-  const std::string& _internal_data_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data_type(const std::string& value);
-  std::string* _internal_mutable_data_type();
-  public:
-
-  // .GraphSpace graph_space = 13;
-  bool has_graph_space() const;
-  private:
-  bool _internal_has_graph_space() const;
-  public:
-  void clear_graph_space();
-  const ::GraphSpace& graph_space() const;
-  PROTOBUF_NODISCARD ::GraphSpace* release_graph_space();
-  ::GraphSpace* mutable_graph_space();
-  void set_allocated_graph_space(::GraphSpace* graph_space);
-  private:
-  const ::GraphSpace& _internal_graph_space() const;
-  ::GraphSpace* _internal_mutable_graph_space();
-  public:
-  void unsafe_arena_set_allocated_graph_space(
-      ::GraphSpace* graph_space);
-  ::GraphSpace* unsafe_arena_release_graph_space();
-
-  // .SpaceType space_type = 1;
-  void clear_space_type();
-  ::SpaceType space_type() const;
-  void set_space_type(::SpaceType value);
-  private:
-  ::SpaceType _internal_space_type() const;
-  void _internal_set_space_type(::SpaceType value);
-  public:
-
-  // int32 min = 7;
-  void clear_min();
-  int32_t min() const;
-  void set_min(int32_t value);
-  private:
-  int32_t _internal_min() const;
-  void _internal_set_min(int32_t value);
-  public:
-
-  // int32 max = 8;
-  void clear_max();
-  int32_t max() const;
-  void set_max(int32_t value);
-  private:
-  int32_t _internal_max() const;
-  void _internal_set_max(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:Space)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > shape_;
-  mutable std::atomic<int> _shape_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > low_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > high_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > nvec_;
-  mutable std::atomic<int> _nvec_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> charset_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      Space_DictSpaceEntry_DoNotUse,
-      std::string, ::Space,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> dict_space_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      Space_ListSpaceEntry_DoNotUse,
-      int32_t, ::Space,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> list_space_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_type_;
-  ::GraphSpace* graph_space_;
-  int space_type_;
-  int32_t min_;
-  int32_t max_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_space_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Data_DictEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Data_DictEntry_DoNotUse, 
-    std::string, ::Data,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Data_DictEntry_DoNotUse, 
-    std::string, ::Data,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
-  Data_DictEntry_DoNotUse();
-  explicit constexpr Data_DictEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit Data_DictEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const Data_DictEntry_DoNotUse& other);
-  static const Data_DictEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Data_DictEntry_DoNotUse*>(&_Data_DictEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "Data.DictEntry.key");
- }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class Data_ListEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Data_ListEntry_DoNotUse, 
-    int32_t, ::Data,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Data_ListEntry_DoNotUse, 
-    int32_t, ::Data,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
-  Data_ListEntry_DoNotUse();
-  explicit constexpr Data_ListEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit Data_ListEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const Data_ListEntry_DoNotUse& other);
-  static const Data_ListEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Data_ListEntry_DoNotUse*>(&_Data_ListEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(void*) { return true; }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class Data final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Data) */ {
- public:
-  inline Data() : Data(nullptr) {}
-  ~Data() override;
-  explicit constexpr Data(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Data(const Data& from);
-  Data(Data&& from) noexcept
-    : Data() {
-    *this = ::std::move(from);
-  }
-
-  inline Data& operator=(const Data& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Data& operator=(Data&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Data& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Data* internal_default_instance() {
-    return reinterpret_cast<const Data*>(
-               &_Data_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  friend void swap(Data& a, Data& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Data* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Data* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Data* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Data>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Data& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Data& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Data* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Data";
-  }
-  protected:
-  explicit Data(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kDictFieldNumber = 9,
-    kListFieldNumber = 10,
-    kDataTypeFieldNumber = 2,
-    kRawDataFieldNumber = 3,
-    kTextFieldNumber = 8,
-    kBoxFieldNumber = 4,
-    kMultiBinaryFieldNumber = 6,
-    kMultiDiscreteFieldNumber = 7,
-    kGraphFieldNumber = 11,
-    kImageFieldNumber = 12,
-    kSpaceTypeFieldNumber = 1,
-    kDiscreteFieldNumber = 5,
-  };
-  // map<string, .Data> dict = 9;
+  // map<string, .InstanceProto> dict = 6;
   int dict_size() const;
   private:
   int _internal_dict_size() const;
   public:
   void clear_dict();
   private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >&
       _internal_dict() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >*
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >*
       _internal_mutable_dict();
   public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >&
       dict() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >*
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >*
       mutable_dict();
 
-  // map<int32, .Data> list = 10;
+  // repeated .InstanceProto list = 7;
   int list_size() const;
   private:
   int _internal_list_size() const;
   public:
   void clear_list();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >&
-      _internal_list() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >*
-      _internal_mutable_list();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >&
-      list() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >*
+  ::InstanceProto* mutable_list(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InstanceProto >*
       mutable_list();
-
-  // string data_type = 2;
-  void clear_data_type();
-  const std::string& data_type() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_data_type(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_data_type();
-  PROTOBUF_NODISCARD std::string* release_data_type();
-  void set_allocated_data_type(std::string* data_type);
   private:
-  const std::string& _internal_data_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data_type(const std::string& value);
-  std::string* _internal_mutable_data_type();
+  const ::InstanceProto& _internal_list(int index) const;
+  ::InstanceProto* _internal_add_list();
   public:
+  const ::InstanceProto& list(int index) const;
+  ::InstanceProto* add_list();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InstanceProto >&
+      list() const;
 
-  // bytes raw_data = 3;
+  // bytes raw_data = 2;
   void clear_raw_data();
   const std::string& raw_data() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -1805,7 +970,7 @@ class Data final :
   std::string* _internal_mutable_raw_data();
   public:
 
-  // string text = 8;
+  // string text = 5;
   void clear_text();
   const std::string& text() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -1819,115 +984,111 @@ class Data final :
   std::string* _internal_mutable_text();
   public:
 
-  // .Tensor box = 4;
-  bool has_box() const;
+  // string json = 12;
+  void clear_json();
+  const std::string& json() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_json(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_json();
+  PROTOBUF_NODISCARD std::string* release_json();
+  void set_allocated_json(std::string* json);
   private:
-  bool _internal_has_box() const;
+  const std::string& _internal_json() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_json(const std::string& value);
+  std::string* _internal_mutable_json();
   public:
-  void clear_box();
-  const ::Tensor& box() const;
-  PROTOBUF_NODISCARD ::Tensor* release_box();
-  ::Tensor* mutable_box();
-  void set_allocated_box(::Tensor* box);
-  private:
-  const ::Tensor& _internal_box() const;
-  ::Tensor* _internal_mutable_box();
-  public:
-  void unsafe_arena_set_allocated_box(
-      ::Tensor* box);
-  ::Tensor* unsafe_arena_release_box();
 
-  // .Tensor multi_binary = 6;
-  bool has_multi_binary() const;
+  // .TensorProto tensor = 3;
+  bool has_tensor() const;
   private:
-  bool _internal_has_multi_binary() const;
+  bool _internal_has_tensor() const;
   public:
-  void clear_multi_binary();
-  const ::Tensor& multi_binary() const;
-  PROTOBUF_NODISCARD ::Tensor* release_multi_binary();
-  ::Tensor* mutable_multi_binary();
-  void set_allocated_multi_binary(::Tensor* multi_binary);
+  void clear_tensor();
+  const ::TensorProto& tensor() const;
+  PROTOBUF_NODISCARD ::TensorProto* release_tensor();
+  ::TensorProto* mutable_tensor();
+  void set_allocated_tensor(::TensorProto* tensor);
   private:
-  const ::Tensor& _internal_multi_binary() const;
-  ::Tensor* _internal_mutable_multi_binary();
+  const ::TensorProto& _internal_tensor() const;
+  ::TensorProto* _internal_mutable_tensor();
   public:
-  void unsafe_arena_set_allocated_multi_binary(
-      ::Tensor* multi_binary);
-  ::Tensor* unsafe_arena_release_multi_binary();
+  void unsafe_arena_set_allocated_tensor(
+      ::TensorProto* tensor);
+  ::TensorProto* unsafe_arena_release_tensor();
 
-  // .Tensor multi_discrete = 7;
-  bool has_multi_discrete() const;
-  private:
-  bool _internal_has_multi_discrete() const;
-  public:
-  void clear_multi_discrete();
-  const ::Tensor& multi_discrete() const;
-  PROTOBUF_NODISCARD ::Tensor* release_multi_discrete();
-  ::Tensor* mutable_multi_discrete();
-  void set_allocated_multi_discrete(::Tensor* multi_discrete);
-  private:
-  const ::Tensor& _internal_multi_discrete() const;
-  ::Tensor* _internal_mutable_multi_discrete();
-  public:
-  void unsafe_arena_set_allocated_multi_discrete(
-      ::Tensor* multi_discrete);
-  ::Tensor* unsafe_arena_release_multi_discrete();
-
-  // .Graph graph = 11;
+  // .GraphProto graph = 8;
   bool has_graph() const;
   private:
   bool _internal_has_graph() const;
   public:
   void clear_graph();
-  const ::Graph& graph() const;
-  PROTOBUF_NODISCARD ::Graph* release_graph();
-  ::Graph* mutable_graph();
-  void set_allocated_graph(::Graph* graph);
+  const ::GraphProto& graph() const;
+  PROTOBUF_NODISCARD ::GraphProto* release_graph();
+  ::GraphProto* mutable_graph();
+  void set_allocated_graph(::GraphProto* graph);
   private:
-  const ::Graph& _internal_graph() const;
-  ::Graph* _internal_mutable_graph();
+  const ::GraphProto& _internal_graph() const;
+  ::GraphProto* _internal_mutable_graph();
   public:
   void unsafe_arena_set_allocated_graph(
-      ::Graph* graph);
-  ::Graph* unsafe_arena_release_graph();
+      ::GraphProto* graph);
+  ::GraphProto* unsafe_arena_release_graph();
 
-  // .Image image = 12;
+  // .ImageProto image = 9;
   bool has_image() const;
   private:
   bool _internal_has_image() const;
   public:
   void clear_image();
-  const ::Image& image() const;
-  PROTOBUF_NODISCARD ::Image* release_image();
-  ::Image* mutable_image();
-  void set_allocated_image(::Image* image);
+  const ::ImageProto& image() const;
+  PROTOBUF_NODISCARD ::ImageProto* release_image();
+  ::ImageProto* mutable_image();
+  void set_allocated_image(::ImageProto* image);
   private:
-  const ::Image& _internal_image() const;
-  ::Image* _internal_mutable_image();
+  const ::ImageProto& _internal_image() const;
+  ::ImageProto* _internal_mutable_image();
   public:
   void unsafe_arena_set_allocated_image(
-      ::Image* image);
-  ::Image* unsafe_arena_release_image();
+      ::ImageProto* image);
+  ::ImageProto* unsafe_arena_release_image();
 
-  // .SpaceType space_type = 1;
-  void clear_space_type();
-  ::SpaceType space_type() const;
-  void set_space_type(::SpaceType value);
-  private:
-  ::SpaceType _internal_space_type() const;
-  void _internal_set_space_type(::SpaceType value);
-  public:
-
-  // int32 discrete = 5;
+  // int64 discrete = 4;
   void clear_discrete();
-  int32_t discrete() const;
-  void set_discrete(int32_t value);
+  int64_t discrete() const;
+  void set_discrete(int64_t value);
   private:
-  int32_t _internal_discrete() const;
-  void _internal_set_discrete(int32_t value);
+  int64_t _internal_discrete() const;
+  void _internal_set_discrete(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Data)
+  // .InstanceTypeProto type = 1;
+  void clear_type();
+  ::InstanceTypeProto type() const;
+  void set_type(::InstanceTypeProto value);
+  private:
+  ::InstanceTypeProto _internal_type() const;
+  void _internal_set_type(::InstanceTypeProto value);
+  public:
+
+  // bool boolean = 11;
+  void clear_boolean();
+  bool boolean() const;
+  void set_boolean(bool value);
+  private:
+  bool _internal_boolean() const;
+  void _internal_set_boolean(bool value);
+  public:
+
+  // double float = 10;
+  void clear_float_();
+  double float_() const;
+  void set_float_(double value);
+  private:
+  double _internal_float_() const;
+  void _internal_set_float_(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:InstanceProto)
  private:
   class _Internal;
 
@@ -1935,25 +1096,21 @@ class Data final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      Data_DictEntry_DoNotUse,
-      std::string, ::Data,
+      InstanceProto_DictEntry_DoNotUse,
+      std::string, ::InstanceProto,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> dict_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      Data_ListEntry_DoNotUse,
-      int32_t, ::Data,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> list_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_type_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InstanceProto > list_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr raw_data_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
-  ::Tensor* box_;
-  ::Tensor* multi_binary_;
-  ::Tensor* multi_discrete_;
-  ::Graph* graph_;
-  ::Image* image_;
-  int space_type_;
-  int32_t discrete_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr json_;
+  ::TensorProto* tensor_;
+  ::GraphProto* graph_;
+  ::ImageProto* image_;
+  int64_t discrete_;
+  int type_;
+  bool boolean_;
+  double float__;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_space_2eproto;
 };
@@ -1966,922 +1123,44 @@ class Data final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Tensor
+// TensorProto
 
-// repeated int32 shape = 1;
-inline int Tensor::_internal_shape_size() const {
-  return shape_.size();
-}
-inline int Tensor::shape_size() const {
-  return _internal_shape_size();
-}
-inline void Tensor::clear_shape() {
-  shape_.Clear();
-}
-inline int32_t Tensor::_internal_shape(int index) const {
-  return shape_.Get(index);
-}
-inline int32_t Tensor::shape(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.shape)
-  return _internal_shape(index);
-}
-inline void Tensor::set_shape(int index, int32_t value) {
-  shape_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.shape)
-}
-inline void Tensor::_internal_add_shape(int32_t value) {
-  shape_.Add(value);
-}
-inline void Tensor::add_shape(int32_t value) {
-  _internal_add_shape(value);
-  // @@protoc_insertion_point(field_add:Tensor.shape)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Tensor::_internal_shape() const {
-  return shape_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Tensor::shape() const {
-  // @@protoc_insertion_point(field_list:Tensor.shape)
-  return _internal_shape();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Tensor::_internal_mutable_shape() {
-  return &shape_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Tensor::mutable_shape() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.shape)
-  return _internal_mutable_shape();
-}
-
-// .DataType data_type = 2;
-inline void Tensor::clear_data_type() {
-  data_type_ = 0;
-}
-inline ::DataType Tensor::_internal_data_type() const {
-  return static_cast< ::DataType >(data_type_);
-}
-inline ::DataType Tensor::data_type() const {
-  // @@protoc_insertion_point(field_get:Tensor.data_type)
-  return _internal_data_type();
-}
-inline void Tensor::_internal_set_data_type(::DataType value) {
-  
-  data_type_ = value;
-}
-inline void Tensor::set_data_type(::DataType value) {
-  _internal_set_data_type(value);
-  // @@protoc_insertion_point(field_set:Tensor.data_type)
-}
-
-// repeated float float_array = 3;
-inline int Tensor::_internal_float_array_size() const {
-  return float_array_.size();
-}
-inline int Tensor::float_array_size() const {
-  return _internal_float_array_size();
-}
-inline void Tensor::clear_float_array() {
-  float_array_.Clear();
-}
-inline float Tensor::_internal_float_array(int index) const {
-  return float_array_.Get(index);
-}
-inline float Tensor::float_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.float_array)
-  return _internal_float_array(index);
-}
-inline void Tensor::set_float_array(int index, float value) {
-  float_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.float_array)
-}
-inline void Tensor::_internal_add_float_array(float value) {
-  float_array_.Add(value);
-}
-inline void Tensor::add_float_array(float value) {
-  _internal_add_float_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.float_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Tensor::_internal_float_array() const {
-  return float_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Tensor::float_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.float_array)
-  return _internal_float_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Tensor::_internal_mutable_float_array() {
-  return &float_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Tensor::mutable_float_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.float_array)
-  return _internal_mutable_float_array();
-}
-
-// repeated double double_array = 4;
-inline int Tensor::_internal_double_array_size() const {
-  return double_array_.size();
-}
-inline int Tensor::double_array_size() const {
-  return _internal_double_array_size();
-}
-inline void Tensor::clear_double_array() {
-  double_array_.Clear();
-}
-inline double Tensor::_internal_double_array(int index) const {
-  return double_array_.Get(index);
-}
-inline double Tensor::double_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.double_array)
-  return _internal_double_array(index);
-}
-inline void Tensor::set_double_array(int index, double value) {
-  double_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.double_array)
-}
-inline void Tensor::_internal_add_double_array(double value) {
-  double_array_.Add(value);
-}
-inline void Tensor::add_double_array(double value) {
-  _internal_add_double_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.double_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
-Tensor::_internal_double_array() const {
-  return double_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
-Tensor::double_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.double_array)
-  return _internal_double_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
-Tensor::_internal_mutable_double_array() {
-  return &double_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
-Tensor::mutable_double_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.double_array)
-  return _internal_mutable_double_array();
-}
-
-// repeated sint32 int_array = 5;
-inline int Tensor::_internal_int_array_size() const {
-  return int_array_.size();
-}
-inline int Tensor::int_array_size() const {
-  return _internal_int_array_size();
-}
-inline void Tensor::clear_int_array() {
-  int_array_.Clear();
-}
-inline int32_t Tensor::_internal_int_array(int index) const {
-  return int_array_.Get(index);
-}
-inline int32_t Tensor::int_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.int_array)
-  return _internal_int_array(index);
-}
-inline void Tensor::set_int_array(int index, int32_t value) {
-  int_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.int_array)
-}
-inline void Tensor::_internal_add_int_array(int32_t value) {
-  int_array_.Add(value);
-}
-inline void Tensor::add_int_array(int32_t value) {
-  _internal_add_int_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.int_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Tensor::_internal_int_array() const {
-  return int_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Tensor::int_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.int_array)
-  return _internal_int_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Tensor::_internal_mutable_int_array() {
-  return &int_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Tensor::mutable_int_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.int_array)
-  return _internal_mutable_int_array();
-}
-
-// repeated sint64 long_array = 6;
-inline int Tensor::_internal_long_array_size() const {
-  return long_array_.size();
-}
-inline int Tensor::long_array_size() const {
-  return _internal_long_array_size();
-}
-inline void Tensor::clear_long_array() {
-  long_array_.Clear();
-}
-inline int64_t Tensor::_internal_long_array(int index) const {
-  return long_array_.Get(index);
-}
-inline int64_t Tensor::long_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.long_array)
-  return _internal_long_array(index);
-}
-inline void Tensor::set_long_array(int index, int64_t value) {
-  long_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.long_array)
-}
-inline void Tensor::_internal_add_long_array(int64_t value) {
-  long_array_.Add(value);
-}
-inline void Tensor::add_long_array(int64_t value) {
-  _internal_add_long_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.long_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Tensor::_internal_long_array() const {
-  return long_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Tensor::long_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.long_array)
-  return _internal_long_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Tensor::_internal_mutable_long_array() {
-  return &long_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Tensor::mutable_long_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.long_array)
-  return _internal_mutable_long_array();
-}
-
-// repeated uint32 unsigned_int_array = 7;
-inline int Tensor::_internal_unsigned_int_array_size() const {
-  return unsigned_int_array_.size();
-}
-inline int Tensor::unsigned_int_array_size() const {
-  return _internal_unsigned_int_array_size();
-}
-inline void Tensor::clear_unsigned_int_array() {
-  unsigned_int_array_.Clear();
-}
-inline uint32_t Tensor::_internal_unsigned_int_array(int index) const {
-  return unsigned_int_array_.Get(index);
-}
-inline uint32_t Tensor::unsigned_int_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.unsigned_int_array)
-  return _internal_unsigned_int_array(index);
-}
-inline void Tensor::set_unsigned_int_array(int index, uint32_t value) {
-  unsigned_int_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.unsigned_int_array)
-}
-inline void Tensor::_internal_add_unsigned_int_array(uint32_t value) {
-  unsigned_int_array_.Add(value);
-}
-inline void Tensor::add_unsigned_int_array(uint32_t value) {
-  _internal_add_unsigned_int_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.unsigned_int_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-Tensor::_internal_unsigned_int_array() const {
-  return unsigned_int_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-Tensor::unsigned_int_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.unsigned_int_array)
-  return _internal_unsigned_int_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-Tensor::_internal_mutable_unsigned_int_array() {
-  return &unsigned_int_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-Tensor::mutable_unsigned_int_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.unsigned_int_array)
-  return _internal_mutable_unsigned_int_array();
-}
-
-// repeated uint64 unsigned_long_array = 8;
-inline int Tensor::_internal_unsigned_long_array_size() const {
-  return unsigned_long_array_.size();
-}
-inline int Tensor::unsigned_long_array_size() const {
-  return _internal_unsigned_long_array_size();
-}
-inline void Tensor::clear_unsigned_long_array() {
-  unsigned_long_array_.Clear();
-}
-inline uint64_t Tensor::_internal_unsigned_long_array(int index) const {
-  return unsigned_long_array_.Get(index);
-}
-inline uint64_t Tensor::unsigned_long_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.unsigned_long_array)
-  return _internal_unsigned_long_array(index);
-}
-inline void Tensor::set_unsigned_long_array(int index, uint64_t value) {
-  unsigned_long_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.unsigned_long_array)
-}
-inline void Tensor::_internal_add_unsigned_long_array(uint64_t value) {
-  unsigned_long_array_.Add(value);
-}
-inline void Tensor::add_unsigned_long_array(uint64_t value) {
-  _internal_add_unsigned_long_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.unsigned_long_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-Tensor::_internal_unsigned_long_array() const {
-  return unsigned_long_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
-Tensor::unsigned_long_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.unsigned_long_array)
-  return _internal_unsigned_long_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-Tensor::_internal_mutable_unsigned_long_array() {
-  return &unsigned_long_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
-Tensor::mutable_unsigned_long_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.unsigned_long_array)
-  return _internal_mutable_unsigned_long_array();
-}
-
-// repeated bool bool_array = 9;
-inline int Tensor::_internal_bool_array_size() const {
-  return bool_array_.size();
-}
-inline int Tensor::bool_array_size() const {
-  return _internal_bool_array_size();
-}
-inline void Tensor::clear_bool_array() {
-  bool_array_.Clear();
-}
-inline bool Tensor::_internal_bool_array(int index) const {
-  return bool_array_.Get(index);
-}
-inline bool Tensor::bool_array(int index) const {
-  // @@protoc_insertion_point(field_get:Tensor.bool_array)
-  return _internal_bool_array(index);
-}
-inline void Tensor::set_bool_array(int index, bool value) {
-  bool_array_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Tensor.bool_array)
-}
-inline void Tensor::_internal_add_bool_array(bool value) {
-  bool_array_.Add(value);
-}
-inline void Tensor::add_bool_array(bool value) {
-  _internal_add_bool_array(value);
-  // @@protoc_insertion_point(field_add:Tensor.bool_array)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-Tensor::_internal_bool_array() const {
-  return bool_array_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-Tensor::bool_array() const {
-  // @@protoc_insertion_point(field_list:Tensor.bool_array)
-  return _internal_bool_array();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-Tensor::_internal_mutable_bool_array() {
-  return &bool_array_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-Tensor::mutable_bool_array() {
-  // @@protoc_insertion_point(field_mutable_list:Tensor.bool_array)
-  return _internal_mutable_bool_array();
-}
-
-// -------------------------------------------------------------------
-
-// GraphSpace
-
-// .Space node_space = 1;
-inline bool GraphSpace::_internal_has_node_space() const {
-  return this != internal_default_instance() && node_space_ != nullptr;
-}
-inline bool GraphSpace::has_node_space() const {
-  return _internal_has_node_space();
-}
-inline void GraphSpace::clear_node_space() {
-  if (GetArenaForAllocation() == nullptr && node_space_ != nullptr) {
-    delete node_space_;
-  }
-  node_space_ = nullptr;
-}
-inline const ::Space& GraphSpace::_internal_node_space() const {
-  const ::Space* p = node_space_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Space&>(
-      ::_Space_default_instance_);
-}
-inline const ::Space& GraphSpace::node_space() const {
-  // @@protoc_insertion_point(field_get:GraphSpace.node_space)
-  return _internal_node_space();
-}
-inline void GraphSpace::unsafe_arena_set_allocated_node_space(
-    ::Space* node_space) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(node_space_);
-  }
-  node_space_ = node_space;
-  if (node_space) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GraphSpace.node_space)
-}
-inline ::Space* GraphSpace::release_node_space() {
-  
-  ::Space* temp = node_space_;
-  node_space_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Space* GraphSpace::unsafe_arena_release_node_space() {
-  // @@protoc_insertion_point(field_release:GraphSpace.node_space)
-  
-  ::Space* temp = node_space_;
-  node_space_ = nullptr;
-  return temp;
-}
-inline ::Space* GraphSpace::_internal_mutable_node_space() {
-  
-  if (node_space_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Space>(GetArenaForAllocation());
-    node_space_ = p;
-  }
-  return node_space_;
-}
-inline ::Space* GraphSpace::mutable_node_space() {
-  ::Space* _msg = _internal_mutable_node_space();
-  // @@protoc_insertion_point(field_mutable:GraphSpace.node_space)
-  return _msg;
-}
-inline void GraphSpace::set_allocated_node_space(::Space* node_space) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete node_space_;
-  }
-  if (node_space) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Space>::GetOwningArena(node_space);
-    if (message_arena != submessage_arena) {
-      node_space = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, node_space, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  node_space_ = node_space;
-  // @@protoc_insertion_point(field_set_allocated:GraphSpace.node_space)
-}
-
-// .Space edge_space = 2;
-inline bool GraphSpace::_internal_has_edge_space() const {
-  return this != internal_default_instance() && edge_space_ != nullptr;
-}
-inline bool GraphSpace::has_edge_space() const {
-  return _internal_has_edge_space();
-}
-inline void GraphSpace::clear_edge_space() {
-  if (GetArenaForAllocation() == nullptr && edge_space_ != nullptr) {
-    delete edge_space_;
-  }
-  edge_space_ = nullptr;
-}
-inline const ::Space& GraphSpace::_internal_edge_space() const {
-  const ::Space* p = edge_space_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Space&>(
-      ::_Space_default_instance_);
-}
-inline const ::Space& GraphSpace::edge_space() const {
-  // @@protoc_insertion_point(field_get:GraphSpace.edge_space)
-  return _internal_edge_space();
-}
-inline void GraphSpace::unsafe_arena_set_allocated_edge_space(
-    ::Space* edge_space) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edge_space_);
-  }
-  edge_space_ = edge_space;
-  if (edge_space) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GraphSpace.edge_space)
-}
-inline ::Space* GraphSpace::release_edge_space() {
-  
-  ::Space* temp = edge_space_;
-  edge_space_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Space* GraphSpace::unsafe_arena_release_edge_space() {
-  // @@protoc_insertion_point(field_release:GraphSpace.edge_space)
-  
-  ::Space* temp = edge_space_;
-  edge_space_ = nullptr;
-  return temp;
-}
-inline ::Space* GraphSpace::_internal_mutable_edge_space() {
-  
-  if (edge_space_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Space>(GetArenaForAllocation());
-    edge_space_ = p;
-  }
-  return edge_space_;
-}
-inline ::Space* GraphSpace::mutable_edge_space() {
-  ::Space* _msg = _internal_mutable_edge_space();
-  // @@protoc_insertion_point(field_mutable:GraphSpace.edge_space)
-  return _msg;
-}
-inline void GraphSpace::set_allocated_edge_space(::Space* edge_space) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete edge_space_;
-  }
-  if (edge_space) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Space>::GetOwningArena(edge_space);
-    if (message_arena != submessage_arena) {
-      edge_space = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, edge_space, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  edge_space_ = edge_space;
-  // @@protoc_insertion_point(field_set_allocated:GraphSpace.edge_space)
-}
-
-// -------------------------------------------------------------------
-
-// Graph
-
-// .Tensor nodes = 1;
-inline bool Graph::_internal_has_nodes() const {
-  return this != internal_default_instance() && nodes_ != nullptr;
-}
-inline bool Graph::has_nodes() const {
-  return _internal_has_nodes();
-}
-inline void Graph::clear_nodes() {
-  if (GetArenaForAllocation() == nullptr && nodes_ != nullptr) {
-    delete nodes_;
-  }
-  nodes_ = nullptr;
-}
-inline const ::Tensor& Graph::_internal_nodes() const {
-  const ::Tensor* p = nodes_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
-}
-inline const ::Tensor& Graph::nodes() const {
-  // @@protoc_insertion_point(field_get:Graph.nodes)
-  return _internal_nodes();
-}
-inline void Graph::unsafe_arena_set_allocated_nodes(
-    ::Tensor* nodes) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(nodes_);
-  }
-  nodes_ = nodes;
-  if (nodes) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Graph.nodes)
-}
-inline ::Tensor* Graph::release_nodes() {
-  
-  ::Tensor* temp = nodes_;
-  nodes_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Tensor* Graph::unsafe_arena_release_nodes() {
-  // @@protoc_insertion_point(field_release:Graph.nodes)
-  
-  ::Tensor* temp = nodes_;
-  nodes_ = nullptr;
-  return temp;
-}
-inline ::Tensor* Graph::_internal_mutable_nodes() {
-  
-  if (nodes_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    nodes_ = p;
-  }
-  return nodes_;
-}
-inline ::Tensor* Graph::mutable_nodes() {
-  ::Tensor* _msg = _internal_mutable_nodes();
-  // @@protoc_insertion_point(field_mutable:Graph.nodes)
-  return _msg;
-}
-inline void Graph::set_allocated_nodes(::Tensor* nodes) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete nodes_;
-  }
-  if (nodes) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(nodes);
-    if (message_arena != submessage_arena) {
-      nodes = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, nodes, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  nodes_ = nodes;
-  // @@protoc_insertion_point(field_set_allocated:Graph.nodes)
-}
-
-// .Tensor edges = 2;
-inline bool Graph::_internal_has_edges() const {
-  return this != internal_default_instance() && edges_ != nullptr;
-}
-inline bool Graph::has_edges() const {
-  return _internal_has_edges();
-}
-inline void Graph::clear_edges() {
-  if (GetArenaForAllocation() == nullptr && edges_ != nullptr) {
-    delete edges_;
-  }
-  edges_ = nullptr;
-}
-inline const ::Tensor& Graph::_internal_edges() const {
-  const ::Tensor* p = edges_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
-}
-inline const ::Tensor& Graph::edges() const {
-  // @@protoc_insertion_point(field_get:Graph.edges)
-  return _internal_edges();
-}
-inline void Graph::unsafe_arena_set_allocated_edges(
-    ::Tensor* edges) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edges_);
-  }
-  edges_ = edges;
-  if (edges) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Graph.edges)
-}
-inline ::Tensor* Graph::release_edges() {
-  
-  ::Tensor* temp = edges_;
-  edges_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Tensor* Graph::unsafe_arena_release_edges() {
-  // @@protoc_insertion_point(field_release:Graph.edges)
-  
-  ::Tensor* temp = edges_;
-  edges_ = nullptr;
-  return temp;
-}
-inline ::Tensor* Graph::_internal_mutable_edges() {
-  
-  if (edges_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    edges_ = p;
-  }
-  return edges_;
-}
-inline ::Tensor* Graph::mutable_edges() {
-  ::Tensor* _msg = _internal_mutable_edges();
-  // @@protoc_insertion_point(field_mutable:Graph.edges)
-  return _msg;
-}
-inline void Graph::set_allocated_edges(::Tensor* edges) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete edges_;
-  }
-  if (edges) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(edges);
-    if (message_arena != submessage_arena) {
-      edges = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, edges, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  edges_ = edges;
-  // @@protoc_insertion_point(field_set_allocated:Graph.edges)
-}
-
-// .Tensor edge_links = 3;
-inline bool Graph::_internal_has_edge_links() const {
-  return this != internal_default_instance() && edge_links_ != nullptr;
-}
-inline bool Graph::has_edge_links() const {
-  return _internal_has_edge_links();
-}
-inline void Graph::clear_edge_links() {
-  if (GetArenaForAllocation() == nullptr && edge_links_ != nullptr) {
-    delete edge_links_;
-  }
-  edge_links_ = nullptr;
-}
-inline const ::Tensor& Graph::_internal_edge_links() const {
-  const ::Tensor* p = edge_links_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
-}
-inline const ::Tensor& Graph::edge_links() const {
-  // @@protoc_insertion_point(field_get:Graph.edge_links)
-  return _internal_edge_links();
-}
-inline void Graph::unsafe_arena_set_allocated_edge_links(
-    ::Tensor* edge_links) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edge_links_);
-  }
-  edge_links_ = edge_links;
-  if (edge_links) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Graph.edge_links)
-}
-inline ::Tensor* Graph::release_edge_links() {
-  
-  ::Tensor* temp = edge_links_;
-  edge_links_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Tensor* Graph::unsafe_arena_release_edge_links() {
-  // @@protoc_insertion_point(field_release:Graph.edge_links)
-  
-  ::Tensor* temp = edge_links_;
-  edge_links_ = nullptr;
-  return temp;
-}
-inline ::Tensor* Graph::_internal_mutable_edge_links() {
-  
-  if (edge_links_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    edge_links_ = p;
-  }
-  return edge_links_;
-}
-inline ::Tensor* Graph::mutable_edge_links() {
-  ::Tensor* _msg = _internal_mutable_edge_links();
-  // @@protoc_insertion_point(field_mutable:Graph.edge_links)
-  return _msg;
-}
-inline void Graph::set_allocated_edge_links(::Tensor* edge_links) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete edge_links_;
-  }
-  if (edge_links) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(edge_links);
-    if (message_arena != submessage_arena) {
-      edge_links = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, edge_links, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  edge_links_ = edge_links;
-  // @@protoc_insertion_point(field_set_allocated:Graph.edge_links)
-}
-
-// -------------------------------------------------------------------
-
-// Image
-
-// .CompressionType compression_type = 1;
-inline void Image::clear_compression_type() {
-  compression_type_ = 0;
-}
-inline ::CompressionType Image::_internal_compression_type() const {
-  return static_cast< ::CompressionType >(compression_type_);
-}
-inline ::CompressionType Image::compression_type() const {
-  // @@protoc_insertion_point(field_get:Image.compression_type)
-  return _internal_compression_type();
-}
-inline void Image::_internal_set_compression_type(::CompressionType value) {
-  
-  compression_type_ = value;
-}
-inline void Image::set_compression_type(::CompressionType value) {
-  _internal_set_compression_type(value);
-  // @@protoc_insertion_point(field_set:Image.compression_type)
-}
-
-// bytes data = 2;
-inline void Image::clear_data() {
+// bytes data = 1;
+inline void TensorProto::clear_data() {
   data_.ClearToEmpty();
 }
-inline const std::string& Image::data() const {
-  // @@protoc_insertion_point(field_get:Image.data)
+inline const std::string& TensorProto::data() const {
+  // @@protoc_insertion_point(field_get:TensorProto.data)
   return _internal_data();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Image::set_data(ArgT0&& arg0, ArgT... args) {
+void TensorProto::set_data(ArgT0&& arg0, ArgT... args) {
  
  data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Image.data)
+  // @@protoc_insertion_point(field_set:TensorProto.data)
 }
-inline std::string* Image::mutable_data() {
+inline std::string* TensorProto::mutable_data() {
   std::string* _s = _internal_mutable_data();
-  // @@protoc_insertion_point(field_mutable:Image.data)
+  // @@protoc_insertion_point(field_mutable:TensorProto.data)
   return _s;
 }
-inline const std::string& Image::_internal_data() const {
+inline const std::string& TensorProto::_internal_data() const {
   return data_.Get();
 }
-inline void Image::_internal_set_data(const std::string& value) {
+inline void TensorProto::_internal_set_data(const std::string& value) {
   
   data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Image::_internal_mutable_data() {
+inline std::string* TensorProto::_internal_mutable_data() {
   
   return data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Image::release_data() {
-  // @@protoc_insertion_point(field_release:Image.data)
+inline std::string* TensorProto::release_data() {
+  // @@protoc_insertion_point(field_release:TensorProto.data)
   return data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Image::set_allocated_data(std::string* data) {
+inline void TensorProto::set_allocated_data(std::string* data) {
   if (data != nullptr) {
     
   } else {
@@ -2894,633 +1173,150 @@ inline void Image::set_allocated_data(std::string* data) {
     data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Image.data)
+  // @@protoc_insertion_point(field_set_allocated:TensorProto.data)
 }
 
-// repeated int32 shape = 3;
-inline int Image::_internal_shape_size() const {
-  return shape_.size();
+// string dtype = 2;
+inline void TensorProto::clear_dtype() {
+  dtype_.ClearToEmpty();
 }
-inline int Image::shape_size() const {
-  return _internal_shape_size();
-}
-inline void Image::clear_shape() {
-  shape_.Clear();
-}
-inline int32_t Image::_internal_shape(int index) const {
-  return shape_.Get(index);
-}
-inline int32_t Image::shape(int index) const {
-  // @@protoc_insertion_point(field_get:Image.shape)
-  return _internal_shape(index);
-}
-inline void Image::set_shape(int index, int32_t value) {
-  shape_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Image.shape)
-}
-inline void Image::_internal_add_shape(int32_t value) {
-  shape_.Add(value);
-}
-inline void Image::add_shape(int32_t value) {
-  _internal_add_shape(value);
-  // @@protoc_insertion_point(field_add:Image.shape)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Image::_internal_shape() const {
-  return shape_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Image::shape() const {
-  // @@protoc_insertion_point(field_list:Image.shape)
-  return _internal_shape();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Image::_internal_mutable_shape() {
-  return &shape_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Image::mutable_shape() {
-  // @@protoc_insertion_point(field_mutable_list:Image.shape)
-  return _internal_mutable_shape();
-}
-
-// repeated int32 dimension_mapping = 4;
-inline int Image::_internal_dimension_mapping_size() const {
-  return dimension_mapping_.size();
-}
-inline int Image::dimension_mapping_size() const {
-  return _internal_dimension_mapping_size();
-}
-inline void Image::clear_dimension_mapping() {
-  dimension_mapping_.Clear();
-}
-inline int32_t Image::_internal_dimension_mapping(int index) const {
-  return dimension_mapping_.Get(index);
-}
-inline int32_t Image::dimension_mapping(int index) const {
-  // @@protoc_insertion_point(field_get:Image.dimension_mapping)
-  return _internal_dimension_mapping(index);
-}
-inline void Image::set_dimension_mapping(int index, int32_t value) {
-  dimension_mapping_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Image.dimension_mapping)
-}
-inline void Image::_internal_add_dimension_mapping(int32_t value) {
-  dimension_mapping_.Add(value);
-}
-inline void Image::add_dimension_mapping(int32_t value) {
-  _internal_add_dimension_mapping(value);
-  // @@protoc_insertion_point(field_add:Image.dimension_mapping)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Image::_internal_dimension_mapping() const {
-  return dimension_mapping_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Image::dimension_mapping() const {
-  // @@protoc_insertion_point(field_list:Image.dimension_mapping)
-  return _internal_dimension_mapping();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Image::_internal_mutable_dimension_mapping() {
-  return &dimension_mapping_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Image::mutable_dimension_mapping() {
-  // @@protoc_insertion_point(field_mutable_list:Image.dimension_mapping)
-  return _internal_mutable_dimension_mapping();
-}
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// Space
-
-// .SpaceType space_type = 1;
-inline void Space::clear_space_type() {
-  space_type_ = 0;
-}
-inline ::SpaceType Space::_internal_space_type() const {
-  return static_cast< ::SpaceType >(space_type_);
-}
-inline ::SpaceType Space::space_type() const {
-  // @@protoc_insertion_point(field_get:Space.space_type)
-  return _internal_space_type();
-}
-inline void Space::_internal_set_space_type(::SpaceType value) {
-  
-  space_type_ = value;
-}
-inline void Space::set_space_type(::SpaceType value) {
-  _internal_set_space_type(value);
-  // @@protoc_insertion_point(field_set:Space.space_type)
-}
-
-// string description = 2;
-inline void Space::clear_description() {
-  description_.ClearToEmpty();
-}
-inline const std::string& Space::description() const {
-  // @@protoc_insertion_point(field_get:Space.description)
-  return _internal_description();
+inline const std::string& TensorProto::dtype() const {
+  // @@protoc_insertion_point(field_get:TensorProto.dtype)
+  return _internal_dtype();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Space::set_description(ArgT0&& arg0, ArgT... args) {
+void TensorProto::set_dtype(ArgT0&& arg0, ArgT... args) {
  
- description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Space.description)
+ dtype_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:TensorProto.dtype)
 }
-inline std::string* Space::mutable_description() {
-  std::string* _s = _internal_mutable_description();
-  // @@protoc_insertion_point(field_mutable:Space.description)
+inline std::string* TensorProto::mutable_dtype() {
+  std::string* _s = _internal_mutable_dtype();
+  // @@protoc_insertion_point(field_mutable:TensorProto.dtype)
   return _s;
 }
-inline const std::string& Space::_internal_description() const {
-  return description_.Get();
+inline const std::string& TensorProto::_internal_dtype() const {
+  return dtype_.Get();
 }
-inline void Space::_internal_set_description(const std::string& value) {
+inline void TensorProto::_internal_set_dtype(const std::string& value) {
   
-  description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  dtype_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Space::_internal_mutable_description() {
+inline std::string* TensorProto::_internal_mutable_dtype() {
   
-  return description_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return dtype_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Space::release_description() {
-  // @@protoc_insertion_point(field_release:Space.description)
-  return description_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* TensorProto::release_dtype() {
+  // @@protoc_insertion_point(field_release:TensorProto.dtype)
+  return dtype_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Space::set_allocated_description(std::string* description) {
-  if (description != nullptr) {
+inline void TensorProto::set_allocated_dtype(std::string* dtype) {
+  if (dtype != nullptr) {
     
   } else {
     
   }
-  description_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), description,
+  dtype_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dtype,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (description_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    description_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (dtype_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dtype_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Space.description)
+  // @@protoc_insertion_point(field_set_allocated:TensorProto.dtype)
 }
 
 // repeated int32 shape = 3;
-inline int Space::_internal_shape_size() const {
+inline int TensorProto::_internal_shape_size() const {
   return shape_.size();
 }
-inline int Space::shape_size() const {
+inline int TensorProto::shape_size() const {
   return _internal_shape_size();
 }
-inline void Space::clear_shape() {
+inline void TensorProto::clear_shape() {
   shape_.Clear();
 }
-inline int32_t Space::_internal_shape(int index) const {
+inline int32_t TensorProto::_internal_shape(int index) const {
   return shape_.Get(index);
 }
-inline int32_t Space::shape(int index) const {
-  // @@protoc_insertion_point(field_get:Space.shape)
+inline int32_t TensorProto::shape(int index) const {
+  // @@protoc_insertion_point(field_get:TensorProto.shape)
   return _internal_shape(index);
 }
-inline void Space::set_shape(int index, int32_t value) {
+inline void TensorProto::set_shape(int index, int32_t value) {
   shape_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Space.shape)
+  // @@protoc_insertion_point(field_set:TensorProto.shape)
 }
-inline void Space::_internal_add_shape(int32_t value) {
+inline void TensorProto::_internal_add_shape(int32_t value) {
   shape_.Add(value);
 }
-inline void Space::add_shape(int32_t value) {
+inline void TensorProto::add_shape(int32_t value) {
   _internal_add_shape(value);
-  // @@protoc_insertion_point(field_add:Space.shape)
+  // @@protoc_insertion_point(field_add:TensorProto.shape)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Space::_internal_shape() const {
+TensorProto::_internal_shape() const {
   return shape_;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Space::shape() const {
-  // @@protoc_insertion_point(field_list:Space.shape)
+TensorProto::shape() const {
+  // @@protoc_insertion_point(field_list:TensorProto.shape)
   return _internal_shape();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Space::_internal_mutable_shape() {
+TensorProto::_internal_mutable_shape() {
   return &shape_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Space::mutable_shape() {
-  // @@protoc_insertion_point(field_mutable_list:Space.shape)
+TensorProto::mutable_shape() {
+  // @@protoc_insertion_point(field_mutable_list:TensorProto.shape)
   return _internal_mutable_shape();
 }
 
-// string data_type = 4;
-inline void Space::clear_data_type() {
-  data_type_.ClearToEmpty();
+// -------------------------------------------------------------------
+
+// GraphProto
+
+// .TensorProto nodes = 1;
+inline bool GraphProto::_internal_has_nodes() const {
+  return this != internal_default_instance() && nodes_ != nullptr;
 }
-inline const std::string& Space::data_type() const {
-  // @@protoc_insertion_point(field_get:Space.data_type)
-  return _internal_data_type();
+inline bool GraphProto::has_nodes() const {
+  return _internal_has_nodes();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void Space::set_data_type(ArgT0&& arg0, ArgT... args) {
- 
- data_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Space.data_type)
-}
-inline std::string* Space::mutable_data_type() {
-  std::string* _s = _internal_mutable_data_type();
-  // @@protoc_insertion_point(field_mutable:Space.data_type)
-  return _s;
-}
-inline const std::string& Space::_internal_data_type() const {
-  return data_type_.Get();
-}
-inline void Space::_internal_set_data_type(const std::string& value) {
-  
-  data_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* Space::_internal_mutable_data_type() {
-  
-  return data_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* Space::release_data_type() {
-  // @@protoc_insertion_point(field_release:Space.data_type)
-  return data_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void Space::set_allocated_data_type(std::string* data_type) {
-  if (data_type != nullptr) {
-    
-  } else {
-    
+inline void GraphProto::clear_nodes() {
+  if (GetArenaForAllocation() == nullptr && nodes_ != nullptr) {
+    delete nodes_;
   }
-  data_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data_type,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (data_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    data_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Space.data_type)
-}
-
-// repeated float low = 5;
-inline int Space::_internal_low_size() const {
-  return low_.size();
-}
-inline int Space::low_size() const {
-  return _internal_low_size();
-}
-inline void Space::clear_low() {
-  low_.Clear();
-}
-inline float Space::_internal_low(int index) const {
-  return low_.Get(index);
-}
-inline float Space::low(int index) const {
-  // @@protoc_insertion_point(field_get:Space.low)
-  return _internal_low(index);
-}
-inline void Space::set_low(int index, float value) {
-  low_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Space.low)
-}
-inline void Space::_internal_add_low(float value) {
-  low_.Add(value);
-}
-inline void Space::add_low(float value) {
-  _internal_add_low(value);
-  // @@protoc_insertion_point(field_add:Space.low)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Space::_internal_low() const {
-  return low_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Space::low() const {
-  // @@protoc_insertion_point(field_list:Space.low)
-  return _internal_low();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Space::_internal_mutable_low() {
-  return &low_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Space::mutable_low() {
-  // @@protoc_insertion_point(field_mutable_list:Space.low)
-  return _internal_mutable_low();
-}
-
-// repeated float high = 6;
-inline int Space::_internal_high_size() const {
-  return high_.size();
-}
-inline int Space::high_size() const {
-  return _internal_high_size();
-}
-inline void Space::clear_high() {
-  high_.Clear();
-}
-inline float Space::_internal_high(int index) const {
-  return high_.Get(index);
-}
-inline float Space::high(int index) const {
-  // @@protoc_insertion_point(field_get:Space.high)
-  return _internal_high(index);
-}
-inline void Space::set_high(int index, float value) {
-  high_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Space.high)
-}
-inline void Space::_internal_add_high(float value) {
-  high_.Add(value);
-}
-inline void Space::add_high(float value) {
-  _internal_add_high(value);
-  // @@protoc_insertion_point(field_add:Space.high)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Space::_internal_high() const {
-  return high_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
-Space::high() const {
-  // @@protoc_insertion_point(field_list:Space.high)
-  return _internal_high();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Space::_internal_mutable_high() {
-  return &high_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
-Space::mutable_high() {
-  // @@protoc_insertion_point(field_mutable_list:Space.high)
-  return _internal_mutable_high();
-}
-
-// int32 min = 7;
-inline void Space::clear_min() {
-  min_ = 0;
-}
-inline int32_t Space::_internal_min() const {
-  return min_;
-}
-inline int32_t Space::min() const {
-  // @@protoc_insertion_point(field_get:Space.min)
-  return _internal_min();
-}
-inline void Space::_internal_set_min(int32_t value) {
-  
-  min_ = value;
-}
-inline void Space::set_min(int32_t value) {
-  _internal_set_min(value);
-  // @@protoc_insertion_point(field_set:Space.min)
-}
-
-// int32 max = 8;
-inline void Space::clear_max() {
-  max_ = 0;
-}
-inline int32_t Space::_internal_max() const {
-  return max_;
-}
-inline int32_t Space::max() const {
-  // @@protoc_insertion_point(field_get:Space.max)
-  return _internal_max();
-}
-inline void Space::_internal_set_max(int32_t value) {
-  
-  max_ = value;
-}
-inline void Space::set_max(int32_t value) {
-  _internal_set_max(value);
-  // @@protoc_insertion_point(field_set:Space.max)
-}
-
-// repeated int32 nvec = 9;
-inline int Space::_internal_nvec_size() const {
-  return nvec_.size();
-}
-inline int Space::nvec_size() const {
-  return _internal_nvec_size();
-}
-inline void Space::clear_nvec() {
-  nvec_.Clear();
-}
-inline int32_t Space::_internal_nvec(int index) const {
-  return nvec_.Get(index);
-}
-inline int32_t Space::nvec(int index) const {
-  // @@protoc_insertion_point(field_get:Space.nvec)
-  return _internal_nvec(index);
-}
-inline void Space::set_nvec(int index, int32_t value) {
-  nvec_.Set(index, value);
-  // @@protoc_insertion_point(field_set:Space.nvec)
-}
-inline void Space::_internal_add_nvec(int32_t value) {
-  nvec_.Add(value);
-}
-inline void Space::add_nvec(int32_t value) {
-  _internal_add_nvec(value);
-  // @@protoc_insertion_point(field_add:Space.nvec)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Space::_internal_nvec() const {
-  return nvec_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-Space::nvec() const {
-  // @@protoc_insertion_point(field_list:Space.nvec)
-  return _internal_nvec();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Space::_internal_mutable_nvec() {
-  return &nvec_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-Space::mutable_nvec() {
-  // @@protoc_insertion_point(field_mutable_list:Space.nvec)
-  return _internal_mutable_nvec();
-}
-
-// repeated string charset = 10;
-inline int Space::_internal_charset_size() const {
-  return charset_.size();
-}
-inline int Space::charset_size() const {
-  return _internal_charset_size();
-}
-inline void Space::clear_charset() {
-  charset_.Clear();
-}
-inline std::string* Space::add_charset() {
-  std::string* _s = _internal_add_charset();
-  // @@protoc_insertion_point(field_add_mutable:Space.charset)
-  return _s;
-}
-inline const std::string& Space::_internal_charset(int index) const {
-  return charset_.Get(index);
-}
-inline const std::string& Space::charset(int index) const {
-  // @@protoc_insertion_point(field_get:Space.charset)
-  return _internal_charset(index);
-}
-inline std::string* Space::mutable_charset(int index) {
-  // @@protoc_insertion_point(field_mutable:Space.charset)
-  return charset_.Mutable(index);
-}
-inline void Space::set_charset(int index, const std::string& value) {
-  charset_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:Space.charset)
-}
-inline void Space::set_charset(int index, std::string&& value) {
-  charset_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:Space.charset)
-}
-inline void Space::set_charset(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  charset_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:Space.charset)
-}
-inline void Space::set_charset(int index, const char* value, size_t size) {
-  charset_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:Space.charset)
-}
-inline std::string* Space::_internal_add_charset() {
-  return charset_.Add();
-}
-inline void Space::add_charset(const std::string& value) {
-  charset_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:Space.charset)
-}
-inline void Space::add_charset(std::string&& value) {
-  charset_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:Space.charset)
-}
-inline void Space::add_charset(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  charset_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:Space.charset)
-}
-inline void Space::add_charset(const char* value, size_t size) {
-  charset_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:Space.charset)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-Space::charset() const {
-  // @@protoc_insertion_point(field_list:Space.charset)
-  return charset_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-Space::mutable_charset() {
-  // @@protoc_insertion_point(field_mutable_list:Space.charset)
-  return &charset_;
-}
-
-// map<string, .Space> dict_space = 11;
-inline int Space::_internal_dict_space_size() const {
-  return dict_space_.size();
-}
-inline int Space::dict_space_size() const {
-  return _internal_dict_space_size();
-}
-inline void Space::clear_dict_space() {
-  dict_space_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >&
-Space::_internal_dict_space() const {
-  return dict_space_.GetMap();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >&
-Space::dict_space() const {
-  // @@protoc_insertion_point(field_map:Space.dict_space)
-  return _internal_dict_space();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >*
-Space::_internal_mutable_dict_space() {
-  return dict_space_.MutableMap();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Space >*
-Space::mutable_dict_space() {
-  // @@protoc_insertion_point(field_mutable_map:Space.dict_space)
-  return _internal_mutable_dict_space();
-}
-
-// map<int32, .Space> list_space = 12;
-inline int Space::_internal_list_space_size() const {
-  return list_space_.size();
-}
-inline int Space::list_space_size() const {
-  return _internal_list_space_size();
-}
-inline void Space::clear_list_space() {
-  list_space_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >&
-Space::_internal_list_space() const {
-  return list_space_.GetMap();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >&
-Space::list_space() const {
-  // @@protoc_insertion_point(field_map:Space.list_space)
-  return _internal_list_space();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >*
-Space::_internal_mutable_list_space() {
-  return list_space_.MutableMap();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Space >*
-Space::mutable_list_space() {
-  // @@protoc_insertion_point(field_mutable_map:Space.list_space)
-  return _internal_mutable_list_space();
-}
-
-// .GraphSpace graph_space = 13;
-inline bool Space::_internal_has_graph_space() const {
-  return this != internal_default_instance() && graph_space_ != nullptr;
-}
-inline bool Space::has_graph_space() const {
-  return _internal_has_graph_space();
-}
-inline void Space::clear_graph_space() {
-  if (GetArenaForAllocation() == nullptr && graph_space_ != nullptr) {
-    delete graph_space_;
-  }
-  graph_space_ = nullptr;
-}
-inline const ::GraphSpace& Space::_internal_graph_space() const {
-  const ::GraphSpace* p = graph_space_;
-  return p != nullptr ? *p : reinterpret_cast<const ::GraphSpace&>(
-      ::_GraphSpace_default_instance_);
-}
-inline const ::GraphSpace& Space::graph_space() const {
-  // @@protoc_insertion_point(field_get:Space.graph_space)
-  return _internal_graph_space();
-}
-inline void Space::unsafe_arena_set_allocated_graph_space(
-    ::GraphSpace* graph_space) {
+  nodes_ = nullptr;
+}
+inline const ::TensorProto& GraphProto::_internal_nodes() const {
+  const ::TensorProto* p = nodes_;
+  return p != nullptr ? *p : reinterpret_cast<const ::TensorProto&>(
+      ::_TensorProto_default_instance_);
+}
+inline const ::TensorProto& GraphProto::nodes() const {
+  // @@protoc_insertion_point(field_get:GraphProto.nodes)
+  return _internal_nodes();
+}
+inline void GraphProto::unsafe_arena_set_allocated_nodes(
+    ::TensorProto* nodes) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(graph_space_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(nodes_);
   }
-  graph_space_ = graph_space;
-  if (graph_space) {
+  nodes_ = nodes;
+  if (nodes) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Space.graph_space)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GraphProto.nodes)
 }
-inline ::GraphSpace* Space::release_graph_space() {
+inline ::TensorProto* GraphProto::release_nodes() {
   
-  ::GraphSpace* temp = graph_space_;
-  graph_space_ = nullptr;
+  ::TensorProto* temp = nodes_;
+  nodes_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -3532,161 +1328,508 @@ inline ::GraphSpace* Space::release_graph_space() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::GraphSpace* Space::unsafe_arena_release_graph_space() {
-  // @@protoc_insertion_point(field_release:Space.graph_space)
+inline ::TensorProto* GraphProto::unsafe_arena_release_nodes() {
+  // @@protoc_insertion_point(field_release:GraphProto.nodes)
   
-  ::GraphSpace* temp = graph_space_;
-  graph_space_ = nullptr;
+  ::TensorProto* temp = nodes_;
+  nodes_ = nullptr;
   return temp;
 }
-inline ::GraphSpace* Space::_internal_mutable_graph_space() {
+inline ::TensorProto* GraphProto::_internal_mutable_nodes() {
   
-  if (graph_space_ == nullptr) {
-    auto* p = CreateMaybeMessage<::GraphSpace>(GetArenaForAllocation());
-    graph_space_ = p;
+  if (nodes_ == nullptr) {
+    auto* p = CreateMaybeMessage<::TensorProto>(GetArenaForAllocation());
+    nodes_ = p;
   }
-  return graph_space_;
+  return nodes_;
 }
-inline ::GraphSpace* Space::mutable_graph_space() {
-  ::GraphSpace* _msg = _internal_mutable_graph_space();
-  // @@protoc_insertion_point(field_mutable:Space.graph_space)
+inline ::TensorProto* GraphProto::mutable_nodes() {
+  ::TensorProto* _msg = _internal_mutable_nodes();
+  // @@protoc_insertion_point(field_mutable:GraphProto.nodes)
   return _msg;
 }
-inline void Space::set_allocated_graph_space(::GraphSpace* graph_space) {
+inline void GraphProto::set_allocated_nodes(::TensorProto* nodes) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete graph_space_;
+    delete nodes_;
   }
-  if (graph_space) {
+  if (nodes) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GraphSpace>::GetOwningArena(graph_space);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::TensorProto>::GetOwningArena(nodes);
     if (message_arena != submessage_arena) {
-      graph_space = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, graph_space, submessage_arena);
+      nodes = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, nodes, submessage_arena);
     }
     
   } else {
     
   }
-  graph_space_ = graph_space;
-  // @@protoc_insertion_point(field_set_allocated:Space.graph_space)
+  nodes_ = nodes;
+  // @@protoc_insertion_point(field_set_allocated:GraphProto.nodes)
 }
 
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// Data
-
-// .SpaceType space_type = 1;
-inline void Data::clear_space_type() {
-  space_type_ = 0;
+// .TensorProto edges = 2;
+inline bool GraphProto::_internal_has_edges() const {
+  return this != internal_default_instance() && edges_ != nullptr;
 }
-inline ::SpaceType Data::_internal_space_type() const {
-  return static_cast< ::SpaceType >(space_type_);
+inline bool GraphProto::has_edges() const {
+  return _internal_has_edges();
 }
-inline ::SpaceType Data::space_type() const {
-  // @@protoc_insertion_point(field_get:Data.space_type)
-  return _internal_space_type();
+inline void GraphProto::clear_edges() {
+  if (GetArenaForAllocation() == nullptr && edges_ != nullptr) {
+    delete edges_;
+  }
+  edges_ = nullptr;
 }
-inline void Data::_internal_set_space_type(::SpaceType value) {
-  
-  space_type_ = value;
+inline const ::TensorProto& GraphProto::_internal_edges() const {
+  const ::TensorProto* p = edges_;
+  return p != nullptr ? *p : reinterpret_cast<const ::TensorProto&>(
+      ::_TensorProto_default_instance_);
 }
-inline void Data::set_space_type(::SpaceType value) {
-  _internal_set_space_type(value);
-  // @@protoc_insertion_point(field_set:Data.space_type)
+inline const ::TensorProto& GraphProto::edges() const {
+  // @@protoc_insertion_point(field_get:GraphProto.edges)
+  return _internal_edges();
 }
-
-// string data_type = 2;
-inline void Data::clear_data_type() {
-  data_type_.ClearToEmpty();
-}
-inline const std::string& Data::data_type() const {
-  // @@protoc_insertion_point(field_get:Data.data_type)
-  return _internal_data_type();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void Data::set_data_type(ArgT0&& arg0, ArgT... args) {
- 
- data_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Data.data_type)
-}
-inline std::string* Data::mutable_data_type() {
-  std::string* _s = _internal_mutable_data_type();
-  // @@protoc_insertion_point(field_mutable:Data.data_type)
-  return _s;
-}
-inline const std::string& Data::_internal_data_type() const {
-  return data_type_.Get();
-}
-inline void Data::_internal_set_data_type(const std::string& value) {
-  
-  data_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* Data::_internal_mutable_data_type() {
-  
-  return data_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* Data::release_data_type() {
-  // @@protoc_insertion_point(field_release:Data.data_type)
-  return data_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void Data::set_allocated_data_type(std::string* data_type) {
-  if (data_type != nullptr) {
+inline void GraphProto::unsafe_arena_set_allocated_edges(
+    ::TensorProto* edges) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edges_);
+  }
+  edges_ = edges;
+  if (edges) {
     
   } else {
     
   }
-  data_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data_type,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (data_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    data_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GraphProto.edges)
+}
+inline ::TensorProto* GraphProto::release_edges() {
+  
+  ::TensorProto* temp = edges_;
+  edges_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Data.data_type)
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::TensorProto* GraphProto::unsafe_arena_release_edges() {
+  // @@protoc_insertion_point(field_release:GraphProto.edges)
+  
+  ::TensorProto* temp = edges_;
+  edges_ = nullptr;
+  return temp;
+}
+inline ::TensorProto* GraphProto::_internal_mutable_edges() {
+  
+  if (edges_ == nullptr) {
+    auto* p = CreateMaybeMessage<::TensorProto>(GetArenaForAllocation());
+    edges_ = p;
+  }
+  return edges_;
+}
+inline ::TensorProto* GraphProto::mutable_edges() {
+  ::TensorProto* _msg = _internal_mutable_edges();
+  // @@protoc_insertion_point(field_mutable:GraphProto.edges)
+  return _msg;
+}
+inline void GraphProto::set_allocated_edges(::TensorProto* edges) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete edges_;
+  }
+  if (edges) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::TensorProto>::GetOwningArena(edges);
+    if (message_arena != submessage_arena) {
+      edges = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, edges, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  edges_ = edges;
+  // @@protoc_insertion_point(field_set_allocated:GraphProto.edges)
 }
 
-// bytes raw_data = 3;
-inline void Data::clear_raw_data() {
+// .TensorProto edge_links = 3;
+inline bool GraphProto::_internal_has_edge_links() const {
+  return this != internal_default_instance() && edge_links_ != nullptr;
+}
+inline bool GraphProto::has_edge_links() const {
+  return _internal_has_edge_links();
+}
+inline void GraphProto::clear_edge_links() {
+  if (GetArenaForAllocation() == nullptr && edge_links_ != nullptr) {
+    delete edge_links_;
+  }
+  edge_links_ = nullptr;
+}
+inline const ::TensorProto& GraphProto::_internal_edge_links() const {
+  const ::TensorProto* p = edge_links_;
+  return p != nullptr ? *p : reinterpret_cast<const ::TensorProto&>(
+      ::_TensorProto_default_instance_);
+}
+inline const ::TensorProto& GraphProto::edge_links() const {
+  // @@protoc_insertion_point(field_get:GraphProto.edge_links)
+  return _internal_edge_links();
+}
+inline void GraphProto::unsafe_arena_set_allocated_edge_links(
+    ::TensorProto* edge_links) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edge_links_);
+  }
+  edge_links_ = edge_links;
+  if (edge_links) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GraphProto.edge_links)
+}
+inline ::TensorProto* GraphProto::release_edge_links() {
+  
+  ::TensorProto* temp = edge_links_;
+  edge_links_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::TensorProto* GraphProto::unsafe_arena_release_edge_links() {
+  // @@protoc_insertion_point(field_release:GraphProto.edge_links)
+  
+  ::TensorProto* temp = edge_links_;
+  edge_links_ = nullptr;
+  return temp;
+}
+inline ::TensorProto* GraphProto::_internal_mutable_edge_links() {
+  
+  if (edge_links_ == nullptr) {
+    auto* p = CreateMaybeMessage<::TensorProto>(GetArenaForAllocation());
+    edge_links_ = p;
+  }
+  return edge_links_;
+}
+inline ::TensorProto* GraphProto::mutable_edge_links() {
+  ::TensorProto* _msg = _internal_mutable_edge_links();
+  // @@protoc_insertion_point(field_mutable:GraphProto.edge_links)
+  return _msg;
+}
+inline void GraphProto::set_allocated_edge_links(::TensorProto* edge_links) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete edge_links_;
+  }
+  if (edge_links) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::TensorProto>::GetOwningArena(edge_links);
+    if (message_arena != submessage_arena) {
+      edge_links = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, edge_links, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  edge_links_ = edge_links;
+  // @@protoc_insertion_point(field_set_allocated:GraphProto.edge_links)
+}
+
+// -------------------------------------------------------------------
+
+// ImageProto
+
+// .CompressionTypeProto compression_type = 1;
+inline void ImageProto::clear_compression_type() {
+  compression_type_ = 0;
+}
+inline ::CompressionTypeProto ImageProto::_internal_compression_type() const {
+  return static_cast< ::CompressionTypeProto >(compression_type_);
+}
+inline ::CompressionTypeProto ImageProto::compression_type() const {
+  // @@protoc_insertion_point(field_get:ImageProto.compression_type)
+  return _internal_compression_type();
+}
+inline void ImageProto::_internal_set_compression_type(::CompressionTypeProto value) {
+  
+  compression_type_ = value;
+}
+inline void ImageProto::set_compression_type(::CompressionTypeProto value) {
+  _internal_set_compression_type(value);
+  // @@protoc_insertion_point(field_set:ImageProto.compression_type)
+}
+
+// bytes data = 2;
+inline void ImageProto::clear_data() {
+  data_.ClearToEmpty();
+}
+inline const std::string& ImageProto::data() const {
+  // @@protoc_insertion_point(field_get:ImageProto.data)
+  return _internal_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ImageProto::set_data(ArgT0&& arg0, ArgT... args) {
+ 
+ data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ImageProto.data)
+}
+inline std::string* ImageProto::mutable_data() {
+  std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:ImageProto.data)
+  return _s;
+}
+inline const std::string& ImageProto::_internal_data() const {
+  return data_.Get();
+}
+inline void ImageProto::_internal_set_data(const std::string& value) {
+  
+  data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ImageProto::_internal_mutable_data() {
+  
+  return data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ImageProto::release_data() {
+  // @@protoc_insertion_point(field_release:ImageProto.data)
+  return data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ImageProto::set_allocated_data(std::string* data) {
+  if (data != nullptr) {
+    
+  } else {
+    
+  }
+  data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ImageProto.data)
+}
+
+// string dtype = 3;
+inline void ImageProto::clear_dtype() {
+  dtype_.ClearToEmpty();
+}
+inline const std::string& ImageProto::dtype() const {
+  // @@protoc_insertion_point(field_get:ImageProto.dtype)
+  return _internal_dtype();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ImageProto::set_dtype(ArgT0&& arg0, ArgT... args) {
+ 
+ dtype_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ImageProto.dtype)
+}
+inline std::string* ImageProto::mutable_dtype() {
+  std::string* _s = _internal_mutable_dtype();
+  // @@protoc_insertion_point(field_mutable:ImageProto.dtype)
+  return _s;
+}
+inline const std::string& ImageProto::_internal_dtype() const {
+  return dtype_.Get();
+}
+inline void ImageProto::_internal_set_dtype(const std::string& value) {
+  
+  dtype_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ImageProto::_internal_mutable_dtype() {
+  
+  return dtype_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ImageProto::release_dtype() {
+  // @@protoc_insertion_point(field_release:ImageProto.dtype)
+  return dtype_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ImageProto::set_allocated_dtype(std::string* dtype) {
+  if (dtype != nullptr) {
+    
+  } else {
+    
+  }
+  dtype_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dtype,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dtype_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dtype_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ImageProto.dtype)
+}
+
+// repeated int32 shape = 4;
+inline int ImageProto::_internal_shape_size() const {
+  return shape_.size();
+}
+inline int ImageProto::shape_size() const {
+  return _internal_shape_size();
+}
+inline void ImageProto::clear_shape() {
+  shape_.Clear();
+}
+inline int32_t ImageProto::_internal_shape(int index) const {
+  return shape_.Get(index);
+}
+inline int32_t ImageProto::shape(int index) const {
+  // @@protoc_insertion_point(field_get:ImageProto.shape)
+  return _internal_shape(index);
+}
+inline void ImageProto::set_shape(int index, int32_t value) {
+  shape_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ImageProto.shape)
+}
+inline void ImageProto::_internal_add_shape(int32_t value) {
+  shape_.Add(value);
+}
+inline void ImageProto::add_shape(int32_t value) {
+  _internal_add_shape(value);
+  // @@protoc_insertion_point(field_add:ImageProto.shape)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+ImageProto::_internal_shape() const {
+  return shape_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+ImageProto::shape() const {
+  // @@protoc_insertion_point(field_list:ImageProto.shape)
+  return _internal_shape();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+ImageProto::_internal_mutable_shape() {
+  return &shape_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+ImageProto::mutable_shape() {
+  // @@protoc_insertion_point(field_mutable_list:ImageProto.shape)
+  return _internal_mutable_shape();
+}
+
+// repeated int32 transpose_axes = 5;
+inline int ImageProto::_internal_transpose_axes_size() const {
+  return transpose_axes_.size();
+}
+inline int ImageProto::transpose_axes_size() const {
+  return _internal_transpose_axes_size();
+}
+inline void ImageProto::clear_transpose_axes() {
+  transpose_axes_.Clear();
+}
+inline int32_t ImageProto::_internal_transpose_axes(int index) const {
+  return transpose_axes_.Get(index);
+}
+inline int32_t ImageProto::transpose_axes(int index) const {
+  // @@protoc_insertion_point(field_get:ImageProto.transpose_axes)
+  return _internal_transpose_axes(index);
+}
+inline void ImageProto::set_transpose_axes(int index, int32_t value) {
+  transpose_axes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:ImageProto.transpose_axes)
+}
+inline void ImageProto::_internal_add_transpose_axes(int32_t value) {
+  transpose_axes_.Add(value);
+}
+inline void ImageProto::add_transpose_axes(int32_t value) {
+  _internal_add_transpose_axes(value);
+  // @@protoc_insertion_point(field_add:ImageProto.transpose_axes)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+ImageProto::_internal_transpose_axes() const {
+  return transpose_axes_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+ImageProto::transpose_axes() const {
+  // @@protoc_insertion_point(field_list:ImageProto.transpose_axes)
+  return _internal_transpose_axes();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+ImageProto::_internal_mutable_transpose_axes() {
+  return &transpose_axes_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+ImageProto::mutable_transpose_axes() {
+  // @@protoc_insertion_point(field_mutable_list:ImageProto.transpose_axes)
+  return _internal_mutable_transpose_axes();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// InstanceProto
+
+// .InstanceTypeProto type = 1;
+inline void InstanceProto::clear_type() {
+  type_ = 0;
+}
+inline ::InstanceTypeProto InstanceProto::_internal_type() const {
+  return static_cast< ::InstanceTypeProto >(type_);
+}
+inline ::InstanceTypeProto InstanceProto::type() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.type)
+  return _internal_type();
+}
+inline void InstanceProto::_internal_set_type(::InstanceTypeProto value) {
+  
+  type_ = value;
+}
+inline void InstanceProto::set_type(::InstanceTypeProto value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:InstanceProto.type)
+}
+
+// bytes raw_data = 2;
+inline void InstanceProto::clear_raw_data() {
   raw_data_.ClearToEmpty();
 }
-inline const std::string& Data::raw_data() const {
-  // @@protoc_insertion_point(field_get:Data.raw_data)
+inline const std::string& InstanceProto::raw_data() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.raw_data)
   return _internal_raw_data();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Data::set_raw_data(ArgT0&& arg0, ArgT... args) {
+void InstanceProto::set_raw_data(ArgT0&& arg0, ArgT... args) {
  
  raw_data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Data.raw_data)
+  // @@protoc_insertion_point(field_set:InstanceProto.raw_data)
 }
-inline std::string* Data::mutable_raw_data() {
+inline std::string* InstanceProto::mutable_raw_data() {
   std::string* _s = _internal_mutable_raw_data();
-  // @@protoc_insertion_point(field_mutable:Data.raw_data)
+  // @@protoc_insertion_point(field_mutable:InstanceProto.raw_data)
   return _s;
 }
-inline const std::string& Data::_internal_raw_data() const {
+inline const std::string& InstanceProto::_internal_raw_data() const {
   return raw_data_.Get();
 }
-inline void Data::_internal_set_raw_data(const std::string& value) {
+inline void InstanceProto::_internal_set_raw_data(const std::string& value) {
   
   raw_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Data::_internal_mutable_raw_data() {
+inline std::string* InstanceProto::_internal_mutable_raw_data() {
   
   return raw_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Data::release_raw_data() {
-  // @@protoc_insertion_point(field_release:Data.raw_data)
+inline std::string* InstanceProto::release_raw_data() {
+  // @@protoc_insertion_point(field_release:InstanceProto.raw_data)
   return raw_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Data::set_allocated_raw_data(std::string* raw_data) {
+inline void InstanceProto::set_allocated_raw_data(std::string* raw_data) {
   if (raw_data != nullptr) {
     
   } else {
@@ -3699,48 +1842,48 @@ inline void Data::set_allocated_raw_data(std::string* raw_data) {
     raw_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Data.raw_data)
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.raw_data)
 }
 
-// .Tensor box = 4;
-inline bool Data::_internal_has_box() const {
-  return this != internal_default_instance() && box_ != nullptr;
+// .TensorProto tensor = 3;
+inline bool InstanceProto::_internal_has_tensor() const {
+  return this != internal_default_instance() && tensor_ != nullptr;
 }
-inline bool Data::has_box() const {
-  return _internal_has_box();
+inline bool InstanceProto::has_tensor() const {
+  return _internal_has_tensor();
 }
-inline void Data::clear_box() {
-  if (GetArenaForAllocation() == nullptr && box_ != nullptr) {
-    delete box_;
+inline void InstanceProto::clear_tensor() {
+  if (GetArenaForAllocation() == nullptr && tensor_ != nullptr) {
+    delete tensor_;
   }
-  box_ = nullptr;
+  tensor_ = nullptr;
 }
-inline const ::Tensor& Data::_internal_box() const {
-  const ::Tensor* p = box_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
+inline const ::TensorProto& InstanceProto::_internal_tensor() const {
+  const ::TensorProto* p = tensor_;
+  return p != nullptr ? *p : reinterpret_cast<const ::TensorProto&>(
+      ::_TensorProto_default_instance_);
 }
-inline const ::Tensor& Data::box() const {
-  // @@protoc_insertion_point(field_get:Data.box)
-  return _internal_box();
+inline const ::TensorProto& InstanceProto::tensor() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.tensor)
+  return _internal_tensor();
 }
-inline void Data::unsafe_arena_set_allocated_box(
-    ::Tensor* box) {
+inline void InstanceProto::unsafe_arena_set_allocated_tensor(
+    ::TensorProto* tensor) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(box_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(tensor_);
   }
-  box_ = box;
-  if (box) {
+  tensor_ = tensor;
+  if (tensor) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Data.box)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:InstanceProto.tensor)
 }
-inline ::Tensor* Data::release_box() {
+inline ::TensorProto* InstanceProto::release_tensor() {
   
-  ::Tensor* temp = box_;
-  box_ = nullptr;
+  ::TensorProto* temp = tensor_;
+  tensor_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -3752,282 +1895,102 @@ inline ::Tensor* Data::release_box() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Tensor* Data::unsafe_arena_release_box() {
-  // @@protoc_insertion_point(field_release:Data.box)
+inline ::TensorProto* InstanceProto::unsafe_arena_release_tensor() {
+  // @@protoc_insertion_point(field_release:InstanceProto.tensor)
   
-  ::Tensor* temp = box_;
-  box_ = nullptr;
+  ::TensorProto* temp = tensor_;
+  tensor_ = nullptr;
   return temp;
 }
-inline ::Tensor* Data::_internal_mutable_box() {
+inline ::TensorProto* InstanceProto::_internal_mutable_tensor() {
   
-  if (box_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    box_ = p;
+  if (tensor_ == nullptr) {
+    auto* p = CreateMaybeMessage<::TensorProto>(GetArenaForAllocation());
+    tensor_ = p;
   }
-  return box_;
+  return tensor_;
 }
-inline ::Tensor* Data::mutable_box() {
-  ::Tensor* _msg = _internal_mutable_box();
-  // @@protoc_insertion_point(field_mutable:Data.box)
+inline ::TensorProto* InstanceProto::mutable_tensor() {
+  ::TensorProto* _msg = _internal_mutable_tensor();
+  // @@protoc_insertion_point(field_mutable:InstanceProto.tensor)
   return _msg;
 }
-inline void Data::set_allocated_box(::Tensor* box) {
+inline void InstanceProto::set_allocated_tensor(::TensorProto* tensor) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete box_;
+    delete tensor_;
   }
-  if (box) {
+  if (tensor) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(box);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::TensorProto>::GetOwningArena(tensor);
     if (message_arena != submessage_arena) {
-      box = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, box, submessage_arena);
+      tensor = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, tensor, submessage_arena);
     }
     
   } else {
     
   }
-  box_ = box;
-  // @@protoc_insertion_point(field_set_allocated:Data.box)
+  tensor_ = tensor;
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.tensor)
 }
 
-// int32 discrete = 5;
-inline void Data::clear_discrete() {
-  discrete_ = 0;
+// int64 discrete = 4;
+inline void InstanceProto::clear_discrete() {
+  discrete_ = int64_t{0};
 }
-inline int32_t Data::_internal_discrete() const {
+inline int64_t InstanceProto::_internal_discrete() const {
   return discrete_;
 }
-inline int32_t Data::discrete() const {
-  // @@protoc_insertion_point(field_get:Data.discrete)
+inline int64_t InstanceProto::discrete() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.discrete)
   return _internal_discrete();
 }
-inline void Data::_internal_set_discrete(int32_t value) {
+inline void InstanceProto::_internal_set_discrete(int64_t value) {
   
   discrete_ = value;
 }
-inline void Data::set_discrete(int32_t value) {
+inline void InstanceProto::set_discrete(int64_t value) {
   _internal_set_discrete(value);
-  // @@protoc_insertion_point(field_set:Data.discrete)
+  // @@protoc_insertion_point(field_set:InstanceProto.discrete)
 }
 
-// .Tensor multi_binary = 6;
-inline bool Data::_internal_has_multi_binary() const {
-  return this != internal_default_instance() && multi_binary_ != nullptr;
-}
-inline bool Data::has_multi_binary() const {
-  return _internal_has_multi_binary();
-}
-inline void Data::clear_multi_binary() {
-  if (GetArenaForAllocation() == nullptr && multi_binary_ != nullptr) {
-    delete multi_binary_;
-  }
-  multi_binary_ = nullptr;
-}
-inline const ::Tensor& Data::_internal_multi_binary() const {
-  const ::Tensor* p = multi_binary_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
-}
-inline const ::Tensor& Data::multi_binary() const {
-  // @@protoc_insertion_point(field_get:Data.multi_binary)
-  return _internal_multi_binary();
-}
-inline void Data::unsafe_arena_set_allocated_multi_binary(
-    ::Tensor* multi_binary) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(multi_binary_);
-  }
-  multi_binary_ = multi_binary;
-  if (multi_binary) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Data.multi_binary)
-}
-inline ::Tensor* Data::release_multi_binary() {
-  
-  ::Tensor* temp = multi_binary_;
-  multi_binary_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Tensor* Data::unsafe_arena_release_multi_binary() {
-  // @@protoc_insertion_point(field_release:Data.multi_binary)
-  
-  ::Tensor* temp = multi_binary_;
-  multi_binary_ = nullptr;
-  return temp;
-}
-inline ::Tensor* Data::_internal_mutable_multi_binary() {
-  
-  if (multi_binary_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    multi_binary_ = p;
-  }
-  return multi_binary_;
-}
-inline ::Tensor* Data::mutable_multi_binary() {
-  ::Tensor* _msg = _internal_mutable_multi_binary();
-  // @@protoc_insertion_point(field_mutable:Data.multi_binary)
-  return _msg;
-}
-inline void Data::set_allocated_multi_binary(::Tensor* multi_binary) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete multi_binary_;
-  }
-  if (multi_binary) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(multi_binary);
-    if (message_arena != submessage_arena) {
-      multi_binary = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, multi_binary, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  multi_binary_ = multi_binary;
-  // @@protoc_insertion_point(field_set_allocated:Data.multi_binary)
-}
-
-// .Tensor multi_discrete = 7;
-inline bool Data::_internal_has_multi_discrete() const {
-  return this != internal_default_instance() && multi_discrete_ != nullptr;
-}
-inline bool Data::has_multi_discrete() const {
-  return _internal_has_multi_discrete();
-}
-inline void Data::clear_multi_discrete() {
-  if (GetArenaForAllocation() == nullptr && multi_discrete_ != nullptr) {
-    delete multi_discrete_;
-  }
-  multi_discrete_ = nullptr;
-}
-inline const ::Tensor& Data::_internal_multi_discrete() const {
-  const ::Tensor* p = multi_discrete_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Tensor&>(
-      ::_Tensor_default_instance_);
-}
-inline const ::Tensor& Data::multi_discrete() const {
-  // @@protoc_insertion_point(field_get:Data.multi_discrete)
-  return _internal_multi_discrete();
-}
-inline void Data::unsafe_arena_set_allocated_multi_discrete(
-    ::Tensor* multi_discrete) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(multi_discrete_);
-  }
-  multi_discrete_ = multi_discrete;
-  if (multi_discrete) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Data.multi_discrete)
-}
-inline ::Tensor* Data::release_multi_discrete() {
-  
-  ::Tensor* temp = multi_discrete_;
-  multi_discrete_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::Tensor* Data::unsafe_arena_release_multi_discrete() {
-  // @@protoc_insertion_point(field_release:Data.multi_discrete)
-  
-  ::Tensor* temp = multi_discrete_;
-  multi_discrete_ = nullptr;
-  return temp;
-}
-inline ::Tensor* Data::_internal_mutable_multi_discrete() {
-  
-  if (multi_discrete_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Tensor>(GetArenaForAllocation());
-    multi_discrete_ = p;
-  }
-  return multi_discrete_;
-}
-inline ::Tensor* Data::mutable_multi_discrete() {
-  ::Tensor* _msg = _internal_mutable_multi_discrete();
-  // @@protoc_insertion_point(field_mutable:Data.multi_discrete)
-  return _msg;
-}
-inline void Data::set_allocated_multi_discrete(::Tensor* multi_discrete) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete multi_discrete_;
-  }
-  if (multi_discrete) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Tensor>::GetOwningArena(multi_discrete);
-    if (message_arena != submessage_arena) {
-      multi_discrete = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, multi_discrete, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  multi_discrete_ = multi_discrete;
-  // @@protoc_insertion_point(field_set_allocated:Data.multi_discrete)
-}
-
-// string text = 8;
-inline void Data::clear_text() {
+// string text = 5;
+inline void InstanceProto::clear_text() {
   text_.ClearToEmpty();
 }
-inline const std::string& Data::text() const {
-  // @@protoc_insertion_point(field_get:Data.text)
+inline const std::string& InstanceProto::text() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.text)
   return _internal_text();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Data::set_text(ArgT0&& arg0, ArgT... args) {
+void InstanceProto::set_text(ArgT0&& arg0, ArgT... args) {
  
  text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Data.text)
+  // @@protoc_insertion_point(field_set:InstanceProto.text)
 }
-inline std::string* Data::mutable_text() {
+inline std::string* InstanceProto::mutable_text() {
   std::string* _s = _internal_mutable_text();
-  // @@protoc_insertion_point(field_mutable:Data.text)
+  // @@protoc_insertion_point(field_mutable:InstanceProto.text)
   return _s;
 }
-inline const std::string& Data::_internal_text() const {
+inline const std::string& InstanceProto::_internal_text() const {
   return text_.Get();
 }
-inline void Data::_internal_set_text(const std::string& value) {
+inline void InstanceProto::_internal_set_text(const std::string& value) {
   
   text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Data::_internal_mutable_text() {
+inline std::string* InstanceProto::_internal_mutable_text() {
   
   return text_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Data::release_text() {
-  // @@protoc_insertion_point(field_release:Data.text)
+inline std::string* InstanceProto::release_text() {
+  // @@protoc_insertion_point(field_release:InstanceProto.text)
   return text_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Data::set_allocated_text(std::string* text) {
+inline void InstanceProto::set_allocated_text(std::string* text) {
   if (text != nullptr) {
     
   } else {
@@ -4040,91 +2003,102 @@ inline void Data::set_allocated_text(std::string* text) {
     text_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Data.text)
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.text)
 }
 
-// map<string, .Data> dict = 9;
-inline int Data::_internal_dict_size() const {
+// map<string, .InstanceProto> dict = 6;
+inline int InstanceProto::_internal_dict_size() const {
   return dict_.size();
 }
-inline int Data::dict_size() const {
+inline int InstanceProto::dict_size() const {
   return _internal_dict_size();
 }
-inline void Data::clear_dict() {
+inline void InstanceProto::clear_dict() {
   dict_.Clear();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >&
-Data::_internal_dict() const {
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >&
+InstanceProto::_internal_dict() const {
   return dict_.GetMap();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >&
-Data::dict() const {
-  // @@protoc_insertion_point(field_map:Data.dict)
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >&
+InstanceProto::dict() const {
+  // @@protoc_insertion_point(field_map:InstanceProto.dict)
   return _internal_dict();
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >*
-Data::_internal_mutable_dict() {
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >*
+InstanceProto::_internal_mutable_dict() {
   return dict_.MutableMap();
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::Data >*
-Data::mutable_dict() {
-  // @@protoc_insertion_point(field_mutable_map:Data.dict)
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::InstanceProto >*
+InstanceProto::mutable_dict() {
+  // @@protoc_insertion_point(field_mutable_map:InstanceProto.dict)
   return _internal_mutable_dict();
 }
 
-// map<int32, .Data> list = 10;
-inline int Data::_internal_list_size() const {
+// repeated .InstanceProto list = 7;
+inline int InstanceProto::_internal_list_size() const {
   return list_.size();
 }
-inline int Data::list_size() const {
+inline int InstanceProto::list_size() const {
   return _internal_list_size();
 }
-inline void Data::clear_list() {
+inline void InstanceProto::clear_list() {
   list_.Clear();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >&
-Data::_internal_list() const {
-  return list_.GetMap();
+inline ::InstanceProto* InstanceProto::mutable_list(int index) {
+  // @@protoc_insertion_point(field_mutable:InstanceProto.list)
+  return list_.Mutable(index);
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >&
-Data::list() const {
-  // @@protoc_insertion_point(field_map:Data.list)
-  return _internal_list();
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InstanceProto >*
+InstanceProto::mutable_list() {
+  // @@protoc_insertion_point(field_mutable_list:InstanceProto.list)
+  return &list_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >*
-Data::_internal_mutable_list() {
-  return list_.MutableMap();
+inline const ::InstanceProto& InstanceProto::_internal_list(int index) const {
+  return list_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, ::Data >*
-Data::mutable_list() {
-  // @@protoc_insertion_point(field_mutable_map:Data.list)
-  return _internal_mutable_list();
+inline const ::InstanceProto& InstanceProto::list(int index) const {
+  // @@protoc_insertion_point(field_get:InstanceProto.list)
+  return _internal_list(index);
+}
+inline ::InstanceProto* InstanceProto::_internal_add_list() {
+  return list_.Add();
+}
+inline ::InstanceProto* InstanceProto::add_list() {
+  ::InstanceProto* _add = _internal_add_list();
+  // @@protoc_insertion_point(field_add:InstanceProto.list)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InstanceProto >&
+InstanceProto::list() const {
+  // @@protoc_insertion_point(field_list:InstanceProto.list)
+  return list_;
 }
 
-// .Graph graph = 11;
-inline bool Data::_internal_has_graph() const {
+// .GraphProto graph = 8;
+inline bool InstanceProto::_internal_has_graph() const {
   return this != internal_default_instance() && graph_ != nullptr;
 }
-inline bool Data::has_graph() const {
+inline bool InstanceProto::has_graph() const {
   return _internal_has_graph();
 }
-inline void Data::clear_graph() {
+inline void InstanceProto::clear_graph() {
   if (GetArenaForAllocation() == nullptr && graph_ != nullptr) {
     delete graph_;
   }
   graph_ = nullptr;
 }
-inline const ::Graph& Data::_internal_graph() const {
-  const ::Graph* p = graph_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Graph&>(
-      ::_Graph_default_instance_);
+inline const ::GraphProto& InstanceProto::_internal_graph() const {
+  const ::GraphProto* p = graph_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GraphProto&>(
+      ::_GraphProto_default_instance_);
 }
-inline const ::Graph& Data::graph() const {
-  // @@protoc_insertion_point(field_get:Data.graph)
+inline const ::GraphProto& InstanceProto::graph() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.graph)
   return _internal_graph();
 }
-inline void Data::unsafe_arena_set_allocated_graph(
-    ::Graph* graph) {
+inline void InstanceProto::unsafe_arena_set_allocated_graph(
+    ::GraphProto* graph) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(graph_);
   }
@@ -4134,11 +2108,11 @@ inline void Data::unsafe_arena_set_allocated_graph(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Data.graph)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:InstanceProto.graph)
 }
-inline ::Graph* Data::release_graph() {
+inline ::GraphProto* InstanceProto::release_graph() {
   
-  ::Graph* temp = graph_;
+  ::GraphProto* temp = graph_;
   graph_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -4151,34 +2125,34 @@ inline ::Graph* Data::release_graph() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Graph* Data::unsafe_arena_release_graph() {
-  // @@protoc_insertion_point(field_release:Data.graph)
+inline ::GraphProto* InstanceProto::unsafe_arena_release_graph() {
+  // @@protoc_insertion_point(field_release:InstanceProto.graph)
   
-  ::Graph* temp = graph_;
+  ::GraphProto* temp = graph_;
   graph_ = nullptr;
   return temp;
 }
-inline ::Graph* Data::_internal_mutable_graph() {
+inline ::GraphProto* InstanceProto::_internal_mutable_graph() {
   
   if (graph_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Graph>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GraphProto>(GetArenaForAllocation());
     graph_ = p;
   }
   return graph_;
 }
-inline ::Graph* Data::mutable_graph() {
-  ::Graph* _msg = _internal_mutable_graph();
-  // @@protoc_insertion_point(field_mutable:Data.graph)
+inline ::GraphProto* InstanceProto::mutable_graph() {
+  ::GraphProto* _msg = _internal_mutable_graph();
+  // @@protoc_insertion_point(field_mutable:InstanceProto.graph)
   return _msg;
 }
-inline void Data::set_allocated_graph(::Graph* graph) {
+inline void InstanceProto::set_allocated_graph(::GraphProto* graph) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete graph_;
   }
   if (graph) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Graph>::GetOwningArena(graph);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GraphProto>::GetOwningArena(graph);
     if (message_arena != submessage_arena) {
       graph = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, graph, submessage_arena);
@@ -4188,33 +2162,33 @@ inline void Data::set_allocated_graph(::Graph* graph) {
     
   }
   graph_ = graph;
-  // @@protoc_insertion_point(field_set_allocated:Data.graph)
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.graph)
 }
 
-// .Image image = 12;
-inline bool Data::_internal_has_image() const {
+// .ImageProto image = 9;
+inline bool InstanceProto::_internal_has_image() const {
   return this != internal_default_instance() && image_ != nullptr;
 }
-inline bool Data::has_image() const {
+inline bool InstanceProto::has_image() const {
   return _internal_has_image();
 }
-inline void Data::clear_image() {
+inline void InstanceProto::clear_image() {
   if (GetArenaForAllocation() == nullptr && image_ != nullptr) {
     delete image_;
   }
   image_ = nullptr;
 }
-inline const ::Image& Data::_internal_image() const {
-  const ::Image* p = image_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Image&>(
-      ::_Image_default_instance_);
+inline const ::ImageProto& InstanceProto::_internal_image() const {
+  const ::ImageProto* p = image_;
+  return p != nullptr ? *p : reinterpret_cast<const ::ImageProto&>(
+      ::_ImageProto_default_instance_);
 }
-inline const ::Image& Data::image() const {
-  // @@protoc_insertion_point(field_get:Data.image)
+inline const ::ImageProto& InstanceProto::image() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.image)
   return _internal_image();
 }
-inline void Data::unsafe_arena_set_allocated_image(
-    ::Image* image) {
+inline void InstanceProto::unsafe_arena_set_allocated_image(
+    ::ImageProto* image) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(image_);
   }
@@ -4224,11 +2198,11 @@ inline void Data::unsafe_arena_set_allocated_image(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Data.image)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:InstanceProto.image)
 }
-inline ::Image* Data::release_image() {
+inline ::ImageProto* InstanceProto::release_image() {
   
-  ::Image* temp = image_;
+  ::ImageProto* temp = image_;
   image_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -4241,34 +2215,34 @@ inline ::Image* Data::release_image() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Image* Data::unsafe_arena_release_image() {
-  // @@protoc_insertion_point(field_release:Data.image)
+inline ::ImageProto* InstanceProto::unsafe_arena_release_image() {
+  // @@protoc_insertion_point(field_release:InstanceProto.image)
   
-  ::Image* temp = image_;
+  ::ImageProto* temp = image_;
   image_ = nullptr;
   return temp;
 }
-inline ::Image* Data::_internal_mutable_image() {
+inline ::ImageProto* InstanceProto::_internal_mutable_image() {
   
   if (image_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Image>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::ImageProto>(GetArenaForAllocation());
     image_ = p;
   }
   return image_;
 }
-inline ::Image* Data::mutable_image() {
-  ::Image* _msg = _internal_mutable_image();
-  // @@protoc_insertion_point(field_mutable:Data.image)
+inline ::ImageProto* InstanceProto::mutable_image() {
+  ::ImageProto* _msg = _internal_mutable_image();
+  // @@protoc_insertion_point(field_mutable:InstanceProto.image)
   return _msg;
 }
-inline void Data::set_allocated_image(::Image* image) {
+inline void InstanceProto::set_allocated_image(::ImageProto* image) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete image_;
   }
   if (image) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Image>::GetOwningArena(image);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::ImageProto>::GetOwningArena(image);
     if (message_arena != submessage_arena) {
       image = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, image, submessage_arena);
@@ -4278,22 +2252,103 @@ inline void Data::set_allocated_image(::Image* image) {
     
   }
   image_ = image;
-  // @@protoc_insertion_point(field_set_allocated:Data.image)
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.image)
+}
+
+// double float = 10;
+inline void InstanceProto::clear_float_() {
+  float__ = 0;
+}
+inline double InstanceProto::_internal_float_() const {
+  return float__;
+}
+inline double InstanceProto::float_() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.float)
+  return _internal_float_();
+}
+inline void InstanceProto::_internal_set_float_(double value) {
+  
+  float__ = value;
+}
+inline void InstanceProto::set_float_(double value) {
+  _internal_set_float_(value);
+  // @@protoc_insertion_point(field_set:InstanceProto.float)
+}
+
+// bool boolean = 11;
+inline void InstanceProto::clear_boolean() {
+  boolean_ = false;
+}
+inline bool InstanceProto::_internal_boolean() const {
+  return boolean_;
+}
+inline bool InstanceProto::boolean() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.boolean)
+  return _internal_boolean();
+}
+inline void InstanceProto::_internal_set_boolean(bool value) {
+  
+  boolean_ = value;
+}
+inline void InstanceProto::set_boolean(bool value) {
+  _internal_set_boolean(value);
+  // @@protoc_insertion_point(field_set:InstanceProto.boolean)
+}
+
+// string json = 12;
+inline void InstanceProto::clear_json() {
+  json_.ClearToEmpty();
+}
+inline const std::string& InstanceProto::json() const {
+  // @@protoc_insertion_point(field_get:InstanceProto.json)
+  return _internal_json();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void InstanceProto::set_json(ArgT0&& arg0, ArgT... args) {
+ 
+ json_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:InstanceProto.json)
+}
+inline std::string* InstanceProto::mutable_json() {
+  std::string* _s = _internal_mutable_json();
+  // @@protoc_insertion_point(field_mutable:InstanceProto.json)
+  return _s;
+}
+inline const std::string& InstanceProto::_internal_json() const {
+  return json_.Get();
+}
+inline void InstanceProto::_internal_set_json(const std::string& value) {
+  
+  json_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* InstanceProto::_internal_mutable_json() {
+  
+  return json_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* InstanceProto::release_json() {
+  // @@protoc_insertion_point(field_release:InstanceProto.json)
+  return json_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void InstanceProto::set_allocated_json(std::string* json) {
+  if (json != nullptr) {
+    
+  } else {
+    
+  }
+  json_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), json,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (json_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    json_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:InstanceProto.json)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -4308,20 +2363,15 @@ inline void Data::set_allocated_image(::Image* image) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::DataType> : ::std::true_type {};
+template <> struct is_proto_enum< ::CompressionTypeProto> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::DataType>() {
-  return ::DataType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::CompressionTypeProto>() {
+  return ::CompressionTypeProto_descriptor();
 }
-template <> struct is_proto_enum< ::CompressionType> : ::std::true_type {};
+template <> struct is_proto_enum< ::InstanceTypeProto> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::CompressionType>() {
-  return ::CompressionType_descriptor();
-}
-template <> struct is_proto_enum< ::SpaceType> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SpaceType>() {
-  return ::SpaceType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::InstanceTypeProto>() {
+  return ::InstanceTypeProto_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

@@ -32,6 +32,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "gymize.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_channel_2eproto
@@ -54,68 +55,68 @@ struct TableStruct_channel_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_channel_2eproto;
-class Content;
-struct ContentDefaultTypeInternal;
-extern ContentDefaultTypeInternal _Content_default_instance_;
-class Header;
-struct HeaderDefaultTypeInternal;
-extern HeaderDefaultTypeInternal _Header_default_instance_;
-class Message;
-struct MessageDefaultTypeInternal;
-extern MessageDefaultTypeInternal _Message_default_instance_;
+class ContentProto;
+struct ContentProtoDefaultTypeInternal;
+extern ContentProtoDefaultTypeInternal _ContentProto_default_instance_;
+class HeaderProto;
+struct HeaderProtoDefaultTypeInternal;
+extern HeaderProtoDefaultTypeInternal _HeaderProto_default_instance_;
+class MessageProto;
+struct MessageProtoDefaultTypeInternal;
+extern MessageProtoDefaultTypeInternal _MessageProto_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::Content* Arena::CreateMaybeMessage<::Content>(Arena*);
-template<> ::Header* Arena::CreateMaybeMessage<::Header>(Arena*);
-template<> ::Message* Arena::CreateMaybeMessage<::Message>(Arena*);
+template<> ::ContentProto* Arena::CreateMaybeMessage<::ContentProto>(Arena*);
+template<> ::HeaderProto* Arena::CreateMaybeMessage<::HeaderProto>(Arena*);
+template<> ::MessageProto* Arena::CreateMaybeMessage<::MessageProto>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
-enum MessageType : int {
-  MESSAGE_TYPE_UNSPECIFIED = 0,
-  MESSAGE_TYPE_MESSAGE = 1,
-  MESSAGE_TYPE_REQUEST = 2,
-  MESSAGE_TYPE_RESPONSE = 3,
-  MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum MessageTypeProto : int {
+  MESSAGE_TYPE_PROTO_UNSPECIFIED = 0,
+  MESSAGE_TYPE_PROTO_MESSAGE = 1,
+  MESSAGE_TYPE_PROTO_REQUEST = 2,
+  MESSAGE_TYPE_PROTO_RESPONSE = 3,
+  MessageTypeProto_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  MessageTypeProto_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool MessageType_IsValid(int value);
-constexpr MessageType MessageType_MIN = MESSAGE_TYPE_UNSPECIFIED;
-constexpr MessageType MessageType_MAX = MESSAGE_TYPE_RESPONSE;
-constexpr int MessageType_ARRAYSIZE = MessageType_MAX + 1;
+bool MessageTypeProto_IsValid(int value);
+constexpr MessageTypeProto MessageTypeProto_MIN = MESSAGE_TYPE_PROTO_UNSPECIFIED;
+constexpr MessageTypeProto MessageTypeProto_MAX = MESSAGE_TYPE_PROTO_RESPONSE;
+constexpr int MessageTypeProto_ARRAYSIZE = MessageTypeProto_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageTypeProto_descriptor();
 template<typename T>
-inline const std::string& MessageType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, MessageType>::value ||
+inline const std::string& MessageTypeProto_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, MessageTypeProto>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function MessageType_Name.");
+    "Incorrect type passed to function MessageTypeProto_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    MessageType_descriptor(), enum_t_value);
+    MessageTypeProto_descriptor(), enum_t_value);
 }
-inline bool MessageType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, MessageType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageType>(
-    MessageType_descriptor(), name, value);
+inline bool MessageTypeProto_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, MessageTypeProto* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageTypeProto>(
+    MessageTypeProto_descriptor(), name, value);
 }
 // ===================================================================
 
-class Header final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Header) */ {
+class HeaderProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:HeaderProto) */ {
  public:
-  inline Header() : Header(nullptr) {}
-  ~Header() override;
-  explicit constexpr Header(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline HeaderProto() : HeaderProto(nullptr) {}
+  ~HeaderProto() override;
+  explicit constexpr HeaderProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Header(const Header& from);
-  Header(Header&& from) noexcept
-    : Header() {
+  HeaderProto(const HeaderProto& from);
+  HeaderProto(HeaderProto&& from) noexcept
+    : HeaderProto() {
     *this = ::std::move(from);
   }
 
-  inline Header& operator=(const Header& from) {
+  inline HeaderProto& operator=(const HeaderProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Header& operator=(Header&& from) noexcept {
+  inline HeaderProto& operator=(HeaderProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -138,20 +139,20 @@ class Header final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Header& default_instance() {
+  static const HeaderProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Header* internal_default_instance() {
-    return reinterpret_cast<const Header*>(
-               &_Header_default_instance_);
+  static inline const HeaderProto* internal_default_instance() {
+    return reinterpret_cast<const HeaderProto*>(
+               &_HeaderProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(Header& a, Header& b) {
+  friend void swap(HeaderProto& a, HeaderProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Header* other) {
+  inline void Swap(HeaderProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -164,7 +165,7 @@ class Header final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Header* other) {
+  void UnsafeArenaSwap(HeaderProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -172,13 +173,13 @@ class Header final :
 
   // implements Message ----------------------------------------------
 
-  Header* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Header>(arena);
+  HeaderProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<HeaderProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Header& from);
+  void CopyFrom(const HeaderProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Header& from);
+  void MergeFrom(const HeaderProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -195,15 +196,15 @@ class Header final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Header* other);
+  void InternalSwap(HeaderProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Header";
+    return "HeaderProto";
   }
   protected:
-  explicit Header(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit HeaderProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -252,16 +253,16 @@ class Header final :
   std::string* _internal_mutable_uuid();
   public:
 
-  // .MessageType message_type = 1;
+  // .MessageTypeProto message_type = 1;
   void clear_message_type();
-  ::MessageType message_type() const;
-  void set_message_type(::MessageType value);
+  ::MessageTypeProto message_type() const;
+  void set_message_type(::MessageTypeProto value);
   private:
-  ::MessageType _internal_message_type() const;
-  void _internal_set_message_type(::MessageType value);
+  ::MessageTypeProto _internal_message_type() const;
+  void _internal_set_message_type(::MessageTypeProto value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Header)
+  // @@protoc_insertion_point(class_scope:HeaderProto)
  private:
   class _Internal;
 
@@ -276,24 +277,24 @@ class Header final :
 };
 // -------------------------------------------------------------------
 
-class Content final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Content) */ {
+class ContentProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ContentProto) */ {
  public:
-  inline Content() : Content(nullptr) {}
-  ~Content() override;
-  explicit constexpr Content(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ContentProto() : ContentProto(nullptr) {}
+  ~ContentProto() override;
+  explicit constexpr ContentProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Content(const Content& from);
-  Content(Content&& from) noexcept
-    : Content() {
+  ContentProto(const ContentProto& from);
+  ContentProto(ContentProto&& from) noexcept
+    : ContentProto() {
     *this = ::std::move(from);
   }
 
-  inline Content& operator=(const Content& from) {
+  inline ContentProto& operator=(const ContentProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Content& operator=(Content&& from) noexcept {
+  inline ContentProto& operator=(ContentProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -316,26 +317,27 @@ class Content final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Content& default_instance() {
+  static const ContentProto& default_instance() {
     return *internal_default_instance();
   }
   enum DataCase {
     kRaw = 1,
     kText = 2,
+    kGymize = 3,
     DATA_NOT_SET = 0,
   };
 
-  static inline const Content* internal_default_instance() {
-    return reinterpret_cast<const Content*>(
-               &_Content_default_instance_);
+  static inline const ContentProto* internal_default_instance() {
+    return reinterpret_cast<const ContentProto*>(
+               &_ContentProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(Content& a, Content& b) {
+  friend void swap(ContentProto& a, ContentProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Content* other) {
+  inline void Swap(ContentProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -348,7 +350,7 @@ class Content final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Content* other) {
+  void UnsafeArenaSwap(ContentProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -356,13 +358,13 @@ class Content final :
 
   // implements Message ----------------------------------------------
 
-  Content* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Content>(arena);
+  ContentProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ContentProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Content& from);
+  void CopyFrom(const ContentProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Content& from);
+  void MergeFrom(const ContentProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -379,15 +381,15 @@ class Content final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Content* other);
+  void InternalSwap(ContentProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Content";
+    return "ContentProto";
   }
   protected:
-  explicit Content(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ContentProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -406,6 +408,7 @@ class Content final :
   enum : int {
     kRawFieldNumber = 1,
     kTextFieldNumber = 2,
+    kGymizeFieldNumber = 3,
   };
   // bytes raw = 1;
   bool has_raw() const;
@@ -443,13 +446,32 @@ class Content final :
   std::string* _internal_mutable_text();
   public:
 
+  // .GymizeProto gymize = 3;
+  bool has_gymize() const;
+  private:
+  bool _internal_has_gymize() const;
+  public:
+  void clear_gymize();
+  const ::GymizeProto& gymize() const;
+  PROTOBUF_NODISCARD ::GymizeProto* release_gymize();
+  ::GymizeProto* mutable_gymize();
+  void set_allocated_gymize(::GymizeProto* gymize);
+  private:
+  const ::GymizeProto& _internal_gymize() const;
+  ::GymizeProto* _internal_mutable_gymize();
+  public:
+  void unsafe_arena_set_allocated_gymize(
+      ::GymizeProto* gymize);
+  ::GymizeProto* unsafe_arena_release_gymize();
+
   void clear_data();
   DataCase data_case() const;
-  // @@protoc_insertion_point(class_scope:Content)
+  // @@protoc_insertion_point(class_scope:ContentProto)
  private:
   class _Internal;
   void set_has_raw();
   void set_has_text();
+  void set_has_gymize();
 
   inline bool has_data() const;
   inline void clear_has_data();
@@ -462,6 +484,7 @@ class Content final :
       ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr raw_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+    ::GymizeProto* gymize_;
   } data_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   uint32_t _oneof_case_[1];
@@ -470,24 +493,24 @@ class Content final :
 };
 // -------------------------------------------------------------------
 
-class Message final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Message) */ {
+class MessageProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:MessageProto) */ {
  public:
-  inline Message() : Message(nullptr) {}
-  ~Message() override;
-  explicit constexpr Message(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline MessageProto() : MessageProto(nullptr) {}
+  ~MessageProto() override;
+  explicit constexpr MessageProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Message(const Message& from);
-  Message(Message&& from) noexcept
-    : Message() {
+  MessageProto(const MessageProto& from);
+  MessageProto(MessageProto&& from) noexcept
+    : MessageProto() {
     *this = ::std::move(from);
   }
 
-  inline Message& operator=(const Message& from) {
+  inline MessageProto& operator=(const MessageProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Message& operator=(Message&& from) noexcept {
+  inline MessageProto& operator=(MessageProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -510,20 +533,20 @@ class Message final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Message& default_instance() {
+  static const MessageProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Message* internal_default_instance() {
-    return reinterpret_cast<const Message*>(
-               &_Message_default_instance_);
+  static inline const MessageProto* internal_default_instance() {
+    return reinterpret_cast<const MessageProto*>(
+               &_MessageProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  friend void swap(Message& a, Message& b) {
+  friend void swap(MessageProto& a, MessageProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Message* other) {
+  inline void Swap(MessageProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -536,7 +559,7 @@ class Message final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Message* other) {
+  void UnsafeArenaSwap(MessageProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -544,13 +567,13 @@ class Message final :
 
   // implements Message ----------------------------------------------
 
-  Message* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Message>(arena);
+  MessageProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MessageProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Message& from);
+  void CopyFrom(const MessageProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Message& from);
+  void MergeFrom(const MessageProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -567,15 +590,15 @@ class Message final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Message* other);
+  void InternalSwap(MessageProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Message";
+    return "MessageProto";
   }
   protected:
-  explicit Message(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit MessageProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -595,51 +618,51 @@ class Message final :
     kHeaderFieldNumber = 1,
     kContentFieldNumber = 2,
   };
-  // .Header header = 1;
+  // .HeaderProto header = 1;
   bool has_header() const;
   private:
   bool _internal_has_header() const;
   public:
   void clear_header();
-  const ::Header& header() const;
-  PROTOBUF_NODISCARD ::Header* release_header();
-  ::Header* mutable_header();
-  void set_allocated_header(::Header* header);
+  const ::HeaderProto& header() const;
+  PROTOBUF_NODISCARD ::HeaderProto* release_header();
+  ::HeaderProto* mutable_header();
+  void set_allocated_header(::HeaderProto* header);
   private:
-  const ::Header& _internal_header() const;
-  ::Header* _internal_mutable_header();
+  const ::HeaderProto& _internal_header() const;
+  ::HeaderProto* _internal_mutable_header();
   public:
   void unsafe_arena_set_allocated_header(
-      ::Header* header);
-  ::Header* unsafe_arena_release_header();
+      ::HeaderProto* header);
+  ::HeaderProto* unsafe_arena_release_header();
 
-  // .Content content = 2;
+  // .ContentProto content = 2;
   bool has_content() const;
   private:
   bool _internal_has_content() const;
   public:
   void clear_content();
-  const ::Content& content() const;
-  PROTOBUF_NODISCARD ::Content* release_content();
-  ::Content* mutable_content();
-  void set_allocated_content(::Content* content);
+  const ::ContentProto& content() const;
+  PROTOBUF_NODISCARD ::ContentProto* release_content();
+  ::ContentProto* mutable_content();
+  void set_allocated_content(::ContentProto* content);
   private:
-  const ::Content& _internal_content() const;
-  ::Content* _internal_mutable_content();
+  const ::ContentProto& _internal_content() const;
+  ::ContentProto* _internal_mutable_content();
   public:
   void unsafe_arena_set_allocated_content(
-      ::Content* content);
-  ::Content* unsafe_arena_release_content();
+      ::ContentProto* content);
+  ::ContentProto* unsafe_arena_release_content();
 
-  // @@protoc_insertion_point(class_scope:Message)
+  // @@protoc_insertion_point(class_scope:MessageProto)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::Header* header_;
-  ::Content* content_;
+  ::HeaderProto* header_;
+  ::ContentProto* content_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_channel_2eproto;
 };
@@ -652,64 +675,64 @@ class Message final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Header
+// HeaderProto
 
-// .MessageType message_type = 1;
-inline void Header::clear_message_type() {
+// .MessageTypeProto message_type = 1;
+inline void HeaderProto::clear_message_type() {
   message_type_ = 0;
 }
-inline ::MessageType Header::_internal_message_type() const {
-  return static_cast< ::MessageType >(message_type_);
+inline ::MessageTypeProto HeaderProto::_internal_message_type() const {
+  return static_cast< ::MessageTypeProto >(message_type_);
 }
-inline ::MessageType Header::message_type() const {
-  // @@protoc_insertion_point(field_get:Header.message_type)
+inline ::MessageTypeProto HeaderProto::message_type() const {
+  // @@protoc_insertion_point(field_get:HeaderProto.message_type)
   return _internal_message_type();
 }
-inline void Header::_internal_set_message_type(::MessageType value) {
+inline void HeaderProto::_internal_set_message_type(::MessageTypeProto value) {
   
   message_type_ = value;
 }
-inline void Header::set_message_type(::MessageType value) {
+inline void HeaderProto::set_message_type(::MessageTypeProto value) {
   _internal_set_message_type(value);
-  // @@protoc_insertion_point(field_set:Header.message_type)
+  // @@protoc_insertion_point(field_set:HeaderProto.message_type)
 }
 
 // string id = 2;
-inline void Header::clear_id() {
+inline void HeaderProto::clear_id() {
   id_.ClearToEmpty();
 }
-inline const std::string& Header::id() const {
-  // @@protoc_insertion_point(field_get:Header.id)
+inline const std::string& HeaderProto::id() const {
+  // @@protoc_insertion_point(field_get:HeaderProto.id)
   return _internal_id();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Header::set_id(ArgT0&& arg0, ArgT... args) {
+void HeaderProto::set_id(ArgT0&& arg0, ArgT... args) {
  
  id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Header.id)
+  // @@protoc_insertion_point(field_set:HeaderProto.id)
 }
-inline std::string* Header::mutable_id() {
+inline std::string* HeaderProto::mutable_id() {
   std::string* _s = _internal_mutable_id();
-  // @@protoc_insertion_point(field_mutable:Header.id)
+  // @@protoc_insertion_point(field_mutable:HeaderProto.id)
   return _s;
 }
-inline const std::string& Header::_internal_id() const {
+inline const std::string& HeaderProto::_internal_id() const {
   return id_.Get();
 }
-inline void Header::_internal_set_id(const std::string& value) {
+inline void HeaderProto::_internal_set_id(const std::string& value) {
   
   id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Header::_internal_mutable_id() {
+inline std::string* HeaderProto::_internal_mutable_id() {
   
   return id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Header::release_id() {
-  // @@protoc_insertion_point(field_release:Header.id)
+inline std::string* HeaderProto::release_id() {
+  // @@protoc_insertion_point(field_release:HeaderProto.id)
   return id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Header::set_allocated_id(std::string* id) {
+inline void HeaderProto::set_allocated_id(std::string* id) {
   if (id != nullptr) {
     
   } else {
@@ -722,45 +745,45 @@ inline void Header::set_allocated_id(std::string* id) {
     id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Header.id)
+  // @@protoc_insertion_point(field_set_allocated:HeaderProto.id)
 }
 
 // bytes uuid = 3;
-inline void Header::clear_uuid() {
+inline void HeaderProto::clear_uuid() {
   uuid_.ClearToEmpty();
 }
-inline const std::string& Header::uuid() const {
-  // @@protoc_insertion_point(field_get:Header.uuid)
+inline const std::string& HeaderProto::uuid() const {
+  // @@protoc_insertion_point(field_get:HeaderProto.uuid)
   return _internal_uuid();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Header::set_uuid(ArgT0&& arg0, ArgT... args) {
+void HeaderProto::set_uuid(ArgT0&& arg0, ArgT... args) {
  
  uuid_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Header.uuid)
+  // @@protoc_insertion_point(field_set:HeaderProto.uuid)
 }
-inline std::string* Header::mutable_uuid() {
+inline std::string* HeaderProto::mutable_uuid() {
   std::string* _s = _internal_mutable_uuid();
-  // @@protoc_insertion_point(field_mutable:Header.uuid)
+  // @@protoc_insertion_point(field_mutable:HeaderProto.uuid)
   return _s;
 }
-inline const std::string& Header::_internal_uuid() const {
+inline const std::string& HeaderProto::_internal_uuid() const {
   return uuid_.Get();
 }
-inline void Header::_internal_set_uuid(const std::string& value) {
+inline void HeaderProto::_internal_set_uuid(const std::string& value) {
   
   uuid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Header::_internal_mutable_uuid() {
+inline std::string* HeaderProto::_internal_mutable_uuid() {
   
   return uuid_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Header::release_uuid() {
-  // @@protoc_insertion_point(field_release:Header.uuid)
+inline std::string* HeaderProto::release_uuid() {
+  // @@protoc_insertion_point(field_release:HeaderProto.uuid)
   return uuid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Header::set_allocated_uuid(std::string* uuid) {
+inline void HeaderProto::set_allocated_uuid(std::string* uuid) {
   if (uuid != nullptr) {
     
   } else {
@@ -773,55 +796,55 @@ inline void Header::set_allocated_uuid(std::string* uuid) {
     uuid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Header.uuid)
+  // @@protoc_insertion_point(field_set_allocated:HeaderProto.uuid)
 }
 
 // -------------------------------------------------------------------
 
-// Content
+// ContentProto
 
 // bytes raw = 1;
-inline bool Content::_internal_has_raw() const {
+inline bool ContentProto::_internal_has_raw() const {
   return data_case() == kRaw;
 }
-inline bool Content::has_raw() const {
+inline bool ContentProto::has_raw() const {
   return _internal_has_raw();
 }
-inline void Content::set_has_raw() {
+inline void ContentProto::set_has_raw() {
   _oneof_case_[0] = kRaw;
 }
-inline void Content::clear_raw() {
+inline void ContentProto::clear_raw() {
   if (_internal_has_raw()) {
     data_.raw_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
     clear_has_data();
   }
 }
-inline const std::string& Content::raw() const {
-  // @@protoc_insertion_point(field_get:Content.raw)
+inline const std::string& ContentProto::raw() const {
+  // @@protoc_insertion_point(field_get:ContentProto.raw)
   return _internal_raw();
 }
 template <typename ArgT0, typename... ArgT>
-inline void Content::set_raw(ArgT0&& arg0, ArgT... args) {
+inline void ContentProto::set_raw(ArgT0&& arg0, ArgT... args) {
   if (!_internal_has_raw()) {
     clear_data();
     set_has_raw();
     data_.raw_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   }
   data_.raw_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Content.raw)
+  // @@protoc_insertion_point(field_set:ContentProto.raw)
 }
-inline std::string* Content::mutable_raw() {
+inline std::string* ContentProto::mutable_raw() {
   std::string* _s = _internal_mutable_raw();
-  // @@protoc_insertion_point(field_mutable:Content.raw)
+  // @@protoc_insertion_point(field_mutable:ContentProto.raw)
   return _s;
 }
-inline const std::string& Content::_internal_raw() const {
+inline const std::string& ContentProto::_internal_raw() const {
   if (_internal_has_raw()) {
     return data_.raw_.Get();
   }
   return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
 }
-inline void Content::_internal_set_raw(const std::string& value) {
+inline void ContentProto::_internal_set_raw(const std::string& value) {
   if (!_internal_has_raw()) {
     clear_data();
     set_has_raw();
@@ -829,7 +852,7 @@ inline void Content::_internal_set_raw(const std::string& value) {
   }
   data_.raw_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Content::_internal_mutable_raw() {
+inline std::string* ContentProto::_internal_mutable_raw() {
   if (!_internal_has_raw()) {
     clear_data();
     set_has_raw();
@@ -838,8 +861,8 @@ inline std::string* Content::_internal_mutable_raw() {
   return data_.raw_.Mutable(
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Content::release_raw() {
-  // @@protoc_insertion_point(field_release:Content.raw)
+inline std::string* ContentProto::release_raw() {
+  // @@protoc_insertion_point(field_release:ContentProto.raw)
   if (_internal_has_raw()) {
     clear_has_data();
     return data_.raw_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
@@ -847,7 +870,7 @@ inline std::string* Content::release_raw() {
     return nullptr;
   }
 }
-inline void Content::set_allocated_raw(std::string* raw) {
+inline void ContentProto::set_allocated_raw(std::string* raw) {
   if (has_data()) {
     clear_data();
   }
@@ -859,51 +882,51 @@ inline void Content::set_allocated_raw(std::string* raw) {
       arena->Own(raw);
     }
   }
-  // @@protoc_insertion_point(field_set_allocated:Content.raw)
+  // @@protoc_insertion_point(field_set_allocated:ContentProto.raw)
 }
 
 // string text = 2;
-inline bool Content::_internal_has_text() const {
+inline bool ContentProto::_internal_has_text() const {
   return data_case() == kText;
 }
-inline bool Content::has_text() const {
+inline bool ContentProto::has_text() const {
   return _internal_has_text();
 }
-inline void Content::set_has_text() {
+inline void ContentProto::set_has_text() {
   _oneof_case_[0] = kText;
 }
-inline void Content::clear_text() {
+inline void ContentProto::clear_text() {
   if (_internal_has_text()) {
     data_.text_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
     clear_has_data();
   }
 }
-inline const std::string& Content::text() const {
-  // @@protoc_insertion_point(field_get:Content.text)
+inline const std::string& ContentProto::text() const {
+  // @@protoc_insertion_point(field_get:ContentProto.text)
   return _internal_text();
 }
 template <typename ArgT0, typename... ArgT>
-inline void Content::set_text(ArgT0&& arg0, ArgT... args) {
+inline void ContentProto::set_text(ArgT0&& arg0, ArgT... args) {
   if (!_internal_has_text()) {
     clear_data();
     set_has_text();
     data_.text_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   }
   data_.text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Content.text)
+  // @@protoc_insertion_point(field_set:ContentProto.text)
 }
-inline std::string* Content::mutable_text() {
+inline std::string* ContentProto::mutable_text() {
   std::string* _s = _internal_mutable_text();
-  // @@protoc_insertion_point(field_mutable:Content.text)
+  // @@protoc_insertion_point(field_mutable:ContentProto.text)
   return _s;
 }
-inline const std::string& Content::_internal_text() const {
+inline const std::string& ContentProto::_internal_text() const {
   if (_internal_has_text()) {
     return data_.text_.Get();
   }
   return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
 }
-inline void Content::_internal_set_text(const std::string& value) {
+inline void ContentProto::_internal_set_text(const std::string& value) {
   if (!_internal_has_text()) {
     clear_data();
     set_has_text();
@@ -911,7 +934,7 @@ inline void Content::_internal_set_text(const std::string& value) {
   }
   data_.text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Content::_internal_mutable_text() {
+inline std::string* ContentProto::_internal_mutable_text() {
   if (!_internal_has_text()) {
     clear_data();
     set_has_text();
@@ -920,8 +943,8 @@ inline std::string* Content::_internal_mutable_text() {
   return data_.text_.Mutable(
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Content::release_text() {
-  // @@protoc_insertion_point(field_release:Content.text)
+inline std::string* ContentProto::release_text() {
+  // @@protoc_insertion_point(field_release:ContentProto.text)
   if (_internal_has_text()) {
     clear_has_data();
     return data_.text_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
@@ -929,7 +952,7 @@ inline std::string* Content::release_text() {
     return nullptr;
   }
 }
-inline void Content::set_allocated_text(std::string* text) {
+inline void ContentProto::set_allocated_text(std::string* text) {
   if (has_data()) {
     clear_data();
   }
@@ -941,46 +964,112 @@ inline void Content::set_allocated_text(std::string* text) {
       arena->Own(text);
     }
   }
-  // @@protoc_insertion_point(field_set_allocated:Content.text)
+  // @@protoc_insertion_point(field_set_allocated:ContentProto.text)
 }
 
-inline bool Content::has_data() const {
+// .GymizeProto gymize = 3;
+inline bool ContentProto::_internal_has_gymize() const {
+  return data_case() == kGymize;
+}
+inline bool ContentProto::has_gymize() const {
+  return _internal_has_gymize();
+}
+inline void ContentProto::set_has_gymize() {
+  _oneof_case_[0] = kGymize;
+}
+inline ::GymizeProto* ContentProto::release_gymize() {
+  // @@protoc_insertion_point(field_release:ContentProto.gymize)
+  if (_internal_has_gymize()) {
+    clear_has_data();
+      ::GymizeProto* temp = data_.gymize_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    data_.gymize_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::GymizeProto& ContentProto::_internal_gymize() const {
+  return _internal_has_gymize()
+      ? *data_.gymize_
+      : reinterpret_cast< ::GymizeProto&>(::_GymizeProto_default_instance_);
+}
+inline const ::GymizeProto& ContentProto::gymize() const {
+  // @@protoc_insertion_point(field_get:ContentProto.gymize)
+  return _internal_gymize();
+}
+inline ::GymizeProto* ContentProto::unsafe_arena_release_gymize() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:ContentProto.gymize)
+  if (_internal_has_gymize()) {
+    clear_has_data();
+    ::GymizeProto* temp = data_.gymize_;
+    data_.gymize_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ContentProto::unsafe_arena_set_allocated_gymize(::GymizeProto* gymize) {
+  clear_data();
+  if (gymize) {
+    set_has_gymize();
+    data_.gymize_ = gymize;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ContentProto.gymize)
+}
+inline ::GymizeProto* ContentProto::_internal_mutable_gymize() {
+  if (!_internal_has_gymize()) {
+    clear_data();
+    set_has_gymize();
+    data_.gymize_ = CreateMaybeMessage< ::GymizeProto >(GetArenaForAllocation());
+  }
+  return data_.gymize_;
+}
+inline ::GymizeProto* ContentProto::mutable_gymize() {
+  ::GymizeProto* _msg = _internal_mutable_gymize();
+  // @@protoc_insertion_point(field_mutable:ContentProto.gymize)
+  return _msg;
+}
+
+inline bool ContentProto::has_data() const {
   return data_case() != DATA_NOT_SET;
 }
-inline void Content::clear_has_data() {
+inline void ContentProto::clear_has_data() {
   _oneof_case_[0] = DATA_NOT_SET;
 }
-inline Content::DataCase Content::data_case() const {
-  return Content::DataCase(_oneof_case_[0]);
+inline ContentProto::DataCase ContentProto::data_case() const {
+  return ContentProto::DataCase(_oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 
-// Message
+// MessageProto
 
-// .Header header = 1;
-inline bool Message::_internal_has_header() const {
+// .HeaderProto header = 1;
+inline bool MessageProto::_internal_has_header() const {
   return this != internal_default_instance() && header_ != nullptr;
 }
-inline bool Message::has_header() const {
+inline bool MessageProto::has_header() const {
   return _internal_has_header();
 }
-inline void Message::clear_header() {
+inline void MessageProto::clear_header() {
   if (GetArenaForAllocation() == nullptr && header_ != nullptr) {
     delete header_;
   }
   header_ = nullptr;
 }
-inline const ::Header& Message::_internal_header() const {
-  const ::Header* p = header_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Header&>(
-      ::_Header_default_instance_);
+inline const ::HeaderProto& MessageProto::_internal_header() const {
+  const ::HeaderProto* p = header_;
+  return p != nullptr ? *p : reinterpret_cast<const ::HeaderProto&>(
+      ::_HeaderProto_default_instance_);
 }
-inline const ::Header& Message::header() const {
-  // @@protoc_insertion_point(field_get:Message.header)
+inline const ::HeaderProto& MessageProto::header() const {
+  // @@protoc_insertion_point(field_get:MessageProto.header)
   return _internal_header();
 }
-inline void Message::unsafe_arena_set_allocated_header(
-    ::Header* header) {
+inline void MessageProto::unsafe_arena_set_allocated_header(
+    ::HeaderProto* header) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(header_);
   }
@@ -990,11 +1079,11 @@ inline void Message::unsafe_arena_set_allocated_header(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Message.header)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:MessageProto.header)
 }
-inline ::Header* Message::release_header() {
+inline ::HeaderProto* MessageProto::release_header() {
   
-  ::Header* temp = header_;
+  ::HeaderProto* temp = header_;
   header_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -1007,34 +1096,34 @@ inline ::Header* Message::release_header() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Header* Message::unsafe_arena_release_header() {
-  // @@protoc_insertion_point(field_release:Message.header)
+inline ::HeaderProto* MessageProto::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_release:MessageProto.header)
   
-  ::Header* temp = header_;
+  ::HeaderProto* temp = header_;
   header_ = nullptr;
   return temp;
 }
-inline ::Header* Message::_internal_mutable_header() {
+inline ::HeaderProto* MessageProto::_internal_mutable_header() {
   
   if (header_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Header>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::HeaderProto>(GetArenaForAllocation());
     header_ = p;
   }
   return header_;
 }
-inline ::Header* Message::mutable_header() {
-  ::Header* _msg = _internal_mutable_header();
-  // @@protoc_insertion_point(field_mutable:Message.header)
+inline ::HeaderProto* MessageProto::mutable_header() {
+  ::HeaderProto* _msg = _internal_mutable_header();
+  // @@protoc_insertion_point(field_mutable:MessageProto.header)
   return _msg;
 }
-inline void Message::set_allocated_header(::Header* header) {
+inline void MessageProto::set_allocated_header(::HeaderProto* header) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete header_;
   }
   if (header) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Header>::GetOwningArena(header);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::HeaderProto>::GetOwningArena(header);
     if (message_arena != submessage_arena) {
       header = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, header, submessage_arena);
@@ -1044,33 +1133,33 @@ inline void Message::set_allocated_header(::Header* header) {
     
   }
   header_ = header;
-  // @@protoc_insertion_point(field_set_allocated:Message.header)
+  // @@protoc_insertion_point(field_set_allocated:MessageProto.header)
 }
 
-// .Content content = 2;
-inline bool Message::_internal_has_content() const {
+// .ContentProto content = 2;
+inline bool MessageProto::_internal_has_content() const {
   return this != internal_default_instance() && content_ != nullptr;
 }
-inline bool Message::has_content() const {
+inline bool MessageProto::has_content() const {
   return _internal_has_content();
 }
-inline void Message::clear_content() {
+inline void MessageProto::clear_content() {
   if (GetArenaForAllocation() == nullptr && content_ != nullptr) {
     delete content_;
   }
   content_ = nullptr;
 }
-inline const ::Content& Message::_internal_content() const {
-  const ::Content* p = content_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Content&>(
-      ::_Content_default_instance_);
+inline const ::ContentProto& MessageProto::_internal_content() const {
+  const ::ContentProto* p = content_;
+  return p != nullptr ? *p : reinterpret_cast<const ::ContentProto&>(
+      ::_ContentProto_default_instance_);
 }
-inline const ::Content& Message::content() const {
-  // @@protoc_insertion_point(field_get:Message.content)
+inline const ::ContentProto& MessageProto::content() const {
+  // @@protoc_insertion_point(field_get:MessageProto.content)
   return _internal_content();
 }
-inline void Message::unsafe_arena_set_allocated_content(
-    ::Content* content) {
+inline void MessageProto::unsafe_arena_set_allocated_content(
+    ::ContentProto* content) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(content_);
   }
@@ -1080,11 +1169,11 @@ inline void Message::unsafe_arena_set_allocated_content(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Message.content)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:MessageProto.content)
 }
-inline ::Content* Message::release_content() {
+inline ::ContentProto* MessageProto::release_content() {
   
-  ::Content* temp = content_;
+  ::ContentProto* temp = content_;
   content_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -1097,34 +1186,34 @@ inline ::Content* Message::release_content() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Content* Message::unsafe_arena_release_content() {
-  // @@protoc_insertion_point(field_release:Message.content)
+inline ::ContentProto* MessageProto::unsafe_arena_release_content() {
+  // @@protoc_insertion_point(field_release:MessageProto.content)
   
-  ::Content* temp = content_;
+  ::ContentProto* temp = content_;
   content_ = nullptr;
   return temp;
 }
-inline ::Content* Message::_internal_mutable_content() {
+inline ::ContentProto* MessageProto::_internal_mutable_content() {
   
   if (content_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Content>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::ContentProto>(GetArenaForAllocation());
     content_ = p;
   }
   return content_;
 }
-inline ::Content* Message::mutable_content() {
-  ::Content* _msg = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:Message.content)
+inline ::ContentProto* MessageProto::mutable_content() {
+  ::ContentProto* _msg = _internal_mutable_content();
+  // @@protoc_insertion_point(field_mutable:MessageProto.content)
   return _msg;
 }
-inline void Message::set_allocated_content(::Content* content) {
+inline void MessageProto::set_allocated_content(::ContentProto* content) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete content_;
   }
   if (content) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Content>::GetOwningArena(content);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::ContentProto>::GetOwningArena(content);
     if (message_arena != submessage_arena) {
       content = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, content, submessage_arena);
@@ -1134,7 +1223,7 @@ inline void Message::set_allocated_content(::Content* content) {
     
   }
   content_ = content;
-  // @@protoc_insertion_point(field_set_allocated:Message.content)
+  // @@protoc_insertion_point(field_set_allocated:MessageProto.content)
 }
 
 #ifdef __GNUC__
@@ -1150,10 +1239,10 @@ inline void Message::set_allocated_content(::Content* content) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::MessageType> : ::std::true_type {};
+template <> struct is_proto_enum< ::MessageTypeProto> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MessageType>() {
-  return ::MessageType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::MessageTypeProto>() {
+  return ::MessageTypeProto_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

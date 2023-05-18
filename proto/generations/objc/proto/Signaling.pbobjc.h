@@ -29,57 +29,57 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Enum SignalType
+#pragma mark - Enum SignalTypeProto
 
-typedef GPB_ENUM(SignalType) {
+typedef GPB_ENUM(SignalTypeProto) {
   /**
    * Value used if any message's field encounters a value that is not defined
    * by this enum. The message will also have C functions to get/set the rawValue
    * of the field.
    **/
-  SignalType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  SignalType_SignalTypeUnspecified = 0,
-  SignalType_SignalTypeInit = 1,
+  SignalTypeProto_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  SignalTypeProto_SignalTypeProtoUnspecified = 0,
+  SignalTypeProto_SignalTypeProtoInit = 1,
 
   /** update the peer server information */
-  SignalType_SignalTypeUpdate = 2,
+  SignalTypeProto_SignalTypeProtoUpdate = 2,
 
   /** resume the connection with same signal id */
-  SignalType_SignalTypeResume = 3,
+  SignalTypeProto_SignalTypeProtoResume = 3,
 
   /** ask another peer to close, and remove signal id */
-  SignalType_SignalTypeClose = 4,
+  SignalTypeProto_SignalTypeProtoClose = 4,
 };
 
-GPBEnumDescriptor *SignalType_EnumDescriptor(void);
+GPBEnumDescriptor *SignalTypeProto_EnumDescriptor(void);
 
 /**
  * Checks to see if the given value is defined by the enum or was not known at
  * the time this source was generated.
  **/
-BOOL SignalType_IsValidValue(int32_t value);
+BOOL SignalTypeProto_IsValidValue(int32_t value);
 
-#pragma mark - Enum PeerType
+#pragma mark - Enum PeerTypeProto
 
-typedef GPB_ENUM(PeerType) {
+typedef GPB_ENUM(PeerTypeProto) {
   /**
    * Value used if any message's field encounters a value that is not defined
    * by this enum. The message will also have C functions to get/set the rawValue
    * of the field.
    **/
-  PeerType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  PeerType_PeerTypeUnspecified = 0,
-  PeerType_PeerTypeActive = 1,
-  PeerType_PeerTypePassive = 2,
+  PeerTypeProto_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  PeerTypeProto_PeerTypeProtoUnspecified = 0,
+  PeerTypeProto_PeerTypeProtoActive = 1,
+  PeerTypeProto_PeerTypeProtoPassive = 2,
 };
 
-GPBEnumDescriptor *PeerType_EnumDescriptor(void);
+GPBEnumDescriptor *PeerTypeProto_EnumDescriptor(void);
 
 /**
  * Checks to see if the given value is defined by the enum or was not known at
  * the time this source was generated.
  **/
-BOOL PeerType_IsValidValue(int32_t value);
+BOOL PeerTypeProto_IsValidValue(int32_t value);
 
 #pragma mark - SignalingRoot
 
@@ -96,20 +96,20 @@ BOOL PeerType_IsValidValue(int32_t value);
 GPB_FINAL @interface SignalingRoot : GPBRootObject
 @end
 
-#pragma mark - Signal
+#pragma mark - SignalProto
 
-typedef GPB_ENUM(Signal_FieldNumber) {
-  Signal_FieldNumber_SignalType = 1,
-  Signal_FieldNumber_Id_p = 2,
-  Signal_FieldNumber_Data_p = 3,
-  Signal_FieldNumber_Name = 4,
-  Signal_FieldNumber_PeerType = 5,
-  Signal_FieldNumber_URL = 6,
+typedef GPB_ENUM(SignalProto_FieldNumber) {
+  SignalProto_FieldNumber_SignalType = 1,
+  SignalProto_FieldNumber_Id_p = 2,
+  SignalProto_FieldNumber_Data_p = 3,
+  SignalProto_FieldNumber_Name = 4,
+  SignalProto_FieldNumber_PeerType = 5,
+  SignalProto_FieldNumber_URL = 6,
 };
 
-GPB_FINAL @interface Signal : GPBMessage
+GPB_FINAL @interface SignalProto : GPBMessage
 
-@property(nonatomic, readwrite) SignalType signalType;
+@property(nonatomic, readwrite) SignalTypeProto signalType;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *id_p;
 
@@ -117,35 +117,35 @@ GPB_FINAL @interface Signal : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
 
-@property(nonatomic, readwrite) PeerType peerType;
+@property(nonatomic, readwrite) PeerTypeProto peerType;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *URL;
 
 @end
 
 /**
- * Fetches the raw value of a @c Signal's @c signalType property, even
+ * Fetches the raw value of a @c SignalProto's @c signalType property, even
  * if the value was not defined by the enum at the time the code was generated.
  **/
-int32_t Signal_SignalType_RawValue(Signal *message);
+int32_t SignalProto_SignalType_RawValue(SignalProto *message);
 /**
- * Sets the raw value of an @c Signal's @c signalType property, allowing
+ * Sets the raw value of an @c SignalProto's @c signalType property, allowing
  * it to be set to a value that was not defined by the enum at the time the code
  * was generated.
  **/
-void SetSignal_SignalType_RawValue(Signal *message, int32_t value);
+void SetSignalProto_SignalType_RawValue(SignalProto *message, int32_t value);
 
 /**
- * Fetches the raw value of a @c Signal's @c peerType property, even
+ * Fetches the raw value of a @c SignalProto's @c peerType property, even
  * if the value was not defined by the enum at the time the code was generated.
  **/
-int32_t Signal_PeerType_RawValue(Signal *message);
+int32_t SignalProto_PeerType_RawValue(SignalProto *message);
 /**
- * Sets the raw value of an @c Signal's @c peerType property, allowing
+ * Sets the raw value of an @c SignalProto's @c peerType property, allowing
  * it to be set to a value that was not defined by the enum at the time the code
  * was generated.
  **/
-void SetSignal_PeerType_RawValue(Signal *message, int32_t value);
+void SetSignalProto_PeerType_RawValue(SignalProto *message, int32_t value);
 
 NS_ASSUME_NONNULL_END
 

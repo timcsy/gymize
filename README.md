@@ -2,15 +2,15 @@
 
 Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 
-## Location Mapping
+## Locator
 
-The developer can use the "location string" to map the data to the gym-style space data.
+The developer can use the "locator" to map the data to the gym-style space data.
 
 The followings are valid examples:
 
 ```
-agent1@agent2@.key.0[12]["camera"]['front'][right](2)[87]
-agent1@agent2@.key.0[12]["camera"]['front'][right](2)[1:10:2=24:29 & 11=0 & 12=3]
+agent1@agent2@.key.0[12]["camera"]['front'][right][87](2)
+@@agent3@agent4@["camera"](1:10:2) = $(24:29) & @[11]=$[0] & @.key = $(3:8)
 ```
 
 ### Location String Rules
@@ -57,5 +57,5 @@ cd python
 pip install -e .
 cd ..
 cd python/tests
-python gym.py <unity_app_path>
+python test_gym.py <unity_app_path>
 ```

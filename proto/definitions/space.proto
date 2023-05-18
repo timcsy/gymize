@@ -1,101 +1,67 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Gymize.Protobuf";
+option csharp_namespace = "Gymize.Protobuf";
 
 // Tensors use the C-like index order,
 // with the last axis index changing fastest,
 // back to the first axis index changing slowest.
 
-enum DataType {
-	DATA_TYPE_UNSPECIFIED = 0;
-	DATA_TYPE_FLOAT = 1;
-	DATA_TYPE_DOUBLE = 2;
-	DATA_TYPE_INT = 3;
-	DATA_TYPE_LONG = 4;
-	DATA_TYPE_UINT = 5;
-	DATA_TYPE_ULONG = 6;
-	DATA_TYPE_BOOL = 7;
+message TensorProto {
+	bytes data = 1;
+	string dtype = 2;
+	repeated int32 shape = 3;
 }
 
-message Tensor {
-	repeated int32 shape = 1;
-	DataType data_type = 2;
-	repeated float float_array = 3;
-	repeated double double_array = 4;
-	repeated sint32 int_array = 5;
-	repeated sint64 long_array = 6;
-	repeated uint32 unsigned_int_array = 7;
-	repeated uint64 unsigned_long_array = 8;
-	repeated bool bool_array = 9;
+message GraphProto {
+	TensorProto nodes = 1; // floating type
+	TensorProto edges = 2; // floating type
+	TensorProto edge_links = 3; // integer type
 }
 
-message GraphSpace {
-	Space node_space = 1;
-	Space edge_space = 2;
+enum CompressionTypeProto {
+	COMPRESSION_TYPE_PROTO_UNSPECIFIED = 0;
+	COMPRESSION_TYPE_PROTO_NONE = 1;
+	COMPRESSION_TYPE_PROTO_PNG = 2;
+	COMPRESSION_TYPE_PROTO_JPG = 3;
 }
 
-message Graph {
-	Tensor nodes = 1; // floating type
-	Tensor edges = 2; // floating type
-	Tensor edge_links = 3; // integer type
-}
-
-enum CompressionType {
-	COMPRESSION_TYPE_UNSPECIFIED = 0;
-	COMPRESSION_TYPE_NONE = 1;
-	COMPRESSION_TYPE_PNG = 2;
-	COMPRESSION_TYPE_JPG = 3;
-}
-
-message Image {
-	CompressionType compression_type = 1;
+message ImageProto {
+	CompressionTypeProto compression_type = 1;
 	bytes data = 2;
-	repeated int32 shape = 3; // (H, W, C) or (H, W)
-	repeated int32 dimension_mapping = 4; // (H, W, C) to [0, 1, 2]
+	string dtype = 3;
+	repeated int32 shape = 4; // (H, W, C) or (H, W)
+	repeated int32 transpose_axes = 5; // H = 0, W = 1, C = 2
 }
 
-enum SpaceType {
-	SPACE_TYPE_UNSPECIFIED = 0;
-	SPACE_TYPE_RAW = 1;
-	SPACE_TYPE_BOX = 2;
-	SPACE_TYPE_DISCRETE = 3;
-	SPACE_TYPE_MULTI_BINARY = 4;
-	SPACE_TYPE_MULTI_DISCRETE = 5;
-	SPACE_TYPE_TEXT = 6;
-	SPACE_TYPE_DICT = 7;
-	SPACE_TYPE_TUPLE = 8;
-	SPACE_TYPE_SEQUENCE = 9;
-	SPACE_TYPE_GRAPH = 10;
-	SPACE_TYPE_IMAGE = 11;
+enum InstanceTypeProto {
+	INSTANCE_TYPE_PROTO_UNSPECIFIED = 0;
+	INSTANCE_TYPE_PROTO_RAW = 1;
+	INSTANCE_TYPE_PROTO_TENSOR = 2;
+	INSTANCE_TYPE_PROTO_DISCRETE = 3;
+	INSTANCE_TYPE_PROTO_TEXT = 4;
+	INSTANCE_TYPE_PROTO_DICT = 5;
+	INSTANCE_TYPE_PROTO_LIST = 6;
+	INSTANCE_TYPE_PROTO_GRAPH = 7;
+	// The following are gymize-defined types, not in gym
+	INSTANCE_TYPE_PROTO_IMAGE = 8;
+	INSTANCE_TYPE_PROTO_FLOAT = 9;
+	INSTANCE_TYPE_PROTO_BOOL = 10;
+	INSTANCE_TYPE_PROTO_NULL = 11;
+	INSTANCE_TYPE_PROTO_JSON = 12;
 }
 
-message Space {
-	SpaceType space_type = 1;
-	string description = 2; // For raw data
-	repeated int32 shape = 3; // also the n of the MultiBinary
-	string data_type = 4;
-	repeated float low = 5;
-	repeated float high = 6;
-	int32 min = 7; // start of the Discrete, min_length of the Text
-	int32 max = 8; // n of the Discrete, max_length of the Text
-	repeated int32 nvec = 9;
-	repeated string charset = 10;
-	map<string, Space> dict_space = 11;
-	map<int32, Space> list_space = 12; // Tuple and Sequence
-	GraphSpace graph_space = 13;
-}
-
-message Data { // Data is a point(instance) in(belongs to) the space
-	SpaceType space_type = 1;
-	string data_type = 2;
-	bytes raw_data = 3;
-	Tensor box = 4;
-	int32 discrete = 5;
-	Tensor multi_binary = 6; // boolean type
-	Tensor multi_discrete = 7; // integer type
-	string text = 8;
-	map<string, Data> dict = 9;
-	map<int32, Data> list = 10; // Tuple and Sequence
-	Graph graph = 11;
-	Image image = 12; // Box space instance which is a compressed image (H, W, C)
+message InstanceProto { // Instance is a instance belongs to the space
+	InstanceTypeProto type = 1;
+	bytes raw_data = 2;
+	TensorProto tensor = 3;
+	int64 discrete = 4;
+	string text = 5;
+	map<string, InstanceProto> dict = 6;
+	repeated InstanceProto list = 7; // Tuple and Sequence
+	GraphProto graph = 8;
+	// The following are gymize-defined types, not in gym
+	ImageProto image = 9; // Box space instance which is a compressed image (H, W, C)
+	double float = 10; // float should turn to array in Box space
+	bool boolean = 11; // boolean is kind of discrete
+	string json = 12;
 }

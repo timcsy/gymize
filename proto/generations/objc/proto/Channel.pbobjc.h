@@ -27,33 +27,34 @@
 
 CF_EXTERN_C_BEGIN
 
-@class Content;
-@class Header;
+@class ContentProto;
+@class GymizeProto;
+@class HeaderProto;
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Enum MessageType
+#pragma mark - Enum MessageTypeProto
 
-typedef GPB_ENUM(MessageType) {
+typedef GPB_ENUM(MessageTypeProto) {
   /**
    * Value used if any message's field encounters a value that is not defined
    * by this enum. The message will also have C functions to get/set the rawValue
    * of the field.
    **/
-  MessageType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  MessageType_MessageTypeUnspecified = 0,
-  MessageType_MessageTypeMessage = 1,
-  MessageType_MessageTypeRequest = 2,
-  MessageType_MessageTypeResponse = 3,
+  MessageTypeProto_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  MessageTypeProto_MessageTypeProtoUnspecified = 0,
+  MessageTypeProto_MessageTypeProtoMessage = 1,
+  MessageTypeProto_MessageTypeProtoRequest = 2,
+  MessageTypeProto_MessageTypeProtoResponse = 3,
 };
 
-GPBEnumDescriptor *MessageType_EnumDescriptor(void);
+GPBEnumDescriptor *MessageTypeProto_EnumDescriptor(void);
 
 /**
  * Checks to see if the given value is defined by the enum or was not known at
  * the time this source was generated.
  **/
-BOOL MessageType_IsValidValue(int32_t value);
+BOOL MessageTypeProto_IsValidValue(int32_t value);
 
 #pragma mark - ChannelRoot
 
@@ -70,17 +71,17 @@ BOOL MessageType_IsValidValue(int32_t value);
 GPB_FINAL @interface ChannelRoot : GPBRootObject
 @end
 
-#pragma mark - Header
+#pragma mark - HeaderProto
 
-typedef GPB_ENUM(Header_FieldNumber) {
-  Header_FieldNumber_MessageType = 1,
-  Header_FieldNumber_Id_p = 2,
-  Header_FieldNumber_Uuid = 3,
+typedef GPB_ENUM(HeaderProto_FieldNumber) {
+  HeaderProto_FieldNumber_MessageType = 1,
+  HeaderProto_FieldNumber_Id_p = 2,
+  HeaderProto_FieldNumber_Uuid = 3,
 };
 
-GPB_FINAL @interface Header : GPBMessage
+GPB_FINAL @interface HeaderProto : GPBMessage
 
-@property(nonatomic, readwrite) MessageType messageType;
+@property(nonatomic, readwrite) MessageTypeProto messageType;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *id_p;
 
@@ -89,59 +90,63 @@ GPB_FINAL @interface Header : GPBMessage
 @end
 
 /**
- * Fetches the raw value of a @c Header's @c messageType property, even
+ * Fetches the raw value of a @c HeaderProto's @c messageType property, even
  * if the value was not defined by the enum at the time the code was generated.
  **/
-int32_t Header_MessageType_RawValue(Header *message);
+int32_t HeaderProto_MessageType_RawValue(HeaderProto *message);
 /**
- * Sets the raw value of an @c Header's @c messageType property, allowing
+ * Sets the raw value of an @c HeaderProto's @c messageType property, allowing
  * it to be set to a value that was not defined by the enum at the time the code
  * was generated.
  **/
-void SetHeader_MessageType_RawValue(Header *message, int32_t value);
+void SetHeaderProto_MessageType_RawValue(HeaderProto *message, int32_t value);
 
-#pragma mark - Content
+#pragma mark - ContentProto
 
-typedef GPB_ENUM(Content_FieldNumber) {
-  Content_FieldNumber_Raw = 1,
-  Content_FieldNumber_Text = 2,
+typedef GPB_ENUM(ContentProto_FieldNumber) {
+  ContentProto_FieldNumber_Raw = 1,
+  ContentProto_FieldNumber_Text = 2,
+  ContentProto_FieldNumber_Gymize = 3,
 };
 
-typedef GPB_ENUM(Content_Data_OneOfCase) {
-  Content_Data_OneOfCase_GPBUnsetOneOfCase = 0,
-  Content_Data_OneOfCase_Raw = 1,
-  Content_Data_OneOfCase_Text = 2,
+typedef GPB_ENUM(ContentProto_Data_OneOfCase) {
+  ContentProto_Data_OneOfCase_GPBUnsetOneOfCase = 0,
+  ContentProto_Data_OneOfCase_Raw = 1,
+  ContentProto_Data_OneOfCase_Text = 2,
+  ContentProto_Data_OneOfCase_Gymize = 3,
 };
 
-GPB_FINAL @interface Content : GPBMessage
+GPB_FINAL @interface ContentProto : GPBMessage
 
-@property(nonatomic, readonly) Content_Data_OneOfCase dataOneOfCase;
+@property(nonatomic, readonly) ContentProto_Data_OneOfCase dataOneOfCase;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSData *raw;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *text;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymizeProto *gymize;
 
 @end
 
 /**
  * Clears whatever value was set for the oneof 'data'.
  **/
-void Content_ClearDataOneOfCase(Content *message);
+void ContentProto_ClearDataOneOfCase(ContentProto *message);
 
-#pragma mark - Message
+#pragma mark - MessageProto
 
-typedef GPB_ENUM(Message_FieldNumber) {
-  Message_FieldNumber_Header = 1,
-  Message_FieldNumber_Content = 2,
+typedef GPB_ENUM(MessageProto_FieldNumber) {
+  MessageProto_FieldNumber_Header = 1,
+  MessageProto_FieldNumber_Content = 2,
 };
 
-GPB_FINAL @interface Message : GPBMessage
+GPB_FINAL @interface MessageProto : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Header *header;
+@property(nonatomic, readwrite, strong, null_resettable) HeaderProto *header;
 /** Test to see if @c header has been set. */
 @property(nonatomic, readwrite) BOOL hasHeader;
 
-@property(nonatomic, readwrite, strong, null_resettable) Content *content;
+@property(nonatomic, readwrite, strong, null_resettable) ContentProto *content;
 /** Test to see if @c content has been set. */
 @property(nonatomic, readwrite) BOOL hasContent;
 

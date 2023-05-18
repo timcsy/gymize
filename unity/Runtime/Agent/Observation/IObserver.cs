@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-
-namespace PAIA.Gymize
+namespace Gymize
 {
     public interface IObserver
     {
-        IData GetObservation(int cacheId);
+        string GetLocator(); // locator should be a constant
+        IInstance GetObservation();
     }
 }

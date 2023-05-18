@@ -9,9 +9,9 @@ using WebSocketSharp;
 using WebSocketSharp.Server;
 using UnityEngine;
 using Google.Protobuf;
-using PAIA.Gymize.Protobuf;
+using Gymize.Protobuf;
 
-namespace PAIA.Gymize
+namespace Gymize
 {
     public enum ChannelMode
     {
@@ -27,6 +27,13 @@ namespace PAIA.Gymize
         DISCONNECTED,
         CLOSED
     }
+
+    // CallBack definitions
+    public delegate void CallBack();
+    public delegate void ErrorCallBack(ErrorEventArgs e);
+	public delegate void ObjectCallBack(object e);
+    public delegate void MessageCallBack(Content content);
+    public delegate void RequestCallBack(Request request);
 
     public class Channel : IDisposable
     {
@@ -71,7 +78,7 @@ namespace PAIA.Gymize
         private CancellationTokenSource m_ChannelStop; // if the channel is stopped
         internal bool m_Updating; // if the channel peer server is updating
         private bool m_Sending; // if the channel peer server is sending messages
-        private Queue<Message> m_Outbox; // Queue[Message]
+        private Queue<MessageProto> m_Outbox; // Queue[MessageProto]
         private Dictionary<string, Queue<Content>> m_Inbox; // { id: Queue[Content] }
         private Dictionary<ByteString, TaskCompletionSource<Content>> m_Responses; // { uuid: Future[Content] }
         // event_name: open, error, signaling_disconnected, peer_disconnected, close
@@ -81,9 +88,9 @@ namespace PAIA.Gymize
         public event CallBack OnSignalingDisconnected;
         public event CallBack OnPeerDisconnected;
         public event CallBack OnClose;
-        public ChannelDictionary<string, ObjectCallBackEvent> On; // { event_name: ObjectCallBackEvent }
-        public ChannelDictionary<string, MessageCallBackEvent> OnMessage; // { id: MessageCallBackEvent }
-        public ChannelDictionary<string, RequestCallBackEvent> OnRequest; // { id: RequestCallBackEvent }
+        public DelegateDictionary<string, ObjectCallBack> On; // { event_name: ObjectCallBack }
+        public DelegateDictionary<string, MessageCallBack> OnMessage; // { id: MessageCallBack }
+        public DelegateDictionary<string, RequestCallBack> OnRequest; // { id: RequestCallBack }
 
         public Channel(string name, ChannelMode mode = ChannelMode.PASSIVE, string signalingUrl = "ws://localhost:50864/", string protocol = "ws", string host = "localhost", int port = -1, string peer_url = null, bool retry = true)
         {
@@ -109,32 +116,21 @@ namespace PAIA.Gymize
             m_ChannelStop = new CancellationTokenSource();
             m_Updating = false;
             m_Sending = false;
-            m_Outbox = new Queue<Message>();
+            m_Outbox = new Queue<MessageProto>();
             m_Inbox = new Dictionary<string, Queue<Content>>()
             {
                 { "", new Queue<Content>() }
             };
             m_Responses = new Dictionary<ByteString, TaskCompletionSource<Content>>();
-            On = new ChannelDictionary<string, ObjectCallBackEvent>
-            (
-                new Dictionary<string, ObjectCallBackEvent>()
-                {
-                }
-            );
-            OnMessage = new ChannelDictionary<string, MessageCallBackEvent>
-            (
-                new Dictionary<string, MessageCallBackEvent>()
-                {
-                    { "", new MessageCallBackEvent() }
-                }
-            );
-            OnRequest = new ChannelDictionary<string, RequestCallBackEvent>
-            (
-                new Dictionary<string, RequestCallBackEvent>()
-                {
-                    { "", new RequestCallBackEvent() }
-                }
-            );
+            On = new DelegateDictionary<string, ObjectCallBack>();
+            OnMessage = new DelegateDictionary<string, MessageCallBack>
+            {
+                { "", null }
+            };
+            OnRequest = new DelegateDictionary<string, RequestCallBack>
+            {
+                { "", null }
+            };
         }
 
         // Implement IDisposable.
@@ -267,12 +263,12 @@ namespace PAIA.Gymize
 
         public async Task TellAsync(string id, Content content)
         {
-            Protobuf.Message msg = new Protobuf.Message
+            MessageProto msg = new MessageProto
             {
-                Header = new Protobuf.Header(),
-                Content = new Protobuf.Content()
+                Header = new HeaderProto(),
+                Content = new ContentProto()
             };
-            msg.Header.MessageType = Protobuf.MessageType.Message;
+            msg.Header.MessageType = MessageTypeProto.Message;
             if (id != null)
             {
                 msg.Header.Id = id;
@@ -350,12 +346,12 @@ namespace PAIA.Gymize
                 m_Inbox.Add(id, new Queue<Content>());
             }
 
-            Protobuf.Message msg = new Protobuf.Message
+            MessageProto msg = new MessageProto
             {
-                Header = new Protobuf.Header(),
-                Content = new Protobuf.Content()
+                Header = new HeaderProto(),
+                Content = new ContentProto()
             };
-            msg.Header.MessageType = Protobuf.MessageType.Request;
+            msg.Header.MessageType = MessageTypeProto.Request;
             if (id != null)
             {
                 msg.Header.Id = id;
@@ -402,14 +398,14 @@ namespace PAIA.Gymize
             return AskSync(id, new Content(data));
         }
 
-        public async Task SendAsync(Message msg)
+        public async Task SendAsync(MessageProto msg)
         {
             m_Outbox.Enqueue(msg);
             SendFlush(); // flush the outbox because the outbox is not empty now
             await Task.CompletedTask;
         }
 
-        public Task SendSync(Message msg)
+        public Task SendSync(MessageProto msg)
         {
             return AddTask(() => SendAsync(msg));
         }
@@ -422,12 +418,12 @@ namespace PAIA.Gymize
             {
                 if (m_WsPeerClient != null && m_WsPeerClient.IsAlive)
                 {
-                    Protobuf.Message msg = m_Outbox.Dequeue();
+                    MessageProto msg = m_Outbox.Dequeue();
                     m_WsPeerClient.Send(msg?.ToByteArray());
                 }
                 else if (m_WsPeerBehavior != null)
                 {
-                    Protobuf.Message msg = m_Outbox.Dequeue();
+                    MessageProto msg = m_Outbox.Dequeue();
                     m_WsPeerBehavior.SendSync(msg?.ToByteArray());
                 }
                 else { break; }
@@ -437,21 +433,21 @@ namespace PAIA.Gymize
 
         internal void Recv(byte[] data)
         {
-            Protobuf.Message msg = Protobuf.Message.Parser.ParseFrom(data);
+            MessageProto msg = MessageProto.Parser.ParseFrom(data);
             Content content = null;
             switch (msg.Content.DataCase)
             {
-                case Protobuf.Content.DataOneofCase.Raw:
+                case ContentProto.DataOneofCase.Raw:
                     content = new Content(msg.Content.Raw.ToByteArray());
                     break;
-                case Protobuf.Content.DataOneofCase.Text:
+                case ContentProto.DataOneofCase.Text:
                     content = new Content(msg.Content.Text);
                     break;
                 default:
                     break;
             }
 
-            if (msg.Header.MessageType == Protobuf.MessageType.Message)
+            if (msg.Header.MessageType == MessageTypeProto.Message)
             {
                 if (msg.Header.Id != "")
                 {
@@ -461,7 +457,7 @@ namespace PAIA.Gymize
                     }
 
                     // only put the message to the queue if there is no message listener
-                    if (OnMessage[msg.Header.Id].Empty)
+                    if (OnMessage[msg.Header.Id] == null)
                     {
                         m_Inbox[msg.Header.Id].Enqueue(content);
                     }
@@ -476,7 +472,7 @@ namespace PAIA.Gymize
                     foreach (string id in m_Inbox.Keys)
                     {
                         // only put the message to the queue if there is no message listener
-                        if (OnMessage[id].Empty)
+                        if (OnMessage[id] == null)
                         {
                             m_Inbox[id].Enqueue(content);
                         }
@@ -487,7 +483,7 @@ namespace PAIA.Gymize
                     }
                 }
             }
-            else if (msg.Header.MessageType == Protobuf.MessageType.Request)
+            else if (msg.Header.MessageType == MessageTypeProto.Request)
             {
                 byte[] uuid = msg.Header.Uuid.ToByteArray();
                 Request request = new Request(msg.Header.Id, uuid, content, this);
@@ -500,7 +496,7 @@ namespace PAIA.Gymize
                     Trigger("request", request);
                 }
             }
-            else if (msg.Header.MessageType == Protobuf.MessageType.Response)
+            else if (msg.Header.MessageType == MessageTypeProto.Response)
             {
                 byte[] uuid = msg.Header.Uuid.ToByteArray();
                 m_Responses[msg.Header.Uuid].TrySetResult(content);
@@ -623,15 +619,15 @@ namespace PAIA.Gymize
             await Task.CompletedTask;
         }
 
-        public void CloseSync()
+        public IEnumerator CloseSync(float waitingSecs = 1.0f)
         {
             try
             {
                 m_Status = ChannelStatus.CLOSED;
                 if (m_WsSignaling!= null && m_WsSignaling.IsAlive)
                 {
-                    Protobuf.Signal signal = new Protobuf.Signal();
-                    signal.SignalType = Protobuf.SignalType.Close;
+                    SignalProto signal = new SignalProto();
+                    signal.SignalType = SignalTypeProto.Close;
                     signal.Id = m_SignalingId;
                     m_WsSignaling.Send(signal?.ToByteArray());
                 }
@@ -647,6 +643,7 @@ namespace PAIA.Gymize
                 m_WsPeerBehavior = null;
             }
             catch {}
+            yield return new WaitForSeconds(waitingSecs);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////
@@ -661,9 +658,9 @@ namespace PAIA.Gymize
         // channel.OnSignalingDisconnected += () => { };
         // channel.OnPeerDisconnected += () => { };
         // channel.OnClose += () => { };
-        // channel.On["event_name"].Event += (e) => { };
-        // channel.OnMessage["id"].Event += (content) => { };
-        // channel.OnResponse["id"].Event += (request) => { };
+        // channel.On["event_name"] += (e) => { };
+        // channel.OnMessage["id"] += (content) => { };
+        // channel.OnResponse["id"] += (request) => { };
 
         public void Trigger(string eventName, object e = null)
         {
@@ -699,18 +696,18 @@ namespace PAIA.Gymize
             }
             else
             {
-                On[eventName].Invoke(e);
+                On[eventName]?.Invoke(e);
             }
         }
 
         public void TriggerMessage(string id, Content content)
         {
-            OnMessage[id].Invoke(content);
+            OnMessage[id]?.Invoke(content);
         }
 
         public void TriggerRequest(string id, Request request)
         {
-            OnRequest[id].Invoke(request);
+            OnRequest[id]?.Invoke(request);
         }
 
         // Remove Event Listeners:
@@ -719,9 +716,9 @@ namespace PAIA.Gymize
         // channel.OnSignalingDisconnected -= event_handler
         // channel.OnPeerDisconnected -= event_handler
         // channel.OnClose -= event_handler
-        // channel.On["event_name"].Event -= event_handler
-        // channel.OnMessage["id"].Event -= event_handler
-        // channel.OnResponse["id"].Event -= event_handler
+        // channel.On["event_name"] -= event_handler
+        // channel.OnMessage["id"] -= event_handler
+        // channel.OnResponse["id"] -= event_handler
 
         /////////////////////////////////////////////////////////////////////////////////////
         //                               Signal client  part                               //
@@ -792,28 +789,28 @@ namespace PAIA.Gymize
 
         private void SignalingStart(bool isResume = false)
         {
-            Protobuf.Signal signal = new Protobuf.Signal();
+            SignalProto signal = new SignalProto();
 
             if (!isResume)
             {
                 // initialize
-                signal.SignalType = Protobuf.SignalType.Init;
+                signal.SignalType = SignalTypeProto.Init;
                 signal.Name = m_Name;
             }
             else
             {
                 // resume
-                signal.SignalType = Protobuf.SignalType.Resume;
+                signal.SignalType = SignalTypeProto.Resume;
                 signal.Id = m_SignalingId;
             }
 
             if (m_Mode == ChannelMode.ACTIVE)
             {
-                signal.PeerType = Protobuf.PeerType.Active;
+                signal.PeerType = PeerTypeProto.Active;
             }
             else if (m_Mode == ChannelMode.PASSIVE)
             {
-                signal.PeerType = Protobuf.PeerType.Passive;
+                signal.PeerType = PeerTypeProto.Passive;
             }
             if (m_WsSignaling != null && m_WsSignaling.IsAlive)
             {
@@ -823,12 +820,12 @@ namespace PAIA.Gymize
 
         private async Task SignalingRecv(byte[] msg)
         {
-            Protobuf.Signal signal = Protobuf.Signal.Parser.ParseFrom(msg);
+            SignalProto signal = SignalProto.Parser.ParseFrom(msg);
 
             // switch by signal type
             switch (signal.SignalType)
             {
-                case Protobuf.SignalType.Init:
+                case SignalTypeProto.Init:
                     // set signaling id given by the signal server
                     m_SignalingId = signal.Id;
                     if (m_Mode == ChannelMode.ACTIVE)
@@ -836,7 +833,7 @@ namespace PAIA.Gymize
                         await UpdateAsync(); // get a Peer Server
                     }
                     break;
-                case Protobuf.SignalType.Update:
+                case SignalTypeProto.Update:
                     if (m_Mode == ChannelMode.ACTIVE)
                     {
                         await UpdateAsync(); // get a Peer Server
@@ -847,7 +844,7 @@ namespace PAIA.Gymize
                         WsClient(signal.Url);
                     }
                     break;
-                case Protobuf.SignalType.Close:
+                case SignalTypeProto.Close:
                     m_Status = ChannelStatus.CLOSED;
                     if (m_WsSignaling != null && m_WsSignaling.IsAlive)
                     {
@@ -884,8 +881,8 @@ namespace PAIA.Gymize
                 m_WsPeerBehavior = null;
             }
 
-            Protobuf.Signal signal = new Protobuf.Signal();
-            signal.SignalType = Protobuf.SignalType.Update;
+            SignalProto signal = new SignalProto();
+            signal.SignalType = SignalTypeProto.Update;
             signal.Id = m_SignalingId;
 
             if (m_Mode == ChannelMode.ACTIVE)

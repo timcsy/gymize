@@ -13,45 +13,45 @@ public final class Channel {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code MessageType}
+   * Protobuf enum {@code MessageTypeProto}
    */
-  public enum MessageType
+  public enum MessageTypeProto
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>MESSAGE_TYPE_UNSPECIFIED = 0;</code>
+     * <code>MESSAGE_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    MESSAGE_TYPE_UNSPECIFIED(0),
+    MESSAGE_TYPE_PROTO_UNSPECIFIED(0),
     /**
-     * <code>MESSAGE_TYPE_MESSAGE = 1;</code>
+     * <code>MESSAGE_TYPE_PROTO_MESSAGE = 1;</code>
      */
-    MESSAGE_TYPE_MESSAGE(1),
+    MESSAGE_TYPE_PROTO_MESSAGE(1),
     /**
-     * <code>MESSAGE_TYPE_REQUEST = 2;</code>
+     * <code>MESSAGE_TYPE_PROTO_REQUEST = 2;</code>
      */
-    MESSAGE_TYPE_REQUEST(2),
+    MESSAGE_TYPE_PROTO_REQUEST(2),
     /**
-     * <code>MESSAGE_TYPE_RESPONSE = 3;</code>
+     * <code>MESSAGE_TYPE_PROTO_RESPONSE = 3;</code>
      */
-    MESSAGE_TYPE_RESPONSE(3),
+    MESSAGE_TYPE_PROTO_RESPONSE(3),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>MESSAGE_TYPE_UNSPECIFIED = 0;</code>
+     * <code>MESSAGE_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    public static final int MESSAGE_TYPE_UNSPECIFIED_VALUE = 0;
+    public static final int MESSAGE_TYPE_PROTO_UNSPECIFIED_VALUE = 0;
     /**
-     * <code>MESSAGE_TYPE_MESSAGE = 1;</code>
+     * <code>MESSAGE_TYPE_PROTO_MESSAGE = 1;</code>
      */
-    public static final int MESSAGE_TYPE_MESSAGE_VALUE = 1;
+    public static final int MESSAGE_TYPE_PROTO_MESSAGE_VALUE = 1;
     /**
-     * <code>MESSAGE_TYPE_REQUEST = 2;</code>
+     * <code>MESSAGE_TYPE_PROTO_REQUEST = 2;</code>
      */
-    public static final int MESSAGE_TYPE_REQUEST_VALUE = 2;
+    public static final int MESSAGE_TYPE_PROTO_REQUEST_VALUE = 2;
     /**
-     * <code>MESSAGE_TYPE_RESPONSE = 3;</code>
+     * <code>MESSAGE_TYPE_PROTO_RESPONSE = 3;</code>
      */
-    public static final int MESSAGE_TYPE_RESPONSE_VALUE = 3;
+    public static final int MESSAGE_TYPE_PROTO_RESPONSE_VALUE = 3;
 
 
     public final int getNumber() {
@@ -68,7 +68,7 @@ public final class Channel {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static MessageType valueOf(int value) {
+    public static MessageTypeProto valueOf(int value) {
       return forNumber(value);
     }
 
@@ -76,25 +76,25 @@ public final class Channel {
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static MessageType forNumber(int value) {
+    public static MessageTypeProto forNumber(int value) {
       switch (value) {
-        case 0: return MESSAGE_TYPE_UNSPECIFIED;
-        case 1: return MESSAGE_TYPE_MESSAGE;
-        case 2: return MESSAGE_TYPE_REQUEST;
-        case 3: return MESSAGE_TYPE_RESPONSE;
+        case 0: return MESSAGE_TYPE_PROTO_UNSPECIFIED;
+        case 1: return MESSAGE_TYPE_PROTO_MESSAGE;
+        case 2: return MESSAGE_TYPE_PROTO_REQUEST;
+        case 3: return MESSAGE_TYPE_PROTO_RESPONSE;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<MessageType>
+    public static com.google.protobuf.Internal.EnumLiteMap<MessageTypeProto>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        MessageType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<MessageType>() {
-            public MessageType findValueByNumber(int number) {
-              return MessageType.forNumber(number);
+        MessageTypeProto> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MessageTypeProto>() {
+            public MessageTypeProto findValueByNumber(int number) {
+              return MessageTypeProto.forNumber(number);
             }
           };
 
@@ -115,9 +115,9 @@ public final class Channel {
       return Channel.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final MessageType[] VALUES = values();
+    private static final MessageTypeProto[] VALUES = values();
 
-    public static MessageType valueOf(
+    public static MessageTypeProto valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -131,27 +131,27 @@ public final class Channel {
 
     private final int value;
 
-    private MessageType(int value) {
+    private MessageTypeProto(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:MessageType)
+    // @@protoc_insertion_point(enum_scope:MessageTypeProto)
   }
 
-  public interface HeaderOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Header)
+  public interface HeaderProtoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HeaderProto)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.MessageType message_type = 1;</code>
+     * <code>.MessageTypeProto message_type = 1;</code>
      * @return The enum numeric value on the wire for messageType.
      */
     int getMessageTypeValue();
     /**
-     * <code>.MessageType message_type = 1;</code>
+     * <code>.MessageTypeProto message_type = 1;</code>
      * @return The messageType.
      */
-    Channel.MessageType getMessageType();
+    Channel.MessageTypeProto getMessageType();
 
     /**
      * <code>string id = 2;</code>
@@ -172,18 +172,18 @@ public final class Channel {
     com.google.protobuf.ByteString getUuid();
   }
   /**
-   * Protobuf type {@code Header}
+   * Protobuf type {@code HeaderProto}
    */
-  public static final class Header extends
+  public static final class HeaderProto extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Header)
-      HeaderOrBuilder {
+      // @@protoc_insertion_point(message_implements:HeaderProto)
+      HeaderProtoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Header.newBuilder() to construct.
-    private Header(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use HeaderProto.newBuilder() to construct.
+    private HeaderProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Header() {
+    private HeaderProto() {
       messageType_ = 0;
       id_ = "";
       uuid_ = com.google.protobuf.ByteString.EMPTY;
@@ -193,7 +193,7 @@ public final class Channel {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Header();
+      return new HeaderProto();
     }
 
     @java.lang.Override
@@ -201,7 +201,7 @@ public final class Channel {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Header(
+    private HeaderProto(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -257,34 +257,34 @@ public final class Channel {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Channel.internal_static_Header_descriptor;
+      return Channel.internal_static_HeaderProto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Channel.internal_static_Header_fieldAccessorTable
+      return Channel.internal_static_HeaderProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Channel.Header.class, Channel.Header.Builder.class);
+              Channel.HeaderProto.class, Channel.HeaderProto.Builder.class);
     }
 
     public static final int MESSAGE_TYPE_FIELD_NUMBER = 1;
     private int messageType_;
     /**
-     * <code>.MessageType message_type = 1;</code>
+     * <code>.MessageTypeProto message_type = 1;</code>
      * @return The enum numeric value on the wire for messageType.
      */
     @java.lang.Override public int getMessageTypeValue() {
       return messageType_;
     }
     /**
-     * <code>.MessageType message_type = 1;</code>
+     * <code>.MessageTypeProto message_type = 1;</code>
      * @return The messageType.
      */
-    @java.lang.Override public Channel.MessageType getMessageType() {
+    @java.lang.Override public Channel.MessageTypeProto getMessageType() {
       @SuppressWarnings("deprecation")
-      Channel.MessageType result = Channel.MessageType.valueOf(messageType_);
-      return result == null ? Channel.MessageType.UNRECOGNIZED : result;
+      Channel.MessageTypeProto result = Channel.MessageTypeProto.valueOf(messageType_);
+      return result == null ? Channel.MessageTypeProto.UNRECOGNIZED : result;
     }
 
     public static final int ID_FIELD_NUMBER = 2;
@@ -350,7 +350,7 @@ public final class Channel {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (messageType_ != Channel.MessageType.MESSAGE_TYPE_UNSPECIFIED.getNumber()) {
+      if (messageType_ != Channel.MessageTypeProto.MESSAGE_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         output.writeEnum(1, messageType_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
@@ -368,7 +368,7 @@ public final class Channel {
       if (size != -1) return size;
 
       size = 0;
-      if (messageType_ != Channel.MessageType.MESSAGE_TYPE_UNSPECIFIED.getNumber()) {
+      if (messageType_ != Channel.MessageTypeProto.MESSAGE_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, messageType_);
       }
@@ -389,10 +389,10 @@ public final class Channel {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Channel.Header)) {
+      if (!(obj instanceof Channel.HeaderProto)) {
         return super.equals(obj);
       }
-      Channel.Header other = (Channel.Header) obj;
+      Channel.HeaderProto other = (Channel.HeaderProto) obj;
 
       if (messageType_ != other.messageType_) return false;
       if (!getId()
@@ -421,69 +421,69 @@ public final class Channel {
       return hash;
     }
 
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Header parseFrom(byte[] data)
+    public static Channel.HeaderProto parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Header parseFrom(java.io.InputStream input)
+    public static Channel.HeaderProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Header parseDelimitedFrom(java.io.InputStream input)
+    public static Channel.HeaderProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Channel.Header parseDelimitedFrom(
+    public static Channel.HeaderProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Header parseFrom(
+    public static Channel.HeaderProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -496,7 +496,7 @@ public final class Channel {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Channel.Header prototype) {
+    public static Builder newBuilder(Channel.HeaderProto prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -512,26 +512,26 @@ public final class Channel {
       return builder;
     }
     /**
-     * Protobuf type {@code Header}
+     * Protobuf type {@code HeaderProto}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Header)
-        Channel.HeaderOrBuilder {
+        // @@protoc_insertion_point(builder_implements:HeaderProto)
+        Channel.HeaderProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Channel.internal_static_Header_descriptor;
+        return Channel.internal_static_HeaderProto_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Channel.internal_static_Header_fieldAccessorTable
+        return Channel.internal_static_HeaderProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Channel.Header.class, Channel.Header.Builder.class);
+                Channel.HeaderProto.class, Channel.HeaderProto.Builder.class);
       }
 
-      // Construct using Channel.Header.newBuilder()
+      // Construct using Channel.HeaderProto.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -561,17 +561,17 @@ public final class Channel {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Channel.internal_static_Header_descriptor;
+        return Channel.internal_static_HeaderProto_descriptor;
       }
 
       @java.lang.Override
-      public Channel.Header getDefaultInstanceForType() {
-        return Channel.Header.getDefaultInstance();
+      public Channel.HeaderProto getDefaultInstanceForType() {
+        return Channel.HeaderProto.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Channel.Header build() {
-        Channel.Header result = buildPartial();
+      public Channel.HeaderProto build() {
+        Channel.HeaderProto result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -579,8 +579,8 @@ public final class Channel {
       }
 
       @java.lang.Override
-      public Channel.Header buildPartial() {
-        Channel.Header result = new Channel.Header(this);
+      public Channel.HeaderProto buildPartial() {
+        Channel.HeaderProto result = new Channel.HeaderProto(this);
         result.messageType_ = messageType_;
         result.id_ = id_;
         result.uuid_ = uuid_;
@@ -622,16 +622,16 @@ public final class Channel {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Channel.Header) {
-          return mergeFrom((Channel.Header)other);
+        if (other instanceof Channel.HeaderProto) {
+          return mergeFrom((Channel.HeaderProto)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Channel.Header other) {
-        if (other == Channel.Header.getDefaultInstance()) return this;
+      public Builder mergeFrom(Channel.HeaderProto other) {
+        if (other == Channel.HeaderProto.getDefaultInstance()) return this;
         if (other.messageType_ != 0) {
           setMessageTypeValue(other.getMessageTypeValue());
         }
@@ -657,11 +657,11 @@ public final class Channel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Channel.Header parsedMessage = null;
+        Channel.HeaderProto parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Channel.Header) e.getUnfinishedMessage();
+          parsedMessage = (Channel.HeaderProto) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -673,14 +673,14 @@ public final class Channel {
 
       private int messageType_ = 0;
       /**
-       * <code>.MessageType message_type = 1;</code>
+       * <code>.MessageTypeProto message_type = 1;</code>
        * @return The enum numeric value on the wire for messageType.
        */
       @java.lang.Override public int getMessageTypeValue() {
         return messageType_;
       }
       /**
-       * <code>.MessageType message_type = 1;</code>
+       * <code>.MessageTypeProto message_type = 1;</code>
        * @param value The enum numeric value on the wire for messageType to set.
        * @return This builder for chaining.
        */
@@ -691,21 +691,21 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.MessageType message_type = 1;</code>
+       * <code>.MessageTypeProto message_type = 1;</code>
        * @return The messageType.
        */
       @java.lang.Override
-      public Channel.MessageType getMessageType() {
+      public Channel.MessageTypeProto getMessageType() {
         @SuppressWarnings("deprecation")
-        Channel.MessageType result = Channel.MessageType.valueOf(messageType_);
-        return result == null ? Channel.MessageType.UNRECOGNIZED : result;
+        Channel.MessageTypeProto result = Channel.MessageTypeProto.valueOf(messageType_);
+        return result == null ? Channel.MessageTypeProto.UNRECOGNIZED : result;
       }
       /**
-       * <code>.MessageType message_type = 1;</code>
+       * <code>.MessageTypeProto message_type = 1;</code>
        * @param value The messageType to set.
        * @return This builder for chaining.
        */
-      public Builder setMessageType(Channel.MessageType value) {
+      public Builder setMessageType(Channel.MessageTypeProto value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -715,7 +715,7 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.MessageType message_type = 1;</code>
+       * <code>.MessageTypeProto message_type = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessageType() {
@@ -847,48 +847,48 @@ public final class Channel {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Header)
+      // @@protoc_insertion_point(builder_scope:HeaderProto)
     }
 
-    // @@protoc_insertion_point(class_scope:Header)
-    private static final Channel.Header DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:HeaderProto)
+    private static final Channel.HeaderProto DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Channel.Header();
+      DEFAULT_INSTANCE = new Channel.HeaderProto();
     }
 
-    public static Channel.Header getDefaultInstance() {
+    public static Channel.HeaderProto getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Header>
-        PARSER = new com.google.protobuf.AbstractParser<Header>() {
+    private static final com.google.protobuf.Parser<HeaderProto>
+        PARSER = new com.google.protobuf.AbstractParser<HeaderProto>() {
       @java.lang.Override
-      public Header parsePartialFrom(
+      public HeaderProto parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Header(input, extensionRegistry);
+        return new HeaderProto(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Header> parser() {
+    public static com.google.protobuf.Parser<HeaderProto> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Header> getParserForType() {
+    public com.google.protobuf.Parser<HeaderProto> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Channel.Header getDefaultInstanceForType() {
+    public Channel.HeaderProto getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ContentOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Content)
+  public interface ContentProtoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ContentProto)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -919,28 +919,43 @@ public final class Channel {
     com.google.protobuf.ByteString
         getTextBytes();
 
-    public Channel.Content.DataCase getDataCase();
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     * @return Whether the gymize field is set.
+     */
+    boolean hasGymize();
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     * @return The gymize.
+     */
+    Gymize.GymizeProto getGymize();
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     */
+    Gymize.GymizeProtoOrBuilder getGymizeOrBuilder();
+
+    public Channel.ContentProto.DataCase getDataCase();
   }
   /**
-   * Protobuf type {@code Content}
+   * Protobuf type {@code ContentProto}
    */
-  public static final class Content extends
+  public static final class ContentProto extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Content)
-      ContentOrBuilder {
+      // @@protoc_insertion_point(message_implements:ContentProto)
+      ContentProtoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Content.newBuilder() to construct.
-    private Content(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ContentProto.newBuilder() to construct.
+    private ContentProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Content() {
+    private ContentProto() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Content();
+      return new ContentProto();
     }
 
     @java.lang.Override
@@ -948,7 +963,7 @@ public final class Channel {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Content(
+    private ContentProto(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -977,6 +992,20 @@ public final class Channel {
               data_ = s;
               break;
             }
+            case 26: {
+              Gymize.GymizeProto.Builder subBuilder = null;
+              if (dataCase_ == 3) {
+                subBuilder = ((Gymize.GymizeProto) data_).toBuilder();
+              }
+              data_ =
+                  input.readMessage(Gymize.GymizeProto.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Gymize.GymizeProto) data_);
+                data_ = subBuilder.buildPartial();
+              }
+              dataCase_ = 3;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -998,15 +1027,15 @@ public final class Channel {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Channel.internal_static_Content_descriptor;
+      return Channel.internal_static_ContentProto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Channel.internal_static_Content_fieldAccessorTable
+      return Channel.internal_static_ContentProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Channel.Content.class, Channel.Content.Builder.class);
+              Channel.ContentProto.class, Channel.ContentProto.Builder.class);
     }
 
     private int dataCase_ = 0;
@@ -1016,6 +1045,7 @@ public final class Channel {
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       RAW(1),
       TEXT(2),
+      GYMIZE(3),
       DATA_NOT_SET(0);
       private final int value;
       private DataCase(int value) {
@@ -1035,6 +1065,7 @@ public final class Channel {
         switch (value) {
           case 1: return RAW;
           case 2: return TEXT;
+          case 3: return GYMIZE;
           case 0: return DATA_NOT_SET;
           default: return null;
         }
@@ -1123,6 +1154,37 @@ public final class Channel {
       }
     }
 
+    public static final int GYMIZE_FIELD_NUMBER = 3;
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     * @return Whether the gymize field is set.
+     */
+    @java.lang.Override
+    public boolean hasGymize() {
+      return dataCase_ == 3;
+    }
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     * @return The gymize.
+     */
+    @java.lang.Override
+    public Gymize.GymizeProto getGymize() {
+      if (dataCase_ == 3) {
+         return (Gymize.GymizeProto) data_;
+      }
+      return Gymize.GymizeProto.getDefaultInstance();
+    }
+    /**
+     * <code>.GymizeProto gymize = 3;</code>
+     */
+    @java.lang.Override
+    public Gymize.GymizeProtoOrBuilder getGymizeOrBuilder() {
+      if (dataCase_ == 3) {
+         return (Gymize.GymizeProto) data_;
+      }
+      return Gymize.GymizeProto.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1144,6 +1206,9 @@ public final class Channel {
       if (dataCase_ == 2) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, data_);
       }
+      if (dataCase_ == 3) {
+        output.writeMessage(3, (Gymize.GymizeProto) data_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1161,6 +1226,10 @@ public final class Channel {
       if (dataCase_ == 2) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, data_);
       }
+      if (dataCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (Gymize.GymizeProto) data_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1171,10 +1240,10 @@ public final class Channel {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Channel.Content)) {
+      if (!(obj instanceof Channel.ContentProto)) {
         return super.equals(obj);
       }
-      Channel.Content other = (Channel.Content) obj;
+      Channel.ContentProto other = (Channel.ContentProto) obj;
 
       if (!getDataCase().equals(other.getDataCase())) return false;
       switch (dataCase_) {
@@ -1185,6 +1254,10 @@ public final class Channel {
         case 2:
           if (!getText()
               .equals(other.getText())) return false;
+          break;
+        case 3:
+          if (!getGymize()
+              .equals(other.getGymize())) return false;
           break;
         case 0:
         default:
@@ -1209,6 +1282,10 @@ public final class Channel {
           hash = (37 * hash) + TEXT_FIELD_NUMBER;
           hash = (53 * hash) + getText().hashCode();
           break;
+        case 3:
+          hash = (37 * hash) + GYMIZE_FIELD_NUMBER;
+          hash = (53 * hash) + getGymize().hashCode();
+          break;
         case 0:
         default:
       }
@@ -1217,69 +1294,69 @@ public final class Channel {
       return hash;
     }
 
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Content parseFrom(byte[] data)
+    public static Channel.ContentProto parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Content parseFrom(java.io.InputStream input)
+    public static Channel.ContentProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Content parseDelimitedFrom(java.io.InputStream input)
+    public static Channel.ContentProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Channel.Content parseDelimitedFrom(
+    public static Channel.ContentProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Content parseFrom(
+    public static Channel.ContentProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1292,7 +1369,7 @@ public final class Channel {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Channel.Content prototype) {
+    public static Builder newBuilder(Channel.ContentProto prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1308,26 +1385,26 @@ public final class Channel {
       return builder;
     }
     /**
-     * Protobuf type {@code Content}
+     * Protobuf type {@code ContentProto}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Content)
-        Channel.ContentOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ContentProto)
+        Channel.ContentProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Channel.internal_static_Content_descriptor;
+        return Channel.internal_static_ContentProto_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Channel.internal_static_Content_fieldAccessorTable
+        return Channel.internal_static_ContentProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Channel.Content.class, Channel.Content.Builder.class);
+                Channel.ContentProto.class, Channel.ContentProto.Builder.class);
       }
 
-      // Construct using Channel.Content.newBuilder()
+      // Construct using Channel.ContentProto.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1353,17 +1430,17 @@ public final class Channel {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Channel.internal_static_Content_descriptor;
+        return Channel.internal_static_ContentProto_descriptor;
       }
 
       @java.lang.Override
-      public Channel.Content getDefaultInstanceForType() {
-        return Channel.Content.getDefaultInstance();
+      public Channel.ContentProto getDefaultInstanceForType() {
+        return Channel.ContentProto.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Channel.Content build() {
-        Channel.Content result = buildPartial();
+      public Channel.ContentProto build() {
+        Channel.ContentProto result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1371,13 +1448,20 @@ public final class Channel {
       }
 
       @java.lang.Override
-      public Channel.Content buildPartial() {
-        Channel.Content result = new Channel.Content(this);
+      public Channel.ContentProto buildPartial() {
+        Channel.ContentProto result = new Channel.ContentProto(this);
         if (dataCase_ == 1) {
           result.data_ = data_;
         }
         if (dataCase_ == 2) {
           result.data_ = data_;
+        }
+        if (dataCase_ == 3) {
+          if (gymizeBuilder_ == null) {
+            result.data_ = data_;
+          } else {
+            result.data_ = gymizeBuilder_.build();
+          }
         }
         result.dataCase_ = dataCase_;
         onBuilt();
@@ -1418,16 +1502,16 @@ public final class Channel {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Channel.Content) {
-          return mergeFrom((Channel.Content)other);
+        if (other instanceof Channel.ContentProto) {
+          return mergeFrom((Channel.ContentProto)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Channel.Content other) {
-        if (other == Channel.Content.getDefaultInstance()) return this;
+      public Builder mergeFrom(Channel.ContentProto other) {
+        if (other == Channel.ContentProto.getDefaultInstance()) return this;
         switch (other.getDataCase()) {
           case RAW: {
             setRaw(other.getRaw());
@@ -1437,6 +1521,10 @@ public final class Channel {
             dataCase_ = 2;
             data_ = other.data_;
             onChanged();
+            break;
+          }
+          case GYMIZE: {
+            mergeGymize(other.getGymize());
             break;
           }
           case DATA_NOT_SET: {
@@ -1458,11 +1546,11 @@ public final class Channel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Channel.Content parsedMessage = null;
+        Channel.ContentProto parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Channel.Content) e.getUnfinishedMessage();
+          parsedMessage = (Channel.ContentProto) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1627,6 +1715,147 @@ public final class Channel {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Gymize.GymizeProto, Gymize.GymizeProto.Builder, Gymize.GymizeProtoOrBuilder> gymizeBuilder_;
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       * @return Whether the gymize field is set.
+       */
+      @java.lang.Override
+      public boolean hasGymize() {
+        return dataCase_ == 3;
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       * @return The gymize.
+       */
+      @java.lang.Override
+      public Gymize.GymizeProto getGymize() {
+        if (gymizeBuilder_ == null) {
+          if (dataCase_ == 3) {
+            return (Gymize.GymizeProto) data_;
+          }
+          return Gymize.GymizeProto.getDefaultInstance();
+        } else {
+          if (dataCase_ == 3) {
+            return gymizeBuilder_.getMessage();
+          }
+          return Gymize.GymizeProto.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      public Builder setGymize(Gymize.GymizeProto value) {
+        if (gymizeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          gymizeBuilder_.setMessage(value);
+        }
+        dataCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      public Builder setGymize(
+          Gymize.GymizeProto.Builder builderForValue) {
+        if (gymizeBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          gymizeBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      public Builder mergeGymize(Gymize.GymizeProto value) {
+        if (gymizeBuilder_ == null) {
+          if (dataCase_ == 3 &&
+              data_ != Gymize.GymizeProto.getDefaultInstance()) {
+            data_ = Gymize.GymizeProto.newBuilder((Gymize.GymizeProto) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 3) {
+            gymizeBuilder_.mergeFrom(value);
+          }
+          gymizeBuilder_.setMessage(value);
+        }
+        dataCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      public Builder clearGymize() {
+        if (gymizeBuilder_ == null) {
+          if (dataCase_ == 3) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 3) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          gymizeBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      public Gymize.GymizeProto.Builder getGymizeBuilder() {
+        return getGymizeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      @java.lang.Override
+      public Gymize.GymizeProtoOrBuilder getGymizeOrBuilder() {
+        if ((dataCase_ == 3) && (gymizeBuilder_ != null)) {
+          return gymizeBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 3) {
+            return (Gymize.GymizeProto) data_;
+          }
+          return Gymize.GymizeProto.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.GymizeProto gymize = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Gymize.GymizeProto, Gymize.GymizeProto.Builder, Gymize.GymizeProtoOrBuilder> 
+          getGymizeFieldBuilder() {
+        if (gymizeBuilder_ == null) {
+          if (!(dataCase_ == 3)) {
+            data_ = Gymize.GymizeProto.getDefaultInstance();
+          }
+          gymizeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Gymize.GymizeProto, Gymize.GymizeProto.Builder, Gymize.GymizeProtoOrBuilder>(
+                  (Gymize.GymizeProto) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 3;
+        onChanged();;
+        return gymizeBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1640,100 +1869,100 @@ public final class Channel {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Content)
+      // @@protoc_insertion_point(builder_scope:ContentProto)
     }
 
-    // @@protoc_insertion_point(class_scope:Content)
-    private static final Channel.Content DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ContentProto)
+    private static final Channel.ContentProto DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Channel.Content();
+      DEFAULT_INSTANCE = new Channel.ContentProto();
     }
 
-    public static Channel.Content getDefaultInstance() {
+    public static Channel.ContentProto getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Content>
-        PARSER = new com.google.protobuf.AbstractParser<Content>() {
+    private static final com.google.protobuf.Parser<ContentProto>
+        PARSER = new com.google.protobuf.AbstractParser<ContentProto>() {
       @java.lang.Override
-      public Content parsePartialFrom(
+      public ContentProto parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Content(input, extensionRegistry);
+        return new ContentProto(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Content> parser() {
+    public static com.google.protobuf.Parser<ContentProto> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Content> getParserForType() {
+    public com.google.protobuf.Parser<ContentProto> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Channel.Content getDefaultInstanceForType() {
+    public Channel.ContentProto getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface MessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Message)
+  public interface MessageProtoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MessageProto)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      * @return Whether the header field is set.
      */
     boolean hasHeader();
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      * @return The header.
      */
-    Channel.Header getHeader();
+    Channel.HeaderProto getHeader();
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      */
-    Channel.HeaderOrBuilder getHeaderOrBuilder();
+    Channel.HeaderProtoOrBuilder getHeaderOrBuilder();
 
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      * @return Whether the content field is set.
      */
     boolean hasContent();
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      * @return The content.
      */
-    Channel.Content getContent();
+    Channel.ContentProto getContent();
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      */
-    Channel.ContentOrBuilder getContentOrBuilder();
+    Channel.ContentProtoOrBuilder getContentOrBuilder();
   }
   /**
-   * Protobuf type {@code Message}
+   * Protobuf type {@code MessageProto}
    */
-  public static final class Message extends
+  public static final class MessageProto extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Message)
-      MessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:MessageProto)
+      MessageProtoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Message.newBuilder() to construct.
-    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use MessageProto.newBuilder() to construct.
+    private MessageProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Message() {
+    private MessageProto() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Message();
+      return new MessageProto();
     }
 
     @java.lang.Override
@@ -1741,7 +1970,7 @@ public final class Channel {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Message(
+    private MessageProto(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1760,11 +1989,11 @@ public final class Channel {
               done = true;
               break;
             case 10: {
-              Channel.Header.Builder subBuilder = null;
+              Channel.HeaderProto.Builder subBuilder = null;
               if (header_ != null) {
                 subBuilder = header_.toBuilder();
               }
-              header_ = input.readMessage(Channel.Header.parser(), extensionRegistry);
+              header_ = input.readMessage(Channel.HeaderProto.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(header_);
                 header_ = subBuilder.buildPartial();
@@ -1773,11 +2002,11 @@ public final class Channel {
               break;
             }
             case 18: {
-              Channel.Content.Builder subBuilder = null;
+              Channel.ContentProto.Builder subBuilder = null;
               if (content_ != null) {
                 subBuilder = content_.toBuilder();
               }
-              content_ = input.readMessage(Channel.Content.parser(), extensionRegistry);
+              content_ = input.readMessage(Channel.ContentProto.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(content_);
                 content_ = subBuilder.buildPartial();
@@ -1806,21 +2035,21 @@ public final class Channel {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Channel.internal_static_Message_descriptor;
+      return Channel.internal_static_MessageProto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Channel.internal_static_Message_fieldAccessorTable
+      return Channel.internal_static_MessageProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Channel.Message.class, Channel.Message.Builder.class);
+              Channel.MessageProto.class, Channel.MessageProto.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
-    private Channel.Header header_;
+    private Channel.HeaderProto header_;
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      * @return Whether the header field is set.
      */
     @java.lang.Override
@@ -1828,25 +2057,25 @@ public final class Channel {
       return header_ != null;
     }
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      * @return The header.
      */
     @java.lang.Override
-    public Channel.Header getHeader() {
-      return header_ == null ? Channel.Header.getDefaultInstance() : header_;
+    public Channel.HeaderProto getHeader() {
+      return header_ == null ? Channel.HeaderProto.getDefaultInstance() : header_;
     }
     /**
-     * <code>.Header header = 1;</code>
+     * <code>.HeaderProto header = 1;</code>
      */
     @java.lang.Override
-    public Channel.HeaderOrBuilder getHeaderOrBuilder() {
+    public Channel.HeaderProtoOrBuilder getHeaderOrBuilder() {
       return getHeader();
     }
 
     public static final int CONTENT_FIELD_NUMBER = 2;
-    private Channel.Content content_;
+    private Channel.ContentProto content_;
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      * @return Whether the content field is set.
      */
     @java.lang.Override
@@ -1854,18 +2083,18 @@ public final class Channel {
       return content_ != null;
     }
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      * @return The content.
      */
     @java.lang.Override
-    public Channel.Content getContent() {
-      return content_ == null ? Channel.Content.getDefaultInstance() : content_;
+    public Channel.ContentProto getContent() {
+      return content_ == null ? Channel.ContentProto.getDefaultInstance() : content_;
     }
     /**
-     * <code>.Content content = 2;</code>
+     * <code>.ContentProto content = 2;</code>
      */
     @java.lang.Override
-    public Channel.ContentOrBuilder getContentOrBuilder() {
+    public Channel.ContentProtoOrBuilder getContentOrBuilder() {
       return getContent();
     }
 
@@ -1916,10 +2145,10 @@ public final class Channel {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Channel.Message)) {
+      if (!(obj instanceof Channel.MessageProto)) {
         return super.equals(obj);
       }
-      Channel.Message other = (Channel.Message) obj;
+      Channel.MessageProto other = (Channel.MessageProto) obj;
 
       if (hasHeader() != other.hasHeader()) return false;
       if (hasHeader()) {
@@ -1955,69 +2184,69 @@ public final class Channel {
       return hash;
     }
 
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Message parseFrom(byte[] data)
+    public static Channel.MessageProto parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Channel.Message parseFrom(java.io.InputStream input)
+    public static Channel.MessageProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Message parseDelimitedFrom(java.io.InputStream input)
+    public static Channel.MessageProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Channel.Message parseDelimitedFrom(
+    public static Channel.MessageProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Channel.Message parseFrom(
+    public static Channel.MessageProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2030,7 +2259,7 @@ public final class Channel {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Channel.Message prototype) {
+    public static Builder newBuilder(Channel.MessageProto prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2046,26 +2275,26 @@ public final class Channel {
       return builder;
     }
     /**
-     * Protobuf type {@code Message}
+     * Protobuf type {@code MessageProto}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Message)
-        Channel.MessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:MessageProto)
+        Channel.MessageProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Channel.internal_static_Message_descriptor;
+        return Channel.internal_static_MessageProto_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Channel.internal_static_Message_fieldAccessorTable
+        return Channel.internal_static_MessageProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Channel.Message.class, Channel.Message.Builder.class);
+                Channel.MessageProto.class, Channel.MessageProto.Builder.class);
       }
 
-      // Construct using Channel.Message.newBuilder()
+      // Construct using Channel.MessageProto.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2101,17 +2330,17 @@ public final class Channel {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Channel.internal_static_Message_descriptor;
+        return Channel.internal_static_MessageProto_descriptor;
       }
 
       @java.lang.Override
-      public Channel.Message getDefaultInstanceForType() {
-        return Channel.Message.getDefaultInstance();
+      public Channel.MessageProto getDefaultInstanceForType() {
+        return Channel.MessageProto.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Channel.Message build() {
-        Channel.Message result = buildPartial();
+      public Channel.MessageProto build() {
+        Channel.MessageProto result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2119,8 +2348,8 @@ public final class Channel {
       }
 
       @java.lang.Override
-      public Channel.Message buildPartial() {
-        Channel.Message result = new Channel.Message(this);
+      public Channel.MessageProto buildPartial() {
+        Channel.MessageProto result = new Channel.MessageProto(this);
         if (headerBuilder_ == null) {
           result.header_ = header_;
         } else {
@@ -2169,16 +2398,16 @@ public final class Channel {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Channel.Message) {
-          return mergeFrom((Channel.Message)other);
+        if (other instanceof Channel.MessageProto) {
+          return mergeFrom((Channel.MessageProto)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Channel.Message other) {
-        if (other == Channel.Message.getDefaultInstance()) return this;
+      public Builder mergeFrom(Channel.MessageProto other) {
+        if (other == Channel.MessageProto.getDefaultInstance()) return this;
         if (other.hasHeader()) {
           mergeHeader(other.getHeader());
         }
@@ -2200,11 +2429,11 @@ public final class Channel {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Channel.Message parsedMessage = null;
+        Channel.MessageProto parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Channel.Message) e.getUnfinishedMessage();
+          parsedMessage = (Channel.MessageProto) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2214,31 +2443,31 @@ public final class Channel {
         return this;
       }
 
-      private Channel.Header header_;
+      private Channel.HeaderProto header_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Channel.Header, Channel.Header.Builder, Channel.HeaderOrBuilder> headerBuilder_;
+          Channel.HeaderProto, Channel.HeaderProto.Builder, Channel.HeaderProtoOrBuilder> headerBuilder_;
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        * @return Whether the header field is set.
        */
       public boolean hasHeader() {
         return headerBuilder_ != null || header_ != null;
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        * @return The header.
        */
-      public Channel.Header getHeader() {
+      public Channel.HeaderProto getHeader() {
         if (headerBuilder_ == null) {
-          return header_ == null ? Channel.Header.getDefaultInstance() : header_;
+          return header_ == null ? Channel.HeaderProto.getDefaultInstance() : header_;
         } else {
           return headerBuilder_.getMessage();
         }
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
-      public Builder setHeader(Channel.Header value) {
+      public Builder setHeader(Channel.HeaderProto value) {
         if (headerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2252,10 +2481,10 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
       public Builder setHeader(
-          Channel.Header.Builder builderForValue) {
+          Channel.HeaderProto.Builder builderForValue) {
         if (headerBuilder_ == null) {
           header_ = builderForValue.build();
           onChanged();
@@ -2266,13 +2495,13 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
-      public Builder mergeHeader(Channel.Header value) {
+      public Builder mergeHeader(Channel.HeaderProto value) {
         if (headerBuilder_ == null) {
           if (header_ != null) {
             header_ =
-              Channel.Header.newBuilder(header_).mergeFrom(value).buildPartial();
+              Channel.HeaderProto.newBuilder(header_).mergeFrom(value).buildPartial();
           } else {
             header_ = value;
           }
@@ -2284,7 +2513,7 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
       public Builder clearHeader() {
         if (headerBuilder_ == null) {
@@ -2298,33 +2527,33 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
-      public Channel.Header.Builder getHeaderBuilder() {
+      public Channel.HeaderProto.Builder getHeaderBuilder() {
         
         onChanged();
         return getHeaderFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
-      public Channel.HeaderOrBuilder getHeaderOrBuilder() {
+      public Channel.HeaderProtoOrBuilder getHeaderOrBuilder() {
         if (headerBuilder_ != null) {
           return headerBuilder_.getMessageOrBuilder();
         } else {
           return header_ == null ?
-              Channel.Header.getDefaultInstance() : header_;
+              Channel.HeaderProto.getDefaultInstance() : header_;
         }
       }
       /**
-       * <code>.Header header = 1;</code>
+       * <code>.HeaderProto header = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Channel.Header, Channel.Header.Builder, Channel.HeaderOrBuilder> 
+          Channel.HeaderProto, Channel.HeaderProto.Builder, Channel.HeaderProtoOrBuilder> 
           getHeaderFieldBuilder() {
         if (headerBuilder_ == null) {
           headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Channel.Header, Channel.Header.Builder, Channel.HeaderOrBuilder>(
+              Channel.HeaderProto, Channel.HeaderProto.Builder, Channel.HeaderProtoOrBuilder>(
                   getHeader(),
                   getParentForChildren(),
                   isClean());
@@ -2333,31 +2562,31 @@ public final class Channel {
         return headerBuilder_;
       }
 
-      private Channel.Content content_;
+      private Channel.ContentProto content_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Channel.Content, Channel.Content.Builder, Channel.ContentOrBuilder> contentBuilder_;
+          Channel.ContentProto, Channel.ContentProto.Builder, Channel.ContentProtoOrBuilder> contentBuilder_;
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        * @return Whether the content field is set.
        */
       public boolean hasContent() {
         return contentBuilder_ != null || content_ != null;
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        * @return The content.
        */
-      public Channel.Content getContent() {
+      public Channel.ContentProto getContent() {
         if (contentBuilder_ == null) {
-          return content_ == null ? Channel.Content.getDefaultInstance() : content_;
+          return content_ == null ? Channel.ContentProto.getDefaultInstance() : content_;
         } else {
           return contentBuilder_.getMessage();
         }
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
-      public Builder setContent(Channel.Content value) {
+      public Builder setContent(Channel.ContentProto value) {
         if (contentBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2371,10 +2600,10 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
       public Builder setContent(
-          Channel.Content.Builder builderForValue) {
+          Channel.ContentProto.Builder builderForValue) {
         if (contentBuilder_ == null) {
           content_ = builderForValue.build();
           onChanged();
@@ -2385,13 +2614,13 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
-      public Builder mergeContent(Channel.Content value) {
+      public Builder mergeContent(Channel.ContentProto value) {
         if (contentBuilder_ == null) {
           if (content_ != null) {
             content_ =
-              Channel.Content.newBuilder(content_).mergeFrom(value).buildPartial();
+              Channel.ContentProto.newBuilder(content_).mergeFrom(value).buildPartial();
           } else {
             content_ = value;
           }
@@ -2403,7 +2632,7 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
       public Builder clearContent() {
         if (contentBuilder_ == null) {
@@ -2417,33 +2646,33 @@ public final class Channel {
         return this;
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
-      public Channel.Content.Builder getContentBuilder() {
+      public Channel.ContentProto.Builder getContentBuilder() {
         
         onChanged();
         return getContentFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
-      public Channel.ContentOrBuilder getContentOrBuilder() {
+      public Channel.ContentProtoOrBuilder getContentOrBuilder() {
         if (contentBuilder_ != null) {
           return contentBuilder_.getMessageOrBuilder();
         } else {
           return content_ == null ?
-              Channel.Content.getDefaultInstance() : content_;
+              Channel.ContentProto.getDefaultInstance() : content_;
         }
       }
       /**
-       * <code>.Content content = 2;</code>
+       * <code>.ContentProto content = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Channel.Content, Channel.Content.Builder, Channel.ContentOrBuilder> 
+          Channel.ContentProto, Channel.ContentProto.Builder, Channel.ContentProtoOrBuilder> 
           getContentFieldBuilder() {
         if (contentBuilder_ == null) {
           contentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Channel.Content, Channel.Content.Builder, Channel.ContentOrBuilder>(
+              Channel.ContentProto, Channel.ContentProto.Builder, Channel.ContentProtoOrBuilder>(
                   getContent(),
                   getParentForChildren(),
                   isClean());
@@ -2464,61 +2693,61 @@ public final class Channel {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Message)
+      // @@protoc_insertion_point(builder_scope:MessageProto)
     }
 
-    // @@protoc_insertion_point(class_scope:Message)
-    private static final Channel.Message DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:MessageProto)
+    private static final Channel.MessageProto DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Channel.Message();
+      DEFAULT_INSTANCE = new Channel.MessageProto();
     }
 
-    public static Channel.Message getDefaultInstance() {
+    public static Channel.MessageProto getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Message>
-        PARSER = new com.google.protobuf.AbstractParser<Message>() {
+    private static final com.google.protobuf.Parser<MessageProto>
+        PARSER = new com.google.protobuf.AbstractParser<MessageProto>() {
       @java.lang.Override
-      public Message parsePartialFrom(
+      public MessageProto parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Message(input, extensionRegistry);
+        return new MessageProto(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Message> parser() {
+    public static com.google.protobuf.Parser<MessageProto> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Message> getParserForType() {
+    public com.google.protobuf.Parser<MessageProto> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Channel.Message getDefaultInstanceForType() {
+    public Channel.MessageProto getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Header_descriptor;
+    internal_static_HeaderProto_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Header_fieldAccessorTable;
+      internal_static_HeaderProto_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Content_descriptor;
+    internal_static_ContentProto_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Content_fieldAccessorTable;
+      internal_static_ContentProto_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_descriptor;
+    internal_static_MessageProto_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_fieldAccessorTable;
+      internal_static_MessageProto_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2528,38 +2757,43 @@ public final class Channel {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rchannel.proto\"F\n\006Header\022\"\n\014message_typ" +
-      "e\030\001 \001(\0162\014.MessageType\022\n\n\002id\030\002 \001(\t\022\014\n\004uui" +
-      "d\030\003 \001(\014\"0\n\007Content\022\r\n\003raw\030\001 \001(\014H\000\022\016\n\004tex" +
-      "t\030\002 \001(\tH\000B\006\n\004data\"=\n\007Message\022\027\n\006header\030\001" +
-      " \001(\0132\007.Header\022\031\n\007content\030\002 \001(\0132\010.Content" +
-      "*z\n\013MessageType\022\034\n\030MESSAGE_TYPE_UNSPECIF" +
-      "IED\020\000\022\030\n\024MESSAGE_TYPE_MESSAGE\020\001\022\030\n\024MESSA" +
-      "GE_TYPE_REQUEST\020\002\022\031\n\025MESSAGE_TYPE_RESPON" +
-      "SE\020\003B\027\252\002\024PAIA.Gymize.Protobufb\006proto3"
+      "\n\rchannel.proto\032\014gymize.proto\"P\n\013HeaderP" +
+      "roto\022\'\n\014message_type\030\001 \001(\0162\021.MessageType" +
+      "Proto\022\n\n\002id\030\002 \001(\t\022\014\n\004uuid\030\003 \001(\014\"U\n\014Conte" +
+      "ntProto\022\r\n\003raw\030\001 \001(\014H\000\022\016\n\004text\030\002 \001(\tH\000\022\036" +
+      "\n\006gymize\030\003 \001(\0132\014.GymizeProtoH\000B\006\n\004data\"L" +
+      "\n\014MessageProto\022\034\n\006header\030\001 \001(\0132\014.HeaderP" +
+      "roto\022\036\n\007content\030\002 \001(\0132\r.ContentProto*\227\001\n" +
+      "\020MessageTypeProto\022\"\n\036MESSAGE_TYPE_PROTO_" +
+      "UNSPECIFIED\020\000\022\036\n\032MESSAGE_TYPE_PROTO_MESS" +
+      "AGE\020\001\022\036\n\032MESSAGE_TYPE_PROTO_REQUEST\020\002\022\037\n" +
+      "\033MESSAGE_TYPE_PROTO_RESPONSE\020\003B\022\252\002\017Gymiz" +
+      "e.Protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          Gymize.getDescriptor(),
         });
-    internal_static_Header_descriptor =
+    internal_static_HeaderProto_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Header_fieldAccessorTable = new
+    internal_static_HeaderProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Header_descriptor,
+        internal_static_HeaderProto_descriptor,
         new java.lang.String[] { "MessageType", "Id", "Uuid", });
-    internal_static_Content_descriptor =
+    internal_static_ContentProto_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_Content_fieldAccessorTable = new
+    internal_static_ContentProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Content_descriptor,
-        new java.lang.String[] { "Raw", "Text", "Data", });
-    internal_static_Message_descriptor =
+        internal_static_ContentProto_descriptor,
+        new java.lang.String[] { "Raw", "Text", "Gymize", "Data", });
+    internal_static_MessageProto_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_Message_fieldAccessorTable = new
+    internal_static_MessageProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_descriptor,
+        internal_static_MessageProto_descriptor,
         new java.lang.String[] { "Header", "Content", });
+    Gymize.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -10,8 +10,8 @@ from websockets.client import WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosed
 from websockets.extensions import permessage_deflate
 
-from gymize.proto.channel_pb2 import MessageType, Message
-from gymize.proto.signaling_pb2 import Signal, SignalType, PeerType
+from gymize.proto.channel_pb2 import MessageTypeProto, MessageProto
+from gymize.proto.signaling_pb2 import SignalProto, SignalTypeProto, PeerTypeProto
 from gymize.signaling import SignalingServer
 
 class Content:
@@ -61,7 +61,7 @@ class Channel:
         self._peer_stop: asyncio.Future = None # if the peer server is stoped
         self._updating = False # if the channel peer server is updating
         self._sending = False # if the channel peer server is sending messages
-        self._outbox: Queue = Queue() # Queue[Message]
+        self._outbox: Queue = Queue() # Queue[MessageProto]
         self._inbox: Dict[str, Queue] = {
             '': Queue()
         } # { id: Queue[Content] }
@@ -151,8 +151,8 @@ class Channel:
         return self.add_task(self.connect_async(using_thread=True))
     
     async def tell_async(self, id: str, content: Union[Content, str, bytes]) -> None:
-        msg = Message()
-        msg.header.message_type = MessageType.MESSAGE_TYPE_MESSAGE
+        msg = MessageProto()
+        msg.header.message_type = MessageTypeProto.MESSAGE_TYPE_PROTO_MESSAGE
         if id is not None:
             msg.header.id = id
         
@@ -183,8 +183,8 @@ class Channel:
         if not id in self._inbox:
             self._inbox[id] = Queue()
         
-        msg = Message()
-        msg.header.message_type = MessageType.MESSAGE_TYPE_REQUEST
+        msg = MessageProto()
+        msg.header.message_type = MessageTypeProto.MESSAGE_TYPE_PROTO_REQUEST
         if id is not None:
             msg.header.id = id
         msg.header.uuid = uuid.uuid4().bytes
@@ -210,11 +210,11 @@ class Channel:
     def ask_sync(self, id: str, content: Union[Content, str, bytes]) -> asyncio.Future:
         return self.add_task(self.ask_async(id=id, content=content))
     
-    async def send_async(self, msg: Message) -> None:
+    async def send_async(self, msg: MessageProto) -> None:
         self._outbox.put(msg)
         await self._send_flush() # flush the outbox because the outbox is not empty now
     
-    def send_sync(self, msg: Message) -> None:
+    def send_sync(self, msg: MessageProto) -> None:
         return self.add_task(self.send_async(msg=msg))
 
     async def _send_flush(self) -> None:
@@ -230,7 +230,7 @@ class Channel:
         self._sending = False
     
     def _recv(self, data: bytes) -> None:
-        msg = Message()
+        msg = MessageProto()
         msg.ParseFromString(data)
         content: Content = None
         if msg.content.HasField('raw'):
@@ -238,7 +238,7 @@ class Channel:
         elif msg.content.HasField('text'):
             content = Content(msg.content.text)
         
-        if msg.header.message_type == MessageType.MESSAGE_TYPE_MESSAGE:
+        if msg.header.message_type == MessageTypeProto.MESSAGE_TYPE_PROTO_MESSAGE:
             if msg.header.id:
                 if not msg.header.id in self._inbox:
                     self._inbox[msg.header.id] = Queue()
@@ -257,14 +257,14 @@ class Channel:
                     else:
                         self.trigger_message(id, content)
 
-        elif msg.header.message_type == MessageType.MESSAGE_TYPE_REQUEST:
+        elif msg.header.message_type == MessageTypeProto.MESSAGE_TYPE_PROTO_REQUEST:
             request = Request(id=msg.header.id, uuid=msg.header.uuid, content=content, channel=self)
             if msg.header.id:
                 self.trigger_request(msg.header.id, request)
             else:
                 self.trigger_request('', request)
 
-        elif msg.header.message_type == MessageType.MESSAGE_TYPE_RESPONSE:
+        elif msg.header.message_type == MessageTypeProto.MESSAGE_TYPE_PROTO_RESPONSE:
             self._responses[msg.header.uuid].set_result(content)
     
     def has_recv(self) -> bool:
@@ -359,16 +359,18 @@ class Channel:
     async def close_async(self):
         self.status = 'closed'
         if self._ws_signaling is not None and self._ws_signaling.open:
-            signal = Signal()
-            signal.signal_type = SignalType.SIGNAL_TYPE_CLOSE
+            signal = SignalProto()
+            signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_CLOSE
             signal.id = self._signaling_id
             await self._ws_signaling.send(signal.SerializeToString())
         if self._ws_peer is not None and self._ws_peer.open:
             await self._ws_peer.close()
         self._ws_peer = None
     
-    def close_sync(self):
-        return self.add_task(self.close_async())
+    def close_sync(self, waiting_secs: float=1.0):
+        result = self.add_task(self.close_async())
+        time.sleep(waiting_secs)
+        return result
     
     ###########################################################################
     #                        Event-driven style part                          #
@@ -580,43 +582,43 @@ class Channel:
                         await self.resume_async()
     
     async def _signaling_start(self, is_resume=False):
-        signal = Signal()
+        signal = SignalProto()
 
         if not is_resume:
             # initialize
-            signal.signal_type = SignalType.SIGNAL_TYPE_INIT
+            signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_INIT
             signal.name = self.name
         else:
             # resume
-            signal.signal_type = SignalType.SIGNAL_TYPE_RESUME
+            signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_RESUME
             signal.id = self._signaling_id
         
         if self.mode == 'active':
-            signal.peer_type = PeerType.PEER_TYPE_ACTIVE
+            signal.peer_type = PeerTypeProto.PEER_TYPE_PROTO_ACTIVE
         elif self.mode == 'passive':
-            signal.peer_type = PeerType.PEER_TYPE_PASSIVE
+            signal.peer_type = PeerTypeProto.PEER_TYPE_PROTO_PASSIVE
         if self._ws_signaling is not None and self._ws_signaling.open:
             await self._ws_signaling.send(signal.SerializeToString())
     
     async def _signaling_recv(self, msg):
-        signal = Signal()
+        signal = SignalProto()
         signal.ParseFromString(msg)
 
         # switch by signal type
-        if signal.signal_type == SignalType.SIGNAL_TYPE_INIT:
+        if signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_INIT:
             # set signaling id given by the signal server
             self._signaling_id = signal.id
             if self.mode == 'active':
                 await self.update_async() # get a Peer Server
 
-        elif signal.signal_type == SignalType.SIGNAL_TYPE_UPDATE:
+        elif signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_UPDATE:
             if self.mode == 'active':
                 await self.update_async() # get a Peer Server
             if self.mode == 'passive':
                 # connect to Peer Server, in another task
                 self.add_task(self._ws_client(url=signal.url))
         
-        elif signal.signal_type == SignalType.SIGNAL_TYPE_CLOSE:
+        elif signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_CLOSE:
             self.status = 'closed'
             if self._ws_signaling is not None and self._ws_signaling.open:
                 await self._ws_signaling.close()
@@ -638,8 +640,8 @@ class Channel:
             if self._ws_peer is not None and self._ws_peer.open:
                 await self._ws_peer.close()
         
-        signal = Signal()
-        signal.signal_type = SignalType.SIGNAL_TYPE_UPDATE
+        signal = SignalProto()
+        signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_UPDATE
         signal.id = self._signaling_id
         
         if self.mode == 'active':
@@ -751,8 +753,8 @@ class Request:
         self.channel = channel
     
     async def reply_async(self, content: Union[Content, str, bytes]):
-        msg = Message()
-        msg.header.message_type = MessageType.MESSAGE_TYPE_RESPONSE
+        msg = MessageProto()
+        msg.header.message_type = MessageTypeProto.MESSAGE_TYPE_PROTO_RESPONSE
         if self.id is not None:
             msg.header.id = self.id
         msg.header.uuid = self.uuid

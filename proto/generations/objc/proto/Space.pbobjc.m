@@ -26,12 +26,10 @@
 // Forward declarations of Objective C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
-GPBObjCClassDeclaration(Data);
-GPBObjCClassDeclaration(Graph);
-GPBObjCClassDeclaration(GraphSpace);
-GPBObjCClassDeclaration(Image);
-GPBObjCClassDeclaration(Space);
-GPBObjCClassDeclaration(Tensor);
+GPBObjCClassDeclaration(GraphProto);
+GPBObjCClassDeclaration(ImageProto);
+GPBObjCClassDeclaration(InstanceProto);
+GPBObjCClassDeclaration(TensorProto);
 
 #pragma mark - SpaceRoot
 
@@ -56,31 +54,27 @@ static GPBFileDescriptor *SpaceRoot_FileDescriptor(void) {
   return descriptor;
 }
 
-#pragma mark - Enum DataType
+#pragma mark - Enum CompressionTypeProto
 
-GPBEnumDescriptor *DataType_EnumDescriptor(void) {
+GPBEnumDescriptor *CompressionTypeProto_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "DataTypeUnspecified\000DataTypeFloat\000DataTy"
-        "peDouble\000DataTypeInt\000DataTypeLong\000DataTy"
-        "peUint\000DataTypeUlong\000DataTypeBool\000";
+        "CompressionTypeProtoUnspecified\000Compress"
+        "ionTypeProtoNone\000CompressionTypeProtoPng"
+        "\000CompressionTypeProtoJpg\000";
     static const int32_t values[] = {
-        DataType_DataTypeUnspecified,
-        DataType_DataTypeFloat,
-        DataType_DataTypeDouble,
-        DataType_DataTypeInt,
-        DataType_DataTypeLong,
-        DataType_DataTypeUint,
-        DataType_DataTypeUlong,
-        DataType_DataTypeBool,
+        CompressionTypeProto_CompressionTypeProtoUnspecified,
+        CompressionTypeProto_CompressionTypeProtoNone,
+        CompressionTypeProto_CompressionTypeProtoPng,
+        CompressionTypeProto_CompressionTypeProtoJpg,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(DataType)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(CompressionTypeProto)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:DataType_IsValidValue];
+                                     enumVerifier:CompressionTypeProto_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -89,43 +83,53 @@ GPBEnumDescriptor *DataType_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL DataType_IsValidValue(int32_t value__) {
+BOOL CompressionTypeProto_IsValidValue(int32_t value__) {
   switch (value__) {
-    case DataType_DataTypeUnspecified:
-    case DataType_DataTypeFloat:
-    case DataType_DataTypeDouble:
-    case DataType_DataTypeInt:
-    case DataType_DataTypeLong:
-    case DataType_DataTypeUint:
-    case DataType_DataTypeUlong:
-    case DataType_DataTypeBool:
+    case CompressionTypeProto_CompressionTypeProtoUnspecified:
+    case CompressionTypeProto_CompressionTypeProtoNone:
+    case CompressionTypeProto_CompressionTypeProtoPng:
+    case CompressionTypeProto_CompressionTypeProtoJpg:
       return YES;
     default:
       return NO;
   }
 }
 
-#pragma mark - Enum CompressionType
+#pragma mark - Enum InstanceTypeProto
 
-GPBEnumDescriptor *CompressionType_EnumDescriptor(void) {
+GPBEnumDescriptor *InstanceTypeProto_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "CompressionTypeUnspecified\000CompressionTy"
-        "peNone\000CompressionTypePng\000CompressionTyp"
-        "eJpg\000";
+        "InstanceTypeProtoUnspecified\000InstanceTyp"
+        "eProtoRaw\000InstanceTypeProtoTensor\000Instan"
+        "ceTypeProtoDiscrete\000InstanceTypeProtoTex"
+        "t\000InstanceTypeProtoDict\000InstanceTypeProt"
+        "oList\000InstanceTypeProtoGraph\000InstanceTyp"
+        "eProtoImage\000InstanceTypeProtoFloat\000Insta"
+        "nceTypeProtoBool\000InstanceTypeProtoNull\000I"
+        "nstanceTypeProtoJson\000";
     static const int32_t values[] = {
-        CompressionType_CompressionTypeUnspecified,
-        CompressionType_CompressionTypeNone,
-        CompressionType_CompressionTypePng,
-        CompressionType_CompressionTypeJpg,
+        InstanceTypeProto_InstanceTypeProtoUnspecified,
+        InstanceTypeProto_InstanceTypeProtoRaw,
+        InstanceTypeProto_InstanceTypeProtoTensor,
+        InstanceTypeProto_InstanceTypeProtoDiscrete,
+        InstanceTypeProto_InstanceTypeProtoText,
+        InstanceTypeProto_InstanceTypeProtoDict,
+        InstanceTypeProto_InstanceTypeProtoList,
+        InstanceTypeProto_InstanceTypeProtoGraph,
+        InstanceTypeProto_InstanceTypeProtoImage,
+        InstanceTypeProto_InstanceTypeProtoFloat,
+        InstanceTypeProto_InstanceTypeProtoBool,
+        InstanceTypeProto_InstanceTypeProtoNull,
+        InstanceTypeProto_InstanceTypeProtoJson,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(CompressionType)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(InstanceTypeProto)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:CompressionType_IsValidValue];
+                                     enumVerifier:InstanceTypeProto_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -134,103 +138,41 @@ GPBEnumDescriptor *CompressionType_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL CompressionType_IsValidValue(int32_t value__) {
+BOOL InstanceTypeProto_IsValidValue(int32_t value__) {
   switch (value__) {
-    case CompressionType_CompressionTypeUnspecified:
-    case CompressionType_CompressionTypeNone:
-    case CompressionType_CompressionTypePng:
-    case CompressionType_CompressionTypeJpg:
+    case InstanceTypeProto_InstanceTypeProtoUnspecified:
+    case InstanceTypeProto_InstanceTypeProtoRaw:
+    case InstanceTypeProto_InstanceTypeProtoTensor:
+    case InstanceTypeProto_InstanceTypeProtoDiscrete:
+    case InstanceTypeProto_InstanceTypeProtoText:
+    case InstanceTypeProto_InstanceTypeProtoDict:
+    case InstanceTypeProto_InstanceTypeProtoList:
+    case InstanceTypeProto_InstanceTypeProtoGraph:
+    case InstanceTypeProto_InstanceTypeProtoImage:
+    case InstanceTypeProto_InstanceTypeProtoFloat:
+    case InstanceTypeProto_InstanceTypeProtoBool:
+    case InstanceTypeProto_InstanceTypeProtoNull:
+    case InstanceTypeProto_InstanceTypeProtoJson:
       return YES;
     default:
       return NO;
   }
 }
 
-#pragma mark - Enum SpaceType
+#pragma mark - TensorProto
 
-GPBEnumDescriptor *SpaceType_EnumDescriptor(void) {
-  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
-  if (!descriptor) {
-    static const char *valueNames =
-        "SpaceTypeUnspecified\000SpaceTypeRaw\000SpaceT"
-        "ypeBox\000SpaceTypeDiscrete\000SpaceTypeMultiB"
-        "inary\000SpaceTypeMultiDiscrete\000SpaceTypeTe"
-        "xt\000SpaceTypeDict\000SpaceTypeTuple\000SpaceTyp"
-        "eSequence\000SpaceTypeGraph\000SpaceTypeImage\000";
-    static const int32_t values[] = {
-        SpaceType_SpaceTypeUnspecified,
-        SpaceType_SpaceTypeRaw,
-        SpaceType_SpaceTypeBox,
-        SpaceType_SpaceTypeDiscrete,
-        SpaceType_SpaceTypeMultiBinary,
-        SpaceType_SpaceTypeMultiDiscrete,
-        SpaceType_SpaceTypeText,
-        SpaceType_SpaceTypeDict,
-        SpaceType_SpaceTypeTuple,
-        SpaceType_SpaceTypeSequence,
-        SpaceType_SpaceTypeGraph,
-        SpaceType_SpaceTypeImage,
-    };
-    GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SpaceType)
-                                       valueNames:valueNames
-                                           values:values
-                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:SpaceType_IsValidValue];
-    GPBEnumDescriptor *expected = nil;
-    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
-      [worker release];
-    }
-  }
-  return descriptor;
-}
+@implementation TensorProto
 
-BOOL SpaceType_IsValidValue(int32_t value__) {
-  switch (value__) {
-    case SpaceType_SpaceTypeUnspecified:
-    case SpaceType_SpaceTypeRaw:
-    case SpaceType_SpaceTypeBox:
-    case SpaceType_SpaceTypeDiscrete:
-    case SpaceType_SpaceTypeMultiBinary:
-    case SpaceType_SpaceTypeMultiDiscrete:
-    case SpaceType_SpaceTypeText:
-    case SpaceType_SpaceTypeDict:
-    case SpaceType_SpaceTypeTuple:
-    case SpaceType_SpaceTypeSequence:
-    case SpaceType_SpaceTypeGraph:
-    case SpaceType_SpaceTypeImage:
-      return YES;
-    default:
-      return NO;
-  }
-}
-
-#pragma mark - Tensor
-
-@implementation Tensor
-
+@dynamic data_p;
+@dynamic dtype;
 @dynamic shapeArray, shapeArray_Count;
-@dynamic dataType;
-@dynamic floatArrayArray, floatArrayArray_Count;
-@dynamic doubleArrayArray, doubleArrayArray_Count;
-@dynamic intArrayArray, intArrayArray_Count;
-@dynamic longArrayArray, longArrayArray_Count;
-@dynamic unsignedIntArrayArray, unsignedIntArrayArray_Count;
-@dynamic unsignedLongArrayArray, unsignedLongArrayArray_Count;
-@dynamic boolArrayArray, boolArrayArray_Count;
 
-typedef struct Tensor__storage_ {
+typedef struct TensorProto__storage_ {
   uint32_t _has_storage_[1];
-  DataType dataType;
+  NSData *data_p;
+  NSString *dtype;
   GPBInt32Array *shapeArray;
-  GPBFloatArray *floatArrayArray;
-  GPBDoubleArray *doubleArrayArray;
-  GPBInt32Array *intArrayArray;
-  GPBInt64Array *longArrayArray;
-  GPBUInt32Array *unsignedIntArrayArray;
-  GPBUInt64Array *unsignedLongArrayArray;
-  GPBBoolArray *boolArrayArray;
-} Tensor__storage_;
+} TensorProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -238,95 +180,41 @@ typedef struct Tensor__storage_ {
   static GPBDescriptor *descriptor = nil;
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "data_p",
+        .dataTypeSpecific.clazz = Nil,
+        .number = TensorProto_FieldNumber_Data_p,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(TensorProto__storage_, data_p),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "dtype",
+        .dataTypeSpecific.clazz = Nil,
+        .number = TensorProto_FieldNumber_Dtype,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(TensorProto__storage_, dtype),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
       {
         .name = "shapeArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_ShapeArray,
+        .number = TensorProto_FieldNumber_ShapeArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, shapeArray),
+        .offset = (uint32_t)offsetof(TensorProto__storage_, shapeArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeInt32,
       },
-      {
-        .name = "dataType",
-        .dataTypeSpecific.enumDescFunc = DataType_EnumDescriptor,
-        .number = Tensor_FieldNumber_DataType,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Tensor__storage_, dataType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeEnum,
-      },
-      {
-        .name = "floatArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_FloatArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, floatArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeFloat,
-      },
-      {
-        .name = "doubleArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_DoubleArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, doubleArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeDouble,
-      },
-      {
-        .name = "intArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_IntArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, intArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeSInt32,
-      },
-      {
-        .name = "longArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_LongArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, longArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeSInt64,
-      },
-      {
-        .name = "unsignedIntArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_UnsignedIntArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, unsignedIntArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeUInt32,
-      },
-      {
-        .name = "unsignedLongArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_UnsignedLongArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, unsignedLongArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeUInt64,
-      },
-      {
-        .name = "boolArrayArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Tensor_FieldNumber_BoolArrayArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Tensor__storage_, boolArrayArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeBool,
-      },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Tensor class]
+        [GPBDescriptor allocDescriptorForClass:[TensorProto class]
                                      rootClass:[SpaceRoot class]
                                           file:SpaceRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Tensor__storage_)
+                                   storageSize:sizeof(TensorProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -338,88 +226,20 @@ typedef struct Tensor__storage_ {
 
 @end
 
-int32_t Tensor_DataType_RawValue(Tensor *message) {
-  GPBDescriptor *descriptor = [Tensor descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Tensor_FieldNumber_DataType];
-  return GPBGetMessageRawEnumField(message, field);
-}
+#pragma mark - GraphProto
 
-void SetTensor_DataType_RawValue(Tensor *message, int32_t value) {
-  GPBDescriptor *descriptor = [Tensor descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Tensor_FieldNumber_DataType];
-  GPBSetMessageRawEnumField(message, field, value);
-}
-
-#pragma mark - GraphSpace
-
-@implementation GraphSpace
-
-@dynamic hasNodeSpace, nodeSpace;
-@dynamic hasEdgeSpace, edgeSpace;
-
-typedef struct GraphSpace__storage_ {
-  uint32_t _has_storage_[1];
-  Space *nodeSpace;
-  Space *edgeSpace;
-} GraphSpace__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "nodeSpace",
-        .dataTypeSpecific.clazz = GPBObjCClass(Space),
-        .number = GraphSpace_FieldNumber_NodeSpace,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(GraphSpace__storage_, nodeSpace),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "edgeSpace",
-        .dataTypeSpecific.clazz = GPBObjCClass(Space),
-        .number = GraphSpace_FieldNumber_EdgeSpace,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(GraphSpace__storage_, edgeSpace),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[GraphSpace class]
-                                     rootClass:[SpaceRoot class]
-                                          file:SpaceRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(GraphSpace__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-#pragma mark - Graph
-
-@implementation Graph
+@implementation GraphProto
 
 @dynamic hasNodes, nodes;
 @dynamic hasEdges, edges;
 @dynamic hasEdgeLinks, edgeLinks;
 
-typedef struct Graph__storage_ {
+typedef struct GraphProto__storage_ {
   uint32_t _has_storage_[1];
-  Tensor *nodes;
-  Tensor *edges;
-  Tensor *edgeLinks;
-} Graph__storage_;
+  TensorProto *nodes;
+  TensorProto *edges;
+  TensorProto *edgeLinks;
+} GraphProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -429,39 +249,39 @@ typedef struct Graph__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "nodes",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Graph_FieldNumber_Nodes,
+        .dataTypeSpecific.clazz = GPBObjCClass(TensorProto),
+        .number = GraphProto_FieldNumber_Nodes,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Graph__storage_, nodes),
+        .offset = (uint32_t)offsetof(GraphProto__storage_, nodes),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "edges",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Graph_FieldNumber_Edges,
+        .dataTypeSpecific.clazz = GPBObjCClass(TensorProto),
+        .number = GraphProto_FieldNumber_Edges,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Graph__storage_, edges),
+        .offset = (uint32_t)offsetof(GraphProto__storage_, edges),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "edgeLinks",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Graph_FieldNumber_EdgeLinks,
+        .dataTypeSpecific.clazz = GPBObjCClass(TensorProto),
+        .number = GraphProto_FieldNumber_EdgeLinks,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Graph__storage_, edgeLinks),
+        .offset = (uint32_t)offsetof(GraphProto__storage_, edgeLinks),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Graph class]
+        [GPBDescriptor allocDescriptorForClass:[GraphProto class]
                                      rootClass:[SpaceRoot class]
                                           file:SpaceRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Graph__storage_)
+                                   storageSize:sizeof(GraphProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -473,22 +293,24 @@ typedef struct Graph__storage_ {
 
 @end
 
-#pragma mark - Image
+#pragma mark - ImageProto
 
-@implementation Image
+@implementation ImageProto
 
 @dynamic compressionType;
 @dynamic data_p;
+@dynamic dtype;
 @dynamic shapeArray, shapeArray_Count;
-@dynamic dimensionMappingArray, dimensionMappingArray_Count;
+@dynamic transposeAxesArray, transposeAxesArray_Count;
 
-typedef struct Image__storage_ {
+typedef struct ImageProto__storage_ {
   uint32_t _has_storage_[1];
-  CompressionType compressionType;
+  CompressionTypeProto compressionType;
   NSData *data_p;
+  NSString *dtype;
   GPBInt32Array *shapeArray;
-  GPBInt32Array *dimensionMappingArray;
-} Image__storage_;
+  GPBInt32Array *transposeAxesArray;
+} ImageProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -498,237 +320,57 @@ typedef struct Image__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "compressionType",
-        .dataTypeSpecific.enumDescFunc = CompressionType_EnumDescriptor,
-        .number = Image_FieldNumber_CompressionType,
+        .dataTypeSpecific.enumDescFunc = CompressionTypeProto_EnumDescriptor,
+        .number = ImageProto_FieldNumber_CompressionType,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Image__storage_, compressionType),
+        .offset = (uint32_t)offsetof(ImageProto__storage_, compressionType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeEnum,
       },
       {
         .name = "data_p",
         .dataTypeSpecific.clazz = Nil,
-        .number = Image_FieldNumber_Data_p,
+        .number = ImageProto_FieldNumber_Data_p,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Image__storage_, data_p),
+        .offset = (uint32_t)offsetof(ImageProto__storage_, data_p),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "shapeArray",
+        .name = "dtype",
         .dataTypeSpecific.clazz = Nil,
-        .number = Image_FieldNumber_ShapeArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Image__storage_, shapeArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "dimensionMappingArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Image_FieldNumber_DimensionMappingArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Image__storage_, dimensionMappingArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
-      },
-    };
-    GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Image class]
-                                     rootClass:[SpaceRoot class]
-                                          file:SpaceRoot_FileDescriptor()
-                                        fields:fields
-                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Image__storage_)
-                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
-    #if defined(DEBUG) && DEBUG
-      NSAssert(descriptor == nil, @"Startup recursed!");
-    #endif  // DEBUG
-    descriptor = localDescriptor;
-  }
-  return descriptor;
-}
-
-@end
-
-int32_t Image_CompressionType_RawValue(Image *message) {
-  GPBDescriptor *descriptor = [Image descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Image_FieldNumber_CompressionType];
-  return GPBGetMessageRawEnumField(message, field);
-}
-
-void SetImage_CompressionType_RawValue(Image *message, int32_t value) {
-  GPBDescriptor *descriptor = [Image descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Image_FieldNumber_CompressionType];
-  GPBSetMessageRawEnumField(message, field, value);
-}
-
-#pragma mark - Space
-
-@implementation Space
-
-@dynamic spaceType;
-@dynamic description_p;
-@dynamic shapeArray, shapeArray_Count;
-@dynamic dataType;
-@dynamic lowArray, lowArray_Count;
-@dynamic highArray, highArray_Count;
-@dynamic min;
-@dynamic max;
-@dynamic nvecArray, nvecArray_Count;
-@dynamic charsetArray, charsetArray_Count;
-@dynamic dictSpace, dictSpace_Count;
-@dynamic listSpace, listSpace_Count;
-@dynamic hasGraphSpace, graphSpace;
-
-typedef struct Space__storage_ {
-  uint32_t _has_storage_[1];
-  SpaceType spaceType;
-  int32_t min;
-  int32_t max;
-  NSString *description_p;
-  GPBInt32Array *shapeArray;
-  NSString *dataType;
-  GPBFloatArray *lowArray;
-  GPBFloatArray *highArray;
-  GPBInt32Array *nvecArray;
-  NSMutableArray *charsetArray;
-  NSMutableDictionary *dictSpace;
-  GPBInt32ObjectDictionary *listSpace;
-  GraphSpace *graphSpace;
-} Space__storage_;
-
-// This method is threadsafe because it is initially called
-// in +initialize for each subclass.
-+ (GPBDescriptor *)descriptor {
-  static GPBDescriptor *descriptor = nil;
-  if (!descriptor) {
-    static GPBMessageFieldDescription fields[] = {
-      {
-        .name = "spaceType",
-        .dataTypeSpecific.enumDescFunc = SpaceType_EnumDescriptor,
-        .number = Space_FieldNumber_SpaceType,
-        .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Space__storage_, spaceType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeEnum,
-      },
-      {
-        .name = "description_p",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_Description_p,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Space__storage_, description_p),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "shapeArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_ShapeArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, shapeArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "dataType",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_DataType,
+        .number = ImageProto_FieldNumber_Dtype,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Space__storage_, dataType),
+        .offset = (uint32_t)offsetof(ImageProto__storage_, dtype),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "lowArray",
+        .name = "shapeArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_LowArray,
+        .number = ImageProto_FieldNumber_ShapeArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, lowArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeFloat,
-      },
-      {
-        .name = "highArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_HighArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, highArray),
-        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
-        .dataType = GPBDataTypeFloat,
-      },
-      {
-        .name = "min",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_Min,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Space__storage_, min),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "max",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_Max,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Space__storage_, max),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "nvecArray",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_NvecArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, nvecArray),
+        .offset = (uint32_t)offsetof(ImageProto__storage_, shapeArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeInt32,
       },
       {
-        .name = "charsetArray",
+        .name = "transposeAxesArray",
         .dataTypeSpecific.clazz = Nil,
-        .number = Space_FieldNumber_CharsetArray,
+        .number = ImageProto_FieldNumber_TransposeAxesArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, charsetArray),
-        .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "dictSpace",
-        .dataTypeSpecific.clazz = GPBObjCClass(Space),
-        .number = Space_FieldNumber_DictSpace,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, dictSpace),
-        .flags = GPBFieldMapKeyString,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "listSpace",
-        .dataTypeSpecific.clazz = GPBObjCClass(Space),
-        .number = Space_FieldNumber_ListSpace,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Space__storage_, listSpace),
-        .flags = GPBFieldMapKeyInt32,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "graphSpace",
-        .dataTypeSpecific.clazz = GPBObjCClass(GraphSpace),
-        .number = Space_FieldNumber_GraphSpace,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(Space__storage_, graphSpace),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .offset = (uint32_t)offsetof(ImageProto__storage_, transposeAxesArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Space class]
+        [GPBDescriptor allocDescriptorForClass:[ImageProto class]
                                      rootClass:[SpaceRoot class]
                                           file:SpaceRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Space__storage_)
+                                   storageSize:sizeof(ImageProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -740,50 +382,49 @@ typedef struct Space__storage_ {
 
 @end
 
-int32_t Space_SpaceType_RawValue(Space *message) {
-  GPBDescriptor *descriptor = [Space descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Space_FieldNumber_SpaceType];
+int32_t ImageProto_CompressionType_RawValue(ImageProto *message) {
+  GPBDescriptor *descriptor = [ImageProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:ImageProto_FieldNumber_CompressionType];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetSpace_SpaceType_RawValue(Space *message, int32_t value) {
-  GPBDescriptor *descriptor = [Space descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Space_FieldNumber_SpaceType];
+void SetImageProto_CompressionType_RawValue(ImageProto *message, int32_t value) {
+  GPBDescriptor *descriptor = [ImageProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:ImageProto_FieldNumber_CompressionType];
   GPBSetMessageRawEnumField(message, field, value);
 }
 
-#pragma mark - Data
+#pragma mark - InstanceProto
 
-@implementation Data
+@implementation InstanceProto
 
-@dynamic spaceType;
-@dynamic dataType;
+@dynamic type;
 @dynamic rawData;
-@dynamic hasBox, box;
+@dynamic hasTensor, tensor;
 @dynamic discrete;
-@dynamic hasMultiBinary, multiBinary;
-@dynamic hasMultiDiscrete, multiDiscrete;
 @dynamic text;
 @dynamic dict, dict_Count;
-@dynamic list, list_Count;
+@dynamic listArray, listArray_Count;
 @dynamic hasGraph, graph;
 @dynamic hasImage, image;
+@dynamic float_p;
+@dynamic boolean;
+@dynamic json;
 
-typedef struct Data__storage_ {
+typedef struct InstanceProto__storage_ {
   uint32_t _has_storage_[1];
-  SpaceType spaceType;
-  int32_t discrete;
-  NSString *dataType;
+  InstanceTypeProto type;
   NSData *rawData;
-  Tensor *box;
-  Tensor *multiBinary;
-  Tensor *multiDiscrete;
+  TensorProto *tensor;
   NSString *text;
   NSMutableDictionary *dict;
-  GPBInt32ObjectDictionary *list;
-  Graph *graph;
-  Image *image;
-} Data__storage_;
+  NSMutableArray *listArray;
+  GraphProto *graph;
+  ImageProto *image;
+  NSString *json;
+  int64_t discrete;
+  double float_p;
+} InstanceProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -792,121 +433,121 @@ typedef struct Data__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "spaceType",
-        .dataTypeSpecific.enumDescFunc = SpaceType_EnumDescriptor,
-        .number = Data_FieldNumber_SpaceType,
+        .name = "type",
+        .dataTypeSpecific.enumDescFunc = InstanceTypeProto_EnumDescriptor,
+        .number = InstanceProto_FieldNumber_Type,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Data__storage_, spaceType),
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, type),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeEnum,
-      },
-      {
-        .name = "dataType",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Data_FieldNumber_DataType,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Data__storage_, dataType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
       },
       {
         .name = "rawData",
         .dataTypeSpecific.clazz = Nil,
-        .number = Data_FieldNumber_RawData,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Data__storage_, rawData),
+        .number = InstanceProto_FieldNumber_RawData,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, rawData),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
       {
-        .name = "box",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Data_FieldNumber_Box,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Data__storage_, box),
+        .name = "tensor",
+        .dataTypeSpecific.clazz = GPBObjCClass(TensorProto),
+        .number = InstanceProto_FieldNumber_Tensor,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, tensor),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "discrete",
         .dataTypeSpecific.clazz = Nil,
-        .number = Data_FieldNumber_Discrete,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Data__storage_, discrete),
+        .number = InstanceProto_FieldNumber_Discrete,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, discrete),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeInt32,
-      },
-      {
-        .name = "multiBinary",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Data_FieldNumber_MultiBinary,
-        .hasIndex = 5,
-        .offset = (uint32_t)offsetof(Data__storage_, multiBinary),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "multiDiscrete",
-        .dataTypeSpecific.clazz = GPBObjCClass(Tensor),
-        .number = Data_FieldNumber_MultiDiscrete,
-        .hasIndex = 6,
-        .offset = (uint32_t)offsetof(Data__storage_, multiDiscrete),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
+        .dataType = GPBDataTypeInt64,
       },
       {
         .name = "text",
         .dataTypeSpecific.clazz = Nil,
-        .number = Data_FieldNumber_Text,
-        .hasIndex = 7,
-        .offset = (uint32_t)offsetof(Data__storage_, text),
+        .number = InstanceProto_FieldNumber_Text,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, text),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "dict",
-        .dataTypeSpecific.clazz = GPBObjCClass(Data),
-        .number = Data_FieldNumber_Dict,
+        .dataTypeSpecific.clazz = GPBObjCClass(InstanceProto),
+        .number = InstanceProto_FieldNumber_Dict,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Data__storage_, dict),
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, dict),
         .flags = GPBFieldMapKeyString,
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "list",
-        .dataTypeSpecific.clazz = GPBObjCClass(Data),
-        .number = Data_FieldNumber_List,
+        .name = "listArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(InstanceProto),
+        .number = InstanceProto_FieldNumber_ListArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(Data__storage_, list),
-        .flags = GPBFieldMapKeyInt32,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, listArray),
+        .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "graph",
-        .dataTypeSpecific.clazz = GPBObjCClass(Graph),
-        .number = Data_FieldNumber_Graph,
-        .hasIndex = 8,
-        .offset = (uint32_t)offsetof(Data__storage_, graph),
+        .dataTypeSpecific.clazz = GPBObjCClass(GraphProto),
+        .number = InstanceProto_FieldNumber_Graph,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, graph),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "image",
-        .dataTypeSpecific.clazz = GPBObjCClass(Image),
-        .number = Data_FieldNumber_Image,
-        .hasIndex = 9,
-        .offset = (uint32_t)offsetof(Data__storage_, image),
+        .dataTypeSpecific.clazz = GPBObjCClass(ImageProto),
+        .number = InstanceProto_FieldNumber_Image,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, image),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "float_p",
+        .dataTypeSpecific.clazz = Nil,
+        .number = InstanceProto_FieldNumber_Float_p,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, float_p),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "boolean",
+        .dataTypeSpecific.clazz = Nil,
+        .number = InstanceProto_FieldNumber_Boolean,
+        .hasIndex = 8,
+        .offset = 9,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "json",
+        .dataTypeSpecific.clazz = Nil,
+        .number = InstanceProto_FieldNumber_Json,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(InstanceProto__storage_, json),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Data class]
+        [GPBDescriptor allocDescriptorForClass:[InstanceProto class]
                                      rootClass:[SpaceRoot class]
                                           file:SpaceRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Data__storage_)
+                                   storageSize:sizeof(InstanceProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -918,15 +559,15 @@ typedef struct Data__storage_ {
 
 @end
 
-int32_t Data_SpaceType_RawValue(Data *message) {
-  GPBDescriptor *descriptor = [Data descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Data_FieldNumber_SpaceType];
+int32_t InstanceProto_Type_RawValue(InstanceProto *message) {
+  GPBDescriptor *descriptor = [InstanceProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:InstanceProto_FieldNumber_Type];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetData_SpaceType_RawValue(Data *message, int32_t value) {
-  GPBDescriptor *descriptor = [Data descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Data_FieldNumber_SpaceType];
+void SetInstanceProto_Type_RawValue(InstanceProto *message, int32_t value) {
+  GPBDescriptor *descriptor = [InstanceProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:InstanceProto_FieldNumber_Type];
   GPBSetMessageRawEnumField(message, field, value);
 }
 

@@ -1,8 +1,8 @@
-namespace PAIA.Gymize
+namespace Gymize
 {
     public class ScopeSensor : SensorComponent
     {
-        public override IData GetObservation(int cacheId = -1)
+        public override IInstance GetObservation()
         {
             return null;
         }

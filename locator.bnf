@@ -1,4 +1,4 @@
-<locator> ::= <mapping> { "&" <mapping> }
+<expr> ::= <mapping> { "&" <mapping> }
 
 <mapping> ::= [ <agents> ] { <selector> } { <array_selector> } [ "=" "$" { <selector> } { <array_selector> } ]
 
@@ -13,10 +13,10 @@
 
 <slices> ::= SLICE { "," SLICE }
 
-<atom> ::= NAME | STRING
+<atom> ::= NAME | QUOTED_STRING
 
 NAME ::= [A-Za-z_][A-Za-z0-9_]*
 
-STRING ::= DOUBLE_QUOTED_STRING | SINGLE_QUOTED_STRING
+QUOTED_STRING ::= DOUBLE_QUOTED_STRING | SINGLE_QUOTED_STRING
 
 SLICE ::= ^\s*((?'start'[+-]?\s*\d+)?\s*:\s*(?'stop'[+-]?\s*\d+)?\s*(:\s*(?'step'[+-]?\s*\d+)?)?|(?'index'[+-]?\s*\d+)|(?'ellipsis'\.\.\.)|(?'newaxis'(np\.)?newaxis))\s*$

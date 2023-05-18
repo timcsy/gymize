@@ -5,29 +5,29 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("signaling.proto", :syntax => :proto3) do
-    add_message "Signal" do
-      optional :signal_type, :enum, 1, "SignalType"
+    add_message "SignalProto" do
+      optional :signal_type, :enum, 1, "SignalTypeProto"
       optional :id, :string, 2
       optional :data, :bytes, 3
       optional :name, :string, 4
-      optional :peer_type, :enum, 5, "PeerType"
+      optional :peer_type, :enum, 5, "PeerTypeProto"
       optional :url, :string, 6
     end
-    add_enum "SignalType" do
-      value :SIGNAL_TYPE_UNSPECIFIED, 0
-      value :SIGNAL_TYPE_INIT, 1
-      value :SIGNAL_TYPE_UPDATE, 2
-      value :SIGNAL_TYPE_RESUME, 3
-      value :SIGNAL_TYPE_CLOSE, 4
+    add_enum "SignalTypeProto" do
+      value :SIGNAL_TYPE_PROTO_UNSPECIFIED, 0
+      value :SIGNAL_TYPE_PROTO_INIT, 1
+      value :SIGNAL_TYPE_PROTO_UPDATE, 2
+      value :SIGNAL_TYPE_PROTO_RESUME, 3
+      value :SIGNAL_TYPE_PROTO_CLOSE, 4
     end
-    add_enum "PeerType" do
-      value :PEER_TYPE_UNSPECIFIED, 0
-      value :PEER_TYPE_ACTIVE, 1
-      value :PEER_TYPE_PASSIVE, 2
+    add_enum "PeerTypeProto" do
+      value :PEER_TYPE_PROTO_UNSPECIFIED, 0
+      value :PEER_TYPE_PROTO_ACTIVE, 1
+      value :PEER_TYPE_PROTO_PASSIVE, 2
     end
   end
 end
 
-Signal = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Signal").msgclass
-SignalType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("SignalType").enummodule
-PeerType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("PeerType").enummodule
+SignalProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("SignalProto").msgclass
+SignalTypeProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("SignalTypeProto").enummodule
+PeerTypeProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("PeerTypeProto").enummodule

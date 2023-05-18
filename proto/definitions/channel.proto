@@ -1,28 +1,31 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Gymize.Protobuf";
+import "gymize.proto";
 
-enum MessageType {
-	MESSAGE_TYPE_UNSPECIFIED = 0;
-	MESSAGE_TYPE_MESSAGE = 1;
-	MESSAGE_TYPE_REQUEST = 2;
-	MESSAGE_TYPE_RESPONSE = 3;
+option csharp_namespace = "Gymize.Protobuf";
+
+enum MessageTypeProto {
+	MESSAGE_TYPE_PROTO_UNSPECIFIED = 0;
+	MESSAGE_TYPE_PROTO_MESSAGE = 1;
+	MESSAGE_TYPE_PROTO_REQUEST = 2;
+	MESSAGE_TYPE_PROTO_RESPONSE = 3;
 }
 
-message Header {
-	MessageType message_type = 1;
+message HeaderProto {
+	MessageTypeProto message_type = 1;
 	string id = 2;
 	bytes uuid = 3;
 }
 
-message Content {
+message ContentProto {
 	oneof data {
 		bytes raw = 1;
 		string text = 2;
+		GymizeProto gymize = 3;
 	}
 }
 
-message Message {
-	Header header = 1;
-	Content content = 2;
+message MessageProto {
+	HeaderProto header = 1;
+	ContentProto content = 2;
 }

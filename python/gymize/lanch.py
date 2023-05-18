@@ -116,7 +116,7 @@ def launch_executable(file_name: str, args: List[str]) -> subprocess.Popen:
                 f'"chmod -R 755 {launch_string}"'
             )
 
-def open_unity(file_name: str=None, args: List[str]=list()):
+def launch_env(file_name: str=None, args: List[str]=list()):
     if file_name is not None:
         vglrun: str = find_executable('vglrun') # Check whether vglrun is on PATH
         if vglrun is None:
@@ -134,4 +134,4 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
     
-    open_unity(file_name=file_name, args=sys.argv[2:])
+    launch_env(file_name=file_name, args=sys.argv[2:])

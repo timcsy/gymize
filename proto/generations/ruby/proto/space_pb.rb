@@ -5,100 +5,64 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("space.proto", :syntax => :proto3) do
-    add_message "Tensor" do
-      repeated :shape, :int32, 1
-      optional :data_type, :enum, 2, "DataType"
-      repeated :float_array, :float, 3
-      repeated :double_array, :double, 4
-      repeated :int_array, :sint32, 5
-      repeated :long_array, :sint64, 6
-      repeated :unsigned_int_array, :uint32, 7
-      repeated :unsigned_long_array, :uint64, 8
-      repeated :bool_array, :bool, 9
+    add_message "TensorProto" do
+      optional :data, :bytes, 1
+      optional :dtype, :string, 2
+      repeated :shape, :int32, 3
     end
-    add_message "GraphSpace" do
-      optional :node_space, :message, 1, "Space"
-      optional :edge_space, :message, 2, "Space"
+    add_message "GraphProto" do
+      optional :nodes, :message, 1, "TensorProto"
+      optional :edges, :message, 2, "TensorProto"
+      optional :edge_links, :message, 3, "TensorProto"
     end
-    add_message "Graph" do
-      optional :nodes, :message, 1, "Tensor"
-      optional :edges, :message, 2, "Tensor"
-      optional :edge_links, :message, 3, "Tensor"
-    end
-    add_message "Image" do
-      optional :compression_type, :enum, 1, "CompressionType"
+    add_message "ImageProto" do
+      optional :compression_type, :enum, 1, "CompressionTypeProto"
       optional :data, :bytes, 2
-      repeated :shape, :int32, 3
-      repeated :dimension_mapping, :int32, 4
+      optional :dtype, :string, 3
+      repeated :shape, :int32, 4
+      repeated :transpose_axes, :int32, 5
     end
-    add_message "Space" do
-      optional :space_type, :enum, 1, "SpaceType"
-      optional :description, :string, 2
-      repeated :shape, :int32, 3
-      optional :data_type, :string, 4
-      repeated :low, :float, 5
-      repeated :high, :float, 6
-      optional :min, :int32, 7
-      optional :max, :int32, 8
-      repeated :nvec, :int32, 9
-      repeated :charset, :string, 10
-      map :dict_space, :string, :message, 11, "Space"
-      map :list_space, :int32, :message, 12, "Space"
-      optional :graph_space, :message, 13, "GraphSpace"
+    add_message "InstanceProto" do
+      optional :type, :enum, 1, "InstanceTypeProto"
+      optional :raw_data, :bytes, 2
+      optional :tensor, :message, 3, "TensorProto"
+      optional :discrete, :int64, 4
+      optional :text, :string, 5
+      map :dict, :string, :message, 6, "InstanceProto"
+      repeated :list, :message, 7, "InstanceProto"
+      optional :graph, :message, 8, "GraphProto"
+      optional :image, :message, 9, "ImageProto"
+      optional :float, :double, 10
+      optional :boolean, :bool, 11
+      optional :json, :string, 12
     end
-    add_message "Data" do
-      optional :space_type, :enum, 1, "SpaceType"
-      optional :data_type, :string, 2
-      optional :raw_data, :bytes, 3
-      optional :box, :message, 4, "Tensor"
-      optional :discrete, :int32, 5
-      optional :multi_binary, :message, 6, "Tensor"
-      optional :multi_discrete, :message, 7, "Tensor"
-      optional :text, :string, 8
-      map :dict, :string, :message, 9, "Data"
-      map :list, :int32, :message, 10, "Data"
-      optional :graph, :message, 11, "Graph"
-      optional :image, :message, 12, "Image"
+    add_enum "CompressionTypeProto" do
+      value :COMPRESSION_TYPE_PROTO_UNSPECIFIED, 0
+      value :COMPRESSION_TYPE_PROTO_NONE, 1
+      value :COMPRESSION_TYPE_PROTO_PNG, 2
+      value :COMPRESSION_TYPE_PROTO_JPG, 3
     end
-    add_enum "DataType" do
-      value :DATA_TYPE_UNSPECIFIED, 0
-      value :DATA_TYPE_FLOAT, 1
-      value :DATA_TYPE_DOUBLE, 2
-      value :DATA_TYPE_INT, 3
-      value :DATA_TYPE_LONG, 4
-      value :DATA_TYPE_UINT, 5
-      value :DATA_TYPE_ULONG, 6
-      value :DATA_TYPE_BOOL, 7
-    end
-    add_enum "CompressionType" do
-      value :COMPRESSION_TYPE_UNSPECIFIED, 0
-      value :COMPRESSION_TYPE_NONE, 1
-      value :COMPRESSION_TYPE_PNG, 2
-      value :COMPRESSION_TYPE_JPG, 3
-    end
-    add_enum "SpaceType" do
-      value :SPACE_TYPE_UNSPECIFIED, 0
-      value :SPACE_TYPE_RAW, 1
-      value :SPACE_TYPE_BOX, 2
-      value :SPACE_TYPE_DISCRETE, 3
-      value :SPACE_TYPE_MULTI_BINARY, 4
-      value :SPACE_TYPE_MULTI_DISCRETE, 5
-      value :SPACE_TYPE_TEXT, 6
-      value :SPACE_TYPE_DICT, 7
-      value :SPACE_TYPE_TUPLE, 8
-      value :SPACE_TYPE_SEQUENCE, 9
-      value :SPACE_TYPE_GRAPH, 10
-      value :SPACE_TYPE_IMAGE, 11
+    add_enum "InstanceTypeProto" do
+      value :INSTANCE_TYPE_PROTO_UNSPECIFIED, 0
+      value :INSTANCE_TYPE_PROTO_RAW, 1
+      value :INSTANCE_TYPE_PROTO_TENSOR, 2
+      value :INSTANCE_TYPE_PROTO_DISCRETE, 3
+      value :INSTANCE_TYPE_PROTO_TEXT, 4
+      value :INSTANCE_TYPE_PROTO_DICT, 5
+      value :INSTANCE_TYPE_PROTO_LIST, 6
+      value :INSTANCE_TYPE_PROTO_GRAPH, 7
+      value :INSTANCE_TYPE_PROTO_IMAGE, 8
+      value :INSTANCE_TYPE_PROTO_FLOAT, 9
+      value :INSTANCE_TYPE_PROTO_BOOL, 10
+      value :INSTANCE_TYPE_PROTO_NULL, 11
+      value :INSTANCE_TYPE_PROTO_JSON, 12
     end
   end
 end
 
-Tensor = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Tensor").msgclass
-GraphSpace = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GraphSpace").msgclass
-Graph = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Graph").msgclass
-Image = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Image").msgclass
-Space = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Space").msgclass
-Data = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Data").msgclass
-DataType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DataType").enummodule
-CompressionType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CompressionType").enummodule
-SpaceType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("SpaceType").enummodule
+TensorProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TensorProto").msgclass
+GraphProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GraphProto").msgclass
+ImageProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ImageProto").msgclass
+InstanceProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InstanceProto").msgclass
+CompressionTypeProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CompressionTypeProto").enummodule
+InstanceTypeProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InstanceTypeProto").enummodule

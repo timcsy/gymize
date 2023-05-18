@@ -16,6 +16,7 @@
 #import <stdatomic.h>
 
 #import "Channel.pbobjc.h"
+#import "Gymize.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -27,15 +28,16 @@
 // Forward declarations of Objective C classes that we can use as
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
-GPBObjCClassDeclaration(Content);
-GPBObjCClassDeclaration(Header);
+GPBObjCClassDeclaration(ContentProto);
+GPBObjCClassDeclaration(GymizeProto);
+GPBObjCClassDeclaration(HeaderProto);
 
 #pragma mark - ChannelRoot
 
 @implementation ChannelRoot
 
-// No extensions in the file and no imports, so no need to generate
-// +extensionRegistry.
+// No extensions in the file and none of the imports (direct or indirect)
+// defined extensions, so no need to generate +extensionRegistry.
 
 @end
 
@@ -53,27 +55,27 @@ static GPBFileDescriptor *ChannelRoot_FileDescriptor(void) {
   return descriptor;
 }
 
-#pragma mark - Enum MessageType
+#pragma mark - Enum MessageTypeProto
 
-GPBEnumDescriptor *MessageType_EnumDescriptor(void) {
+GPBEnumDescriptor *MessageTypeProto_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "MessageTypeUnspecified\000MessageTypeMessag"
-        "e\000MessageTypeRequest\000MessageTypeResponse"
-        "\000";
+        "MessageTypeProtoUnspecified\000MessageTypeP"
+        "rotoMessage\000MessageTypeProtoRequest\000Mess"
+        "ageTypeProtoResponse\000";
     static const int32_t values[] = {
-        MessageType_MessageTypeUnspecified,
-        MessageType_MessageTypeMessage,
-        MessageType_MessageTypeRequest,
-        MessageType_MessageTypeResponse,
+        MessageTypeProto_MessageTypeProtoUnspecified,
+        MessageTypeProto_MessageTypeProtoMessage,
+        MessageTypeProto_MessageTypeProtoRequest,
+        MessageTypeProto_MessageTypeProtoResponse,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(MessageType)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(MessageTypeProto)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:MessageType_IsValidValue];
+                                     enumVerifier:MessageTypeProto_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -82,32 +84,32 @@ GPBEnumDescriptor *MessageType_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL MessageType_IsValidValue(int32_t value__) {
+BOOL MessageTypeProto_IsValidValue(int32_t value__) {
   switch (value__) {
-    case MessageType_MessageTypeUnspecified:
-    case MessageType_MessageTypeMessage:
-    case MessageType_MessageTypeRequest:
-    case MessageType_MessageTypeResponse:
+    case MessageTypeProto_MessageTypeProtoUnspecified:
+    case MessageTypeProto_MessageTypeProtoMessage:
+    case MessageTypeProto_MessageTypeProtoRequest:
+    case MessageTypeProto_MessageTypeProtoResponse:
       return YES;
     default:
       return NO;
   }
 }
 
-#pragma mark - Header
+#pragma mark - HeaderProto
 
-@implementation Header
+@implementation HeaderProto
 
 @dynamic messageType;
 @dynamic id_p;
 @dynamic uuid;
 
-typedef struct Header__storage_ {
+typedef struct HeaderProto__storage_ {
   uint32_t _has_storage_[1];
-  MessageType messageType;
+  MessageTypeProto messageType;
   NSString *id_p;
   NSData *uuid;
-} Header__storage_;
+} HeaderProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -117,39 +119,39 @@ typedef struct Header__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "messageType",
-        .dataTypeSpecific.enumDescFunc = MessageType_EnumDescriptor,
-        .number = Header_FieldNumber_MessageType,
+        .dataTypeSpecific.enumDescFunc = MessageTypeProto_EnumDescriptor,
+        .number = HeaderProto_FieldNumber_MessageType,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Header__storage_, messageType),
+        .offset = (uint32_t)offsetof(HeaderProto__storage_, messageType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeEnum,
       },
       {
         .name = "id_p",
         .dataTypeSpecific.clazz = Nil,
-        .number = Header_FieldNumber_Id_p,
+        .number = HeaderProto_FieldNumber_Id_p,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Header__storage_, id_p),
+        .offset = (uint32_t)offsetof(HeaderProto__storage_, id_p),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "uuid",
         .dataTypeSpecific.clazz = Nil,
-        .number = Header_FieldNumber_Uuid,
+        .number = HeaderProto_FieldNumber_Uuid,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Header__storage_, uuid),
+        .offset = (uint32_t)offsetof(HeaderProto__storage_, uuid),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Header class]
+        [GPBDescriptor allocDescriptorForClass:[HeaderProto class]
                                      rootClass:[ChannelRoot class]
                                           file:ChannelRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Header__storage_)
+                                   storageSize:sizeof(HeaderProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -161,31 +163,33 @@ typedef struct Header__storage_ {
 
 @end
 
-int32_t Header_MessageType_RawValue(Header *message) {
-  GPBDescriptor *descriptor = [Header descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Header_FieldNumber_MessageType];
+int32_t HeaderProto_MessageType_RawValue(HeaderProto *message) {
+  GPBDescriptor *descriptor = [HeaderProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:HeaderProto_FieldNumber_MessageType];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetHeader_MessageType_RawValue(Header *message, int32_t value) {
-  GPBDescriptor *descriptor = [Header descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Header_FieldNumber_MessageType];
+void SetHeaderProto_MessageType_RawValue(HeaderProto *message, int32_t value) {
+  GPBDescriptor *descriptor = [HeaderProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:HeaderProto_FieldNumber_MessageType];
   GPBSetMessageRawEnumField(message, field, value);
 }
 
-#pragma mark - Content
+#pragma mark - ContentProto
 
-@implementation Content
+@implementation ContentProto
 
 @dynamic dataOneOfCase;
 @dynamic raw;
 @dynamic text;
+@dynamic gymize;
 
-typedef struct Content__storage_ {
+typedef struct ContentProto__storage_ {
   uint32_t _has_storage_[2];
   NSData *raw;
   NSString *text;
-} Content__storage_;
+  GymizeProto *gymize;
+} ContentProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -196,29 +200,38 @@ typedef struct Content__storage_ {
       {
         .name = "raw",
         .dataTypeSpecific.clazz = Nil,
-        .number = Content_FieldNumber_Raw,
+        .number = ContentProto_FieldNumber_Raw,
         .hasIndex = -1,
-        .offset = (uint32_t)offsetof(Content__storage_, raw),
+        .offset = (uint32_t)offsetof(ContentProto__storage_, raw),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "text",
         .dataTypeSpecific.clazz = Nil,
-        .number = Content_FieldNumber_Text,
+        .number = ContentProto_FieldNumber_Text,
         .hasIndex = -1,
-        .offset = (uint32_t)offsetof(Content__storage_, text),
+        .offset = (uint32_t)offsetof(ContentProto__storage_, text),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "gymize",
+        .dataTypeSpecific.clazz = GPBObjCClass(GymizeProto),
+        .number = ContentProto_FieldNumber_Gymize,
+        .hasIndex = -1,
+        .offset = (uint32_t)offsetof(ContentProto__storage_, gymize),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Content class]
+        [GPBDescriptor allocDescriptorForClass:[ContentProto class]
                                      rootClass:[ChannelRoot class]
                                           file:ChannelRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Content__storage_)
+                                   storageSize:sizeof(ContentProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     static const char *oneofs[] = {
       "data",
@@ -236,23 +249,23 @@ typedef struct Content__storage_ {
 
 @end
 
-void Content_ClearDataOneOfCase(Content *message) {
-  GPBDescriptor *descriptor = [Content descriptor];
+void ContentProto_ClearDataOneOfCase(ContentProto *message) {
+  GPBDescriptor *descriptor = [ContentProto descriptor];
   GPBOneofDescriptor *oneof = [descriptor.oneofs objectAtIndex:0];
   GPBClearOneof(message, oneof);
 }
-#pragma mark - Message
+#pragma mark - MessageProto
 
-@implementation Message
+@implementation MessageProto
 
 @dynamic hasHeader, header;
 @dynamic hasContent, content;
 
-typedef struct Message__storage_ {
+typedef struct MessageProto__storage_ {
   uint32_t _has_storage_[1];
-  Header *header;
-  Content *content;
-} Message__storage_;
+  HeaderProto *header;
+  ContentProto *content;
+} MessageProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -262,30 +275,30 @@ typedef struct Message__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "header",
-        .dataTypeSpecific.clazz = GPBObjCClass(Header),
-        .number = Message_FieldNumber_Header,
+        .dataTypeSpecific.clazz = GPBObjCClass(HeaderProto),
+        .number = MessageProto_FieldNumber_Header,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Message__storage_, header),
+        .offset = (uint32_t)offsetof(MessageProto__storage_, header),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "content",
-        .dataTypeSpecific.clazz = GPBObjCClass(Content),
-        .number = Message_FieldNumber_Content,
+        .dataTypeSpecific.clazz = GPBObjCClass(ContentProto),
+        .number = MessageProto_FieldNumber_Content,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Message__storage_, content),
+        .offset = (uint32_t)offsetof(MessageProto__storage_, content),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Message class]
+        [GPBDescriptor allocDescriptorForClass:[MessageProto class]
                                      rootClass:[ChannelRoot class]
                                           file:ChannelRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Message__storage_)
+                                   storageSize:sizeof(MessageProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");

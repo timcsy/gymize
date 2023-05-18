@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "Gymize.Protobuf";
+
+message SliceProto {
+	bool has_start = 1;
+	int32 start = 2;
+	bool has_stop = 3;
+	int32 stop = 4;
+	int32 step = 5;
+	bool is_index = 6;
+	bool is_ellipsis = 7;
+	bool is_new_axis = 8;
+}
+
+enum SelectorTypeProto {
+	SELECTOR_TYPE_PROTO_UNSPECIFIED = 0;
+	SELECTOR_TYPE_PROTO_DICT = 1;
+  SELECTOR_TYPE_PROTO_TUPLE = 2;
+  SELECTOR_TYPE_PROTO_SEQUENCE = 3;
+  SELECTOR_TYPE_PROTO_TENSOR = 4;
+}
+
+message SelectorProto {
+	SelectorTypeProto type = 1;
+	repeated SliceProto slices = 2;
+	string key = 3;
+}
+
+message MappingProto {
+	bool is_all_agents = 1;
+	repeated string agents = 2; // If is_all_agents == true, then this is the list of unavalible agents
+	bool is_root = 3;
+	repeated SelectorProto destination = 4;
+	repeated SelectorProto source = 5;
+}
+
+message LocatorProto {
+	repeated MappingProto mappings = 1;
+}

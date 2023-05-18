@@ -1,26 +1,26 @@
 syntax = "proto3";
 
-option csharp_namespace = "PAIA.Gymize.Protobuf";
+option csharp_namespace = "Gymize.Protobuf";
 
-enum SignalType {
-	SIGNAL_TYPE_UNSPECIFIED = 0;
-	SIGNAL_TYPE_INIT = 1;
-	SIGNAL_TYPE_UPDATE = 2; // update the peer server information
-	SIGNAL_TYPE_RESUME = 3; // resume the connection with same signal id
-	SIGNAL_TYPE_CLOSE = 4; // ask another peer to close, and remove signal id
+enum SignalTypeProto {
+	SIGNAL_TYPE_PROTO_UNSPECIFIED = 0;
+	SIGNAL_TYPE_PROTO_INIT = 1;
+	SIGNAL_TYPE_PROTO_UPDATE = 2; // update the peer server information
+	SIGNAL_TYPE_PROTO_RESUME = 3; // resume the connection with same signal id
+	SIGNAL_TYPE_PROTO_CLOSE = 4; // ask another peer to close, and remove signal id
 }
 
-enum PeerType {
-	PEER_TYPE_UNSPECIFIED = 0;
-	PEER_TYPE_ACTIVE = 1;
-	PEER_TYPE_PASSIVE = 2;
+enum PeerTypeProto {
+	PEER_TYPE_PROTO_UNSPECIFIED = 0;
+	PEER_TYPE_PROTO_ACTIVE = 1;
+	PEER_TYPE_PROTO_PASSIVE = 2;
 }
 
-message Signal {
-	SignalType signal_type = 1;
+message SignalProto {
+	SignalTypeProto signal_type = 1;
 	string id = 2;
 	bytes data = 3;
 	string name = 4;
-	PeerType peer_type = 5;
+	PeerTypeProto peer_type = 5;
 	string url = 6;
 }

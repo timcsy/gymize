@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace PAIA.Gymize.Protobuf {
+namespace Gymize.Protobuf {
 
   /// <summary>Holder for reflection information generated from space.proto</summary>
   public static partial class SpaceReflection {
@@ -24,116 +24,92 @@ namespace PAIA.Gymize.Protobuf {
     static SpaceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtzcGFjZS5wcm90byLUAQoGVGVuc29yEg0KBXNoYXBlGAEgAygFEhwKCWRh",
-            "dGFfdHlwZRgCIAEoDjIJLkRhdGFUeXBlEhMKC2Zsb2F0X2FycmF5GAMgAygC",
-            "EhQKDGRvdWJsZV9hcnJheRgEIAMoARIRCglpbnRfYXJyYXkYBSADKBESEgoK",
-            "bG9uZ19hcnJheRgGIAMoEhIaChJ1bnNpZ25lZF9pbnRfYXJyYXkYByADKA0S",
-            "GwoTdW5zaWduZWRfbG9uZ19hcnJheRgIIAMoBBISCgpib29sX2FycmF5GAkg",
-            "AygIIkQKCkdyYXBoU3BhY2USGgoKbm9kZV9zcGFjZRgBIAEoCzIGLlNwYWNl",
-            "EhoKCmVkZ2Vfc3BhY2UYAiABKAsyBi5TcGFjZSJUCgVHcmFwaBIWCgVub2Rl",
-            "cxgBIAEoCzIHLlRlbnNvchIWCgVlZGdlcxgCIAEoCzIHLlRlbnNvchIbCgpl",
-            "ZGdlX2xpbmtzGAMgASgLMgcuVGVuc29yImsKBUltYWdlEioKEGNvbXByZXNz",
-            "aW9uX3R5cGUYASABKA4yEC5Db21wcmVzc2lvblR5cGUSDAoEZGF0YRgCIAEo",
-            "DBINCgVzaGFwZRgDIAMoBRIZChFkaW1lbnNpb25fbWFwcGluZxgEIAMoBSKe",
-            "AwoFU3BhY2USHgoKc3BhY2VfdHlwZRgBIAEoDjIKLlNwYWNlVHlwZRITCgtk",
-            "ZXNjcmlwdGlvbhgCIAEoCRINCgVzaGFwZRgDIAMoBRIRCglkYXRhX3R5cGUY",
-            "BCABKAkSCwoDbG93GAUgAygCEgwKBGhpZ2gYBiADKAISCwoDbWluGAcgASgF",
-            "EgsKA21heBgIIAEoBRIMCgRudmVjGAkgAygFEg8KB2NoYXJzZXQYCiADKAkS",
-            "KQoKZGljdF9zcGFjZRgLIAMoCzIVLlNwYWNlLkRpY3RTcGFjZUVudHJ5EikK",
-            "Cmxpc3Rfc3BhY2UYDCADKAsyFS5TcGFjZS5MaXN0U3BhY2VFbnRyeRIgCgtn",
-            "cmFwaF9zcGFjZRgNIAEoCzILLkdyYXBoU3BhY2UaOAoORGljdFNwYWNlRW50",
-            "cnkSCwoDa2V5GAEgASgJEhUKBXZhbHVlGAIgASgLMgYuU3BhY2U6AjgBGjgK",
-            "Dkxpc3RTcGFjZUVudHJ5EgsKA2tleRgBIAEoBRIVCgV2YWx1ZRgCIAEoCzIG",
-            "LlNwYWNlOgI4ASKVAwoERGF0YRIeCgpzcGFjZV90eXBlGAEgASgOMgouU3Bh",
-            "Y2VUeXBlEhEKCWRhdGFfdHlwZRgCIAEoCRIQCghyYXdfZGF0YRgDIAEoDBIU",
-            "CgNib3gYBCABKAsyBy5UZW5zb3ISEAoIZGlzY3JldGUYBSABKAUSHQoMbXVs",
-            "dGlfYmluYXJ5GAYgASgLMgcuVGVuc29yEh8KDm11bHRpX2Rpc2NyZXRlGAcg",
-            "ASgLMgcuVGVuc29yEgwKBHRleHQYCCABKAkSHQoEZGljdBgJIAMoCzIPLkRh",
-            "dGEuRGljdEVudHJ5Eh0KBGxpc3QYCiADKAsyDy5EYXRhLkxpc3RFbnRyeRIV",
-            "CgVncmFwaBgLIAEoCzIGLkdyYXBoEhUKBWltYWdlGAwgASgLMgYuSW1hZ2Ua",
-            "MgoJRGljdEVudHJ5EgsKA2tleRgBIAEoCRIUCgV2YWx1ZRgCIAEoCzIFLkRh",
-            "dGE6AjgBGjIKCUxpc3RFbnRyeRILCgNrZXkYASABKAUSFAoFdmFsdWUYAiAB",
-            "KAsyBS5EYXRhOgI4ASq0AQoIRGF0YVR5cGUSGQoVREFUQV9UWVBFX1VOU1BF",
-            "Q0lGSUVEEAASEwoPREFUQV9UWVBFX0ZMT0FUEAESFAoQREFUQV9UWVBFX0RP",
-            "VUJMRRACEhEKDURBVEFfVFlQRV9JTlQQAxISCg5EQVRBX1RZUEVfTE9ORxAE",
-            "EhIKDkRBVEFfVFlQRV9VSU5UEAUSEwoPREFUQV9UWVBFX1VMT05HEAYSEgoO",
-            "REFUQV9UWVBFX0JPT0wQByqCAQoPQ29tcHJlc3Npb25UeXBlEiAKHENPTVBS",
-            "RVNTSU9OX1RZUEVfVU5TUEVDSUZJRUQQABIZChVDT01QUkVTU0lPTl9UWVBF",
-            "X05PTkUQARIYChRDT01QUkVTU0lPTl9UWVBFX1BORxACEhgKFENPTVBSRVNT",
-            "SU9OX1RZUEVfSlBHEAMqqQIKCVNwYWNlVHlwZRIaChZTUEFDRV9UWVBFX1VO",
-            "U1BFQ0lGSUVEEAASEgoOU1BBQ0VfVFlQRV9SQVcQARISCg5TUEFDRV9UWVBF",
-            "X0JPWBACEhcKE1NQQUNFX1RZUEVfRElTQ1JFVEUQAxIbChdTUEFDRV9UWVBF",
-            "X01VTFRJX0JJTkFSWRAEEh0KGVNQQUNFX1RZUEVfTVVMVElfRElTQ1JFVEUQ",
-            "BRITCg9TUEFDRV9UWVBFX1RFWFQQBhITCg9TUEFDRV9UWVBFX0RJQ1QQBxIU",
-            "ChBTUEFDRV9UWVBFX1RVUExFEAgSFwoTU1BBQ0VfVFlQRV9TRVFVRU5DRRAJ",
-            "EhQKEFNQQUNFX1RZUEVfR1JBUEgQChIUChBTUEFDRV9UWVBFX0lNQUdFEAtC",
-            "F6oCFFBBSUEuR3ltaXplLlByb3RvYnVmYgZwcm90bzM="));
+            "CgtzcGFjZS5wcm90byI5CgtUZW5zb3JQcm90bxIMCgRkYXRhGAEgASgMEg0K",
+            "BWR0eXBlGAIgASgJEg0KBXNoYXBlGAMgAygFImgKCkdyYXBoUHJvdG8SGwoF",
+            "bm9kZXMYASABKAsyDC5UZW5zb3JQcm90bxIbCgVlZGdlcxgCIAEoCzIMLlRl",
+            "bnNvclByb3RvEiAKCmVkZ2VfbGlua3MYAyABKAsyDC5UZW5zb3JQcm90byKB",
+            "AQoKSW1hZ2VQcm90bxIvChBjb21wcmVzc2lvbl90eXBlGAEgASgOMhUuQ29t",
+            "cHJlc3Npb25UeXBlUHJvdG8SDAoEZGF0YRgCIAEoDBINCgVkdHlwZRgDIAEo",
+            "CRINCgVzaGFwZRgEIAMoBRIWCg50cmFuc3Bvc2VfYXhlcxgFIAMoBSLqAgoN",
+            "SW5zdGFuY2VQcm90bxIgCgR0eXBlGAEgASgOMhIuSW5zdGFuY2VUeXBlUHJv",
+            "dG8SEAoIcmF3X2RhdGEYAiABKAwSHAoGdGVuc29yGAMgASgLMgwuVGVuc29y",
+            "UHJvdG8SEAoIZGlzY3JldGUYBCABKAMSDAoEdGV4dBgFIAEoCRImCgRkaWN0",
+            "GAYgAygLMhguSW5zdGFuY2VQcm90by5EaWN0RW50cnkSHAoEbGlzdBgHIAMo",
+            "CzIOLkluc3RhbmNlUHJvdG8SGgoFZ3JhcGgYCCABKAsyCy5HcmFwaFByb3Rv",
+            "EhoKBWltYWdlGAkgASgLMgsuSW1hZ2VQcm90bxINCgVmbG9hdBgKIAEoARIP",
+            "Cgdib29sZWFuGAsgASgIEgwKBGpzb24YDCABKAkaOwoJRGljdEVudHJ5EgsK",
+            "A2tleRgBIAEoCRIdCgV2YWx1ZRgCIAEoCzIOLkluc3RhbmNlUHJvdG86AjgB",
+            "Kp8BChRDb21wcmVzc2lvblR5cGVQcm90bxImCiJDT01QUkVTU0lPTl9UWVBF",
+            "X1BST1RPX1VOU1BFQ0lGSUVEEAASHwobQ09NUFJFU1NJT05fVFlQRV9QUk9U",
+            "T19OT05FEAESHgoaQ09NUFJFU1NJT05fVFlQRV9QUk9UT19QTkcQAhIeChpD",
+            "T01QUkVTU0lPTl9UWVBFX1BST1RPX0pQRxADKqgDChFJbnN0YW5jZVR5cGVQ",
+            "cm90bxIjCh9JTlNUQU5DRV9UWVBFX1BST1RPX1VOU1BFQ0lGSUVEEAASGwoX",
+            "SU5TVEFOQ0VfVFlQRV9QUk9UT19SQVcQARIeChpJTlNUQU5DRV9UWVBFX1BS",
+            "T1RPX1RFTlNPUhACEiAKHElOU1RBTkNFX1RZUEVfUFJPVE9fRElTQ1JFVEUQ",
+            "AxIcChhJTlNUQU5DRV9UWVBFX1BST1RPX1RFWFQQBBIcChhJTlNUQU5DRV9U",
+            "WVBFX1BST1RPX0RJQ1QQBRIcChhJTlNUQU5DRV9UWVBFX1BST1RPX0xJU1QQ",
+            "BhIdChlJTlNUQU5DRV9UWVBFX1BST1RPX0dSQVBIEAcSHQoZSU5TVEFOQ0Vf",
+            "VFlQRV9QUk9UT19JTUFHRRAIEh0KGUlOU1RBTkNFX1RZUEVfUFJPVE9fRkxP",
+            "QVQQCRIcChhJTlNUQU5DRV9UWVBFX1BST1RPX0JPT0wQChIcChhJTlNUQU5D",
+            "RV9UWVBFX1BST1RPX05VTEwQCxIcChhJTlNUQU5DRV9UWVBFX1BST1RPX0pT",
+            "T04QDEISqgIPR3ltaXplLlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Protobuf.DataType), typeof(global::PAIA.Gymize.Protobuf.CompressionType), typeof(global::PAIA.Gymize.Protobuf.SpaceType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Tensor), global::PAIA.Gymize.Protobuf.Tensor.Parser, new[]{ "Shape", "DataType", "FloatArray", "DoubleArray", "IntArray", "LongArray", "UnsignedIntArray", "UnsignedLongArray", "BoolArray" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.GraphSpace), global::PAIA.Gymize.Protobuf.GraphSpace.Parser, new[]{ "NodeSpace", "EdgeSpace" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Graph), global::PAIA.Gymize.Protobuf.Graph.Parser, new[]{ "Nodes", "Edges", "EdgeLinks" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Image), global::PAIA.Gymize.Protobuf.Image.Parser, new[]{ "CompressionType", "Data", "Shape", "DimensionMapping" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Space), global::PAIA.Gymize.Protobuf.Space.Parser, new[]{ "SpaceType", "Description", "Shape", "DataType", "Low", "High", "Min", "Max", "Nvec", "Charset", "DictSpace", "ListSpace", "GraphSpace" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Data), global::PAIA.Gymize.Protobuf.Data.Parser, new[]{ "SpaceType", "DataType", "RawData", "Box", "Discrete", "MultiBinary", "MultiDiscrete", "Text", "Dict", "List", "Graph", "Image" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Gymize.Protobuf.CompressionTypeProto), typeof(global::Gymize.Protobuf.InstanceTypeProto), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.TensorProto), global::Gymize.Protobuf.TensorProto.Parser, new[]{ "Data", "Dtype", "Shape" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.GraphProto), global::Gymize.Protobuf.GraphProto.Parser, new[]{ "Nodes", "Edges", "EdgeLinks" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ImageProto), global::Gymize.Protobuf.ImageProto.Parser, new[]{ "CompressionType", "Data", "Dtype", "Shape", "TransposeAxes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.InstanceProto), global::Gymize.Protobuf.InstanceProto.Parser, new[]{ "Type", "RawData", "Tensor", "Discrete", "Text", "Dict", "List", "Graph", "Image", "Float", "Boolean", "Json" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
 
   }
   #region Enums
-  public enum DataType {
-    [pbr::OriginalName("DATA_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("DATA_TYPE_FLOAT")] Float = 1,
-    [pbr::OriginalName("DATA_TYPE_DOUBLE")] Double = 2,
-    [pbr::OriginalName("DATA_TYPE_INT")] Int = 3,
-    [pbr::OriginalName("DATA_TYPE_LONG")] Long = 4,
-    [pbr::OriginalName("DATA_TYPE_UINT")] Uint = 5,
-    [pbr::OriginalName("DATA_TYPE_ULONG")] Ulong = 6,
-    [pbr::OriginalName("DATA_TYPE_BOOL")] Bool = 7,
+  public enum CompressionTypeProto {
+    [pbr::OriginalName("COMPRESSION_TYPE_PROTO_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("COMPRESSION_TYPE_PROTO_NONE")] None = 1,
+    [pbr::OriginalName("COMPRESSION_TYPE_PROTO_PNG")] Png = 2,
+    [pbr::OriginalName("COMPRESSION_TYPE_PROTO_JPG")] Jpg = 3,
   }
 
-  public enum CompressionType {
-    [pbr::OriginalName("COMPRESSION_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("COMPRESSION_TYPE_NONE")] None = 1,
-    [pbr::OriginalName("COMPRESSION_TYPE_PNG")] Png = 2,
-    [pbr::OriginalName("COMPRESSION_TYPE_JPG")] Jpg = 3,
-  }
-
-  public enum SpaceType {
-    [pbr::OriginalName("SPACE_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("SPACE_TYPE_RAW")] Raw = 1,
-    [pbr::OriginalName("SPACE_TYPE_BOX")] Box = 2,
-    [pbr::OriginalName("SPACE_TYPE_DISCRETE")] Discrete = 3,
-    [pbr::OriginalName("SPACE_TYPE_MULTI_BINARY")] MultiBinary = 4,
-    [pbr::OriginalName("SPACE_TYPE_MULTI_DISCRETE")] MultiDiscrete = 5,
-    [pbr::OriginalName("SPACE_TYPE_TEXT")] Text = 6,
-    [pbr::OriginalName("SPACE_TYPE_DICT")] Dict = 7,
-    [pbr::OriginalName("SPACE_TYPE_TUPLE")] Tuple = 8,
-    [pbr::OriginalName("SPACE_TYPE_SEQUENCE")] Sequence = 9,
-    [pbr::OriginalName("SPACE_TYPE_GRAPH")] Graph = 10,
-    [pbr::OriginalName("SPACE_TYPE_IMAGE")] Image = 11,
+  public enum InstanceTypeProto {
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_RAW")] Raw = 1,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_TENSOR")] Tensor = 2,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_DISCRETE")] Discrete = 3,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_TEXT")] Text = 4,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_DICT")] Dict = 5,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_LIST")] List = 6,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_GRAPH")] Graph = 7,
+    /// <summary>
+    /// The following are gymize-defined types, not in gym
+    /// </summary>
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_IMAGE")] Image = 8,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_FLOAT")] Float = 9,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_BOOL")] Bool = 10,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_NULL")] Null = 11,
+    [pbr::OriginalName("INSTANCE_TYPE_PROTO_JSON")] Json = 12,
   }
 
   #endregion
 
   #region Messages
-  public sealed partial class Tensor : pb::IMessage<Tensor>
+  public sealed partial class TensorProto : pb::IMessage<TensorProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Tensor> _parser = new pb::MessageParser<Tensor>(() => new Tensor());
+    private static readonly pb::MessageParser<TensorProto> _parser = new pb::MessageParser<TensorProto>(() => new TensorProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Tensor> Parser { get { return _parser; } }
+    public static pb::MessageParser<TensorProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -144,7 +120,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Tensor() {
+    public TensorProto() {
       OnConstruction();
     }
 
@@ -152,29 +128,47 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Tensor(Tensor other) : this() {
+    public TensorProto(TensorProto other) : this() {
+      data_ = other.data_;
+      dtype_ = other.dtype_;
       shape_ = other.shape_.Clone();
-      dataType_ = other.dataType_;
-      floatArray_ = other.floatArray_.Clone();
-      doubleArray_ = other.doubleArray_.Clone();
-      intArray_ = other.intArray_.Clone();
-      longArray_ = other.longArray_.Clone();
-      unsignedIntArray_ = other.unsignedIntArray_.Clone();
-      unsignedLongArray_ = other.unsignedLongArray_.Clone();
-      boolArray_ = other.boolArray_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Tensor Clone() {
-      return new Tensor(this);
+    public TensorProto Clone() {
+      return new TensorProto(this);
+    }
+
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 1;
+    private pb::ByteString data_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Data {
+      get { return data_; }
+      set {
+        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "dtype" field.</summary>
+    public const int DtypeFieldNumber = 2;
+    private string dtype_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Dtype {
+      get { return dtype_; }
+      set {
+        dtype_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 1;
+    public const int ShapeFieldNumber = 3;
     private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(10);
+        = pb::FieldCodec.ForInt32(26);
     private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -182,119 +176,24 @@ namespace PAIA.Gymize.Protobuf {
       get { return shape_; }
     }
 
-    /// <summary>Field number for the "data_type" field.</summary>
-    public const int DataTypeFieldNumber = 2;
-    private global::PAIA.Gymize.Protobuf.DataType dataType_ = global::PAIA.Gymize.Protobuf.DataType.Unspecified;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.DataType DataType {
-      get { return dataType_; }
-      set {
-        dataType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "float_array" field.</summary>
-    public const int FloatArrayFieldNumber = 3;
-    private static readonly pb::FieldCodec<float> _repeated_floatArray_codec
-        = pb::FieldCodec.ForFloat(26);
-    private readonly pbc::RepeatedField<float> floatArray_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<float> FloatArray {
-      get { return floatArray_; }
-    }
-
-    /// <summary>Field number for the "double_array" field.</summary>
-    public const int DoubleArrayFieldNumber = 4;
-    private static readonly pb::FieldCodec<double> _repeated_doubleArray_codec
-        = pb::FieldCodec.ForDouble(34);
-    private readonly pbc::RepeatedField<double> doubleArray_ = new pbc::RepeatedField<double>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<double> DoubleArray {
-      get { return doubleArray_; }
-    }
-
-    /// <summary>Field number for the "int_array" field.</summary>
-    public const int IntArrayFieldNumber = 5;
-    private static readonly pb::FieldCodec<int> _repeated_intArray_codec
-        = pb::FieldCodec.ForSInt32(42);
-    private readonly pbc::RepeatedField<int> intArray_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> IntArray {
-      get { return intArray_; }
-    }
-
-    /// <summary>Field number for the "long_array" field.</summary>
-    public const int LongArrayFieldNumber = 6;
-    private static readonly pb::FieldCodec<long> _repeated_longArray_codec
-        = pb::FieldCodec.ForSInt64(50);
-    private readonly pbc::RepeatedField<long> longArray_ = new pbc::RepeatedField<long>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<long> LongArray {
-      get { return longArray_; }
-    }
-
-    /// <summary>Field number for the "unsigned_int_array" field.</summary>
-    public const int UnsignedIntArrayFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_unsignedIntArray_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> unsignedIntArray_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnsignedIntArray {
-      get { return unsignedIntArray_; }
-    }
-
-    /// <summary>Field number for the "unsigned_long_array" field.</summary>
-    public const int UnsignedLongArrayFieldNumber = 8;
-    private static readonly pb::FieldCodec<ulong> _repeated_unsignedLongArray_codec
-        = pb::FieldCodec.ForUInt64(66);
-    private readonly pbc::RepeatedField<ulong> unsignedLongArray_ = new pbc::RepeatedField<ulong>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<ulong> UnsignedLongArray {
-      get { return unsignedLongArray_; }
-    }
-
-    /// <summary>Field number for the "bool_array" field.</summary>
-    public const int BoolArrayFieldNumber = 9;
-    private static readonly pb::FieldCodec<bool> _repeated_boolArray_codec
-        = pb::FieldCodec.ForBool(74);
-    private readonly pbc::RepeatedField<bool> boolArray_ = new pbc::RepeatedField<bool>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<bool> BoolArray {
-      get { return boolArray_; }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Tensor);
+      return Equals(other as TensorProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Tensor other) {
+    public bool Equals(TensorProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Data != other.Data) return false;
+      if (Dtype != other.Dtype) return false;
       if(!shape_.Equals(other.shape_)) return false;
-      if (DataType != other.DataType) return false;
-      if(!floatArray_.Equals(other.floatArray_)) return false;
-      if(!doubleArray_.Equals(other.doubleArray_)) return false;
-      if(!intArray_.Equals(other.intArray_)) return false;
-      if(!longArray_.Equals(other.longArray_)) return false;
-      if(!unsignedIntArray_.Equals(other.unsignedIntArray_)) return false;
-      if(!unsignedLongArray_.Equals(other.unsignedLongArray_)) return false;
-      if(!boolArray_.Equals(other.boolArray_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -302,15 +201,9 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (Dtype.Length != 0) hash ^= Dtype.GetHashCode();
       hash ^= shape_.GetHashCode();
-      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) hash ^= DataType.GetHashCode();
-      hash ^= floatArray_.GetHashCode();
-      hash ^= doubleArray_.GetHashCode();
-      hash ^= intArray_.GetHashCode();
-      hash ^= longArray_.GetHashCode();
-      hash ^= unsignedIntArray_.GetHashCode();
-      hash ^= unsignedLongArray_.GetHashCode();
-      hash ^= boolArray_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -329,18 +222,15 @@ namespace PAIA.Gymize.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      shape_.WriteTo(output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
-        output.WriteRawTag(16);
-        output.WriteEnum((int) DataType);
+      if (Data.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Data);
       }
-      floatArray_.WriteTo(output, _repeated_floatArray_codec);
-      doubleArray_.WriteTo(output, _repeated_doubleArray_codec);
-      intArray_.WriteTo(output, _repeated_intArray_codec);
-      longArray_.WriteTo(output, _repeated_longArray_codec);
-      unsignedIntArray_.WriteTo(output, _repeated_unsignedIntArray_codec);
-      unsignedLongArray_.WriteTo(output, _repeated_unsignedLongArray_codec);
-      boolArray_.WriteTo(output, _repeated_boolArray_codec);
+      if (Dtype.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Dtype);
+      }
+      shape_.WriteTo(output, _repeated_shape_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -351,18 +241,15 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      shape_.WriteTo(ref output, _repeated_shape_codec);
-      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
-        output.WriteRawTag(16);
-        output.WriteEnum((int) DataType);
+      if (Data.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Data);
       }
-      floatArray_.WriteTo(ref output, _repeated_floatArray_codec);
-      doubleArray_.WriteTo(ref output, _repeated_doubleArray_codec);
-      intArray_.WriteTo(ref output, _repeated_intArray_codec);
-      longArray_.WriteTo(ref output, _repeated_longArray_codec);
-      unsignedIntArray_.WriteTo(ref output, _repeated_unsignedIntArray_codec);
-      unsignedLongArray_.WriteTo(ref output, _repeated_unsignedLongArray_codec);
-      boolArray_.WriteTo(ref output, _repeated_boolArray_codec);
+      if (Dtype.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Dtype);
+      }
+      shape_.WriteTo(ref output, _repeated_shape_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -373,17 +260,13 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += shape_.CalculateSize(_repeated_shape_codec);
-      if (DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DataType);
+      if (Data.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
-      size += floatArray_.CalculateSize(_repeated_floatArray_codec);
-      size += doubleArray_.CalculateSize(_repeated_doubleArray_codec);
-      size += intArray_.CalculateSize(_repeated_intArray_codec);
-      size += longArray_.CalculateSize(_repeated_longArray_codec);
-      size += unsignedIntArray_.CalculateSize(_repeated_unsignedIntArray_codec);
-      size += unsignedLongArray_.CalculateSize(_repeated_unsignedLongArray_codec);
-      size += boolArray_.CalculateSize(_repeated_boolArray_codec);
+      if (Dtype.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Dtype);
+      }
+      size += shape_.CalculateSize(_repeated_shape_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -392,21 +275,17 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Tensor other) {
+    public void MergeFrom(TensorProto other) {
       if (other == null) {
         return;
       }
-      shape_.Add(other.shape_);
-      if (other.DataType != global::PAIA.Gymize.Protobuf.DataType.Unspecified) {
-        DataType = other.DataType;
+      if (other.Data.Length != 0) {
+        Data = other.Data;
       }
-      floatArray_.Add(other.floatArray_);
-      doubleArray_.Add(other.doubleArray_);
-      intArray_.Add(other.intArray_);
-      longArray_.Add(other.longArray_);
-      unsignedIntArray_.Add(other.unsignedIntArray_);
-      unsignedLongArray_.Add(other.unsignedLongArray_);
-      boolArray_.Add(other.boolArray_);
+      if (other.Dtype.Length != 0) {
+        Dtype = other.Dtype;
+      }
+      shape_.Add(other.shape_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -422,50 +301,19 @@ namespace PAIA.Gymize.Protobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 8: {
+          case 10: {
+            Data = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            Dtype = input.ReadString();
+            break;
+          }
+          case 26:
+          case 24: {
             shape_.AddEntriesFrom(input, _repeated_shape_codec);
             break;
           }
-          case 16: {
-            DataType = (global::PAIA.Gymize.Protobuf.DataType) input.ReadEnum();
-            break;
-          }
-          case 26:
-          case 29: {
-            floatArray_.AddEntriesFrom(input, _repeated_floatArray_codec);
-            break;
-          }
-          case 34:
-          case 33: {
-            doubleArray_.AddEntriesFrom(input, _repeated_doubleArray_codec);
-            break;
-          }
-          case 42:
-          case 40: {
-            intArray_.AddEntriesFrom(input, _repeated_intArray_codec);
-            break;
-          }
-          case 50:
-          case 48: {
-            longArray_.AddEntriesFrom(input, _repeated_longArray_codec);
-            break;
-          }
-          case 58:
-          case 56: {
-            unsignedIntArray_.AddEntriesFrom(input, _repeated_unsignedIntArray_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            unsignedLongArray_.AddEntriesFrom(input, _repeated_unsignedLongArray_codec);
-            break;
-          }
-          case 74:
-          case 72: {
-            boolArray_.AddEntriesFrom(input, _repeated_boolArray_codec);
-            break;
-          }
         }
       }
     #endif
@@ -481,50 +329,19 @@ namespace PAIA.Gymize.Protobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10:
-          case 8: {
+          case 10: {
+            Data = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            Dtype = input.ReadString();
+            break;
+          }
+          case 26:
+          case 24: {
             shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
             break;
           }
-          case 16: {
-            DataType = (global::PAIA.Gymize.Protobuf.DataType) input.ReadEnum();
-            break;
-          }
-          case 26:
-          case 29: {
-            floatArray_.AddEntriesFrom(ref input, _repeated_floatArray_codec);
-            break;
-          }
-          case 34:
-          case 33: {
-            doubleArray_.AddEntriesFrom(ref input, _repeated_doubleArray_codec);
-            break;
-          }
-          case 42:
-          case 40: {
-            intArray_.AddEntriesFrom(ref input, _repeated_intArray_codec);
-            break;
-          }
-          case 50:
-          case 48: {
-            longArray_.AddEntriesFrom(ref input, _repeated_longArray_codec);
-            break;
-          }
-          case 58:
-          case 56: {
-            unsignedIntArray_.AddEntriesFrom(ref input, _repeated_unsignedIntArray_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            unsignedLongArray_.AddEntriesFrom(ref input, _repeated_unsignedLongArray_codec);
-            break;
-          }
-          case 74:
-          case 72: {
-            boolArray_.AddEntriesFrom(ref input, _repeated_boolArray_codec);
-            break;
-          }
         }
       }
     }
@@ -532,21 +349,21 @@ namespace PAIA.Gymize.Protobuf {
 
   }
 
-  public sealed partial class GraphSpace : pb::IMessage<GraphSpace>
+  public sealed partial class GraphProto : pb::IMessage<GraphProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<GraphSpace> _parser = new pb::MessageParser<GraphSpace>(() => new GraphSpace());
+    private static readonly pb::MessageParser<GraphProto> _parser = new pb::MessageParser<GraphProto>(() => new GraphProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<GraphSpace> Parser { get { return _parser; } }
+    public static pb::MessageParser<GraphProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -557,7 +374,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GraphSpace() {
+    public GraphProto() {
       OnConstruction();
     }
 
@@ -565,251 +382,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GraphSpace(GraphSpace other) : this() {
-      nodeSpace_ = other.nodeSpace_ != null ? other.nodeSpace_.Clone() : null;
-      edgeSpace_ = other.edgeSpace_ != null ? other.edgeSpace_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GraphSpace Clone() {
-      return new GraphSpace(this);
-    }
-
-    /// <summary>Field number for the "node_space" field.</summary>
-    public const int NodeSpaceFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.Space nodeSpace_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Space NodeSpace {
-      get { return nodeSpace_; }
-      set {
-        nodeSpace_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "edge_space" field.</summary>
-    public const int EdgeSpaceFieldNumber = 2;
-    private global::PAIA.Gymize.Protobuf.Space edgeSpace_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Space EdgeSpace {
-      get { return edgeSpace_; }
-      set {
-        edgeSpace_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as GraphSpace);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(GraphSpace other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(NodeSpace, other.NodeSpace)) return false;
-      if (!object.Equals(EdgeSpace, other.EdgeSpace)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (nodeSpace_ != null) hash ^= NodeSpace.GetHashCode();
-      if (edgeSpace_ != null) hash ^= EdgeSpace.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (nodeSpace_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(NodeSpace);
-      }
-      if (edgeSpace_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(EdgeSpace);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (nodeSpace_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(NodeSpace);
-      }
-      if (edgeSpace_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(EdgeSpace);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (nodeSpace_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NodeSpace);
-      }
-      if (edgeSpace_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EdgeSpace);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(GraphSpace other) {
-      if (other == null) {
-        return;
-      }
-      if (other.nodeSpace_ != null) {
-        if (nodeSpace_ == null) {
-          NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
-        }
-        NodeSpace.MergeFrom(other.NodeSpace);
-      }
-      if (other.edgeSpace_ != null) {
-        if (edgeSpace_ == null) {
-          EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
-        }
-        EdgeSpace.MergeFrom(other.EdgeSpace);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (nodeSpace_ == null) {
-              NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
-            }
-            input.ReadMessage(NodeSpace);
-            break;
-          }
-          case 18: {
-            if (edgeSpace_ == null) {
-              EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
-            }
-            input.ReadMessage(EdgeSpace);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            if (nodeSpace_ == null) {
-              NodeSpace = new global::PAIA.Gymize.Protobuf.Space();
-            }
-            input.ReadMessage(NodeSpace);
-            break;
-          }
-          case 18: {
-            if (edgeSpace_ == null) {
-              EdgeSpace = new global::PAIA.Gymize.Protobuf.Space();
-            }
-            input.ReadMessage(EdgeSpace);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class Graph : pb::IMessage<Graph>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<Graph> _parser = new pb::MessageParser<Graph>(() => new Graph());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Graph> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Graph() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Graph(Graph other) : this() {
+    public GraphProto(GraphProto other) : this() {
       nodes_ = other.nodes_ != null ? other.nodes_.Clone() : null;
       edges_ = other.edges_ != null ? other.edges_.Clone() : null;
       edgeLinks_ = other.edgeLinks_ != null ? other.edgeLinks_.Clone() : null;
@@ -818,19 +391,19 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Graph Clone() {
-      return new Graph(this);
+    public GraphProto Clone() {
+      return new GraphProto(this);
     }
 
     /// <summary>Field number for the "nodes" field.</summary>
     public const int NodesFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.Tensor nodes_;
+    private global::Gymize.Protobuf.TensorProto nodes_;
     /// <summary>
     /// floating type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor Nodes {
+    public global::Gymize.Protobuf.TensorProto Nodes {
       get { return nodes_; }
       set {
         nodes_ = value;
@@ -839,13 +412,13 @@ namespace PAIA.Gymize.Protobuf {
 
     /// <summary>Field number for the "edges" field.</summary>
     public const int EdgesFieldNumber = 2;
-    private global::PAIA.Gymize.Protobuf.Tensor edges_;
+    private global::Gymize.Protobuf.TensorProto edges_;
     /// <summary>
     /// floating type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor Edges {
+    public global::Gymize.Protobuf.TensorProto Edges {
       get { return edges_; }
       set {
         edges_ = value;
@@ -854,13 +427,13 @@ namespace PAIA.Gymize.Protobuf {
 
     /// <summary>Field number for the "edge_links" field.</summary>
     public const int EdgeLinksFieldNumber = 3;
-    private global::PAIA.Gymize.Protobuf.Tensor edgeLinks_;
+    private global::Gymize.Protobuf.TensorProto edgeLinks_;
     /// <summary>
     /// integer type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor EdgeLinks {
+    public global::Gymize.Protobuf.TensorProto EdgeLinks {
       get { return edgeLinks_; }
       set {
         edgeLinks_ = value;
@@ -870,12 +443,12 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Graph);
+      return Equals(other as GraphProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Graph other) {
+    public bool Equals(GraphProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -974,25 +547,25 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Graph other) {
+    public void MergeFrom(GraphProto other) {
       if (other == null) {
         return;
       }
       if (other.nodes_ != null) {
         if (nodes_ == null) {
-          Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
+          Nodes = new global::Gymize.Protobuf.TensorProto();
         }
         Nodes.MergeFrom(other.Nodes);
       }
       if (other.edges_ != null) {
         if (edges_ == null) {
-          Edges = new global::PAIA.Gymize.Protobuf.Tensor();
+          Edges = new global::Gymize.Protobuf.TensorProto();
         }
         Edges.MergeFrom(other.Edges);
       }
       if (other.edgeLinks_ != null) {
         if (edgeLinks_ == null) {
-          EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
+          EdgeLinks = new global::Gymize.Protobuf.TensorProto();
         }
         EdgeLinks.MergeFrom(other.EdgeLinks);
       }
@@ -1013,21 +586,21 @@ namespace PAIA.Gymize.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
+              Nodes = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Gymize.Protobuf.Tensor();
+              Edges = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
+              EdgeLinks = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1049,21 +622,21 @@ namespace PAIA.Gymize.Protobuf {
             break;
           case 10: {
             if (nodes_ == null) {
-              Nodes = new global::PAIA.Gymize.Protobuf.Tensor();
+              Nodes = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(Nodes);
             break;
           }
           case 18: {
             if (edges_ == null) {
-              Edges = new global::PAIA.Gymize.Protobuf.Tensor();
+              Edges = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(Edges);
             break;
           }
           case 26: {
             if (edgeLinks_ == null) {
-              EdgeLinks = new global::PAIA.Gymize.Protobuf.Tensor();
+              EdgeLinks = new global::Gymize.Protobuf.TensorProto();
             }
             input.ReadMessage(EdgeLinks);
             break;
@@ -1075,21 +648,21 @@ namespace PAIA.Gymize.Protobuf {
 
   }
 
-  public sealed partial class Image : pb::IMessage<Image>
+  public sealed partial class ImageProto : pb::IMessage<ImageProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
+    private static readonly pb::MessageParser<ImageProto> _parser = new pb::MessageParser<ImageProto>(() => new ImageProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Image> Parser { get { return _parser; } }
+    public static pb::MessageParser<ImageProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1100,7 +673,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image() {
+    public ImageProto() {
       OnConstruction();
     }
 
@@ -1108,26 +681,27 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image(Image other) : this() {
+    public ImageProto(ImageProto other) : this() {
       compressionType_ = other.compressionType_;
       data_ = other.data_;
+      dtype_ = other.dtype_;
       shape_ = other.shape_.Clone();
-      dimensionMapping_ = other.dimensionMapping_.Clone();
+      transposeAxes_ = other.transposeAxes_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image Clone() {
-      return new Image(this);
+    public ImageProto Clone() {
+      return new ImageProto(this);
     }
 
     /// <summary>Field number for the "compression_type" field.</summary>
     public const int CompressionTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.CompressionType compressionType_ = global::PAIA.Gymize.Protobuf.CompressionType.Unspecified;
+    private global::Gymize.Protobuf.CompressionTypeProto compressionType_ = global::Gymize.Protobuf.CompressionTypeProto.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.CompressionType CompressionType {
+    public global::Gymize.Protobuf.CompressionTypeProto CompressionType {
       get { return compressionType_; }
       set {
         compressionType_ = value;
@@ -1146,10 +720,22 @@ namespace PAIA.Gymize.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "dtype" field.</summary>
+    public const int DtypeFieldNumber = 3;
+    private string dtype_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Dtype {
+      get { return dtype_; }
+      set {
+        dtype_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 3;
+    public const int ShapeFieldNumber = 4;
     private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(26);
+        = pb::FieldCodec.ForInt32(34);
     private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
     /// <summary>
     /// (H, W, C) or (H, W)
@@ -1160,29 +746,29 @@ namespace PAIA.Gymize.Protobuf {
       get { return shape_; }
     }
 
-    /// <summary>Field number for the "dimension_mapping" field.</summary>
-    public const int DimensionMappingFieldNumber = 4;
-    private static readonly pb::FieldCodec<int> _repeated_dimensionMapping_codec
-        = pb::FieldCodec.ForInt32(34);
-    private readonly pbc::RepeatedField<int> dimensionMapping_ = new pbc::RepeatedField<int>();
+    /// <summary>Field number for the "transpose_axes" field.</summary>
+    public const int TransposeAxesFieldNumber = 5;
+    private static readonly pb::FieldCodec<int> _repeated_transposeAxes_codec
+        = pb::FieldCodec.ForInt32(42);
+    private readonly pbc::RepeatedField<int> transposeAxes_ = new pbc::RepeatedField<int>();
     /// <summary>
-    /// (H, W, C) to [0, 1, 2]
+    /// H = 0, W = 1, C = 2
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> DimensionMapping {
-      get { return dimensionMapping_; }
+    public pbc::RepeatedField<int> TransposeAxes {
+      get { return transposeAxes_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Image);
+      return Equals(other as ImageProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Image other) {
+    public bool Equals(ImageProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1191,8 +777,9 @@ namespace PAIA.Gymize.Protobuf {
       }
       if (CompressionType != other.CompressionType) return false;
       if (Data != other.Data) return false;
+      if (Dtype != other.Dtype) return false;
       if(!shape_.Equals(other.shape_)) return false;
-      if(!dimensionMapping_.Equals(other.dimensionMapping_)) return false;
+      if(!transposeAxes_.Equals(other.transposeAxes_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1200,10 +787,11 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) hash ^= CompressionType.GetHashCode();
+      if (CompressionType != global::Gymize.Protobuf.CompressionTypeProto.Unspecified) hash ^= CompressionType.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (Dtype.Length != 0) hash ^= Dtype.GetHashCode();
       hash ^= shape_.GetHashCode();
-      hash ^= dimensionMapping_.GetHashCode();
+      hash ^= transposeAxes_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1222,7 +810,7 @@ namespace PAIA.Gymize.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::Gymize.Protobuf.CompressionTypeProto.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) CompressionType);
       }
@@ -1230,8 +818,12 @@ namespace PAIA.Gymize.Protobuf {
         output.WriteRawTag(18);
         output.WriteBytes(Data);
       }
+      if (Dtype.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Dtype);
+      }
       shape_.WriteTo(output, _repeated_shape_codec);
-      dimensionMapping_.WriteTo(output, _repeated_dimensionMapping_codec);
+      transposeAxes_.WriteTo(output, _repeated_transposeAxes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1242,7 +834,7 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::Gymize.Protobuf.CompressionTypeProto.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) CompressionType);
       }
@@ -1250,8 +842,12 @@ namespace PAIA.Gymize.Protobuf {
         output.WriteRawTag(18);
         output.WriteBytes(Data);
       }
+      if (Dtype.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Dtype);
+      }
       shape_.WriteTo(ref output, _repeated_shape_codec);
-      dimensionMapping_.WriteTo(ref output, _repeated_dimensionMapping_codec);
+      transposeAxes_.WriteTo(ref output, _repeated_transposeAxes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1262,14 +858,17 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
+      if (CompressionType != global::Gymize.Protobuf.CompressionTypeProto.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CompressionType);
       }
       if (Data.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
+      if (Dtype.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Dtype);
+      }
       size += shape_.CalculateSize(_repeated_shape_codec);
-      size += dimensionMapping_.CalculateSize(_repeated_dimensionMapping_codec);
+      size += transposeAxes_.CalculateSize(_repeated_transposeAxes_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1278,18 +877,21 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Image other) {
+    public void MergeFrom(ImageProto other) {
       if (other == null) {
         return;
       }
-      if (other.CompressionType != global::PAIA.Gymize.Protobuf.CompressionType.Unspecified) {
+      if (other.CompressionType != global::Gymize.Protobuf.CompressionTypeProto.Unspecified) {
         CompressionType = other.CompressionType;
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
       }
+      if (other.Dtype.Length != 0) {
+        Dtype = other.Dtype;
+      }
       shape_.Add(other.shape_);
-      dimensionMapping_.Add(other.dimensionMapping_);
+      transposeAxes_.Add(other.transposeAxes_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1306,21 +908,25 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            CompressionType = (global::PAIA.Gymize.Protobuf.CompressionType) input.ReadEnum();
+            CompressionType = (global::Gymize.Protobuf.CompressionTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
             Data = input.ReadBytes();
             break;
           }
-          case 26:
-          case 24: {
-            shape_.AddEntriesFrom(input, _repeated_shape_codec);
+          case 26: {
+            Dtype = input.ReadString();
             break;
           }
           case 34:
           case 32: {
-            dimensionMapping_.AddEntriesFrom(input, _repeated_dimensionMapping_codec);
+            shape_.AddEntriesFrom(input, _repeated_shape_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            transposeAxes_.AddEntriesFrom(input, _repeated_transposeAxes_codec);
             break;
           }
         }
@@ -1339,609 +945,25 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            CompressionType = (global::PAIA.Gymize.Protobuf.CompressionType) input.ReadEnum();
+            CompressionType = (global::Gymize.Protobuf.CompressionTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
             Data = input.ReadBytes();
             break;
           }
-          case 26:
-          case 24: {
-            shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
+          case 26: {
+            Dtype = input.ReadString();
             break;
           }
           case 34:
           case 32: {
-            dimensionMapping_.AddEntriesFrom(ref input, _repeated_dimensionMapping_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class Space : pb::IMessage<Space>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<Space> _parser = new pb::MessageParser<Space>(() => new Space());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Space> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Space() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Space(Space other) : this() {
-      spaceType_ = other.spaceType_;
-      description_ = other.description_;
-      shape_ = other.shape_.Clone();
-      dataType_ = other.dataType_;
-      low_ = other.low_.Clone();
-      high_ = other.high_.Clone();
-      min_ = other.min_;
-      max_ = other.max_;
-      nvec_ = other.nvec_.Clone();
-      charset_ = other.charset_.Clone();
-      dictSpace_ = other.dictSpace_.Clone();
-      listSpace_ = other.listSpace_.Clone();
-      graphSpace_ = other.graphSpace_ != null ? other.graphSpace_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Space Clone() {
-      return new Space(this);
-    }
-
-    /// <summary>Field number for the "space_type" field.</summary>
-    public const int SpaceTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.SpaceType spaceType_ = global::PAIA.Gymize.Protobuf.SpaceType.Unspecified;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.SpaceType SpaceType {
-      get { return spaceType_; }
-      set {
-        spaceType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 2;
-    private string description_ = "";
-    /// <summary>
-    /// For raw data
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Description {
-      get { return description_; }
-      set {
-        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "shape" field.</summary>
-    public const int ShapeFieldNumber = 3;
-    private static readonly pb::FieldCodec<int> _repeated_shape_codec
-        = pb::FieldCodec.ForInt32(26);
-    private readonly pbc::RepeatedField<int> shape_ = new pbc::RepeatedField<int>();
-    /// <summary>
-    /// also the n of the MultiBinary
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Shape {
-      get { return shape_; }
-    }
-
-    /// <summary>Field number for the "data_type" field.</summary>
-    public const int DataTypeFieldNumber = 4;
-    private string dataType_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string DataType {
-      get { return dataType_; }
-      set {
-        dataType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "low" field.</summary>
-    public const int LowFieldNumber = 5;
-    private static readonly pb::FieldCodec<float> _repeated_low_codec
-        = pb::FieldCodec.ForFloat(42);
-    private readonly pbc::RepeatedField<float> low_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<float> Low {
-      get { return low_; }
-    }
-
-    /// <summary>Field number for the "high" field.</summary>
-    public const int HighFieldNumber = 6;
-    private static readonly pb::FieldCodec<float> _repeated_high_codec
-        = pb::FieldCodec.ForFloat(50);
-    private readonly pbc::RepeatedField<float> high_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<float> High {
-      get { return high_; }
-    }
-
-    /// <summary>Field number for the "min" field.</summary>
-    public const int MinFieldNumber = 7;
-    private int min_;
-    /// <summary>
-    /// start of the Discrete, min_length of the Text
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Min {
-      get { return min_; }
-      set {
-        min_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max" field.</summary>
-    public const int MaxFieldNumber = 8;
-    private int max_;
-    /// <summary>
-    /// n of the Discrete, max_length of the Text
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Max {
-      get { return max_; }
-      set {
-        max_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "nvec" field.</summary>
-    public const int NvecFieldNumber = 9;
-    private static readonly pb::FieldCodec<int> _repeated_nvec_codec
-        = pb::FieldCodec.ForInt32(74);
-    private readonly pbc::RepeatedField<int> nvec_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Nvec {
-      get { return nvec_; }
-    }
-
-    /// <summary>Field number for the "charset" field.</summary>
-    public const int CharsetFieldNumber = 10;
-    private static readonly pb::FieldCodec<string> _repeated_charset_codec
-        = pb::FieldCodec.ForString(82);
-    private readonly pbc::RepeatedField<string> charset_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Charset {
-      get { return charset_; }
-    }
-
-    /// <summary>Field number for the "dict_space" field.</summary>
-    public const int DictSpaceFieldNumber = 11;
-    private static readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>.Codec _map_dictSpace_codec
-        = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Space.Parser), 90);
-    private readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space> dictSpace_ = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::PAIA.Gymize.Protobuf.Space> DictSpace {
-      get { return dictSpace_; }
-    }
-
-    /// <summary>Field number for the "list_space" field.</summary>
-    public const int ListSpaceFieldNumber = 12;
-    private static readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>.Codec _map_listSpace_codec
-        = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Space.Parser), 98);
-    private readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space> listSpace_ = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space>();
-    /// <summary>
-    /// Tuple and Sequence
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<int, global::PAIA.Gymize.Protobuf.Space> ListSpace {
-      get { return listSpace_; }
-    }
-
-    /// <summary>Field number for the "graph_space" field.</summary>
-    public const int GraphSpaceFieldNumber = 13;
-    private global::PAIA.Gymize.Protobuf.GraphSpace graphSpace_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.GraphSpace GraphSpace {
-      get { return graphSpace_; }
-      set {
-        graphSpace_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as Space);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Space other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (SpaceType != other.SpaceType) return false;
-      if (Description != other.Description) return false;
-      if(!shape_.Equals(other.shape_)) return false;
-      if (DataType != other.DataType) return false;
-      if(!low_.Equals(other.low_)) return false;
-      if(!high_.Equals(other.high_)) return false;
-      if (Min != other.Min) return false;
-      if (Max != other.Max) return false;
-      if(!nvec_.Equals(other.nvec_)) return false;
-      if(!charset_.Equals(other.charset_)) return false;
-      if (!DictSpace.Equals(other.DictSpace)) return false;
-      if (!ListSpace.Equals(other.ListSpace)) return false;
-      if (!object.Equals(GraphSpace, other.GraphSpace)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
-      if (Description.Length != 0) hash ^= Description.GetHashCode();
-      hash ^= shape_.GetHashCode();
-      if (DataType.Length != 0) hash ^= DataType.GetHashCode();
-      hash ^= low_.GetHashCode();
-      hash ^= high_.GetHashCode();
-      if (Min != 0) hash ^= Min.GetHashCode();
-      if (Max != 0) hash ^= Max.GetHashCode();
-      hash ^= nvec_.GetHashCode();
-      hash ^= charset_.GetHashCode();
-      hash ^= DictSpace.GetHashCode();
-      hash ^= ListSpace.GetHashCode();
-      if (graphSpace_ != null) hash ^= GraphSpace.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) SpaceType);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Description);
-      }
-      shape_.WriteTo(output, _repeated_shape_codec);
-      if (DataType.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(DataType);
-      }
-      low_.WriteTo(output, _repeated_low_codec);
-      high_.WriteTo(output, _repeated_high_codec);
-      if (Min != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(Min);
-      }
-      if (Max != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Max);
-      }
-      nvec_.WriteTo(output, _repeated_nvec_codec);
-      charset_.WriteTo(output, _repeated_charset_codec);
-      dictSpace_.WriteTo(output, _map_dictSpace_codec);
-      listSpace_.WriteTo(output, _map_listSpace_codec);
-      if (graphSpace_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(GraphSpace);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) SpaceType);
-      }
-      if (Description.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Description);
-      }
-      shape_.WriteTo(ref output, _repeated_shape_codec);
-      if (DataType.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(DataType);
-      }
-      low_.WriteTo(ref output, _repeated_low_codec);
-      high_.WriteTo(ref output, _repeated_high_codec);
-      if (Min != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(Min);
-      }
-      if (Max != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Max);
-      }
-      nvec_.WriteTo(ref output, _repeated_nvec_codec);
-      charset_.WriteTo(ref output, _repeated_charset_codec);
-      dictSpace_.WriteTo(ref output, _map_dictSpace_codec);
-      listSpace_.WriteTo(ref output, _map_listSpace_codec);
-      if (graphSpace_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(GraphSpace);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
-      }
-      if (Description.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
-      }
-      size += shape_.CalculateSize(_repeated_shape_codec);
-      if (DataType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DataType);
-      }
-      size += low_.CalculateSize(_repeated_low_codec);
-      size += high_.CalculateSize(_repeated_high_codec);
-      if (Min != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Min);
-      }
-      if (Max != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Max);
-      }
-      size += nvec_.CalculateSize(_repeated_nvec_codec);
-      size += charset_.CalculateSize(_repeated_charset_codec);
-      size += dictSpace_.CalculateSize(_map_dictSpace_codec);
-      size += listSpace_.CalculateSize(_map_listSpace_codec);
-      if (graphSpace_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GraphSpace);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Space other) {
-      if (other == null) {
-        return;
-      }
-      if (other.SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        SpaceType = other.SpaceType;
-      }
-      if (other.Description.Length != 0) {
-        Description = other.Description;
-      }
-      shape_.Add(other.shape_);
-      if (other.DataType.Length != 0) {
-        DataType = other.DataType;
-      }
-      low_.Add(other.low_);
-      high_.Add(other.high_);
-      if (other.Min != 0) {
-        Min = other.Min;
-      }
-      if (other.Max != 0) {
-        Max = other.Max;
-      }
-      nvec_.Add(other.nvec_);
-      charset_.Add(other.charset_);
-      dictSpace_.Add(other.dictSpace_);
-      listSpace_.Add(other.listSpace_);
-      if (other.graphSpace_ != null) {
-        if (graphSpace_ == null) {
-          GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
-        }
-        GraphSpace.MergeFrom(other.GraphSpace);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
-            break;
-          }
-          case 18: {
-            Description = input.ReadString();
-            break;
-          }
-          case 26:
-          case 24: {
-            shape_.AddEntriesFrom(input, _repeated_shape_codec);
-            break;
-          }
-          case 34: {
-            DataType = input.ReadString();
-            break;
-          }
-          case 42:
-          case 45: {
-            low_.AddEntriesFrom(input, _repeated_low_codec);
-            break;
-          }
-          case 50:
-          case 53: {
-            high_.AddEntriesFrom(input, _repeated_high_codec);
-            break;
-          }
-          case 56: {
-            Min = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            Max = input.ReadInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            nvec_.AddEntriesFrom(input, _repeated_nvec_codec);
-            break;
-          }
-          case 82: {
-            charset_.AddEntriesFrom(input, _repeated_charset_codec);
-            break;
-          }
-          case 90: {
-            dictSpace_.AddEntriesFrom(input, _map_dictSpace_codec);
-            break;
-          }
-          case 98: {
-            listSpace_.AddEntriesFrom(input, _map_listSpace_codec);
-            break;
-          }
-          case 106: {
-            if (graphSpace_ == null) {
-              GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
-            }
-            input.ReadMessage(GraphSpace);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
-            break;
-          }
-          case 18: {
-            Description = input.ReadString();
-            break;
-          }
-          case 26:
-          case 24: {
             shape_.AddEntriesFrom(ref input, _repeated_shape_codec);
             break;
           }
-          case 34: {
-            DataType = input.ReadString();
-            break;
-          }
           case 42:
-          case 45: {
-            low_.AddEntriesFrom(ref input, _repeated_low_codec);
-            break;
-          }
-          case 50:
-          case 53: {
-            high_.AddEntriesFrom(ref input, _repeated_high_codec);
-            break;
-          }
-          case 56: {
-            Min = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            Max = input.ReadInt32();
-            break;
-          }
-          case 74:
-          case 72: {
-            nvec_.AddEntriesFrom(ref input, _repeated_nvec_codec);
-            break;
-          }
-          case 82: {
-            charset_.AddEntriesFrom(ref input, _repeated_charset_codec);
-            break;
-          }
-          case 90: {
-            dictSpace_.AddEntriesFrom(ref input, _map_dictSpace_codec);
-            break;
-          }
-          case 98: {
-            listSpace_.AddEntriesFrom(ref input, _map_listSpace_codec);
-            break;
-          }
-          case 106: {
-            if (graphSpace_ == null) {
-              GraphSpace = new global::PAIA.Gymize.Protobuf.GraphSpace();
-            }
-            input.ReadMessage(GraphSpace);
+          case 40: {
+            transposeAxes_.AddEntriesFrom(ref input, _repeated_transposeAxes_codec);
             break;
           }
         }
@@ -1952,23 +974,23 @@ namespace PAIA.Gymize.Protobuf {
   }
 
   /// <summary>
-  /// Data is a point(instance) in(belongs to) the space
+  /// Instance is a instance belongs to the space
   /// </summary>
-  public sealed partial class Data : pb::IMessage<Data>
+  public sealed partial class InstanceProto : pb::IMessage<InstanceProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Data> _parser = new pb::MessageParser<Data>(() => new Data());
+    private static readonly pb::MessageParser<InstanceProto> _parser = new pb::MessageParser<InstanceProto>(() => new InstanceProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Data> Parser { get { return _parser; } }
+    public static pb::MessageParser<InstanceProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Gymize.Protobuf.SpaceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1979,7 +1001,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Data() {
+    public InstanceProto() {
       OnConstruction();
     }
 
@@ -1987,54 +1009,42 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Data(Data other) : this() {
-      spaceType_ = other.spaceType_;
-      dataType_ = other.dataType_;
+    public InstanceProto(InstanceProto other) : this() {
+      type_ = other.type_;
       rawData_ = other.rawData_;
-      box_ = other.box_ != null ? other.box_.Clone() : null;
+      tensor_ = other.tensor_ != null ? other.tensor_.Clone() : null;
       discrete_ = other.discrete_;
-      multiBinary_ = other.multiBinary_ != null ? other.multiBinary_.Clone() : null;
-      multiDiscrete_ = other.multiDiscrete_ != null ? other.multiDiscrete_.Clone() : null;
       text_ = other.text_;
       dict_ = other.dict_.Clone();
       list_ = other.list_.Clone();
       graph_ = other.graph_ != null ? other.graph_.Clone() : null;
       image_ = other.image_ != null ? other.image_.Clone() : null;
+      float_ = other.float_;
+      boolean_ = other.boolean_;
+      json_ = other.json_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Data Clone() {
-      return new Data(this);
+    public InstanceProto Clone() {
+      return new InstanceProto(this);
     }
 
-    /// <summary>Field number for the "space_type" field.</summary>
-    public const int SpaceTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.SpaceType spaceType_ = global::PAIA.Gymize.Protobuf.SpaceType.Unspecified;
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private global::Gymize.Protobuf.InstanceTypeProto type_ = global::Gymize.Protobuf.InstanceTypeProto.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.SpaceType SpaceType {
-      get { return spaceType_; }
+    public global::Gymize.Protobuf.InstanceTypeProto Type {
+      get { return type_; }
       set {
-        spaceType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "data_type" field.</summary>
-    public const int DataTypeFieldNumber = 2;
-    private string dataType_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string DataType {
-      get { return dataType_; }
-      set {
-        dataType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        type_ = value;
       }
     }
 
     /// <summary>Field number for the "raw_data" field.</summary>
-    public const int RawDataFieldNumber = 3;
+    public const int RawDataFieldNumber = 2;
     private pb::ByteString rawData_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2045,62 +1055,32 @@ namespace PAIA.Gymize.Protobuf {
       }
     }
 
-    /// <summary>Field number for the "box" field.</summary>
-    public const int BoxFieldNumber = 4;
-    private global::PAIA.Gymize.Protobuf.Tensor box_;
+    /// <summary>Field number for the "tensor" field.</summary>
+    public const int TensorFieldNumber = 3;
+    private global::Gymize.Protobuf.TensorProto tensor_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor Box {
-      get { return box_; }
+    public global::Gymize.Protobuf.TensorProto Tensor {
+      get { return tensor_; }
       set {
-        box_ = value;
+        tensor_ = value;
       }
     }
 
     /// <summary>Field number for the "discrete" field.</summary>
-    public const int DiscreteFieldNumber = 5;
-    private int discrete_;
+    public const int DiscreteFieldNumber = 4;
+    private long discrete_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Discrete {
+    public long Discrete {
       get { return discrete_; }
       set {
         discrete_ = value;
       }
     }
 
-    /// <summary>Field number for the "multi_binary" field.</summary>
-    public const int MultiBinaryFieldNumber = 6;
-    private global::PAIA.Gymize.Protobuf.Tensor multiBinary_;
-    /// <summary>
-    /// boolean type
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor MultiBinary {
-      get { return multiBinary_; }
-      set {
-        multiBinary_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "multi_discrete" field.</summary>
-    public const int MultiDiscreteFieldNumber = 7;
-    private global::PAIA.Gymize.Protobuf.Tensor multiDiscrete_;
-    /// <summary>
-    /// integer type
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Tensor MultiDiscrete {
-      get { return multiDiscrete_; }
-      set {
-        multiDiscrete_ = value;
-      }
-    }
-
     /// <summary>Field number for the "text" field.</summary>
-    public const int TextFieldNumber = 8;
+    public const int TextFieldNumber = 5;
     private string text_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2112,36 +1092,36 @@ namespace PAIA.Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "dict" field.</summary>
-    public const int DictFieldNumber = 9;
-    private static readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>.Codec _map_dict_codec
-        = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Data.Parser), 74);
-    private readonly pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data> dict_ = new pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data>();
+    public const int DictFieldNumber = 6;
+    private static readonly pbc::MapField<string, global::Gymize.Protobuf.InstanceProto>.Codec _map_dict_codec
+        = new pbc::MapField<string, global::Gymize.Protobuf.InstanceProto>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Gymize.Protobuf.InstanceProto.Parser), 50);
+    private readonly pbc::MapField<string, global::Gymize.Protobuf.InstanceProto> dict_ = new pbc::MapField<string, global::Gymize.Protobuf.InstanceProto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::PAIA.Gymize.Protobuf.Data> Dict {
+    public pbc::MapField<string, global::Gymize.Protobuf.InstanceProto> Dict {
       get { return dict_; }
     }
 
     /// <summary>Field number for the "list" field.</summary>
-    public const int ListFieldNumber = 10;
-    private static readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>.Codec _map_list_codec
-        = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForMessage(18, global::PAIA.Gymize.Protobuf.Data.Parser), 82);
-    private readonly pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data> list_ = new pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data>();
+    public const int ListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::Gymize.Protobuf.InstanceProto> _repeated_list_codec
+        = pb::FieldCodec.ForMessage(58, global::Gymize.Protobuf.InstanceProto.Parser);
+    private readonly pbc::RepeatedField<global::Gymize.Protobuf.InstanceProto> list_ = new pbc::RepeatedField<global::Gymize.Protobuf.InstanceProto>();
     /// <summary>
     /// Tuple and Sequence
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<int, global::PAIA.Gymize.Protobuf.Data> List {
+    public pbc::RepeatedField<global::Gymize.Protobuf.InstanceProto> List {
       get { return list_; }
     }
 
     /// <summary>Field number for the "graph" field.</summary>
-    public const int GraphFieldNumber = 11;
-    private global::PAIA.Gymize.Protobuf.Graph graph_;
+    public const int GraphFieldNumber = 8;
+    private global::Gymize.Protobuf.GraphProto graph_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Graph Graph {
+    public global::Gymize.Protobuf.GraphProto Graph {
       get { return graph_; }
       set {
         graph_ = value;
@@ -2149,47 +1129,89 @@ namespace PAIA.Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "image" field.</summary>
-    public const int ImageFieldNumber = 12;
-    private global::PAIA.Gymize.Protobuf.Image image_;
+    public const int ImageFieldNumber = 9;
+    private global::Gymize.Protobuf.ImageProto image_;
     /// <summary>
-    /// Box space instance which is a compressed image (H, W, C)
+    /// The following are gymize-defined types, not in gym
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Image Image {
+    public global::Gymize.Protobuf.ImageProto Image {
       get { return image_; }
       set {
         image_ = value;
       }
     }
 
+    /// <summary>Field number for the "float" field.</summary>
+    public const int FloatFieldNumber = 10;
+    private double float_;
+    /// <summary>
+    /// float should turn to array in Box space
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as Data);
+    public double Float {
+      get { return float_; }
+      set {
+        float_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "boolean" field.</summary>
+    public const int BooleanFieldNumber = 11;
+    private bool boolean_;
+    /// <summary>
+    /// boolean is kind of discrete
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Boolean {
+      get { return boolean_; }
+      set {
+        boolean_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "json" field.</summary>
+    public const int JsonFieldNumber = 12;
+    private string json_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Json {
+      get { return json_; }
+      set {
+        json_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Data other) {
+    public override bool Equals(object other) {
+      return Equals(other as InstanceProto);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(InstanceProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SpaceType != other.SpaceType) return false;
-      if (DataType != other.DataType) return false;
+      if (Type != other.Type) return false;
       if (RawData != other.RawData) return false;
-      if (!object.Equals(Box, other.Box)) return false;
+      if (!object.Equals(Tensor, other.Tensor)) return false;
       if (Discrete != other.Discrete) return false;
-      if (!object.Equals(MultiBinary, other.MultiBinary)) return false;
-      if (!object.Equals(MultiDiscrete, other.MultiDiscrete)) return false;
       if (Text != other.Text) return false;
       if (!Dict.Equals(other.Dict)) return false;
-      if (!List.Equals(other.List)) return false;
+      if(!list_.Equals(other.list_)) return false;
       if (!object.Equals(Graph, other.Graph)) return false;
       if (!object.Equals(Image, other.Image)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Float, other.Float)) return false;
+      if (Boolean != other.Boolean) return false;
+      if (Json != other.Json) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2197,18 +1219,18 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) hash ^= SpaceType.GetHashCode();
-      if (DataType.Length != 0) hash ^= DataType.GetHashCode();
+      if (Type != global::Gymize.Protobuf.InstanceTypeProto.Unspecified) hash ^= Type.GetHashCode();
       if (RawData.Length != 0) hash ^= RawData.GetHashCode();
-      if (box_ != null) hash ^= Box.GetHashCode();
-      if (Discrete != 0) hash ^= Discrete.GetHashCode();
-      if (multiBinary_ != null) hash ^= MultiBinary.GetHashCode();
-      if (multiDiscrete_ != null) hash ^= MultiDiscrete.GetHashCode();
+      if (tensor_ != null) hash ^= Tensor.GetHashCode();
+      if (Discrete != 0L) hash ^= Discrete.GetHashCode();
       if (Text.Length != 0) hash ^= Text.GetHashCode();
       hash ^= Dict.GetHashCode();
-      hash ^= List.GetHashCode();
+      hash ^= list_.GetHashCode();
       if (graph_ != null) hash ^= Graph.GetHashCode();
       if (image_ != null) hash ^= Image.GetHashCode();
+      if (Float != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Float);
+      if (Boolean != false) hash ^= Boolean.GetHashCode();
+      if (Json.Length != 0) hash ^= Json.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2227,47 +1249,47 @@ namespace PAIA.Gymize.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
+      if (Type != global::Gymize.Protobuf.InstanceTypeProto.Unspecified) {
         output.WriteRawTag(8);
-        output.WriteEnum((int) SpaceType);
-      }
-      if (DataType.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(DataType);
+        output.WriteEnum((int) Type);
       }
       if (RawData.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteBytes(RawData);
       }
-      if (box_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Box);
+      if (tensor_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Tensor);
       }
-      if (Discrete != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Discrete);
-      }
-      if (multiBinary_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(MultiBinary);
-      }
-      if (multiDiscrete_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(MultiDiscrete);
+      if (Discrete != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Discrete);
       }
       if (Text.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(42);
         output.WriteString(Text);
       }
       dict_.WriteTo(output, _map_dict_codec);
-      list_.WriteTo(output, _map_list_codec);
+      list_.WriteTo(output, _repeated_list_codec);
       if (graph_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(66);
         output.WriteMessage(Graph);
       }
       if (image_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(Image);
+      }
+      if (Float != 0D) {
+        output.WriteRawTag(81);
+        output.WriteDouble(Float);
+      }
+      if (Boolean != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(Boolean);
+      }
+      if (Json.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Json);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2279,47 +1301,47 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
+      if (Type != global::Gymize.Protobuf.InstanceTypeProto.Unspecified) {
         output.WriteRawTag(8);
-        output.WriteEnum((int) SpaceType);
-      }
-      if (DataType.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(DataType);
+        output.WriteEnum((int) Type);
       }
       if (RawData.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteBytes(RawData);
       }
-      if (box_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Box);
+      if (tensor_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Tensor);
       }
-      if (Discrete != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Discrete);
-      }
-      if (multiBinary_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(MultiBinary);
-      }
-      if (multiDiscrete_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(MultiDiscrete);
+      if (Discrete != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Discrete);
       }
       if (Text.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(42);
         output.WriteString(Text);
       }
       dict_.WriteTo(ref output, _map_dict_codec);
-      list_.WriteTo(ref output, _map_list_codec);
+      list_.WriteTo(ref output, _repeated_list_codec);
       if (graph_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(66);
         output.WriteMessage(Graph);
       }
       if (image_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(74);
         output.WriteMessage(Image);
+      }
+      if (Float != 0D) {
+        output.WriteRawTag(81);
+        output.WriteDouble(Float);
+      }
+      if (Boolean != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(Boolean);
+      }
+      if (Json.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Json);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2331,37 +1353,37 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaceType);
-      }
-      if (DataType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DataType);
+      if (Type != global::Gymize.Protobuf.InstanceTypeProto.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (RawData.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(RawData);
       }
-      if (box_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Box);
+      if (tensor_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tensor);
       }
-      if (Discrete != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Discrete);
-      }
-      if (multiBinary_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MultiBinary);
-      }
-      if (multiDiscrete_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MultiDiscrete);
+      if (Discrete != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Discrete);
       }
       if (Text.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
       }
       size += dict_.CalculateSize(_map_dict_codec);
-      size += list_.CalculateSize(_map_list_codec);
+      size += list_.CalculateSize(_repeated_list_codec);
       if (graph_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Graph);
       }
       if (image_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Image);
+      }
+      if (Float != 0D) {
+        size += 1 + 8;
+      }
+      if (Boolean != false) {
+        size += 1 + 1;
+      }
+      if (Json.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Json);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2371,39 +1393,24 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Data other) {
+    public void MergeFrom(InstanceProto other) {
       if (other == null) {
         return;
       }
-      if (other.SpaceType != global::PAIA.Gymize.Protobuf.SpaceType.Unspecified) {
-        SpaceType = other.SpaceType;
-      }
-      if (other.DataType.Length != 0) {
-        DataType = other.DataType;
+      if (other.Type != global::Gymize.Protobuf.InstanceTypeProto.Unspecified) {
+        Type = other.Type;
       }
       if (other.RawData.Length != 0) {
         RawData = other.RawData;
       }
-      if (other.box_ != null) {
-        if (box_ == null) {
-          Box = new global::PAIA.Gymize.Protobuf.Tensor();
+      if (other.tensor_ != null) {
+        if (tensor_ == null) {
+          Tensor = new global::Gymize.Protobuf.TensorProto();
         }
-        Box.MergeFrom(other.Box);
+        Tensor.MergeFrom(other.Tensor);
       }
-      if (other.Discrete != 0) {
+      if (other.Discrete != 0L) {
         Discrete = other.Discrete;
-      }
-      if (other.multiBinary_ != null) {
-        if (multiBinary_ == null) {
-          MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
-        }
-        MultiBinary.MergeFrom(other.MultiBinary);
-      }
-      if (other.multiDiscrete_ != null) {
-        if (multiDiscrete_ == null) {
-          MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
-        }
-        MultiDiscrete.MergeFrom(other.MultiDiscrete);
       }
       if (other.Text.Length != 0) {
         Text = other.Text;
@@ -2412,15 +1419,24 @@ namespace PAIA.Gymize.Protobuf {
       list_.Add(other.list_);
       if (other.graph_ != null) {
         if (graph_ == null) {
-          Graph = new global::PAIA.Gymize.Protobuf.Graph();
+          Graph = new global::Gymize.Protobuf.GraphProto();
         }
         Graph.MergeFrom(other.Graph);
       }
       if (other.image_ != null) {
         if (image_ == null) {
-          Image = new global::PAIA.Gymize.Protobuf.Image();
+          Image = new global::Gymize.Protobuf.ImageProto();
         }
         Image.MergeFrom(other.Image);
+      }
+      if (other.Float != 0D) {
+        Float = other.Float;
+      }
+      if (other.Boolean != false) {
+        Boolean = other.Boolean;
+      }
+      if (other.Json.Length != 0) {
+        Json = other.Json;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2438,66 +1454,60 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
+            Type = (global::Gymize.Protobuf.InstanceTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
-            DataType = input.ReadString();
-            break;
-          }
-          case 26: {
             RawData = input.ReadBytes();
             break;
           }
-          case 34: {
-            if (box_ == null) {
-              Box = new global::PAIA.Gymize.Protobuf.Tensor();
+          case 26: {
+            if (tensor_ == null) {
+              Tensor = new global::Gymize.Protobuf.TensorProto();
             }
-            input.ReadMessage(Box);
+            input.ReadMessage(Tensor);
             break;
           }
-          case 40: {
-            Discrete = input.ReadInt32();
+          case 32: {
+            Discrete = input.ReadInt64();
             break;
           }
-          case 50: {
-            if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
-            }
-            input.ReadMessage(MultiBinary);
-            break;
-          }
-          case 58: {
-            if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
-            }
-            input.ReadMessage(MultiDiscrete);
-            break;
-          }
-          case 66: {
+          case 42: {
             Text = input.ReadString();
             break;
           }
-          case 74: {
+          case 50: {
             dict_.AddEntriesFrom(input, _map_dict_codec);
             break;
           }
-          case 82: {
-            list_.AddEntriesFrom(input, _map_list_codec);
+          case 58: {
+            list_.AddEntriesFrom(input, _repeated_list_codec);
             break;
           }
-          case 90: {
+          case 66: {
             if (graph_ == null) {
-              Graph = new global::PAIA.Gymize.Protobuf.Graph();
+              Graph = new global::Gymize.Protobuf.GraphProto();
             }
             input.ReadMessage(Graph);
             break;
           }
-          case 98: {
+          case 74: {
             if (image_ == null) {
-              Image = new global::PAIA.Gymize.Protobuf.Image();
+              Image = new global::Gymize.Protobuf.ImageProto();
             }
             input.ReadMessage(Image);
+            break;
+          }
+          case 81: {
+            Float = input.ReadDouble();
+            break;
+          }
+          case 88: {
+            Boolean = input.ReadBool();
+            break;
+          }
+          case 98: {
+            Json = input.ReadString();
             break;
           }
         }
@@ -2516,66 +1526,60 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            SpaceType = (global::PAIA.Gymize.Protobuf.SpaceType) input.ReadEnum();
+            Type = (global::Gymize.Protobuf.InstanceTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
-            DataType = input.ReadString();
-            break;
-          }
-          case 26: {
             RawData = input.ReadBytes();
             break;
           }
-          case 34: {
-            if (box_ == null) {
-              Box = new global::PAIA.Gymize.Protobuf.Tensor();
+          case 26: {
+            if (tensor_ == null) {
+              Tensor = new global::Gymize.Protobuf.TensorProto();
             }
-            input.ReadMessage(Box);
+            input.ReadMessage(Tensor);
             break;
           }
-          case 40: {
-            Discrete = input.ReadInt32();
+          case 32: {
+            Discrete = input.ReadInt64();
             break;
           }
-          case 50: {
-            if (multiBinary_ == null) {
-              MultiBinary = new global::PAIA.Gymize.Protobuf.Tensor();
-            }
-            input.ReadMessage(MultiBinary);
-            break;
-          }
-          case 58: {
-            if (multiDiscrete_ == null) {
-              MultiDiscrete = new global::PAIA.Gymize.Protobuf.Tensor();
-            }
-            input.ReadMessage(MultiDiscrete);
-            break;
-          }
-          case 66: {
+          case 42: {
             Text = input.ReadString();
             break;
           }
-          case 74: {
+          case 50: {
             dict_.AddEntriesFrom(ref input, _map_dict_codec);
             break;
           }
-          case 82: {
-            list_.AddEntriesFrom(ref input, _map_list_codec);
+          case 58: {
+            list_.AddEntriesFrom(ref input, _repeated_list_codec);
             break;
           }
-          case 90: {
+          case 66: {
             if (graph_ == null) {
-              Graph = new global::PAIA.Gymize.Protobuf.Graph();
+              Graph = new global::Gymize.Protobuf.GraphProto();
             }
             input.ReadMessage(Graph);
             break;
           }
-          case 98: {
+          case 74: {
             if (image_ == null) {
-              Image = new global::PAIA.Gymize.Protobuf.Image();
+              Image = new global::Gymize.Protobuf.ImageProto();
             }
             input.ReadMessage(Image);
+            break;
+          }
+          case 81: {
+            Float = input.ReadDouble();
+            break;
+          }
+          case 88: {
+            Boolean = input.ReadBool();
+            break;
+          }
+          case 98: {
+            Json = input.ReadString();
             break;
           }
         }

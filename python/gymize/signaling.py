@@ -5,7 +5,7 @@ import uuid
 import websockets
 from websockets.server import WebSocketServerProtocol
 
-from gymize.proto.signaling_pb2 import Signal, SignalType, PeerType
+from gymize.proto.signaling_pb2 import SignalProto, SignalTypeProto, PeerTypeProto
 
 class Connection:
     def __init__(self, ws_active, ws_passive, id=None):
@@ -37,17 +37,17 @@ class SignalingServer:
         try:
             async for msg in websocket: # onmessage
                 # convert msg to Protobuf
-                signal = Signal()
+                signal = SignalProto()
                 signal.ParseFromString(msg)
 
                 # switch by signal type
-                if signal.signal_type == SignalType.SIGNAL_TYPE_INIT:
+                if signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_INIT:
                     await self.start(websocket, signal.name, signal.peer_type)
-                elif signal.signal_type == SignalType.SIGNAL_TYPE_UPDATE:
+                elif signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_UPDATE:
                     await self.update(websocket, signal)
-                elif signal.signal_type == SignalType.SIGNAL_TYPE_RESUME:
+                elif signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_RESUME:
                     self.resume(websocket, signal)
-                elif signal.signal_type == SignalType.SIGNAL_TYPE_CLOSE:
+                elif signal.signal_type == SignalTypeProto.SIGNAL_TYPE_PROTO_CLOSE:
                     await self.close(websocket, signal.id)
 
         except Exception as e:
@@ -64,7 +64,7 @@ class SignalingServer:
         if name not in self.passive_queue:
             self.passive_queue[name] = Queue()
         
-        if peer_type == PeerType.PEER_TYPE_ACTIVE:
+        if peer_type == PeerTypeProto.PEER_TYPE_PROTO_ACTIVE:
             # put ws in the queue
             self.active_queue[name].put(ws)
             # wait until someone comes
@@ -77,8 +77,8 @@ class SignalingServer:
             self.ws_connections[conn.active] = conn
             self.ws_connections[conn.passive] = conn
             # send initialization signal with id (uuid)
-            signal = Signal()
-            signal.signal_type = SignalType.SIGNAL_TYPE_INIT
+            signal = SignalProto()
+            signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_INIT
             signal.id = conn.id
             if conn.active.open:
                 await conn.active.send(signal.SerializeToString())
@@ -86,7 +86,7 @@ class SignalingServer:
                 await conn.passive.send(signal.SerializeToString())
             print(f'Connection: {name}, is initialized with id: {conn.id}')
 
-        elif peer_type == PeerType.PEER_TYPE_PASSIVE:
+        elif peer_type == PeerTypeProto.PEER_TYPE_PROTO_PASSIVE:
             # put ws in the queue
             self.passive_queue[name].put(ws)
     
@@ -109,9 +109,9 @@ class SignalingServer:
             conn = Connection(ws_active=None, ws_passive=None, id=signal.id)
             self.connections[signal.id] = conn
         conn = self.connections[signal.id]
-        if signal.peer_type == PeerType.PEER_TYPE_ACTIVE:
+        if signal.peer_type == PeerTypeProto.PEER_TYPE_PROTO_ACTIVE:
             conn.active = websocket
-        elif signal.peer_type == PeerType.PEER_TYPE_PASSIVE:
+        elif signal.peer_type == PeerTypeProto.PEER_TYPE_PROTO_PASSIVE:
             conn.passive = websocket
         self.ws_connections[websocket] = conn
     
@@ -132,8 +132,8 @@ class SignalingServer:
                 ws = conn.active
             self.connections.pop(conn.id, None)
         # send close signal peers
-        signal = Signal()
-        signal.signal_type = SignalType.SIGNAL_TYPE_CLOSE
+        signal = SignalProto()
+        signal.signal_type = SignalTypeProto.SIGNAL_TYPE_PROTO_CLOSE
         signal.id = id
         if ws is not None and ws.open:
             await ws.send(signal.SerializeToString())

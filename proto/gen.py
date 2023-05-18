@@ -25,3 +25,6 @@ for lang, name in supported_languages.items():
         os.makedirs(lang_output_path)
     language_outputs += f'--{lang}_out={lang_output_path} '
 os.system(f'protoc --proto_path={os.path.abspath(import_path)} {language_outputs}{os.path.join(os.path.abspath(definitions_path), "*.proto")}')
+
+with open(os.path.join(os.path.abspath(generations_path), 'python/proto/__init__.py'), 'w') as fout:
+    fout.write('import os\nimport sys\nsys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))')

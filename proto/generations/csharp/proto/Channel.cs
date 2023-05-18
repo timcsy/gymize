@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace PAIA.Gymize.Protobuf {
+namespace Gymize.Protobuf {
 
   /// <summary>Holder for reflection information generated from channel.proto</summary>
   public static partial class ChannelReflection {
@@ -24,51 +24,54 @@ namespace PAIA.Gymize.Protobuf {
     static ChannelReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1jaGFubmVsLnByb3RvIkYKBkhlYWRlchIiCgxtZXNzYWdlX3R5cGUYASAB",
-            "KA4yDC5NZXNzYWdlVHlwZRIKCgJpZBgCIAEoCRIMCgR1dWlkGAMgASgMIjAK",
-            "B0NvbnRlbnQSDQoDcmF3GAEgASgMSAASDgoEdGV4dBgCIAEoCUgAQgYKBGRh",
-            "dGEiPQoHTWVzc2FnZRIXCgZoZWFkZXIYASABKAsyBy5IZWFkZXISGQoHY29u",
-            "dGVudBgCIAEoCzIILkNvbnRlbnQqegoLTWVzc2FnZVR5cGUSHAoYTUVTU0FH",
-            "RV9UWVBFX1VOU1BFQ0lGSUVEEAASGAoUTUVTU0FHRV9UWVBFX01FU1NBR0UQ",
-            "ARIYChRNRVNTQUdFX1RZUEVfUkVRVUVTVBACEhkKFU1FU1NBR0VfVFlQRV9S",
-            "RVNQT05TRRADQheqAhRQQUlBLkd5bWl6ZS5Qcm90b2J1ZmIGcHJvdG8z"));
+            "Cg1jaGFubmVsLnByb3RvGgxneW1pemUucHJvdG8iUAoLSGVhZGVyUHJvdG8S",
+            "JwoMbWVzc2FnZV90eXBlGAEgASgOMhEuTWVzc2FnZVR5cGVQcm90bxIKCgJp",
+            "ZBgCIAEoCRIMCgR1dWlkGAMgASgMIlUKDENvbnRlbnRQcm90bxINCgNyYXcY",
+            "ASABKAxIABIOCgR0ZXh0GAIgASgJSAASHgoGZ3ltaXplGAMgASgLMgwuR3lt",
+            "aXplUHJvdG9IAEIGCgRkYXRhIkwKDE1lc3NhZ2VQcm90bxIcCgZoZWFkZXIY",
+            "ASABKAsyDC5IZWFkZXJQcm90bxIeCgdjb250ZW50GAIgASgLMg0uQ29udGVu",
+            "dFByb3RvKpcBChBNZXNzYWdlVHlwZVByb3RvEiIKHk1FU1NBR0VfVFlQRV9Q",
+            "Uk9UT19VTlNQRUNJRklFRBAAEh4KGk1FU1NBR0VfVFlQRV9QUk9UT19NRVNT",
+            "QUdFEAESHgoaTUVTU0FHRV9UWVBFX1BST1RPX1JFUVVFU1QQAhIfChtNRVNT",
+            "QUdFX1RZUEVfUFJPVE9fUkVTUE9OU0UQA0ISqgIPR3ltaXplLlByb3RvYnVm",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PAIA.Gymize.Protobuf.MessageType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Header), global::PAIA.Gymize.Protobuf.Header.Parser, new[]{ "MessageType", "Id", "Uuid" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Content), global::PAIA.Gymize.Protobuf.Content.Parser, new[]{ "Raw", "Text" }, new[]{ "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PAIA.Gymize.Protobuf.Message), global::PAIA.Gymize.Protobuf.Message.Parser, new[]{ "Header", "Content" }, null, null, null, null)
+          new pbr::FileDescriptor[] { global::Gymize.Protobuf.GymizeReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Gymize.Protobuf.MessageTypeProto), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.HeaderProto), global::Gymize.Protobuf.HeaderProto.Parser, new[]{ "MessageType", "Id", "Uuid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ContentProto), global::Gymize.Protobuf.ContentProto.Parser, new[]{ "Raw", "Text", "Gymize" }, new[]{ "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.MessageProto), global::Gymize.Protobuf.MessageProto.Parser, new[]{ "Header", "Content" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Enums
-  public enum MessageType {
-    [pbr::OriginalName("MESSAGE_TYPE_UNSPECIFIED")] Unspecified = 0,
-    [pbr::OriginalName("MESSAGE_TYPE_MESSAGE")] Message = 1,
-    [pbr::OriginalName("MESSAGE_TYPE_REQUEST")] Request = 2,
-    [pbr::OriginalName("MESSAGE_TYPE_RESPONSE")] Response = 3,
+  public enum MessageTypeProto {
+    [pbr::OriginalName("MESSAGE_TYPE_PROTO_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("MESSAGE_TYPE_PROTO_MESSAGE")] Message = 1,
+    [pbr::OriginalName("MESSAGE_TYPE_PROTO_REQUEST")] Request = 2,
+    [pbr::OriginalName("MESSAGE_TYPE_PROTO_RESPONSE")] Response = 3,
   }
 
   #endregion
 
   #region Messages
-  public sealed partial class Header : pb::IMessage<Header>
+  public sealed partial class HeaderProto : pb::IMessage<HeaderProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Header> _parser = new pb::MessageParser<Header>(() => new Header());
+    private static readonly pb::MessageParser<HeaderProto> _parser = new pb::MessageParser<HeaderProto>(() => new HeaderProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Header> Parser { get { return _parser; } }
+    public static pb::MessageParser<HeaderProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -79,7 +82,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Header() {
+    public HeaderProto() {
       OnConstruction();
     }
 
@@ -87,7 +90,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Header(Header other) : this() {
+    public HeaderProto(HeaderProto other) : this() {
       messageType_ = other.messageType_;
       id_ = other.id_;
       uuid_ = other.uuid_;
@@ -96,16 +99,16 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Header Clone() {
-      return new Header(this);
+    public HeaderProto Clone() {
+      return new HeaderProto(this);
     }
 
     /// <summary>Field number for the "message_type" field.</summary>
     public const int MessageTypeFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.MessageType messageType_ = global::PAIA.Gymize.Protobuf.MessageType.Unspecified;
+    private global::Gymize.Protobuf.MessageTypeProto messageType_ = global::Gymize.Protobuf.MessageTypeProto.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.MessageType MessageType {
+    public global::Gymize.Protobuf.MessageTypeProto MessageType {
       get { return messageType_; }
       set {
         messageType_ = value;
@@ -139,12 +142,12 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Header);
+      return Equals(other as HeaderProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Header other) {
+    public bool Equals(HeaderProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -161,7 +164,7 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) hash ^= MessageType.GetHashCode();
+      if (MessageType != global::Gymize.Protobuf.MessageTypeProto.Unspecified) hash ^= MessageType.GetHashCode();
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Uuid.Length != 0) hash ^= Uuid.GetHashCode();
       if (_unknownFields != null) {
@@ -182,7 +185,7 @@ namespace PAIA.Gymize.Protobuf {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
+      if (MessageType != global::Gymize.Protobuf.MessageTypeProto.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -204,7 +207,7 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
+      if (MessageType != global::Gymize.Protobuf.MessageTypeProto.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) MessageType);
       }
@@ -226,7 +229,7 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
+      if (MessageType != global::Gymize.Protobuf.MessageTypeProto.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
       }
       if (Id.Length != 0) {
@@ -243,11 +246,11 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Header other) {
+    public void MergeFrom(HeaderProto other) {
       if (other == null) {
         return;
       }
-      if (other.MessageType != global::PAIA.Gymize.Protobuf.MessageType.Unspecified) {
+      if (other.MessageType != global::Gymize.Protobuf.MessageTypeProto.Unspecified) {
         MessageType = other.MessageType;
       }
       if (other.Id.Length != 0) {
@@ -272,7 +275,7 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            MessageType = (global::PAIA.Gymize.Protobuf.MessageType) input.ReadEnum();
+            MessageType = (global::Gymize.Protobuf.MessageTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
@@ -299,7 +302,7 @@ namespace PAIA.Gymize.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            MessageType = (global::PAIA.Gymize.Protobuf.MessageType) input.ReadEnum();
+            MessageType = (global::Gymize.Protobuf.MessageTypeProto) input.ReadEnum();
             break;
           }
           case 18: {
@@ -317,21 +320,21 @@ namespace PAIA.Gymize.Protobuf {
 
   }
 
-  public sealed partial class Content : pb::IMessage<Content>
+  public sealed partial class ContentProto : pb::IMessage<ContentProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Content> _parser = new pb::MessageParser<Content>(() => new Content());
+    private static readonly pb::MessageParser<ContentProto> _parser = new pb::MessageParser<ContentProto>(() => new ContentProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Content> Parser { get { return _parser; } }
+    public static pb::MessageParser<ContentProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -342,7 +345,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Content() {
+    public ContentProto() {
       OnConstruction();
     }
 
@@ -350,13 +353,16 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Content(Content other) : this() {
+    public ContentProto(ContentProto other) : this() {
       switch (other.DataCase) {
         case DataOneofCase.Raw:
           Raw = other.Raw;
           break;
         case DataOneofCase.Text:
           Text = other.Text;
+          break;
+        case DataOneofCase.Gymize:
+          Gymize = other.Gymize.Clone();
           break;
       }
 
@@ -365,8 +371,8 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Content Clone() {
-      return new Content(this);
+    public ContentProto Clone() {
+      return new ContentProto(this);
     }
 
     /// <summary>Field number for the "raw" field.</summary>
@@ -393,12 +399,25 @@ namespace PAIA.Gymize.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "gymize" field.</summary>
+    public const int GymizeFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Gymize.Protobuf.GymizeProto Gymize {
+      get { return dataCase_ == DataOneofCase.Gymize ? (global::Gymize.Protobuf.GymizeProto) data_ : null; }
+      set {
+        data_ = value;
+        dataCase_ = value == null ? DataOneofCase.None : DataOneofCase.Gymize;
+      }
+    }
+
     private object data_;
     /// <summary>Enum of possible cases for the "data" oneof.</summary>
     public enum DataOneofCase {
       None = 0,
       Raw = 1,
       Text = 2,
+      Gymize = 3,
     }
     private DataOneofCase dataCase_ = DataOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -417,12 +436,12 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Content);
+      return Equals(other as ContentProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Content other) {
+    public bool Equals(ContentProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -431,6 +450,7 @@ namespace PAIA.Gymize.Protobuf {
       }
       if (Raw != other.Raw) return false;
       if (Text != other.Text) return false;
+      if (!object.Equals(Gymize, other.Gymize)) return false;
       if (DataCase != other.DataCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -441,6 +461,7 @@ namespace PAIA.Gymize.Protobuf {
       int hash = 1;
       if (dataCase_ == DataOneofCase.Raw) hash ^= Raw.GetHashCode();
       if (dataCase_ == DataOneofCase.Text) hash ^= Text.GetHashCode();
+      if (dataCase_ == DataOneofCase.Gymize) hash ^= Gymize.GetHashCode();
       hash ^= (int) dataCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -468,6 +489,10 @@ namespace PAIA.Gymize.Protobuf {
         output.WriteRawTag(18);
         output.WriteString(Text);
       }
+      if (dataCase_ == DataOneofCase.Gymize) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Gymize);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -486,6 +511,10 @@ namespace PAIA.Gymize.Protobuf {
         output.WriteRawTag(18);
         output.WriteString(Text);
       }
+      if (dataCase_ == DataOneofCase.Gymize) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Gymize);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -502,6 +531,9 @@ namespace PAIA.Gymize.Protobuf {
       if (dataCase_ == DataOneofCase.Text) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
       }
+      if (dataCase_ == DataOneofCase.Gymize) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Gymize);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -510,7 +542,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Content other) {
+    public void MergeFrom(ContentProto other) {
       if (other == null) {
         return;
       }
@@ -520,6 +552,12 @@ namespace PAIA.Gymize.Protobuf {
           break;
         case DataOneofCase.Text:
           Text = other.Text;
+          break;
+        case DataOneofCase.Gymize:
+          if (Gymize == null) {
+            Gymize = new global::Gymize.Protobuf.GymizeProto();
+          }
+          Gymize.MergeFrom(other.Gymize);
           break;
       }
 
@@ -546,6 +584,15 @@ namespace PAIA.Gymize.Protobuf {
             Text = input.ReadString();
             break;
           }
+          case 26: {
+            global::Gymize.Protobuf.GymizeProto subBuilder = new global::Gymize.Protobuf.GymizeProto();
+            if (dataCase_ == DataOneofCase.Gymize) {
+              subBuilder.MergeFrom(Gymize);
+            }
+            input.ReadMessage(subBuilder);
+            Gymize = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -569,6 +616,15 @@ namespace PAIA.Gymize.Protobuf {
             Text = input.ReadString();
             break;
           }
+          case 26: {
+            global::Gymize.Protobuf.GymizeProto subBuilder = new global::Gymize.Protobuf.GymizeProto();
+            if (dataCase_ == DataOneofCase.Gymize) {
+              subBuilder.MergeFrom(Gymize);
+            }
+            input.ReadMessage(subBuilder);
+            Gymize = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -576,21 +632,21 @@ namespace PAIA.Gymize.Protobuf {
 
   }
 
-  public sealed partial class Message : pb::IMessage<Message>
+  public sealed partial class MessageProto : pb::IMessage<MessageProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Message> _parser = new pb::MessageParser<Message>(() => new Message());
+    private static readonly pb::MessageParser<MessageProto> _parser = new pb::MessageParser<MessageProto>(() => new MessageProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Message> Parser { get { return _parser; } }
+    public static pb::MessageParser<MessageProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PAIA.Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Gymize.Protobuf.ChannelReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -601,7 +657,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Message() {
+    public MessageProto() {
       OnConstruction();
     }
 
@@ -609,7 +665,7 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Message(Message other) : this() {
+    public MessageProto(MessageProto other) : this() {
       header_ = other.header_ != null ? other.header_.Clone() : null;
       content_ = other.content_ != null ? other.content_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -617,16 +673,16 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Message Clone() {
-      return new Message(this);
+    public MessageProto Clone() {
+      return new MessageProto(this);
     }
 
     /// <summary>Field number for the "header" field.</summary>
     public const int HeaderFieldNumber = 1;
-    private global::PAIA.Gymize.Protobuf.Header header_;
+    private global::Gymize.Protobuf.HeaderProto header_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Header Header {
+    public global::Gymize.Protobuf.HeaderProto Header {
       get { return header_; }
       set {
         header_ = value;
@@ -635,10 +691,10 @@ namespace PAIA.Gymize.Protobuf {
 
     /// <summary>Field number for the "content" field.</summary>
     public const int ContentFieldNumber = 2;
-    private global::PAIA.Gymize.Protobuf.Content content_;
+    private global::Gymize.Protobuf.ContentProto content_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::PAIA.Gymize.Protobuf.Content Content {
+    public global::Gymize.Protobuf.ContentProto Content {
       get { return content_; }
       set {
         content_ = value;
@@ -648,12 +704,12 @@ namespace PAIA.Gymize.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Message);
+      return Equals(other as MessageProto);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Message other) {
+    public bool Equals(MessageProto other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -739,19 +795,19 @@ namespace PAIA.Gymize.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Message other) {
+    public void MergeFrom(MessageProto other) {
       if (other == null) {
         return;
       }
       if (other.header_ != null) {
         if (header_ == null) {
-          Header = new global::PAIA.Gymize.Protobuf.Header();
+          Header = new global::Gymize.Protobuf.HeaderProto();
         }
         Header.MergeFrom(other.Header);
       }
       if (other.content_ != null) {
         if (content_ == null) {
-          Content = new global::PAIA.Gymize.Protobuf.Content();
+          Content = new global::Gymize.Protobuf.ContentProto();
         }
         Content.MergeFrom(other.Content);
       }
@@ -772,14 +828,14 @@ namespace PAIA.Gymize.Protobuf {
             break;
           case 10: {
             if (header_ == null) {
-              Header = new global::PAIA.Gymize.Protobuf.Header();
+              Header = new global::Gymize.Protobuf.HeaderProto();
             }
             input.ReadMessage(Header);
             break;
           }
           case 18: {
             if (content_ == null) {
-              Content = new global::PAIA.Gymize.Protobuf.Content();
+              Content = new global::Gymize.Protobuf.ContentProto();
             }
             input.ReadMessage(Content);
             break;
@@ -801,14 +857,14 @@ namespace PAIA.Gymize.Protobuf {
             break;
           case 10: {
             if (header_ == null) {
-              Header = new global::PAIA.Gymize.Protobuf.Header();
+              Header = new global::Gymize.Protobuf.HeaderProto();
             }
             input.ReadMessage(Header);
             break;
           }
           case 18: {
             if (content_ == null) {
-              Content = new global::PAIA.Gymize.Protobuf.Content();
+              Content = new global::Gymize.Protobuf.ContentProto();
             }
             input.ReadMessage(Content);
             break;

@@ -1,4 +1,4 @@
-namespace PAIA.Gymize
+namespace Gymize
 {
     public class Content
     {

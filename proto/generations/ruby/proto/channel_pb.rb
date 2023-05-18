@@ -3,33 +3,36 @@
 
 require 'google/protobuf'
 
+require 'gymize_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("channel.proto", :syntax => :proto3) do
-    add_message "Header" do
-      optional :message_type, :enum, 1, "MessageType"
+    add_message "HeaderProto" do
+      optional :message_type, :enum, 1, "MessageTypeProto"
       optional :id, :string, 2
       optional :uuid, :bytes, 3
     end
-    add_message "Content" do
+    add_message "ContentProto" do
       oneof :data do
         optional :raw, :bytes, 1
         optional :text, :string, 2
+        optional :gymize, :message, 3, "GymizeProto"
       end
     end
-    add_message "Message" do
-      optional :header, :message, 1, "Header"
-      optional :content, :message, 2, "Content"
+    add_message "MessageProto" do
+      optional :header, :message, 1, "HeaderProto"
+      optional :content, :message, 2, "ContentProto"
     end
-    add_enum "MessageType" do
-      value :MESSAGE_TYPE_UNSPECIFIED, 0
-      value :MESSAGE_TYPE_MESSAGE, 1
-      value :MESSAGE_TYPE_REQUEST, 2
-      value :MESSAGE_TYPE_RESPONSE, 3
+    add_enum "MessageTypeProto" do
+      value :MESSAGE_TYPE_PROTO_UNSPECIFIED, 0
+      value :MESSAGE_TYPE_PROTO_MESSAGE, 1
+      value :MESSAGE_TYPE_PROTO_REQUEST, 2
+      value :MESSAGE_TYPE_PROTO_RESPONSE, 3
     end
   end
 end
 
-Header = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Header").msgclass
-Content = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Content").msgclass
-Message = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Message").msgclass
-MessageType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("MessageType").enummodule
+HeaderProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("HeaderProto").msgclass
+ContentProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ContentProto").msgclass
+MessageProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("MessageProto").msgclass
+MessageTypeProto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("MessageTypeProto").enummodule

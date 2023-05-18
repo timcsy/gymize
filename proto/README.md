@@ -23,3 +23,11 @@ Make sure you have installed the Python protobuf package first, the you have pro
 ```
 pip install protobuf
 ```
+
+## For Python
+Add `__init__.py` to your Python folder
+```
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+```

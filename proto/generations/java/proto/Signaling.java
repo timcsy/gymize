@@ -13,77 +13,77 @@ public final class Signaling {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code SignalType}
+   * Protobuf enum {@code SignalTypeProto}
    */
-  public enum SignalType
+  public enum SignalTypeProto
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>SIGNAL_TYPE_UNSPECIFIED = 0;</code>
+     * <code>SIGNAL_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    SIGNAL_TYPE_UNSPECIFIED(0),
+    SIGNAL_TYPE_PROTO_UNSPECIFIED(0),
     /**
-     * <code>SIGNAL_TYPE_INIT = 1;</code>
+     * <code>SIGNAL_TYPE_PROTO_INIT = 1;</code>
      */
-    SIGNAL_TYPE_INIT(1),
+    SIGNAL_TYPE_PROTO_INIT(1),
     /**
      * <pre>
      * update the peer server information
      * </pre>
      *
-     * <code>SIGNAL_TYPE_UPDATE = 2;</code>
+     * <code>SIGNAL_TYPE_PROTO_UPDATE = 2;</code>
      */
-    SIGNAL_TYPE_UPDATE(2),
+    SIGNAL_TYPE_PROTO_UPDATE(2),
     /**
      * <pre>
      * resume the connection with same signal id
      * </pre>
      *
-     * <code>SIGNAL_TYPE_RESUME = 3;</code>
+     * <code>SIGNAL_TYPE_PROTO_RESUME = 3;</code>
      */
-    SIGNAL_TYPE_RESUME(3),
+    SIGNAL_TYPE_PROTO_RESUME(3),
     /**
      * <pre>
      * ask another peer to close, and remove signal id
      * </pre>
      *
-     * <code>SIGNAL_TYPE_CLOSE = 4;</code>
+     * <code>SIGNAL_TYPE_PROTO_CLOSE = 4;</code>
      */
-    SIGNAL_TYPE_CLOSE(4),
+    SIGNAL_TYPE_PROTO_CLOSE(4),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>SIGNAL_TYPE_UNSPECIFIED = 0;</code>
+     * <code>SIGNAL_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    public static final int SIGNAL_TYPE_UNSPECIFIED_VALUE = 0;
+    public static final int SIGNAL_TYPE_PROTO_UNSPECIFIED_VALUE = 0;
     /**
-     * <code>SIGNAL_TYPE_INIT = 1;</code>
+     * <code>SIGNAL_TYPE_PROTO_INIT = 1;</code>
      */
-    public static final int SIGNAL_TYPE_INIT_VALUE = 1;
+    public static final int SIGNAL_TYPE_PROTO_INIT_VALUE = 1;
     /**
      * <pre>
      * update the peer server information
      * </pre>
      *
-     * <code>SIGNAL_TYPE_UPDATE = 2;</code>
+     * <code>SIGNAL_TYPE_PROTO_UPDATE = 2;</code>
      */
-    public static final int SIGNAL_TYPE_UPDATE_VALUE = 2;
+    public static final int SIGNAL_TYPE_PROTO_UPDATE_VALUE = 2;
     /**
      * <pre>
      * resume the connection with same signal id
      * </pre>
      *
-     * <code>SIGNAL_TYPE_RESUME = 3;</code>
+     * <code>SIGNAL_TYPE_PROTO_RESUME = 3;</code>
      */
-    public static final int SIGNAL_TYPE_RESUME_VALUE = 3;
+    public static final int SIGNAL_TYPE_PROTO_RESUME_VALUE = 3;
     /**
      * <pre>
      * ask another peer to close, and remove signal id
      * </pre>
      *
-     * <code>SIGNAL_TYPE_CLOSE = 4;</code>
+     * <code>SIGNAL_TYPE_PROTO_CLOSE = 4;</code>
      */
-    public static final int SIGNAL_TYPE_CLOSE_VALUE = 4;
+    public static final int SIGNAL_TYPE_PROTO_CLOSE_VALUE = 4;
 
 
     public final int getNumber() {
@@ -100,7 +100,7 @@ public final class Signaling {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static SignalType valueOf(int value) {
+    public static SignalTypeProto valueOf(int value) {
       return forNumber(value);
     }
 
@@ -108,26 +108,26 @@ public final class Signaling {
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static SignalType forNumber(int value) {
+    public static SignalTypeProto forNumber(int value) {
       switch (value) {
-        case 0: return SIGNAL_TYPE_UNSPECIFIED;
-        case 1: return SIGNAL_TYPE_INIT;
-        case 2: return SIGNAL_TYPE_UPDATE;
-        case 3: return SIGNAL_TYPE_RESUME;
-        case 4: return SIGNAL_TYPE_CLOSE;
+        case 0: return SIGNAL_TYPE_PROTO_UNSPECIFIED;
+        case 1: return SIGNAL_TYPE_PROTO_INIT;
+        case 2: return SIGNAL_TYPE_PROTO_UPDATE;
+        case 3: return SIGNAL_TYPE_PROTO_RESUME;
+        case 4: return SIGNAL_TYPE_PROTO_CLOSE;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<SignalType>
+    public static com.google.protobuf.Internal.EnumLiteMap<SignalTypeProto>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        SignalType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<SignalType>() {
-            public SignalType findValueByNumber(int number) {
-              return SignalType.forNumber(number);
+        SignalTypeProto> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SignalTypeProto>() {
+            public SignalTypeProto findValueByNumber(int number) {
+              return SignalTypeProto.forNumber(number);
             }
           };
 
@@ -148,9 +148,9 @@ public final class Signaling {
       return Signaling.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final SignalType[] VALUES = values();
+    private static final SignalTypeProto[] VALUES = values();
 
-    public static SignalType valueOf(
+    public static SignalTypeProto valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -164,45 +164,45 @@ public final class Signaling {
 
     private final int value;
 
-    private SignalType(int value) {
+    private SignalTypeProto(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:SignalType)
+    // @@protoc_insertion_point(enum_scope:SignalTypeProto)
   }
 
   /**
-   * Protobuf enum {@code PeerType}
+   * Protobuf enum {@code PeerTypeProto}
    */
-  public enum PeerType
+  public enum PeerTypeProto
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>PEER_TYPE_UNSPECIFIED = 0;</code>
+     * <code>PEER_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    PEER_TYPE_UNSPECIFIED(0),
+    PEER_TYPE_PROTO_UNSPECIFIED(0),
     /**
-     * <code>PEER_TYPE_ACTIVE = 1;</code>
+     * <code>PEER_TYPE_PROTO_ACTIVE = 1;</code>
      */
-    PEER_TYPE_ACTIVE(1),
+    PEER_TYPE_PROTO_ACTIVE(1),
     /**
-     * <code>PEER_TYPE_PASSIVE = 2;</code>
+     * <code>PEER_TYPE_PROTO_PASSIVE = 2;</code>
      */
-    PEER_TYPE_PASSIVE(2),
+    PEER_TYPE_PROTO_PASSIVE(2),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>PEER_TYPE_UNSPECIFIED = 0;</code>
+     * <code>PEER_TYPE_PROTO_UNSPECIFIED = 0;</code>
      */
-    public static final int PEER_TYPE_UNSPECIFIED_VALUE = 0;
+    public static final int PEER_TYPE_PROTO_UNSPECIFIED_VALUE = 0;
     /**
-     * <code>PEER_TYPE_ACTIVE = 1;</code>
+     * <code>PEER_TYPE_PROTO_ACTIVE = 1;</code>
      */
-    public static final int PEER_TYPE_ACTIVE_VALUE = 1;
+    public static final int PEER_TYPE_PROTO_ACTIVE_VALUE = 1;
     /**
-     * <code>PEER_TYPE_PASSIVE = 2;</code>
+     * <code>PEER_TYPE_PROTO_PASSIVE = 2;</code>
      */
-    public static final int PEER_TYPE_PASSIVE_VALUE = 2;
+    public static final int PEER_TYPE_PROTO_PASSIVE_VALUE = 2;
 
 
     public final int getNumber() {
@@ -219,7 +219,7 @@ public final class Signaling {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static PeerType valueOf(int value) {
+    public static PeerTypeProto valueOf(int value) {
       return forNumber(value);
     }
 
@@ -227,24 +227,24 @@ public final class Signaling {
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static PeerType forNumber(int value) {
+    public static PeerTypeProto forNumber(int value) {
       switch (value) {
-        case 0: return PEER_TYPE_UNSPECIFIED;
-        case 1: return PEER_TYPE_ACTIVE;
-        case 2: return PEER_TYPE_PASSIVE;
+        case 0: return PEER_TYPE_PROTO_UNSPECIFIED;
+        case 1: return PEER_TYPE_PROTO_ACTIVE;
+        case 2: return PEER_TYPE_PROTO_PASSIVE;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<PeerType>
+    public static com.google.protobuf.Internal.EnumLiteMap<PeerTypeProto>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        PeerType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<PeerType>() {
-            public PeerType findValueByNumber(int number) {
-              return PeerType.forNumber(number);
+        PeerTypeProto> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PeerTypeProto>() {
+            public PeerTypeProto findValueByNumber(int number) {
+              return PeerTypeProto.forNumber(number);
             }
           };
 
@@ -265,9 +265,9 @@ public final class Signaling {
       return Signaling.getDescriptor().getEnumTypes().get(1);
     }
 
-    private static final PeerType[] VALUES = values();
+    private static final PeerTypeProto[] VALUES = values();
 
-    public static PeerType valueOf(
+    public static PeerTypeProto valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -281,27 +281,27 @@ public final class Signaling {
 
     private final int value;
 
-    private PeerType(int value) {
+    private PeerTypeProto(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:PeerType)
+    // @@protoc_insertion_point(enum_scope:PeerTypeProto)
   }
 
-  public interface SignalOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Signal)
+  public interface SignalProtoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SignalProto)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.SignalType signal_type = 1;</code>
+     * <code>.SignalTypeProto signal_type = 1;</code>
      * @return The enum numeric value on the wire for signalType.
      */
     int getSignalTypeValue();
     /**
-     * <code>.SignalType signal_type = 1;</code>
+     * <code>.SignalTypeProto signal_type = 1;</code>
      * @return The signalType.
      */
-    Signaling.SignalType getSignalType();
+    Signaling.SignalTypeProto getSignalType();
 
     /**
      * <code>string id = 2;</code>
@@ -334,15 +334,15 @@ public final class Signaling {
         getNameBytes();
 
     /**
-     * <code>.PeerType peer_type = 5;</code>
+     * <code>.PeerTypeProto peer_type = 5;</code>
      * @return The enum numeric value on the wire for peerType.
      */
     int getPeerTypeValue();
     /**
-     * <code>.PeerType peer_type = 5;</code>
+     * <code>.PeerTypeProto peer_type = 5;</code>
      * @return The peerType.
      */
-    Signaling.PeerType getPeerType();
+    Signaling.PeerTypeProto getPeerType();
 
     /**
      * <code>string url = 6;</code>
@@ -357,18 +357,18 @@ public final class Signaling {
         getUrlBytes();
   }
   /**
-   * Protobuf type {@code Signal}
+   * Protobuf type {@code SignalProto}
    */
-  public static final class Signal extends
+  public static final class SignalProto extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Signal)
-      SignalOrBuilder {
+      // @@protoc_insertion_point(message_implements:SignalProto)
+      SignalProtoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Signal.newBuilder() to construct.
-    private Signal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SignalProto.newBuilder() to construct.
+    private SignalProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Signal() {
+    private SignalProto() {
       signalType_ = 0;
       id_ = "";
       data_ = com.google.protobuf.ByteString.EMPTY;
@@ -381,7 +381,7 @@ public final class Signaling {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Signal();
+      return new SignalProto();
     }
 
     @java.lang.Override
@@ -389,7 +389,7 @@ public final class Signaling {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Signal(
+    private SignalProto(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -463,34 +463,34 @@ public final class Signaling {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Signaling.internal_static_Signal_descriptor;
+      return Signaling.internal_static_SignalProto_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Signaling.internal_static_Signal_fieldAccessorTable
+      return Signaling.internal_static_SignalProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Signaling.Signal.class, Signaling.Signal.Builder.class);
+              Signaling.SignalProto.class, Signaling.SignalProto.Builder.class);
     }
 
     public static final int SIGNAL_TYPE_FIELD_NUMBER = 1;
     private int signalType_;
     /**
-     * <code>.SignalType signal_type = 1;</code>
+     * <code>.SignalTypeProto signal_type = 1;</code>
      * @return The enum numeric value on the wire for signalType.
      */
     @java.lang.Override public int getSignalTypeValue() {
       return signalType_;
     }
     /**
-     * <code>.SignalType signal_type = 1;</code>
+     * <code>.SignalTypeProto signal_type = 1;</code>
      * @return The signalType.
      */
-    @java.lang.Override public Signaling.SignalType getSignalType() {
+    @java.lang.Override public Signaling.SignalTypeProto getSignalType() {
       @SuppressWarnings("deprecation")
-      Signaling.SignalType result = Signaling.SignalType.valueOf(signalType_);
-      return result == null ? Signaling.SignalType.UNRECOGNIZED : result;
+      Signaling.SignalTypeProto result = Signaling.SignalTypeProto.valueOf(signalType_);
+      return result == null ? Signaling.SignalTypeProto.UNRECOGNIZED : result;
     }
 
     public static final int ID_FIELD_NUMBER = 2;
@@ -583,20 +583,20 @@ public final class Signaling {
     public static final int PEER_TYPE_FIELD_NUMBER = 5;
     private int peerType_;
     /**
-     * <code>.PeerType peer_type = 5;</code>
+     * <code>.PeerTypeProto peer_type = 5;</code>
      * @return The enum numeric value on the wire for peerType.
      */
     @java.lang.Override public int getPeerTypeValue() {
       return peerType_;
     }
     /**
-     * <code>.PeerType peer_type = 5;</code>
+     * <code>.PeerTypeProto peer_type = 5;</code>
      * @return The peerType.
      */
-    @java.lang.Override public Signaling.PeerType getPeerType() {
+    @java.lang.Override public Signaling.PeerTypeProto getPeerType() {
       @SuppressWarnings("deprecation")
-      Signaling.PeerType result = Signaling.PeerType.valueOf(peerType_);
-      return result == null ? Signaling.PeerType.UNRECOGNIZED : result;
+      Signaling.PeerTypeProto result = Signaling.PeerTypeProto.valueOf(peerType_);
+      return result == null ? Signaling.PeerTypeProto.UNRECOGNIZED : result;
     }
 
     public static final int URL_FIELD_NUMBER = 6;
@@ -651,7 +651,7 @@ public final class Signaling {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (signalType_ != Signaling.SignalType.SIGNAL_TYPE_UNSPECIFIED.getNumber()) {
+      if (signalType_ != Signaling.SignalTypeProto.SIGNAL_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         output.writeEnum(1, signalType_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
@@ -663,7 +663,7 @@ public final class Signaling {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
       }
-      if (peerType_ != Signaling.PeerType.PEER_TYPE_UNSPECIFIED.getNumber()) {
+      if (peerType_ != Signaling.PeerTypeProto.PEER_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         output.writeEnum(5, peerType_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(url_)) {
@@ -678,7 +678,7 @@ public final class Signaling {
       if (size != -1) return size;
 
       size = 0;
-      if (signalType_ != Signaling.SignalType.SIGNAL_TYPE_UNSPECIFIED.getNumber()) {
+      if (signalType_ != Signaling.SignalTypeProto.SIGNAL_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, signalType_);
       }
@@ -692,7 +692,7 @@ public final class Signaling {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
       }
-      if (peerType_ != Signaling.PeerType.PEER_TYPE_UNSPECIFIED.getNumber()) {
+      if (peerType_ != Signaling.PeerTypeProto.PEER_TYPE_PROTO_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, peerType_);
       }
@@ -709,10 +709,10 @@ public final class Signaling {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Signaling.Signal)) {
+      if (!(obj instanceof Signaling.SignalProto)) {
         return super.equals(obj);
       }
-      Signaling.Signal other = (Signaling.Signal) obj;
+      Signaling.SignalProto other = (Signaling.SignalProto) obj;
 
       if (signalType_ != other.signalType_) return false;
       if (!getId()
@@ -752,69 +752,69 @@ public final class Signaling {
       return hash;
     }
 
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Signaling.Signal parseFrom(byte[] data)
+    public static Signaling.SignalProto parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Signaling.Signal parseFrom(java.io.InputStream input)
+    public static Signaling.SignalProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Signaling.Signal parseDelimitedFrom(java.io.InputStream input)
+    public static Signaling.SignalProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Signaling.Signal parseDelimitedFrom(
+    public static Signaling.SignalProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Signaling.Signal parseFrom(
+    public static Signaling.SignalProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -827,7 +827,7 @@ public final class Signaling {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Signaling.Signal prototype) {
+    public static Builder newBuilder(Signaling.SignalProto prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -843,26 +843,26 @@ public final class Signaling {
       return builder;
     }
     /**
-     * Protobuf type {@code Signal}
+     * Protobuf type {@code SignalProto}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Signal)
-        Signaling.SignalOrBuilder {
+        // @@protoc_insertion_point(builder_implements:SignalProto)
+        Signaling.SignalProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Signaling.internal_static_Signal_descriptor;
+        return Signaling.internal_static_SignalProto_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Signaling.internal_static_Signal_fieldAccessorTable
+        return Signaling.internal_static_SignalProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Signaling.Signal.class, Signaling.Signal.Builder.class);
+                Signaling.SignalProto.class, Signaling.SignalProto.Builder.class);
       }
 
-      // Construct using Signaling.Signal.newBuilder()
+      // Construct using Signaling.SignalProto.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -898,17 +898,17 @@ public final class Signaling {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Signaling.internal_static_Signal_descriptor;
+        return Signaling.internal_static_SignalProto_descriptor;
       }
 
       @java.lang.Override
-      public Signaling.Signal getDefaultInstanceForType() {
-        return Signaling.Signal.getDefaultInstance();
+      public Signaling.SignalProto getDefaultInstanceForType() {
+        return Signaling.SignalProto.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Signaling.Signal build() {
-        Signaling.Signal result = buildPartial();
+      public Signaling.SignalProto build() {
+        Signaling.SignalProto result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -916,8 +916,8 @@ public final class Signaling {
       }
 
       @java.lang.Override
-      public Signaling.Signal buildPartial() {
-        Signaling.Signal result = new Signaling.Signal(this);
+      public Signaling.SignalProto buildPartial() {
+        Signaling.SignalProto result = new Signaling.SignalProto(this);
         result.signalType_ = signalType_;
         result.id_ = id_;
         result.data_ = data_;
@@ -962,16 +962,16 @@ public final class Signaling {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Signaling.Signal) {
-          return mergeFrom((Signaling.Signal)other);
+        if (other instanceof Signaling.SignalProto) {
+          return mergeFrom((Signaling.SignalProto)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Signaling.Signal other) {
-        if (other == Signaling.Signal.getDefaultInstance()) return this;
+      public Builder mergeFrom(Signaling.SignalProto other) {
+        if (other == Signaling.SignalProto.getDefaultInstance()) return this;
         if (other.signalType_ != 0) {
           setSignalTypeValue(other.getSignalTypeValue());
         }
@@ -1008,11 +1008,11 @@ public final class Signaling {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Signaling.Signal parsedMessage = null;
+        Signaling.SignalProto parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Signaling.Signal) e.getUnfinishedMessage();
+          parsedMessage = (Signaling.SignalProto) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1024,14 +1024,14 @@ public final class Signaling {
 
       private int signalType_ = 0;
       /**
-       * <code>.SignalType signal_type = 1;</code>
+       * <code>.SignalTypeProto signal_type = 1;</code>
        * @return The enum numeric value on the wire for signalType.
        */
       @java.lang.Override public int getSignalTypeValue() {
         return signalType_;
       }
       /**
-       * <code>.SignalType signal_type = 1;</code>
+       * <code>.SignalTypeProto signal_type = 1;</code>
        * @param value The enum numeric value on the wire for signalType to set.
        * @return This builder for chaining.
        */
@@ -1042,21 +1042,21 @@ public final class Signaling {
         return this;
       }
       /**
-       * <code>.SignalType signal_type = 1;</code>
+       * <code>.SignalTypeProto signal_type = 1;</code>
        * @return The signalType.
        */
       @java.lang.Override
-      public Signaling.SignalType getSignalType() {
+      public Signaling.SignalTypeProto getSignalType() {
         @SuppressWarnings("deprecation")
-        Signaling.SignalType result = Signaling.SignalType.valueOf(signalType_);
-        return result == null ? Signaling.SignalType.UNRECOGNIZED : result;
+        Signaling.SignalTypeProto result = Signaling.SignalTypeProto.valueOf(signalType_);
+        return result == null ? Signaling.SignalTypeProto.UNRECOGNIZED : result;
       }
       /**
-       * <code>.SignalType signal_type = 1;</code>
+       * <code>.SignalTypeProto signal_type = 1;</code>
        * @param value The signalType to set.
        * @return This builder for chaining.
        */
-      public Builder setSignalType(Signaling.SignalType value) {
+      public Builder setSignalType(Signaling.SignalTypeProto value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1066,7 +1066,7 @@ public final class Signaling {
         return this;
       }
       /**
-       * <code>.SignalType signal_type = 1;</code>
+       * <code>.SignalTypeProto signal_type = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearSignalType() {
@@ -1264,14 +1264,14 @@ public final class Signaling {
 
       private int peerType_ = 0;
       /**
-       * <code>.PeerType peer_type = 5;</code>
+       * <code>.PeerTypeProto peer_type = 5;</code>
        * @return The enum numeric value on the wire for peerType.
        */
       @java.lang.Override public int getPeerTypeValue() {
         return peerType_;
       }
       /**
-       * <code>.PeerType peer_type = 5;</code>
+       * <code>.PeerTypeProto peer_type = 5;</code>
        * @param value The enum numeric value on the wire for peerType to set.
        * @return This builder for chaining.
        */
@@ -1282,21 +1282,21 @@ public final class Signaling {
         return this;
       }
       /**
-       * <code>.PeerType peer_type = 5;</code>
+       * <code>.PeerTypeProto peer_type = 5;</code>
        * @return The peerType.
        */
       @java.lang.Override
-      public Signaling.PeerType getPeerType() {
+      public Signaling.PeerTypeProto getPeerType() {
         @SuppressWarnings("deprecation")
-        Signaling.PeerType result = Signaling.PeerType.valueOf(peerType_);
-        return result == null ? Signaling.PeerType.UNRECOGNIZED : result;
+        Signaling.PeerTypeProto result = Signaling.PeerTypeProto.valueOf(peerType_);
+        return result == null ? Signaling.PeerTypeProto.UNRECOGNIZED : result;
       }
       /**
-       * <code>.PeerType peer_type = 5;</code>
+       * <code>.PeerTypeProto peer_type = 5;</code>
        * @param value The peerType to set.
        * @return This builder for chaining.
        */
-      public Builder setPeerType(Signaling.PeerType value) {
+      public Builder setPeerType(Signaling.PeerTypeProto value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1306,7 +1306,7 @@ public final class Signaling {
         return this;
       }
       /**
-       * <code>.PeerType peer_type = 5;</code>
+       * <code>.PeerTypeProto peer_type = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearPeerType() {
@@ -1404,51 +1404,51 @@ public final class Signaling {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Signal)
+      // @@protoc_insertion_point(builder_scope:SignalProto)
     }
 
-    // @@protoc_insertion_point(class_scope:Signal)
-    private static final Signaling.Signal DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:SignalProto)
+    private static final Signaling.SignalProto DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Signaling.Signal();
+      DEFAULT_INSTANCE = new Signaling.SignalProto();
     }
 
-    public static Signaling.Signal getDefaultInstance() {
+    public static Signaling.SignalProto getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Signal>
-        PARSER = new com.google.protobuf.AbstractParser<Signal>() {
+    private static final com.google.protobuf.Parser<SignalProto>
+        PARSER = new com.google.protobuf.AbstractParser<SignalProto>() {
       @java.lang.Override
-      public Signal parsePartialFrom(
+      public SignalProto parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Signal(input, extensionRegistry);
+        return new SignalProto(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Signal> parser() {
+    public static com.google.protobuf.Parser<SignalProto> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Signal> getParserForType() {
+    public com.google.protobuf.Parser<SignalProto> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Signaling.Signal getDefaultInstanceForType() {
+    public Signaling.SignalProto getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Signal_descriptor;
+    internal_static_SignalProto_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Signal_fieldAccessorTable;
+      internal_static_SignalProto_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1458,26 +1458,28 @@ public final class Signaling {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017signaling.proto\"}\n\006Signal\022 \n\013signal_ty" +
-      "pe\030\001 \001(\0162\013.SignalType\022\n\n\002id\030\002 \001(\t\022\014\n\004dat" +
-      "a\030\003 \001(\014\022\014\n\004name\030\004 \001(\t\022\034\n\tpeer_type\030\005 \001(\016" +
-      "2\t.PeerType\022\013\n\003url\030\006 \001(\t*\206\001\n\nSignalType\022" +
-      "\033\n\027SIGNAL_TYPE_UNSPECIFIED\020\000\022\024\n\020SIGNAL_T" +
-      "YPE_INIT\020\001\022\026\n\022SIGNAL_TYPE_UPDATE\020\002\022\026\n\022SI" +
-      "GNAL_TYPE_RESUME\020\003\022\025\n\021SIGNAL_TYPE_CLOSE\020" +
-      "\004*R\n\010PeerType\022\031\n\025PEER_TYPE_UNSPECIFIED\020\000" +
-      "\022\024\n\020PEER_TYPE_ACTIVE\020\001\022\025\n\021PEER_TYPE_PASS" +
-      "IVE\020\002B\027\252\002\024PAIA.Gymize.Protobufb\006proto3"
+      "\n\017signaling.proto\"\214\001\n\013SignalProto\022%\n\013sig" +
+      "nal_type\030\001 \001(\0162\020.SignalTypeProto\022\n\n\002id\030\002" +
+      " \001(\t\022\014\n\004data\030\003 \001(\014\022\014\n\004name\030\004 \001(\t\022!\n\tpeer" +
+      "_type\030\005 \001(\0162\016.PeerTypeProto\022\013\n\003url\030\006 \001(\t" +
+      "*\251\001\n\017SignalTypeProto\022!\n\035SIGNAL_TYPE_PROT" +
+      "O_UNSPECIFIED\020\000\022\032\n\026SIGNAL_TYPE_PROTO_INI" +
+      "T\020\001\022\034\n\030SIGNAL_TYPE_PROTO_UPDATE\020\002\022\034\n\030SIG" +
+      "NAL_TYPE_PROTO_RESUME\020\003\022\033\n\027SIGNAL_TYPE_P" +
+      "ROTO_CLOSE\020\004*i\n\rPeerTypeProto\022\037\n\033PEER_TY" +
+      "PE_PROTO_UNSPECIFIED\020\000\022\032\n\026PEER_TYPE_PROT" +
+      "O_ACTIVE\020\001\022\033\n\027PEER_TYPE_PROTO_PASSIVE\020\002B" +
+      "\022\252\002\017Gymize.Protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_Signal_descriptor =
+    internal_static_SignalProto_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Signal_fieldAccessorTable = new
+    internal_static_SignalProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Signal_descriptor,
+        internal_static_SignalProto_descriptor,
         new java.lang.String[] { "SignalType", "Id", "Data", "Name", "PeerType", "Url", });
   }
 

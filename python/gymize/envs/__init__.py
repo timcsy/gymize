@@ -1,1 +1,1 @@
-from gymize.envs.unity import UnityEnv
+from gymize.envs.unity_gym_env import UnityGymEnv

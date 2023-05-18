@@ -2,37 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PAIA.Gymize
+namespace Gymize
 {
     public abstract class AttributeBase : Attribute
     {
-        List<string> m_Locations;
-        public List<string> Locations
+        private string m_Locator;
+
+        public string Locator
         {
-            get { return m_Locations; }
-            set { m_Locations = value; }
+            get { return m_Locator; }
+            set { m_Locator = value; }
         }
 
         public AttributeBase()
         {
-            m_Locations = new List<string>();
+            m_Locator = null;
         }
-        public AttributeBase(string location)
+        public AttributeBase(string locator)
         {
-            // location should not be null
-            m_Locations = new List<string>{ location };
-        }
-        public AttributeBase(List<string> locations)
-        {
-            // locations should not be null
-            m_Locations = locations;
+            m_Locator = locator;
         }
 
-        public List<string> GetLocations()
+        public string GetLocator()
         {
-            return m_Locations;
+            return m_Locator;
         }
 
-        public abstract IData GetData(object o);
+        public abstract IInstance GetData(object o);
     }
 }

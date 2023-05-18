@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 
-namespace PAIA.Gymize
+namespace Gymize
 {
     public class AttributeObserver : IObserver
     {
@@ -17,7 +15,12 @@ namespace PAIA.Gymize
             m_MemberInfo = memberInfo;
         }
 
-        public IData GetObservation(int cacheId = -1)
+        public string GetLocator()
+        {
+            return m_Attribute.Locator;
+        }
+
+        public IInstance GetObservation()
         {
             FieldInfo fieldInfo = m_MemberInfo as FieldInfo;
             if (fieldInfo != null)

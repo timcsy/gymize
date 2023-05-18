@@ -54,87 +54,87 @@ struct TableStruct_signaling_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_signaling_2eproto;
-class Signal;
-struct SignalDefaultTypeInternal;
-extern SignalDefaultTypeInternal _Signal_default_instance_;
+class SignalProto;
+struct SignalProtoDefaultTypeInternal;
+extern SignalProtoDefaultTypeInternal _SignalProto_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::Signal* Arena::CreateMaybeMessage<::Signal>(Arena*);
+template<> ::SignalProto* Arena::CreateMaybeMessage<::SignalProto>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
-enum SignalType : int {
-  SIGNAL_TYPE_UNSPECIFIED = 0,
-  SIGNAL_TYPE_INIT = 1,
-  SIGNAL_TYPE_UPDATE = 2,
-  SIGNAL_TYPE_RESUME = 3,
-  SIGNAL_TYPE_CLOSE = 4,
-  SignalType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  SignalType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum SignalTypeProto : int {
+  SIGNAL_TYPE_PROTO_UNSPECIFIED = 0,
+  SIGNAL_TYPE_PROTO_INIT = 1,
+  SIGNAL_TYPE_PROTO_UPDATE = 2,
+  SIGNAL_TYPE_PROTO_RESUME = 3,
+  SIGNAL_TYPE_PROTO_CLOSE = 4,
+  SignalTypeProto_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  SignalTypeProto_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool SignalType_IsValid(int value);
-constexpr SignalType SignalType_MIN = SIGNAL_TYPE_UNSPECIFIED;
-constexpr SignalType SignalType_MAX = SIGNAL_TYPE_CLOSE;
-constexpr int SignalType_ARRAYSIZE = SignalType_MAX + 1;
+bool SignalTypeProto_IsValid(int value);
+constexpr SignalTypeProto SignalTypeProto_MIN = SIGNAL_TYPE_PROTO_UNSPECIFIED;
+constexpr SignalTypeProto SignalTypeProto_MAX = SIGNAL_TYPE_PROTO_CLOSE;
+constexpr int SignalTypeProto_ARRAYSIZE = SignalTypeProto_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SignalType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SignalTypeProto_descriptor();
 template<typename T>
-inline const std::string& SignalType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, SignalType>::value ||
+inline const std::string& SignalTypeProto_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, SignalTypeProto>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function SignalType_Name.");
+    "Incorrect type passed to function SignalTypeProto_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    SignalType_descriptor(), enum_t_value);
+    SignalTypeProto_descriptor(), enum_t_value);
 }
-inline bool SignalType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SignalType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SignalType>(
-    SignalType_descriptor(), name, value);
+inline bool SignalTypeProto_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, SignalTypeProto* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<SignalTypeProto>(
+    SignalTypeProto_descriptor(), name, value);
 }
-enum PeerType : int {
-  PEER_TYPE_UNSPECIFIED = 0,
-  PEER_TYPE_ACTIVE = 1,
-  PEER_TYPE_PASSIVE = 2,
-  PeerType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  PeerType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum PeerTypeProto : int {
+  PEER_TYPE_PROTO_UNSPECIFIED = 0,
+  PEER_TYPE_PROTO_ACTIVE = 1,
+  PEER_TYPE_PROTO_PASSIVE = 2,
+  PeerTypeProto_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  PeerTypeProto_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool PeerType_IsValid(int value);
-constexpr PeerType PeerType_MIN = PEER_TYPE_UNSPECIFIED;
-constexpr PeerType PeerType_MAX = PEER_TYPE_PASSIVE;
-constexpr int PeerType_ARRAYSIZE = PeerType_MAX + 1;
+bool PeerTypeProto_IsValid(int value);
+constexpr PeerTypeProto PeerTypeProto_MIN = PEER_TYPE_PROTO_UNSPECIFIED;
+constexpr PeerTypeProto PeerTypeProto_MAX = PEER_TYPE_PROTO_PASSIVE;
+constexpr int PeerTypeProto_ARRAYSIZE = PeerTypeProto_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PeerType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PeerTypeProto_descriptor();
 template<typename T>
-inline const std::string& PeerType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, PeerType>::value ||
+inline const std::string& PeerTypeProto_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, PeerTypeProto>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function PeerType_Name.");
+    "Incorrect type passed to function PeerTypeProto_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    PeerType_descriptor(), enum_t_value);
+    PeerTypeProto_descriptor(), enum_t_value);
 }
-inline bool PeerType_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, PeerType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PeerType>(
-    PeerType_descriptor(), name, value);
+inline bool PeerTypeProto_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, PeerTypeProto* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PeerTypeProto>(
+    PeerTypeProto_descriptor(), name, value);
 }
 // ===================================================================
 
-class Signal final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Signal) */ {
+class SignalProto final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SignalProto) */ {
  public:
-  inline Signal() : Signal(nullptr) {}
-  ~Signal() override;
-  explicit constexpr Signal(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline SignalProto() : SignalProto(nullptr) {}
+  ~SignalProto() override;
+  explicit constexpr SignalProto(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Signal(const Signal& from);
-  Signal(Signal&& from) noexcept
-    : Signal() {
+  SignalProto(const SignalProto& from);
+  SignalProto(SignalProto&& from) noexcept
+    : SignalProto() {
     *this = ::std::move(from);
   }
 
-  inline Signal& operator=(const Signal& from) {
+  inline SignalProto& operator=(const SignalProto& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Signal& operator=(Signal&& from) noexcept {
+  inline SignalProto& operator=(SignalProto&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -157,20 +157,20 @@ class Signal final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Signal& default_instance() {
+  static const SignalProto& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Signal* internal_default_instance() {
-    return reinterpret_cast<const Signal*>(
-               &_Signal_default_instance_);
+  static inline const SignalProto* internal_default_instance() {
+    return reinterpret_cast<const SignalProto*>(
+               &_SignalProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(Signal& a, Signal& b) {
+  friend void swap(SignalProto& a, SignalProto& b) {
     a.Swap(&b);
   }
-  inline void Swap(Signal* other) {
+  inline void Swap(SignalProto* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -183,7 +183,7 @@ class Signal final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Signal* other) {
+  void UnsafeArenaSwap(SignalProto* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -191,13 +191,13 @@ class Signal final :
 
   // implements Message ----------------------------------------------
 
-  Signal* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Signal>(arena);
+  SignalProto* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SignalProto>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Signal& from);
+  void CopyFrom(const SignalProto& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Signal& from);
+  void MergeFrom(const SignalProto& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -214,15 +214,15 @@ class Signal final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Signal* other);
+  void InternalSwap(SignalProto* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Signal";
+    return "SignalProto";
   }
   protected:
-  explicit Signal(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit SignalProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -302,25 +302,25 @@ class Signal final :
   std::string* _internal_mutable_url();
   public:
 
-  // .SignalType signal_type = 1;
+  // .SignalTypeProto signal_type = 1;
   void clear_signal_type();
-  ::SignalType signal_type() const;
-  void set_signal_type(::SignalType value);
+  ::SignalTypeProto signal_type() const;
+  void set_signal_type(::SignalTypeProto value);
   private:
-  ::SignalType _internal_signal_type() const;
-  void _internal_set_signal_type(::SignalType value);
+  ::SignalTypeProto _internal_signal_type() const;
+  void _internal_set_signal_type(::SignalTypeProto value);
   public:
 
-  // .PeerType peer_type = 5;
+  // .PeerTypeProto peer_type = 5;
   void clear_peer_type();
-  ::PeerType peer_type() const;
-  void set_peer_type(::PeerType value);
+  ::PeerTypeProto peer_type() const;
+  void set_peer_type(::PeerTypeProto value);
   private:
-  ::PeerType _internal_peer_type() const;
-  void _internal_set_peer_type(::PeerType value);
+  ::PeerTypeProto _internal_peer_type() const;
+  void _internal_set_peer_type(::PeerTypeProto value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Signal)
+  // @@protoc_insertion_point(class_scope:SignalProto)
  private:
   class _Internal;
 
@@ -345,64 +345,64 @@ class Signal final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Signal
+// SignalProto
 
-// .SignalType signal_type = 1;
-inline void Signal::clear_signal_type() {
+// .SignalTypeProto signal_type = 1;
+inline void SignalProto::clear_signal_type() {
   signal_type_ = 0;
 }
-inline ::SignalType Signal::_internal_signal_type() const {
-  return static_cast< ::SignalType >(signal_type_);
+inline ::SignalTypeProto SignalProto::_internal_signal_type() const {
+  return static_cast< ::SignalTypeProto >(signal_type_);
 }
-inline ::SignalType Signal::signal_type() const {
-  // @@protoc_insertion_point(field_get:Signal.signal_type)
+inline ::SignalTypeProto SignalProto::signal_type() const {
+  // @@protoc_insertion_point(field_get:SignalProto.signal_type)
   return _internal_signal_type();
 }
-inline void Signal::_internal_set_signal_type(::SignalType value) {
+inline void SignalProto::_internal_set_signal_type(::SignalTypeProto value) {
   
   signal_type_ = value;
 }
-inline void Signal::set_signal_type(::SignalType value) {
+inline void SignalProto::set_signal_type(::SignalTypeProto value) {
   _internal_set_signal_type(value);
-  // @@protoc_insertion_point(field_set:Signal.signal_type)
+  // @@protoc_insertion_point(field_set:SignalProto.signal_type)
 }
 
 // string id = 2;
-inline void Signal::clear_id() {
+inline void SignalProto::clear_id() {
   id_.ClearToEmpty();
 }
-inline const std::string& Signal::id() const {
-  // @@protoc_insertion_point(field_get:Signal.id)
+inline const std::string& SignalProto::id() const {
+  // @@protoc_insertion_point(field_get:SignalProto.id)
   return _internal_id();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Signal::set_id(ArgT0&& arg0, ArgT... args) {
+void SignalProto::set_id(ArgT0&& arg0, ArgT... args) {
  
  id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Signal.id)
+  // @@protoc_insertion_point(field_set:SignalProto.id)
 }
-inline std::string* Signal::mutable_id() {
+inline std::string* SignalProto::mutable_id() {
   std::string* _s = _internal_mutable_id();
-  // @@protoc_insertion_point(field_mutable:Signal.id)
+  // @@protoc_insertion_point(field_mutable:SignalProto.id)
   return _s;
 }
-inline const std::string& Signal::_internal_id() const {
+inline const std::string& SignalProto::_internal_id() const {
   return id_.Get();
 }
-inline void Signal::_internal_set_id(const std::string& value) {
+inline void SignalProto::_internal_set_id(const std::string& value) {
   
   id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Signal::_internal_mutable_id() {
+inline std::string* SignalProto::_internal_mutable_id() {
   
   return id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Signal::release_id() {
-  // @@protoc_insertion_point(field_release:Signal.id)
+inline std::string* SignalProto::release_id() {
+  // @@protoc_insertion_point(field_release:SignalProto.id)
   return id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Signal::set_allocated_id(std::string* id) {
+inline void SignalProto::set_allocated_id(std::string* id) {
   if (id != nullptr) {
     
   } else {
@@ -415,45 +415,45 @@ inline void Signal::set_allocated_id(std::string* id) {
     id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Signal.id)
+  // @@protoc_insertion_point(field_set_allocated:SignalProto.id)
 }
 
 // bytes data = 3;
-inline void Signal::clear_data() {
+inline void SignalProto::clear_data() {
   data_.ClearToEmpty();
 }
-inline const std::string& Signal::data() const {
-  // @@protoc_insertion_point(field_get:Signal.data)
+inline const std::string& SignalProto::data() const {
+  // @@protoc_insertion_point(field_get:SignalProto.data)
   return _internal_data();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Signal::set_data(ArgT0&& arg0, ArgT... args) {
+void SignalProto::set_data(ArgT0&& arg0, ArgT... args) {
  
  data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Signal.data)
+  // @@protoc_insertion_point(field_set:SignalProto.data)
 }
-inline std::string* Signal::mutable_data() {
+inline std::string* SignalProto::mutable_data() {
   std::string* _s = _internal_mutable_data();
-  // @@protoc_insertion_point(field_mutable:Signal.data)
+  // @@protoc_insertion_point(field_mutable:SignalProto.data)
   return _s;
 }
-inline const std::string& Signal::_internal_data() const {
+inline const std::string& SignalProto::_internal_data() const {
   return data_.Get();
 }
-inline void Signal::_internal_set_data(const std::string& value) {
+inline void SignalProto::_internal_set_data(const std::string& value) {
   
   data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Signal::_internal_mutable_data() {
+inline std::string* SignalProto::_internal_mutable_data() {
   
   return data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Signal::release_data() {
-  // @@protoc_insertion_point(field_release:Signal.data)
+inline std::string* SignalProto::release_data() {
+  // @@protoc_insertion_point(field_release:SignalProto.data)
   return data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Signal::set_allocated_data(std::string* data) {
+inline void SignalProto::set_allocated_data(std::string* data) {
   if (data != nullptr) {
     
   } else {
@@ -466,45 +466,45 @@ inline void Signal::set_allocated_data(std::string* data) {
     data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Signal.data)
+  // @@protoc_insertion_point(field_set_allocated:SignalProto.data)
 }
 
 // string name = 4;
-inline void Signal::clear_name() {
+inline void SignalProto::clear_name() {
   name_.ClearToEmpty();
 }
-inline const std::string& Signal::name() const {
-  // @@protoc_insertion_point(field_get:Signal.name)
+inline const std::string& SignalProto::name() const {
+  // @@protoc_insertion_point(field_get:SignalProto.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Signal::set_name(ArgT0&& arg0, ArgT... args) {
+void SignalProto::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Signal.name)
+  // @@protoc_insertion_point(field_set:SignalProto.name)
 }
-inline std::string* Signal::mutable_name() {
+inline std::string* SignalProto::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:Signal.name)
+  // @@protoc_insertion_point(field_mutable:SignalProto.name)
   return _s;
 }
-inline const std::string& Signal::_internal_name() const {
+inline const std::string& SignalProto::_internal_name() const {
   return name_.Get();
 }
-inline void Signal::_internal_set_name(const std::string& value) {
+inline void SignalProto::_internal_set_name(const std::string& value) {
   
   name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Signal::_internal_mutable_name() {
+inline std::string* SignalProto::_internal_mutable_name() {
   
   return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Signal::release_name() {
-  // @@protoc_insertion_point(field_release:Signal.name)
+inline std::string* SignalProto::release_name() {
+  // @@protoc_insertion_point(field_release:SignalProto.name)
   return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Signal::set_allocated_name(std::string* name) {
+inline void SignalProto::set_allocated_name(std::string* name) {
   if (name != nullptr) {
     
   } else {
@@ -517,65 +517,65 @@ inline void Signal::set_allocated_name(std::string* name) {
     name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Signal.name)
+  // @@protoc_insertion_point(field_set_allocated:SignalProto.name)
 }
 
-// .PeerType peer_type = 5;
-inline void Signal::clear_peer_type() {
+// .PeerTypeProto peer_type = 5;
+inline void SignalProto::clear_peer_type() {
   peer_type_ = 0;
 }
-inline ::PeerType Signal::_internal_peer_type() const {
-  return static_cast< ::PeerType >(peer_type_);
+inline ::PeerTypeProto SignalProto::_internal_peer_type() const {
+  return static_cast< ::PeerTypeProto >(peer_type_);
 }
-inline ::PeerType Signal::peer_type() const {
-  // @@protoc_insertion_point(field_get:Signal.peer_type)
+inline ::PeerTypeProto SignalProto::peer_type() const {
+  // @@protoc_insertion_point(field_get:SignalProto.peer_type)
   return _internal_peer_type();
 }
-inline void Signal::_internal_set_peer_type(::PeerType value) {
+inline void SignalProto::_internal_set_peer_type(::PeerTypeProto value) {
   
   peer_type_ = value;
 }
-inline void Signal::set_peer_type(::PeerType value) {
+inline void SignalProto::set_peer_type(::PeerTypeProto value) {
   _internal_set_peer_type(value);
-  // @@protoc_insertion_point(field_set:Signal.peer_type)
+  // @@protoc_insertion_point(field_set:SignalProto.peer_type)
 }
 
 // string url = 6;
-inline void Signal::clear_url() {
+inline void SignalProto::clear_url() {
   url_.ClearToEmpty();
 }
-inline const std::string& Signal::url() const {
-  // @@protoc_insertion_point(field_get:Signal.url)
+inline const std::string& SignalProto::url() const {
+  // @@protoc_insertion_point(field_get:SignalProto.url)
   return _internal_url();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Signal::set_url(ArgT0&& arg0, ArgT... args) {
+void SignalProto::set_url(ArgT0&& arg0, ArgT... args) {
  
  url_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Signal.url)
+  // @@protoc_insertion_point(field_set:SignalProto.url)
 }
-inline std::string* Signal::mutable_url() {
+inline std::string* SignalProto::mutable_url() {
   std::string* _s = _internal_mutable_url();
-  // @@protoc_insertion_point(field_mutable:Signal.url)
+  // @@protoc_insertion_point(field_mutable:SignalProto.url)
   return _s;
 }
-inline const std::string& Signal::_internal_url() const {
+inline const std::string& SignalProto::_internal_url() const {
   return url_.Get();
 }
-inline void Signal::_internal_set_url(const std::string& value) {
+inline void SignalProto::_internal_set_url(const std::string& value) {
   
   url_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Signal::_internal_mutable_url() {
+inline std::string* SignalProto::_internal_mutable_url() {
   
   return url_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Signal::release_url() {
-  // @@protoc_insertion_point(field_release:Signal.url)
+inline std::string* SignalProto::release_url() {
+  // @@protoc_insertion_point(field_release:SignalProto.url)
   return url_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void Signal::set_allocated_url(std::string* url) {
+inline void SignalProto::set_allocated_url(std::string* url) {
   if (url != nullptr) {
     
   } else {
@@ -588,7 +588,7 @@ inline void Signal::set_allocated_url(std::string* url) {
     url_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Signal.url)
+  // @@protoc_insertion_point(field_set_allocated:SignalProto.url)
 }
 
 #ifdef __GNUC__
@@ -600,15 +600,15 @@ inline void Signal::set_allocated_url(std::string* url) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::SignalType> : ::std::true_type {};
+template <> struct is_proto_enum< ::SignalTypeProto> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SignalType>() {
-  return ::SignalType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::SignalTypeProto>() {
+  return ::SignalTypeProto_descriptor();
 }
-template <> struct is_proto_enum< ::PeerType> : ::std::true_type {};
+template <> struct is_proto_enum< ::PeerTypeProto> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PeerType>() {
-  return ::PeerType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::PeerTypeProto>() {
+  return ::PeerTypeProto_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

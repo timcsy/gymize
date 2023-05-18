@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Gymize.Protobuf;
 
-namespace PAIA.Gymize
+namespace Gymize
 {
     public class Request
     {
@@ -51,12 +52,12 @@ namespace PAIA.Gymize
 
         public async Task ReplyAsync(Content content)
         {
-            Protobuf.Message msg = new Protobuf.Message
+            MessageProto msg = new MessageProto
             {
-                Header = new Protobuf.Header(),
-                Content = new Protobuf.Content()
+                Header = new HeaderProto(),
+                Content = new ContentProto()
             };
-            msg.Header.MessageType = Protobuf.MessageType.Response;
+            msg.Header.MessageType = MessageTypeProto.Response;
             if (m_Id != null)
             {
                 msg.Header.Id = m_Id;

@@ -1,21 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace PAIA.Gymize
+namespace Gymize
 {
-    public abstract class SensorComponent : MonoBehaviour, ISensor
+    public abstract class SensorComponent : MonoBehaviour, IObserver
     {
-        public List<string> Locations;
+        public string Locator;
+        public string GetLocator() { return Locator; }
 
-        // Start is called before the first frame update
-        void Start() {}
+        public abstract IInstance GetObservation();
 
-        public List<string> GetLocations()
+        public virtual void AddToEnv()
         {
-            return Locations;
+            GymEnv.AddObserver(GetLocator(), this);
         }
 
-        public abstract IData GetObservation(int cacheId = -1);
+        public virtual void RemoveFromEnv()
+        {
+            GymEnv.RemoveObserver(this);
+        }
+
+        public virtual void OnEnable()
+        {
+            AddToEnv(); // Make sure to include this method when overriding OnEnable() !!!
+        }
+
+        public virtual void OnDisable()
+        {
+            RemoveFromEnv(); // Make sure to include this method when overriding OnDisable() !!!
+        }
+
+        void Start() {}
     }
 }

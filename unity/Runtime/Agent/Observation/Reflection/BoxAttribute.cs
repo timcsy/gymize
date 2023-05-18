@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace PAIA.Gymize
+namespace Gymize
 {
     public class BoxAttribute : AttributeBase
     {
-        public BoxAttribute() : base() {}
-        public BoxAttribute(string location) : base(location) {}
-        public BoxAttribute(List<string> locations) : base(locations) {}
-
-        public override IData GetData(object o)
+        string m_DType;
+        public BoxAttribute() : base()
         {
-            return null;
+            m_DType = null;
+        }
+        public BoxAttribute(string locator, string dtype = null) : base(locator)
+        {
+            m_DType = dtype;
+        }
+
+        public override IInstance GetData(object o)
+        {
+            Tensor tensor = new Tensor(o, m_DType);
+            return tensor;
         }
     }
 }

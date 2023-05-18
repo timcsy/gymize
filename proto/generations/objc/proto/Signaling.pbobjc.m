@@ -44,28 +44,28 @@ static GPBFileDescriptor *SignalingRoot_FileDescriptor(void) {
   return descriptor;
 }
 
-#pragma mark - Enum SignalType
+#pragma mark - Enum SignalTypeProto
 
-GPBEnumDescriptor *SignalType_EnumDescriptor(void) {
+GPBEnumDescriptor *SignalTypeProto_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "SignalTypeUnspecified\000SignalTypeInit\000Sig"
-        "nalTypeUpdate\000SignalTypeResume\000SignalTyp"
-        "eClose\000";
+        "SignalTypeProtoUnspecified\000SignalTypePro"
+        "toInit\000SignalTypeProtoUpdate\000SignalTypeP"
+        "rotoResume\000SignalTypeProtoClose\000";
     static const int32_t values[] = {
-        SignalType_SignalTypeUnspecified,
-        SignalType_SignalTypeInit,
-        SignalType_SignalTypeUpdate,
-        SignalType_SignalTypeResume,
-        SignalType_SignalTypeClose,
+        SignalTypeProto_SignalTypeProtoUnspecified,
+        SignalTypeProto_SignalTypeProtoInit,
+        SignalTypeProto_SignalTypeProtoUpdate,
+        SignalTypeProto_SignalTypeProtoResume,
+        SignalTypeProto_SignalTypeProtoClose,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SignalType)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SignalTypeProto)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:SignalType_IsValidValue];
+                                     enumVerifier:SignalTypeProto_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -74,38 +74,38 @@ GPBEnumDescriptor *SignalType_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL SignalType_IsValidValue(int32_t value__) {
+BOOL SignalTypeProto_IsValidValue(int32_t value__) {
   switch (value__) {
-    case SignalType_SignalTypeUnspecified:
-    case SignalType_SignalTypeInit:
-    case SignalType_SignalTypeUpdate:
-    case SignalType_SignalTypeResume:
-    case SignalType_SignalTypeClose:
+    case SignalTypeProto_SignalTypeProtoUnspecified:
+    case SignalTypeProto_SignalTypeProtoInit:
+    case SignalTypeProto_SignalTypeProtoUpdate:
+    case SignalTypeProto_SignalTypeProtoResume:
+    case SignalTypeProto_SignalTypeProtoClose:
       return YES;
     default:
       return NO;
   }
 }
 
-#pragma mark - Enum PeerType
+#pragma mark - Enum PeerTypeProto
 
-GPBEnumDescriptor *PeerType_EnumDescriptor(void) {
+GPBEnumDescriptor *PeerTypeProto_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "PeerTypeUnspecified\000PeerTypeActive\000PeerT"
-        "ypePassive\000";
+        "PeerTypeProtoUnspecified\000PeerTypeProtoAc"
+        "tive\000PeerTypeProtoPassive\000";
     static const int32_t values[] = {
-        PeerType_PeerTypeUnspecified,
-        PeerType_PeerTypeActive,
-        PeerType_PeerTypePassive,
+        PeerTypeProto_PeerTypeProtoUnspecified,
+        PeerTypeProto_PeerTypeProtoActive,
+        PeerTypeProto_PeerTypeProtoPassive,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(PeerType)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(PeerTypeProto)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:PeerType_IsValidValue];
+                                     enumVerifier:PeerTypeProto_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -114,20 +114,20 @@ GPBEnumDescriptor *PeerType_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL PeerType_IsValidValue(int32_t value__) {
+BOOL PeerTypeProto_IsValidValue(int32_t value__) {
   switch (value__) {
-    case PeerType_PeerTypeUnspecified:
-    case PeerType_PeerTypeActive:
-    case PeerType_PeerTypePassive:
+    case PeerTypeProto_PeerTypeProtoUnspecified:
+    case PeerTypeProto_PeerTypeProtoActive:
+    case PeerTypeProto_PeerTypeProtoPassive:
       return YES;
     default:
       return NO;
   }
 }
 
-#pragma mark - Signal
+#pragma mark - SignalProto
 
-@implementation Signal
+@implementation SignalProto
 
 @dynamic signalType;
 @dynamic id_p;
@@ -136,15 +136,15 @@ BOOL PeerType_IsValidValue(int32_t value__) {
 @dynamic peerType;
 @dynamic URL;
 
-typedef struct Signal__storage_ {
+typedef struct SignalProto__storage_ {
   uint32_t _has_storage_[1];
-  SignalType signalType;
-  PeerType peerType;
+  SignalTypeProto signalType;
+  PeerTypeProto peerType;
   NSString *id_p;
   NSData *data_p;
   NSString *name;
   NSString *URL;
-} Signal__storage_;
+} SignalProto__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -154,66 +154,66 @@ typedef struct Signal__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "signalType",
-        .dataTypeSpecific.enumDescFunc = SignalType_EnumDescriptor,
-        .number = Signal_FieldNumber_SignalType,
+        .dataTypeSpecific.enumDescFunc = SignalTypeProto_EnumDescriptor,
+        .number = SignalProto_FieldNumber_SignalType,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Signal__storage_, signalType),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, signalType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeEnum,
       },
       {
         .name = "id_p",
         .dataTypeSpecific.clazz = Nil,
-        .number = Signal_FieldNumber_Id_p,
+        .number = SignalProto_FieldNumber_Id_p,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Signal__storage_, id_p),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, id_p),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "data_p",
         .dataTypeSpecific.clazz = Nil,
-        .number = Signal_FieldNumber_Data_p,
+        .number = SignalProto_FieldNumber_Data_p,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Signal__storage_, data_p),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, data_p),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "name",
         .dataTypeSpecific.clazz = Nil,
-        .number = Signal_FieldNumber_Name,
+        .number = SignalProto_FieldNumber_Name,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Signal__storage_, name),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, name),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "peerType",
-        .dataTypeSpecific.enumDescFunc = PeerType_EnumDescriptor,
-        .number = Signal_FieldNumber_PeerType,
+        .dataTypeSpecific.enumDescFunc = PeerTypeProto_EnumDescriptor,
+        .number = SignalProto_FieldNumber_PeerType,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Signal__storage_, peerType),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, peerType),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeEnum,
       },
       {
         .name = "URL",
         .dataTypeSpecific.clazz = Nil,
-        .number = Signal_FieldNumber_URL,
+        .number = SignalProto_FieldNumber_URL,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(Signal__storage_, URL),
+        .offset = (uint32_t)offsetof(SignalProto__storage_, URL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Signal class]
+        [GPBDescriptor allocDescriptorForClass:[SignalProto class]
                                      rootClass:[SignalingRoot class]
                                           file:SignalingRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Signal__storage_)
+                                   storageSize:sizeof(SignalProto__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -230,27 +230,27 @@ typedef struct Signal__storage_ {
 
 @end
 
-int32_t Signal_SignalType_RawValue(Signal *message) {
-  GPBDescriptor *descriptor = [Signal descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Signal_FieldNumber_SignalType];
+int32_t SignalProto_SignalType_RawValue(SignalProto *message) {
+  GPBDescriptor *descriptor = [SignalProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:SignalProto_FieldNumber_SignalType];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetSignal_SignalType_RawValue(Signal *message, int32_t value) {
-  GPBDescriptor *descriptor = [Signal descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Signal_FieldNumber_SignalType];
+void SetSignalProto_SignalType_RawValue(SignalProto *message, int32_t value) {
+  GPBDescriptor *descriptor = [SignalProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:SignalProto_FieldNumber_SignalType];
   GPBSetMessageRawEnumField(message, field, value);
 }
 
-int32_t Signal_PeerType_RawValue(Signal *message) {
-  GPBDescriptor *descriptor = [Signal descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Signal_FieldNumber_PeerType];
+int32_t SignalProto_PeerType_RawValue(SignalProto *message) {
+  GPBDescriptor *descriptor = [SignalProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:SignalProto_FieldNumber_PeerType];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetSignal_PeerType_RawValue(Signal *message, int32_t value) {
-  GPBDescriptor *descriptor = [Signal descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Signal_FieldNumber_PeerType];
+void SetSignalProto_PeerType_RawValue(SignalProto *message, int32_t value) {
+  GPBDescriptor *descriptor = [SignalProto descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:SignalProto_FieldNumber_PeerType];
   GPBSetMessageRawEnumField(message, field, value);
 }
 

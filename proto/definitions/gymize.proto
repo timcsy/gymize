@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "space.proto";
+import "locator.proto";
+import "recording.proto";
+
+option csharp_namespace = "Gymize.Protobuf";
+
+message ActionProto {
+	string agent = 1;
+	InstanceProto action = 2;
+}
+
+message ObservationProto {
+	LocatorProto locator = 1;
+	InstanceProto observation = 2;
+}
+
+message RewardProto {
+	string agent = 1;
+	double reward = 2;
+}
+
+message InfoProto {
+	string agent = 1; // "" for env info
+	repeated InstanceProto infos = 2;
+}
+
+message GymizeProto {
+	repeated string reset_agents = 1; // "" for the environment, others for individual agents
+	repeated string request_agents = 2; // ask for observations, rewards, infos or actions belong to agent name, "" will clear env info
+	repeated ActionProto actions = 3;
+	repeated ObservationProto observations = 4;
+	repeated RewardProto rewards = 5;
+	repeated string terminated_agents = 6; // "" for the environment, others for individual agents
+	repeated string truncated_agents = 7; // "" for the environment, others for individual agents
+	repeated InfoProto infos = 8; // can go with observations but do not need to go with actions
+	RecordingProto recording = 9; // render images and audio
+}
