@@ -132,6 +132,7 @@ namespace Gymize
 
         public bool HasAgent(string agent)
         {
+            if (agent == "") return IsAllAgents;
             if (Agents.Contains(agent)) return !IsAllAgents;
             else return IsAllAgents;
         }

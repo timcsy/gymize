@@ -13,15 +13,9 @@ namespace Gymize
             GymEnv.Start(EnvName);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            GymEnv.Instance._CheckChannel();
-        }
-        
         void FixedUpdate()
         {
-            GymEnv.Instance._Step();
+            GymEnv.Step();
         }
 
         void OnApplicationQuit()

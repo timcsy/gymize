@@ -221,8 +221,10 @@ public class TestAgentInstance : Agent
         Debug.Log(actions["multi_bool"]);
         Debug.Log(actions["multi_dis"]);
         Debug.Log(actions["graph"]);
-        graph = (GraphInstance)actions["graph"];
     }
 
-    public override void OnInfo(object info) {}
+    public override void OnInfo(object info)
+    {
+        graph = (GraphInstance)info;
+    }
 }

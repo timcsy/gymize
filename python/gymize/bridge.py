@@ -26,7 +26,9 @@ class Bridge:
 
         self.update_seconds = update_seconds
 
-        self.actions = { agent: self.action_spaces[agent].sample() for agent in self.possible_agents }
+        self.request_agents = []
+        self.reset_requests = []
+        self.actions = {}
         self.observations = { agent: self.observation_spaces[agent].sample() for agent in self.possible_agents }
         self.rewards = { agent: 0.0 for agent in self.possible_agents }
         self.terminations = { agent: False for agent in self.possible_agents }
@@ -38,32 +40,30 @@ class Bridge:
         time.sleep(0.5)
         launch_env(file_name)
     
-    def set_request_agents(self, agents: List[str]) -> None:
-        # TODO
-        pass
+    def add_request_agents(self, agents: List[str]) -> None:
+        self.request_agents = list(set(self.request_agents + agents))
+        self.send_requests_resets_actions()
 
     def reset_env(self) -> None:
         self.reset_agents([""] + self.possible_agents)
 
     def reset_agents(self, agents: List[str]) -> None:
-        # TODO: not terminate or truncate anymore, renew possible_agents
-        gymize_proto = GymizeProto()
-        gymize_proto.reset_agents.extend(agents)
-        self.send_gymize_message(gymize_proto)
+        # not terminate or truncate anymore, renew possible_agents
+        for agent in agents:
+            self.rewards[agent] = 0
+            self.terminations[agent] = False
+            self.truncations[agent] = False
+        
+        self.reset_requests = list(set(self.reset_requests + agents))
+        self.add_request_agents(agents)
 
-        self.set_request_agents(agents) # 或看可不可以合併
-
-    def set_actions(self, actions: Dict[str, Any]):
+    def set_actions(self, actions: Dict[str, Any], with_env: bool=True) -> None:
         # TODO: if there are more than one agent, then wait for obsertvation?
-        gymize_proto = GymizeProto()
-        for agent, action in actions.items():
-            action_proto = ActionProto()
-            action_proto.agent = agent
-            action_proto.action.MergeFrom(space.to_proto(action))
-            gymize_proto.actions.append(action_proto)
-        self.send_gymize_message(gymize_proto)
-
-        self.set_request_agents(actions.keys()) # 或看可不可以合併
+        self.actions = { **self.actions, **actions }
+        env = []
+        if with_env:
+            env += ['']
+        self.add_request_agents(env + list(actions.keys()))
 
     def get_observations(self, agents: List[str]):
         # TODO: when to wait?
@@ -111,11 +111,28 @@ class Bridge:
     def wait_gymize_message(self) -> None:
         content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
         return self.parse_message(content=content, done=done)
+    
+    def send_requests_resets_actions(self) -> None:
+        gymize_proto = GymizeProto()
+        gymize_proto.request_agents.extend(self.request_agents)
+        gymize_proto.reset_agents.extend(self.reset_requests)
+        # TODO: only send requested actions
+        for agent, action in self.actions.items():
+            action_proto = ActionProto()
+            action_proto.agent = agent
+            action_proto.action.MergeFrom(space.to_proto(action))
+            gymize_proto.actions.append(action_proto)
+        self.send_gymize_message(gymize_proto)
+        
+        self.request_agents = []
+        self.reset_requests = []
+        self.actions = {}
 
     def parse_observations(self, observation_protos: List[ObservationProto]=None):
         if observation_protos is None:
             return self.observations
         observations = space.tuple_to_list(self.observations)
+        # TODO v: when to renew list? everytime or request agent only? but parse means requested
         renew_list = set()
         for obs in observation_protos:
             observations = space.merge(observations, obs.locator, obs.observation, renew_list)
@@ -160,7 +177,7 @@ class Bridge:
         env_info_proto = None
         for info_proto in info_protos:
             if info_proto.agent != '':
-                # TODO: when to renew list?
+                # TODO v: when to renew list?
                 self.infos[info_proto.agent]['agent'] = []
                 for instance_proto in info_proto.infos:
                     self.infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))

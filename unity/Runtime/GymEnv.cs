@@ -190,6 +190,11 @@ namespace Gymize
         List<string> m_TruncationAgents;
         DelegateDictionary<string, InfoCallBack> m_OnInfo;
         Dictionary<string, List<object>> m_Infos;
+        List<string> m_RequestAgents; // TODO
+        Dictionary<string, bool> m_Requested; // Whether another side has requested
+        Dictionary<string, bool> m_UpdateAgents; // TODO
+        Dictionary<string, int> m_Periods; // TODO
+        Dictionary<string, int> m_Steps; // TODO
 
         private GymEnv() : base()
         {
@@ -204,14 +209,25 @@ namespace Gymize
             m_Rewards = new Dictionary<string, double>();
             m_TerminatedAgents = new List<string>();
             m_TruncationAgents = new List<string>();
-            m_OnInfo = new DelegateDictionary<string, InfoCallBack>()
+            m_OnInfo = new DelegateDictionary<string, InfoCallBack>
             {
                 { "", null }
             };
-            m_Infos = new Dictionary<string, List<object>>()
+            m_Infos = new Dictionary<string, List<object>>
             {
                 { "", new List<object>() }
             };
+            m_RequestAgents = new List<string>();
+            m_Requested = new Dictionary<string, bool>
+            {
+                { "", false }
+            };
+            m_UpdateAgents = new Dictionary<string, bool>
+            {
+                { "", false }
+            };
+            m_Periods = new Dictionary<string, int>();
+            m_Steps = new Dictionary<string, int>();
         }
 
         List<IObserver> _AddAgent(IAgent agent)
@@ -236,7 +252,7 @@ namespace Gymize
 
         void _Reset(GymizeProto gymizeProto)
         {
-            // TODO: Also reset actions, observations, rewards, termiantions, truncations, infos
+            // TODO: Also reset actions, "observations", rewards, termiantions, truncations, infos
             foreach (string agent in gymizeProto.ResetAgents)
             {
                 m_Actions[agent] = null;
@@ -428,37 +444,37 @@ namespace Gymize
             m_Observations[locator].Add(GymInstance.ToGym(observation));
         }
 
-        List<ObservationProto> _GetObservations()
+        List<ObservationProto> _GetObservations(List<string> responseAgents)
         {
             // TODO: just send the requested agents
+            // TODO v: whether to clear all agents? After sendiong
             List<ObservationProto> observationProtos = new List<ObservationProto>();
-            foreach (var locator_observations in m_Observations)
+            foreach (string agent in responseAgents)
             {
-                Locator locator = locator_observations.Key;
-                List<IInstance> observations = locator_observations.Value;
-                foreach (IInstance observation in observations)
+                foreach (var locator_observers in m_Observers)
                 {
-                    ObservationProto observationProto = new ObservationProto();
-                    observationProto.Locator = locator.ToProtobuf();
-                    if (observation == null) Debug.LogWarning(locator + " is null observation");
-                    else observationProto.Observation = observation.ToProtobuf();
-                    observationProtos.Add(observationProto);
+                    Locator locator = locator_observers.Key;
+                    if (!locator.HasAgent(agent)) continue;
+                    List<IObserver> observers = locator_observers.Value;
+                    foreach (IObserver observer in observers)
+                    {
+                        _SetObservation(locator, observer.GetObservation());
+                    }
                 }
-            }
-            // TODO: whether to clear all agents?
-            m_Observations.Clear();
-            foreach (var locator_observers in m_Observers)
-            {
-                Locator locator = locator_observers.Key;
-                List<IObserver> observers = locator_observers.Value;
-                foreach (IObserver observer in observers)
+                foreach (var locator_observations in m_Observations)
                 {
-                    ObservationProto observationProto = new ObservationProto();
-                    observationProto.Locator = locator.ToProtobuf();
-                    IInstance observation = observer.GetObservation();
-                    if (observation == null) Debug.LogWarning(locator.ToString() + " is null observation");
-                    else observationProto.Observation = observation.ToProtobuf();
-                    observationProtos.Add(observationProto);
+                    Locator locator = locator_observations.Key;
+                    if (!locator.HasAgent(agent)) continue;
+                    List<IInstance> observations = locator_observations.Value;
+                    foreach (IInstance observation in observations)
+                    {
+                        ObservationProto observationProto = new ObservationProto();
+                        observationProto.Locator = locator.ToProtobuf();
+                        if (observation == null) Debug.LogWarning(locator + " is null observation");
+                        else observationProto.Observation = observation.ToProtobuf();
+                        observationProtos.Add(observationProto);
+                    }
+                    observations.Clear();
                 }
             }
             return observationProtos;
@@ -466,7 +482,7 @@ namespace Gymize
 
         void _AddReward(string agent, double reward)
         {
-            if (!m_Rewards.ContainsKey(agent)) _ClearReward(agent);
+            if (!m_Rewards.ContainsKey(agent)) m_Rewards[agent] = 0;
             m_Rewards[agent] += reward;
         }
 
@@ -475,23 +491,20 @@ namespace Gymize
             m_Rewards[agent] = reward;
         }
 
-        void _ClearReward(string agent)
-        {
-            // TODO: when should be cleared?
-            m_Rewards[agent] = 0;
-        }
-
-        List<RewardProto> _GetRewards()
+        List<RewardProto> _GetRewards(List<string> responseAgents)
         {
             // TODO: just send the requested agents
             List<RewardProto> rewardProtos = new List<RewardProto>();
-            foreach (string agent in m_Rewards.Keys.ToList<string>())
+            foreach (string agent in responseAgents)
             {
-                RewardProto rewardProto = new RewardProto();
-                rewardProto.Agent = agent;
-                rewardProto.Reward = m_Rewards[agent];
-                rewardProtos.Add(rewardProto);
-                _ClearReward(agent);
+                if (m_Rewards.ContainsKey(agent))
+                {
+                    RewardProto rewardProto = new RewardProto();
+                    rewardProto.Agent = agent;
+                    rewardProto.Reward = m_Rewards[agent];
+                    rewardProtos.Add(rewardProto);
+                    m_Rewards[agent] = 0;
+                }
             }
             return rewardProtos;
         }
@@ -501,11 +514,19 @@ namespace Gymize
             m_TerminatedAgents.Add(agent);
         }
 
-        List<string> _GetTerminations()
+        List<string> _GetTerminations(List<string> responseAgents)
         {
-            // TODO: when terminations should be included? or when should be reset? 已經停掉的也不會送東西過來了
-            List<string> terminatedAgents = m_TerminatedAgents;
-            m_TerminatedAgents = new List<string>();
+            // TODO v: when terminations should be included? or when should be reset? 已經停掉的也不會送東西過來了
+            List<string> terminatedAgents = new List<string>();
+            foreach (string agent in responseAgents)
+            {
+                if (m_TerminatedAgents.Contains(agent))
+                {
+                    terminatedAgents.Add(agent);
+                    m_TerminatedAgents.Remove(agent);
+                }
+                else if (m_TerminatedAgents.Contains("")) m_TerminatedAgents.Remove(agent);
+            }
             return terminatedAgents;
         }
 
@@ -514,11 +535,19 @@ namespace Gymize
             m_TruncationAgents.Add(agent);
         }
 
-        List<string> _GetTruncations()
+        List<string> _GetTruncations(List<string> responseAgents)
         {
-            // TODO: when truncations should be included? or when should be reset? 已經停掉的也不會送東西過來了
-            List<string> truncatedAgents = m_TruncationAgents;
-            m_TruncationAgents = new List<string>();
+            // TODO v: when truncations should be included? or when should be reset? 已經停掉的也不會送東西過來了
+            List<string> truncatedAgents = new List<string>();
+            foreach (string agent in responseAgents)
+            {
+                if (m_TruncationAgents.Contains(agent))
+                {
+                    truncatedAgents.Add(agent);
+                    m_TruncationAgents.Remove(agent);
+                }
+                else if (m_TruncationAgents.Contains("")) m_TruncationAgents.Remove(agent);
+            }
             return truncatedAgents;
         }
 
@@ -540,27 +569,48 @@ namespace Gymize
             }
         }
 
-        List<InfoProto> _GetInfos()
+        List<InfoProto> _GetInfos(List<string> responseAgents)
         {
-            // TODO: when info should be cleared? and when env "" info be cleared?
+            // TODO v: when info should be cleared? and when env "" info be cleared?
             // TODO: just send the requested agents
             List<InfoProto> infoProtos = new List<InfoProto>();
-            foreach (string agent in m_Infos.Keys.ToList<string>())
+            foreach (string agent in responseAgents)
             {
-                InfoProto infoProto = new InfoProto();
-                infoProto.Agent = agent;
-                List<object> infos = m_Infos[agent];
-                foreach (object obj in infos)
+                if (m_Infos.ContainsKey(agent))
                 {
-                    infoProto.Infos.Add(GymInstance.ToGym(obj).ToProtobuf());
+                    InfoProto infoProto = new InfoProto();
+                    infoProto.Agent = agent;
+                    List<object> infos = m_Infos[agent];
+                    foreach (object obj in infos)
+                    {
+                        infoProto.Infos.Add(GymInstance.ToGym(obj).ToProtobuf());
+                    }
+                    infoProtos.Add(infoProto);
+                    m_Infos[agent] = new List<object>();
                 }
-                infoProtos.Add(infoProto);
-                m_Infos[agent] = new List<object>();
             }
             return infoProtos;
         }
 
-        internal void _CheckChannel()
+        void _RequestAgents(GymizeProto gymizeProto)
+        {
+            lock (m_Requested)
+            {
+                foreach (string agent in gymizeProto.RequestAgents)
+                {
+                    if (!m_Requested.ContainsKey(agent)) m_Requested[agent] = false;
+                    m_Requested[agent] = true;
+                }
+            }
+        }
+
+        void _Step()
+        {
+            _CheckChannel();
+            _SendGymizeMessage();
+        }
+
+        void _CheckChannel()
         {
             if (HasMessage("_gym_"))
             {
@@ -570,14 +620,8 @@ namespace Gymize
                     GymizeProto gymizeProto = GymizeProto.Parser.ParseFrom(content.Raw);
                     _RecvGymizeMessage(gymizeProto);
                 }
-                _SendGymizeMessage();
             }
             else QuitWhenChannelClosed();
-        }
-
-        internal void _Step()
-        {
-            
         }
 
         void _RecvGymizeMessage(GymizeProto gymizeProto)
@@ -585,18 +629,42 @@ namespace Gymize
             _Reset(gymizeProto);
             _SetActions(gymizeProto);
             _RecvInfos(gymizeProto);
+            _RequestAgents(gymizeProto);
         }
 
         void _SendGymizeMessage()
         {
+            List<string> responseAgents = _GetResponseAgents();
             GymizeProto gymizeProto = new GymizeProto();
-            gymizeProto.Observations.AddRange(_GetObservations());
-            gymizeProto.Rewards.AddRange(_GetRewards());
-            gymizeProto.TerminatedAgents.AddRange(_GetTerminations());
-            gymizeProto.TruncatedAgents.AddRange(_GetTruncations());
-            gymizeProto.Infos.AddRange(_GetInfos());
-            byte[] gymizeMessage = gymizeProto.ToByteArray();
-            TellSync("_gym_", gymizeMessage);
+            gymizeProto.Observations.AddRange(_GetObservations(responseAgents));
+            gymizeProto.Rewards.AddRange(_GetRewards(responseAgents));
+            gymizeProto.TerminatedAgents.AddRange(_GetTerminations(responseAgents));
+            gymizeProto.TruncatedAgents.AddRange(_GetTruncations(responseAgents));
+            gymizeProto.Infos.AddRange(_GetInfos(responseAgents));
+            if (responseAgents.Count > 0)
+            {
+                byte[] gymizeMessage = gymizeProto.ToByteArray();
+                TellSync("_gym_", gymizeMessage);
+            }
+        }
+
+        List<string> _GetResponseAgents()
+        {
+            // TODO: with m_UpdateAgents
+            List<string> responseAgents = new List<string>();
+
+            lock (m_Requested)
+            {
+                foreach (string agent in m_Requested.Keys)
+                {
+                    if (m_Requested[agent]) responseAgents.Add(agent);
+                }
+
+                // remove the used requested agents
+                foreach (string agent in responseAgents) m_Requested[agent] = false;
+            }
+
+            return responseAgents;
         }
     }
 }

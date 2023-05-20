@@ -238,7 +238,7 @@ if __name__ == '__main__':
             'obsInt2': spaces.Box(-2147483648, 2147483647, dtype=np.int32),
             'obsFloat': spaces.Box(-np.inf, np.inf, dtype=np.float64),
             'obsBool': spaces.MultiBinary(1),
-            # 'obsNull': spaces.MultiBinary(1),
+            ## 'obsNull': spaces.MultiBinary(1),
             'varEnum': spaces.Box(-9223372036854775808, 9223372036854775807, dtype=np.int64),
             'varBool': spaces.MultiBinary(1),
             'varInt16': spaces.Box(-32768, 32767, dtype=np.int16),
@@ -270,6 +270,7 @@ if __name__ == '__main__':
     )
 
     env = gym.make('gymize/Unity-v0', env_name='kart', file_name=file_name, observation_space=observation_space, action_space=action_space)
+    env.send_info(spaces.Graph(spaces.Discrete(10), spaces.Discrete(100)).sample())
     observation, info = env.reset()
 
     for i in range(2):
