@@ -6,7 +6,7 @@ namespace Gymize
 {
     public class GymChannel
     {
-        Channel m_Channel;
+        protected Channel m_Channel;
         public DelegateDictionary<string, MessageCallBack> OnMessage; // { id: MessageCallBack }
         public DelegateDictionary<string, RequestCallBack> OnRequest; // { id: RequestCallBack }
 
@@ -168,6 +168,7 @@ namespace Gymize
 
         internal void StartChannel(string name)
         {
+            if (m_Channel != null) return;
             m_Channel = new Channel(name);
             m_Channel.OnMessage = OnMessage;
             m_Channel.OnRequest = OnRequest;

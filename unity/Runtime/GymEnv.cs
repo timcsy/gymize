@@ -12,6 +12,7 @@ namespace Gymize
 {
     public delegate void ResetCallBack();
     public delegate void InfoCallBack(object info);
+    public delegate void ManualCallBack();
 
     public class GymEnv : GymChannel
     {
@@ -47,6 +48,11 @@ namespace Gymize
         {
             get { return Instance.m_OnInfo; }
             set { Instance.m_OnInfo = value; }
+        }
+        public static DelegateDictionary<string, ManualCallBack> OnManual
+        {
+            get { return Instance.m_OnManual; }
+            set { Instance.m_OnManual = value; }
         }
 
         public static void Start(string name)
@@ -190,6 +196,7 @@ namespace Gymize
         List<string> m_TruncationAgents;
         DelegateDictionary<string, InfoCallBack> m_OnInfo;
         Dictionary<string, List<object>> m_Infos;
+        DelegateDictionary<string, ManualCallBack> m_OnManual;
         List<string> m_RequestAgents; // TODO
         Dictionary<string, bool> m_Requested; // Whether another side has requested
         Dictionary<string, bool> m_UpdateAgents; // TODO
@@ -217,6 +224,7 @@ namespace Gymize
             {
                 { "", new List<object>() }
             };
+            m_OnManual = new DelegateDictionary<string, ManualCallBack>();
             m_RequestAgents = new List<string>();
             m_Requested = new Dictionary<string, bool>
             {
@@ -232,6 +240,7 @@ namespace Gymize
 
         List<IObserver> _AddAgent(IAgent agent)
         {
+            m_OnManual[agent.GetName()] += agent.OnManual;
             m_OnReset[agent.GetName()] += agent.OnReset;
             m_OnInfo[agent.GetName()] += agent.OnInfo;
             _AddActuator(agent);
@@ -241,6 +250,7 @@ namespace Gymize
 
         void _RemoveAgent(IAgent agent, List<IObserver> observers)
         {
+            m_OnManual[agent.GetName()] -= agent.OnManual;
             m_OnReset[agent.GetName()] -= agent.OnReset;
             m_OnInfo[agent.GetName()] -= agent.OnInfo;
             _RemoveActuator(agent);
@@ -612,6 +622,13 @@ namespace Gymize
 
         void _CheckChannel()
         {
+            if (m_Channel != null && m_Channel.Status != ChannelStatus.CONNECTED)
+            {
+                foreach (ManualCallBack manualCallBack in m_OnManual.Values)
+                {
+                    manualCallBack?.Invoke();
+                }
+            }
             if (HasMessage("_gym_"))
             {
                 Content content = TakeMessage("_gym_");

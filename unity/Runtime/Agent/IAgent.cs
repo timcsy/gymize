@@ -9,6 +9,7 @@ namespace Gymize
         void Truncate();
         void SendInfo(object info);
         void OnInfo(object info);
+        void OnManual();
         void AddToEnv();
         void RemoveFromEnv();
     }

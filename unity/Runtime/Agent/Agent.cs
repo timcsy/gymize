@@ -31,6 +31,7 @@ namespace Gymize
             GymEnv.SendInfo(GetName(), info);
         }
         public abstract void OnInfo(object info);
+        public virtual void OnManual() {}
 
         public virtual void AddToEnv()
         {
