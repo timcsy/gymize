@@ -18,7 +18,7 @@ if __name__ == '__main__':
             "CameraFront": spaces.Box(0, 255, shape=(540, 960, 3), dtype=np.uint8)
         }
     )
-    observation_spaces = { 'agent1': observation_space, 'agent2': observation_space}
+    observation_spaces = { 'agent1': observation_space, 'agent2': observation_space }
     action_space = spaces.Discrete(4)
     action_spaces = { 'agent1': action_space, 'agent2': action_space }
     reward_range=(-np.inf, np.inf)

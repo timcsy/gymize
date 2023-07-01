@@ -316,10 +316,13 @@ namespace Gymize
 
         void _AddSensor(SensorComponent sensor)
         {
+            // Add Observer from SensorComponent
             Locator scope = new Locator();
 
             GameObject gameObject = sensor.gameObject;
-            string prefix = "";
+            string prefix = ""; // path between the GameObject of Agent (excluded) and Sensor (included)
+            // find parent, grand parent, ...
+            // Collect agent names w.r.t. its scope
             while (gameObject != null)
             {
                 IAgent[] agents = gameObject.GetComponents<IAgent>();
