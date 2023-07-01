@@ -15,7 +15,7 @@ namespace Gymize
 
         void FixedUpdate()
         {
-            GymEnv.Step();
+            GymEnv.Tick();
         }
 
         void OnApplicationQuit()

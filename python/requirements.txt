@@ -1,0 +1,2 @@
+websockets==10.1
+protobuf

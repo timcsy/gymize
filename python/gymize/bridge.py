@@ -45,7 +45,7 @@ class Bridge:
         self.send_requests_resets_actions()
 
     def reset_env(self) -> None:
-        self.reset_agents([""] + self.possible_agents)
+        self.reset_agents([''] + self.possible_agents)
 
     def reset_agents(self, agents: List[str]) -> None:
         # not terminate or truncate anymore, renew possible_agents

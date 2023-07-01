@@ -102,22 +102,14 @@ namespace Gymize
             Instance._AddObserver(fullLoc, observer);
         }
 
-        public static List<IObserver> AddObserversFromObject(object o, string scope = "")
+        public static void AddSensor(SensorComponent sensor)
         {
-            Locator scopeLoc = Locator.ParseFrom(scope);
-            return Instance._AddObserversFromObject(o, scopeLoc);
+            Instance._AddSensor(sensor);
         }
 
-        public static List<IObserver> AddObserversFromGameObject(object gameObject, string scope = "")
+        public static List<IObserver> AddObserversFromAgent(IAgent agent)
         {
-            Locator scopeLoc = Locator.ParseFrom(scope);
-            return Instance._AddObserversFromGameObject(gameObject, scopeLoc);
-        }
-
-        public static List<IObserver> AddObserversFromComponent(object component, string scope = "")
-        {
-            Locator scopeLoc = Locator.ParseFrom(scope);
-            return Instance._AddObserversFromComponent(component, scopeLoc);
+            return Instance._AddObserversFromAgent(agent);
         }
 
         public static void RemoveObserver(string locator)
@@ -171,9 +163,9 @@ namespace Gymize
             Instance._SendInfo(agent, info);
         }
 
-        public static void Step()
+        public static void Tick()
         {
-            Instance._Step();
+            Instance._Tick();
         }
 
         public static void Close()
@@ -200,8 +192,8 @@ namespace Gymize
         List<string> m_RequestAgents; // TODO
         Dictionary<string, bool> m_Requested; // Whether another side has requested
         Dictionary<string, bool> m_UpdateAgents; // TODO
-        Dictionary<string, int> m_Periods; // TODO
-        Dictionary<string, int> m_Steps; // TODO
+        Dictionary<string, int> m_Periods; // TODO: How long (ticks) does agent reacts
+        Dictionary<string, int> m_Ticks; // TODO: How many ticks does an agent has passed since reacts
 
         private GymEnv() : base()
         {
@@ -235,7 +227,7 @@ namespace Gymize
                 { "", false }
             };
             m_Periods = new Dictionary<string, int>();
-            m_Steps = new Dictionary<string, int>();
+            m_Ticks = new Dictionary<string, int>();
         }
 
         List<IObserver> _AddAgent(IAgent agent)
@@ -244,8 +236,7 @@ namespace Gymize
             m_OnReset[agent.GetName()] += agent.OnReset;
             m_OnInfo[agent.GetName()] += agent.OnInfo;
             _AddActuator(agent);
-            Locator scope = Locator.ParseFrom(agent.GetName() + "@");
-            return _AddObserversFromComponent(agent, scope);
+            return _AddObserversFromAgent(agent);
         }
 
         void _RemoveAgent(IAgent agent, List<IObserver> observers)
@@ -323,17 +314,42 @@ namespace Gymize
             m_Observers[locator].Add(observer);
         }
 
-        List<IObserver> _AddObserversFromObject(object o, Locator scope = null)
+        void _AddSensor(SensorComponent sensor)
         {
-            // Collect and add Observers from the "existed" object instance o
+            Locator scope = new Locator();
 
+            GameObject gameObject = sensor.gameObject;
+            string prefix = "";
+            while (gameObject != null)
+            {
+                IAgent[] agents = gameObject.GetComponents<IAgent>();
+                string agentNames = "";
+                foreach (IAgent agent in agents) agentNames += agent.GetName() + "@";
+                if (agents.Count<IAgent>() > 0)
+                {
+                    scope.Mappings.AddRange(Locator.ParseFrom(agentNames + prefix).Mappings);
+                }
+                prefix = "." + gameObject.name + prefix;
+                gameObject = gameObject.transform.parent?.gameObject;
+            }
+
+            Locator locator = Locator.ParseFrom(sensor.GetLocator());
+            Locator fullLoc = Locator.Join(scope, locator);
+            _AddObserver(fullLoc, sensor);
+        }
+
+        List<IObserver> _AddObserversFromAgent(IAgent agent)
+        {
+            // Collect and add Attribute Observers from an agent
             List<IObserver> observers = new List<IObserver>();
+            
+            Locator scope = Locator.ParseFrom(agent.GetName() + "@");
 
             BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            if (o != null)
+            if (agent != null)
             {
                 // Get fields with Gymize Attribute
-                FieldInfo[] fields = o.GetType().GetFields(bindingFlags);
+                FieldInfo[] fields = agent.GetType().GetFields(bindingFlags);
                 if (fields != null)
                 {
                     foreach (FieldInfo field in fields)
@@ -343,13 +359,13 @@ namespace Gymize
                         {
                             Locator loc = Locator.ParseFrom(attr.GetLocator());
                             Locator fullLoc = Locator.Join(scope, loc, field.Name);
-                            observers.Add(_AddAttributeObserver(attr, fullLoc, o, field));
+                            observers.Add(_AddAttributeObserver(attr, fullLoc, agent, field));
                         }
                     }
                 }
 
                 // Get properties with Gymize Attribute
-                PropertyInfo[] properties = o.GetType().GetProperties(bindingFlags);
+                PropertyInfo[] properties = agent.GetType().GetProperties(bindingFlags);
                 if (properties!= null)
                 {
                     foreach (PropertyInfo prop in properties)
@@ -359,63 +375,12 @@ namespace Gymize
                         {
                             Locator loc = Locator.ParseFrom(attr.GetLocator());
                             Locator fullLoc = Locator.Join(scope, loc, prop.Name);
-                            observers.Add(_AddAttributeObserver(attr, fullLoc, o, prop));
+                            observers.Add(_AddAttributeObserver(attr, fullLoc, agent, prop));
                         }
                     }
                 }
             }
             return observers;
-        }
-
-        List<IObserver> _AddObserversFromGameObject(object gameObject, Locator scope = null)
-        {
-            List<IObserver> observers = new List<IObserver>();
-
-            GameObject o = gameObject as GameObject;
-            if (o != null)
-            {
-                HashSet<Mapping> allMappings = new HashSet<Mapping>();
-                Component[] components = o.GetComponents(typeof(Component));
-                foreach (Component component in components)
-                {
-                    Behaviour behaviour = component as Behaviour;
-                    if (behaviour != null && !behaviour.enabled) continue;
-
-                    IObserver observer = component as IObserver;
-                    if (observer != null)
-                    {
-                        Locator locator = Locator.ParseFrom(observer.GetLocator());
-                        Locator fullLoc = Locator.Join(scope, locator, o.name);
-                        ScopeSensor scopeSensor = observer as ScopeSensor;
-                        if (scopeSensor == null)
-                        {
-                            _AddObserver(fullLoc, observer);
-                            observers.Add(observer);
-                        }
-                        // Collect locations in this level
-                        allMappings.UnionWith(fullLoc.Mappings);
-                    }
-                    observers.AddRange(_AddObserversFromObject(component, scope));
-                }
-                Locator nextScope = new Locator();
-                nextScope.Mappings.AddRange(allMappings);
-                for (int i = 0; i < o.transform.childCount; i++)
-                {
-                    GameObject child = o.transform.GetChild(i).gameObject;
-                    observers.AddRange(_AddObserversFromGameObject(child, nextScope));
-                }
-            }
-            return observers;
-        }
-
-        List<IObserver> _AddObserversFromComponent(object component, Locator scope = null)
-        {
-            Component o = component as Component;
-            if (o != null)
-            {
-                return _AddObserversFromGameObject(o.gameObject, scope);
-            }
-            else return new List<IObserver>();
         }
 
         IObserver _AddAttributeObserver(AttributeBase attr, Locator locator, object o, MemberInfo memberInfo)
@@ -614,7 +579,7 @@ namespace Gymize
             }
         }
 
-        void _Step()
+        void _Tick()
         {
             _CheckChannel();
             _SendGymizeMessage();

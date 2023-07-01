@@ -11,7 +11,7 @@ namespace Gymize
 
         public virtual void AddToEnv()
         {
-            GymEnv.AddObserver(GetLocator(), this);
+            GymEnv.AddSensor(this);
         }
 
         public virtual void RemoveFromEnv()
