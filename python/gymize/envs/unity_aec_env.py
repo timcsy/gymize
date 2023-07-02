@@ -2,6 +2,7 @@ from typing import List
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector
+from gymnasium.spaces import Space
 from gymnasium.utils import seeding
 
 from gymize.bridge import Bridge
@@ -28,6 +29,22 @@ class UnityAECEnv(AECEnv):
         assert render_mode is None or render_mode in self.metadata['render_modes']
         self.render_mode = render_mode
         self.render_fps = render_fps
+    
+    def observation_space(self, agent: str) -> Space:
+        '''
+        Takes in agent and returns the observation space for that agent.
+        MUST return the same value for the same agent name
+        Default implementation is to return the observation_spaces dict
+        '''
+        return self.observation_spaces[agent]
+
+    def action_space(self, agent: str) -> Space:
+        '''
+        Takes in agent and returns the action space for that agent.
+        MUST return the same value for the same agent name
+        Default implementation is to return the action_spaces dict
+        '''
+        return self.action_spaces[agent]
     
     @property
     def terminations(self):
