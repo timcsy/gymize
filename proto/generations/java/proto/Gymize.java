@@ -3313,73 +3313,114 @@ public final class Gymize {
         getRequestAgentsBytes(int index);
 
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @return A list containing the responseAgents.
+     */
+    java.util.List<java.lang.String>
+        getResponseAgentsList();
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @return The count of responseAgents.
+     */
+    int getResponseAgentsCount();
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @param index The index of the element to return.
+     * @return The responseAgents at the given index.
+     */
+    java.lang.String getResponseAgents(int index);
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the responseAgents at the given index.
+     */
+    com.google.protobuf.ByteString
+        getResponseAgentsBytes(int index);
+
+    /**
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     java.util.List<Gymize.ActionProto> 
         getActionsList();
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     Gymize.ActionProto getActions(int index);
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     int getActionsCount();
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     java.util.List<? extends Gymize.ActionProtoOrBuilder> 
         getActionsOrBuilderList();
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     Gymize.ActionProtoOrBuilder getActionsOrBuilder(
         int index);
 
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     java.util.List<Gymize.ObservationProto> 
         getObservationsList();
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     Gymize.ObservationProto getObservations(int index);
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     int getObservationsCount();
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     java.util.List<? extends Gymize.ObservationProtoOrBuilder> 
         getObservationsOrBuilderList();
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     Gymize.ObservationProtoOrBuilder getObservationsOrBuilder(
         int index);
 
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     java.util.List<Gymize.RewardProto> 
         getRewardsList();
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     Gymize.RewardProto getRewards(int index);
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     int getRewardsCount();
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     java.util.List<? extends Gymize.RewardProtoOrBuilder> 
         getRewardsOrBuilderList();
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     Gymize.RewardProtoOrBuilder getRewardsOrBuilder(
         int index);
@@ -3389,7 +3430,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @return A list containing the terminatedAgents.
      */
     java.util.List<java.lang.String>
@@ -3399,7 +3440,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @return The count of terminatedAgents.
      */
     int getTerminatedAgentsCount();
@@ -3408,7 +3449,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @param index The index of the element to return.
      * @return The terminatedAgents at the given index.
      */
@@ -3418,7 +3459,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @param index The index of the value to return.
      * @return The bytes of the terminatedAgents at the given index.
      */
@@ -3430,7 +3471,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @return A list containing the truncatedAgents.
      */
     java.util.List<java.lang.String>
@@ -3440,7 +3481,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @return The count of truncatedAgents.
      */
     int getTruncatedAgentsCount();
@@ -3449,7 +3490,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @param index The index of the element to return.
      * @return The truncatedAgents at the given index.
      */
@@ -3459,7 +3500,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @param index The index of the value to return.
      * @return The bytes of the truncatedAgents at the given index.
      */
@@ -3471,7 +3512,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     java.util.List<Gymize.InfoProto> 
         getInfosList();
@@ -3480,7 +3521,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     Gymize.InfoProto getInfos(int index);
     /**
@@ -3488,7 +3529,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     int getInfosCount();
     /**
@@ -3496,7 +3537,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     java.util.List<? extends Gymize.InfoProtoOrBuilder> 
         getInfosOrBuilderList();
@@ -3505,7 +3546,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     Gymize.InfoProtoOrBuilder getInfosOrBuilder(
         int index);
@@ -3515,7 +3556,7 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      * @return Whether the recording field is set.
      */
     boolean hasRecording();
@@ -3524,7 +3565,7 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      * @return The recording.
      */
     Recording.RecordingProto getRecording();
@@ -3533,7 +3574,7 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      */
     Recording.RecordingProtoOrBuilder getRecordingOrBuilder();
   }
@@ -3552,6 +3593,7 @@ public final class Gymize {
     private GymizeProto() {
       resetAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       requestAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      responseAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       actions_ = java.util.Collections.emptyList();
       observations_ = java.util.Collections.emptyList();
       rewards_ = java.util.Collections.emptyList();
@@ -3610,60 +3652,69 @@ public final class Gymize {
               break;
             }
             case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                actions_ = new java.util.ArrayList<Gymize.ActionProto>();
+                responseAgents_ = new com.google.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000004;
+              }
+              responseAgents_.add(s);
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+                actions_ = new java.util.ArrayList<Gymize.ActionProto>();
+                mutable_bitField0_ |= 0x00000008;
               }
               actions_.add(
                   input.readMessage(Gymize.ActionProto.parser(), extensionRegistry));
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
                 observations_ = new java.util.ArrayList<Gymize.ObservationProto>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               observations_.add(
                   input.readMessage(Gymize.ObservationProto.parser(), extensionRegistry));
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
                 rewards_ = new java.util.ArrayList<Gymize.RewardProto>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               rewards_.add(
                   input.readMessage(Gymize.RewardProto.parser(), extensionRegistry));
               break;
             }
-            case 50: {
+            case 58: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000040) != 0)) {
                 terminatedAgents_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               terminatedAgents_.add(s);
               break;
             }
-            case 58: {
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000080) != 0)) {
                 truncatedAgents_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000080;
               }
               truncatedAgents_.add(s);
               break;
             }
-            case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) != 0)) {
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000100) != 0)) {
                 infos_ = new java.util.ArrayList<Gymize.InfoProto>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000100;
               }
               infos_.add(
                   input.readMessage(Gymize.InfoProto.parser(), extensionRegistry));
               break;
             }
-            case 74: {
+            case 82: {
               Recording.RecordingProto.Builder subBuilder = null;
               if (recording_ != null) {
                 subBuilder = recording_.toBuilder();
@@ -3698,21 +3749,24 @@ public final class Gymize {
           requestAgents_ = requestAgents_.getUnmodifiableView();
         }
         if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          actions_ = java.util.Collections.unmodifiableList(actions_);
+          responseAgents_ = responseAgents_.getUnmodifiableView();
         }
         if (((mutable_bitField0_ & 0x00000008) != 0)) {
-          observations_ = java.util.Collections.unmodifiableList(observations_);
+          actions_ = java.util.Collections.unmodifiableList(actions_);
         }
         if (((mutable_bitField0_ & 0x00000010) != 0)) {
-          rewards_ = java.util.Collections.unmodifiableList(rewards_);
+          observations_ = java.util.Collections.unmodifiableList(observations_);
         }
         if (((mutable_bitField0_ & 0x00000020) != 0)) {
-          terminatedAgents_ = terminatedAgents_.getUnmodifiableView();
+          rewards_ = java.util.Collections.unmodifiableList(rewards_);
         }
         if (((mutable_bitField0_ & 0x00000040) != 0)) {
-          truncatedAgents_ = truncatedAgents_.getUnmodifiableView();
+          terminatedAgents_ = terminatedAgents_.getUnmodifiableView();
         }
         if (((mutable_bitField0_ & 0x00000080) != 0)) {
+          truncatedAgents_ = truncatedAgents_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000100) != 0)) {
           infos_ = java.util.Collections.unmodifiableList(infos_);
         }
         this.unknownFields = unknownFields.build();
@@ -3834,17 +3888,68 @@ public final class Gymize {
       return requestAgents_.getByteString(index);
     }
 
-    public static final int ACTIONS_FIELD_NUMBER = 3;
+    public static final int RESPONSE_AGENTS_FIELD_NUMBER = 3;
+    private com.google.protobuf.LazyStringList responseAgents_;
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @return A list containing the responseAgents.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getResponseAgentsList() {
+      return responseAgents_;
+    }
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @return The count of responseAgents.
+     */
+    public int getResponseAgentsCount() {
+      return responseAgents_.size();
+    }
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @param index The index of the element to return.
+     * @return The responseAgents at the given index.
+     */
+    public java.lang.String getResponseAgents(int index) {
+      return responseAgents_.get(index);
+    }
+    /**
+     * <pre>
+     * agents that response to the request_agents
+     * </pre>
+     *
+     * <code>repeated string response_agents = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the responseAgents at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getResponseAgentsBytes(int index) {
+      return responseAgents_.getByteString(index);
+    }
+
+    public static final int ACTIONS_FIELD_NUMBER = 4;
     private java.util.List<Gymize.ActionProto> actions_;
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     @java.lang.Override
     public java.util.List<Gymize.ActionProto> getActionsList() {
       return actions_;
     }
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     @java.lang.Override
     public java.util.List<? extends Gymize.ActionProtoOrBuilder> 
@@ -3852,21 +3957,21 @@ public final class Gymize {
       return actions_;
     }
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     @java.lang.Override
     public int getActionsCount() {
       return actions_.size();
     }
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     @java.lang.Override
     public Gymize.ActionProto getActions(int index) {
       return actions_.get(index);
     }
     /**
-     * <code>repeated .ActionProto actions = 3;</code>
+     * <code>repeated .ActionProto actions = 4;</code>
      */
     @java.lang.Override
     public Gymize.ActionProtoOrBuilder getActionsOrBuilder(
@@ -3874,17 +3979,17 @@ public final class Gymize {
       return actions_.get(index);
     }
 
-    public static final int OBSERVATIONS_FIELD_NUMBER = 4;
+    public static final int OBSERVATIONS_FIELD_NUMBER = 5;
     private java.util.List<Gymize.ObservationProto> observations_;
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     @java.lang.Override
     public java.util.List<Gymize.ObservationProto> getObservationsList() {
       return observations_;
     }
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     @java.lang.Override
     public java.util.List<? extends Gymize.ObservationProtoOrBuilder> 
@@ -3892,21 +3997,21 @@ public final class Gymize {
       return observations_;
     }
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     @java.lang.Override
     public int getObservationsCount() {
       return observations_.size();
     }
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     @java.lang.Override
     public Gymize.ObservationProto getObservations(int index) {
       return observations_.get(index);
     }
     /**
-     * <code>repeated .ObservationProto observations = 4;</code>
+     * <code>repeated .ObservationProto observations = 5;</code>
      */
     @java.lang.Override
     public Gymize.ObservationProtoOrBuilder getObservationsOrBuilder(
@@ -3914,17 +4019,17 @@ public final class Gymize {
       return observations_.get(index);
     }
 
-    public static final int REWARDS_FIELD_NUMBER = 5;
+    public static final int REWARDS_FIELD_NUMBER = 6;
     private java.util.List<Gymize.RewardProto> rewards_;
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     @java.lang.Override
     public java.util.List<Gymize.RewardProto> getRewardsList() {
       return rewards_;
     }
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     @java.lang.Override
     public java.util.List<? extends Gymize.RewardProtoOrBuilder> 
@@ -3932,21 +4037,21 @@ public final class Gymize {
       return rewards_;
     }
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     @java.lang.Override
     public int getRewardsCount() {
       return rewards_.size();
     }
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     @java.lang.Override
     public Gymize.RewardProto getRewards(int index) {
       return rewards_.get(index);
     }
     /**
-     * <code>repeated .RewardProto rewards = 5;</code>
+     * <code>repeated .RewardProto rewards = 6;</code>
      */
     @java.lang.Override
     public Gymize.RewardProtoOrBuilder getRewardsOrBuilder(
@@ -3954,14 +4059,14 @@ public final class Gymize {
       return rewards_.get(index);
     }
 
-    public static final int TERMINATED_AGENTS_FIELD_NUMBER = 6;
+    public static final int TERMINATED_AGENTS_FIELD_NUMBER = 7;
     private com.google.protobuf.LazyStringList terminatedAgents_;
     /**
      * <pre>
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @return A list containing the terminatedAgents.
      */
     public com.google.protobuf.ProtocolStringList
@@ -3973,7 +4078,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @return The count of terminatedAgents.
      */
     public int getTerminatedAgentsCount() {
@@ -3984,7 +4089,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @param index The index of the element to return.
      * @return The terminatedAgents at the given index.
      */
@@ -3996,7 +4101,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string terminated_agents = 6;</code>
+     * <code>repeated string terminated_agents = 7;</code>
      * @param index The index of the value to return.
      * @return The bytes of the terminatedAgents at the given index.
      */
@@ -4005,14 +4110,14 @@ public final class Gymize {
       return terminatedAgents_.getByteString(index);
     }
 
-    public static final int TRUNCATED_AGENTS_FIELD_NUMBER = 7;
+    public static final int TRUNCATED_AGENTS_FIELD_NUMBER = 8;
     private com.google.protobuf.LazyStringList truncatedAgents_;
     /**
      * <pre>
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @return A list containing the truncatedAgents.
      */
     public com.google.protobuf.ProtocolStringList
@@ -4024,7 +4129,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @return The count of truncatedAgents.
      */
     public int getTruncatedAgentsCount() {
@@ -4035,7 +4140,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @param index The index of the element to return.
      * @return The truncatedAgents at the given index.
      */
@@ -4047,7 +4152,7 @@ public final class Gymize {
      * "" for the environment, others for individual agents
      * </pre>
      *
-     * <code>repeated string truncated_agents = 7;</code>
+     * <code>repeated string truncated_agents = 8;</code>
      * @param index The index of the value to return.
      * @return The bytes of the truncatedAgents at the given index.
      */
@@ -4056,14 +4161,14 @@ public final class Gymize {
       return truncatedAgents_.getByteString(index);
     }
 
-    public static final int INFOS_FIELD_NUMBER = 8;
+    public static final int INFOS_FIELD_NUMBER = 9;
     private java.util.List<Gymize.InfoProto> infos_;
     /**
      * <pre>
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     @java.lang.Override
     public java.util.List<Gymize.InfoProto> getInfosList() {
@@ -4074,7 +4179,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     @java.lang.Override
     public java.util.List<? extends Gymize.InfoProtoOrBuilder> 
@@ -4086,7 +4191,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     @java.lang.Override
     public int getInfosCount() {
@@ -4097,7 +4202,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     @java.lang.Override
     public Gymize.InfoProto getInfos(int index) {
@@ -4108,7 +4213,7 @@ public final class Gymize {
      * can go with observations but do not need to go with actions
      * </pre>
      *
-     * <code>repeated .InfoProto infos = 8;</code>
+     * <code>repeated .InfoProto infos = 9;</code>
      */
     @java.lang.Override
     public Gymize.InfoProtoOrBuilder getInfosOrBuilder(
@@ -4116,14 +4221,14 @@ public final class Gymize {
       return infos_.get(index);
     }
 
-    public static final int RECORDING_FIELD_NUMBER = 9;
+    public static final int RECORDING_FIELD_NUMBER = 10;
     private Recording.RecordingProto recording_;
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      * @return Whether the recording field is set.
      */
     @java.lang.Override
@@ -4135,7 +4240,7 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      * @return The recording.
      */
     @java.lang.Override
@@ -4147,7 +4252,7 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 9;</code>
+     * <code>.RecordingProto recording = 10;</code>
      */
     @java.lang.Override
     public Recording.RecordingProtoOrBuilder getRecordingOrBuilder() {
@@ -4174,26 +4279,29 @@ public final class Gymize {
       for (int i = 0; i < requestAgents_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requestAgents_.getRaw(i));
       }
+      for (int i = 0; i < responseAgents_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, responseAgents_.getRaw(i));
+      }
       for (int i = 0; i < actions_.size(); i++) {
-        output.writeMessage(3, actions_.get(i));
+        output.writeMessage(4, actions_.get(i));
       }
       for (int i = 0; i < observations_.size(); i++) {
-        output.writeMessage(4, observations_.get(i));
+        output.writeMessage(5, observations_.get(i));
       }
       for (int i = 0; i < rewards_.size(); i++) {
-        output.writeMessage(5, rewards_.get(i));
+        output.writeMessage(6, rewards_.get(i));
       }
       for (int i = 0; i < terminatedAgents_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, terminatedAgents_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, terminatedAgents_.getRaw(i));
       }
       for (int i = 0; i < truncatedAgents_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, truncatedAgents_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, truncatedAgents_.getRaw(i));
       }
       for (int i = 0; i < infos_.size(); i++) {
-        output.writeMessage(8, infos_.get(i));
+        output.writeMessage(9, infos_.get(i));
       }
       if (recording_ != null) {
-        output.writeMessage(9, getRecording());
+        output.writeMessage(10, getRecording());
       }
       unknownFields.writeTo(output);
     }
@@ -4220,17 +4328,25 @@ public final class Gymize {
         size += dataSize;
         size += 1 * getRequestAgentsList().size();
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < responseAgents_.size(); i++) {
+          dataSize += computeStringSizeNoTag(responseAgents_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getResponseAgentsList().size();
+      }
       for (int i = 0; i < actions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, actions_.get(i));
+          .computeMessageSize(4, actions_.get(i));
       }
       for (int i = 0; i < observations_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, observations_.get(i));
+          .computeMessageSize(5, observations_.get(i));
       }
       for (int i = 0; i < rewards_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, rewards_.get(i));
+          .computeMessageSize(6, rewards_.get(i));
       }
       {
         int dataSize = 0;
@@ -4250,11 +4366,11 @@ public final class Gymize {
       }
       for (int i = 0; i < infos_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, infos_.get(i));
+          .computeMessageSize(9, infos_.get(i));
       }
       if (recording_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getRecording());
+          .computeMessageSize(10, getRecording());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4275,6 +4391,8 @@ public final class Gymize {
           .equals(other.getResetAgentsList())) return false;
       if (!getRequestAgentsList()
           .equals(other.getRequestAgentsList())) return false;
+      if (!getResponseAgentsList()
+          .equals(other.getResponseAgentsList())) return false;
       if (!getActionsList()
           .equals(other.getActionsList())) return false;
       if (!getObservationsList()
@@ -4310,6 +4428,10 @@ public final class Gymize {
       if (getRequestAgentsCount() > 0) {
         hash = (37 * hash) + REQUEST_AGENTS_FIELD_NUMBER;
         hash = (53 * hash) + getRequestAgentsList().hashCode();
+      }
+      if (getResponseAgentsCount() > 0) {
+        hash = (37 * hash) + RESPONSE_AGENTS_FIELD_NUMBER;
+        hash = (53 * hash) + getResponseAgentsList().hashCode();
       }
       if (getActionsCount() > 0) {
         hash = (37 * hash) + ACTIONS_FIELD_NUMBER;
@@ -4480,31 +4602,33 @@ public final class Gymize {
         bitField0_ = (bitField0_ & ~0x00000001);
         requestAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
+        responseAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           actionsBuilder_.clear();
         }
         if (observationsBuilder_ == null) {
           observations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           observationsBuilder_.clear();
         }
         if (rewardsBuilder_ == null) {
           rewards_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           rewardsBuilder_.clear();
         }
         terminatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        truncatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000040);
+        truncatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000080);
         if (infosBuilder_ == null) {
           infos_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           infosBuilder_.clear();
         }
@@ -4551,47 +4675,52 @@ public final class Gymize {
           bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.requestAgents_ = requestAgents_;
+        if (((bitField0_ & 0x00000004) != 0)) {
+          responseAgents_ = responseAgents_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.responseAgents_ = responseAgents_;
         if (actionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
+          if (((bitField0_ & 0x00000008) != 0)) {
             actions_ = java.util.Collections.unmodifiableList(actions_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.actions_ = actions_;
         } else {
           result.actions_ = actionsBuilder_.build();
         }
         if (observationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
+          if (((bitField0_ & 0x00000010) != 0)) {
             observations_ = java.util.Collections.unmodifiableList(observations_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.observations_ = observations_;
         } else {
           result.observations_ = observationsBuilder_.build();
         }
         if (rewardsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0)) {
+          if (((bitField0_ & 0x00000020) != 0)) {
             rewards_ = java.util.Collections.unmodifiableList(rewards_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.rewards_ = rewards_;
         } else {
           result.rewards_ = rewardsBuilder_.build();
         }
-        if (((bitField0_ & 0x00000020) != 0)) {
+        if (((bitField0_ & 0x00000040) != 0)) {
           terminatedAgents_ = terminatedAgents_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.terminatedAgents_ = terminatedAgents_;
-        if (((bitField0_ & 0x00000040) != 0)) {
+        if (((bitField0_ & 0x00000080) != 0)) {
           truncatedAgents_ = truncatedAgents_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
         result.truncatedAgents_ = truncatedAgents_;
         if (infosBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) != 0)) {
+          if (((bitField0_ & 0x00000100) != 0)) {
             infos_ = java.util.Collections.unmodifiableList(infos_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000100);
           }
           result.infos_ = infos_;
         } else {
@@ -4670,11 +4799,21 @@ public final class Gymize {
           }
           onChanged();
         }
+        if (!other.responseAgents_.isEmpty()) {
+          if (responseAgents_.isEmpty()) {
+            responseAgents_ = other.responseAgents_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureResponseAgentsIsMutable();
+            responseAgents_.addAll(other.responseAgents_);
+          }
+          onChanged();
+        }
         if (actionsBuilder_ == null) {
           if (!other.actions_.isEmpty()) {
             if (actions_.isEmpty()) {
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureActionsIsMutable();
               actions_.addAll(other.actions_);
@@ -4687,7 +4826,7 @@ public final class Gymize {
               actionsBuilder_.dispose();
               actionsBuilder_ = null;
               actions_ = other.actions_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
               actionsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getActionsFieldBuilder() : null;
@@ -4700,7 +4839,7 @@ public final class Gymize {
           if (!other.observations_.isEmpty()) {
             if (observations_.isEmpty()) {
               observations_ = other.observations_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureObservationsIsMutable();
               observations_.addAll(other.observations_);
@@ -4713,7 +4852,7 @@ public final class Gymize {
               observationsBuilder_.dispose();
               observationsBuilder_ = null;
               observations_ = other.observations_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               observationsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getObservationsFieldBuilder() : null;
@@ -4726,7 +4865,7 @@ public final class Gymize {
           if (!other.rewards_.isEmpty()) {
             if (rewards_.isEmpty()) {
               rewards_ = other.rewards_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureRewardsIsMutable();
               rewards_.addAll(other.rewards_);
@@ -4739,7 +4878,7 @@ public final class Gymize {
               rewardsBuilder_.dispose();
               rewardsBuilder_ = null;
               rewards_ = other.rewards_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
               rewardsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getRewardsFieldBuilder() : null;
@@ -4751,7 +4890,7 @@ public final class Gymize {
         if (!other.terminatedAgents_.isEmpty()) {
           if (terminatedAgents_.isEmpty()) {
             terminatedAgents_ = other.terminatedAgents_;
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureTerminatedAgentsIsMutable();
             terminatedAgents_.addAll(other.terminatedAgents_);
@@ -4761,7 +4900,7 @@ public final class Gymize {
         if (!other.truncatedAgents_.isEmpty()) {
           if (truncatedAgents_.isEmpty()) {
             truncatedAgents_ = other.truncatedAgents_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           } else {
             ensureTruncatedAgentsIsMutable();
             truncatedAgents_.addAll(other.truncatedAgents_);
@@ -4772,7 +4911,7 @@ public final class Gymize {
           if (!other.infos_.isEmpty()) {
             if (infos_.isEmpty()) {
               infos_ = other.infos_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
             } else {
               ensureInfosIsMutable();
               infos_.addAll(other.infos_);
@@ -4785,7 +4924,7 @@ public final class Gymize {
               infosBuilder_.dispose();
               infosBuilder_ = null;
               infos_ = other.infos_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
               infosBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getInfosFieldBuilder() : null;
@@ -5119,12 +5258,158 @@ public final class Gymize {
         return this;
       }
 
+      private com.google.protobuf.LazyStringList responseAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureResponseAgentsIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          responseAgents_ = new com.google.protobuf.LazyStringArrayList(responseAgents_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @return A list containing the responseAgents.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getResponseAgentsList() {
+        return responseAgents_.getUnmodifiableView();
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @return The count of responseAgents.
+       */
+      public int getResponseAgentsCount() {
+        return responseAgents_.size();
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param index The index of the element to return.
+       * @return The responseAgents at the given index.
+       */
+      public java.lang.String getResponseAgents(int index) {
+        return responseAgents_.get(index);
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the responseAgents at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getResponseAgentsBytes(int index) {
+        return responseAgents_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The responseAgents to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResponseAgents(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureResponseAgentsIsMutable();
+        responseAgents_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param value The responseAgents to add.
+       * @return This builder for chaining.
+       */
+      public Builder addResponseAgents(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureResponseAgentsIsMutable();
+        responseAgents_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param values The responseAgents to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllResponseAgents(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureResponseAgentsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, responseAgents_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResponseAgents() {
+        responseAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * agents that response to the request_agents
+       * </pre>
+       *
+       * <code>repeated string response_agents = 3;</code>
+       * @param value The bytes of the responseAgents to add.
+       * @return This builder for chaining.
+       */
+      public Builder addResponseAgentsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureResponseAgentsIsMutable();
+        responseAgents_.add(value);
+        onChanged();
+        return this;
+      }
+
       private java.util.List<Gymize.ActionProto> actions_ =
         java.util.Collections.emptyList();
       private void ensureActionsIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000008) != 0)) {
           actions_ = new java.util.ArrayList<Gymize.ActionProto>(actions_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -5132,7 +5417,7 @@ public final class Gymize {
           Gymize.ActionProto, Gymize.ActionProto.Builder, Gymize.ActionProtoOrBuilder> actionsBuilder_;
 
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public java.util.List<Gymize.ActionProto> getActionsList() {
         if (actionsBuilder_ == null) {
@@ -5142,7 +5427,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public int getActionsCount() {
         if (actionsBuilder_ == null) {
@@ -5152,7 +5437,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Gymize.ActionProto getActions(int index) {
         if (actionsBuilder_ == null) {
@@ -5162,7 +5447,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder setActions(
           int index, Gymize.ActionProto value) {
@@ -5179,7 +5464,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder setActions(
           int index, Gymize.ActionProto.Builder builderForValue) {
@@ -5193,7 +5478,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder addActions(Gymize.ActionProto value) {
         if (actionsBuilder_ == null) {
@@ -5209,7 +5494,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder addActions(
           int index, Gymize.ActionProto value) {
@@ -5226,7 +5511,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder addActions(
           Gymize.ActionProto.Builder builderForValue) {
@@ -5240,7 +5525,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder addActions(
           int index, Gymize.ActionProto.Builder builderForValue) {
@@ -5254,7 +5539,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder addAllActions(
           java.lang.Iterable<? extends Gymize.ActionProto> values) {
@@ -5269,12 +5554,12 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder clearActions() {
         if (actionsBuilder_ == null) {
           actions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           actionsBuilder_.clear();
@@ -5282,7 +5567,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Builder removeActions(int index) {
         if (actionsBuilder_ == null) {
@@ -5295,14 +5580,14 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Gymize.ActionProto.Builder getActionsBuilder(
           int index) {
         return getActionsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Gymize.ActionProtoOrBuilder getActionsOrBuilder(
           int index) {
@@ -5312,7 +5597,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public java.util.List<? extends Gymize.ActionProtoOrBuilder> 
            getActionsOrBuilderList() {
@@ -5323,14 +5608,14 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Gymize.ActionProto.Builder addActionsBuilder() {
         return getActionsFieldBuilder().addBuilder(
             Gymize.ActionProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public Gymize.ActionProto.Builder addActionsBuilder(
           int index) {
@@ -5338,7 +5623,7 @@ public final class Gymize {
             index, Gymize.ActionProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .ActionProto actions = 3;</code>
+       * <code>repeated .ActionProto actions = 4;</code>
        */
       public java.util.List<Gymize.ActionProto.Builder> 
            getActionsBuilderList() {
@@ -5351,7 +5636,7 @@ public final class Gymize {
           actionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               Gymize.ActionProto, Gymize.ActionProto.Builder, Gymize.ActionProtoOrBuilder>(
                   actions_,
-                  ((bitField0_ & 0x00000004) != 0),
+                  ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
           actions_ = null;
@@ -5362,9 +5647,9 @@ public final class Gymize {
       private java.util.List<Gymize.ObservationProto> observations_ =
         java.util.Collections.emptyList();
       private void ensureObservationsIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
+        if (!((bitField0_ & 0x00000010) != 0)) {
           observations_ = new java.util.ArrayList<Gymize.ObservationProto>(observations_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -5372,7 +5657,7 @@ public final class Gymize {
           Gymize.ObservationProto, Gymize.ObservationProto.Builder, Gymize.ObservationProtoOrBuilder> observationsBuilder_;
 
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public java.util.List<Gymize.ObservationProto> getObservationsList() {
         if (observationsBuilder_ == null) {
@@ -5382,7 +5667,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public int getObservationsCount() {
         if (observationsBuilder_ == null) {
@@ -5392,7 +5677,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Gymize.ObservationProto getObservations(int index) {
         if (observationsBuilder_ == null) {
@@ -5402,7 +5687,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder setObservations(
           int index, Gymize.ObservationProto value) {
@@ -5419,7 +5704,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder setObservations(
           int index, Gymize.ObservationProto.Builder builderForValue) {
@@ -5433,7 +5718,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder addObservations(Gymize.ObservationProto value) {
         if (observationsBuilder_ == null) {
@@ -5449,7 +5734,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder addObservations(
           int index, Gymize.ObservationProto value) {
@@ -5466,7 +5751,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder addObservations(
           Gymize.ObservationProto.Builder builderForValue) {
@@ -5480,7 +5765,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder addObservations(
           int index, Gymize.ObservationProto.Builder builderForValue) {
@@ -5494,7 +5779,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder addAllObservations(
           java.lang.Iterable<? extends Gymize.ObservationProto> values) {
@@ -5509,12 +5794,12 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder clearObservations() {
         if (observationsBuilder_ == null) {
           observations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           observationsBuilder_.clear();
@@ -5522,7 +5807,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Builder removeObservations(int index) {
         if (observationsBuilder_ == null) {
@@ -5535,14 +5820,14 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Gymize.ObservationProto.Builder getObservationsBuilder(
           int index) {
         return getObservationsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Gymize.ObservationProtoOrBuilder getObservationsOrBuilder(
           int index) {
@@ -5552,7 +5837,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public java.util.List<? extends Gymize.ObservationProtoOrBuilder> 
            getObservationsOrBuilderList() {
@@ -5563,14 +5848,14 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Gymize.ObservationProto.Builder addObservationsBuilder() {
         return getObservationsFieldBuilder().addBuilder(
             Gymize.ObservationProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public Gymize.ObservationProto.Builder addObservationsBuilder(
           int index) {
@@ -5578,7 +5863,7 @@ public final class Gymize {
             index, Gymize.ObservationProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .ObservationProto observations = 4;</code>
+       * <code>repeated .ObservationProto observations = 5;</code>
        */
       public java.util.List<Gymize.ObservationProto.Builder> 
            getObservationsBuilderList() {
@@ -5591,7 +5876,7 @@ public final class Gymize {
           observationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               Gymize.ObservationProto, Gymize.ObservationProto.Builder, Gymize.ObservationProtoOrBuilder>(
                   observations_,
-                  ((bitField0_ & 0x00000008) != 0),
+                  ((bitField0_ & 0x00000010) != 0),
                   getParentForChildren(),
                   isClean());
           observations_ = null;
@@ -5602,9 +5887,9 @@ public final class Gymize {
       private java.util.List<Gymize.RewardProto> rewards_ =
         java.util.Collections.emptyList();
       private void ensureRewardsIsMutable() {
-        if (!((bitField0_ & 0x00000010) != 0)) {
+        if (!((bitField0_ & 0x00000020) != 0)) {
           rewards_ = new java.util.ArrayList<Gymize.RewardProto>(rewards_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -5612,7 +5897,7 @@ public final class Gymize {
           Gymize.RewardProto, Gymize.RewardProto.Builder, Gymize.RewardProtoOrBuilder> rewardsBuilder_;
 
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public java.util.List<Gymize.RewardProto> getRewardsList() {
         if (rewardsBuilder_ == null) {
@@ -5622,7 +5907,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public int getRewardsCount() {
         if (rewardsBuilder_ == null) {
@@ -5632,7 +5917,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Gymize.RewardProto getRewards(int index) {
         if (rewardsBuilder_ == null) {
@@ -5642,7 +5927,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder setRewards(
           int index, Gymize.RewardProto value) {
@@ -5659,7 +5944,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder setRewards(
           int index, Gymize.RewardProto.Builder builderForValue) {
@@ -5673,7 +5958,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder addRewards(Gymize.RewardProto value) {
         if (rewardsBuilder_ == null) {
@@ -5689,7 +5974,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder addRewards(
           int index, Gymize.RewardProto value) {
@@ -5706,7 +5991,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder addRewards(
           Gymize.RewardProto.Builder builderForValue) {
@@ -5720,7 +6005,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder addRewards(
           int index, Gymize.RewardProto.Builder builderForValue) {
@@ -5734,7 +6019,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder addAllRewards(
           java.lang.Iterable<? extends Gymize.RewardProto> values) {
@@ -5749,12 +6034,12 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder clearRewards() {
         if (rewardsBuilder_ == null) {
           rewards_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           rewardsBuilder_.clear();
@@ -5762,7 +6047,7 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Builder removeRewards(int index) {
         if (rewardsBuilder_ == null) {
@@ -5775,14 +6060,14 @@ public final class Gymize {
         return this;
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Gymize.RewardProto.Builder getRewardsBuilder(
           int index) {
         return getRewardsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Gymize.RewardProtoOrBuilder getRewardsOrBuilder(
           int index) {
@@ -5792,7 +6077,7 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public java.util.List<? extends Gymize.RewardProtoOrBuilder> 
            getRewardsOrBuilderList() {
@@ -5803,14 +6088,14 @@ public final class Gymize {
         }
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Gymize.RewardProto.Builder addRewardsBuilder() {
         return getRewardsFieldBuilder().addBuilder(
             Gymize.RewardProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public Gymize.RewardProto.Builder addRewardsBuilder(
           int index) {
@@ -5818,7 +6103,7 @@ public final class Gymize {
             index, Gymize.RewardProto.getDefaultInstance());
       }
       /**
-       * <code>repeated .RewardProto rewards = 5;</code>
+       * <code>repeated .RewardProto rewards = 6;</code>
        */
       public java.util.List<Gymize.RewardProto.Builder> 
            getRewardsBuilderList() {
@@ -5831,7 +6116,7 @@ public final class Gymize {
           rewardsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               Gymize.RewardProto, Gymize.RewardProto.Builder, Gymize.RewardProtoOrBuilder>(
                   rewards_,
-                  ((bitField0_ & 0x00000010) != 0),
+                  ((bitField0_ & 0x00000020) != 0),
                   getParentForChildren(),
                   isClean());
           rewards_ = null;
@@ -5841,9 +6126,9 @@ public final class Gymize {
 
       private com.google.protobuf.LazyStringList terminatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureTerminatedAgentsIsMutable() {
-        if (!((bitField0_ & 0x00000020) != 0)) {
+        if (!((bitField0_ & 0x00000040) != 0)) {
           terminatedAgents_ = new com.google.protobuf.LazyStringArrayList(terminatedAgents_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
          }
       }
       /**
@@ -5851,7 +6136,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @return A list containing the terminatedAgents.
        */
       public com.google.protobuf.ProtocolStringList
@@ -5863,7 +6148,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @return The count of terminatedAgents.
        */
       public int getTerminatedAgentsCount() {
@@ -5874,7 +6159,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param index The index of the element to return.
        * @return The terminatedAgents at the given index.
        */
@@ -5886,7 +6171,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param index The index of the value to return.
        * @return The bytes of the terminatedAgents at the given index.
        */
@@ -5899,7 +6184,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param index The index to set the value at.
        * @param value The terminatedAgents to set.
        * @return This builder for chaining.
@@ -5919,7 +6204,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param value The terminatedAgents to add.
        * @return This builder for chaining.
        */
@@ -5938,7 +6223,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param values The terminatedAgents to add.
        * @return This builder for chaining.
        */
@@ -5955,12 +6240,12 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearTerminatedAgents() {
         terminatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -5969,7 +6254,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string terminated_agents = 6;</code>
+       * <code>repeated string terminated_agents = 7;</code>
        * @param value The bytes of the terminatedAgents to add.
        * @return This builder for chaining.
        */
@@ -5987,9 +6272,9 @@ public final class Gymize {
 
       private com.google.protobuf.LazyStringList truncatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureTruncatedAgentsIsMutable() {
-        if (!((bitField0_ & 0x00000040) != 0)) {
+        if (!((bitField0_ & 0x00000080) != 0)) {
           truncatedAgents_ = new com.google.protobuf.LazyStringArrayList(truncatedAgents_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000080;
          }
       }
       /**
@@ -5997,7 +6282,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @return A list containing the truncatedAgents.
        */
       public com.google.protobuf.ProtocolStringList
@@ -6009,7 +6294,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @return The count of truncatedAgents.
        */
       public int getTruncatedAgentsCount() {
@@ -6020,7 +6305,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param index The index of the element to return.
        * @return The truncatedAgents at the given index.
        */
@@ -6032,7 +6317,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param index The index of the value to return.
        * @return The bytes of the truncatedAgents at the given index.
        */
@@ -6045,7 +6330,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param index The index to set the value at.
        * @param value The truncatedAgents to set.
        * @return This builder for chaining.
@@ -6065,7 +6350,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param value The truncatedAgents to add.
        * @return This builder for chaining.
        */
@@ -6084,7 +6369,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param values The truncatedAgents to add.
        * @return This builder for chaining.
        */
@@ -6101,12 +6386,12 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearTruncatedAgents() {
         truncatedAgents_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -6115,7 +6400,7 @@ public final class Gymize {
        * "" for the environment, others for individual agents
        * </pre>
        *
-       * <code>repeated string truncated_agents = 7;</code>
+       * <code>repeated string truncated_agents = 8;</code>
        * @param value The bytes of the truncatedAgents to add.
        * @return This builder for chaining.
        */
@@ -6134,9 +6419,9 @@ public final class Gymize {
       private java.util.List<Gymize.InfoProto> infos_ =
         java.util.Collections.emptyList();
       private void ensureInfosIsMutable() {
-        if (!((bitField0_ & 0x00000080) != 0)) {
+        if (!((bitField0_ & 0x00000100) != 0)) {
           infos_ = new java.util.ArrayList<Gymize.InfoProto>(infos_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
          }
       }
 
@@ -6148,7 +6433,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public java.util.List<Gymize.InfoProto> getInfosList() {
         if (infosBuilder_ == null) {
@@ -6162,7 +6447,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public int getInfosCount() {
         if (infosBuilder_ == null) {
@@ -6176,7 +6461,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Gymize.InfoProto getInfos(int index) {
         if (infosBuilder_ == null) {
@@ -6190,7 +6475,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder setInfos(
           int index, Gymize.InfoProto value) {
@@ -6211,7 +6496,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder setInfos(
           int index, Gymize.InfoProto.Builder builderForValue) {
@@ -6229,7 +6514,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder addInfos(Gymize.InfoProto value) {
         if (infosBuilder_ == null) {
@@ -6249,7 +6534,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder addInfos(
           int index, Gymize.InfoProto value) {
@@ -6270,7 +6555,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder addInfos(
           Gymize.InfoProto.Builder builderForValue) {
@@ -6288,7 +6573,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder addInfos(
           int index, Gymize.InfoProto.Builder builderForValue) {
@@ -6306,7 +6591,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder addAllInfos(
           java.lang.Iterable<? extends Gymize.InfoProto> values) {
@@ -6325,12 +6610,12 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder clearInfos() {
         if (infosBuilder_ == null) {
           infos_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
           onChanged();
         } else {
           infosBuilder_.clear();
@@ -6342,7 +6627,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Builder removeInfos(int index) {
         if (infosBuilder_ == null) {
@@ -6359,7 +6644,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Gymize.InfoProto.Builder getInfosBuilder(
           int index) {
@@ -6370,7 +6655,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Gymize.InfoProtoOrBuilder getInfosOrBuilder(
           int index) {
@@ -6384,7 +6669,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public java.util.List<? extends Gymize.InfoProtoOrBuilder> 
            getInfosOrBuilderList() {
@@ -6399,7 +6684,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Gymize.InfoProto.Builder addInfosBuilder() {
         return getInfosFieldBuilder().addBuilder(
@@ -6410,7 +6695,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public Gymize.InfoProto.Builder addInfosBuilder(
           int index) {
@@ -6422,7 +6707,7 @@ public final class Gymize {
        * can go with observations but do not need to go with actions
        * </pre>
        *
-       * <code>repeated .InfoProto infos = 8;</code>
+       * <code>repeated .InfoProto infos = 9;</code>
        */
       public java.util.List<Gymize.InfoProto.Builder> 
            getInfosBuilderList() {
@@ -6435,7 +6720,7 @@ public final class Gymize {
           infosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               Gymize.InfoProto, Gymize.InfoProto.Builder, Gymize.InfoProtoOrBuilder>(
                   infos_,
-                  ((bitField0_ & 0x00000080) != 0),
+                  ((bitField0_ & 0x00000100) != 0),
                   getParentForChildren(),
                   isClean());
           infos_ = null;
@@ -6451,7 +6736,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        * @return Whether the recording field is set.
        */
       public boolean hasRecording() {
@@ -6462,7 +6747,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        * @return The recording.
        */
       public Recording.RecordingProto getRecording() {
@@ -6477,7 +6762,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Builder setRecording(Recording.RecordingProto value) {
         if (recordingBuilder_ == null) {
@@ -6497,7 +6782,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Builder setRecording(
           Recording.RecordingProto.Builder builderForValue) {
@@ -6515,7 +6800,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Builder mergeRecording(Recording.RecordingProto value) {
         if (recordingBuilder_ == null) {
@@ -6537,7 +6822,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Builder clearRecording() {
         if (recordingBuilder_ == null) {
@@ -6555,7 +6840,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Recording.RecordingProto.Builder getRecordingBuilder() {
         
@@ -6567,7 +6852,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       public Recording.RecordingProtoOrBuilder getRecordingOrBuilder() {
         if (recordingBuilder_ != null) {
@@ -6582,7 +6867,7 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 9;</code>
+       * <code>.RecordingProto recording = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Recording.RecordingProto, Recording.RecordingProto.Builder, Recording.RecordingProtoOrBuilder> 
@@ -6691,15 +6976,16 @@ public final class Gymize {
       ".LocatorProto\022#\n\013observation\030\002 \001(\0132\016.Ins" +
       "tanceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t" +
       "\022\016\n\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001" +
-      " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\226\002\n\013" +
+      " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\257\002\n\013" +
       "GymizeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016req" +
-      "uest_agents\030\002 \003(\t\022\035\n\007actions\030\003 \003(\0132\014.Act" +
-      "ionProto\022\'\n\014observations\030\004 \003(\0132\021.Observa" +
-      "tionProto\022\035\n\007rewards\030\005 \003(\0132\014.RewardProto" +
-      "\022\031\n\021terminated_agents\030\006 \003(\t\022\030\n\020truncated" +
-      "_agents\030\007 \003(\t\022\031\n\005infos\030\010 \003(\0132\n.InfoProto" +
-      "\022\"\n\trecording\030\t \001(\0132\017.RecordingProtoB\022\252\002" +
-      "\017Gymize.Protobufb\006proto3"
+      "uest_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003" +
+      "(\t\022\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014obs" +
+      "ervations\030\005 \003(\0132\021.ObservationProto\022\035\n\007re" +
+      "wards\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_" +
+      "agents\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031" +
+      "\n\005infos\030\t \003(\0132\n.InfoProto\022\"\n\trecording\030\n" +
+      " \001(\0132\017.RecordingProtoB\022\252\002\017Gymize.Protobu" +
+      "fb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6737,7 +7023,7 @@ public final class Gymize {
     internal_static_GymizeProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GymizeProto_descriptor,
-        new java.lang.String[] { "ResetAgents", "RequestAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording", });
+        new java.lang.String[] { "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording", });
     Space.getDescriptor();
     Locator.getDescriptor();
     Recording.getDescriptor();

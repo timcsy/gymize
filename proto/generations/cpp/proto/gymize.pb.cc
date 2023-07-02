@@ -72,6 +72,7 @@ constexpr GymizeProto::GymizeProto(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : reset_agents_()
   , request_agents_()
+  , response_agents_()
   , actions_()
   , observations_()
   , rewards_()
@@ -133,6 +134,7 @@ const uint32_t TableStruct_gymize_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::GymizeProto, reset_agents_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, request_agents_),
+  PROTOBUF_FIELD_OFFSET(::GymizeProto, response_agents_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, actions_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, observations_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, rewards_),
@@ -165,15 +167,16 @@ const char descriptor_table_protodef_gymize_2eproto[] PROTOBUF_SECTION_VARIABLE(
   ".LocatorProto\022#\n\013observation\030\002 \001(\0132\016.Ins"
   "tanceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t"
   "\022\016\n\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001"
-  " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\226\002\n\013"
+  " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\257\002\n\013"
   "GymizeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016req"
-  "uest_agents\030\002 \003(\t\022\035\n\007actions\030\003 \003(\0132\014.Act"
-  "ionProto\022\'\n\014observations\030\004 \003(\0132\021.Observa"
-  "tionProto\022\035\n\007rewards\030\005 \003(\0132\014.RewardProto"
-  "\022\031\n\021terminated_agents\030\006 \003(\t\022\030\n\020truncated"
-  "_agents\030\007 \003(\t\022\031\n\005infos\030\010 \003(\0132\n.InfoProto"
-  "\022\"\n\trecording\030\t \001(\0132\017.RecordingProtoB\022\252\002"
-  "\017Gymize.Protobufb\006proto3"
+  "uest_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003"
+  "(\t\022\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014obs"
+  "ervations\030\005 \003(\0132\021.ObservationProto\022\035\n\007re"
+  "wards\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_"
+  "agents\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031"
+  "\n\005infos\030\t \003(\0132\n.InfoProto\022\"\n\trecording\030\n"
+  " \001(\0132\017.RecordingProtoB\022\252\002\017Gymize.Protobu"
+  "fb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_gymize_2eproto_deps[3] = {
   &::descriptor_table_locator_2eproto,
@@ -182,7 +185,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_gymize_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_gymize_2eproto = {
-  false, false, 624, descriptor_table_protodef_gymize_2eproto, "gymize.proto", 
+  false, false, 649, descriptor_table_protodef_gymize_2eproto, "gymize.proto", 
   &descriptor_table_gymize_2eproto_once, descriptor_table_gymize_2eproto_deps, 3, 5,
   schemas, file_default_instances, TableStruct_gymize_2eproto::offsets,
   file_level_metadata_gymize_2eproto, file_level_enum_descriptors_gymize_2eproto, file_level_service_descriptors_gymize_2eproto,
@@ -1204,6 +1207,7 @@ GymizeProto::GymizeProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   reset_agents_(arena),
   request_agents_(arena),
+  response_agents_(arena),
   actions_(arena),
   observations_(arena),
   rewards_(arena),
@@ -1220,6 +1224,7 @@ GymizeProto::GymizeProto(const GymizeProto& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       reset_agents_(from.reset_agents_),
       request_agents_(from.request_agents_),
+      response_agents_(from.response_agents_),
       actions_(from.actions_),
       observations_(from.observations_),
       rewards_(from.rewards_),
@@ -1269,6 +1274,7 @@ void GymizeProto::Clear() {
 
   reset_agents_.Clear();
   request_agents_.Clear();
+  response_agents_.Clear();
   actions_.Clear();
   observations_.Clear();
   rewards_.Clear();
@@ -1318,48 +1324,63 @@ const char* GymizeProto::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
         } else
           goto handle_unusual;
         continue;
-      // repeated .ActionProto actions = 3;
+      // repeated string response_agents = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_actions(), ptr);
+            auto str = _internal_add_response_agents();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "GymizeProto.response_agents"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated .ObservationProto observations = 4;
+      // repeated .ActionProto actions = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_observations(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_actions(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated .RewardProto rewards = 5;
+      // repeated .ObservationProto observations = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_rewards(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_observations(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated string terminated_agents = 6;
+      // repeated .RewardProto rewards = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_rewards(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string terminated_agents = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1368,13 +1389,13 @@ const char* GymizeProto::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
             CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "GymizeProto.terminated_agents"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated string truncated_agents = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+      // repeated string truncated_agents = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1383,26 +1404,26 @@ const char* GymizeProto::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
             CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "GymizeProto.truncated_agents"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated .InfoProto infos = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+      // repeated .InfoProto infos = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_infos(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // .RecordingProto recording = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+      // .RecordingProto recording = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
           ptr = ctx->ParseMessage(_internal_mutable_recording(), ptr);
           CHK_(ptr);
         } else
@@ -1457,64 +1478,74 @@ uint8_t* GymizeProto::_InternalSerialize(
     target = stream->WriteString(2, s, target);
   }
 
-  // repeated .ActionProto actions = 3;
+  // repeated string response_agents = 3;
+  for (int i = 0, n = this->_internal_response_agents_size(); i < n; i++) {
+    const auto& s = this->_internal_response_agents(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "GymizeProto.response_agents");
+    target = stream->WriteString(3, s, target);
+  }
+
+  // repeated .ActionProto actions = 4;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_actions_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_actions(i), target, stream);
+      InternalWriteMessage(4, this->_internal_actions(i), target, stream);
   }
 
-  // repeated .ObservationProto observations = 4;
+  // repeated .ObservationProto observations = 5;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_observations_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, this->_internal_observations(i), target, stream);
+      InternalWriteMessage(5, this->_internal_observations(i), target, stream);
   }
 
-  // repeated .RewardProto rewards = 5;
+  // repeated .RewardProto rewards = 6;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_rewards_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(5, this->_internal_rewards(i), target, stream);
+      InternalWriteMessage(6, this->_internal_rewards(i), target, stream);
   }
 
-  // repeated string terminated_agents = 6;
+  // repeated string terminated_agents = 7;
   for (int i = 0, n = this->_internal_terminated_agents_size(); i < n; i++) {
     const auto& s = this->_internal_terminated_agents(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "GymizeProto.terminated_agents");
-    target = stream->WriteString(6, s, target);
+    target = stream->WriteString(7, s, target);
   }
 
-  // repeated string truncated_agents = 7;
+  // repeated string truncated_agents = 8;
   for (int i = 0, n = this->_internal_truncated_agents_size(); i < n; i++) {
     const auto& s = this->_internal_truncated_agents(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "GymizeProto.truncated_agents");
-    target = stream->WriteString(7, s, target);
+    target = stream->WriteString(8, s, target);
   }
 
-  // repeated .InfoProto infos = 8;
+  // repeated .InfoProto infos = 9;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_infos_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(8, this->_internal_infos(i), target, stream);
+      InternalWriteMessage(9, this->_internal_infos(i), target, stream);
   }
 
-  // .RecordingProto recording = 9;
+  // .RecordingProto recording = 10;
   if (this->_internal_has_recording()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        9, _Internal::recording(this), target, stream);
+        10, _Internal::recording(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1549,28 +1580,36 @@ size_t GymizeProto::ByteSizeLong() const {
       request_agents_.Get(i));
   }
 
-  // repeated .ActionProto actions = 3;
+  // repeated string response_agents = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(response_agents_.size());
+  for (int i = 0, n = response_agents_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      response_agents_.Get(i));
+  }
+
+  // repeated .ActionProto actions = 4;
   total_size += 1UL * this->_internal_actions_size();
   for (const auto& msg : this->actions_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .ObservationProto observations = 4;
+  // repeated .ObservationProto observations = 5;
   total_size += 1UL * this->_internal_observations_size();
   for (const auto& msg : this->observations_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .RewardProto rewards = 5;
+  // repeated .RewardProto rewards = 6;
   total_size += 1UL * this->_internal_rewards_size();
   for (const auto& msg : this->rewards_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated string terminated_agents = 6;
+  // repeated string terminated_agents = 7;
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(terminated_agents_.size());
   for (int i = 0, n = terminated_agents_.size(); i < n; i++) {
@@ -1578,7 +1617,7 @@ size_t GymizeProto::ByteSizeLong() const {
       terminated_agents_.Get(i));
   }
 
-  // repeated string truncated_agents = 7;
+  // repeated string truncated_agents = 8;
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(truncated_agents_.size());
   for (int i = 0, n = truncated_agents_.size(); i < n; i++) {
@@ -1586,14 +1625,14 @@ size_t GymizeProto::ByteSizeLong() const {
       truncated_agents_.Get(i));
   }
 
-  // repeated .InfoProto infos = 8;
+  // repeated .InfoProto infos = 9;
   total_size += 1UL * this->_internal_infos_size();
   for (const auto& msg : this->infos_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .RecordingProto recording = 9;
+  // .RecordingProto recording = 10;
   if (this->_internal_has_recording()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1624,6 +1663,7 @@ void GymizeProto::MergeFrom(const GymizeProto& from) {
 
   reset_agents_.MergeFrom(from.reset_agents_);
   request_agents_.MergeFrom(from.request_agents_);
+  response_agents_.MergeFrom(from.response_agents_);
   actions_.MergeFrom(from.actions_);
   observations_.MergeFrom(from.observations_);
   rewards_.MergeFrom(from.rewards_);
@@ -1652,6 +1692,7 @@ void GymizeProto::InternalSwap(GymizeProto* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   reset_agents_.InternalSwap(&other->reset_agents_);
   request_agents_.InternalSwap(&other->request_agents_);
+  response_agents_.InternalSwap(&other->response_agents_);
   actions_.InternalSwap(&other->actions_);
   observations_.InternalSwap(&other->observations_);
   rewards_.InternalSwap(&other->rewards_);

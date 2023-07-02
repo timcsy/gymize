@@ -29,11 +29,12 @@ message InfoProto {
 message GymizeProto {
 	repeated string reset_agents = 1; // "" for the environment, others for individual agents
 	repeated string request_agents = 2; // ask for observations, rewards, infos or actions belong to agent name, "" will clear env info
-	repeated ActionProto actions = 3;
-	repeated ObservationProto observations = 4;
-	repeated RewardProto rewards = 5;
-	repeated string terminated_agents = 6; // "" for the environment, others for individual agents
-	repeated string truncated_agents = 7; // "" for the environment, others for individual agents
-	repeated InfoProto infos = 8; // can go with observations but do not need to go with actions
-	RecordingProto recording = 9; // render images and audio
+	repeated string response_agents = 3; // agents that response to the request_agents
+	repeated ActionProto actions = 4;
+	repeated ObservationProto observations = 5;
+	repeated RewardProto rewards = 6;
+	repeated string terminated_agents = 7; // "" for the environment, others for individual agents
+	repeated string truncated_agents = 8; // "" for the environment, others for individual agents
+	repeated InfoProto infos = 9; // can go with observations but do not need to go with actions
+	RecordingProto recording = 10; // render images and audio
 }

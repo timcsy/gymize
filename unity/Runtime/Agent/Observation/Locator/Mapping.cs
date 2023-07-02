@@ -137,6 +137,13 @@ namespace Gymize
             else return IsAllAgents;
         }
 
+        public bool HasSingleAgent(string agent)
+        {
+            if (IsAllAgents) return false;
+            else if (Agents.Count == 1 && Agents[0] == agent) return true;
+            else return false;
+        }
+
         public bool HasSequence()
         {
             foreach (Selector selector in Destination)

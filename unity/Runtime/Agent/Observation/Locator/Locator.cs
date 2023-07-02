@@ -171,6 +171,20 @@ namespace Gymize
             return false;
         }
 
+        public bool HasSingleAgent(string agent)
+        {
+            bool _HasSingleAgent = true;
+            foreach (Mapping mapping in Mappings)
+            {
+                if (!mapping.HasSingleAgent(agent))
+                {
+                    _HasSingleAgent = false;
+                    break;
+                }
+            }
+            return _HasSingleAgent;
+        }
+
         public bool HasSequence()
         {
             foreach (Mapping mapping in Mappings)

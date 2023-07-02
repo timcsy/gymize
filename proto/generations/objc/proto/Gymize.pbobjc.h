@@ -126,13 +126,14 @@ GPB_FINAL @interface InfoProto : GPBMessage
 typedef GPB_ENUM(GymizeProto_FieldNumber) {
   GymizeProto_FieldNumber_ResetAgentsArray = 1,
   GymizeProto_FieldNumber_RequestAgentsArray = 2,
-  GymizeProto_FieldNumber_ActionsArray = 3,
-  GymizeProto_FieldNumber_ObservationsArray = 4,
-  GymizeProto_FieldNumber_RewardsArray = 5,
-  GymizeProto_FieldNumber_TerminatedAgentsArray = 6,
-  GymizeProto_FieldNumber_TruncatedAgentsArray = 7,
-  GymizeProto_FieldNumber_InfosArray = 8,
-  GymizeProto_FieldNumber_Recording = 9,
+  GymizeProto_FieldNumber_ResponseAgentsArray = 3,
+  GymizeProto_FieldNumber_ActionsArray = 4,
+  GymizeProto_FieldNumber_ObservationsArray = 5,
+  GymizeProto_FieldNumber_RewardsArray = 6,
+  GymizeProto_FieldNumber_TerminatedAgentsArray = 7,
+  GymizeProto_FieldNumber_TruncatedAgentsArray = 8,
+  GymizeProto_FieldNumber_InfosArray = 9,
+  GymizeProto_FieldNumber_Recording = 10,
 };
 
 GPB_FINAL @interface GymizeProto : GPBMessage
@@ -146,6 +147,11 @@ GPB_FINAL @interface GymizeProto : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *requestAgentsArray;
 /** The number of items in @c requestAgentsArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger requestAgentsArray_Count;
+
+/** agents that response to the request_agents */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *responseAgentsArray;
+/** The number of items in @c responseAgentsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger responseAgentsArray_Count;
 
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ActionProto*> *actionsArray;
 /** The number of items in @c actionsArray without causing the array to be created. */

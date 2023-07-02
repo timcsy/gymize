@@ -28,13 +28,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "GymizeProto" do
       repeated :reset_agents, :string, 1
       repeated :request_agents, :string, 2
-      repeated :actions, :message, 3, "ActionProto"
-      repeated :observations, :message, 4, "ObservationProto"
-      repeated :rewards, :message, 5, "RewardProto"
-      repeated :terminated_agents, :string, 6
-      repeated :truncated_agents, :string, 7
-      repeated :infos, :message, 8, "InfoProto"
-      optional :recording, :message, 9, "RecordingProto"
+      repeated :response_agents, :string, 3
+      repeated :actions, :message, 4, "ActionProto"
+      repeated :observations, :message, 5, "ObservationProto"
+      repeated :rewards, :message, 6, "RewardProto"
+      repeated :terminated_agents, :string, 7
+      repeated :truncated_agents, :string, 8
+      repeated :infos, :message, 9, "InfoProto"
+      optional :recording, :message, 10, "RecordingProto"
     end
   end
 end

@@ -31,13 +31,14 @@ namespace Gymize.Protobuf {
             "ZXJ2YXRpb24YAiABKAsyDi5JbnN0YW5jZVByb3RvIiwKC1Jld2FyZFByb3Rv",
             "Eg0KBWFnZW50GAEgASgJEg4KBnJld2FyZBgCIAEoASI5CglJbmZvUHJvdG8S",
             "DQoFYWdlbnQYASABKAkSHQoFaW5mb3MYAiADKAsyDi5JbnN0YW5jZVByb3Rv",
-            "IpYCCgtHeW1pemVQcm90bxIUCgxyZXNldF9hZ2VudHMYASADKAkSFgoOcmVx",
-            "dWVzdF9hZ2VudHMYAiADKAkSHQoHYWN0aW9ucxgDIAMoCzIMLkFjdGlvblBy",
-            "b3RvEicKDG9ic2VydmF0aW9ucxgEIAMoCzIRLk9ic2VydmF0aW9uUHJvdG8S",
-            "HQoHcmV3YXJkcxgFIAMoCzIMLlJld2FyZFByb3RvEhkKEXRlcm1pbmF0ZWRf",
-            "YWdlbnRzGAYgAygJEhgKEHRydW5jYXRlZF9hZ2VudHMYByADKAkSGQoFaW5m",
-            "b3MYCCADKAsyCi5JbmZvUHJvdG8SIgoJcmVjb3JkaW5nGAkgASgLMg8uUmVj",
-            "b3JkaW5nUHJvdG9CEqoCD0d5bWl6ZS5Qcm90b2J1ZmIGcHJvdG8z"));
+            "Iq8CCgtHeW1pemVQcm90bxIUCgxyZXNldF9hZ2VudHMYASADKAkSFgoOcmVx",
+            "dWVzdF9hZ2VudHMYAiADKAkSFwoPcmVzcG9uc2VfYWdlbnRzGAMgAygJEh0K",
+            "B2FjdGlvbnMYBCADKAsyDC5BY3Rpb25Qcm90bxInCgxvYnNlcnZhdGlvbnMY",
+            "BSADKAsyES5PYnNlcnZhdGlvblByb3RvEh0KB3Jld2FyZHMYBiADKAsyDC5S",
+            "ZXdhcmRQcm90bxIZChF0ZXJtaW5hdGVkX2FnZW50cxgHIAMoCRIYChB0cnVu",
+            "Y2F0ZWRfYWdlbnRzGAggAygJEhkKBWluZm9zGAkgAygLMgouSW5mb1Byb3Rv",
+            "EiIKCXJlY29yZGluZxgKIAEoCzIPLlJlY29yZGluZ1Byb3RvQhKqAg9HeW1p",
+            "emUuUHJvdG9idWZiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gymize.Protobuf.SpaceReflection.Descriptor, global::Gymize.Protobuf.LocatorReflection.Descriptor, global::Gymize.Protobuf.RecordingReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -45,7 +46,7 @@ namespace Gymize.Protobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ObservationProto), global::Gymize.Protobuf.ObservationProto.Parser, new[]{ "Locator", "Observation" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.RewardProto), global::Gymize.Protobuf.RewardProto.Parser, new[]{ "Agent", "Reward" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.InfoProto), global::Gymize.Protobuf.InfoProto.Parser, new[]{ "Agent", "Infos" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.GymizeProto), global::Gymize.Protobuf.GymizeProto.Parser, new[]{ "ResetAgents", "RequestAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.GymizeProto), global::Gymize.Protobuf.GymizeProto.Parser, new[]{ "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1011,6 +1012,7 @@ namespace Gymize.Protobuf {
     public GymizeProto(GymizeProto other) : this() {
       resetAgents_ = other.resetAgents_.Clone();
       requestAgents_ = other.requestAgents_.Clone();
+      responseAgents_ = other.responseAgents_.Clone();
       actions_ = other.actions_.Clone();
       observations_ = other.observations_.Clone();
       rewards_ = other.rewards_.Clone();
@@ -1055,10 +1057,24 @@ namespace Gymize.Protobuf {
       get { return requestAgents_; }
     }
 
+    /// <summary>Field number for the "response_agents" field.</summary>
+    public const int ResponseAgentsFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _repeated_responseAgents_codec
+        = pb::FieldCodec.ForString(26);
+    private readonly pbc::RepeatedField<string> responseAgents_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// agents that response to the request_agents
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> ResponseAgents {
+      get { return responseAgents_; }
+    }
+
     /// <summary>Field number for the "actions" field.</summary>
-    public const int ActionsFieldNumber = 3;
+    public const int ActionsFieldNumber = 4;
     private static readonly pb::FieldCodec<global::Gymize.Protobuf.ActionProto> _repeated_actions_codec
-        = pb::FieldCodec.ForMessage(26, global::Gymize.Protobuf.ActionProto.Parser);
+        = pb::FieldCodec.ForMessage(34, global::Gymize.Protobuf.ActionProto.Parser);
     private readonly pbc::RepeatedField<global::Gymize.Protobuf.ActionProto> actions_ = new pbc::RepeatedField<global::Gymize.Protobuf.ActionProto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1067,9 +1083,9 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "observations" field.</summary>
-    public const int ObservationsFieldNumber = 4;
+    public const int ObservationsFieldNumber = 5;
     private static readonly pb::FieldCodec<global::Gymize.Protobuf.ObservationProto> _repeated_observations_codec
-        = pb::FieldCodec.ForMessage(34, global::Gymize.Protobuf.ObservationProto.Parser);
+        = pb::FieldCodec.ForMessage(42, global::Gymize.Protobuf.ObservationProto.Parser);
     private readonly pbc::RepeatedField<global::Gymize.Protobuf.ObservationProto> observations_ = new pbc::RepeatedField<global::Gymize.Protobuf.ObservationProto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1078,9 +1094,9 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "rewards" field.</summary>
-    public const int RewardsFieldNumber = 5;
+    public const int RewardsFieldNumber = 6;
     private static readonly pb::FieldCodec<global::Gymize.Protobuf.RewardProto> _repeated_rewards_codec
-        = pb::FieldCodec.ForMessage(42, global::Gymize.Protobuf.RewardProto.Parser);
+        = pb::FieldCodec.ForMessage(50, global::Gymize.Protobuf.RewardProto.Parser);
     private readonly pbc::RepeatedField<global::Gymize.Protobuf.RewardProto> rewards_ = new pbc::RepeatedField<global::Gymize.Protobuf.RewardProto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1089,9 +1105,9 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "terminated_agents" field.</summary>
-    public const int TerminatedAgentsFieldNumber = 6;
+    public const int TerminatedAgentsFieldNumber = 7;
     private static readonly pb::FieldCodec<string> _repeated_terminatedAgents_codec
-        = pb::FieldCodec.ForString(50);
+        = pb::FieldCodec.ForString(58);
     private readonly pbc::RepeatedField<string> terminatedAgents_ = new pbc::RepeatedField<string>();
     /// <summary>
     /// "" for the environment, others for individual agents
@@ -1103,9 +1119,9 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "truncated_agents" field.</summary>
-    public const int TruncatedAgentsFieldNumber = 7;
+    public const int TruncatedAgentsFieldNumber = 8;
     private static readonly pb::FieldCodec<string> _repeated_truncatedAgents_codec
-        = pb::FieldCodec.ForString(58);
+        = pb::FieldCodec.ForString(66);
     private readonly pbc::RepeatedField<string> truncatedAgents_ = new pbc::RepeatedField<string>();
     /// <summary>
     /// "" for the environment, others for individual agents
@@ -1117,9 +1133,9 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "infos" field.</summary>
-    public const int InfosFieldNumber = 8;
+    public const int InfosFieldNumber = 9;
     private static readonly pb::FieldCodec<global::Gymize.Protobuf.InfoProto> _repeated_infos_codec
-        = pb::FieldCodec.ForMessage(66, global::Gymize.Protobuf.InfoProto.Parser);
+        = pb::FieldCodec.ForMessage(74, global::Gymize.Protobuf.InfoProto.Parser);
     private readonly pbc::RepeatedField<global::Gymize.Protobuf.InfoProto> infos_ = new pbc::RepeatedField<global::Gymize.Protobuf.InfoProto>();
     /// <summary>
     /// can go with observations but do not need to go with actions
@@ -1131,7 +1147,7 @@ namespace Gymize.Protobuf {
     }
 
     /// <summary>Field number for the "recording" field.</summary>
-    public const int RecordingFieldNumber = 9;
+    public const int RecordingFieldNumber = 10;
     private global::Gymize.Protobuf.RecordingProto recording_;
     /// <summary>
     /// render images and audio
@@ -1162,6 +1178,7 @@ namespace Gymize.Protobuf {
       }
       if(!resetAgents_.Equals(other.resetAgents_)) return false;
       if(!requestAgents_.Equals(other.requestAgents_)) return false;
+      if(!responseAgents_.Equals(other.responseAgents_)) return false;
       if(!actions_.Equals(other.actions_)) return false;
       if(!observations_.Equals(other.observations_)) return false;
       if(!rewards_.Equals(other.rewards_)) return false;
@@ -1178,6 +1195,7 @@ namespace Gymize.Protobuf {
       int hash = 1;
       hash ^= resetAgents_.GetHashCode();
       hash ^= requestAgents_.GetHashCode();
+      hash ^= responseAgents_.GetHashCode();
       hash ^= actions_.GetHashCode();
       hash ^= observations_.GetHashCode();
       hash ^= rewards_.GetHashCode();
@@ -1205,6 +1223,7 @@ namespace Gymize.Protobuf {
     #else
       resetAgents_.WriteTo(output, _repeated_resetAgents_codec);
       requestAgents_.WriteTo(output, _repeated_requestAgents_codec);
+      responseAgents_.WriteTo(output, _repeated_responseAgents_codec);
       actions_.WriteTo(output, _repeated_actions_codec);
       observations_.WriteTo(output, _repeated_observations_codec);
       rewards_.WriteTo(output, _repeated_rewards_codec);
@@ -1212,7 +1231,7 @@ namespace Gymize.Protobuf {
       truncatedAgents_.WriteTo(output, _repeated_truncatedAgents_codec);
       infos_.WriteTo(output, _repeated_infos_codec);
       if (recording_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(82);
         output.WriteMessage(Recording);
       }
       if (_unknownFields != null) {
@@ -1227,6 +1246,7 @@ namespace Gymize.Protobuf {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       resetAgents_.WriteTo(ref output, _repeated_resetAgents_codec);
       requestAgents_.WriteTo(ref output, _repeated_requestAgents_codec);
+      responseAgents_.WriteTo(ref output, _repeated_responseAgents_codec);
       actions_.WriteTo(ref output, _repeated_actions_codec);
       observations_.WriteTo(ref output, _repeated_observations_codec);
       rewards_.WriteTo(ref output, _repeated_rewards_codec);
@@ -1234,7 +1254,7 @@ namespace Gymize.Protobuf {
       truncatedAgents_.WriteTo(ref output, _repeated_truncatedAgents_codec);
       infos_.WriteTo(ref output, _repeated_infos_codec);
       if (recording_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(82);
         output.WriteMessage(Recording);
       }
       if (_unknownFields != null) {
@@ -1249,6 +1269,7 @@ namespace Gymize.Protobuf {
       int size = 0;
       size += resetAgents_.CalculateSize(_repeated_resetAgents_codec);
       size += requestAgents_.CalculateSize(_repeated_requestAgents_codec);
+      size += responseAgents_.CalculateSize(_repeated_responseAgents_codec);
       size += actions_.CalculateSize(_repeated_actions_codec);
       size += observations_.CalculateSize(_repeated_observations_codec);
       size += rewards_.CalculateSize(_repeated_rewards_codec);
@@ -1272,6 +1293,7 @@ namespace Gymize.Protobuf {
       }
       resetAgents_.Add(other.resetAgents_);
       requestAgents_.Add(other.requestAgents_);
+      responseAgents_.Add(other.responseAgents_);
       actions_.Add(other.actions_);
       observations_.Add(other.observations_);
       rewards_.Add(other.rewards_);
@@ -1308,30 +1330,34 @@ namespace Gymize.Protobuf {
             break;
           }
           case 26: {
-            actions_.AddEntriesFrom(input, _repeated_actions_codec);
+            responseAgents_.AddEntriesFrom(input, _repeated_responseAgents_codec);
             break;
           }
           case 34: {
-            observations_.AddEntriesFrom(input, _repeated_observations_codec);
+            actions_.AddEntriesFrom(input, _repeated_actions_codec);
             break;
           }
           case 42: {
-            rewards_.AddEntriesFrom(input, _repeated_rewards_codec);
+            observations_.AddEntriesFrom(input, _repeated_observations_codec);
             break;
           }
           case 50: {
-            terminatedAgents_.AddEntriesFrom(input, _repeated_terminatedAgents_codec);
+            rewards_.AddEntriesFrom(input, _repeated_rewards_codec);
             break;
           }
           case 58: {
-            truncatedAgents_.AddEntriesFrom(input, _repeated_truncatedAgents_codec);
+            terminatedAgents_.AddEntriesFrom(input, _repeated_terminatedAgents_codec);
             break;
           }
           case 66: {
-            infos_.AddEntriesFrom(input, _repeated_infos_codec);
+            truncatedAgents_.AddEntriesFrom(input, _repeated_truncatedAgents_codec);
             break;
           }
           case 74: {
+            infos_.AddEntriesFrom(input, _repeated_infos_codec);
+            break;
+          }
+          case 82: {
             if (recording_ == null) {
               Recording = new global::Gymize.Protobuf.RecordingProto();
             }
@@ -1362,30 +1388,34 @@ namespace Gymize.Protobuf {
             break;
           }
           case 26: {
-            actions_.AddEntriesFrom(ref input, _repeated_actions_codec);
+            responseAgents_.AddEntriesFrom(ref input, _repeated_responseAgents_codec);
             break;
           }
           case 34: {
-            observations_.AddEntriesFrom(ref input, _repeated_observations_codec);
+            actions_.AddEntriesFrom(ref input, _repeated_actions_codec);
             break;
           }
           case 42: {
-            rewards_.AddEntriesFrom(ref input, _repeated_rewards_codec);
+            observations_.AddEntriesFrom(ref input, _repeated_observations_codec);
             break;
           }
           case 50: {
-            terminatedAgents_.AddEntriesFrom(ref input, _repeated_terminatedAgents_codec);
+            rewards_.AddEntriesFrom(ref input, _repeated_rewards_codec);
             break;
           }
           case 58: {
-            truncatedAgents_.AddEntriesFrom(ref input, _repeated_truncatedAgents_codec);
+            terminatedAgents_.AddEntriesFrom(ref input, _repeated_terminatedAgents_codec);
             break;
           }
           case 66: {
-            infos_.AddEntriesFrom(ref input, _repeated_infos_codec);
+            truncatedAgents_.AddEntriesFrom(ref input, _repeated_truncatedAgents_codec);
             break;
           }
           case 74: {
+            infos_.AddEntriesFrom(ref input, _repeated_infos_codec);
+            break;
+          }
+          case 82: {
             if (recording_ == null) {
               Recording = new global::Gymize.Protobuf.RecordingProto();
             }

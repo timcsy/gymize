@@ -58,7 +58,7 @@ class Bridge:
         self.add_request_agents(agents)
 
     def set_actions(self, actions: Dict[str, Any], with_env: bool=True) -> None:
-        # TODO: if there are more than one agent, then wait for obsertvation?
+        # TODO v: if there are more than one agent, then wait for obsertvation? Not here, on wait_gymize_message
         self.actions = { **self.actions, **actions }
         env = []
         if with_env:
@@ -66,23 +66,18 @@ class Bridge:
         self.add_request_agents(env + list(actions.keys()))
 
     def get_observations(self, agents: List[str]):
-        # TODO: when to wait?
         return { agent: self.observations[agent] for agent in agents }
 
     def get_rewards(self, agents: List[str]):
-        # TODO: when to wait?
         return { agent: self.rewards[agent] for agent in agents }
 
     def get_terminations(self, agents: List[str]):
-        # TODO: when to wait?
         return { agent: self.terminations[agent] for agent in agents }
 
     def get_truncations(self, agents: List[str]):
-        # TODO: when to wait?
         return { agent: self.truncations[agent] for agent in agents }
 
     def get_infos(self, agents: List[str]):
-        # TODO: when to wait?
         return { agent: self.infos[agent] for agent in agents }
     
     def send_info(self, agent, info):
@@ -110,7 +105,7 @@ class Bridge:
         gymize_proto = GymizeProto()
         gymize_proto.request_agents.extend(self.request_agents)
         gymize_proto.reset_agents.extend(self.reset_requests)
-        # TODO: only send requested actions
+        # TODO v: only send requested actions? There is no request from Unity to Python
         for agent, action in self.actions.items():
             action_proto = ActionProto()
             action_proto.agent = agent
@@ -126,7 +121,9 @@ class Bridge:
         msg = gymize_proto.SerializeToString()
         self.channel.tell_sync(id='_gym_', content=msg)
     
-    def wait_gymize_message(self) -> None:
+    def wait_gymize_message(self, agents: List[str]=[]) -> None:
+        # agents: the agents that have to especially wait for, blocking
+        # TODO: waiting for agents
         content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
         return self.parse_message(content=content, done=done)
     
@@ -140,6 +137,8 @@ class Bridge:
         if content is not None:
             gymize_proto = GymizeProto()
             gymize_proto.ParseFromString(content.raw)
+
+            print(gymize_proto.response_agents)
 
             observations = self.parse_observations(gymize_proto.observations)
             rewards = self.parse_rewards(gymize_proto.rewards)

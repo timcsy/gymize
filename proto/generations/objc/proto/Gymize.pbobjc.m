@@ -288,6 +288,7 @@ typedef struct InfoProto__storage_ {
 
 @dynamic resetAgentsArray, resetAgentsArray_Count;
 @dynamic requestAgentsArray, requestAgentsArray_Count;
+@dynamic responseAgentsArray, responseAgentsArray_Count;
 @dynamic actionsArray, actionsArray_Count;
 @dynamic observationsArray, observationsArray_Count;
 @dynamic rewardsArray, rewardsArray_Count;
@@ -300,6 +301,7 @@ typedef struct GymizeProto__storage_ {
   uint32_t _has_storage_[1];
   NSMutableArray *resetAgentsArray;
   NSMutableArray *requestAgentsArray;
+  NSMutableArray *responseAgentsArray;
   NSMutableArray *actionsArray;
   NSMutableArray *observationsArray;
   NSMutableArray *rewardsArray;
@@ -330,6 +332,15 @@ typedef struct GymizeProto__storage_ {
         .number = GymizeProto_FieldNumber_RequestAgentsArray,
         .hasIndex = GPBNoHasBit,
         .offset = (uint32_t)offsetof(GymizeProto__storage_, requestAgentsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "responseAgentsArray",
+        .dataTypeSpecific.clazz = Nil,
+        .number = GymizeProto_FieldNumber_ResponseAgentsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GymizeProto__storage_, responseAgentsArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeString,
       },

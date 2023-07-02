@@ -884,13 +884,14 @@ class GymizeProto final :
   enum : int {
     kResetAgentsFieldNumber = 1,
     kRequestAgentsFieldNumber = 2,
-    kActionsFieldNumber = 3,
-    kObservationsFieldNumber = 4,
-    kRewardsFieldNumber = 5,
-    kTerminatedAgentsFieldNumber = 6,
-    kTruncatedAgentsFieldNumber = 7,
-    kInfosFieldNumber = 8,
-    kRecordingFieldNumber = 9,
+    kResponseAgentsFieldNumber = 3,
+    kActionsFieldNumber = 4,
+    kObservationsFieldNumber = 5,
+    kRewardsFieldNumber = 6,
+    kTerminatedAgentsFieldNumber = 7,
+    kTruncatedAgentsFieldNumber = 8,
+    kInfosFieldNumber = 9,
+    kRecordingFieldNumber = 10,
   };
   // repeated string reset_agents = 1;
   int reset_agents_size() const;
@@ -940,7 +941,31 @@ class GymizeProto final :
   std::string* _internal_add_request_agents();
   public:
 
-  // repeated .ActionProto actions = 3;
+  // repeated string response_agents = 3;
+  int response_agents_size() const;
+  private:
+  int _internal_response_agents_size() const;
+  public:
+  void clear_response_agents();
+  const std::string& response_agents(int index) const;
+  std::string* mutable_response_agents(int index);
+  void set_response_agents(int index, const std::string& value);
+  void set_response_agents(int index, std::string&& value);
+  void set_response_agents(int index, const char* value);
+  void set_response_agents(int index, const char* value, size_t size);
+  std::string* add_response_agents();
+  void add_response_agents(const std::string& value);
+  void add_response_agents(std::string&& value);
+  void add_response_agents(const char* value);
+  void add_response_agents(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& response_agents() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_response_agents();
+  private:
+  const std::string& _internal_response_agents(int index) const;
+  std::string* _internal_add_response_agents();
+  public:
+
+  // repeated .ActionProto actions = 4;
   int actions_size() const;
   private:
   int _internal_actions_size() const;
@@ -958,7 +983,7 @@ class GymizeProto final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ActionProto >&
       actions() const;
 
-  // repeated .ObservationProto observations = 4;
+  // repeated .ObservationProto observations = 5;
   int observations_size() const;
   private:
   int _internal_observations_size() const;
@@ -976,7 +1001,7 @@ class GymizeProto final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ObservationProto >&
       observations() const;
 
-  // repeated .RewardProto rewards = 5;
+  // repeated .RewardProto rewards = 6;
   int rewards_size() const;
   private:
   int _internal_rewards_size() const;
@@ -994,7 +1019,7 @@ class GymizeProto final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardProto >&
       rewards() const;
 
-  // repeated string terminated_agents = 6;
+  // repeated string terminated_agents = 7;
   int terminated_agents_size() const;
   private:
   int _internal_terminated_agents_size() const;
@@ -1018,7 +1043,7 @@ class GymizeProto final :
   std::string* _internal_add_terminated_agents();
   public:
 
-  // repeated string truncated_agents = 7;
+  // repeated string truncated_agents = 8;
   int truncated_agents_size() const;
   private:
   int _internal_truncated_agents_size() const;
@@ -1042,7 +1067,7 @@ class GymizeProto final :
   std::string* _internal_add_truncated_agents();
   public:
 
-  // repeated .InfoProto infos = 8;
+  // repeated .InfoProto infos = 9;
   int infos_size() const;
   private:
   int _internal_infos_size() const;
@@ -1060,7 +1085,7 @@ class GymizeProto final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InfoProto >&
       infos() const;
 
-  // .RecordingProto recording = 9;
+  // .RecordingProto recording = 10;
   bool has_recording() const;
   private:
   bool _internal_has_recording() const;
@@ -1087,6 +1112,7 @@ class GymizeProto final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> reset_agents_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> request_agents_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> response_agents_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ActionProto > actions_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ObservationProto > observations_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardProto > rewards_;
@@ -1742,7 +1768,82 @@ GymizeProto::mutable_request_agents() {
   return &request_agents_;
 }
 
-// repeated .ActionProto actions = 3;
+// repeated string response_agents = 3;
+inline int GymizeProto::_internal_response_agents_size() const {
+  return response_agents_.size();
+}
+inline int GymizeProto::response_agents_size() const {
+  return _internal_response_agents_size();
+}
+inline void GymizeProto::clear_response_agents() {
+  response_agents_.Clear();
+}
+inline std::string* GymizeProto::add_response_agents() {
+  std::string* _s = _internal_add_response_agents();
+  // @@protoc_insertion_point(field_add_mutable:GymizeProto.response_agents)
+  return _s;
+}
+inline const std::string& GymizeProto::_internal_response_agents(int index) const {
+  return response_agents_.Get(index);
+}
+inline const std::string& GymizeProto::response_agents(int index) const {
+  // @@protoc_insertion_point(field_get:GymizeProto.response_agents)
+  return _internal_response_agents(index);
+}
+inline std::string* GymizeProto::mutable_response_agents(int index) {
+  // @@protoc_insertion_point(field_mutable:GymizeProto.response_agents)
+  return response_agents_.Mutable(index);
+}
+inline void GymizeProto::set_response_agents(int index, const std::string& value) {
+  response_agents_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:GymizeProto.response_agents)
+}
+inline void GymizeProto::set_response_agents(int index, std::string&& value) {
+  response_agents_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:GymizeProto.response_agents)
+}
+inline void GymizeProto::set_response_agents(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  response_agents_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:GymizeProto.response_agents)
+}
+inline void GymizeProto::set_response_agents(int index, const char* value, size_t size) {
+  response_agents_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:GymizeProto.response_agents)
+}
+inline std::string* GymizeProto::_internal_add_response_agents() {
+  return response_agents_.Add();
+}
+inline void GymizeProto::add_response_agents(const std::string& value) {
+  response_agents_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:GymizeProto.response_agents)
+}
+inline void GymizeProto::add_response_agents(std::string&& value) {
+  response_agents_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:GymizeProto.response_agents)
+}
+inline void GymizeProto::add_response_agents(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  response_agents_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:GymizeProto.response_agents)
+}
+inline void GymizeProto::add_response_agents(const char* value, size_t size) {
+  response_agents_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:GymizeProto.response_agents)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+GymizeProto::response_agents() const {
+  // @@protoc_insertion_point(field_list:GymizeProto.response_agents)
+  return response_agents_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+GymizeProto::mutable_response_agents() {
+  // @@protoc_insertion_point(field_mutable_list:GymizeProto.response_agents)
+  return &response_agents_;
+}
+
+// repeated .ActionProto actions = 4;
 inline int GymizeProto::_internal_actions_size() const {
   return actions_.size();
 }
@@ -1782,7 +1883,7 @@ GymizeProto::actions() const {
   return actions_;
 }
 
-// repeated .ObservationProto observations = 4;
+// repeated .ObservationProto observations = 5;
 inline int GymizeProto::_internal_observations_size() const {
   return observations_.size();
 }
@@ -1822,7 +1923,7 @@ GymizeProto::observations() const {
   return observations_;
 }
 
-// repeated .RewardProto rewards = 5;
+// repeated .RewardProto rewards = 6;
 inline int GymizeProto::_internal_rewards_size() const {
   return rewards_.size();
 }
@@ -1862,7 +1963,7 @@ GymizeProto::rewards() const {
   return rewards_;
 }
 
-// repeated string terminated_agents = 6;
+// repeated string terminated_agents = 7;
 inline int GymizeProto::_internal_terminated_agents_size() const {
   return terminated_agents_.size();
 }
@@ -1937,7 +2038,7 @@ GymizeProto::mutable_terminated_agents() {
   return &terminated_agents_;
 }
 
-// repeated string truncated_agents = 7;
+// repeated string truncated_agents = 8;
 inline int GymizeProto::_internal_truncated_agents_size() const {
   return truncated_agents_.size();
 }
@@ -2012,7 +2113,7 @@ GymizeProto::mutable_truncated_agents() {
   return &truncated_agents_;
 }
 
-// repeated .InfoProto infos = 8;
+// repeated .InfoProto infos = 9;
 inline int GymizeProto::_internal_infos_size() const {
   return infos_.size();
 }
@@ -2052,7 +2153,7 @@ GymizeProto::infos() const {
   return infos_;
 }
 
-// .RecordingProto recording = 9;
+// .RecordingProto recording = 10;
 inline bool GymizeProto::_internal_has_recording() const {
   return this != internal_default_instance() && recording_ != nullptr;
 }

@@ -273,13 +273,14 @@ namespace Gymize
 
         void _Reset(GymizeProto gymizeProto)
         {
-            // TODO: Also reset actions, "observations", rewards, termiantions, truncations, infos
+            // TODO v: Also reset actions, "observations", rewards, termiantions, truncations, infos
             foreach (string agent in gymizeProto.ResetAgents)
             {
                 m_Ticks[agent] = 0;
                 m_UpdateAgents[agent] = false;
 
                 m_Actions[agent] = null;
+                _RemoveObservation(agent);
                 m_Rewards[agent] = 0;
                 m_TerminatedAgents.Remove(agent);
                 m_TerminatedAgents.Remove(agent);
@@ -481,6 +482,14 @@ namespace Gymize
             return observationProtos;
         }
 
+        void _RemoveObservation(string agent)
+        {
+            foreach (Locator locator in m_Observations.Keys.ToList())
+            {
+                if (locator.HasSingleAgent(agent)) m_Observations.Remove(locator);
+            }
+        }
+
         void _AddReward(string agent, double reward)
         {
             if (!m_Rewards.ContainsKey(agent)) m_Rewards[agent] = 0;
@@ -663,8 +672,9 @@ namespace Gymize
 
         void _SendGymizeMessage()
         {
-            List<string> responseAgents = _GetResponseAgents(); // TODO: also send this -> response_agents, add in protobuf, 救的概念，可以再繼續動了
+            List<string> responseAgents = _GetResponseAgents(); // TODO v: also send this -> response_agents, add in protobuf, 救的概念，可以再繼續動了
             GymizeProto gymizeProto = new GymizeProto();
+            gymizeProto.ResponseAgents.AddRange(responseAgents);
             gymizeProto.Observations.AddRange(_GetObservations(responseAgents));
             gymizeProto.Rewards.AddRange(_GetRewards(responseAgents));
             gymizeProto.TerminatedAgents.AddRange(_GetTerminations(responseAgents));
