@@ -1,2 +1,4 @@
+gymnasium>=0.28
+pettingzoo>=1.23
 websockets==10.1
 protobuf

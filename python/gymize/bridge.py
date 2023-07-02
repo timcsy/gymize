@@ -50,9 +50,10 @@ class Bridge:
     def reset_agents(self, agents: List[str]) -> None:
         # not terminate or truncate anymore, renew possible_agents
         for agent in agents:
-            self.rewards[agent] = 0
-            self.terminations[agent] = False
-            self.truncations[agent] = False
+            if agent != '':
+                self.rewards[agent] = 0
+                self.terminations[agent] = False
+                self.truncations[agent] = False
         
         self.reset_requests = list(set(self.reset_requests + agents))
         self.add_request_agents(agents)
@@ -80,7 +81,7 @@ class Bridge:
     def get_infos(self, agents: List[str]):
         return { agent: self.infos[agent] for agent in agents }
     
-    def send_info(self, agent, info):
+    def send_info(self, info, agent):
         gymize_proto = GymizeProto()
         info_proto = InfoProto(agent=agent, infos=[space.to_proto(info)])
         gymize_proto.infos.append(info_proto)
@@ -177,7 +178,8 @@ class Bridge:
             return self.rewards
         
         for reward_proto in reward_protos:
-            self.rewards[reward_proto.agent] = reward_proto.reward
+            if reward_proto.agent != '':
+                self.rewards[reward_proto.agent] = reward_proto.reward
         return self.rewards
     
     def parse_terminations(self, terminated_agents: List[str]=None):
@@ -215,6 +217,9 @@ class Bridge:
         for info_proto in info_protos:
             if info_proto.agent != '':
                 # TODO v: when to renew list?
+                if info_proto.agent not in self.infos:
+                    # if the agent info was deleted, initialize a new one for the agent
+                    self.infos[info_proto.agent] = { 'env': [], 'agent': [] }
                 self.infos[info_proto.agent]['agent'] = []
                 for instance_proto in info_proto.infos:
                     self.infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))

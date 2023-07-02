@@ -2,6 +2,36 @@
 
 Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 
+## Installation
+```
+cd python
+pip install -e .
+```
+
+## Usage
+
+Single-Agent with Gymnasium API:
+```
+import gymnasium as gym
+import gymize
+
+env = gym.make('gymize/Unity-v0', env_name='<your env name>', file_name=file_name, observation_space=observation_space, action_space=action_space)
+```
+
+Multi-Agents with PettingZoo AEC API:
+```
+from gymize.envs import UnityAECEnv
+
+env = UnityAECEnv(env_name='<your env name>', file_name=file_name, observation_spaces=observation_spaces, action_spaces=action_spaces)
+```
+
+Multi-Agents with PettingZoo Parallel API:
+```
+from gymize.envs import UnityParallelEnv
+
+env = UnityParallelEnv(env_name='<your env name>', file_name=file_name, observation_spaces=observation_spaces, action_spaces=action_spaces)
+```
+
 ## Locator
 
 The developer can use the "locator" to map the data to the gym-style space data.

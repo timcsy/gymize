@@ -1,5 +1,4 @@
 from typing import List
-import numpy as np
 
 import gymnasium as gym
 
@@ -8,7 +7,7 @@ from gymize.bridge import Bridge
 class UnityGymEnv(gym.Env):
     metadata = { 'render_modes': [ 'rgb_array' ] }
 
-    def __init__(self, env_name, file_name: str=None, action_space=None, observation_space=None, reward_range=(-np.inf, np.inf), agent_name: str='agent', update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
+    def __init__(self, env_name, file_name: str=None, action_space=None, observation_space=None, reward_range=(-float('inf'), float('inf')), agent_name: str='agent', update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
         self.bridge = Bridge(
             env_name=env_name,
             file_name=file_name,
@@ -30,7 +29,7 @@ class UnityGymEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         # We need the following line to seed self.np_random
-        super().reset(seed=seed)
+        super().reset(seed=seed, options=options)
 
         self.bridge.reset_env()
         observations, _, _, _, infos = self.bridge.wait_gymize_message(wait_agents=[ self.agent ])
@@ -51,7 +50,7 @@ class UnityGymEnv(gym.Env):
         return observation, reward, terminated, truncated, info
 
     def send_info(self, info):
-        self.bridge.send_info(self.agent, info)
+        self.bridge.send_info(info=info, agent=self.agent)
     
     def render(self):
         if self.render_mode == 'rgb_array':

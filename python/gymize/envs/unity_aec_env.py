@@ -1,154 +1,136 @@
 from typing import List
-import gymnasium as gym
-import numpy as np
-import time
 
-from gymize import space
-from gymize.channel import Channel, Content
-from gymize.lanch import launch_env
-from gymize.proto.gymize_pb2 import GymizeProto, InfoProto, ObservationProto, RewardProto
+from pettingzoo import AECEnv
+from pettingzoo.utils import agent_selector
+from gymnasium.utils import seeding
 
-class UnityAECEnv(gym.Env):
+from gymize.bridge import Bridge
+
+class UnityAECEnv(AECEnv):
     metadata = { 'render_modes': [ 'rgb_array' ] }
 
-    def __init__(self, env_name, file_name: str=None, observation_space=None, action_space=None, agent_selection: str='agent', update_seconds=0.001, render_mode=None, render_fps=4):
-        self.observation_space = observation_space
-        self.action_space = action_space
+    def __init__(self, env_name, file_name: str=None, action_spaces=None, observation_spaces=None, agent_names: List[str]={}, update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
+        self.bridge = Bridge(
+            env_name=env_name,
+            file_name=file_name,
+            action_spaces=action_spaces,
+            observation_spaces=observation_spaces,
+            agents=agent_names,
+            update_seconds=update_seconds
+        )
+        self.possible_agents = agent_names
+        self.agents = agent_names[:]
+        self.action_spaces = action_spaces
+        self.observation_spaces = observation_spaces
 
-        self.agent_selection = agent_selection
-        self.terminations = { self.agent_selection: False }
-        self.truncations = { self.agent_selection: False }
-
-        self.update_seconds = update_seconds
-        
-        self.channel = Channel(name=env_name)
-        self.channel.connect_sync()
-        time.sleep(0.5)
-        launch_env(file_name)
+        self.views = views # for rendering
 
         assert render_mode is None or render_mode in self.metadata['render_modes']
         self.render_mode = render_mode
         self.render_fps = render_fps
-
-    def _get_obs(self, observation_protos: List[ObservationProto]=None):
-        observations = { self.agent_selection: self.observation_space.sample() }
-        if observation_protos is None:
-            return observations
-        observations = space.tuple_to_list(observations)
-        renew_list = set()
-        for obs in observation_protos:
-            observations = space.merge(observations, obs.locator, obs.observation, renew_list)
-        return space.list_to_tuple(observations)
     
-    def _get_reward(self, reward_protos: List[RewardProto]=None):
-        rewards = { self.agent_selection: 0 }
-        if reward_protos is None:
-            return rewards
-        for reward_proto in reward_protos:
-            rewards[reward_proto.agent] = reward_proto.reward
-        return rewards
+    @property
+    def terminations(self):
+        return self.bridge.terminations
     
-    def _get_terminations(self, terminated_agents: List[str]=None):
-        if terminated_agents is None:
-            return self.terminations
-        for agent in terminated_agents:
-            if agent == '':
-                self.terminations = { agent: True for agent in self.terminations.keys() }
-                break
-            else:
-                self.terminations[agent] = True
-        return self.terminations
+    @property
+    def truncations(self):
+        return self.bridge.truncations
     
-    def _get_truncations(self, truncated_agents: List[str]=None):
-        if truncated_agents is None:
-            return self.truncations
-        for agent in truncated_agents:
-            if agent == '':
-                self.truncations = { agent: True for agent in self.truncations.keys() }
-                break
-            else:
-                self.truncations[agent] = True
-        return self.truncations
-
-    def _get_infos(self, info_protos: List[InfoProto]=None):
-        infos = { self.agent_selection: { 'env': [], 'agent': [] } }
-        if info_protos is None:
-            return infos
-        env_info_proto = None
-        for info_proto in info_protos:
-            if info_proto.agent != '':
-                infos[info_proto.agent] = { 'agent': [] }
-                for instance_proto in info_proto.infos:
-                    infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))
-            else:
-                env_info_proto = info_proto
-        if env_info_proto is not None:
-            env_infos = []
-            for instance_proto in env_info_proto.infos:
-                env_infos.append(space.from_proto(instance_proto))
-            for agent in infos.keys():
-                infos[agent]['env'] = env_infos
-
-        return infos
+    @property
+    def rewards(self):
+        return self.bridge.rewards
     
-    def parse_message(self, content: Content=None):
-        if content is None:
-            return self._get_obs(None), self._get_reward(None), self._get_terminations(None), self._get_truncations(None), self._get_infos(None)
-        gymize_proto = GymizeProto()
-        gymize_proto.ParseFromString(content.raw)
-        observations = self._get_obs(gymize_proto.observations)
-        rewards = self._get_reward(gymize_proto.rewards)
-        terminations = self._get_terminations(gymize_proto.terminated_agents)
-        truncations = self._get_truncations(gymize_proto.truncated_agents)
-        infos = self._get_infos(gymize_proto.infos)
-        return observations, rewards, terminations, truncations, infos
+    @property
+    def infos(self):
+        return self.bridge.infos
 
     def reset(self, seed=None, options=None):
-        # We need the following line to seed self.np_random
-        super().reset(seed=seed)
+        '''
+        Reset needs to initialize the following attributes
+        - agents
+        - rewards
+        - _cumulative_rewards
+        - terminations
+        - truncations
+        - infos
+        - agent_selection
+        And must set up the environment so that render(), step(), and observe()
+        can be called without issues.
+        Here it sets up the state dictionary which is used by step() and the observations dictionary which is used by step() and observe()
+        '''
+        # Initialize the RNG if the seed is manually passed
+        if seed is not None:
+            self._np_random, seed = seeding.np_random(seed)
+        
+        self.bridge.reset_env() # include rewards, terminations, truncations
+        self.agents = self.possible_agents[:]
+        self._cumulative_rewards = { agent: 0 for agent in self.agents }
 
-        gymize_proto = GymizeProto()
-        gymize_proto.reset_agents.extend([''] + [self.agent_selection])
-
-        msg = gymize_proto.SerializeToString()
-
-        self.channel.tell_sync(id='_gym_', content=msg)
-
-        observations = self._get_obs()
-        infos = self._get_infos()
-
-        return observations[self.agent_selection], infos[self.agent_selection]
+        '''
+        Our agent_selector utility allows easy cyclic stepping through the agents list.
+        '''
+        self._agent_selector = agent_selector(self.agents)
+        self.agent_selection = self._agent_selector.next()
 
     def step(self, action):
-        # send action
-        self.channel.tell_sync(id='_gym_', content=space.to_gymize(action, self.agent_selection))
+        '''
+        step(action) takes in an action for the current agent (specified by
+        agent_selection) and needs to update
+        - rewards
+        - _cumulative_rewards (accumulating the rewards)
+        - terminations
+        - truncations
+        - infos
+        - agent_selection (to the next agent)
+        And any internal state used by observe() or render()
+        '''
+        if (
+            self.terminations[self.agent_selection]
+            or self.truncations[self.agent_selection]
+        ):
+            # handles stepping an agent which is already dead
+            # accepts a None action for the one agent, and moves the agent_selection to
+            # the next dead agent,  or if there are no more dead agents, to the next live agent
+            self._was_dead_step(action)
+            return
 
-        content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
+        agent = self.agent_selection
 
-        observations, rewards, terminations, truncations, infos = self.parse_message(content)
-        truncated = done or truncations[self.agent_selection]
+        # the agent which stepped last had its _cumulative_rewards accounted for
+        # (because it was returned by last()), so the _cumulative_rewards for this
+        # agent should start again at 0
+        self._cumulative_rewards[agent] = 0
 
-        return observations[self.agent_selection], rewards[self.agent_selection], terminations[self.agent_selection], truncated, infos[self.agent_selection]
+        self.bridge.set_actions({ agent: action })
 
+        # selects the next agent.
+        self.agent_selection = self._agent_selector.next()
+        # Adds .rewards to ._cumulative_rewards
+        self._accumulate_rewards()
+
+    def observe(self, agent):
+        '''
+        Observe should return the observation of the specified agent. This function
+        should return a sane observation (though not necessarily the most up to date possible)
+        at any time after reset() is called.
+        '''
+        # we wait for Unity side here
+        self.bridge.wait_gymize_message(wait_agents=[ agent ])
+        return self.bridge.get_observations([ agent ])[agent]
+
+    def send_info(self, info, agent: str=None):
+        if agent is None:
+            agent = self.agent_selection
+        self.bridge.send_info(agent=agent, info=info)
+    
     def render(self):
         if self.render_mode == 'rgb_array':
-            return self._render_frame()
-
-    def _render_frame(self):
-        if self.render_mode == 'rgb_array':
-            return np.transpose()
-
-    def send_info(self, info):
-        gymize_proto = GymizeProto()
-        info_proto = InfoProto(
-            agent=self.agent_selection,
-            infos=[space.to_proto(info)]
-        )
-        gymize_proto.infos.append(info_proto)
-
-        msg = gymize_proto.SerializeToString()
-
-        self.channel.tell_sync(id='_gym_', content=msg)
+            return self.bridge.get_frame(self.views)
+        elif self.render_mode == 'rgb_array_list':
+            return self.bridge.get_frames(self.views)
+        elif self.render_mode == 'video':
+            return self.bridge.get_recording(self.views)
 
     def close(self):
-        self.channel.close_sync()
+        self.bridge.close()
