@@ -1,5 +1,5 @@
 import time
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 from gymnasium.spaces import Space
 
@@ -121,11 +121,23 @@ class Bridge:
         msg = gymize_proto.SerializeToString()
         self.channel.tell_sync(id='_gym_', content=msg)
     
-    def wait_gymize_message(self, agents: List[str]=[]) -> None:
+    def wait_gymize_message(self, wait_agents: List[str]=[]) -> None:
         # agents: the agents that have to especially wait for, blocking
-        # TODO: waiting for agents
-        content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
-        return self.parse_message(content=content, done=done)
+        # TODO v: waiting for agents
+        responsed_agents = set()
+        while True:
+            content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
+            observations, rewards, terminations, truncations, infos, response_agents = self.parse_message(content=content, done=done)
+            responsed_agents = responsed_agents.union(response_agents)
+            if self.is_agents_collected(agents=wait_agents, responsed_agents=responsed_agents):
+                break
+        return observations, rewards, terminations, truncations, infos
+
+    def is_agents_collected(self, agents: List[str], responsed_agents: Set[str]) -> bool:
+        for agent in agents:
+            if agent not in responsed_agents:
+                return False
+        return True
     
     def parse_message(self, content: Content=None, done: bool=False):
         observations = self.parse_observations(None)
@@ -138,7 +150,7 @@ class Bridge:
             gymize_proto = GymizeProto()
             gymize_proto.ParseFromString(content.raw)
 
-            print(gymize_proto.response_agents)
+            response_agents = [agent for agent in gymize_proto.response_agents]
 
             observations = self.parse_observations(gymize_proto.observations)
             rewards = self.parse_rewards(gymize_proto.rewards)
@@ -146,7 +158,7 @@ class Bridge:
             truncations = self.parse_truncations(gymize_proto.truncated_agents, done)
             infos = self.parse_infos(gymize_proto.infos)
         
-        return observations, rewards, terminations, truncations, infos
+        return observations, rewards, terminations, truncations, infos, response_agents
 
     def parse_observations(self, observation_protos: List[ObservationProto]=None):
         if observation_protos is None:

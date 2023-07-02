@@ -33,14 +33,14 @@ class UnityGymEnv(gym.Env):
         super().reset(seed=seed)
 
         self.bridge.reset_env()
-        observations, _, _, _, infos = self.bridge.wait_gymize_message()
+        observations, _, _, _, infos = self.bridge.wait_gymize_message(wait_agents=[ self.agent ])
 
         return observations[self.agent], infos[self.agent]
 
     def step(self, action):
         self.bridge.set_actions({ self.agent: action })
 
-        self.bridge.wait_gymize_message()
+        self.bridge.wait_gymize_message(wait_agents=[ self.agent ])
 
         observation = self.bridge.get_observations([ self.agent ])[self.agent]
         reward = self.bridge.get_rewards([ self.agent ])[self.agent]
