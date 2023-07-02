@@ -73,13 +73,13 @@ class UnityParallelEnv(ParallelEnv):
         - infos
         dicts where each dict looks like {agent_1: item_1, agent_2: item_2}
         '''
+        for agent in list(self.agents):
+            if self.bridge.terminations[agent] or self.bridge.truncations[agent]:
+                self.agents.remove(agent)
+        
         self.bridge.set_actions(actions=actions)
 
-        observations, rewards, terminations, truncations, infos = self.bridge.wait_gymize_message(wait_agents=self.agents)
-
-        for agent in list(self.agents):
-            if terminations[agent] or truncations[agent]:
-                self.agents.remove(agent)
+        self.bridge.wait_gymize_message(wait_agents=self.agents)
 
         observations = self.bridge.get_observations(self.agents)
         rewards = self.bridge.get_rewards(self.agents)
