@@ -42,7 +42,7 @@ class Bridge:
     
     def add_request_agents(self, agents: List[str]) -> None:
         self.request_agents = list(set(self.request_agents + agents))
-        self.send_requests_resets_actions()
+        self.send_forward_messages()
 
     def reset_env(self) -> None:
         self.reset_agents([''] + self.possible_agents)
@@ -98,21 +98,15 @@ class Bridge:
         pass
 
     def get_recording(self, names: List[str]):
-        # TODO
+        # TODO: video
         pass
 
     def close(self) -> None:
         self.channel.close_sync()
 
-    def send_gymize_message(self, gymize_proto: GymizeProto) -> None:
-        msg = gymize_proto.SerializeToString()
-        self.channel.tell_sync(id='_gym_', content=msg)
 
-    def wait_gymize_message(self) -> None:
-        content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
-        return self.parse_message(content=content, done=done)
-    
-    def send_requests_resets_actions(self) -> None:
+    def send_forward_messages(self) -> None:
+        # send requests, resets, actions to another side
         gymize_proto = GymizeProto()
         gymize_proto.request_agents.extend(self.request_agents)
         gymize_proto.reset_agents.extend(self.reset_requests)
@@ -128,69 +122,13 @@ class Bridge:
         self.reset_requests = []
         self.actions = {}
 
-    def parse_observations(self, observation_protos: List[ObservationProto]=None):
-        if observation_protos is None:
-            return self.observations
-        observations = space.tuple_to_list(self.observations)
-        # TODO v: when to renew list? everytime or request agent only? but parse means requested
-        renew_list = set()
-        for obs in observation_protos:
-            observations = space.merge(observations, obs.locator, obs.observation, renew_list)
-        self.observations = space.list_to_tuple(observations)
-        return self.observations
+    def send_gymize_message(self, gymize_proto: GymizeProto) -> None:
+        msg = gymize_proto.SerializeToString()
+        self.channel.tell_sync(id='_gym_', content=msg)
     
-    def parse_rewards(self, reward_protos: List[RewardProto]=None):
-        if reward_protos is None:
-            return self.rewards
-        for reward_proto in reward_protos:
-            self.rewards[reward_proto.agent] = reward_proto.reward
-        return self.rewards
-    
-    def parse_terminations(self, terminated_agents: List[str]=None):
-        if terminated_agents is None:
-            return self.terminations
-        for agent in terminated_agents:
-            if agent == '':
-                self.terminations = { agent: True for agent in self.terminations.keys() }
-                break
-            else:
-                self.terminations[agent] = True
-        return self.terminations
-    
-    def parse_truncations(self, truncated_agents: List[str]=None, done: bool=False):
-        if done:
-            self.truncations = { agent: True for agent in self.truncations.keys() }
-            return self.truncations
-        if truncated_agents is None:
-            return self.truncations
-        for agent in truncated_agents:
-            if agent == '':
-                self.truncations = { agent: True for agent in self.truncations.keys() }
-                break
-            else:
-                self.truncations[agent] = True
-        return self.truncations
-
-    def parse_infos(self, info_protos: List[InfoProto]=None):
-        if info_protos is None:
-            return self.infos
-        env_info_proto = None
-        for info_proto in info_protos:
-            if info_proto.agent != '':
-                # TODO v: when to renew list?
-                self.infos[info_proto.agent]['agent'] = []
-                for instance_proto in info_proto.infos:
-                    self.infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))
-            else:
-                env_info_proto = info_proto
-        if env_info_proto is not None:
-            env_infos = []
-            for instance_proto in env_info_proto.infos:
-                env_infos.append(space.from_proto(instance_proto))
-            for info in self.infos.values():
-                info['env'] = env_infos
-
-        return self.infos
+    def wait_gymize_message(self) -> None:
+        content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
+        return self.parse_message(content=content, done=done)
     
     def parse_message(self, content: Content=None, done: bool=False):
         observations = self.parse_observations(None)
@@ -210,3 +148,72 @@ class Bridge:
             infos = self.parse_infos(gymize_proto.infos)
         
         return observations, rewards, terminations, truncations, infos
+
+    def parse_observations(self, observation_protos: List[ObservationProto]=None):
+        if observation_protos is None:
+            return self.observations
+
+        observations = space.tuple_to_list(self.observations)
+        # TODO v: when to renew list? everytime or request agent only? but parse means requested
+        renew_list = set()
+        for obs in observation_protos:
+            observations = space.merge(observations, obs.locator, obs.observation, renew_list)
+        self.observations = space.list_to_tuple(observations)
+        return self.observations
+    
+    def parse_rewards(self, reward_protos: List[RewardProto]=None):
+        if reward_protos is None:
+            return self.rewards
+        
+        for reward_proto in reward_protos:
+            self.rewards[reward_proto.agent] = reward_proto.reward
+        return self.rewards
+    
+    def parse_terminations(self, terminated_agents: List[str]=None):
+        if terminated_agents is None:
+            return self.terminations
+        
+        for agent in terminated_agents:
+            if agent == '':
+                self.terminations = { agent: True for agent in self.terminations.keys() }
+                break
+            else:
+                self.terminations[agent] = True
+        return self.terminations
+    
+    def parse_truncations(self, truncated_agents: List[str]=None, done: bool=False):
+        if done:
+            self.truncations = { agent: True for agent in self.truncations.keys() }
+            return self.truncations
+        if truncated_agents is None:
+            return self.truncations
+        
+        for agent in truncated_agents:
+            if agent == '':
+                self.truncations = { agent: True for agent in self.truncations.keys() }
+                break
+            else:
+                self.truncations[agent] = True
+        return self.truncations
+
+    def parse_infos(self, info_protos: List[InfoProto]=None):
+        if info_protos is None:
+            return self.infos
+        
+        env_info_proto = None
+        for info_proto in info_protos:
+            if info_proto.agent != '':
+                # TODO v: when to renew list?
+                self.infos[info_proto.agent]['agent'] = []
+                for instance_proto in info_proto.infos:
+                    self.infos[info_proto.agent]['agent'].append(space.from_proto(instance_proto))
+            else:
+                env_info_proto = info_proto
+        if env_info_proto is not None:
+            env_infos = []
+            for instance_proto in env_info_proto.infos:
+                env_infos.append(space.from_proto(instance_proto))
+            for info in self.infos.values():
+                info['env'] = env_infos
+
+        return self.infos

@@ -7,6 +7,8 @@ namespace Gymize
     {
         public string Name = "agent";
         public string GetName() { return Name; }
+        public int StepPeriod = 1;
+        public int GetStepPeriod() { return StepPeriod; }
 
         public abstract void OnReset();
         public abstract void OnAction(object action);

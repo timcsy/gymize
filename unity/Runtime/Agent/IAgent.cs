@@ -10,6 +10,7 @@ namespace Gymize
         void SendInfo(object info);
         void OnInfo(object info);
         void OnManual();
+        int GetStepPeriod();
         void AddToEnv();
         void RemoveFromEnv();
     }

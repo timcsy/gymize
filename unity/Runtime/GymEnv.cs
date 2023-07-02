@@ -163,6 +163,12 @@ namespace Gymize
             Instance._SendInfo(agent, info);
         }
 
+        public static void SetPeriod(string agent, int period)
+        {
+            // agent includes env ""
+            Instance._SetPeriod(agent, period);
+        }
+
         public static void Tick()
         {
             Instance._Tick();
@@ -189,11 +195,11 @@ namespace Gymize
         DelegateDictionary<string, InfoCallBack> m_OnInfo;
         Dictionary<string, List<object>> m_Infos;
         DelegateDictionary<string, ManualCallBack> m_OnManual;
-        List<string> m_RequestAgents; // TODO
+
         Dictionary<string, bool> m_Requested; // Whether another side has requested
-        Dictionary<string, bool> m_UpdateAgents; // TODO
-        Dictionary<string, int> m_Periods; // TODO: How long (ticks) does agent reacts
-        Dictionary<string, int> m_Ticks; // TODO: How many ticks does an agent has passed since reacts
+        Dictionary<string, bool> m_UpdateAgents; // TODO v: store agents that meets update period
+        Dictionary<string, int> m_Periods; // TODO v: How long (ticks) does agent reacts
+        Dictionary<string, int> m_Ticks; // TODO v: How many ticks does an agent has passed since reacts
 
         private GymEnv() : base()
         {
@@ -217,7 +223,7 @@ namespace Gymize
                 { "", new List<object>() }
             };
             m_OnManual = new DelegateDictionary<string, ManualCallBack>();
-            m_RequestAgents = new List<string>();
+
             m_Requested = new Dictionary<string, bool>
             {
                 { "", false }
@@ -226,12 +232,22 @@ namespace Gymize
             {
                 { "", false }
             };
-            m_Periods = new Dictionary<string, int>();
-            m_Ticks = new Dictionary<string, int>();
+            m_Periods = new Dictionary<string, int>()
+            {
+                { "", 1 } // You have set it again in GymManager
+            };
+            m_Ticks = new Dictionary<string, int>
+            {
+                { "", 0 }
+            };
         }
 
         List<IObserver> _AddAgent(IAgent agent)
         {
+            _SetPeriod(agent.GetName(), agent.GetStepPeriod());
+            m_Ticks[agent.GetName()] = 0;
+            m_UpdateAgents[agent.GetName()] = false;
+
             m_OnManual[agent.GetName()] += agent.OnManual;
             m_OnReset[agent.GetName()] += agent.OnReset;
             m_OnInfo[agent.GetName()] += agent.OnInfo;
@@ -241,6 +257,10 @@ namespace Gymize
 
         void _RemoveAgent(IAgent agent, List<IObserver> observers)
         {
+            _RemovePeriod(agent.GetName());
+            m_Ticks.Remove(agent.GetName());
+            m_UpdateAgents.Remove(agent.GetName());
+
             m_OnManual[agent.GetName()] -= agent.OnManual;
             m_OnReset[agent.GetName()] -= agent.OnReset;
             m_OnInfo[agent.GetName()] -= agent.OnInfo;
@@ -256,6 +276,9 @@ namespace Gymize
             // TODO: Also reset actions, "observations", rewards, termiantions, truncations, infos
             foreach (string agent in gymizeProto.ResetAgents)
             {
+                m_Ticks[agent] = 0;
+                m_UpdateAgents[agent] = false;
+
                 m_Actions[agent] = null;
                 m_Rewards[agent] = 0;
                 m_TerminatedAgents.Remove(agent);
@@ -424,7 +447,7 @@ namespace Gymize
 
         List<ObservationProto> _GetObservations(List<string> responseAgents)
         {
-            // TODO: just send the requested agents
+            // TODO v: just send the requested agents
             // TODO v: whether to clear all agents? After sendiong
             List<ObservationProto> observationProtos = new List<ObservationProto>();
             foreach (string agent in responseAgents)
@@ -471,7 +494,7 @@ namespace Gymize
 
         List<RewardProto> _GetRewards(List<string> responseAgents)
         {
-            // TODO: just send the requested agents
+            // TODO v: just send the requested agents
             List<RewardProto> rewardProtos = new List<RewardProto>();
             foreach (string agent in responseAgents)
             {
@@ -550,7 +573,7 @@ namespace Gymize
         List<InfoProto> _GetInfos(List<string> responseAgents)
         {
             // TODO v: when info should be cleared? and when env "" info be cleared?
-            // TODO: just send the requested agents
+            // TODO v: just send the requested agents
             List<InfoProto> infoProtos = new List<InfoProto>();
             foreach (string agent in responseAgents)
             {
@@ -582,9 +605,30 @@ namespace Gymize
             }
         }
 
+        void _SetPeriod(string agent, int period)
+        {
+            m_Periods[agent] = period;
+        }
+
+        void _RemovePeriod(string agent)
+        {
+            m_Periods.Remove(agent);
+        }
+
         void _Tick()
         {
             _CheckChannel();
+
+            // Control the Update rate of each agent (include env "")
+            lock (m_UpdateAgents)
+            {
+                foreach (string agent in m_Ticks.Keys.ToList())
+                {
+                    m_Ticks[agent] = (m_Ticks[agent] + 1) % m_Periods[agent];
+                    if (m_Ticks[agent] == 0) m_UpdateAgents[agent] = true;
+                }
+            }
+
             _SendGymizeMessage();
         }
 
@@ -619,7 +663,7 @@ namespace Gymize
 
         void _SendGymizeMessage()
         {
-            List<string> responseAgents = _GetResponseAgents();
+            List<string> responseAgents = _GetResponseAgents(); // TODO: also send this -> response_agents, add in protobuf, 救的概念，可以再繼續動了
             GymizeProto gymizeProto = new GymizeProto();
             gymizeProto.Observations.AddRange(_GetObservations(responseAgents));
             gymizeProto.Rewards.AddRange(_GetRewards(responseAgents));
@@ -635,18 +679,22 @@ namespace Gymize
 
         List<string> _GetResponseAgents()
         {
-            // TODO: with m_UpdateAgents
+            // TODO v: with m_UpdateAgents
             List<string> responseAgents = new List<string>();
 
-            lock (m_Requested)
+            lock (m_Requested) lock (m_UpdateAgents)
             {
                 foreach (string agent in m_Requested.Keys)
                 {
-                    if (m_Requested[agent]) responseAgents.Add(agent);
+                    if (m_Requested[agent] && m_UpdateAgents[agent]) responseAgents.Add(agent);
                 }
 
                 // remove the used requested agents
-                foreach (string agent in responseAgents) m_Requested[agent] = false;
+                foreach (string agent in responseAgents)
+                {
+                    m_Requested[agent] = false;
+                    m_UpdateAgents[agent] = false;
+                }
             }
 
             return responseAgents;

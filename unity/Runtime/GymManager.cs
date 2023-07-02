@@ -6,6 +6,7 @@ namespace Gymize
     public class GymManager : MonoBehaviour
     {
         public string EnvName;
+        public int StepPeriod = 1;
 
         // Start is called before the first frame update
         void Start()
@@ -22,6 +23,16 @@ namespace Gymize
         {
             // !!! Remember to close the GymEnv when the Unity Application is quit !!!
             GymEnv.Close();
+        }
+
+        void OnEnable()
+        {
+            GymEnv.SetPeriod("", StepPeriod);
+        }
+
+        void OnDisabled()
+        {
+            GymEnv.SetPeriod("", 1);
         }
     }
 }
