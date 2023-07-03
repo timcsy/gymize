@@ -4,7 +4,7 @@ from pettingzoo import ParallelEnv
 from gymnasium.spaces import Space
 from gymnasium.utils import seeding
 
-from gymize.bridge import Bridge
+from gymize.bridge import Bridge, BridgeChannel
 
 class UnityParallelEnv(ParallelEnv):
     metadata = { 'render_modes': [ 'rgb_array' ] }
@@ -18,6 +18,8 @@ class UnityParallelEnv(ParallelEnv):
             agents=agent_names,
             update_seconds=update_seconds
         )
+        BridgeChannel.__init__(self, self.bridge)
+
         self.possible_agents = agent_names
         self.agents = agent_names[:]
         self.action_spaces = action_spaces

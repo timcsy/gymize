@@ -1,5 +1,6 @@
+import asyncio
 import time
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any, Dict, List, Tuple, Union
 
 from gymnasium.spaces import Space
 
@@ -101,7 +102,10 @@ class Bridge:
 
     def close(self) -> None:
         self.channel.close_sync()
-
+    
+    ###########################################################################
+    #                                 Utils                                   #
+    ###########################################################################
 
     def send_forward_messages(self) -> None:
         # send requests, resets, actions to another side
@@ -236,3 +240,138 @@ class Bridge:
                 info['env'] = env_infos
 
         return self.infos
+
+
+
+class BridgeChannel:
+    def __init__(self, bridge: Bridge):
+        self.bridge = bridge
+    
+    '''
+    id == '' means for the root channel
+    '''
+    
+    def on_message(self, id=''):
+        '''
+        Example ussage:
+
+        channel = Channel(...)
+        ...
+
+        @channel.on_message(<id>)
+        def on_message(msg):
+            print(msg)
+        
+        or
+
+        channel.on_message(<id>)(on_message)
+
+        or
+
+        channel.on_message(<id>)(lambda msg: print(msg))
+        
+        '''
+        return self.bridge.channel.on_message(id=id)
+    
+    def on_request(self, id=''):
+        '''
+        Example ussage:
+
+        channel = Channel(...)
+        ...
+
+        @channel.on_request(<id>)
+        def on_request(req):
+            print(req)
+        
+        or
+
+        channel.on_message(<id>)(on_request)
+
+        or
+
+        channel.on_request(<id>)(lambda req: print(req))
+        
+        '''
+        return self.bridge.channel.on_request(id=id)
+    
+    def off_message(self, id=''):
+        '''
+        remove all the message callbacks associated to the id
+        '''
+        self.bridge.channel.off_message(id=id)
+    
+    def off_request(self, id=''):
+        '''
+        remove all the request callbacks associated to the id
+        '''
+        self.bridge.channel.off_request(id=id)
+    
+    async def tell_async(self, id: str, content: Union[Content, str, bytes]) -> None:
+        await self.bridge.channel.tell_async(id=id, content=content)
+    
+    def tell_sync(self, id: str, content: Union[Content, str, bytes]) -> None:
+        self.bridge.channel.tell_sync(id=id, content=content)
+    
+    async def broadcast_async(self, content: Union[Content, str, bytes]) -> None:
+        await self.bridge.channel.broadcast_async(content=content)
+    
+    def broadcast_sync(self, content: Union[Content, str, bytes]) -> None:
+        self.bridge.channel.broadcast_sync(content=content)
+
+    async def ask_async(self, id: str, content: Union[Content, str, bytes]) -> Content:
+        return await self.bridge.channel.ask_async(id=id, content=content)
+
+    def ask_sync(self, id: str, content: Union[Content, str, bytes]) -> asyncio.Future:
+        return self.bridge.channel.ask_sync(id=id, content=content)
+    
+    def has_recv(self) -> bool:
+        '''
+        check if receive message, response
+        :return: done
+        '''
+        return self.bridge.channel.has_recv()
+    
+    def wait(self, polling_secs: float=0.001) -> bool:
+        '''
+        wait until receive message, response or channel closed
+        :return: done
+        '''
+        return self.bridge.channel.wait(polling_secs=polling_secs)
+    
+    def has_message(self, id: str) -> bool:
+        '''
+        check if receive message
+        :return: done
+        '''
+        return self.bridge.channel.has_message(id=id)
+
+    def take_message(self, id: str) -> Content:
+        '''
+        take message and pop from the queue
+        :return: content
+        '''
+        return self.bridge.channel.take_message(id=id)
+    
+    def wait_message(self, id: str, polling_secs: float=0.001) -> Tuple[Content, bool]:
+        '''
+        after received a message, or the channel is closed
+        it will return content and whether the channel is running now
+        :return: content, done
+        '''
+        return self.bridge.channel.wait_message(id=id, polling_secs=polling_secs)
+    
+    def take_response(self, response: asyncio.Future) -> Content:
+        '''
+        take response and remove
+        :return: content
+        '''
+        return self.bridge.channel.take_response(response=response)
+
+    def wait_response(self, response: asyncio.Future, polling_secs: float=0.001) -> Tuple[Content, bool]:
+        '''
+        after received a response, or the channel is closed
+        it will return content and whether the channel is running now
+        :return: content, done
+        '''
+        return self.bridge.channel.wait_response(response=response, polling_secs=polling_secs)

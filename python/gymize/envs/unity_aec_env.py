@@ -5,7 +5,7 @@ from pettingzoo.utils import agent_selector
 from gymnasium.spaces import Space
 from gymnasium.utils import seeding
 
-from gymize.bridge import Bridge
+from gymize.bridge import Bridge, BridgeChannel
 
 class UnityAECEnv(AECEnv):
     metadata = { 'render_modes': [ 'rgb_array' ] }
@@ -19,6 +19,8 @@ class UnityAECEnv(AECEnv):
             agents=agent_names,
             update_seconds=update_seconds
         )
+        BridgeChannel.__init__(self, self.bridge)
+
         self.possible_agents = agent_names
         self.agents = agent_names[:]
         self.action_spaces = action_spaces

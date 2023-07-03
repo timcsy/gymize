@@ -2,9 +2,9 @@ from typing import List
 
 import gymnasium as gym
 
-from gymize.bridge import Bridge
+from gymize.bridge import Bridge, BridgeChannel
 
-class UnityGymEnv(gym.Env):
+class UnityGymEnv(gym.Env, BridgeChannel):
     metadata = { 'render_modes': [ 'rgb_array' ] }
 
     def __init__(self, env_name, file_name: str=None, action_space=None, observation_space=None, reward_range=(-float('inf'), float('inf')), agent_name: str='agent', update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
@@ -17,6 +17,8 @@ class UnityGymEnv(gym.Env):
             agents=[ agent_name ],
             update_seconds=update_seconds
         )
+        BridgeChannel.__init__(self, self.bridge)
+
         self.action_space = action_space
         self.observation_space = observation_space
         self.reward_range = reward_range
