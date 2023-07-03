@@ -27,6 +27,7 @@ class Bridge:
         self.update_seconds = update_seconds
 
         self.request_agents = []
+        self.responsed = { agent: False for agent in self.possible_agents } # { agent: responsed }
         self.reset_requests = []
         self.actions = {}
         self.observations = { agent: self.observation_spaces[agent].sample() for agent in self.possible_agents }
@@ -51,6 +52,7 @@ class Bridge:
         # not terminate or truncate anymore, renew possible_agents
         for agent in agents:
             if agent != '':
+                self.responsed[agent] = False
                 self.rewards[agent] = 0
                 self.terminations[agent] = False
                 self.truncations[agent] = False
@@ -125,18 +127,18 @@ class Bridge:
     def wait_gymize_message(self, wait_agents: List[str]=[]) -> None:
         # agents: the agents that have to especially wait for, blocking
         # TODO v: waiting for agents
-        responsed_agents = set()
         while True:
             content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
-            observations, rewards, terminations, truncations, infos, response_agents = self.parse_message(content=content, done=done)
-            responsed_agents = responsed_agents.union(response_agents)
-            if self.is_agents_collected(agents=wait_agents, responsed_agents=responsed_agents):
+            observations, rewards, terminations, truncations, infos = self.parse_message(content=content, done=done)
+            if self.is_agents_collected(agents=wait_agents):
+                for agent in wait_agents:
+                    self.responsed[agent] = False
                 break
         return observations, rewards, terminations, truncations, infos
 
-    def is_agents_collected(self, agents: List[str], responsed_agents: Set[str]) -> bool:
+    def is_agents_collected(self, agents: List[str]) -> bool:
         for agent in agents:
-            if agent not in responsed_agents:
+            if not self.responsed[agent]:
                 return False
         return True
     
@@ -151,7 +153,8 @@ class Bridge:
             gymize_proto = GymizeProto()
             gymize_proto.ParseFromString(content.raw)
 
-            response_agents = [agent for agent in gymize_proto.response_agents]
+            for agent in gymize_proto.response_agents:
+                self.responsed[agent] = True
 
             observations = self.parse_observations(gymize_proto.observations)
             rewards = self.parse_rewards(gymize_proto.rewards)
@@ -159,7 +162,7 @@ class Bridge:
             truncations = self.parse_truncations(gymize_proto.truncated_agents, done)
             infos = self.parse_infos(gymize_proto.infos)
         
-        return observations, rewards, terminations, truncations, infos, response_agents
+        return observations, rewards, terminations, truncations, infos
 
     def parse_observations(self, observation_protos: List[ObservationProto]=None):
         if observation_protos is None:
