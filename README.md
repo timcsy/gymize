@@ -22,21 +22,40 @@ Single-Agent with Gymnasium API:
 import gymnasium as gym
 import gymize
 
-env = gym.make('gymize/Unity-v0', env_name='<your env name>', file_name=file_name, observation_space=observation_space, action_space=action_space)
+env = gym.make(
+    'gymize/Unity-v0',
+    env_name='<your env name>',
+    file_name=file_name,
+    observation_space=observation_space,
+    action_space=action_space,
+    render_mode=render_mode
+)
 ```
 
 Multi-Agents with PettingZoo AEC API:
 ```
 from gymize.envs import UnityAECEnv
 
-env = UnityAECEnv(env_name='<your env name>', file_name=file_name, observation_spaces=observation_spaces, action_spaces=action_spaces)
+env = UnityAECEnv(
+    env_name='<your env name>',
+    file_name=file_name,
+    observation_spaces=observation_spaces,
+    action_spaces=action_spaces,
+    render_mode=render_mode
+)
 ```
 
 Multi-Agents with PettingZoo Parallel API:
 ```
 from gymize.envs import UnityParallelEnv
 
-env = UnityParallelEnv(env_name='<your env name>', file_name=file_name, observation_spaces=observation_spaces, action_spaces=action_spaces)
+env = UnityParallelEnv(
+    env_name='<your env name>',
+    file_name=file_name,
+    observation_spaces=observation_spaces,
+    action_spaces=action_spaces,
+    render_mode=render_mode
+)
 ```
 
 ## Locator
