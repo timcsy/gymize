@@ -10,6 +10,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "ViewProto" do
       optional :name, :string, 1
       optional :is_single_frame, :bool, 2
+      optional :screen_width, :int32, 3
+      optional :screen_height, :int32, 4
+      optional :fullscreen, :bool, 5
     end
     add_message "FrameProto" do
       optional :image, :message, 1, "InstanceProto"

@@ -7,6 +7,9 @@ option csharp_namespace = "Gymize.Protobuf";
 message ViewProto {
 	string name = 1;
 	bool is_single_frame = 2;
+	int32 screen_width = 3;
+	int32 screen_height = 4;
+	bool fullscreen = 5;
 }
 
 message FrameProto {

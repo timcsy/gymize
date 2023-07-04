@@ -54,6 +54,9 @@ GPB_FINAL @interface RenderRoot : GPBRootObject
 typedef GPB_ENUM(ViewProto_FieldNumber) {
   ViewProto_FieldNumber_Name = 1,
   ViewProto_FieldNumber_IsSingleFrame = 2,
+  ViewProto_FieldNumber_ScreenWidth = 3,
+  ViewProto_FieldNumber_ScreenHeight = 4,
+  ViewProto_FieldNumber_Fullscreen = 5,
 };
 
 GPB_FINAL @interface ViewProto : GPBMessage
@@ -61,6 +64,12 @@ GPB_FINAL @interface ViewProto : GPBMessage
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
 
 @property(nonatomic, readwrite) BOOL isSingleFrame;
+
+@property(nonatomic, readwrite) int32_t screenWidth;
+
+@property(nonatomic, readwrite) int32_t screenHeight;
+
+@property(nonatomic, readwrite) BOOL fullscreen;
 
 @end
 

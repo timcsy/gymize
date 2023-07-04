@@ -198,7 +198,10 @@ class ViewProto final :
 
   enum : int {
     kNameFieldNumber = 1,
+    kScreenWidthFieldNumber = 3,
     kIsSingleFrameFieldNumber = 2,
+    kFullscreenFieldNumber = 5,
+    kScreenHeightFieldNumber = 4,
   };
   // string name = 1;
   void clear_name();
@@ -214,6 +217,15 @@ class ViewProto final :
   std::string* _internal_mutable_name();
   public:
 
+  // int32 screen_width = 3;
+  void clear_screen_width();
+  int32_t screen_width() const;
+  void set_screen_width(int32_t value);
+  private:
+  int32_t _internal_screen_width() const;
+  void _internal_set_screen_width(int32_t value);
+  public:
+
   // bool is_single_frame = 2;
   void clear_is_single_frame();
   bool is_single_frame() const;
@@ -221,6 +233,24 @@ class ViewProto final :
   private:
   bool _internal_is_single_frame() const;
   void _internal_set_is_single_frame(bool value);
+  public:
+
+  // bool fullscreen = 5;
+  void clear_fullscreen();
+  bool fullscreen() const;
+  void set_fullscreen(bool value);
+  private:
+  bool _internal_fullscreen() const;
+  void _internal_set_fullscreen(bool value);
+  public:
+
+  // int32 screen_height = 4;
+  void clear_screen_height();
+  int32_t screen_height() const;
+  void set_screen_height(int32_t value);
+  private:
+  int32_t _internal_screen_height() const;
+  void _internal_set_screen_height(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:ViewProto)
@@ -231,7 +261,10 @@ class ViewProto final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  int32_t screen_width_;
   bool is_single_frame_;
+  bool fullscreen_;
+  int32_t screen_height_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_render_2eproto;
 };
@@ -921,6 +954,66 @@ inline void ViewProto::_internal_set_is_single_frame(bool value) {
 inline void ViewProto::set_is_single_frame(bool value) {
   _internal_set_is_single_frame(value);
   // @@protoc_insertion_point(field_set:ViewProto.is_single_frame)
+}
+
+// int32 screen_width = 3;
+inline void ViewProto::clear_screen_width() {
+  screen_width_ = 0;
+}
+inline int32_t ViewProto::_internal_screen_width() const {
+  return screen_width_;
+}
+inline int32_t ViewProto::screen_width() const {
+  // @@protoc_insertion_point(field_get:ViewProto.screen_width)
+  return _internal_screen_width();
+}
+inline void ViewProto::_internal_set_screen_width(int32_t value) {
+  
+  screen_width_ = value;
+}
+inline void ViewProto::set_screen_width(int32_t value) {
+  _internal_set_screen_width(value);
+  // @@protoc_insertion_point(field_set:ViewProto.screen_width)
+}
+
+// int32 screen_height = 4;
+inline void ViewProto::clear_screen_height() {
+  screen_height_ = 0;
+}
+inline int32_t ViewProto::_internal_screen_height() const {
+  return screen_height_;
+}
+inline int32_t ViewProto::screen_height() const {
+  // @@protoc_insertion_point(field_get:ViewProto.screen_height)
+  return _internal_screen_height();
+}
+inline void ViewProto::_internal_set_screen_height(int32_t value) {
+  
+  screen_height_ = value;
+}
+inline void ViewProto::set_screen_height(int32_t value) {
+  _internal_set_screen_height(value);
+  // @@protoc_insertion_point(field_set:ViewProto.screen_height)
+}
+
+// bool fullscreen = 5;
+inline void ViewProto::clear_fullscreen() {
+  fullscreen_ = false;
+}
+inline bool ViewProto::_internal_fullscreen() const {
+  return fullscreen_;
+}
+inline bool ViewProto::fullscreen() const {
+  // @@protoc_insertion_point(field_get:ViewProto.fullscreen)
+  return _internal_fullscreen();
+}
+inline void ViewProto::_internal_set_fullscreen(bool value) {
+  
+  fullscreen_ = value;
+}
+inline void ViewProto::set_fullscreen(bool value) {
+  _internal_set_fullscreen(value);
+  // @@protoc_insertion_point(field_set:ViewProto.fullscreen)
 }
 
 // -------------------------------------------------------------------

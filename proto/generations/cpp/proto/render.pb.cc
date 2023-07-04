@@ -19,7 +19,10 @@ PROTOBUF_PRAGMA_INIT_SEG
 constexpr ViewProto::ViewProto(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , is_single_frame_(false){}
+  , screen_width_(0)
+  , is_single_frame_(false)
+  , fullscreen_(false)
+  , screen_height_(0){}
 struct ViewProtoDefaultTypeInternal {
   constexpr ViewProtoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -85,6 +88,9 @@ const uint32_t TableStruct_render_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::ViewProto, name_),
   PROTOBUF_FIELD_OFFSET(::ViewProto, is_single_frame_),
+  PROTOBUF_FIELD_OFFSET(::ViewProto, screen_width_),
+  PROTOBUF_FIELD_OFFSET(::ViewProto, screen_height_),
+  PROTOBUF_FIELD_OFFSET(::ViewProto, fullscreen_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::FrameProto, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -116,9 +122,9 @@ const uint32_t TableStruct_render_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::ViewProto)},
-  { 8, -1, -1, sizeof(::FrameProto)},
-  { 16, -1, -1, sizeof(::VideoProto)},
-  { 25, -1, -1, sizeof(::RenderProto)},
+  { 11, -1, -1, sizeof(::FrameProto)},
+  { 19, -1, -1, sizeof(::VideoProto)},
+  { 28, -1, -1, sizeof(::RenderProto)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -129,23 +135,25 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_render_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014render.proto\032\013space.proto\"2\n\tViewProto"
-  "\022\014\n\004name\030\001 \001(\t\022\027\n\017is_single_frame\030\002 \001(\010\""
-  "=\n\nFrameProto\022\035\n\005image\030\001 \001(\0132\016.InstanceP"
-  "roto\022\020\n\010duration\030\002 \001(\002\"F\n\nVideoProto\022\014\n\004"
-  "name\030\001 \001(\t\022\033\n\006frames\030\002 \003(\0132\013.FrameProto\022"
-  "\r\n\005audio\030\003 \001(\014\"\213\001\n\013RenderProto\022 \n\014view_c"
-  "onfigs\030\001 \003(\0132\n.ViewProto\022\023\n\013begin_views\030"
-  "\002 \003(\t\022\021\n\tend_views\030\003 \003(\t\022\025\n\rrequest_view"
-  "s\030\004 \003(\t\022\033\n\006videos\030\005 \003(\0132\013.VideoProtoB\022\252\002"
-  "\017Gymize.Protobufb\006proto3"
+  "\n\014render.proto\032\013space.proto\"s\n\tViewProto"
+  "\022\014\n\004name\030\001 \001(\t\022\027\n\017is_single_frame\030\002 \001(\010\022"
+  "\024\n\014screen_width\030\003 \001(\005\022\025\n\rscreen_height\030\004"
+  " \001(\005\022\022\n\nfullscreen\030\005 \001(\010\"=\n\nFrameProto\022\035"
+  "\n\005image\030\001 \001(\0132\016.InstanceProto\022\020\n\010duratio"
+  "n\030\002 \001(\002\"F\n\nVideoProto\022\014\n\004name\030\001 \001(\t\022\033\n\006f"
+  "rames\030\002 \003(\0132\013.FrameProto\022\r\n\005audio\030\003 \001(\014\""
+  "\213\001\n\013RenderProto\022 \n\014view_configs\030\001 \003(\0132\n."
+  "ViewProto\022\023\n\013begin_views\030\002 \003(\t\022\021\n\tend_vi"
+  "ews\030\003 \003(\t\022\025\n\rrequest_views\030\004 \003(\t\022\033\n\006vide"
+  "os\030\005 \003(\0132\013.VideoProtoB\022\252\002\017Gymize.Protobu"
+  "fb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_render_2eproto_deps[1] = {
   &::descriptor_table_space_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_render_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_render_2eproto = {
-  false, false, 384, descriptor_table_protodef_render_2eproto, "render.proto", 
+  false, false, 449, descriptor_table_protodef_render_2eproto, "render.proto", 
   &descriptor_table_render_2eproto_once, descriptor_table_render_2eproto_deps, 1, 4,
   schemas, file_default_instances, TableStruct_render_2eproto::offsets,
   file_level_metadata_render_2eproto, file_level_enum_descriptors_render_2eproto, file_level_service_descriptors_render_2eproto,
@@ -183,7 +191,9 @@ ViewProto::ViewProto(const ViewProto& from)
     name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
       GetArenaForAllocation());
   }
-  is_single_frame_ = from.is_single_frame_;
+  ::memcpy(&screen_width_, &from.screen_width_,
+    static_cast<size_t>(reinterpret_cast<char*>(&screen_height_) -
+    reinterpret_cast<char*>(&screen_width_)) + sizeof(screen_height_));
   // @@protoc_insertion_point(copy_constructor:ViewProto)
 }
 
@@ -192,7 +202,10 @@ name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlready
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-is_single_frame_ = false;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&screen_width_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&screen_height_) -
+    reinterpret_cast<char*>(&screen_width_)) + sizeof(screen_height_));
 }
 
 ViewProto::~ViewProto() {
@@ -224,7 +237,9 @@ void ViewProto::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmpty();
-  is_single_frame_ = false;
+  ::memset(&screen_width_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&screen_height_) -
+      reinterpret_cast<char*>(&screen_width_)) + sizeof(screen_height_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -248,6 +263,30 @@ const char* ViewProto::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           is_single_frame_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 screen_width = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          screen_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 screen_height = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          screen_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool fullscreen = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          fullscreen_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -297,6 +336,24 @@ uint8_t* ViewProto::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_is_single_frame(), target);
   }
 
+  // int32 screen_width = 3;
+  if (this->_internal_screen_width() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_screen_width(), target);
+  }
+
+  // int32 screen_height = 4;
+  if (this->_internal_screen_height() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_screen_height(), target);
+  }
+
+  // bool fullscreen = 5;
+  if (this->_internal_fullscreen() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_fullscreen(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -320,9 +377,24 @@ size_t ViewProto::ByteSizeLong() const {
         this->_internal_name());
   }
 
+  // int32 screen_width = 3;
+  if (this->_internal_screen_width() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_screen_width());
+  }
+
   // bool is_single_frame = 2;
   if (this->_internal_is_single_frame() != 0) {
     total_size += 1 + 1;
+  }
+
+  // bool fullscreen = 5;
+  if (this->_internal_fullscreen() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // int32 screen_height = 4;
+  if (this->_internal_screen_height() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_screen_height());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -350,8 +422,17 @@ void ViewProto::MergeFrom(const ViewProto& from) {
   if (!from._internal_name().empty()) {
     _internal_set_name(from._internal_name());
   }
+  if (from._internal_screen_width() != 0) {
+    _internal_set_screen_width(from._internal_screen_width());
+  }
   if (from._internal_is_single_frame() != 0) {
     _internal_set_is_single_frame(from._internal_is_single_frame());
+  }
+  if (from._internal_fullscreen() != 0) {
+    _internal_set_fullscreen(from._internal_fullscreen());
+  }
+  if (from._internal_screen_height() != 0) {
+    _internal_set_screen_height(from._internal_screen_height());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -377,7 +458,12 @@ void ViewProto::InternalSwap(ViewProto* other) {
       &name_, lhs_arena,
       &other->name_, rhs_arena
   );
-  swap(is_single_frame_, other->is_single_frame_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ViewProto, screen_height_)
+      + sizeof(ViewProto::screen_height_)
+      - PROTOBUF_FIELD_OFFSET(ViewProto, screen_width_)>(
+          reinterpret_cast<char*>(&screen_width_),
+          reinterpret_cast<char*>(&other->screen_width_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewProto::GetMetadata() const {

@@ -59,9 +59,14 @@ static GPBFileDescriptor *RenderRoot_FileDescriptor(void) {
 
 @dynamic name;
 @dynamic isSingleFrame;
+@dynamic screenWidth;
+@dynamic screenHeight;
+@dynamic fullscreen;
 
 typedef struct ViewProto__storage_ {
   uint32_t _has_storage_[1];
+  int32_t screenWidth;
+  int32_t screenHeight;
   NSString *name;
 } ViewProto__storage_;
 
@@ -86,6 +91,33 @@ typedef struct ViewProto__storage_ {
         .number = ViewProto_FieldNumber_IsSingleFrame,
         .hasIndex = 1,
         .offset = 2,  // Stored in _has_storage_ to save space.
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "screenWidth",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ViewProto_FieldNumber_ScreenWidth,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ViewProto__storage_, screenWidth),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "screenHeight",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ViewProto_FieldNumber_ScreenHeight,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ViewProto__storage_, screenHeight),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "fullscreen",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ViewProto_FieldNumber_Fullscreen,
+        .hasIndex = 5,
+        .offset = 6,  // Stored in _has_storage_ to save space.
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeBool,
       },

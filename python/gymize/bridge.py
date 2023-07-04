@@ -97,10 +97,17 @@ class Bridge:
         gymize_proto.infos.append(info_proto)
         self.send_gymize_message(gymize_proto)
     
-    def begin_render(self, view_configs: Dict[str, bool]):
+    def begin_render(self, view_configs: Dict[str, Dict[str, Any]]):
+        # view_configs: { name: { is_single_frame, width, height, fullscreen } }
         gymize_proto = GymizeProto()
-        for name, is_single_frame in view_configs.items():
-            view_config = ViewProto(name=name, is_single_frame=is_single_frame)
+        for name, config in view_configs.items():
+            view_config = ViewProto(
+                name=name,
+                is_single_frame=bool(config['is_single_frame'] or False),
+                screen_width=int(config['screen_width'] or -1),
+                screen_height=int(config['screen_height'] or -1),
+                fullscreen=bool(config['fullscreen'] or False)
+            )
             gymize_proto.rendering.view_configs.append(view_config)
             gymize_proto.rendering.begin_views.append(name)
         self.send_gymize_message(gymize_proto)

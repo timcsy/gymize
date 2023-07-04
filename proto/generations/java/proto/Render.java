@@ -33,6 +33,24 @@ public final class Render {
      * @return The isSingleFrame.
      */
     boolean getIsSingleFrame();
+
+    /**
+     * <code>int32 screen_width = 3;</code>
+     * @return The screenWidth.
+     */
+    int getScreenWidth();
+
+    /**
+     * <code>int32 screen_height = 4;</code>
+     * @return The screenHeight.
+     */
+    int getScreenHeight();
+
+    /**
+     * <code>bool fullscreen = 5;</code>
+     * @return The fullscreen.
+     */
+    boolean getFullscreen();
   }
   /**
    * Protobuf type {@code ViewProto}
@@ -89,6 +107,21 @@ public final class Render {
             case 16: {
 
               isSingleFrame_ = input.readBool();
+              break;
+            }
+            case 24: {
+
+              screenWidth_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              screenHeight_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              fullscreen_ = input.readBool();
               break;
             }
             default: {
@@ -172,6 +205,39 @@ public final class Render {
       return isSingleFrame_;
     }
 
+    public static final int SCREEN_WIDTH_FIELD_NUMBER = 3;
+    private int screenWidth_;
+    /**
+     * <code>int32 screen_width = 3;</code>
+     * @return The screenWidth.
+     */
+    @java.lang.Override
+    public int getScreenWidth() {
+      return screenWidth_;
+    }
+
+    public static final int SCREEN_HEIGHT_FIELD_NUMBER = 4;
+    private int screenHeight_;
+    /**
+     * <code>int32 screen_height = 4;</code>
+     * @return The screenHeight.
+     */
+    @java.lang.Override
+    public int getScreenHeight() {
+      return screenHeight_;
+    }
+
+    public static final int FULLSCREEN_FIELD_NUMBER = 5;
+    private boolean fullscreen_;
+    /**
+     * <code>bool fullscreen = 5;</code>
+     * @return The fullscreen.
+     */
+    @java.lang.Override
+    public boolean getFullscreen() {
+      return fullscreen_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -192,6 +258,15 @@ public final class Render {
       if (isSingleFrame_ != false) {
         output.writeBool(2, isSingleFrame_);
       }
+      if (screenWidth_ != 0) {
+        output.writeInt32(3, screenWidth_);
+      }
+      if (screenHeight_ != 0) {
+        output.writeInt32(4, screenHeight_);
+      }
+      if (fullscreen_ != false) {
+        output.writeBool(5, fullscreen_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -207,6 +282,18 @@ public final class Render {
       if (isSingleFrame_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, isSingleFrame_);
+      }
+      if (screenWidth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, screenWidth_);
+      }
+      if (screenHeight_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, screenHeight_);
+      }
+      if (fullscreen_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, fullscreen_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -227,6 +314,12 @@ public final class Render {
           .equals(other.getName())) return false;
       if (getIsSingleFrame()
           != other.getIsSingleFrame()) return false;
+      if (getScreenWidth()
+          != other.getScreenWidth()) return false;
+      if (getScreenHeight()
+          != other.getScreenHeight()) return false;
+      if (getFullscreen()
+          != other.getFullscreen()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -243,6 +336,13 @@ public final class Render {
       hash = (37 * hash) + IS_SINGLE_FRAME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsSingleFrame());
+      hash = (37 * hash) + SCREEN_WIDTH_FIELD_NUMBER;
+      hash = (53 * hash) + getScreenWidth();
+      hash = (37 * hash) + SCREEN_HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + getScreenHeight();
+      hash = (37 * hash) + FULLSCREEN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getFullscreen());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -380,6 +480,12 @@ public final class Render {
 
         isSingleFrame_ = false;
 
+        screenWidth_ = 0;
+
+        screenHeight_ = 0;
+
+        fullscreen_ = false;
+
         return this;
       }
 
@@ -408,6 +514,9 @@ public final class Render {
         Render.ViewProto result = new Render.ViewProto(this);
         result.name_ = name_;
         result.isSingleFrame_ = isSingleFrame_;
+        result.screenWidth_ = screenWidth_;
+        result.screenHeight_ = screenHeight_;
+        result.fullscreen_ = fullscreen_;
         onBuilt();
         return result;
       }
@@ -462,6 +571,15 @@ public final class Render {
         }
         if (other.getIsSingleFrame() != false) {
           setIsSingleFrame(other.getIsSingleFrame());
+        }
+        if (other.getScreenWidth() != 0) {
+          setScreenWidth(other.getScreenWidth());
+        }
+        if (other.getScreenHeight() != 0) {
+          setScreenHeight(other.getScreenHeight());
+        }
+        if (other.getFullscreen() != false) {
+          setFullscreen(other.getFullscreen());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -595,6 +713,99 @@ public final class Render {
       public Builder clearIsSingleFrame() {
         
         isSingleFrame_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int screenWidth_ ;
+      /**
+       * <code>int32 screen_width = 3;</code>
+       * @return The screenWidth.
+       */
+      @java.lang.Override
+      public int getScreenWidth() {
+        return screenWidth_;
+      }
+      /**
+       * <code>int32 screen_width = 3;</code>
+       * @param value The screenWidth to set.
+       * @return This builder for chaining.
+       */
+      public Builder setScreenWidth(int value) {
+        
+        screenWidth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 screen_width = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearScreenWidth() {
+        
+        screenWidth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int screenHeight_ ;
+      /**
+       * <code>int32 screen_height = 4;</code>
+       * @return The screenHeight.
+       */
+      @java.lang.Override
+      public int getScreenHeight() {
+        return screenHeight_;
+      }
+      /**
+       * <code>int32 screen_height = 4;</code>
+       * @param value The screenHeight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setScreenHeight(int value) {
+        
+        screenHeight_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 screen_height = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearScreenHeight() {
+        
+        screenHeight_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean fullscreen_ ;
+      /**
+       * <code>bool fullscreen = 5;</code>
+       * @return The fullscreen.
+       */
+      @java.lang.Override
+      public boolean getFullscreen() {
+        return fullscreen_;
+      }
+      /**
+       * <code>bool fullscreen = 5;</code>
+       * @param value The fullscreen to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFullscreen(boolean value) {
+        
+        fullscreen_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool fullscreen = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFullscreen() {
+        
+        fullscreen_ = false;
         onChanged();
         return this;
       }
@@ -4206,16 +4417,18 @@ public final class Render {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014render.proto\032\013space.proto\"2\n\tViewProto" +
-      "\022\014\n\004name\030\001 \001(\t\022\027\n\017is_single_frame\030\002 \001(\010\"" +
-      "=\n\nFrameProto\022\035\n\005image\030\001 \001(\0132\016.InstanceP" +
-      "roto\022\020\n\010duration\030\002 \001(\002\"F\n\nVideoProto\022\014\n\004" +
-      "name\030\001 \001(\t\022\033\n\006frames\030\002 \003(\0132\013.FrameProto\022" +
-      "\r\n\005audio\030\003 \001(\014\"\213\001\n\013RenderProto\022 \n\014view_c" +
-      "onfigs\030\001 \003(\0132\n.ViewProto\022\023\n\013begin_views\030" +
-      "\002 \003(\t\022\021\n\tend_views\030\003 \003(\t\022\025\n\rrequest_view" +
-      "s\030\004 \003(\t\022\033\n\006videos\030\005 \003(\0132\013.VideoProtoB\022\252\002" +
-      "\017Gymize.Protobufb\006proto3"
+      "\n\014render.proto\032\013space.proto\"s\n\tViewProto" +
+      "\022\014\n\004name\030\001 \001(\t\022\027\n\017is_single_frame\030\002 \001(\010\022" +
+      "\024\n\014screen_width\030\003 \001(\005\022\025\n\rscreen_height\030\004" +
+      " \001(\005\022\022\n\nfullscreen\030\005 \001(\010\"=\n\nFrameProto\022\035" +
+      "\n\005image\030\001 \001(\0132\016.InstanceProto\022\020\n\010duratio" +
+      "n\030\002 \001(\002\"F\n\nVideoProto\022\014\n\004name\030\001 \001(\t\022\033\n\006f" +
+      "rames\030\002 \003(\0132\013.FrameProto\022\r\n\005audio\030\003 \001(\014\"" +
+      "\213\001\n\013RenderProto\022 \n\014view_configs\030\001 \003(\0132\n." +
+      "ViewProto\022\023\n\013begin_views\030\002 \003(\t\022\021\n\tend_vi" +
+      "ews\030\003 \003(\t\022\025\n\rrequest_views\030\004 \003(\t\022\033\n\006vide" +
+      "os\030\005 \003(\0132\013.VideoProtoB\022\252\002\017Gymize.Protobu" +
+      "fb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4227,7 +4440,7 @@ public final class Render {
     internal_static_ViewProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ViewProto_descriptor,
-        new java.lang.String[] { "Name", "IsSingleFrame", });
+        new java.lang.String[] { "Name", "IsSingleFrame", "ScreenWidth", "ScreenHeight", "Fullscreen", });
     internal_static_FrameProto_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_FrameProto_fieldAccessorTable = new

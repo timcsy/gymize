@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 import space_pb2 as space__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0crender.proto\x1a\x0bspace.proto\"2\n\tViewProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0fis_single_frame\x18\x02 \x01(\x08\"=\n\nFrameProto\x12\x1d\n\x05image\x18\x01 \x01(\x0b\x32\x0e.InstanceProto\x12\x10\n\x08\x64uration\x18\x02 \x01(\x02\"F\n\nVideoProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1b\n\x06\x66rames\x18\x02 \x03(\x0b\x32\x0b.FrameProto\x12\r\n\x05\x61udio\x18\x03 \x01(\x0c\"\x8b\x01\n\x0bRenderProto\x12 \n\x0cview_configs\x18\x01 \x03(\x0b\x32\n.ViewProto\x12\x13\n\x0b\x62\x65gin_views\x18\x02 \x03(\t\x12\x11\n\tend_views\x18\x03 \x03(\t\x12\x15\n\rrequest_views\x18\x04 \x03(\t\x12\x1b\n\x06videos\x18\x05 \x03(\x0b\x32\x0b.VideoProtoB\x12\xaa\x02\x0fGymize.Protobufb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0crender.proto\x1a\x0bspace.proto\"s\n\tViewProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x17\n\x0fis_single_frame\x18\x02 \x01(\x08\x12\x14\n\x0cscreen_width\x18\x03 \x01(\x05\x12\x15\n\rscreen_height\x18\x04 \x01(\x05\x12\x12\n\nfullscreen\x18\x05 \x01(\x08\"=\n\nFrameProto\x12\x1d\n\x05image\x18\x01 \x01(\x0b\x32\x0e.InstanceProto\x12\x10\n\x08\x64uration\x18\x02 \x01(\x02\"F\n\nVideoProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1b\n\x06\x66rames\x18\x02 \x03(\x0b\x32\x0b.FrameProto\x12\r\n\x05\x61udio\x18\x03 \x01(\x0c\"\x8b\x01\n\x0bRenderProto\x12 \n\x0cview_configs\x18\x01 \x03(\x0b\x32\n.ViewProto\x12\x13\n\x0b\x62\x65gin_views\x18\x02 \x03(\t\x12\x11\n\tend_views\x18\x03 \x03(\t\x12\x15\n\rrequest_views\x18\x04 \x03(\t\x12\x1b\n\x06videos\x18\x05 \x03(\x0b\x32\x0b.VideoProtoB\x12\xaa\x02\x0fGymize.Protobufb\x06proto3')
 
 
 
@@ -56,11 +56,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\252\002\017Gymize.Protobuf'
   _VIEWPROTO._serialized_start=29
-  _VIEWPROTO._serialized_end=79
-  _FRAMEPROTO._serialized_start=81
-  _FRAMEPROTO._serialized_end=142
-  _VIDEOPROTO._serialized_start=144
-  _VIDEOPROTO._serialized_end=214
-  _RENDERPROTO._serialized_start=217
-  _RENDERPROTO._serialized_end=356
+  _VIEWPROTO._serialized_end=144
+  _FRAMEPROTO._serialized_start=146
+  _FRAMEPROTO._serialized_end=207
+  _VIDEOPROTO._serialized_start=209
+  _VIDEOPROTO._serialized_end=279
+  _RENDERPROTO._serialized_start=282
+  _RENDERPROTO._serialized_end=421
 # @@protoc_insertion_point(module_scope)

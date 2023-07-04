@@ -55,11 +55,18 @@ class UnityGymEnv(gym.Env, BridgeChannel):
     def send_info(self, info):
         self.bridge.send_info(info=info, agent=self.agent)
 
-    def begin_render(self):
+    def begin_render(self, screen_width: int=-1, screen_height: int=-1, fullscreen: bool=False):
+        config = {
+            'screen_width': screen_width,
+            'screen_height': screen_height,
+            'fullscreen': fullscreen
+        }
         if self.render_mode == 'rgb_array':
-            self.bridge.begin_render({ name: True for name in self.views })
+            config['is_single_frame'] = True
+            self.bridge.begin_render({ name: config for name in self.views })
         elif self.render_mode == 'rgb_array_list' or self.render_mode == 'video':
-            self.bridge.begin_render({ name: False for name in self.views })
+            config['is_single_frame'] = False
+            self.bridge.begin_render({ name: config for name in self.views })
     
     def end_render(self):
         self.bridge.end_render(self.views)

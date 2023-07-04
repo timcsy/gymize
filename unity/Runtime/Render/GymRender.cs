@@ -22,6 +22,9 @@ namespace Gymize
         public Dictionary<string, bool> IsRecording;
         public Dictionary<string, bool> IsPaused;
         public Dictionary<string, bool> IsSingleFrame;
+        public Dictionary<string, int> ScreenWidths;
+        public Dictionary<string, int> ScreenHeights;
+        public Dictionary<string, bool> IsFullscreen;
         public int SamplingRate = 44100;
         
         private Dictionary<string, List<FrameProto>> m_ImageFrames;
@@ -34,6 +37,9 @@ namespace Gymize
             IsRecording = new Dictionary<string, bool>();
             IsPaused = new Dictionary<string, bool>();
             IsSingleFrame = new Dictionary<string, bool>();
+            ScreenWidths = new Dictionary<string, int>();
+            ScreenHeights = new Dictionary<string, int>();
+            IsFullscreen = new Dictionary<string, bool>();
 
             m_ImageFrames = new Dictionary<string, List<FrameProto>>();
             m_AudioFrames = new Dictionary<string, List<AudioFrame>>();

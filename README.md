@@ -8,6 +8,8 @@ cd python
 pip install -e .
 ```
 
+如果要啟動錄影功能，系統要再額外加裝 [ffmpeg](https://ffmpeg.org/download.html)。
+
 ## Usage
 
 Single-Agent with Gymnasium API:

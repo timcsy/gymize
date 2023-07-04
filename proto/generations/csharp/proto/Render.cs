@@ -24,19 +24,20 @@ namespace Gymize.Protobuf {
     static RenderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxyZW5kZXIucHJvdG8aC3NwYWNlLnByb3RvIjIKCVZpZXdQcm90bxIMCgRu",
-            "YW1lGAEgASgJEhcKD2lzX3NpbmdsZV9mcmFtZRgCIAEoCCI9CgpGcmFtZVBy",
-            "b3RvEh0KBWltYWdlGAEgASgLMg4uSW5zdGFuY2VQcm90bxIQCghkdXJhdGlv",
-            "bhgCIAEoAiJGCgpWaWRlb1Byb3RvEgwKBG5hbWUYASABKAkSGwoGZnJhbWVz",
-            "GAIgAygLMgsuRnJhbWVQcm90bxINCgVhdWRpbxgDIAEoDCKLAQoLUmVuZGVy",
-            "UHJvdG8SIAoMdmlld19jb25maWdzGAEgAygLMgouVmlld1Byb3RvEhMKC2Jl",
-            "Z2luX3ZpZXdzGAIgAygJEhEKCWVuZF92aWV3cxgDIAMoCRIVCg1yZXF1ZXN0",
-            "X3ZpZXdzGAQgAygJEhsKBnZpZGVvcxgFIAMoCzILLlZpZGVvUHJvdG9CEqoC",
-            "D0d5bWl6ZS5Qcm90b2J1ZmIGcHJvdG8z"));
+            "CgxyZW5kZXIucHJvdG8aC3NwYWNlLnByb3RvInMKCVZpZXdQcm90bxIMCgRu",
+            "YW1lGAEgASgJEhcKD2lzX3NpbmdsZV9mcmFtZRgCIAEoCBIUCgxzY3JlZW5f",
+            "d2lkdGgYAyABKAUSFQoNc2NyZWVuX2hlaWdodBgEIAEoBRISCgpmdWxsc2Ny",
+            "ZWVuGAUgASgIIj0KCkZyYW1lUHJvdG8SHQoFaW1hZ2UYASABKAsyDi5JbnN0",
+            "YW5jZVByb3RvEhAKCGR1cmF0aW9uGAIgASgCIkYKClZpZGVvUHJvdG8SDAoE",
+            "bmFtZRgBIAEoCRIbCgZmcmFtZXMYAiADKAsyCy5GcmFtZVByb3RvEg0KBWF1",
+            "ZGlvGAMgASgMIosBCgtSZW5kZXJQcm90bxIgCgx2aWV3X2NvbmZpZ3MYASAD",
+            "KAsyCi5WaWV3UHJvdG8SEwoLYmVnaW5fdmlld3MYAiADKAkSEQoJZW5kX3Zp",
+            "ZXdzGAMgAygJEhUKDXJlcXVlc3Rfdmlld3MYBCADKAkSGwoGdmlkZW9zGAUg",
+            "AygLMgsuVmlkZW9Qcm90b0ISqgIPR3ltaXplLlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gymize.Protobuf.SpaceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ViewProto), global::Gymize.Protobuf.ViewProto.Parser, new[]{ "Name", "IsSingleFrame" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ViewProto), global::Gymize.Protobuf.ViewProto.Parser, new[]{ "Name", "IsSingleFrame", "ScreenWidth", "ScreenHeight", "Fullscreen" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.FrameProto), global::Gymize.Protobuf.FrameProto.Parser, new[]{ "Image", "Duration" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.VideoProto), global::Gymize.Protobuf.VideoProto.Parser, new[]{ "Name", "Frames", "Audio" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.RenderProto), global::Gymize.Protobuf.RenderProto.Parser, new[]{ "ViewConfigs", "BeginViews", "EndViews", "RequestViews", "Videos" }, null, null, null, null)
@@ -82,6 +83,9 @@ namespace Gymize.Protobuf {
     public ViewProto(ViewProto other) : this() {
       name_ = other.name_;
       isSingleFrame_ = other.isSingleFrame_;
+      screenWidth_ = other.screenWidth_;
+      screenHeight_ = other.screenHeight_;
+      fullscreen_ = other.fullscreen_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -115,6 +119,42 @@ namespace Gymize.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "screen_width" field.</summary>
+    public const int ScreenWidthFieldNumber = 3;
+    private int screenWidth_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ScreenWidth {
+      get { return screenWidth_; }
+      set {
+        screenWidth_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "screen_height" field.</summary>
+    public const int ScreenHeightFieldNumber = 4;
+    private int screenHeight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ScreenHeight {
+      get { return screenHeight_; }
+      set {
+        screenHeight_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fullscreen" field.</summary>
+    public const int FullscreenFieldNumber = 5;
+    private bool fullscreen_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Fullscreen {
+      get { return fullscreen_; }
+      set {
+        fullscreen_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -132,6 +172,9 @@ namespace Gymize.Protobuf {
       }
       if (Name != other.Name) return false;
       if (IsSingleFrame != other.IsSingleFrame) return false;
+      if (ScreenWidth != other.ScreenWidth) return false;
+      if (ScreenHeight != other.ScreenHeight) return false;
+      if (Fullscreen != other.Fullscreen) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -141,6 +184,9 @@ namespace Gymize.Protobuf {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (IsSingleFrame != false) hash ^= IsSingleFrame.GetHashCode();
+      if (ScreenWidth != 0) hash ^= ScreenWidth.GetHashCode();
+      if (ScreenHeight != 0) hash ^= ScreenHeight.GetHashCode();
+      if (Fullscreen != false) hash ^= Fullscreen.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,6 +213,18 @@ namespace Gymize.Protobuf {
         output.WriteRawTag(16);
         output.WriteBool(IsSingleFrame);
       }
+      if (ScreenWidth != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ScreenWidth);
+      }
+      if (ScreenHeight != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ScreenHeight);
+      }
+      if (Fullscreen != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(Fullscreen);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -185,6 +243,18 @@ namespace Gymize.Protobuf {
         output.WriteRawTag(16);
         output.WriteBool(IsSingleFrame);
       }
+      if (ScreenWidth != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ScreenWidth);
+      }
+      if (ScreenHeight != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ScreenHeight);
+      }
+      if (Fullscreen != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(Fullscreen);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -199,6 +269,15 @@ namespace Gymize.Protobuf {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (IsSingleFrame != false) {
+        size += 1 + 1;
+      }
+      if (ScreenWidth != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ScreenWidth);
+      }
+      if (ScreenHeight != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ScreenHeight);
+      }
+      if (Fullscreen != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -218,6 +297,15 @@ namespace Gymize.Protobuf {
       }
       if (other.IsSingleFrame != false) {
         IsSingleFrame = other.IsSingleFrame;
+      }
+      if (other.ScreenWidth != 0) {
+        ScreenWidth = other.ScreenWidth;
+      }
+      if (other.ScreenHeight != 0) {
+        ScreenHeight = other.ScreenHeight;
+      }
+      if (other.Fullscreen != false) {
+        Fullscreen = other.Fullscreen;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -242,6 +330,18 @@ namespace Gymize.Protobuf {
             IsSingleFrame = input.ReadBool();
             break;
           }
+          case 24: {
+            ScreenWidth = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            ScreenHeight = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Fullscreen = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -263,6 +363,18 @@ namespace Gymize.Protobuf {
           }
           case 16: {
             IsSingleFrame = input.ReadBool();
+            break;
+          }
+          case 24: {
+            ScreenWidth = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            ScreenHeight = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Fullscreen = input.ReadBool();
             break;
           }
         }

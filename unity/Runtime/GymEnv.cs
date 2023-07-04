@@ -620,6 +620,9 @@ namespace Gymize
                 foreach (ViewProto viewConfig in gymizeProto.Rendering.ViewConfigs)
                 {
                     m_Render.IsSingleFrame[viewConfig.Name] = viewConfig.IsSingleFrame;
+                    m_Render.ScreenWidths[viewConfig.Name] = viewConfig.ScreenWidth;
+                    m_Render.ScreenHeights[viewConfig.Name] = viewConfig.ScreenHeight;
+                    m_Render.IsFullscreen[viewConfig.Name] = viewConfig.Fullscreen;
                 }
                 foreach (string name in gymizeProto.Rendering.BeginViews)
                 {

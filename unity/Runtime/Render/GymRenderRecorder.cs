@@ -21,11 +21,11 @@ namespace Gymize
         public RenderTexture RenderTexture;
         public CompressionType CompressionType = CompressionType.JPG;
 
-        private int Width
+        private int m_Width
         {
             get { return (VideoWidth < 0)? (int)Mathf.Floor(-Screen.width * VideoWidth): VideoWidth; }
         }
-        private int Height
+        private int m_Height
         {
             get { return (VideoHeight < 0)? (int)Mathf.Floor(-Screen.height * VideoHeight): VideoHeight; }
         }
@@ -54,9 +54,34 @@ namespace Gymize
             }
         }
 
+        private void ResizeScreen()
+        {
+            int screenWidth = -1;
+            if (GymEnv.Render.ScreenWidths.ContainsKey(Name))
+            {
+                screenWidth = GymEnv.Render.ScreenWidths[Name];
+            }
+            int screenHeight = -1;
+            if (GymEnv.Render.ScreenHeights.ContainsKey(Name))
+            {
+                screenHeight = GymEnv.Render.ScreenHeights[Name];
+            }
+            bool fullscreen = false;
+            if (GymEnv.Render.IsFullscreen.ContainsKey(Name))
+            {
+                fullscreen = GymEnv.Render.IsFullscreen[Name];
+            }
+            if (screenWidth >= 0 && screenHeight >= 0)
+            {
+                Screen.SetResolution(screenWidth, screenHeight, fullscreen);
+            }
+        }
+
         private IEnumerator CaptureUI()
         {
             yield return new WaitForEndOfFrame();
+
+            ResizeScreen();
 
             RenderTexture screenTexture = new RenderTexture(Screen.width, Screen.height, 0);
             ScreenCapture.CaptureScreenshotIntoRenderTexture(screenTexture);
@@ -67,7 +92,7 @@ namespace Gymize
 
         private void CaptureCamera()
         {
-            RenderTexture rt = new RenderTexture(Width, Height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+            RenderTexture rt = new RenderTexture(m_Width, m_Height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
             RenderTexture oldRT = Camera.targetTexture;
             Camera.targetTexture = rt;
             Camera.Render();
@@ -78,7 +103,7 @@ namespace Gymize
 
         private void AddRenderTexture(RenderTexture rt)
         {
-            rt = Image.Scale(rt, scaledWidth: Width, scaledHeight: Height);
+            rt = Image.Scale(rt, scaledWidth: m_Width, scaledHeight: m_Height);
             Texture2D tex = Image.ToTexture2D(rt);
             byte[] image_buffer = Image.ToImage(tex, CompressionType);
             Image image = new Image(image_buffer, CompressionType);
