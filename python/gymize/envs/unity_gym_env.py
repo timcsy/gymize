@@ -52,8 +52,10 @@ class UnityGymEnv(gym.Env, BridgeChannel):
 
         return observation, reward, terminated, truncated, info
 
-    def send_info(self, info):
-        self.bridge.send_info(info=info, agent=self.agent)
+    def send_info(self, info, agent: str=None):
+        if agent is None:
+            agent = self.agent
+        self.bridge.send_info(info=info, agent=agent)
 
     def begin_render(self, screen_width: int=-1, screen_height: int=-1, fullscreen: bool=False):
         config = {

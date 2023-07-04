@@ -10,6 +10,11 @@ pip install -e .
 
 如果要啟動錄影功能，系統要再額外加裝 [ffmpeg](https://ffmpeg.org/download.html)。
 
+你也可以使用 Anaconda 安裝 ffmpeg：
+```
+conda install -c conda-forge ffmpeg
+```
+
 ## Usage
 
 Single-Agent with Gymnasium API:
