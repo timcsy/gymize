@@ -33,7 +33,7 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "space.pb.h"
 #include "locator.pb.h"
-#include "recording.pb.h"
+#include "render.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_gymize_2eproto
@@ -891,7 +891,7 @@ class GymizeProto final :
     kTerminatedAgentsFieldNumber = 7,
     kTruncatedAgentsFieldNumber = 8,
     kInfosFieldNumber = 9,
-    kRecordingFieldNumber = 10,
+    kRenderingFieldNumber = 10,
   };
   // repeated string reset_agents = 1;
   int reset_agents_size() const;
@@ -1085,23 +1085,23 @@ class GymizeProto final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InfoProto >&
       infos() const;
 
-  // .RecordingProto recording = 10;
-  bool has_recording() const;
+  // .RenderProto rendering = 10;
+  bool has_rendering() const;
   private:
-  bool _internal_has_recording() const;
+  bool _internal_has_rendering() const;
   public:
-  void clear_recording();
-  const ::RecordingProto& recording() const;
-  PROTOBUF_NODISCARD ::RecordingProto* release_recording();
-  ::RecordingProto* mutable_recording();
-  void set_allocated_recording(::RecordingProto* recording);
+  void clear_rendering();
+  const ::RenderProto& rendering() const;
+  PROTOBUF_NODISCARD ::RenderProto* release_rendering();
+  ::RenderProto* mutable_rendering();
+  void set_allocated_rendering(::RenderProto* rendering);
   private:
-  const ::RecordingProto& _internal_recording() const;
-  ::RecordingProto* _internal_mutable_recording();
+  const ::RenderProto& _internal_rendering() const;
+  ::RenderProto* _internal_mutable_rendering();
   public:
-  void unsafe_arena_set_allocated_recording(
-      ::RecordingProto* recording);
-  ::RecordingProto* unsafe_arena_release_recording();
+  void unsafe_arena_set_allocated_rendering(
+      ::RenderProto* rendering);
+  ::RenderProto* unsafe_arena_release_rendering();
 
   // @@protoc_insertion_point(class_scope:GymizeProto)
  private:
@@ -1119,7 +1119,7 @@ class GymizeProto final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> terminated_agents_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> truncated_agents_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InfoProto > infos_;
-  ::RecordingProto* recording_;
+  ::RenderProto* rendering_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_gymize_2eproto;
 };
@@ -2153,39 +2153,39 @@ GymizeProto::infos() const {
   return infos_;
 }
 
-// .RecordingProto recording = 10;
-inline bool GymizeProto::_internal_has_recording() const {
-  return this != internal_default_instance() && recording_ != nullptr;
+// .RenderProto rendering = 10;
+inline bool GymizeProto::_internal_has_rendering() const {
+  return this != internal_default_instance() && rendering_ != nullptr;
 }
-inline bool GymizeProto::has_recording() const {
-  return _internal_has_recording();
+inline bool GymizeProto::has_rendering() const {
+  return _internal_has_rendering();
 }
-inline const ::RecordingProto& GymizeProto::_internal_recording() const {
-  const ::RecordingProto* p = recording_;
-  return p != nullptr ? *p : reinterpret_cast<const ::RecordingProto&>(
-      ::_RecordingProto_default_instance_);
+inline const ::RenderProto& GymizeProto::_internal_rendering() const {
+  const ::RenderProto* p = rendering_;
+  return p != nullptr ? *p : reinterpret_cast<const ::RenderProto&>(
+      ::_RenderProto_default_instance_);
 }
-inline const ::RecordingProto& GymizeProto::recording() const {
-  // @@protoc_insertion_point(field_get:GymizeProto.recording)
-  return _internal_recording();
+inline const ::RenderProto& GymizeProto::rendering() const {
+  // @@protoc_insertion_point(field_get:GymizeProto.rendering)
+  return _internal_rendering();
 }
-inline void GymizeProto::unsafe_arena_set_allocated_recording(
-    ::RecordingProto* recording) {
+inline void GymizeProto::unsafe_arena_set_allocated_rendering(
+    ::RenderProto* rendering) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(recording_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(rendering_);
   }
-  recording_ = recording;
-  if (recording) {
+  rendering_ = rendering;
+  if (rendering) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GymizeProto.recording)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GymizeProto.rendering)
 }
-inline ::RecordingProto* GymizeProto::release_recording() {
+inline ::RenderProto* GymizeProto::release_rendering() {
   
-  ::RecordingProto* temp = recording_;
-  recording_ = nullptr;
+  ::RenderProto* temp = rendering_;
+  rendering_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -2197,46 +2197,46 @@ inline ::RecordingProto* GymizeProto::release_recording() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::RecordingProto* GymizeProto::unsafe_arena_release_recording() {
-  // @@protoc_insertion_point(field_release:GymizeProto.recording)
+inline ::RenderProto* GymizeProto::unsafe_arena_release_rendering() {
+  // @@protoc_insertion_point(field_release:GymizeProto.rendering)
   
-  ::RecordingProto* temp = recording_;
-  recording_ = nullptr;
+  ::RenderProto* temp = rendering_;
+  rendering_ = nullptr;
   return temp;
 }
-inline ::RecordingProto* GymizeProto::_internal_mutable_recording() {
+inline ::RenderProto* GymizeProto::_internal_mutable_rendering() {
   
-  if (recording_ == nullptr) {
-    auto* p = CreateMaybeMessage<::RecordingProto>(GetArenaForAllocation());
-    recording_ = p;
+  if (rendering_ == nullptr) {
+    auto* p = CreateMaybeMessage<::RenderProto>(GetArenaForAllocation());
+    rendering_ = p;
   }
-  return recording_;
+  return rendering_;
 }
-inline ::RecordingProto* GymizeProto::mutable_recording() {
-  ::RecordingProto* _msg = _internal_mutable_recording();
-  // @@protoc_insertion_point(field_mutable:GymizeProto.recording)
+inline ::RenderProto* GymizeProto::mutable_rendering() {
+  ::RenderProto* _msg = _internal_mutable_rendering();
+  // @@protoc_insertion_point(field_mutable:GymizeProto.rendering)
   return _msg;
 }
-inline void GymizeProto::set_allocated_recording(::RecordingProto* recording) {
+inline void GymizeProto::set_allocated_rendering(::RenderProto* rendering) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(recording_);
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(rendering_);
   }
-  if (recording) {
+  if (rendering) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
         ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
             ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(recording));
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(rendering));
     if (message_arena != submessage_arena) {
-      recording = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, recording, submessage_arena);
+      rendering = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, rendering, submessage_arena);
     }
     
   } else {
     
   }
-  recording_ = recording;
-  // @@protoc_insertion_point(field_set_allocated:GymizeProto.recording)
+  rendering_ = rendering;
+  // @@protoc_insertion_point(field_set_allocated:GymizeProto.rendering)
 }
 
 #ifdef __GNUC__

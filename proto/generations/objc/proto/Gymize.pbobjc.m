@@ -16,7 +16,7 @@
 #import "Gymize.pbobjc.h"
 #import "Space.pbobjc.h"
 #import "Locator.pbobjc.h"
-#import "Recording.pbobjc.h"
+#import "Render.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -32,7 +32,7 @@ GPBObjCClassDeclaration(InfoProto);
 GPBObjCClassDeclaration(InstanceProto);
 GPBObjCClassDeclaration(LocatorProto);
 GPBObjCClassDeclaration(ObservationProto);
-GPBObjCClassDeclaration(RecordingProto);
+GPBObjCClassDeclaration(RenderProto);
 GPBObjCClassDeclaration(RewardProto);
 
 #pragma mark - GymizeRoot
@@ -295,7 +295,7 @@ typedef struct InfoProto__storage_ {
 @dynamic terminatedAgentsArray, terminatedAgentsArray_Count;
 @dynamic truncatedAgentsArray, truncatedAgentsArray_Count;
 @dynamic infosArray, infosArray_Count;
-@dynamic hasRecording, recording;
+@dynamic hasRendering, rendering;
 
 typedef struct GymizeProto__storage_ {
   uint32_t _has_storage_[1];
@@ -308,7 +308,7 @@ typedef struct GymizeProto__storage_ {
   NSMutableArray *terminatedAgentsArray;
   NSMutableArray *truncatedAgentsArray;
   NSMutableArray *infosArray;
-  RecordingProto *recording;
+  RenderProto *rendering;
 } GymizeProto__storage_;
 
 // This method is threadsafe because it is initially called
@@ -399,11 +399,11 @@ typedef struct GymizeProto__storage_ {
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "recording",
-        .dataTypeSpecific.clazz = GPBObjCClass(RecordingProto),
-        .number = GymizeProto_FieldNumber_Recording,
+        .name = "rendering",
+        .dataTypeSpecific.clazz = GPBObjCClass(RenderProto),
+        .number = GymizeProto_FieldNumber_Rendering,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(GymizeProto__storage_, recording),
+        .offset = (uint32_t)offsetof(GymizeProto__storage_, rendering),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },

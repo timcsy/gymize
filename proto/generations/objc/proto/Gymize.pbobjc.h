@@ -32,7 +32,7 @@ CF_EXTERN_C_BEGIN
 @class InstanceProto;
 @class LocatorProto;
 @class ObservationProto;
-@class RecordingProto;
+@class RenderProto;
 @class RewardProto;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -133,7 +133,7 @@ typedef GPB_ENUM(GymizeProto_FieldNumber) {
   GymizeProto_FieldNumber_TerminatedAgentsArray = 7,
   GymizeProto_FieldNumber_TruncatedAgentsArray = 8,
   GymizeProto_FieldNumber_InfosArray = 9,
-  GymizeProto_FieldNumber_Recording = 10,
+  GymizeProto_FieldNumber_Rendering = 10,
 };
 
 GPB_FINAL @interface GymizeProto : GPBMessage
@@ -181,9 +181,9 @@ GPB_FINAL @interface GymizeProto : GPBMessage
 @property(nonatomic, readonly) NSUInteger infosArray_Count;
 
 /** render images and audio */
-@property(nonatomic, readwrite, strong, null_resettable) RecordingProto *recording;
-/** Test to see if @c recording has been set. */
-@property(nonatomic, readwrite) BOOL hasRecording;
+@property(nonatomic, readwrite, strong, null_resettable) RenderProto *rendering;
+/** Test to see if @c rendering has been set. */
+@property(nonatomic, readwrite) BOOL hasRendering;
 
 @end
 

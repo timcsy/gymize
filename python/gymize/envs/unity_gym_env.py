@@ -1,11 +1,11 @@
-from typing import List
+from typing import Dict, List
 
 import gymnasium as gym
 
 from gymize.bridge import Bridge, BridgeChannel
 
 class UnityGymEnv(gym.Env, BridgeChannel):
-    metadata = { 'render_modes': [ 'rgb_array' ] }
+    metadata = { 'render_modes': [ 'rgb_array', 'rgb_array_list', 'video' ] }
 
     def __init__(self, env_name, file_name: str=None, action_space=None, observation_space=None, reward_range=(-float('inf'), float('inf')), agent_name: str='agent', update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
         self.bridge = Bridge(
@@ -15,6 +15,7 @@ class UnityGymEnv(gym.Env, BridgeChannel):
             observation_spaces={ agent_name: observation_space },
             reward_ranges={ agent_name: reward_range },
             agents=[ agent_name ],
+            render_mode=render_mode,
             update_seconds=update_seconds
         )
         BridgeChannel.__init__(self, self.bridge)
@@ -53,14 +54,22 @@ class UnityGymEnv(gym.Env, BridgeChannel):
 
     def send_info(self, info):
         self.bridge.send_info(info=info, agent=self.agent)
+
+    def begin_render(self):
+        if self.render_mode == 'rgb_array':
+            self.bridge.begin_render({ name: True for name in self.views })
+        elif self.render_mode == 'rgb_array_list' or self.render_mode == 'video':
+            self.bridge.begin_render({ name: False for name in self.views })
+    
+    def end_render(self):
+        self.bridge.end_render(self.views)
+    
+    def render_all(self, video_paths: Dict[str, str]={}):
+        return self.bridge.render_all(names=self.views, video_paths=video_paths)
     
     def render(self):
-        if self.render_mode == 'rgb_array':
-            return self.bridge.get_frame(self.views)
-        elif self.render_mode == 'rgb_array_list':
-            return self.bridge.get_frames(self.views)
-        elif self.render_mode == 'video':
-            return self.bridge.get_recording(self.views)
+        name = None if self.views is None or len(self.views) == 0 else self.views[0]
+        return self.bridge.render(name=name)
 
     def close(self):
         self.bridge.close()

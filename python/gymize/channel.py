@@ -675,7 +675,7 @@ class Channel:
     async def _ws_server(self, host, port):
         self._peer_stop = asyncio.Future() # you can set a value to it
         extensions = [permessage_deflate.ServerPerMessageDeflateFactory()]
-        async with websockets.serve(self._ws_server_recv, host, port, extensions=extensions, ping_timeout=None):
+        async with websockets.serve(self._ws_server_recv, host, port, extensions=extensions, ping_timeout=None, max_size=None):
             print(f'Start Peer Server: {self._peer_url}')
             
             await self._peer_stop # run forever until stop is set
@@ -710,7 +710,7 @@ class Channel:
 
     async def _ws_client(self, url):
         extensions = [permessage_deflate.ClientPerMessageDeflateFactory()]
-        async with websockets.connect(url, extensions=extensions, ping_timeout=None) as websocket:
+        async with websockets.connect(url, extensions=extensions, ping_timeout=None, max_size=None) as websocket:
             closed = None
             self._peer_url = url
             print(f'Connected to Peer Server: {self._peer_url}')

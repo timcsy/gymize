@@ -5,7 +5,7 @@ require 'google/protobuf'
 
 require 'space_pb'
 require 'locator_pb'
-require 'recording_pb'
+require 'render_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("gymize.proto", :syntax => :proto3) do
@@ -35,7 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :terminated_agents, :string, 7
       repeated :truncated_agents, :string, 8
       repeated :infos, :message, 9, "InfoProto"
-      optional :recording, :message, 10, "RecordingProto"
+      optional :rendering, :message, 10, "RenderProto"
     end
   end
 end

@@ -79,7 +79,7 @@ constexpr GymizeProto::GymizeProto(
   , terminated_agents_()
   , truncated_agents_()
   , infos_()
-  , recording_(nullptr){}
+  , rendering_(nullptr){}
 struct GymizeProtoDefaultTypeInternal {
   constexpr GymizeProtoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -141,7 +141,7 @@ const uint32_t TableStruct_gymize_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::GymizeProto, terminated_agents_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, truncated_agents_),
   PROTOBUF_FIELD_OFFSET(::GymizeProto, infos_),
-  PROTOBUF_FIELD_OFFSET(::GymizeProto, recording_),
+  PROTOBUF_FIELD_OFFSET(::GymizeProto, rendering_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::ActionProto)},
@@ -161,31 +161,31 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_gymize_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\014gymize.proto\032\013space.proto\032\rlocator.pro"
-  "to\032\017recording.proto\"<\n\013ActionProto\022\r\n\005ag"
-  "ent\030\001 \001(\t\022\036\n\006action\030\002 \001(\0132\016.InstanceProt"
-  "o\"W\n\020ObservationProto\022\036\n\007locator\030\001 \001(\0132\r"
-  ".LocatorProto\022#\n\013observation\030\002 \001(\0132\016.Ins"
-  "tanceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t"
-  "\022\016\n\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001"
-  " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\257\002\n\013"
-  "GymizeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016req"
-  "uest_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003"
-  "(\t\022\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014obs"
-  "ervations\030\005 \003(\0132\021.ObservationProto\022\035\n\007re"
-  "wards\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_"
-  "agents\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031"
-  "\n\005infos\030\t \003(\0132\n.InfoProto\022\"\n\trecording\030\n"
-  " \001(\0132\017.RecordingProtoB\022\252\002\017Gymize.Protobu"
-  "fb\006proto3"
+  "to\032\014render.proto\"<\n\013ActionProto\022\r\n\005agent"
+  "\030\001 \001(\t\022\036\n\006action\030\002 \001(\0132\016.InstanceProto\"W"
+  "\n\020ObservationProto\022\036\n\007locator\030\001 \001(\0132\r.Lo"
+  "catorProto\022#\n\013observation\030\002 \001(\0132\016.Instan"
+  "ceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t\022\016\n"
+  "\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001 \001("
+  "\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\254\002\n\013Gym"
+  "izeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016reques"
+  "t_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003(\t\022"
+  "\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014observ"
+  "ations\030\005 \003(\0132\021.ObservationProto\022\035\n\007rewar"
+  "ds\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_age"
+  "nts\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031\n\005i"
+  "nfos\030\t \003(\0132\n.InfoProto\022\037\n\trendering\030\n \001("
+  "\0132\014.RenderProtoB\022\252\002\017Gymize.Protobufb\006pro"
+  "to3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_gymize_2eproto_deps[3] = {
   &::descriptor_table_locator_2eproto,
-  &::descriptor_table_recording_2eproto,
+  &::descriptor_table_render_2eproto,
   &::descriptor_table_space_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_gymize_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_gymize_2eproto = {
-  false, false, 649, descriptor_table_protodef_gymize_2eproto, "gymize.proto", 
+  false, false, 643, descriptor_table_protodef_gymize_2eproto, "gymize.proto", 
   &descriptor_table_gymize_2eproto_once, descriptor_table_gymize_2eproto_deps, 3, 5,
   schemas, file_default_instances, TableStruct_gymize_2eproto::offsets,
   file_level_metadata_gymize_2eproto, file_level_enum_descriptors_gymize_2eproto, file_level_service_descriptors_gymize_2eproto,
@@ -1189,18 +1189,18 @@ void InfoProto::InternalSwap(InfoProto* other) {
 
 class GymizeProto::_Internal {
  public:
-  static const ::RecordingProto& recording(const GymizeProto* msg);
+  static const ::RenderProto& rendering(const GymizeProto* msg);
 };
 
-const ::RecordingProto&
-GymizeProto::_Internal::recording(const GymizeProto* msg) {
-  return *msg->recording_;
+const ::RenderProto&
+GymizeProto::_Internal::rendering(const GymizeProto* msg) {
+  return *msg->rendering_;
 }
-void GymizeProto::clear_recording() {
-  if (GetArenaForAllocation() == nullptr && recording_ != nullptr) {
-    delete recording_;
+void GymizeProto::clear_rendering() {
+  if (GetArenaForAllocation() == nullptr && rendering_ != nullptr) {
+    delete rendering_;
   }
-  recording_ = nullptr;
+  rendering_ = nullptr;
 }
 GymizeProto::GymizeProto(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1232,16 +1232,16 @@ GymizeProto::GymizeProto(const GymizeProto& from)
       truncated_agents_(from.truncated_agents_),
       infos_(from.infos_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_recording()) {
-    recording_ = new ::RecordingProto(*from.recording_);
+  if (from._internal_has_rendering()) {
+    rendering_ = new ::RenderProto(*from.rendering_);
   } else {
-    recording_ = nullptr;
+    rendering_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:GymizeProto)
 }
 
 inline void GymizeProto::SharedCtor() {
-recording_ = nullptr;
+rendering_ = nullptr;
 }
 
 GymizeProto::~GymizeProto() {
@@ -1253,7 +1253,7 @@ GymizeProto::~GymizeProto() {
 
 inline void GymizeProto::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete recording_;
+  if (this != internal_default_instance()) delete rendering_;
 }
 
 void GymizeProto::ArenaDtor(void* object) {
@@ -1281,10 +1281,10 @@ void GymizeProto::Clear() {
   terminated_agents_.Clear();
   truncated_agents_.Clear();
   infos_.Clear();
-  if (GetArenaForAllocation() == nullptr && recording_ != nullptr) {
-    delete recording_;
+  if (GetArenaForAllocation() == nullptr && rendering_ != nullptr) {
+    delete rendering_;
   }
-  recording_ = nullptr;
+  rendering_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1421,10 +1421,10 @@ const char* GymizeProto::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
         } else
           goto handle_unusual;
         continue;
-      // .RecordingProto recording = 10;
+      // .RenderProto rendering = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
-          ptr = ctx->ParseMessage(_internal_mutable_recording(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_rendering(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1540,12 +1540,12 @@ uint8_t* GymizeProto::_InternalSerialize(
       InternalWriteMessage(9, this->_internal_infos(i), target, stream);
   }
 
-  // .RecordingProto recording = 10;
-  if (this->_internal_has_recording()) {
+  // .RenderProto rendering = 10;
+  if (this->_internal_has_rendering()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        10, _Internal::recording(this), target, stream);
+        10, _Internal::rendering(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1632,11 +1632,11 @@ size_t GymizeProto::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .RecordingProto recording = 10;
-  if (this->_internal_has_recording()) {
+  // .RenderProto rendering = 10;
+  if (this->_internal_has_rendering()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *recording_);
+        *rendering_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1670,8 +1670,8 @@ void GymizeProto::MergeFrom(const GymizeProto& from) {
   terminated_agents_.MergeFrom(from.terminated_agents_);
   truncated_agents_.MergeFrom(from.truncated_agents_);
   infos_.MergeFrom(from.infos_);
-  if (from._internal_has_recording()) {
-    _internal_mutable_recording()->::RecordingProto::MergeFrom(from._internal_recording());
+  if (from._internal_has_rendering()) {
+    _internal_mutable_rendering()->::RenderProto::MergeFrom(from._internal_rendering());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1699,7 +1699,7 @@ void GymizeProto::InternalSwap(GymizeProto* other) {
   terminated_agents_.InternalSwap(&other->terminated_agents_);
   truncated_agents_.InternalSwap(&other->truncated_agents_);
   infos_.InternalSwap(&other->infos_);
-  swap(recording_, other->recording_);
+  swap(rendering_, other->rendering_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GymizeProto::GetMetadata() const {

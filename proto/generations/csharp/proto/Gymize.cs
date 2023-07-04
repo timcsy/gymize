@@ -24,29 +24,29 @@ namespace Gymize.Protobuf {
     static GymizeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxneW1pemUucHJvdG8aC3NwYWNlLnByb3RvGg1sb2NhdG9yLnByb3RvGg9y",
-            "ZWNvcmRpbmcucHJvdG8iPAoLQWN0aW9uUHJvdG8SDQoFYWdlbnQYASABKAkS",
-            "HgoGYWN0aW9uGAIgASgLMg4uSW5zdGFuY2VQcm90byJXChBPYnNlcnZhdGlv",
-            "blByb3RvEh4KB2xvY2F0b3IYASABKAsyDS5Mb2NhdG9yUHJvdG8SIwoLb2Jz",
-            "ZXJ2YXRpb24YAiABKAsyDi5JbnN0YW5jZVByb3RvIiwKC1Jld2FyZFByb3Rv",
-            "Eg0KBWFnZW50GAEgASgJEg4KBnJld2FyZBgCIAEoASI5CglJbmZvUHJvdG8S",
-            "DQoFYWdlbnQYASABKAkSHQoFaW5mb3MYAiADKAsyDi5JbnN0YW5jZVByb3Rv",
-            "Iq8CCgtHeW1pemVQcm90bxIUCgxyZXNldF9hZ2VudHMYASADKAkSFgoOcmVx",
-            "dWVzdF9hZ2VudHMYAiADKAkSFwoPcmVzcG9uc2VfYWdlbnRzGAMgAygJEh0K",
-            "B2FjdGlvbnMYBCADKAsyDC5BY3Rpb25Qcm90bxInCgxvYnNlcnZhdGlvbnMY",
-            "BSADKAsyES5PYnNlcnZhdGlvblByb3RvEh0KB3Jld2FyZHMYBiADKAsyDC5S",
-            "ZXdhcmRQcm90bxIZChF0ZXJtaW5hdGVkX2FnZW50cxgHIAMoCRIYChB0cnVu",
-            "Y2F0ZWRfYWdlbnRzGAggAygJEhkKBWluZm9zGAkgAygLMgouSW5mb1Byb3Rv",
-            "EiIKCXJlY29yZGluZxgKIAEoCzIPLlJlY29yZGluZ1Byb3RvQhKqAg9HeW1p",
-            "emUuUHJvdG9idWZiBnByb3RvMw=="));
+            "CgxneW1pemUucHJvdG8aC3NwYWNlLnByb3RvGg1sb2NhdG9yLnByb3RvGgxy",
+            "ZW5kZXIucHJvdG8iPAoLQWN0aW9uUHJvdG8SDQoFYWdlbnQYASABKAkSHgoG",
+            "YWN0aW9uGAIgASgLMg4uSW5zdGFuY2VQcm90byJXChBPYnNlcnZhdGlvblBy",
+            "b3RvEh4KB2xvY2F0b3IYASABKAsyDS5Mb2NhdG9yUHJvdG8SIwoLb2JzZXJ2",
+            "YXRpb24YAiABKAsyDi5JbnN0YW5jZVByb3RvIiwKC1Jld2FyZFByb3RvEg0K",
+            "BWFnZW50GAEgASgJEg4KBnJld2FyZBgCIAEoASI5CglJbmZvUHJvdG8SDQoF",
+            "YWdlbnQYASABKAkSHQoFaW5mb3MYAiADKAsyDi5JbnN0YW5jZVByb3RvIqwC",
+            "CgtHeW1pemVQcm90bxIUCgxyZXNldF9hZ2VudHMYASADKAkSFgoOcmVxdWVz",
+            "dF9hZ2VudHMYAiADKAkSFwoPcmVzcG9uc2VfYWdlbnRzGAMgAygJEh0KB2Fj",
+            "dGlvbnMYBCADKAsyDC5BY3Rpb25Qcm90bxInCgxvYnNlcnZhdGlvbnMYBSAD",
+            "KAsyES5PYnNlcnZhdGlvblByb3RvEh0KB3Jld2FyZHMYBiADKAsyDC5SZXdh",
+            "cmRQcm90bxIZChF0ZXJtaW5hdGVkX2FnZW50cxgHIAMoCRIYChB0cnVuY2F0",
+            "ZWRfYWdlbnRzGAggAygJEhkKBWluZm9zGAkgAygLMgouSW5mb1Byb3RvEh8K",
+            "CXJlbmRlcmluZxgKIAEoCzIMLlJlbmRlclByb3RvQhKqAg9HeW1pemUuUHJv",
+            "dG9idWZiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Gymize.Protobuf.SpaceReflection.Descriptor, global::Gymize.Protobuf.LocatorReflection.Descriptor, global::Gymize.Protobuf.RecordingReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Gymize.Protobuf.SpaceReflection.Descriptor, global::Gymize.Protobuf.LocatorReflection.Descriptor, global::Gymize.Protobuf.RenderReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ActionProto), global::Gymize.Protobuf.ActionProto.Parser, new[]{ "Agent", "Action" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.ObservationProto), global::Gymize.Protobuf.ObservationProto.Parser, new[]{ "Locator", "Observation" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.RewardProto), global::Gymize.Protobuf.RewardProto.Parser, new[]{ "Agent", "Reward" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.InfoProto), global::Gymize.Protobuf.InfoProto.Parser, new[]{ "Agent", "Infos" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.GymizeProto), global::Gymize.Protobuf.GymizeProto.Parser, new[]{ "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Gymize.Protobuf.GymizeProto), global::Gymize.Protobuf.GymizeProto.Parser, new[]{ "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Rendering" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1019,7 +1019,7 @@ namespace Gymize.Protobuf {
       terminatedAgents_ = other.terminatedAgents_.Clone();
       truncatedAgents_ = other.truncatedAgents_.Clone();
       infos_ = other.infos_.Clone();
-      recording_ = other.recording_ != null ? other.recording_.Clone() : null;
+      rendering_ = other.rendering_ != null ? other.rendering_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1146,18 +1146,18 @@ namespace Gymize.Protobuf {
       get { return infos_; }
     }
 
-    /// <summary>Field number for the "recording" field.</summary>
-    public const int RecordingFieldNumber = 10;
-    private global::Gymize.Protobuf.RecordingProto recording_;
+    /// <summary>Field number for the "rendering" field.</summary>
+    public const int RenderingFieldNumber = 10;
+    private global::Gymize.Protobuf.RenderProto rendering_;
     /// <summary>
     /// render images and audio
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Gymize.Protobuf.RecordingProto Recording {
-      get { return recording_; }
+    public global::Gymize.Protobuf.RenderProto Rendering {
+      get { return rendering_; }
       set {
-        recording_ = value;
+        rendering_ = value;
       }
     }
 
@@ -1185,7 +1185,7 @@ namespace Gymize.Protobuf {
       if(!terminatedAgents_.Equals(other.terminatedAgents_)) return false;
       if(!truncatedAgents_.Equals(other.truncatedAgents_)) return false;
       if(!infos_.Equals(other.infos_)) return false;
-      if (!object.Equals(Recording, other.Recording)) return false;
+      if (!object.Equals(Rendering, other.Rendering)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1202,7 +1202,7 @@ namespace Gymize.Protobuf {
       hash ^= terminatedAgents_.GetHashCode();
       hash ^= truncatedAgents_.GetHashCode();
       hash ^= infos_.GetHashCode();
-      if (recording_ != null) hash ^= Recording.GetHashCode();
+      if (rendering_ != null) hash ^= Rendering.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1230,9 +1230,9 @@ namespace Gymize.Protobuf {
       terminatedAgents_.WriteTo(output, _repeated_terminatedAgents_codec);
       truncatedAgents_.WriteTo(output, _repeated_truncatedAgents_codec);
       infos_.WriteTo(output, _repeated_infos_codec);
-      if (recording_ != null) {
+      if (rendering_ != null) {
         output.WriteRawTag(82);
-        output.WriteMessage(Recording);
+        output.WriteMessage(Rendering);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1253,9 +1253,9 @@ namespace Gymize.Protobuf {
       terminatedAgents_.WriteTo(ref output, _repeated_terminatedAgents_codec);
       truncatedAgents_.WriteTo(ref output, _repeated_truncatedAgents_codec);
       infos_.WriteTo(ref output, _repeated_infos_codec);
-      if (recording_ != null) {
+      if (rendering_ != null) {
         output.WriteRawTag(82);
-        output.WriteMessage(Recording);
+        output.WriteMessage(Rendering);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1276,8 +1276,8 @@ namespace Gymize.Protobuf {
       size += terminatedAgents_.CalculateSize(_repeated_terminatedAgents_codec);
       size += truncatedAgents_.CalculateSize(_repeated_truncatedAgents_codec);
       size += infos_.CalculateSize(_repeated_infos_codec);
-      if (recording_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Recording);
+      if (rendering_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rendering);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1300,11 +1300,11 @@ namespace Gymize.Protobuf {
       terminatedAgents_.Add(other.terminatedAgents_);
       truncatedAgents_.Add(other.truncatedAgents_);
       infos_.Add(other.infos_);
-      if (other.recording_ != null) {
-        if (recording_ == null) {
-          Recording = new global::Gymize.Protobuf.RecordingProto();
+      if (other.rendering_ != null) {
+        if (rendering_ == null) {
+          Rendering = new global::Gymize.Protobuf.RenderProto();
         }
-        Recording.MergeFrom(other.Recording);
+        Rendering.MergeFrom(other.Rendering);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1358,10 +1358,10 @@ namespace Gymize.Protobuf {
             break;
           }
           case 82: {
-            if (recording_ == null) {
-              Recording = new global::Gymize.Protobuf.RecordingProto();
+            if (rendering_ == null) {
+              Rendering = new global::Gymize.Protobuf.RenderProto();
             }
-            input.ReadMessage(Recording);
+            input.ReadMessage(Rendering);
             break;
           }
         }
@@ -1416,10 +1416,10 @@ namespace Gymize.Protobuf {
             break;
           }
           case 82: {
-            if (recording_ == null) {
-              Recording = new global::Gymize.Protobuf.RecordingProto();
+            if (rendering_ == null) {
+              Rendering = new global::Gymize.Protobuf.RenderProto();
             }
-            input.ReadMessage(Recording);
+            input.ReadMessage(Rendering);
             break;
           }
         }

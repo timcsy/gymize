@@ -21,6 +21,11 @@ namespace Gymize
 
         public static GymEnv Instance { get { return s_Lazy.Value; } }
 
+        public static GymRender Render
+        {
+            get { return Instance.m_Render; }
+        }
+
         public static bool IsInitialized
         {
             get { return s_Lazy.IsValueCreated; }
@@ -201,6 +206,9 @@ namespace Gymize
         Dictionary<string, int> m_Periods; // TODO v: How long (ticks) does agent reacts
         Dictionary<string, int> m_Ticks; // TODO v: How many ticks does an agent has passed since reacts
 
+        GymRender m_Render;
+        List<string> m_RequestViews;
+
         private GymEnv() : base()
         {
             m_OnReset = new DelegateDictionary<string, ResetCallBack>()
@@ -240,6 +248,9 @@ namespace Gymize
             {
                 { "", 0 }
             };
+
+            m_Render = new GymRender();
+            m_RequestViews = new List<string>();
         }
 
         List<IObserver> _AddAgent(IAgent agent)
@@ -602,6 +613,26 @@ namespace Gymize
             return infoProtos;
         }
 
+        void _Render(GymizeProto gymizeProto)
+        {
+            if (gymizeProto.Rendering != null)
+            {
+                foreach (ViewProto viewConfig in gymizeProto.Rendering.ViewConfigs)
+                {
+                    m_Render.IsSingleFrame[viewConfig.Name] = viewConfig.IsSingleFrame;
+                }
+                foreach (string name in gymizeProto.Rendering.BeginViews)
+                {
+                    m_Render.Begin(name);
+                }
+                foreach (string name in gymizeProto.Rendering.EndViews)
+                {
+                    m_Render.End(name);
+                }
+                m_RequestViews = new List<string>(gymizeProto.Rendering.RequestViews);
+            }
+        }
+
         void _RequestAgents(GymizeProto gymizeProto)
         {
             lock (m_Requested)
@@ -668,6 +699,7 @@ namespace Gymize
             _SetActions(gymizeProto);
             _RecvInfos(gymizeProto);
             _RequestAgents(gymizeProto);
+            _Render(gymizeProto);
         }
 
         void _SendGymizeMessage()
@@ -680,8 +712,14 @@ namespace Gymize
             gymizeProto.TerminatedAgents.AddRange(_GetTerminations(responseAgents));
             gymizeProto.TruncatedAgents.AddRange(_GetTruncations(responseAgents));
             gymizeProto.Infos.AddRange(_GetInfos(responseAgents));
-            if (responseAgents.Count > 0)
+            if (responseAgents.Count > 0 || m_RequestViews.Count > 0)
             {
+                if (m_RequestViews.Count > 0)
+                {
+                    gymizeProto.Rendering = new RenderProto();
+                    gymizeProto.Rendering.Videos.AddRange(m_Render.GetRendering(m_RequestViews));
+                    m_RequestViews.Clear();
+                }
                 byte[] gymizeMessage = gymizeProto.ToByteArray();
                 TellSync("_gym_", gymizeMessage);
             }

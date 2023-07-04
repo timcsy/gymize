@@ -3556,27 +3556,27 @@ public final class Gymize {
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
-     * @return Whether the recording field is set.
+     * <code>.RenderProto rendering = 10;</code>
+     * @return Whether the rendering field is set.
      */
-    boolean hasRecording();
+    boolean hasRendering();
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
-     * @return The recording.
+     * <code>.RenderProto rendering = 10;</code>
+     * @return The rendering.
      */
-    Recording.RecordingProto getRecording();
+    Render.RenderProto getRendering();
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
+     * <code>.RenderProto rendering = 10;</code>
      */
-    Recording.RecordingProtoOrBuilder getRecordingOrBuilder();
+    Render.RenderProtoOrBuilder getRenderingOrBuilder();
   }
   /**
    * Protobuf type {@code GymizeProto}
@@ -3715,14 +3715,14 @@ public final class Gymize {
               break;
             }
             case 82: {
-              Recording.RecordingProto.Builder subBuilder = null;
-              if (recording_ != null) {
-                subBuilder = recording_.toBuilder();
+              Render.RenderProto.Builder subBuilder = null;
+              if (rendering_ != null) {
+                subBuilder = rendering_.toBuilder();
               }
-              recording_ = input.readMessage(Recording.RecordingProto.parser(), extensionRegistry);
+              rendering_ = input.readMessage(Render.RenderProto.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(recording_);
-                recording_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(rendering_);
+                rendering_ = subBuilder.buildPartial();
               }
 
               break;
@@ -4221,42 +4221,42 @@ public final class Gymize {
       return infos_.get(index);
     }
 
-    public static final int RECORDING_FIELD_NUMBER = 10;
-    private Recording.RecordingProto recording_;
+    public static final int RENDERING_FIELD_NUMBER = 10;
+    private Render.RenderProto rendering_;
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
-     * @return Whether the recording field is set.
+     * <code>.RenderProto rendering = 10;</code>
+     * @return Whether the rendering field is set.
      */
     @java.lang.Override
-    public boolean hasRecording() {
-      return recording_ != null;
+    public boolean hasRendering() {
+      return rendering_ != null;
     }
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
-     * @return The recording.
+     * <code>.RenderProto rendering = 10;</code>
+     * @return The rendering.
      */
     @java.lang.Override
-    public Recording.RecordingProto getRecording() {
-      return recording_ == null ? Recording.RecordingProto.getDefaultInstance() : recording_;
+    public Render.RenderProto getRendering() {
+      return rendering_ == null ? Render.RenderProto.getDefaultInstance() : rendering_;
     }
     /**
      * <pre>
      * render images and audio
      * </pre>
      *
-     * <code>.RecordingProto recording = 10;</code>
+     * <code>.RenderProto rendering = 10;</code>
      */
     @java.lang.Override
-    public Recording.RecordingProtoOrBuilder getRecordingOrBuilder() {
-      return getRecording();
+    public Render.RenderProtoOrBuilder getRenderingOrBuilder() {
+      return getRendering();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4300,8 +4300,8 @@ public final class Gymize {
       for (int i = 0; i < infos_.size(); i++) {
         output.writeMessage(9, infos_.get(i));
       }
-      if (recording_ != null) {
-        output.writeMessage(10, getRecording());
+      if (rendering_ != null) {
+        output.writeMessage(10, getRendering());
       }
       unknownFields.writeTo(output);
     }
@@ -4368,9 +4368,9 @@ public final class Gymize {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, infos_.get(i));
       }
-      if (recording_ != null) {
+      if (rendering_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, getRecording());
+          .computeMessageSize(10, getRendering());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4405,10 +4405,10 @@ public final class Gymize {
           .equals(other.getTruncatedAgentsList())) return false;
       if (!getInfosList()
           .equals(other.getInfosList())) return false;
-      if (hasRecording() != other.hasRecording()) return false;
-      if (hasRecording()) {
-        if (!getRecording()
-            .equals(other.getRecording())) return false;
+      if (hasRendering() != other.hasRendering()) return false;
+      if (hasRendering()) {
+        if (!getRendering()
+            .equals(other.getRendering())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -4457,9 +4457,9 @@ public final class Gymize {
         hash = (37 * hash) + INFOS_FIELD_NUMBER;
         hash = (53 * hash) + getInfosList().hashCode();
       }
-      if (hasRecording()) {
-        hash = (37 * hash) + RECORDING_FIELD_NUMBER;
-        hash = (53 * hash) + getRecording().hashCode();
+      if (hasRendering()) {
+        hash = (37 * hash) + RENDERING_FIELD_NUMBER;
+        hash = (53 * hash) + getRendering().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4632,11 +4632,11 @@ public final class Gymize {
         } else {
           infosBuilder_.clear();
         }
-        if (recordingBuilder_ == null) {
-          recording_ = null;
+        if (renderingBuilder_ == null) {
+          rendering_ = null;
         } else {
-          recording_ = null;
-          recordingBuilder_ = null;
+          rendering_ = null;
+          renderingBuilder_ = null;
         }
         return this;
       }
@@ -4726,10 +4726,10 @@ public final class Gymize {
         } else {
           result.infos_ = infosBuilder_.build();
         }
-        if (recordingBuilder_ == null) {
-          result.recording_ = recording_;
+        if (renderingBuilder_ == null) {
+          result.rendering_ = rendering_;
         } else {
-          result.recording_ = recordingBuilder_.build();
+          result.rendering_ = renderingBuilder_.build();
         }
         onBuilt();
         return result;
@@ -4933,8 +4933,8 @@ public final class Gymize {
             }
           }
         }
-        if (other.hasRecording()) {
-          mergeRecording(other.getRecording());
+        if (other.hasRendering()) {
+          mergeRendering(other.getRendering());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6728,33 +6728,33 @@ public final class Gymize {
         return infosBuilder_;
       }
 
-      private Recording.RecordingProto recording_;
+      private Render.RenderProto rendering_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Recording.RecordingProto, Recording.RecordingProto.Builder, Recording.RecordingProtoOrBuilder> recordingBuilder_;
+          Render.RenderProto, Render.RenderProto.Builder, Render.RenderProtoOrBuilder> renderingBuilder_;
       /**
        * <pre>
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
-       * @return Whether the recording field is set.
+       * <code>.RenderProto rendering = 10;</code>
+       * @return Whether the rendering field is set.
        */
-      public boolean hasRecording() {
-        return recordingBuilder_ != null || recording_ != null;
+      public boolean hasRendering() {
+        return renderingBuilder_ != null || rendering_ != null;
       }
       /**
        * <pre>
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
-       * @return The recording.
+       * <code>.RenderProto rendering = 10;</code>
+       * @return The rendering.
        */
-      public Recording.RecordingProto getRecording() {
-        if (recordingBuilder_ == null) {
-          return recording_ == null ? Recording.RecordingProto.getDefaultInstance() : recording_;
+      public Render.RenderProto getRendering() {
+        if (renderingBuilder_ == null) {
+          return rendering_ == null ? Render.RenderProto.getDefaultInstance() : rendering_;
         } else {
-          return recordingBuilder_.getMessage();
+          return renderingBuilder_.getMessage();
         }
       }
       /**
@@ -6762,17 +6762,17 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Builder setRecording(Recording.RecordingProto value) {
-        if (recordingBuilder_ == null) {
+      public Builder setRendering(Render.RenderProto value) {
+        if (renderingBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          recording_ = value;
+          rendering_ = value;
           onChanged();
         } else {
-          recordingBuilder_.setMessage(value);
+          renderingBuilder_.setMessage(value);
         }
 
         return this;
@@ -6782,15 +6782,15 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Builder setRecording(
-          Recording.RecordingProto.Builder builderForValue) {
-        if (recordingBuilder_ == null) {
-          recording_ = builderForValue.build();
+      public Builder setRendering(
+          Render.RenderProto.Builder builderForValue) {
+        if (renderingBuilder_ == null) {
+          rendering_ = builderForValue.build();
           onChanged();
         } else {
-          recordingBuilder_.setMessage(builderForValue.build());
+          renderingBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
@@ -6800,19 +6800,19 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Builder mergeRecording(Recording.RecordingProto value) {
-        if (recordingBuilder_ == null) {
-          if (recording_ != null) {
-            recording_ =
-              Recording.RecordingProto.newBuilder(recording_).mergeFrom(value).buildPartial();
+      public Builder mergeRendering(Render.RenderProto value) {
+        if (renderingBuilder_ == null) {
+          if (rendering_ != null) {
+            rendering_ =
+              Render.RenderProto.newBuilder(rendering_).mergeFrom(value).buildPartial();
           } else {
-            recording_ = value;
+            rendering_ = value;
           }
           onChanged();
         } else {
-          recordingBuilder_.mergeFrom(value);
+          renderingBuilder_.mergeFrom(value);
         }
 
         return this;
@@ -6822,15 +6822,15 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Builder clearRecording() {
-        if (recordingBuilder_ == null) {
-          recording_ = null;
+      public Builder clearRendering() {
+        if (renderingBuilder_ == null) {
+          rendering_ = null;
           onChanged();
         } else {
-          recording_ = null;
-          recordingBuilder_ = null;
+          rendering_ = null;
+          renderingBuilder_ = null;
         }
 
         return this;
@@ -6840,26 +6840,26 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Recording.RecordingProto.Builder getRecordingBuilder() {
+      public Render.RenderProto.Builder getRenderingBuilder() {
         
         onChanged();
-        return getRecordingFieldBuilder().getBuilder();
+        return getRenderingFieldBuilder().getBuilder();
       }
       /**
        * <pre>
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
-      public Recording.RecordingProtoOrBuilder getRecordingOrBuilder() {
-        if (recordingBuilder_ != null) {
-          return recordingBuilder_.getMessageOrBuilder();
+      public Render.RenderProtoOrBuilder getRenderingOrBuilder() {
+        if (renderingBuilder_ != null) {
+          return renderingBuilder_.getMessageOrBuilder();
         } else {
-          return recording_ == null ?
-              Recording.RecordingProto.getDefaultInstance() : recording_;
+          return rendering_ == null ?
+              Render.RenderProto.getDefaultInstance() : rendering_;
         }
       }
       /**
@@ -6867,20 +6867,20 @@ public final class Gymize {
        * render images and audio
        * </pre>
        *
-       * <code>.RecordingProto recording = 10;</code>
+       * <code>.RenderProto rendering = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Recording.RecordingProto, Recording.RecordingProto.Builder, Recording.RecordingProtoOrBuilder> 
-          getRecordingFieldBuilder() {
-        if (recordingBuilder_ == null) {
-          recordingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Recording.RecordingProto, Recording.RecordingProto.Builder, Recording.RecordingProtoOrBuilder>(
-                  getRecording(),
+          Render.RenderProto, Render.RenderProto.Builder, Render.RenderProtoOrBuilder> 
+          getRenderingFieldBuilder() {
+        if (renderingBuilder_ == null) {
+          renderingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Render.RenderProto, Render.RenderProto.Builder, Render.RenderProtoOrBuilder>(
+                  getRendering(),
                   getParentForChildren(),
                   isClean());
-          recording_ = null;
+          rendering_ = null;
         }
-        return recordingBuilder_;
+        return renderingBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6970,29 +6970,29 @@ public final class Gymize {
   static {
     java.lang.String[] descriptorData = {
       "\n\014gymize.proto\032\013space.proto\032\rlocator.pro" +
-      "to\032\017recording.proto\"<\n\013ActionProto\022\r\n\005ag" +
-      "ent\030\001 \001(\t\022\036\n\006action\030\002 \001(\0132\016.InstanceProt" +
-      "o\"W\n\020ObservationProto\022\036\n\007locator\030\001 \001(\0132\r" +
-      ".LocatorProto\022#\n\013observation\030\002 \001(\0132\016.Ins" +
-      "tanceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t" +
-      "\022\016\n\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001" +
-      " \001(\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\257\002\n\013" +
-      "GymizeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016req" +
-      "uest_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003" +
-      "(\t\022\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014obs" +
-      "ervations\030\005 \003(\0132\021.ObservationProto\022\035\n\007re" +
-      "wards\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_" +
-      "agents\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031" +
-      "\n\005infos\030\t \003(\0132\n.InfoProto\022\"\n\trecording\030\n" +
-      " \001(\0132\017.RecordingProtoB\022\252\002\017Gymize.Protobu" +
-      "fb\006proto3"
+      "to\032\014render.proto\"<\n\013ActionProto\022\r\n\005agent" +
+      "\030\001 \001(\t\022\036\n\006action\030\002 \001(\0132\016.InstanceProto\"W" +
+      "\n\020ObservationProto\022\036\n\007locator\030\001 \001(\0132\r.Lo" +
+      "catorProto\022#\n\013observation\030\002 \001(\0132\016.Instan" +
+      "ceProto\",\n\013RewardProto\022\r\n\005agent\030\001 \001(\t\022\016\n" +
+      "\006reward\030\002 \001(\001\"9\n\tInfoProto\022\r\n\005agent\030\001 \001(" +
+      "\t\022\035\n\005infos\030\002 \003(\0132\016.InstanceProto\"\254\002\n\013Gym" +
+      "izeProto\022\024\n\014reset_agents\030\001 \003(\t\022\026\n\016reques" +
+      "t_agents\030\002 \003(\t\022\027\n\017response_agents\030\003 \003(\t\022" +
+      "\035\n\007actions\030\004 \003(\0132\014.ActionProto\022\'\n\014observ" +
+      "ations\030\005 \003(\0132\021.ObservationProto\022\035\n\007rewar" +
+      "ds\030\006 \003(\0132\014.RewardProto\022\031\n\021terminated_age" +
+      "nts\030\007 \003(\t\022\030\n\020truncated_agents\030\010 \003(\t\022\031\n\005i" +
+      "nfos\030\t \003(\0132\n.InfoProto\022\037\n\trendering\030\n \001(" +
+      "\0132\014.RenderProtoB\022\252\002\017Gymize.Protobufb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           Space.getDescriptor(),
           Locator.getDescriptor(),
-          Recording.getDescriptor(),
+          Render.getDescriptor(),
         });
     internal_static_ActionProto_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -7023,10 +7023,10 @@ public final class Gymize {
     internal_static_GymizeProto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GymizeProto_descriptor,
-        new java.lang.String[] { "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Recording", });
+        new java.lang.String[] { "ResetAgents", "RequestAgents", "ResponseAgents", "Actions", "Observations", "Rewards", "TerminatedAgents", "TruncatedAgents", "Infos", "Rendering", });
     Space.getDescriptor();
     Locator.getDescriptor();
-    Recording.getDescriptor();
+    Render.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

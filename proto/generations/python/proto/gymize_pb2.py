@@ -14,10 +14,10 @@ _sym_db = _symbol_database.Default()
 
 import space_pb2 as space__pb2
 import locator_pb2 as locator__pb2
-import recording_pb2 as recording__pb2
+import render_pb2 as render__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cgymize.proto\x1a\x0bspace.proto\x1a\rlocator.proto\x1a\x0frecording.proto\"<\n\x0b\x41\x63tionProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x1e\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0e.InstanceProto\"W\n\x10ObservationProto\x12\x1e\n\x07locator\x18\x01 \x01(\x0b\x32\r.LocatorProto\x12#\n\x0bobservation\x18\x02 \x01(\x0b\x32\x0e.InstanceProto\",\n\x0bRewardProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x01\"9\n\tInfoProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x1d\n\x05infos\x18\x02 \x03(\x0b\x32\x0e.InstanceProto\"\xaf\x02\n\x0bGymizeProto\x12\x14\n\x0creset_agents\x18\x01 \x03(\t\x12\x16\n\x0erequest_agents\x18\x02 \x03(\t\x12\x17\n\x0fresponse_agents\x18\x03 \x03(\t\x12\x1d\n\x07\x61\x63tions\x18\x04 \x03(\x0b\x32\x0c.ActionProto\x12\'\n\x0cobservations\x18\x05 \x03(\x0b\x32\x11.ObservationProto\x12\x1d\n\x07rewards\x18\x06 \x03(\x0b\x32\x0c.RewardProto\x12\x19\n\x11terminated_agents\x18\x07 \x03(\t\x12\x18\n\x10truncated_agents\x18\x08 \x03(\t\x12\x19\n\x05infos\x18\t \x03(\x0b\x32\n.InfoProto\x12\"\n\trecording\x18\n \x01(\x0b\x32\x0f.RecordingProtoB\x12\xaa\x02\x0fGymize.Protobufb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cgymize.proto\x1a\x0bspace.proto\x1a\rlocator.proto\x1a\x0crender.proto\"<\n\x0b\x41\x63tionProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x1e\n\x06\x61\x63tion\x18\x02 \x01(\x0b\x32\x0e.InstanceProto\"W\n\x10ObservationProto\x12\x1e\n\x07locator\x18\x01 \x01(\x0b\x32\r.LocatorProto\x12#\n\x0bobservation\x18\x02 \x01(\x0b\x32\x0e.InstanceProto\",\n\x0bRewardProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x0e\n\x06reward\x18\x02 \x01(\x01\"9\n\tInfoProto\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x1d\n\x05infos\x18\x02 \x03(\x0b\x32\x0e.InstanceProto\"\xac\x02\n\x0bGymizeProto\x12\x14\n\x0creset_agents\x18\x01 \x03(\t\x12\x16\n\x0erequest_agents\x18\x02 \x03(\t\x12\x17\n\x0fresponse_agents\x18\x03 \x03(\t\x12\x1d\n\x07\x61\x63tions\x18\x04 \x03(\x0b\x32\x0c.ActionProto\x12\'\n\x0cobservations\x18\x05 \x03(\x0b\x32\x11.ObservationProto\x12\x1d\n\x07rewards\x18\x06 \x03(\x0b\x32\x0c.RewardProto\x12\x19\n\x11terminated_agents\x18\x07 \x03(\t\x12\x18\n\x10truncated_agents\x18\x08 \x03(\t\x12\x19\n\x05infos\x18\t \x03(\x0b\x32\n.InfoProto\x12\x1f\n\trendering\x18\n \x01(\x0b\x32\x0c.RenderProtoB\x12\xaa\x02\x0fGymize.Protobufb\x06proto3')
 
 
 
@@ -65,14 +65,14 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\252\002\017Gymize.Protobuf'
-  _ACTIONPROTO._serialized_start=61
-  _ACTIONPROTO._serialized_end=121
-  _OBSERVATIONPROTO._serialized_start=123
-  _OBSERVATIONPROTO._serialized_end=210
-  _REWARDPROTO._serialized_start=212
-  _REWARDPROTO._serialized_end=256
-  _INFOPROTO._serialized_start=258
-  _INFOPROTO._serialized_end=315
-  _GYMIZEPROTO._serialized_start=318
-  _GYMIZEPROTO._serialized_end=621
+  _ACTIONPROTO._serialized_start=58
+  _ACTIONPROTO._serialized_end=118
+  _OBSERVATIONPROTO._serialized_start=120
+  _OBSERVATIONPROTO._serialized_end=207
+  _REWARDPROTO._serialized_start=209
+  _REWARDPROTO._serialized_end=253
+  _INFOPROTO._serialized_start=255
+  _INFOPROTO._serialized_end=312
+  _GYMIZEPROTO._serialized_start=315
+  _GYMIZEPROTO._serialized_end=615
 # @@protoc_insertion_point(module_scope)

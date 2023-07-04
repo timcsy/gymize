@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "space.proto";
+
+option csharp_namespace = "Gymize.Protobuf";
+
+message ViewProto {
+	string name = 1;
+	bool is_single_frame = 2;
+}
+
+message FrameProto {
+	InstanceProto image = 1;
+	float duration = 2;
+}
+
+message VideoProto {
+	string name = 1;
+	repeated FrameProto frames = 2;
+	bytes audio = 3;
+}
+
+message RenderProto {
+	repeated ViewProto view_configs = 1;
+	repeated string begin_views = 2;
+	repeated string end_views = 3;
+	repeated string request_views = 4;
+	repeated VideoProto videos = 5;
+}

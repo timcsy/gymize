@@ -7,7 +7,9 @@ from gymnasium.spaces import Space
 from gymize import space
 from gymize.channel import Channel, Content
 from gymize.lanch import launch_env
+from gymize.render import parse_rendering
 from gymize.proto.gymize_pb2 import GymizeProto, ActionProto, ObservationProto, RewardProto, InfoProto
+from gymize.proto.render_pb2 import ViewProto, VideoProto
 
 class Bridge:
     def __init__(
@@ -18,6 +20,7 @@ class Bridge:
         observation_spaces: Dict[str, Space]={},
         reward_ranges: Dict[str, Tuple[float, float]]={},
         agents: List[str]=[],
+        render_mode: str=None,
         update_seconds: float=0.001
     ):
         self.action_spaces = action_spaces
@@ -36,6 +39,10 @@ class Bridge:
         self.terminations = { agent: False for agent in self.possible_agents }
         self.truncations = { agent: False for agent in self.possible_agents }
         self.infos = { agent: { 'env': [], 'agent': [] } for agent in self.possible_agents }
+
+        self.render_mode = render_mode
+        self.rendering = {}
+        self.video_paths = {}
         
         self.channel = Channel(name=env_name)
         self.channel.connect_sync()
@@ -90,15 +97,43 @@ class Bridge:
         gymize_proto.infos.append(info_proto)
         self.send_gymize_message(gymize_proto)
     
-    def get_frame(self, names: List[str]):
-        pass
+    def begin_render(self, view_configs: Dict[str, bool]):
+        gymize_proto = GymizeProto()
+        for name, is_single_frame in view_configs.items():
+            view_config = ViewProto(name=name, is_single_frame=is_single_frame)
+            gymize_proto.rendering.view_configs.append(view_config)
+            gymize_proto.rendering.begin_views.append(name)
+        self.send_gymize_message(gymize_proto)
+    
+    def end_render(self, names: List[str]):
+        gymize_proto = GymizeProto()
+        for name in names:
+            gymize_proto.rendering.end_views.append(name)
+        self.send_gymize_message(gymize_proto)
+    
+    def render_all(self, names: List[str], video_paths: Dict[str, str]={}):
+        for name, path in video_paths.items():
+            self.video_paths[name] = path
+        
+        gymize_proto = GymizeProto()
+        for name in names:
+            gymize_proto.rendering.request_views.append(name)
+        self.send_gymize_message(gymize_proto)
 
-    def get_frames(self, names: List[str]):
-        pass
+        self.wait_gymize_message(wait_render=True)
 
-    def get_recording(self, names: List[str]):
-        # TODO: video
-        pass
+        renders = self.rendering
+        self.rendering = {}
+
+        return renders
+
+    def render(self, name: str=None) -> None:
+        names = [] if name is None else [ name ]
+        renders = self.render_all(names=names)
+        if len(renders) == 0:
+            return None
+        else:
+            return next(iter(renders.values()))
 
     def close(self) -> None:
         self.channel.close_sync()
@@ -128,15 +163,17 @@ class Bridge:
         msg = gymize_proto.SerializeToString()
         self.channel.tell_sync(id='_gym_', content=msg)
     
-    def wait_gymize_message(self, wait_agents: List[str]=[]) -> None:
+    def wait_gymize_message(self, wait_agents: List[str]=[], wait_render=False) -> None:
         # agents: the agents that have to especially wait for, blocking
         # TODO v: waiting for agents
         while True:
             content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
-            observations, rewards, terminations, truncations, infos = self.parse_message(content=content, done=done)
+            observations, rewards, terminations, truncations, infos, rendering = self.parse_message(content=content, done=done)
             if self.is_agents_collected(agents=wait_agents):
                 for agent in wait_agents:
                     self.responsed[agent] = False
+                break
+            if not wait_render or rendering is not None:
                 break
         return observations, rewards, terminations, truncations, infos
 
@@ -152,6 +189,7 @@ class Bridge:
         terminations = self.parse_terminations(None)
         truncations = self.parse_truncations(None, done)
         infos = self.parse_infos(None)
+        rendering = None
 
         if content is not None:
             gymize_proto = GymizeProto()
@@ -165,8 +203,9 @@ class Bridge:
             terminations = self.parse_terminations(gymize_proto.terminated_agents)
             truncations = self.parse_truncations(gymize_proto.truncated_agents, done)
             infos = self.parse_infos(gymize_proto.infos)
+            rendering = self.parse_rendering(gymize_proto.rendering.videos)
         
-        return observations, rewards, terminations, truncations, infos
+        return observations, rewards, terminations, truncations, infos, rendering
 
     def parse_observations(self, observation_protos: List[ObservationProto]=None):
         if observation_protos is None:
@@ -240,7 +279,22 @@ class Bridge:
                 info['env'] = env_infos
 
         return self.infos
+    
+    def parse_rendering(self, video_protos: List[VideoProto]=None):
+        if video_protos is None:
+            return None
+        
+        if len(video_protos) == 0:
+            self.rendering = {}
+            return None
 
+        self.rendering = {}
+        for video_proto in video_protos:
+            video_path = None
+            if video_proto.name in self.video_paths:
+                video_path = self.video_paths[video_proto.name]
+            self.rendering[video_proto.name] = parse_rendering(video_proto=video_proto, render_mode=self.render_mode, video_path=video_path)
+        return self.rendering
 
 
 class BridgeChannel:

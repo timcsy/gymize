@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "space.proto";
 import "locator.proto";
-import "recording.proto";
+import "render.proto";
 
 option csharp_namespace = "Gymize.Protobuf";
 
@@ -36,5 +36,5 @@ message GymizeProto {
 	repeated string terminated_agents = 7; // "" for the environment, others for individual agents
 	repeated string truncated_agents = 8; // "" for the environment, others for individual agents
 	repeated InfoProto infos = 9; // can go with observations but do not need to go with actions
-	RecordingProto recording = 10; // render images and audio
+	RenderProto rendering = 10; // render images and audio
 }
