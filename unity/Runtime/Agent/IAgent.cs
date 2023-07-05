@@ -11,7 +11,5 @@ namespace Gymize
         void OnInfo(object info);
         void OnManual();
         int GetStepPeriod();
-        void AddToEnv();
-        void RemoveFromEnv();
     }
 }
