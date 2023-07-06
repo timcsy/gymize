@@ -367,7 +367,7 @@ namespace Gymize
                 {
                     scope.Mappings.AddRange(Locator.ParseFrom(agentNames + prefix).Mappings);
                 }
-                prefix = "." + gameObject.name + prefix;
+                prefix = "[\'" + gameObject.name + "\']" + prefix;
                 gameObject = gameObject.transform.parent?.gameObject;
             }
 
