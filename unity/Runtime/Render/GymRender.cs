@@ -116,8 +116,9 @@ namespace Gymize
 
         public byte[] GetAudio(string name) // .wav file format
         {
-            int numFrames = m_AudioFrames[name].Count;
-            if (!m_AudioFrames.ContainsKey(name)) numFrames = 0; // use empty audio
+            int numFrames = 0;
+            if (m_AudioFrames.ContainsKey(name)) numFrames = m_AudioFrames[name].Count; // else use empty audio
+
             int channels = 0;
             for (int i = 0; i < numFrames; i++)
             {
@@ -156,7 +157,7 @@ namespace Gymize
             clip.SetData(buffer, 0);
             byte[] wav = SavWav.GetWav(clip, out var length);
 
-            m_AudioFrames[name].Clear();
+            if (m_AudioFrames.ContainsKey(name)) m_AudioFrames[name].Clear();
             return wav;
         }
 

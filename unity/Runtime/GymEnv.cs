@@ -737,12 +737,16 @@ namespace Gymize
             {
                 foreach (string agent in m_Requested.Keys)
                 {
+                    if (!m_Requested.ContainsKey(agent)) continue;
+                    if (!m_UpdateAgents.ContainsKey(agent)) continue;
                     if (m_Requested[agent] && m_UpdateAgents[agent]) responseAgents.Add(agent);
                 }
 
                 // remove the used requested agents
                 foreach (string agent in responseAgents)
                 {
+                    if (!m_Requested.ContainsKey(agent)) continue;
+                    if (!m_UpdateAgents.ContainsKey(agent)) continue;
                     m_Requested[agent] = false;
                     m_UpdateAgents[agent] = false;
                 }
