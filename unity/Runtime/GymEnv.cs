@@ -293,8 +293,8 @@ namespace Gymize
                 m_Actions[agent] = null;
                 _RemoveObservation(agent);
                 m_Rewards[agent] = 0;
-                m_TerminatedAgents.Remove(agent);
-                m_TerminatedAgents.Remove(agent);
+                m_TerminatedAgents.RemoveAll(x => x == agent);
+                m_TerminatedAgents.RemoveAll(x => x == agent);
                 m_Infos[agent] = new List<object>();
                 m_OnReset[agent]?.Invoke();
             }
@@ -544,9 +544,9 @@ namespace Gymize
                 if (m_TerminatedAgents.Contains(agent))
                 {
                     terminatedAgents.Add(agent);
-                    m_TerminatedAgents.Remove(agent);
+                    m_TerminatedAgents.RemoveAll(x => x == agent);
                 }
-                else if (m_TerminatedAgents.Contains("")) m_TerminatedAgents.Remove(agent);
+                else if (m_TerminatedAgents.Contains("")) m_TerminatedAgents.RemoveAll(x => x == agent);
             }
             return terminatedAgents;
         }
@@ -565,9 +565,9 @@ namespace Gymize
                 if (m_TruncationAgents.Contains(agent))
                 {
                     truncatedAgents.Add(agent);
-                    m_TruncationAgents.Remove(agent);
+                    m_TruncationAgents.RemoveAll(x => x == agent);
                 }
-                else if (m_TruncationAgents.Contains("")) m_TruncationAgents.Remove(agent);
+                else if (m_TruncationAgents.Contains("")) m_TruncationAgents.RemoveAll(x => x == agent);
             }
             return truncatedAgents;
         }
