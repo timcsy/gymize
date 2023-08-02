@@ -663,6 +663,7 @@ class Channel:
     async def _create_peer_server(self, waiting_secs: float=1):
         # Choose an available port by the system
         sock = socket.socket()
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind(('', 0))
         if self._using_available_port:
             self._port = int(sock.getsockname()[1])
