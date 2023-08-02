@@ -21,7 +21,7 @@ class SignalingServer:
         self.ws_connections: Dict[WebSocketServerProtocol, Connection] = dict() # { WebSocket: Connection }
         self.connections: Dict[str, Connection] = dict() # { id: Connection }
     
-    def run(self, host='localhost', port=50864): # gymize_signaling = 50864
+    def run(self, host='127.0.0.1', port=50864): # gymize_signaling = 50864
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         asyncio.run(self.ws_server(host=host, port=port))
@@ -160,4 +160,4 @@ class SignalingServer:
 
 if __name__ == '__main__':
     server = SignalingServer()
-    server.run(host='localhost', port=50864) # gymize_signaling = 50864
+    server.run(host='127.0.0.1', port=50864) # gymize_signaling = 50864

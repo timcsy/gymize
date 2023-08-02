@@ -39,7 +39,7 @@ class Content:
             return str(self.content)
 
 class Channel:
-    def __init__(self, name: str, mode: str='active', signaling_url='ws://localhost:50864/', protocol='ws', host='localhost', port=None, peer_url=None, retry=True):
+    def __init__(self, name: str, mode: str='active', signaling_url='ws://127.0.0.1:50864/', protocol='ws', host='127.0.0.1', port=None, peer_url=None, retry=True):
         # For Signal Server
         self.name: str = name # game name (e.g. kart)
         self.mode: str = mode # 'active' or 'passive'
@@ -540,9 +540,9 @@ class Channel:
         except OSError:
             # The given signaling server is not available, create a new one
             server = SignalingServer()
-            self.add_task(server.ws_server(host='localhost', port=50864, stop=self._channel_stop)) # gymize_signaling = 50864
+            self.add_task(server.ws_server(host='127.0.0.1', port=50864, stop=self._channel_stop)) # gymize_signaling = 50864
             await asyncio.sleep(1)
-            self._signaling_url = 'ws://localhost:50864'
+            self._signaling_url = 'ws://127.0.0.1:50864'
 
     async def _signaling(self, is_resume=False):
         self.status = 'connecting'

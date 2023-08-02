@@ -92,7 +92,7 @@ namespace Gymize
         public DelegateDictionary<string, MessageCallBack> OnMessage; // { id: MessageCallBack }
         public DelegateDictionary<string, RequestCallBack> OnRequest; // { id: RequestCallBack }
 
-        public Channel(string name, ChannelMode mode = ChannelMode.PASSIVE, string signalingUrl = "ws://localhost:50864/", string protocol = "ws", string host = "localhost", int port = -1, string peer_url = null, bool retry = true)
+        public Channel(string name, ChannelMode mode = ChannelMode.PASSIVE, string signalingUrl = "ws://127.0.0.1:50864/", string protocol = "ws", string host = "127.0.0.1", int port = -1, string peer_url = null, bool retry = true)
         {
             m_Disposed = false;
 
@@ -732,7 +732,7 @@ namespace Gymize
             if (ws.ReadyState != WebSocketState.Open)
             {
                 // The websocket url is unavailable
-                m_SignalingUrl = "ws://localhost:50864"; // Using the local default signaling server created by Python
+                m_SignalingUrl = "ws://127.0.0.1:50864"; // Using the local default signaling server created by Python
             }
             else
             {
