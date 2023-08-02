@@ -92,7 +92,7 @@ namespace Gymize
         public DelegateDictionary<string, MessageCallBack> OnMessage; // { id: MessageCallBack }
         public DelegateDictionary<string, RequestCallBack> OnRequest; // { id: RequestCallBack }
 
-        public Channel(string name, ChannelMode mode = ChannelMode.PASSIVE, string signalingUrl = "ws://127.0.0.1:50864/", string protocol = "ws", string host = "127.0.0.1", int port = -1, string peer_url = null, bool retry = true)
+        public Channel(string name, ChannelMode mode = ChannelMode.PASSIVE, string signalingUrl = "ws://127.0.0.1:50864/", string protocol = "ws", string host = "127.0.0.1", int port = -1, string peer_url = null, bool retry = false)
         {
             m_Disposed = false;
 
@@ -778,7 +778,10 @@ namespace Gymize
                 {
                     m_Status = ChannelStatus.DISCONNECTED;
                     Trigger("signaling_disconnected");
-                    m_ChannelStop.Cancel();
+                    if (m_Retry)
+                    {
+                        ResumeAsync();
+                    }
                 }
             };
             m_WsSignaling.Connect();
@@ -967,6 +970,10 @@ namespace Gymize
                 {
                     m_Status = ChannelStatus.DISCONNECTED;
                     Trigger("peer_disconnected");
+                    if (m_Retry)
+                    {
+                        await UpdateAsync();
+                    }
                 }
             };
             m_WsPeerClient.Connect();
