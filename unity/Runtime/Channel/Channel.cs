@@ -778,10 +778,7 @@ namespace Gymize
                 {
                     m_Status = ChannelStatus.DISCONNECTED;
                     Trigger("signaling_disconnected");
-                    if (m_Retry)
-                    {
-                        ResumeAsync();
-                    }
+                    m_ChannelStop.Cancel();
                 }
             };
             m_WsSignaling.Connect();

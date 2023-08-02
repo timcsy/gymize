@@ -186,7 +186,7 @@ namespace Gymize
 
         internal void QuitWhenChannelClosed()
         {
-            if (m_Channel?.Status == ChannelStatus.CLOSED)
+            if (m_Channel?.Status == ChannelStatus.CLOSED || m_Channel?.Status == ChannelStatus.DISCONNECTED)
             {
                 #if UNITY_EDITOR
                 // Application.Quit() does not work in the editor so
