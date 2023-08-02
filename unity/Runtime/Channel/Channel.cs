@@ -967,10 +967,6 @@ namespace Gymize
                 {
                     m_Status = ChannelStatus.DISCONNECTED;
                     Trigger("peer_disconnected");
-                    if (m_Retry)
-                    {
-                        await UpdateAsync();
-                    }
                 }
             };
             m_WsPeerClient.Connect();
