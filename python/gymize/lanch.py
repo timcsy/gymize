@@ -116,10 +116,10 @@ def launch_executable(file_name: str, args: List[str]) -> subprocess.Popen:
                 f'"chmod -R 755 {launch_string}"'
             )
 
-def launch_env(file_name: str=None, args: List[str]=list()):
+def launch_env(file_name: str=None, args: List[str]=list(), virtualgl=False):
     if file_name is not None:
         vglrun: str = find_executable('vglrun') # Check whether vglrun is on PATH
-        if vglrun is None:
+        if vglrun is None or virtualgl is False:
             print('Run ' + ' '.join([file_name] + args))
             return launch_executable(file_name, args)
         else:
