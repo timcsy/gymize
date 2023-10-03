@@ -1,4 +1,4 @@
-# Gymize - Connect Unity to Gymnasium and PettingZoo
+# Gymize - Connect Unity to Gymnasium and PettingZoo API
 
 Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 
