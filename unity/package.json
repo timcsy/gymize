@@ -1,8 +1,8 @@
 {
   "name": "com.paia.gymize",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "displayName": "Gymize",
-  "description": "Reinforcement and Imitation Learning API with Gymnasium and PettingZoo",
+  "description": "Unity and Python Reinforcement and Imitation Learning with Gymnasium and PettingZoo API.",
   "unity": "2019.1",
   "unityRelease": "0b5",
   "keywords": [

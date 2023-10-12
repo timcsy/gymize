@@ -8,7 +8,7 @@ version = "0.0.1"
 authors = [
     { name="timcsy", email="timocsy@yahoo.com.tw" },
 ]
-description = "Connect Unity to Gymnasium and PettingZoo API."
+description = "Unity and Python Reinforcement and Imitation Learning with Gymnasium and PettingZoo API."
 readme = "../README.md"
 requires-python = ">=3.8"
 classifiers = [

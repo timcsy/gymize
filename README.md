@@ -1,6 +1,6 @@
-# Gymize - Connect Unity to Gymnasium and PettingZoo API
+# Gymize - Gym Reinforcement Learning with Unity 3D
 
-Unity and Python Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
+Unity and Python Reinforcement and Imitation Learning with Gymnasium and PettingZoo API.
 
 
 ## Installations
@@ -182,17 +182,33 @@ In Unity, check out [GymInstance.cs](unity/Runtime/Space/GymInstance.cs) for mor
 "Locator" maps the observations collected from the Unity side to the specified location of Python side observation data, which is transferred by Gymize Instance.
 
 The followings are valid examples:
+
+example 1:
 ```
 .UsedTime = $
+```
 
+example 2:
+```
 .Progress
+```
 
+example 3:
+```
 @.Rays
+```
 
+example 4:
+```
 agent1@agent2@.key.0[12]["camera"]['front'][right][87](2)
+```
 
+example 5:
+```
 @@agent3@agent4@["camera"](1:10:2) = $(24:29) & @[11]=$[0] & @.key = $(3:8)
 ```
+
+For more examples, check out [TestLocator.cs](unity/Tests/Runtime/TestLocator.cs) and [TestAgentInstance.cs](unity/Tests/Runtime/TestAgentInstance.cs).
 
 ### Structure of Locator
 
@@ -243,3 +259,14 @@ agent1@agent2@.key.0[12]["camera"]['front'][right][87](2)
   - You can use `newaxis` or `np.newaxis` to represent new axis.
 
 See [locator.bnf](locator.bnf) for more information about the syntax.
+
+
+## Known issues
+
+- Gymize get the observation space type information by generating a sample instance, so it may not get the type information of `Sequence` if it samples a empty array.
+- On the Python side, it may cause some problems if you edit the observation data directly, because it is not a copy, it is a reference object.
+- Dict source with different keys but with same destination Locator may not merged correctly, check out `space.py` for more details.
+- If you run the built Unity Application and it fails after first OnReset, try:
+  - It may be this issue: `ArgumentNullException: Value cannot be null. Parameter name: shader`.
+  - Go to: Edit -> ProjectSettings -> Graphics
+  - Change the size of Always Included Shaders, and add the `Runtime/Space/Grayscale.shader` into it.
