@@ -2,6 +2,7 @@
 
 Unity and Python Reinforcement and Imitation Learning API with Gymnasium and PettingZoo.
 
+
 ## Installations
 
 ### Installation for Python 3
@@ -34,10 +35,12 @@ If git hasn't been installed, then you can download gymize first and install it 
 ### Usage for Python 3
 
 1. Assign the `env_name`, which should be same as in the Unity. For example, `kart`.
-2. Define the observation space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
-3. Define the action space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
-4. Assign `render_mode='video'` if you want to record video from Unity, otherwise omit `render_mode`.
-5. Make the Gymnasium or PettingZoo environment by the following commands:
+2. `file_name` is the path to the built Unity game, or leave `None` if using Unity Editor.
+3. Define the observation space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
+4. Define the action space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
+5. Assign `render_mode='video'` if you want to record video from Unity, otherwise omit `render_mode`.
+6. Assign `views=['', ...]` if you want to record video from Unity, which given a list of view names, the empty string will be the default view, otherwise omit `views`.
+7. Make the Gymnasium or PettingZoo environment by the following commands:
 
 Single-Agent with Gymnasium API:
 ```
@@ -50,7 +53,8 @@ env = gym.make(
     file_name=file_name,
     observation_space=observation_space,
     action_space=action_space,
-    render_mode=‘<render_mode>'
+    render_mode='<render_mode>',
+    views=['', ...]
 )
 ```
 
@@ -63,7 +67,8 @@ env = UnityAECEnv(
     file_name=file_name,
     observation_spaces=observation_spaces,
     action_spaces=action_spaces,
-    render_mode=‘<render_mode>'
+    render_mode='<render_mode>',
+    views=['', ...]
 )
 ```
 
@@ -76,11 +81,28 @@ env = UnityParallelEnv(
     file_name=file_name,
     observation_spaces=observation_spaces,
     action_spaces=action_spaces,
-    render_mode='<render_mode>'
+    render_mode='<render_mode>',
+    views=['', ...]
 )
 ```
 
 Well done! Now you can use the environment as the gym environment!
+
+The environment `env` will have some additional methods other than Gymnasium or PettingZoo:
+- `env.unwrapped.send_info(info, agent=None)`
+  - At anytime, you can send information through `info` parameter in the form of Gymize Instance (see below) to Unity side.
+  - The `agent` parameter is the agent name that will receive info (by `Gymize.Agent.OnInfo()` method in the Unity side), or `None` for the environment to receive info (by `Gymize.GymEnv.OnInfo += (info) => {}` listener in the Unity side).
+- `env.unwrapped.begin_render(screen_width=-1, screen_height=-1, fullscreen=False)`
+  - Begin to record video in the Unity.
+  - `screen_width` and `screen_height` is to set the width and height of the window, leave `-1` if you want the default window size.
+  - `fullscreen` is to set whether Unity is fullscreen.
+- `env.unwrapped.end_render()`
+  - Stop to record video in the Unity.
+- `env.unwrapped.render_all(video_paths={})`
+  - Render the videos which name and path are given by key value pairs in `video_path`.
+  - Using `None` as path for binary video object.
+- `env.unwrapped.render()`
+  - Only render the default video, and return a binary video object.
 
 ### Usage for Unity
 
@@ -117,9 +139,47 @@ Well done! Now you can use the environment as the gym environment!
 !!! Remember to close the channel in MonoBehaviour.OnApplicationQuit !!!
 
 
+## Gymize Instance
+
+The instance generated from the action, observation space or info is called "Gymize Instance".
+
+Gymize Instance is defined in the [space.proto](proto/definitions/space.proto), which describes how the Gymize exchange data between Unity and Python, using [Protocol Buffers 3](https://protobuf.dev/programming-guides/proto3/). Most of which originates from the [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
+
+In Unity, check out [GymInstance.cs](unity/Runtime/Space/GymInstance.cs) for more information about how to convert the object into a meaningful type. In Python, you can treat the instance as usual object.
+
+### Fundamental Instance
+
+- `Tensor`: numpy array, with dtype and shape
+  - Corresponding to the Gym Spaces as `Box`, `MultiBinrary`, `MultiDiscrete`
+- `Discrete`: int64
+  - Corresponding to the Gym Spaces as `Discrete`
+- `Text`: string
+  - Corresponding to the Gym Spaces as `Text`
+
+### Composite Instance
+
+- `Dict`: `key`, `value` pairs mapping. Type of `key` is string, `value` is Gymize Instance
+  - Corresponding to the Gym Spaces as `Dict`
+- `List`: array of Gymize Instance
+  - Corresponding to the Gym Spaces as `Tuple`, `Sequence`
+- `Graph`: including three tensor objects, which are `nodes`, `edges` and `edge_links`
+  - `nodes`: the numeric information of nodes
+  - `edges`: the numeric information of edges
+  - `edge_links`: the list of edges represent by node pairs (the node index begins with 0)
+  - Corresponding to the Gym Spaces as `Graph`
+
+### Additional Instance (Not defined in Gym Spaces)
+
+- `Raw`: binary data
+- `Image`: image data, include format (PNG, JPG, ...), binary data, dtype, shape, axis permutation
+- `Float`: double precision floating number
+- `Boolean`: boolean value (true/false)
+- `JSON`: JSON after stringifying
+
+
 ## Locator
 
-"Locator" maps the observations collected from the Unity side to the specified location of Python side gym-style observation data, see [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
+"Locator" maps the observations collected from the Unity side to the specified location of Python side observation data, which is transferred by Gymize Instance.
 
 The followings are valid examples:
 ```
@@ -147,9 +207,9 @@ agent1@agent2@.key.0[12]["camera"]['front'][right][87](2)
   - Usually we write `start:stop:step`, e.g. `1:10:2`.
   - There are some special cases: "index", "ellipsis", and "new axis".
 
-### Syntax of Locator
+### Syntax for Locator
 
-- Syntax of `Locator`
+- Syntax for `Locator`
   - Using `&` to connect different `Mapping`s.
   - e.g. `.field1 & .field2=$ & @.field3=$["key"]`
 - Syntax of `Mapping`
@@ -159,26 +219,26 @@ agent1@agent2@.key.0[12]["camera"]['front'][right][87](2)
     - If you omit `=$` `Selectors(Source)`, it is same as `=$`.
     - `=` means mapping or assignment. It will map the source (right hand side) to the destination (left hand side).
     - `$` means the Unity side observation (variable or sensor data).
-- Syntax of `Agent`
+- Syntax for `Agent`
   - Using `agent@` to assign the agent name.
   - Using `agent1@agent2@` to assign the agent names.
   - Using `@@` means for all agents.
   - Using `@@agent3@agent4@` means for all agents, except `agent3` and `agent4`.
   - Using `@` to represent the root agent itself.
   - You can omit the `Agent` to use relative location.
-- Syntax of `Selector`
+- Syntax for `Selector`
   - For `Dict`: `.key`, `['key']`, `["key"]`, or `[key]`
   - For `Tuple`: `[index]` or `[slice]`
   - For `Sequence`: `[]`, means append
   - For `Tensor`: `(Slice)` or `(Slice1, Slice2, ..., SliceN)`
     - The several `Tensor` selectors have to put at the end of the selector sequence.
-- Syntax of `Slice`
+- Syntax for `Slice`
   - Same syntax as Python or numpy.
   - `start:stop:step`, e.g. `1:10:2`.
     - omitted "step", it becomes `1:10`.
     - omitted "stop", it becomes `1:`.
     - omitted "start", it becomes `:`.
-  - You can just use an integer to represent the index.
+  - You can just use an integer to represent the index (negative integer means counting from the end).
   - You can use `...` to represent ellipsis.
   - You can use `newaxis` or `np.newaxis` to represent new axis.
 

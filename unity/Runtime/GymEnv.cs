@@ -195,9 +195,9 @@ namespace Gymize
         Dictionary<string, List<object>> m_Infos;
 
         Dictionary<string, bool> m_Requested; // Whether another side has requested
-        Dictionary<string, bool> m_UpdateAgents; // TODO v: store agents that meets update period
-        Dictionary<string, int> m_Periods; // TODO v: How long (ticks) does agent reacts
-        Dictionary<string, int> m_Ticks; // TODO v: How many ticks does an agent has passed since reacts
+        Dictionary<string, bool> m_UpdateAgents; // Store agents that meets update period
+        Dictionary<string, int> m_Periods; // How long (ticks) does agent reacts
+        Dictionary<string, int> m_Ticks; // How many ticks does an agent has passed since reacts
 
         GymRender m_Render;
         List<string> m_RequestViews;
@@ -274,7 +274,6 @@ namespace Gymize
 
         void _Reset(GymizeProto gymizeProto)
         {
-            // TODO v: Also reset actions, "observations", rewards, termiantions, truncations, infos
             foreach (string agent in gymizeProto.ResetAgents)
             {
                 m_Ticks[agent] = 0;
@@ -449,8 +448,6 @@ namespace Gymize
 
         List<ObservationProto> _GetObservations(List<string> responseAgents)
         {
-            // TODO v: just send the requested agents
-            // TODO v: whether to clear all agents? After sendiong
             List<ObservationProto> observationProtos = new List<ObservationProto>();
             foreach (string agent in responseAgents)
             {
@@ -504,7 +501,6 @@ namespace Gymize
 
         List<RewardProto> _GetRewards(List<string> responseAgents)
         {
-            // TODO v: just send the requested agents
             List<RewardProto> rewardProtos = new List<RewardProto>();
             foreach (string agent in responseAgents)
             {
@@ -527,7 +523,6 @@ namespace Gymize
 
         List<string> _GetTerminations(List<string> responseAgents)
         {
-            // TODO v: when terminations should be included? or when should be reset? 已經停掉的也不會送東西過來了
             List<string> terminatedAgents = new List<string>();
             foreach (string agent in responseAgents)
             {
@@ -548,7 +543,6 @@ namespace Gymize
 
         List<string> _GetTruncations(List<string> responseAgents)
         {
-            // TODO v: when truncations should be included? or when should be reset? 已經停掉的也不會送東西過來了
             List<string> truncatedAgents = new List<string>();
             foreach (string agent in responseAgents)
             {
@@ -582,8 +576,6 @@ namespace Gymize
 
         List<InfoProto> _GetInfos(List<string> responseAgents)
         {
-            // TODO v: when info should be cleared? and when env "" info be cleared?
-            // TODO v: just send the requested agents
             List<InfoProto> infoProtos = new List<InfoProto>();
             foreach (string agent in responseAgents)
             {
@@ -690,7 +682,7 @@ namespace Gymize
 
         void _SendGymizeMessage()
         {
-            List<string> responseAgents = _GetResponseAgents(); // TODO v: also send this -> response_agents, add in protobuf, 救的概念，可以再繼續動了
+            List<string> responseAgents = _GetResponseAgents();
             GymizeProto gymizeProto = new GymizeProto();
             gymizeProto.ResponseAgents.AddRange(responseAgents);
             gymizeProto.Observations.AddRange(_GetObservations(responseAgents));
@@ -713,7 +705,6 @@ namespace Gymize
 
         List<string> _GetResponseAgents()
         {
-            // TODO v: with m_UpdateAgents
             List<string> responseAgents = new List<string>();
 
             lock (m_Requested) lock (m_UpdateAgents)

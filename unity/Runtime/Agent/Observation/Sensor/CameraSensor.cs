@@ -16,12 +16,6 @@ namespace Gymize
         public int WidthAxis = 1;
         public int ChannelAxis = 2;
 
-        public void Update()
-        {
-            // TODO: delete
-            // transform.rotation *= Quaternion.Euler(.1f, .1f, .1f);
-        }
-
         public override IInstance GetObservation()
         {
             RenderTexture rt = new RenderTexture(Width, Height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);

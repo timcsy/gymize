@@ -69,7 +69,6 @@ class Bridge:
         self.add_request_agents(agents)
 
     def set_actions(self, actions: Dict[str, Any], with_env: bool=True) -> None:
-        # TODO v: if there are more than one agent, then wait for obsertvation? Not here, on wait_gymize_message
         self.actions = { **self.actions, **actions }
         env = []
         if with_env:
@@ -154,7 +153,7 @@ class Bridge:
         gymize_proto = GymizeProto()
         gymize_proto.request_agents.extend(self.request_agents)
         gymize_proto.reset_agents.extend(self.reset_requests)
-        # TODO v: only send requested actions? There is no request from Unity to Python
+        
         for agent, action in self.actions.items():
             action_proto = ActionProto()
             action_proto.agent = agent
@@ -172,7 +171,6 @@ class Bridge:
     
     def wait_gymize_message(self, wait_agents: List[str]=[], wait_render=False) -> None:
         # agents: the agents that have to especially wait for, blocking
-        # TODO v: waiting for agents
         while True:
             content, done = self.channel.wait_message(id='_gym_', polling_secs=self.update_seconds)
             observations, rewards, terminations, truncations, infos, rendering = self.parse_message(content=content, done=done)
@@ -219,7 +217,6 @@ class Bridge:
             return self.observations
 
         observations = space.tuple_to_list(self.observations)
-        # TODO v: when to renew list? everytime or request agent only? but parse means requested
         renew_list = set()
         for obs in observation_protos:
             observations = space.merge(observations, obs.locator, obs.observation, renew_list)
@@ -269,7 +266,6 @@ class Bridge:
         env_info_proto = None
         for info_proto in info_protos:
             if info_proto.agent != '':
-                # TODO v: when to renew list?
                 if info_proto.agent not in self.infos:
                     # if the agent info was deleted, initialize a new one for the agent
                     self.infos[info_proto.agent] = { 'env': [], 'agent': [] }
