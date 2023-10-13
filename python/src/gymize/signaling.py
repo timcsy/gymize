@@ -157,7 +157,9 @@ class SignalingServer:
             elif conn.passive == websocket:
                 conn.passive = None
 
-
-if __name__ == '__main__':
+def main():
     server = SignalingServer()
     server.run(host='127.0.0.1', port=50864) # gymize_signaling = 50864
+
+if __name__ == '__main__':
+    main()

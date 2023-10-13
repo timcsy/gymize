@@ -104,6 +104,8 @@ The environment `env` will have some additional methods other than Gymnasium or 
 - `env.unwrapped.render()`
   - Only render the default video, and return a binary video object.
 
+If you want to open the signaling service only, you can run `gymize-signaling` at the command line.
+
 ### Usage for Unity
 
 1. Create Gym Manager Component

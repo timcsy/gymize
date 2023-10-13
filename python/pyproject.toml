@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gymize"
-version = "0.0.1"
+version = "0.0.3"
 authors = [
     { name="timcsy", email="timocsy@yahoo.com.tw" },
 ]
@@ -21,9 +21,12 @@ dependencies = [
     "gymnasium>=0.28",
     "pettingzoo>=1.23",
     "websockets==10.1",
-    "protobuf",
+    "protobuf>=3.18",
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/timcsy/gymize"
 "Bug Tracker" = "https://github.com/timcsy/gymize/issues"
+
+[project.scripts]
+gymize-signaling = "gymize:signaling.main"
