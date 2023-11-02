@@ -101,7 +101,7 @@ The environment `env` will have some additional methods other than Gymnasium or 
 - `env.unwrapped.render_all(video_paths={})`
     - Render the videos which name and path are given by key value pairs in `video_path`.
     - Using `None` as path for binary video object.
-- `env.unwrapped.render()`
+- `env.unwrapped.render()` or `env.render()`
     - Only render the default video, and return a binary video object.
 
 If you want to open the signaling service only, you can run `gymize-signaling` at the command line.

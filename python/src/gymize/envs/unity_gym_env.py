@@ -5,7 +5,7 @@ import gymnasium as gym
 from gymize.bridge import Bridge, BridgeChannel
 
 class UnityGymEnv(gym.Env, BridgeChannel):
-    metadata = { 'render_modes': [ 'rgb_array', 'rgb_array_list', 'video' ] }
+    metadata = { 'render_modes': [ 'rgb_array', 'rgb_array_list', 'video' ], 'render_fps': 4 }
 
     def __init__(self, env_name, file_name: str=None, action_space=None, observation_space=None, reward_range=(-float('inf'), float('inf')), agent_name: str='agent', update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
         self.bridge = Bridge(

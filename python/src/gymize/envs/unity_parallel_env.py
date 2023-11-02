@@ -7,7 +7,7 @@ from gymnasium.utils import seeding
 from gymize.bridge import Bridge, BridgeChannel
 
 class UnityParallelEnv(ParallelEnv):
-    metadata = { 'render_modes': [ 'rgb_array', 'rgb_array_list', 'video' ] }
+    metadata = { 'render_modes': [ 'rgb_array', 'rgb_array_list', 'video' ], 'render_fps': 4 }
 
     def __init__(self, env_name, file_name: str=None, action_spaces=None, observation_spaces=None, agent_names: List[str]={}, update_seconds=0.001, render_mode=None, views: List[str]=[''], render_fps=4):
         self.bridge = Bridge(
