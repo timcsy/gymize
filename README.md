@@ -2,7 +2,7 @@
 
 Unity and Python Reinforcement and Imitation Learning with Gymnasium and PettingZoo API.
 
-![Gymize_Framework](docs/images/Gymize_Framework.png)
+![Gymize_Framework](https://github.com/timcsy/gymize/blob/main/docs/images/Gymize_Framework.png)
 
 ## Installations
 
@@ -180,7 +180,7 @@ If you want to open the signaling service only, you can run `gymize-signaling` a
         [Box(".Height=$")]
         private float m_Height;
         ```
-    - You can use `Obs` to use the default Gym space type depending on the source variable, or you can use `Box`(for Tensor, including MultiBinrary and MultiDiscrete), `Discrete`, `Text`, `Dict`, `List`, `Graph` attributes, see more details in the [Reflection](unity/Runtime/Agent/Observation/Reflection/) folder, check out [TestAgentInstance.cs](unity/Tests/Runtime/TestAgentInstance.cs) for more examples.
+    - You can use `Obs` to use the default Gym space type depending on the source variable, or you can use `Box`(for Tensor, including MultiBinrary and MultiDiscrete), `Discrete`, `Text`, `Dict`, `List`, `Graph` attributes, see more details in the [Reflection](https://github.com/timcsy/gymize/blob/main/unity/Runtime/Agent/Observation/Reflection/) folder, check out [TestAgentInstance.cs](https://github.com/timcsy/gymize/blob/main/unity/Tests/Runtime/TestAgentInstance.cs) for more examples.
     - Add Sensor Component in the scene.
         - Inheritted from `SensorComponent` class. `CameraSensor` is an example of a sensor component.
         - Make sure that the `public override IInstance GetObservation() {}` method is implemented in the Sensor Component.
@@ -197,9 +197,9 @@ If you want to open the signaling service only, you can run `gymize-signaling` a
 
 The instance generated from the action, observation space or info is called "Gymize Instance".
 
-Gymize Instance is defined in the [space.proto](proto/definitions/space.proto), which describes how the Gymize exchange data between Unity and Python, using [Protocol Buffers 3](https://protobuf.dev/programming-guides/proto3/). Most of which originates from the [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
+Gymize Instance is defined in the [space.proto](https://github.com/timcsy/gymize/blob/main/proto/definitions/space.proto), which describes how the Gymize exchange data between Unity and Python, using [Protocol Buffers 3](https://protobuf.dev/programming-guides/proto3/). Most of which originates from the [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
 
-In Unity, check out [GymInstance.cs](unity/Runtime/Space/GymInstance.cs) for more information about how to convert the object into a meaningful type. In Python, you can treat the instance as usual object.
+In Unity, check out [GymInstance.cs](https://github.com/timcsy/gymize/blob/main/unity/Runtime/Space/GymInstance.cs) for more information about how to convert the object into a meaningful type. In Python, you can treat the instance as usual object.
 
 ### Fundamental Instance
 
@@ -262,7 +262,7 @@ example 5:
 @@agent3@agent4@["camera"](1:10:2) = $(24:29) & @[11]=$[0] & @.key = $(3:8)
 ```
 
-For more examples, check out [TestLocator.cs](unity/Tests/Runtime/TestLocator.cs) and [TestAgentInstance.cs](unity/Tests/Runtime/TestAgentInstance.cs).
+For more examples, check out [TestLocator.cs](https://github.com/timcsy/gymize/blob/main/unity/Tests/Runtime/TestLocator.cs) and [TestAgentInstance.cs](https://github.com/timcsy/gymize/blob/main/unity/Tests/Runtime/TestAgentInstance.cs).
 
 ### Structure of Locator
 
@@ -312,7 +312,7 @@ For more examples, check out [TestLocator.cs](unity/Tests/Runtime/TestLocator.cs
     - You can use `...` to represent ellipsis.
     - You can use `newaxis` or `np.newaxis` to represent new axis.
 
-See [locator.bnf](locator.bnf) for more information about the syntax.
+See [locator.bnf](https://github.com/timcsy/gymize/blob/main/locator.bnf) for more information about the syntax.
 
 
 ## Known issues
