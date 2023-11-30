@@ -110,11 +110,15 @@ def launch_executable(file_name: str, args: List[str]) -> subprocess.Popen:
             )
         except PermissionError:
             # This is likely due to missing read or execute permissions on file.
-            print(
-                'Error when trying to launch environment - make sure '
-                'permissions are set correctly. For example '
-                f'"chmod -R 755 {launch_string}"'
-            )
+            try:
+                os.system(f'chmod -R 755 {launch_string}')
+                return launch_executable(file_name, args)
+            except:
+                print(
+                    'Error when trying to launch environment - make sure '
+                    'permissions are set correctly. For example '
+                    f'"chmod -R 755 {launch_string}"'
+                )
 
 def launch_env(file_name: str=None, args: List[str]=list(), virtualgl=False):
     if file_name is not None:
