@@ -14,7 +14,10 @@ public class TestAEC : Agent
     int count = 0;
 
     // Start is called before the first frame update
-    void Start() {}
+    void Start()
+    {
+        if ((object)num is int) return;
+    }
 
     // Update is called once per frame
     void Update()
