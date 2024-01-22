@@ -112,7 +112,11 @@ class UnityAECEnv(AECEnv):
             # handles stepping an agent which is already dead
             # accepts a None action for the one agent, and moves the agent_selection to
             # the next dead agent,  or if there are no more dead agents, to the next live agent
+            
+            self.bridge.set_actions({})
             self._was_dead_step(action)
+            if len(self.agents) > 0:
+                self.agent_selection = self._agent_selector.next()
             return
 
         agent = self.agent_selection
