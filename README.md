@@ -2,7 +2,7 @@
 
 Unity and Python Reinforcement and Imitation Learning with Gymnasium and PettingZoo API.
 
-![Gymize_Framework](https://github.com/timcsy/gymize/blob/main/docs/images/Gymize_Framework.png)
+![Gymize_Framework](docs/images/gymize_framework.png)
 
 ## Installations
 
