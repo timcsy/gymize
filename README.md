@@ -37,11 +37,12 @@ If git hasn't been installed, then you can download gymize first and install it 
 
 1. Assign the `env_name`, which should be same as in the Unity. For example, `kart`.
 2. `file_name` is the path to the built Unity game, or leave `None` if using Unity Editor.
-3. Define the observation space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
-4. Define the action space in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/).
-5. Assign `render_mode='video'` if you want to record video from Unity, otherwise omit `render_mode`.
-6. Assign `views=['', ...]` if you want to record video from Unity, which given a list of view names, the empty string will be the default view, otherwise omit `views`.
-7. Make the Gymnasium or PettingZoo environment by the following commands:
+3. For multi-agent, `agent_names` is the list of agent names.
+4. Define the `observation_space` in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/). For multi-agent, `observation_spaces` is a dictionary whose keys are agent names and values are observation spaces.
+5. Define the `action_space` in the format of [Gym Spaces](https://gymnasium.farama.org/api/spaces/). For multi-agent, `action_spaces` is a dictionary whose keys are agent names and values are action spaces.
+6. Assign `render_mode='video'` if you want to record video from Unity, otherwise omit `render_mode`.
+7. Assign `views=['', ...]` if you want to record video from Unity, which given a list of view names, the empty string will be the default view, otherwise omit `views`.
+8. Make the Gymnasium or PettingZoo environment by the following commands:
 
 Single-Agent with Gymnasium API:
 ```
@@ -66,6 +67,7 @@ from gymize.envs import UnityAECEnv
 env = UnityAECEnv(
     env_name='<your env name>',
     file_name=file_name,
+    agent_names=agent_names,
     observation_spaces=observation_spaces,
     action_spaces=action_spaces,
     render_mode='<render_mode>',
@@ -80,6 +82,7 @@ from gymize.envs import UnityParallelEnv
 env = UnityParallelEnv(
     env_name='<your env name>',
     file_name=file_name,
+    agent_names=agent_names,
     observation_spaces=observation_spaces,
     action_spaces=action_spaces,
     render_mode='<render_mode>',
